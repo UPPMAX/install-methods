@@ -1,3 +1,5 @@
+Kraken 0.10.5-beta
+==================
 
     cd /sw/apps
     cd bioinfo/
@@ -40,3 +42,29 @@ Now build the Kraken database.  I have set up a cron-ready script to do this, Kr
     kraken-build --standard --threads 8 --db $KRAKEN_DB
 
 Now create mf file with warning about loading Kraken DB properly.
+
+
+Monthly database downloads
+--------------------------
+
+I have produced a script to be run on cron, to do database downloads (I am choosing monthly).
+
+New developments
+----------------
+
+After my initial installation and database fetch, NCBI changed the locations of
+the bacterial and other files, and they are now archived and it is requested
+that they are fetched dynamically now.  I and another user informed the Kraken
+developer (<https://github.com/DerrickWood/kraken/issues/33>), and a new
+download_genomic_library.sh script was produced.  It is a temporary fix:
+
+> I've made a change to the download_genomic_library.sh file to point to the
+archived set of bacterial sequences, which will fix things in the short term.
+I'm working on a better solution that will allow inclusion of newer sequences
+as well (that lack GI numbers but have only accession numbers).
+
+So I have saved off the original and downloaded the new version.
+
+    /sw/apps/bioinfo/Kraken/0.10.5-beta/src/kraken-0.10.5-beta/scripts $ mv download_genomic_library.sh download_genomic_library_orig.sh
+    /sw/apps/bioinfo/Kraken/0.10.5-beta/src/kraken-0.10.5-beta/scripts $ wget https://raw.githubusercontent.com/DerrickWood/kraken/master/scripts/download_genomic_library.sh
+
