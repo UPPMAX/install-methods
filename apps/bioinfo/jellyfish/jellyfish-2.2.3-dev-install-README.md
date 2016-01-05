@@ -1,9 +1,9 @@
-# jellyfish-2.2.3-install-README.md, douglas.scofield@ebc.uu.se
+# jellyfish-2.2.3-dev-install-README.md, douglas.scofield@ebc.uu.se
 
 TITLE
 =====
 
-    Jellyfish 2.2.3
+    Jellyfish 2.2.3-dev
 
 DESCRIPTION
 -----------
