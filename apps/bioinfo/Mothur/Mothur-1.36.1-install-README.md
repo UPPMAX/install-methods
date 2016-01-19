@@ -65,3 +65,20 @@ Copy over the `blast/2.2.25` executables from 1.33.1.
 
     cp -av ../../../1.33.3/milou/bin/blast .
 
+Repeat from the beginning for tintin.  On tintin, `module load build-tools` is
+necessary before loading boost.
+
+
+Special compilation for halvan
+------------------------------
+
+Normally we have no special compilation required for the same executables to
+work on milou and halvan.  But (I think) `-mtune=native -march=native` ends up
+adding non-halvan instructions which result in "Illegal instruction (core
+dumped)" when run on halvan (Uppmax support ticket #125774).  So, I compiled
+specifically on halvan and it seems to work.
+
+    ssh h1  # this gets you to halvan from a milou or tintin login node
+
+Then proceed as above.
+
