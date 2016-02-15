@@ -27,6 +27,8 @@ out the BOOST_INCLUDE_DIR because appropriate environment vars are set by the
 libraries will not work since it does not supply static libraries.  There are
 static libraries in the module.
 
+**SEE BELOW** for issues that require us to instead comment out the tune and
+arch options.
 
 ````
 milou1: /sw/apps/bioinfo/Mothur/1.36.1/src/mothur-1.36.1 $ diff makefile.orig makefile
@@ -81,4 +83,18 @@ specifically on halvan and it seems to work.
     ssh h1  # this gets you to halvan from a milou or tintin login node
 
 Then proceed as above.
+
+Well... this is not actually true.  The getCluster function within the mf file
+returns 'milou' when run on h1, so I cannot effectively create a
+halvan-specific executable tree.  Submitted a ticket to figure out why this is.
+
+So what I have done is comment out the `-march=native -mtune=native` line in
+the Mothur makefile, rebuilt on milou, and verified that this ran on halvan.
+Then I moved the existing executables to `{mothur,uchime}-milou-specific`,
+added these new executables as `{mothur,uchime}-generic` and provided symbolic
+links to these from `mothur` and `uchime`.
+
+Turns out there is a bug in the module system, but fixing it is not worthwhile
+as halvan will be decommissioned soon.  I moved the halvan executables to the
+milou/bin/ folder and deleted the halvan-specific bin tree.
 
