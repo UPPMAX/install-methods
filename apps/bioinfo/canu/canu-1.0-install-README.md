@@ -3,7 +3,7 @@ canu 1.0
 
 Fork of Celera Assembler specialised for long noisy reads.
 
-<ihttp://canu.readthedocs.org/en/latest/>
+<http://canu.readthedocs.org/en/latest/>
 
 Log
 ---
