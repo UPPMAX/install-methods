@@ -1,12 +1,6 @@
 # perl_modules
 
-This includes a few tools useful for installing the `perl_modules` module on Uppmax.
-
-    source source-for-milou-perl_module-deps-setup
-
-This sets up the `PATH` etc. so that installations can be done with `cpan`:
-
-    cpanm Module::OfInterest
+This includes a few tools useful for installing the `perl_modules` module on Uppmax.  See the install instructions for more details.
 
 The list of available Perl modules is provided at the Uppmax help page
 <http://www.uppmax.uu.se/what-perl-modules-are-available-in-the-software-module-perl-modules5184>.
