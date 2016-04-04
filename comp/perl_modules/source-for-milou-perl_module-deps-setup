@@ -1,0 +1,16 @@
+# unset variables and use minimal path
+
+unset MODULE_DEPS
+unset PERL5LIB
+unset LD_LIBRARY_PATH
+export PATH="/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/thinlinc/bin:/sw/uppmax/bin"
+
+module load perl/5.18.4
+
+export MODULE_DEPS="/sw/comp/perl_modules/5.18.4/milou"
+export PERL5LIB="$MODULE_DEPS/lib/perl5:$PERL5LIB"
+export LD_LIBRARY_PATH="$MODULE_DEPS/lib"
+export PATH="$MODULE_DEPS/bin:$PATH"
+eval `perl -I $MODULE_DEPS/lib/perl5 -Mlocal::lib=$MODULE_DEPS`
+# now to find cpanm
+export PATH="$MODULE_DEPS:$PATH"

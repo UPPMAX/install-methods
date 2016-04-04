@@ -1,0 +1,96 @@
+#!/usr/bin/env perl
+
+# script modified from CGI script at http://www.perlmonks.org/?node_id=1003945
+
+my $table_only = 1;
+
+use strict;
+use warnings;
+use CGI ":standard";
+use POSIX qw/uname/;
+use HTML::Perlinfo::Modules;
+
+my $pwd = $ENV{'PWD'};
+my $subpwd = $pwd; $subpwd =~ s/^.*\/(perl_modules)/$1/;
+
+print STDERR "\nDetermining location and subdirectory to restrict search...\n\n";
+print STDERR "current directory = $pwd\n";
+print STDERR "restricted subdirectory = $subpwd\n";
+print STDERR "\nCreating HTML table only\n\n" if $table_only;
+
+print STDERR "\nNote: writing output to STDOUT !!  Giving you 10 seconds to contemplate that... ";
+sleep 10;
+print STDERR "Time's up!\n\n";
+
+my %seen;
+my @search_dirs = grep { /\Q$subpwd\E/ && ! $seen{$_}++ } @INC;
+print STDERR "\nINC = \n    " . join("\n    ", @INC) . "\n";
+print STDERR "\nRestricted, de-duped search_dirs = \n    " . join("\n    ", @search_dirs) . "\n\n";
+
+print STDOUT
+    #header(),
+    #start_html(-title => "Perl Module Search on @{[ (uname)[0..2] ]}",
+    start_html(-title => "Perl Module Search on $subpwd",
+               -head  => style({type => 'text/css'},
+                               join('',<DATA>)
+                              ),
+              ) if not $table_only;
+    #h1("Search Perl modules on @{[ (uname)[0..2] ]}");
+print STDOUT h1("Perl Module Search on $subpwd");
+
+#print
+#    div({-style => "float:left; width: 20%;"},
+#        h3("Separate names with commas"),
+#        start_form(-method => "get",
+#                   -enctype => "application/x-www-form-urlencoded",
+#                   -onsubmit => "return this._x ? false : ( this._x = true )"),
+#        textfield("query"),
+#        br(),
+#        h3("Search from:"),
+#    textfield("from"),
+#    br(),
+#        h3("Sort modules by:"),
+#        radio_group(-name=>'sort',
+#            -values=>['Name','Version'],
+#            -default=>'Name'),
+#        p(),
+#        submit(),
+#        end_form(),
+#       );
+
+#        ->print_modules( show_only => [split(/, */, $query)], 
+my $module = HTML::Perlinfo::Modules
+        ->new
+        ->print_modules( from      => @search_dirs ? \@search_dirs : \@INC,
+                         sort_by   => 'name',               
+                         full_page => 0 );
+print STDOUT
+    div({-style => "float:left; width: 75%; margin-left: 2%"},
+        $module || h2("No modules found"),
+       );
+print STDOUT "\n";
+print STDOUT end_html() if not $table_only;
+
+__DATA__
+body {
+ font: 11px/13px helvetica-neue, helvetica, sans-serif;
+ color: #001;
+}
+a:link {color: #000099; text-decoration: none;}
+a:hover {text-decoration: underline;}
+table {border-collapse: collapse; width: 100%;}
+.center {text-align: center;}
+.center table { margin-left: auto; margin-right: auto; text-align: lef
++t;}
+.center th { text-align: center !important; }
+td, th { border: 1px solid #001; }
+.modules table {border: 0;}
+.modules td { border:0;}
+.modules th { border:0;}
+.p {text-align: left;}
+.e {background-color: #ccf; font-weight: bold; }
+.h {background-color: #99c; font-weight: bold; }
+.v {background-color: #ccc; }
+i {color: #666666; background-color: #ccc;}
+__END__
+
