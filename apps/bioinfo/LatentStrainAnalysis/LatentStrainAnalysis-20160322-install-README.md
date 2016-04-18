@@ -7,10 +7,16 @@ LatentStrainAnalysis 20160322
 
 The most recent commit at that repository is 20150429 and there seems not to
 have been much communication from the developer in a while.  Nevertheless we
-forge onward.  It seems dependent upon working in place, so I fork and add
-some mods to allow running the bash scripts directly and the use of a `LSA`
-environment variable to find the python scripts.  I commited those edits
-and now I am testing.
+forge onward.
+
+It seems dependent upon working in place, so I fork and add some mods to allow
+running the bash scripts directly and the use of a `LSA` environment variable
+to find the python scripts.  Another fork contained a bugfix, so that is what I
+forked from:
+
+<https://github.com/sunitj/LatentStrainAnalysis>
+
+I commited those edits and now I am testing.
 
 <https://github.com/douglasgscofield/LatentStrainAnalysis>
 
