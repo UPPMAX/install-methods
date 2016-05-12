@@ -48,3 +48,5 @@ Now get my fork.
 Set up mf file that sets LSA, loads python/2.7.9 and gnuparallel/20140222, and
 sets PYTHONPATH and LD_LIBRARY_PATH appropriately.
 
+After UPPMAX ticket #131071, added the use of the `LSFScripts` environment
+variable, commit to the repository fork.

@@ -47,7 +47,9 @@ Now create mf file with warning about loading Kraken DB properly.
 Monthly database downloads
 --------------------------
 
-I have produced a script to be run on cron, to do database downloads (I am choosing monthly).
+I have produced a script to be run on cron, to do database downloads (I am
+choosing monthly).  Downloads are being saved to /sw/data/uppnex/Kraken, and
+the script `Kraken-update-db.sh` is there as well.
 
 New developments
 ----------------
