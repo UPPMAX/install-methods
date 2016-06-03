@@ -28,11 +28,18 @@ build with system gcc.
     ./configure --prefix=/sw/comp/python/2.7.6_${CLUSTER}_new
     make && make install
 
+Now build shared-object version.
+
+    ./configure --enable-shared --prefix=/sw/comp/python/2.7.6_${CLUSTER}_new
+    make && make install
+
 Set up variables. Make sure no other python loaded.
 
     cd ../../bin
     export PATH=$PWD:$PATH
-    cd ../lib/python2.7
+    cd ../lib
+    export LD_LIBRARY_PATH=$PWD:$LD_LIBRARY_PATH
+    cd python2.7
     export PYTHONPATH=$PWD
 
 Make sure `python` is the newly-built python.
