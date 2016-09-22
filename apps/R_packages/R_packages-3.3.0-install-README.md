@@ -45,6 +45,60 @@ A few more packages on 2016-06-13:
 
     install.packages(c('dendextend', 'dendextendRcpp', 'cluster', 'naturalsort'))
 
+A few more packages on 2016-09-19, including several from Bioconductor.
+
+    module load R_packages/3.3.0
+    which R
+    cd /sw/apps/R_packages/3.3.0
+    chmod -R og+w milou
+    cd milou
+
+    R
+
+    install.packages(c('gplots'))
+
+    source("https://bioconductor.org/biocLite.R")
+    biocLite()
+
+When installing the above, it will ask for some outdated packages 'update all,
+some or none (a/s/n)', so pick 'a'.
+
+At the end it might complain about read-only directory which is over in the
+R/3.3.0 package tree.  Do not create a personal library, and let it fail.
+
+    Warning in install.packages(update[instlib == l, "Package"], l, contriburl = contriburl,  :
+      'lib = "/pica/sw/apps/R/x86_64/3.3.0/tintin/lib64/R/library"' is not writable
+
+It is trying to update some standard packages in the R/3.3.0 package tree, and
+I would rather update those in R_packages/3.3.0 instead. You might also see
+something like the following when installing packages.  Don't let it update.
+Install them by hand so they go into R_packages/3.3.0 instead.
+
+    Old packages: 'Matrix', 'foreign', 'lattice', 'mgcv', 'survival'
+    Update all/some/none? [a/s/n]: n
+
+The thinking is that we should update packages in R_packages/3.3.0, but not in
+R/3.3.0.  Installing singly keeps them in R_packages/3.3.0, it seems.  I'm not
+sure that this is a persistent solution, though, because the `biocLite()` call
+later asks to install them again.
+
+    install.packages('Matrix')
+    install.packages('foreign')
+    install.packages('lattice')
+    install.packages('mgcv')
+    install.packages('survival')
+
+Then I installed these packages, for RNA-seq analysis.
+
+    biocLite(c('edgeR','DEXSeq','goseq','GO.db','reactome.db','Gviz','org.Mm.eg.db'))
+    q()
+
+Choose to save the environment.
+
+    cd ..
+    chmod -R og-w milou
+
+
 This list will continue to expand with time.
 
 Repeat for tintin.
@@ -63,7 +117,7 @@ Paste the table into table.txt and then do
 
     ./create_html_table.pl table.txt > table.html
 
-and replace the table in the webpage
+and replace the table in the webpage source for
 <http://www.uppmax.uu.se/support/user-guides/r_packages-module-guide/>.
 
 I am leaving the `.RData` and `.Rhistory` in place for both the milou and

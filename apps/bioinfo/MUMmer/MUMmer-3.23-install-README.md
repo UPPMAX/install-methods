@@ -43,5 +43,12 @@ LOG
 
 Do the same for tintin.
 
-Copy the mf from /sw/mf/common/bioinfo-tools/alignment/MUMmer/3.22.  No changes necessary
+Copy the mf from /sw/mf/common/bioinfo-tools/alignment/MUMmer/3.22.  No changes necessary.
+
+Update
+------
+
+Needed to come in later and have the perl scripts use `#!/usr/bin/env perl`.
+It tries to be dynamic by assigning the perl path at installation time but
+doesn't use the `env` mechanism.  Hopefully MUMmer4 does better.
 

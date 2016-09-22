@@ -117,9 +117,11 @@ As I encounter additional Perl modules, I install them in this package.  Is ther
 Generate list of installed modules
 ----------------------------------
 
-When in /sw/comp/perl_modules/5.18.4/milou:
+When in `/sw/comp/perl_modules/5.18.4/milou`:
 
     ./create_module_table > module_table.html
 
 There will be a few messages to stderr about the search directories, which should be underneath.
+
+See `/sw/comp/perl_modules/5.18.4/milou/README.md` for more on updating the module table on the website.
 
