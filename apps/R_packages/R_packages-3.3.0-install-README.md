@@ -50,7 +50,7 @@ A few more packages on 2016-09-19, including several from Bioconductor.
     module load R_packages/3.3.0
     which R
     cd /sw/apps/R_packages/3.3.0
-    chmod -R og+w milou
+    chmod -R ug+w milou
     cd milou
 
     R
@@ -96,10 +96,32 @@ Then I installed these packages, for RNA-seq analysis.
 Choose to save the environment.
 
     cd ..
-    chmod -R og-w milou
+    chmod -R -w milou
 
 
 This list will continue to expand with time.
+
+Additional 2016-09-26:
+
+    install.packages('tkrplot')
+    source("https://bioconductor.org/biocLite.R")
+    biocLite("Rhtslib")
+
+Where I did:
+
+    Old packages: 'curl', 'irlba', 'spdep', 'Matrix', 'foreign', 'lattice', 'mgcv',
+      'survival'
+    Update all/some/none? [a/s/n]: a
+
+    Warning in install.packages(update[instlib == l, "Package"], l, contriburl = contriburl,  :
+      'lib = "/pica/sw/apps/R/x86_64/3.3.0/tintin/lib64/R/library"' is not writable
+    Would you like to use a personal library instead?  (y/n) n
+    Error in install.packages(update[instlib == l, "Package"], l, contriburl = contriburl,  :
+      unable to install packages
+
+And then
+
+    biocLite("zlibbioc")
 
 Repeat for tintin.
 
