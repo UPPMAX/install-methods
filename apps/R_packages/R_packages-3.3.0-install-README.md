@@ -146,3 +146,27 @@ I am leaving the `.RData` and `.Rhistory` in place for both the milou and
 tintin installs, immediately under `$modroot` which is
 `R_packages/3.3.0/$CLUSTER`.
 
+
+### 2016-10-20
+
+Installed SVA and DADA2 per tickets.  `biocLite()` said BioConductor could be
+upgraded to 3.4, but don't do that!  Turns out the TBB that goes with the new
+RcppParallel version has that instruction issue with older gcc that I ran into
+with another installation
+(<https://github.com/RcppCore/RcppParallel/issues/29>).  I followed Martin
+Morgan's advice at
+<http://stackoverflow.com/questions/19589064/downgrade-r-version-and-r-package-bioconductor>
+and within R, downgraded to BioConductor 3.3 with
+
+    install.packages("BiocInstaller", repos="http://bioconductor.org/packages/3.3/bioc")
+    library(BiocInstaller)
+    biocLite()
+    biocVersion()
+
+The `biocVersion)` call produces a 'too new' message ending with a recommended
+`biocLite(...)` call, so I ran that, and then recompiled all of the 'out of
+date' standard packages as well.
+
+Probably the best thing to do would be to update R and compile it with a newer
+gcc.
+
