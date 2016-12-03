@@ -69,6 +69,16 @@ or too-old BioConductor packages.
 
 Quit R, save the environment.
 
+External packages
+-----------------
+
+Install a non-CRAN package ASCAT.
+
+    cd 3.3.1/external_packages
+    wget https://github.com/Crick-CancerGenomics/ascat/releases/download/v2.4.3/ASCAT_2.4.3.tar.gz
+    R CMD INSTALL ASCAT_2.4.3.tar.gz
+
+
 After adding new packages
 -------------------------
 

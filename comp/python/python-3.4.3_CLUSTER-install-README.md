@@ -1,5 +1,5 @@
-Python 3.4.3 for tintin
-=======================
+Python 3.4.3
+============
 
 Neither PYTHONHOME nor LD_LIBRARY_PATH should be set:
 
@@ -19,14 +19,14 @@ LOG
 
     CLUSTER=${CLUSTER?:CLUSTER must be set}
     VERSION=3.4.3
-    TARGET=/sw/comp/python/${VERSION}_tintin
+    TARGET=/sw/comp/python/${VERSION}_$CLUSTER
     mkdir -p $TARGET/src
     fixup -g $TARGET
     cd $TARGET/src
     [[ -f Python-3.4.3.tgz ]] || wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tgz
     tar xzf Python-3.4.3.tgz 
     cd Python-3.4.3/
-    ./configure --prefix=$TARGET --enable-shared LDFLAGS="-Wl,-rpath=$TARGET/lib"
+    ./configure --prefix=$TARGET --enable-shared LDFLAGS="-Wl,-rpath=$TARGET/lib,-rpath=/sw/libs/wxWidgets/lib"
     make && make install
 
 Set up variables. Make sure no other python loaded.
@@ -54,4 +54,5 @@ Add to the the local packages.
     easy_install-3.4 scipy
     easy_install-3.4 matplotlib
     easy_install-3.4 ipython
+    easy_install-3.4 virtualenv # Added 2016-12-02
 

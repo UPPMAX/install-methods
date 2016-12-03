@@ -1,4 +1,4 @@
-# python-2.7.6_milou_new-install-README.md
+# python-2.7.6_CLUSTER_new-install-README.md
 
 New installation of python/2.7.6
 ================================
@@ -12,7 +12,7 @@ corrupted.  Currently this generates an error that it can't find `_sqlite3`:
 Log
 ---
 
-    CLUSTER=milou
+    CLUSTER=${CLUSTER?:CLUSTER must be set}
     cd /sw/comp/python
     mkdir 2.7.6_${CLUSTER}_new
     cd 2.7.6_${CLUSTER}_new/
@@ -57,4 +57,19 @@ Now install basic packages, as determined from looking at
 
     ls -l ../lib/python2.7/site-packages/
     pip install numpy scipy ipython Cython matplotlib mock nose pytz six singledispatch rpy2 pyparsing pysqlite
+
+Added 2016-12-02, to add virtualenv to both milou and tintin installs using easy_install:
+
+    module load python/2.7.6
+    cd /sw/comp/python/2.7.6_${CLUSTER}_new
+    chmod -R u+w,g+w .
+    easy_install virtualenv
+    chmod -R u-w,g-w .
+
+Added 2016-12-02:  Now fixed up rpath in the executables.
+
+    cd /sw/comp/python/2.7.6_${CLUSTER}_new
+    P=$PWD/lib
+    cd bin
+    patchelf --set-rpath $P --force-rpath python2.7
 
