@@ -1,9 +1,9 @@
-# gsl-1.16-install-README.md, douglas.scofield@ebc.uu.se
+# gsl-2.1-install-README.md, douglas.scofield@ebc.uu.se
 
 TITLE
 =====
 
-    Gnu Scientific Library 1.16
+    Gnu Scientific Library 2.1
 
 DESCRIPTION
 -----------
@@ -34,8 +34,8 @@ Built with
 LOG
 ---
 
-    TOOL=/sw/libs/gsl
-    VERSION=1.16
+    TOOL=/sw/apps/gsl
+    VERSION=2.1
     TOOLDIR=$TOOL/$VERSION
     CLUSTER=milou
     CLUSTERDIR=$TOOLDIR/$CLUSTER
@@ -52,7 +52,7 @@ LOG
 Now load pieces for the build and build it.
 
     module load build-tools
-    module load gcc/4.8.3
+    module load gcc/4.9.2
 
     ./configure --prefix=$CLUSTERDIR
     make
@@ -74,7 +74,7 @@ mf file we need
     prepend-path MANPATH           $modroot/share/man
     prepend-path PKG_CONFIG_PATH   $modroot/lib/pkgconfig
 
-2016-12-19: We also must symlink `lib64` to `lib` or gcc might not link it correctly.
+2016-12-19: We also must symlink `lib64` to `lib` or dump gcc might not link it correctly.
 
     cd $CLUSTERDIR
     ln -s lib lib64
@@ -88,7 +88,7 @@ Set up for other systems.
 Repeat for tintin.
 
     TOOL=/sw/libs/gsl
-    VERSION=1.16
+    VERSION=2.1
     TOOLDIR=$TOOL/$VERSION
     CLUSTER=tintin
     CLUSTERDIR=$TOOLDIR/$CLUSTER
@@ -98,7 +98,7 @@ Repeat for tintin.
     cd gsl-${VERSION}/
     make clean
     module load build-tools
-    module load gcc/4.8.3
+    module load gcc/4.9.2
     ./configure --prefix=$CLUSTERDIR
     make
     make install

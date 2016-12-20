@@ -56,6 +56,10 @@ We require the config/ directory contents, might as well copy everything.
 
     cp -av * ../../$CLUSTER/
 
+**added 2016-12-08**: This also includes the `scripts/` directory, which had a
+lot of /usr/bin/perl as well as a requirement for YAML, so the whole module has
+been switched over to perl/5.18.4.  See the mf for more.
+
 And, tighten up permissions on config directory so `sw` group members don't
 inadvertently write something there using BUSCO or some other tool.
 
