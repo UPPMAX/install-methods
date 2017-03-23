@@ -113,6 +113,8 @@ Additional modules
 
 As I encounter additional Perl modules, I install them in this package.  Is there a way to get the list of modules I have actually requested, like with MacPorts?
 
+Apparently not.  I just installed `Array::Unique`, and I'm sure there are others.
+
 
 Generate list of installed modules
 ----------------------------------

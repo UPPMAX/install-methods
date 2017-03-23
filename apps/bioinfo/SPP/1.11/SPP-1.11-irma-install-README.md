@@ -1,4 +1,4 @@
-# SPP-1.11-irma-install-README.md, wesleys
+# SPP-1.11-irma-install-README.md
 
 TITLE
 =====

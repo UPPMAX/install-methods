@@ -20,7 +20,7 @@ Compilation with gcc/system failed so switched to latest gcc.
     INST=/sw/apps/bioinfo/$APPL/$VERS/$CLUSTER
     module load python/2.7.6
     module load gcc/6.3.0
-    mkdir $INST
+    mkdir -p $INST
     export PYTHONPATH=$INST/lib/python2.7/site-packages
     pip install --install-option="--prefix=$INST" $APPL
 

@@ -117,3 +117,5 @@ module contents when installing packages for themselves.
     chmod -R -w .
 
 Repeat for tintin, skipping the installed packages table bit.
+
+Rackham works just fine.
