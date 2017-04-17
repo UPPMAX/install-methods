@@ -1,23 +1,22 @@
 # jellyfish-2.2.6-install-README.md, douglas.scofield@ebc.uu.se
 
-TITLE
+Jellyfish 2.2.6
 =====
 
-    Jellyfish 2.2.6
 
 DESCRIPTION
 -----------
 
-    K-mer counting program for NGS read data
+K-mer counting program for NGS read data
 
-    Guillaume Marcais and Carl Kingsford. 2011.  A fast, lock-free approach for
-    efficient parallel counting of occurrences of k-mers. Bioinformatics (2011)
-    27(6): 764-770.  doi:10.1093/bioinformatics/btr011
+Guillaume Marcais and Carl Kingsford. 2011.  A fast, lock-free approach for
+efficient parallel counting of occurrences of k-mers. _Bioinformatics_ (2011)
+27(6): 764-770.  doi:10.1093/bioinformatics/btr011
 
 WEBSITE
 -------
 
-    http://www.cbcb.umd.edu/software/jellyfish/
+<http://www.cbcb.umd.edu/software/jellyfish/>
 
 MODULE REQUIREMENTS
 -------------------
@@ -36,8 +35,8 @@ LOG
     CLUSTERDIR=$VERSIONDIR/$CLUSTER
     mkdir -p $CLUSTERDIR
     cd $VERSIONDIR
-    mkdir src $CLUSTER
-    cd src
+    mkdir src_$CLUSTER $CLUSTER
+    cd src_$CLUSTER
     wget https://github.com/gmarcais/Jellyfish/releases/download/v${VERSION}/jellyfish-${VERSION}.tar.gz
     wget ftp://ftp.genome.umd.edu/pub/jellyfish/JellyfishUserGuide.pdf
     mv JellyfishUserGuide.pdf $CLUSTERDIR/jellyfish-manual-${VERSION}.pdf
@@ -50,22 +49,20 @@ Make sure to use `gcc/5.3.0`.
     ./configure --prefix=$CLUSTERDIR
     make && make check && make install
 
-Make it available for halvan and nestor.
+Note that there will be a test failure that can be ignored (`FAIL: tests/large_key.sh`, <https://github.com/gmarcais/Jellyfish/issues/65>).  So this is probably a better sequence for building and installing.
+
+    make && make check
+    make install
+
+Make it available for bianca and irma, if building on rackham.
 
     cd $VERSIONDIR
-    ln -s ./$CLUSTER halvan
-    ln -s ./$CLUSTER nestor
+    ln -s ./$CLUSTER bianca
+    ln -s ./$CLUSTER irma
 
-To install for tintin, set the above variables making sure to use
-`CLUSTER=tintin`, remove the `src/jellyfish-${VERSION}` directory and repeat
-the `module load gcc/5.3.0 ... make install` section.
+The `mf` file needs to load the lib directories for gcc/5.3.0.
 
-The 2.2.4 `mf` file works for 2.2.6.
-
-    cd $MF_DIR
-    cp 2.2.4 2.2.6
+Set up the links for bianca and irma, too.
 
 I think I should also add `CPATH`.
-
-And set this new mf file up.
 

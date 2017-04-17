@@ -144,21 +144,6 @@ Now for both systems... this takes a long time.
 
     make
 
-However for tintin 'make' will fail with the following because the only boost
-available is the system boost, which is 1.41, but this feature file was
-introduced at some point after this and before 1.55, which is the module boost
-available on milou.
-
-    [ 69%] Building CXX object extras/apps/bs_tools/CMakeFiles/casbar.dir/casbar.cpp.o
-    /sw/apps/bioinfo/SeqAn/1.4.2/tintin/seqan-1.4.2/extras/apps/bs_tools/casbar.cpp:67:38: fatal error: boost/math/tools/tuple.hpp: No such file or directory
-     #include <boost/math/tools/tuple.hpp>
-                                          ^
-    compilation terminated.
-    make[2]: *** [extras/apps/bs_tools/CMakeFiles/casbar.dir/casbar.cpp.o] Error 1
-    make[1]: *** [extras/apps/bs_tools/CMakeFiles/casbar.dir/all] Error 2
-    make: *** [all] Error 2
-
-
 Must we create a dummy file and a directory or 'make install' will fail?
 
     touch /sw/apps/bioinfo/SeqAn/1.4.2/milou/seqan-1.4.2/extras/apps/seqan_flexbar/README
