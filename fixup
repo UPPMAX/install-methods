@@ -8,18 +8,12 @@ if [ "$1" = '-g' ] ; then
     shift
 fi
 
-if [ -z "$1" ] ; then
-    chgrp -hR sw *
-    chmod -R u+rwX,g+rwX,o+rX-w *
-    [[ "$SETG" = 'no' ]] || find . -type d -exec chmod g+s {} \;
-else
-    args=("$@")
-    for arg in ${args[@]} ; do
-        chgrp -hR sw "$arg"
-        chmod -R u+rwX,g+rwX,o+rX-w "$arg"
-        [[ "$SETG" = 'no' ]] || find "$arg" -type d -exec chmod g+s {} \;
-    done
-fi
+args=("$@")
+for arg in ${args[@]} ; do
+    chgrp -hR sw "$arg"
+    chmod -R u+rwX,g+rwX,o+rX-w "$arg"
+    [[ "$SETG" = 'no' ]] || find "$arg" -type d -exec chmod g+s {} \;
+done
 
 
 
