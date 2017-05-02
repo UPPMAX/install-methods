@@ -61,6 +61,7 @@ After checking that was installed within the appropriate R_packages tree, contin
     biocLite(c('ggtree','Rhtslib','zlibbioc','edgeR','DEXSeq','goseq','GO.db','reactome.db','Gviz','org.Mm.eg.db','sva','dada2'))
     biocLite(c('DESeq','DESeq2','limma'))
     biocLite(c('AnnotationDbi','impute','preprocessCore'))
+    biocLite(c('MODA'))
 
 See the README for 3.3.0 if you get the message about updating base packages
 when using `biocLite`.

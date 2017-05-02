@@ -1,14 +1,14 @@
-binutils-2.26-install-README.md
+binutils-2.28-install-README.md
 ===============================
 
-binutils/2.26, built with plugin support
+binutils/2.28, built with plugin support
 
 <https://www.gnu.org/software/binutils/>
 
 LOG
 ---
 
-    VERSION=2.26
+    VERSION=2.28
     CLUSTER=${CLUSTER?:CLUSTER must be set}
     cd /sw/comp
     mkdir binutils
@@ -26,15 +26,12 @@ LOG
     cd binutils-${VERSION}_$CLUSTER/
     module load gcc/5.3.0
     ./configure --enable-plugins --prefix=$PREFIX
-    make -j 4
+    make -j 6
     make install
 
-Use coreutils mf for binutils.
+Use previous mf for binutils.
 
-    cd /sw/comp/binutils
-    mkdir -p mf
-    cd mf
-    cp ../../../apps/coreutils/mf/8.25 $VERSION
-    vi $VERSION
+    cd /sw/comp/binutils/mf
+    ln -s 2.26 $VERSION
 
-Repeat for tintin.
+Repeat for rackham.
