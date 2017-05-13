@@ -1,5 +1,3 @@
-# perl-5.24.0-install-README.md
-
 perl/5.24.0
 ===========
 
@@ -8,29 +6,22 @@ perl/5.24.0
 LOG
 ---
 
-Following 5.22.2 instructions, but for 5.24.0 we configure 64 bit ints and 64
-bit pointers.
+Following Perl's own instructions.  We build all 5.24+ perl modules with 64-bit
+ints and pointers.
 
     VERSION=5.24.0
-    CLUSTER=milou
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
     cd /sw/comp/perl
     mkdir ${VERSION}
     cd ${VERSION}/
     mkdir -p $CLUSTER
     mkdir -p src
     cd src
-    wget http://www.cpan.org/src/5.0/perl-${VERSION}.tar.gz
+    [[ -f perl-${VERSION}.tar.gz ]] || wget http://www.cpan.org/src/5.0/perl-${VERSION}.tar.gz
     tar xzf perl-${VERSION}.tar.gz 
     mv perl-${VERSION} perl-${VERSION}-${CLUSTER}
     cd perl-${VERSION}-${CLUSTER}
     ./Configure -des -Dusethreads -Duse64bitall -Dprefix=/sw/comp/perl/${VERSION}/${CLUSTER}
-    make
-    make test
-    make install
+    make -j8
+    make test && make install
 
-Fix.
-
-    cd ../..
-    fixup -g 5.24.0
-
-Do tintin.

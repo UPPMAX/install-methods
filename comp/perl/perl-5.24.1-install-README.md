@@ -1,6 +1,4 @@
-# perl-5.22.2-install-README.md
-
-perl/5.22.2
+perl/5.24.1
 ===========
 
 <http://www.cpan.org/src/>
@@ -8,9 +6,10 @@ perl/5.22.2
 LOG
 ---
 
-Following Perl's own instructions.
+Following Perl's own instructions.  We build all 5.24+ perl modules with 64-bit
+ints and pointers.
 
-    VERSION=5.22.2
+    VERSION=5.24.1
     CLUSTER=${CLUSTER:?CLUSTER must be set}
     cd /sw/comp/perl
     mkdir ${VERSION}
@@ -22,13 +21,7 @@ Following Perl's own instructions.
     tar xzf perl-${VERSION}.tar.gz 
     mv perl-${VERSION} perl-${VERSION}-${CLUSTER}
     cd perl-${VERSION}-${CLUSTER}
-    ./Configure -des -Dusethreads -Dprefix=/sw/comp/perl/${VERSION}/${CLUSTER}
-    make
-    make test
-    make install
-
-Fix.
-
-    cd ../..
-    fixup -g 5.22.2
+    ./Configure -des -Dusethreads -Duse64bitall -Dprefix=/sw/comp/perl/${VERSION}/${CLUSTER}
+    make -j8
+    make test && make install
 
