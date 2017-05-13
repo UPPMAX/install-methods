@@ -3,7 +3,8 @@
 set -x
 set -e
 
-REPOSITORY='/home/douglas/github-sync/local/uppmax/install-methods'
+# export INSTALL_METHODS_REPOSITORY to indicate your own clone's location
+REPOSITORY=${INSTALL_METHODS_REPOSITORY:-/home/douglas/github-sync/local/install-methods}
 
 # modules
 
