@@ -1,4 +1,4 @@
-# deepTools-2.4.3-install-README.md
+# deepTools-2.5.1-install-README.md
 
 deepTools
 =========
@@ -15,10 +15,10 @@ PYTHONPATH was prepended rather than overwritten.
 
 Updated to latest pysam for the sake of Rackham so using
 a newer gcc as well. Assuming Milou is the only cluster 
-running an old enough OS that a separate libcurm is needed.
+running an old enough OS that a separate libcurl is needed.
 
     TOOL=deepTools
-    VERS=2.4.3
+    VERS=2.5.1
 
     module load python/2.7.6
     module load gcc/5.4.0
