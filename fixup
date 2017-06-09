@@ -8,9 +8,11 @@ if [ "$1" = '-g' ] ; then
     shift
 fi
 
+[[ ! -z "$1" ]] && GROUP=$1 || GROUP=sw
+
 args=("$@")
 for arg in ${args[@]} ; do
-    chgrp -hR sw "$arg"
+    chgrp -hR $GROUP "$arg"
     chmod -R u+rwX,g+rwX,o+rX-w "$arg"
     [[ "$SETG" = 'no' ]] || find "$arg" -type d -exec chmod g+s {} \;
 done
