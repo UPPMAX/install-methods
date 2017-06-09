@@ -8,7 +8,12 @@ if [ "$1" = '-g' ] ; then
     shift
 fi
 
-[[ ! -z "$1" ]] && GROUP=$1 || GROUP=sw
+GROUP=sw
+if [ "$1" = '-G' ] ; then
+    shift
+    GROUP=$1
+    shift
+fi
 
 args=("$@")
 for arg in ${args[@]} ; do
