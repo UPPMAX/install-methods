@@ -1,25 +1,24 @@
 #!/bin/bash
 
-set -x
-
-SETG=no
-if [ "$1" = '-g' ] ; then
-    SETG=yes
-    shift
-fi
-
 GROUP=sw
-if [ "$1" = '-G' ] ; then
-    shift
-    GROUP=$1
-    shift
-fi
+
+while getopts "gG:h" o; do
+  case $o in
+    g) SETGID_DIRS=yes ;;
+    G) GROUP=${OPTARG} ;;
+    h) HELP=yes ;;
+  esac
+done
+shift $((OPTIND-1))
+[[ $# == 0 || $HELP ]] && { echo "USAGE: $0 [ -g, to setgid on dirs ] [ -G group, default '$GROUP' ] [ -h, for help ] dir-or-file ..." ; exit 0; }
+
+set -x
 
 args=("$@")
 for arg in ${args[@]} ; do
     chgrp -hR $GROUP "$arg"
     chmod -R u+rwX,g+rwX,o+rX-w "$arg"
-    [[ "$SETG" = 'no' ]] || find "$arg" -type d -exec chmod g+s {} \;
+    [[ $SETGID_DIRS ]] && find "$arg" -type d -exec chmod g+s {} \;
 done
 
 
