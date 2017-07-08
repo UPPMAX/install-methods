@@ -39,3 +39,14 @@ Check for missing `#!` fixes.
     find . -type f -exec grep -Hn -m1 '^#!.*perl' {} \; | grep -v '\.pm:' | grep -vF '5.18.4'
     vi util/Linup util/viewMSA.pl 
 
+## Added 2017/06/16
+
+For code that enables restart, there was an error calling `abs_path`, which
+must be exported from `Cwd`.  In `$CLUSTER/RepeatModeler` change line 120 from
+
+    use Cwd;
+
+to
+
+    use Cwd 'abs_path';
+

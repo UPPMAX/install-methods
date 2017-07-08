@@ -81,4 +81,7 @@ Copy the mirdeep2 scripts over now.
     cd mirdeep${TOOLVERSION}
     cp -av src/* $PFX/bin/
 
+Mark the installation as successful.
+
+    touch $PFX/install_successful
 

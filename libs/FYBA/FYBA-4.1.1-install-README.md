@@ -16,13 +16,13 @@ LOG
     mkdir FYBA
     cd FYBA
     VERSION=4.1.1
-    CLUSTER=milou
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
     mkdir $VERSION
     cd $VERSION
     mkdir $CLUSTER
     mkdir -p src
     cd src
-    wget https://github.com/kartverket/fyba/archive/${VERSION}.tar.gz
+    [[ -f ${VERSION}.tar.gz ]] || wget https://github.com/kartverket/fyba/archive/${VERSION}.tar.gz
     tar xzf ${VERSION}.tar.gz
     mv fyba-${VERSION} fyba-${VERSION}-${CLUSTER}
     cd fyba-${VERSION}-${CLUSTER}

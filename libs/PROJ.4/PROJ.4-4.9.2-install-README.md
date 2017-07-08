@@ -1,5 +1,3 @@
-# PROJ.4-4.9.2-install-README.md
-
 PROJ.4/4.9.2
 ============
 
@@ -12,7 +10,7 @@ LOG
 ---
 
     VERSION=4.9.2
-    CLUSTER=milou
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
     cd /sw/libs
     mkdir PROJ.4
     cd PROJ.4/
@@ -21,7 +19,7 @@ LOG
     mkdir $CLUSTER
     mkdir -p src
     cd src
-    wget https://github.com/OSGeo/proj.4/archive/${VERSION}.tar.gz
+    [[ -f ${VERSION}.tar.gz ]] || wget https://github.com/OSGeo/proj.4/archive/${VERSION}.tar.gz
     tar xzf ${VERSION}.tar.gz
     mv proj.4-${VERSION} proj.4-${VERSION}-${CLUSTER}
     cd proj.4-${VERSION}-${CLUSTER}

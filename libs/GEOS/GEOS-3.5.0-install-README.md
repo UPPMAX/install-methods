@@ -27,7 +27,7 @@ LOG
     cd $CLUSTER
     P=$PWD
     cd ../src
-    wget http://download.osgeo.org/geos/geos-${VERSION}.tar.bz2
+    [[ -f geos-${VERSION}.tar.bz2 ]] || wget http://download.osgeo.org/geos/geos-${VERSION}.tar.bz2
     tar xjf geos-${VERSION}.tar.bz2 
     mv geos-${VERSION} geos-${VERSION}_${CLUSTER}
     cd geos-${VERSION}_${CLUSTER}
@@ -41,7 +41,7 @@ definitions of operator overloads.
     module load python/2.7.6
     module load swig/3.0.7
     ./configure --prefix=$P --enable-python
-    make -j 4  # don't use -j on tintin
+    make -j 8
     make install
 
 
@@ -52,4 +52,4 @@ Use mf from GDAL.
 Biggest test is if the R package `rgeos` installs successfully when this module
 is loaded, which it does.
 
-Do for both milou and tintin.
+Do for both milou and rackham.

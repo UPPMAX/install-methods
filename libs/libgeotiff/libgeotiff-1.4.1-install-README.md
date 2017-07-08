@@ -1,5 +1,3 @@
-# libgeotiff-1.4.1-install-README.md
-
 libgeotiff/1.4.1
 ================
 
@@ -11,7 +9,7 @@ LOG
 ---
 
     VERSION=1.4.1
-    CLUSTER=milou
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
     cd /sw/libs
     mkdir libgeotiff
     cd libgeotiff/
@@ -19,7 +17,7 @@ LOG
     cd $VERSION
     mkdir -p $CLUSTER src
     cd src
-    wget http://download.osgeo.org/geotiff/libgeotiff/libgeotiff-${VERSION}.tar.gz
+    [[ -f libgeotiff-${VERSION}.tar.gz ]] || wget http://download.osgeo.org/geotiff/libgeotiff/libgeotiff-${VERSION}.tar.gz
     tar xzf libgeotiff-${VERSION}.tar.gz 
     mv libgeotiff-${VERSION} libgeotiff-${VERSION}-$CLUSTER
     cd libgeotiff-${VERSION}-$CLUSTER
@@ -30,7 +28,7 @@ LOG
     ./configure --prefix=/sw/libs/libgeotiff/$VERSION/$CLUSTER --with-zlib --with-jpeg --enable-incode-epsg --enable-doxygen-pdf
     make && make install
 
-Repeat for tintin.
+Repeat for rackham, but load `doxygen/1.8.11` instead.
 
 Use mf from PROJ.4, no pkgconfig.  Load PROJ.4 and zlib in the mf file.
 
