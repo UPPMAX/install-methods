@@ -121,3 +121,70 @@ module contents when installing packages for themselves.
 Repeat for tintin, skipping the installed packages table bit.
 
 Rackham works just fine.
+
+### 2017-06-09
+
+In response to #150605, install
+[tmod](https://cran.r-project.org/web/packages/tmod/index.html) and
+dependencies.  We start updating for milou, on milou-b.
+
+    VERSION=3.3.2
+    CLUSTER=${CLUSTER?:For some reason, CLUSTER is not set}
+    cd /sw/apps/R_packages/$VERSION/$CLUSTER
+    export R_LIBS_USER=$PWD
+    module load R/$VERSION
+
+Open the tree for writing.
+
+    chmod -R u+w .
+
+Now run R:
+
+    R
+
+and within R
+
+    install.packages("tmod")
+
+After this completes (it will also install some prerequisites) get a table of
+installed packages while still within R:
+
+    ip <- as.data.frame(installed.packages()[, c(1, 3:4)])
+    rownames(ip) <- NULL
+    ip <- ip[is.na(ip$Priority), 1:2, drop=FALSE]
+    print(ip, row.names=FALSE)
+
+Copy this table to the clipboard, including the headings, and then quit R.  It
+is OK to save the environment while quitting.
+
+Then, update `table.txt` in this directory using the contents of the clipboard,
+using whichever editor you prefer.  When completed, update its html version:
+
+    ./create_html_table.pl table.txt > table.html
+
+Use this html to later update the webpage.
+
+Now write-protect the tree again.
+
+    chmod -R -w .
+
+Repeat for rackham, but we skip the table part at the end, which would be
+redundant.  After logging onto rackham5, get the existing tree rsync'd over:
+
+    cd /sw/apps/R_packages
+    rsync --dry-run -Pa --del /mnt/sw/apps/R_packages/3.3.2 .
+
+If everything looks good, do it for real:
+
+    rsync -Pa --del /mnt/sw/apps/R_packages/3.3.2 .
+
+Now do the above steps, but again, _skip the table part_.
+
+When completed, rsync back over to milou:
+
+    rsync --dry-run -Pa --del 3.3.2 /mnt/sw/apps/R_packages/
+
+If everything looks good, do it for real:
+
+    rsync -Pa --del 3.3.2 /mnt/sw/apps/R_packages/
+

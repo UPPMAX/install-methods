@@ -1,9 +1,7 @@
-# xz-5.2.2-install-README.md
+xz/5.2.2
+=========
 
 XZ and liblzma
-
-xz/75.2.2
-=========
 
 <http://tukaani.org/xz/>
 
@@ -13,26 +11,28 @@ Log
 ---
 
     VERSION=5.2.2
-    CLUSTER=milou
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
     cd /sw/apps
     mkdir xz
     cd xz
     mkdir -p mf $VERSION
     cd $VERSION
     mkdir -p src $CLUSTER
-    cd src/
-    wget http://tukaani.org/xz/xz-${VERSION}.tar.gz
+    cd $CLUSTER
+    PFX=$PWD
+    cd ../src/
+    [[ -f xz-${VERSION}.tar.gz ]] || wget http://tukaani.org/xz/xz-${VERSION}.tar.gz
     tar xzf xz-${VERSION}.tar.gz 
     mv xz-${VERSION} xz-${VERSION}-${CLUSTER}
     cd xz-${VERSION}-${CLUSTER}
     module load gcc/4.9.2
-    ./configure --prefix=/sw/apps/xz/$VERSION/$CLUSTER
-    make
+    ./configure --prefix=$PFX
+    make -j4
     make install
 
 Need to add missing symlink.
 
-    cd ../../$CLUSTER/lib
+    cd $PFX/lib
     ln -s liblzma.so.5.2.2 liblzma.so.5.2
     ln -s liblzma.so.5.2.2 liblzma.so.0
 

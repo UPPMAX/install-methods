@@ -72,4 +72,3 @@ already done.  Follow this procedure if anything further needs to be added.
     chmod -R u+w,g+w .
     easy_install virtualenv
     chmod -R u-w,g-w .
-

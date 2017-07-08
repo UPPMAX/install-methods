@@ -19,5 +19,6 @@ Log
 Get a download link from <http://www.drive5.com/usearch/download.html> emailed to you.
 It is a generic Intel Linux executable, good for all clusters here.  Move it to milou/.
 
+    chmod +x usearch${VERSION}_i86linux32
     ln -s usearch${VERSION}_i86linux32 usearch
 

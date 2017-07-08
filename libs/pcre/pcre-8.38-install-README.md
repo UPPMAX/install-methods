@@ -9,7 +9,7 @@ Log
 ---
 
     VERSION=8.38
-    CLUSTER=milou
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
     cd /sw/libs
     mkdir pcre
     cd pcre/

@@ -170,3 +170,11 @@ date' standard packages as well.
 Probably the best thing to do would be to update R and compile it with a newer
 gcc.
 
+### 2017-06-09
+
+In response to #150605, install
+[tmod](https://cran.r-project.org/web/packages/tmod/index.html) and
+dependencies.
+
+    install.packages("tmod")
+

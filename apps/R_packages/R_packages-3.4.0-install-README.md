@@ -1,6 +1,6 @@
-# R_packages-3.3.1-install-README.md
+# R_packages-3.4/0-install-README.md
 
-R_packages/3.3.1
+R_packages/3.4.0
 ================
 
 Module holding installations of some commonly-used R packages.  Not
@@ -12,7 +12,7 @@ LOG
 Run these commands to start the installation, and also run these commands for
 setting up prior to adding new packages to this installation.
 
-    VERSION=3.3.1
+    VERSION=3.4.0
     CLUSTER=${CLUSTER?:For some reason, CLUSTER is not set}
     cd /sw/apps
     mkdir -p R_packages
@@ -23,21 +23,22 @@ setting up prior to adding new packages to this installation.
     mkdir $CLUSTER
     cd $CLUSTER/
     export R_LIBS_USER=$PWD
-    module load R/3.3.1
+    module load R/3.4.0
 
 Loading R loads a bunch of stuff including gcc that will be used for building
 R packages.  So, like with perl_modules, R_packages is associated with a
-specific R module version.  Make sure you are using R/3.3.1:
+specific R module version.  Make sure you are using R/3.4.0:
 
     which R
 
-Set the cluster directory contents to be writable if installing new packages.
+Set the cluster directory contents to be writable for the owner only, if installing new packages.
 
     chmod -R ug+rwX .
 
  and run R:
 
     R
+
 
 Within R
 --------
@@ -55,28 +56,46 @@ After checking that was installed within the appropriate R_packages tree, contin
 
     install.packages(c('ggplot2','tidyr','hexbin','lmerTest','microbenchmark','xtable','testthat','DBI','VennDiagram','ade4','adegenet','vegan','ape','assertthat','akima','bitops','boot','caTools','chron','combinat','data.table','reshape2','kernlab','foreach','geiger','dplyr','picante','plyr','pvclust','rmarkdown','permute','markdown','plotrix','openssl','curl','seqinr','stringr','survival','vegan','whisker','zoo','maps','mvtnorm'))
     install.packages(c('dendextend','dendextendRcpp','cluster','naturalsort','gplots','tkrplot'))
+    install.packages("tmod")
 
     source('https://bioconductor.org/biocLite.R')
     biocLite()
     biocLite(c('ggtree','Rhtslib','zlibbioc','edgeR','DEXSeq','goseq','GO.db','reactome.db','Gviz','org.Mm.eg.db','sva','dada2'))
     biocLite(c('DESeq','DESeq2','limma'))
+    biocLite(c('AnnotationDbi','impute','preprocessCore'))
+    biocLite(c('MODA'))
 
-See the README for 3.3.0 if you get the message about updating base packages
-when using `biocLite`.
+See the README for 3.3.0 if you get the messages about instruction problems or
+too-new or too-old BioConductor packages when using `biocLite`.
 
-Also see that README if you get messages about instruction problems or too-new
-or too-old BioConductor packages.
+See the following section if you get the message about updating base backages
+such as Matrix, mgcv, nlme, and survival.  In short, choose 'n' to update none
+of them.
 
 Quit R, save the environment.
+
+
+Do not update base R packages
+-----------------------------
+
+After installations of BioConductor or other packages, R might suggest you
+update some base packages.  Always choose 'n' to update NONE of the base
+packages.  Unless there is a serious bug, we will only update base packages
+along with updating R.
+
 
 External packages
 -----------------
 
 Install a non-CRAN package ASCAT.
+  
+    mkdir -p /sw/apps/R_packages/$VERSION/external_packages
+    cd /sw/apps/R_packages/$VERSION/external_packages
 
-    cd 3.3.1/external_packages
-    wget https://github.com/Crick-CancerGenomics/ascat/releases/download/v2.4.3/ASCAT_2.4.3.tar.gz
-    R CMD INSTALL ASCAT_2.4.3.tar.gz
+Download the latest release here (https://github.com/Crick-CancerGenomics/ascat/releases).
+
+    wget https://github.com/Crick-CancerGenomics/ascat/releases/download/v2.4.4/ASCAT_2.4.4.tar.gz
+    R CMD INSTALL ASCAT_2.4.4.tar.gz
 
 
 After adding new packages
@@ -101,14 +120,14 @@ module contents when installing packages for themselves.
 
     chmod -R -w .
 
-Repeat for tintin, skipping the installed packages table bit.
+Repeat for rackham.  Don't forget to write-protect!
 
 
-### 2017-06-09
+Note about the mf file
+----------------------
 
-In response to #150605, install
-[tmod](https://cran.r-project.org/web/packages/tmod/index.html) and
-dependencies.
-
-    install.packages("tmod")
+Though this build procedure sets `R_LIBS_USER` to ease installing R packages,
+the mf file for the module sets `R_LIBS_SITE`, not `R_LIBS_USER`.  This is so
+users can freely use `R_LIBS_USER` to refer to their own or project-specific R
+package trees without fearing conflicting with this module.
 

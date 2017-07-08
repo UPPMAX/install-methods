@@ -1,5 +1,3 @@
-# bzip2-1.0.6-install-README.md
-
 bzip2/1.0.6
 ===========
 
@@ -13,10 +11,14 @@ Would this be an upgrade?
 
     bzip2 --version
 
-Yes, Uppmax has 1.0.5.
+Yes, Milou has 1.0.5.  Not on rackham, which already has 1.0.6.  Note the
+missing links below, that might still be a problem for some config process.
+
+We go ahead building for Rackham etc. even though it isn't an upgrade, for
+consistency.
 
     VERSION=1.0.6
-    CLUSTER=milou
+    CLUSTER=${CLUSTER?:CLUSTER must be set}
     cd /sw/libs
     mkdir -p bzip2
     cd bzip2/
@@ -26,8 +28,7 @@ Yes, Uppmax has 1.0.5.
     cd $CLUSTER/
     export D=$PWD
     cd ../src/
-    wget http://www.bzip.org/${VERSION}/bzip2-${VERSION}.tar.gz
-
+    [[ -f bzip2-${VERSION}.tar.gz ]] || wget http://www.bzip.org/${VERSION}/bzip2-${VERSION}.tar.gz
     tar xzf bzip2-${VERSION}.tar.gz 
     mv bzip2-${VERSION} bzip2-${VERSION}-${CLUSTER}
     cd bzip2-${VERSION}-${CLUSTER}
