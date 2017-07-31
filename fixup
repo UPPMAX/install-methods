@@ -18,8 +18,5 @@ args=("$@")
 for arg in ${args[@]} ; do
     chgrp -hR $GROUP "$arg"
     chmod -R u+rwX,g+rwX,o+rX-w "$arg"
-    [[ $SETGID_DIRS ]] && find "$arg" -type d -exec chmod g+s {} \;
+    [[ $SETGID_DIRS ]] && find "$arg" -type d -print0 | xargs -0 chmod g+s
 done
-
-
-
