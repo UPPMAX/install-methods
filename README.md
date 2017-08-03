@@ -20,7 +20,7 @@ this script will `chmod g+s` directories in the tree, too.
 
 
 Installation directories
---------------------
+------------------------
 
 The directories contain software installations in major subject areas.
 
@@ -39,4 +39,23 @@ Libraries.
 ### comp/
 
 Compilers, interpreters, build tools.
+
+
+Database directories
+--------------------
+
+These directories cover installations of databases updated either manually, or via update scripts.
+
+### data_uppnex/
+
+Installation instructions for databases under `/sw/data/uppnex/`.  Database
+directories containing `*-install-README.md` files are updated manually.
+Database directories containing `*-db-README.md` files and scripts (currently,
+`Kraken` and `diamond_databases`) are updated monthly via crontab entries.
+
+### data_other/
+
+Installation instructions for databases under other locations, currently just
+`BUSCO` lineage sets, which are kept in the module installation directory.
+These are updated monthly via crontab entries.
 

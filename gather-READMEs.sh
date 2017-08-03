@@ -6,6 +6,7 @@ set -e
 # export INSTALL_METHODS_REPOSITORY to indicate your own clone's location
 REPOSITORY=${INSTALL_METHODS_REPOSITORY:-/home/douglas/github-sync/local/install-methods}
 
+
 # modules
 
 cd /sw
@@ -14,28 +15,61 @@ find apps -name '*install-README.md' | cpio -pdm $REPOSITORY
 find libs -name '*install-README.md' | cpio -pdm $REPOSITORY
 find comp -name '*install-README.md' | cpio -pdm $REPOSITORY
 
-# databases
 
-DATA_REPOSITORY="$REPOSITORY/data_uppnex"
+# databases from /sw/data/uppnex
 
-mkdir -p $DATA_REPOSITORY
+DATA_UPPNEX_REPOSITORY="$REPOSITORY/data_uppnex"
+
+mkdir -p $DATA_UPPNEX_REPOSITORY
 
 cd /sw/data/uppnex
 
-find ExAC -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-# find Kraken -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-find Pfam -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-# find SGDP -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-# find annotations -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-# find blast_databases -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-find cdd -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-# find chembl -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-find dbCAN -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-# find diamond_databases -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-# find igenomes -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-# find piper_references -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-# find pph2-db -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-# find reference -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-# find silva -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-# find vep -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+find ExAC -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+find Pfam -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+find cdd -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+find dbCAN -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+# find SGDP -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+# find annotations -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+# find blast_databases -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+# find chembl -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+# find igenomes -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+# find piper_references -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+# find pph2-db -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+# find reference -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+# find silva -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+# find vep -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+
+
+# Kraken and diamond are in /sw/data/uppnex and update via crontab with an
+# update script.  Fetch a copy of their READMEs and the scripts.
+
+cd $DATA_UPPNEX_REPOSITORY
+mkdir -p Kraken
+cd Kraken
+cp --update --preserve=timestamps -v /sw/data/uppnex/Kraken/Kraken-update-db.sh .
+cp --update --preserve=timestamps -v /sw/data/uppnex/Kraken/Kraken-db-README.md .
+cd ..
+
+cd $DATA_UPPNEX_REPOSITORY
+mkdir -p diamond_databases
+cd diamond_databases
+cp --update --preserve=timestamps -v /sw/data/uppnex/diamond_databases/diamond-update-dbs.sh .
+cp --update --preserve=timestamps -v /sw/data/uppnex/diamond_databases/diamond-db-README.md .
+cd ..
+
+
+# Databases in other locations
+
+DATA_OTHER_REPOSITORY="$REPOSITORY/data_other"
+
+# The BUSCO lineage sets are under the BUSCO module tree and update via crontab
+# with an update script.  Fetch a copy of their READMEs and the scripts.
+
+cd $DATA_OTHER_REPOSITORY
+mkdir -p BUSCO
+cd BUSCO
+cp --update --preserve=timestamps -v /sw/apps/bioinfo/BUSCO/v1_lineage_sets/BUSCO-update-v1-lineage-sets.sh .
+cp --update --preserve=timestamps -v /sw/apps/bioinfo/BUSCO/v2_lineage_sets/BUSCO-update-v2-lineage-sets.sh .
+cp --update --preserve=timestamps -v /sw/apps/bioinfo/BUSCO/BUSCO-db-README.md .
+cd ..
 
