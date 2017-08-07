@@ -210,4 +210,4 @@ sure all shared libraries can be found, including the boost ones.
     module unload boost autoconf automake m4 git build-tools gcc
     ldd *
 
-
+The mf file needs nothing more than the path for the executables.
