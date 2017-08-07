@@ -81,13 +81,13 @@ There appears to be no default installation or source samtools configuration
 available with a source bundle from samtools that matches the directory
 structure that cufflinks expects for its BAM libraries.  Perhaps this is
 available with a system-installable package via a package manager for some
-Linux releases.  The link cufflinkns provides for help when there are problems
-looking for the BAM libraries during configuration (http://randspringer.de/bam)
-no longer works.
+Linux releases.  The link cufflinks provides for help when there are problems
+looking for the BAM libraries when running `./configure`
+(http://randspringer.de/bam) no longer works.
 
-Here's a procedure that should work.  This is specific to buildling against the
-newer htslib-containing samtools 1.x versions.  With some modifications, it
-might work with the earlier 0.x versions.
+Here's a procedure that worked for samtools 1.2.  This is specific to buildling
+against the newer htslib-containing samtools 1.x versions.  With some
+modifications, it might work with older samtools versions as well.
 
 Set up the directories and build samtools following its procedure.  For this
 module, I did:
@@ -101,7 +101,10 @@ module, I did:
     make
     cd ..
 
-Now set up the samtools directory for building.  Installation via `make prefix=... install` does **not** do it.
+Now set up the samtools directory for building.  Installation via `make
+prefix=... install` does **not** do it.  Also, note the symlink for
+`version.hpp`, required for version detection to work during cufflinks'
+configuration.
 
     mkdir install-dir
     cd install-dir
@@ -138,7 +141,10 @@ To double-check, while still standing in `install-dir/` you should get something
     ./lib:
     libbam.a  libhts.a
 
-If this looks OK, then still standing in `install-dir/` set a shell variable to this location to use later.
+No doubt some of those `.h` files are superfluous at this stage, but just
+copying all from the source tree keeps the procedure simple.  If all looks OK,
+then still standing in `install-dir/` set a shell variable to this location to
+use later.
 
     BAM_ROOT=$PWD
 
@@ -149,16 +155,17 @@ There are some configuration changes that need to be made so that cufflinks can 
     cd $SRCDIR
     cd cufflinks
 
-* So that Eigen can be found correctly, change `configure.ac` following [this pull request](https://github.com/cole-trapnell-lab/cufflinks/pull/76/commits/cdcf9c85468c8ea057f618132675c05dd00f03be).  The pull request contains three changes.  The second change is just the deletion of a commented-out line and not required.  The first and third changes from the pull request are:
+* To find Eigen correctly, change `configure.ac` following [this pull request](https://github.com/cole-trapnell-lab/cufflinks/pull/76/commits/cdcf9c85468c8ea057f618132675c05dd00f03be).  The pull request contains three changes.  The second change is just the deletion of a commented-out line and not required.  The first and third changes from the pull request are:
     * Following line 6 where `m4_include([ax_check_zlib.m4])` is found, create a new line 7 containing `+m4_include([ax_check_eigen.m4])`
-    * Around line 111 to 113, depending on the other changes you've made to `configure.ac`, is a line that begins with `CXXFLAGS=` that includes a reference to a variable `${EIGEN3_CPPFLAGS}`.  Change this to refer to `${EIGEN_CPPFLAGS}`.  The complete line should read `CXXFLAGS="${CXXFLAGS} ${BOOST_CPPFLAGS} ${BAM_CPPFLAGS} ${EIGEN_CPPFLAGS}"`.
+    * Around line 111 to 113, depending on the other changes you've made to `configure.ac`, is a line that begins with `CXXFLAGS=` that includes a reference to a variable `${EIGEN3_CPPFLAGS}`.  Change this to refer to `${EIGEN_CPPFLAGS}`.  After the change, the complete line should read `CXXFLAGS="${CXXFLAGS} ${BOOST_CPPFLAGS} ${BAM_CPPFLAGS} ${EIGEN_CPPFLAGS}"`.
 
 * So that newer samtools can be used, modify the script `ax_bam.m4`, which is used to find the files for the BAM library, so that it includes both `libbam.a` and `libhts.a` when linking:
-    * Within line 192, which sets `BAM_LIB`, add ` -lhts`.  The complete line should read `BAM_LIB="-lbam -lhts"`.
+    * Within line 192, which sets `BAM_LIB`, add ` -lhts`.  After the change, the complete line should read `BAM_LIB="-lbam -lhts"`.
 
-These configuration changes are persistent, so you can reconfigure and Eigen
-and BAM libraries can still be found.  The changes will be required after
-unpacking a fresh tarball.
+These configuration changes are persistent, so even if you you can regenerate
+the `./configure` script (see below), Eigen and BAM libraries can still be
+found.  The changes must be reapplied when working with a fresh clone of the
+repository.
 
 ### Generate the ./configure script
 
@@ -192,7 +199,7 @@ something like
     libcufflinks.a(hits.o): In function `samread':
     /sw/apps/bioinfo/cufflinks/2.2.1-b55bb21/src_milou/samtools-1.2/install-dir/include/bam/sam.h:95: undefined reference to `sam_read1'
 
-... and install:
+If the build went well, install:
 
     make install
 
