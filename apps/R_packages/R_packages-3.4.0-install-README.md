@@ -1,5 +1,3 @@
-# R_packages-3.4/0-install-README.md
-
 R_packages/3.4.0
 ================
 
@@ -31,11 +29,12 @@ specific R module version.  Make sure you are using R/3.4.0:
 
     which R
 
-Set the cluster directory contents to be writable for the owner only, if installing new packages.
+Set the cluster directory contents to be writable for the owner only, if
+installing new packages.  This will be undone later.
 
-    chmod -R ug+rwX .
+    chmod -R u+rwX .
 
- and run R:
+and run R:
 
     R
 
@@ -43,7 +42,8 @@ Set the cluster directory contents to be writable for the owner only, if install
 Within R
 --------
 
-Now, within R, install this packages from CRAN, ensuring that it was installed within this R_packages tree:
+Now, within R, install this packages from CRAN, ensuring that it was installed
+within this R_packages tree:
 
     install.packages('getopt')
 
@@ -51,12 +51,14 @@ In another shell outside R (substituting `VERSION` and `CLUSTER`):
 
     ls -l /sw/apps/R_packages/$VERSION/$CLUSTER
 
-After checking that was installed within the appropriate R_packages tree, continue with these, including some from BioConductor.
+After checking that was installed within the appropriate R_packages tree,
+continue with these, including some from BioConductor.
 
 
     install.packages(c('ggplot2','tidyr','hexbin','lmerTest','microbenchmark','xtable','testthat','DBI','VennDiagram','ade4','adegenet','vegan','ape','assertthat','akima','bitops','boot','caTools','chron','combinat','data.table','reshape2','kernlab','foreach','geiger','dplyr','picante','plyr','pvclust','rmarkdown','permute','markdown','plotrix','openssl','curl','seqinr','stringr','survival','vegan','whisker','zoo','maps','mvtnorm'))
     install.packages(c('dendextend','dendextendRcpp','cluster','naturalsort','gplots','tkrplot'))
     install.packages("tmod")
+    install.packages(c('Lahman','RJSONIO','ecodist','gee','hflights','igraph','optparse','proto','reshape'))
 
     source('https://bioconductor.org/biocLite.R')
     biocLite()
@@ -64,13 +66,19 @@ After checking that was installed within the appropriate R_packages tree, contin
     biocLite(c('DESeq','DESeq2','limma'))
     biocLite(c('AnnotationDbi','impute','preprocessCore'))
     biocLite(c('MODA'))
+    biocLite(c('ROC','TCC','baySeq','multtest','phyloseq'))
 
 See the README for 3.3.0 if you get the messages about instruction problems or
 too-new or too-old BioConductor packages when using `biocLite`.
 
-See the following section if you get the message about updating base backages
-such as Matrix, mgcv, nlme, and survival.  In short, choose 'n' to update none
-of them.
+Do not update base R packages.  See the following section if you get the
+message about updating base backages such as Matrix, mgcv, nlme, and survival.
+In short, choose 'n' to update none of them.
+
+In general, also do not update installed packages within this module.  New
+versions of R are released often enough that we will have new R and R_packages
+modules containing fixes.  If there are serious bugs uncovered, of course we
+should update.
 
 Quit R, save the environment.
 
@@ -96,6 +104,12 @@ Download the latest release here (https://github.com/Crick-CancerGenomics/ascat/
 
     wget https://github.com/Crick-CancerGenomics/ascat/releases/download/v2.4.4/ASCAT_2.4.4.tar.gz
     R CMD INSTALL ASCAT_2.4.4.tar.gz
+
+Also, install an outdated package `igraph0`, which has been superseded by
+`igraph` (installed above) but needed by some older procedures.
+
+    wget https://cran.r-project.org/src/contrib/Archive/igraph0/igraph0_0.5.7.tar.gz
+    R CMD INSTALL igraph0_0.5.7.tar.gz
 
 
 After adding new packages
