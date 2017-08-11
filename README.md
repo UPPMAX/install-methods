@@ -18,6 +18,9 @@ installation of tools
 installation trees; our local installation group is `sw`. With the `-g` option,
 this script will `chmod g+s` directories in the tree, too.
 
+`uppmax-functions.sh` - bash helper functions for SLURM job viewing and various
+module-related tasks, mostly to do with setting up mf files for loading
+modules; the latter require appexpert privileges.  Source these from `.bashrc`.
 
 Installation directories
 ------------------------
