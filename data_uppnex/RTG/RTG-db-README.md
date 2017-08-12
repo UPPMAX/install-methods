@@ -3,7 +3,7 @@ RealTime Genomics Preformatted References
 
 Updating copies of RealTime Genomics' preformatted references from
 
-    <https://www.realtimegenomics.com/news/pre-formatted-reference-datasets>
+<https://www.realtimegenomics.com/news/pre-formatted-reference-datasets>
 
 The script is based on the one fetching BUSCO lineage sets. 
 The download scripts fetch the references again and check to see if they are
