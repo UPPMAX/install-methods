@@ -1,16 +1,32 @@
 # Various helper functions for UPPMAX
 
-# Helpers for managing SLURM caches, no special privileges required
+# Helpers for gathering info about SLURM jobs, no special privileges required
 
 function jiu() { jobinfo -u ${1:-$USER} ; }
 function scs() { scontrol show jobid=${1:-1} ; }
 function scsv() { scontrol show --details --details jobid=${1:-1} ; }
 function scu() { scontrol update jobid=${1:-1} ${2} ; }
+function sj() { squeue -a -o"%.7i  %.8a %.9P %.8f  %50j  %.8u %.8T  %.10M  %.10l  %.10L  %.3D %.3C %.12R" -S j,-T,    i -u ${1:-$USER} ; }
 
 # Remove a personal module cache, can be annoying when built on rackham but sitting on milou.
 # No special privileges required
-
 function purge-cache() { rm -rf $HOME/.lmod.d ; }
+
+# Get real locations and disk usage of project backup and nobackup volumes
+function projvol() {
+    p=${1:?Must provide project name}
+    B=/proj/$p;          [[ -L $B ]] || { echo "correct $B not found"; return; }
+    N=/proj/$p/nobackup; [[ -L $N ]] || { echo "correct $N not found"; return; }
+    B=$(readlink -f $B)
+    N=$(readlink -f $N)
+    VB=$(dirname $B)
+    VN=$(dirname $N)
+    [[ $B && $N && $VB && $VN ]] || { echo "Could not resolve symlinks"; return; }
+    echo -e "\n$p backup    ---- $B"
+    df -kh $VB
+    echo -e "\n$p nobackup  ---- $N"
+    df -kh $VN
+}
 
 #
 # Appexpert functions for managing mf files.  Use no arguments to get brief help.
