@@ -54,7 +54,7 @@ These directories cover installations of databases updated either manually, or v
 Installation instructions for databases under `/sw/data/uppnex/`.  Database
 directories containing `*-install-README.md` files are updated manually.
 Database directories containing `*-db-README.md` files and scripts (currently,
-`Kraken` and `diamond_databases`) are updated monthly via crontab entries.
+`Kraken`, `diamond_databases` and `RTG`) are updated monthly via crontab entries.
 
 ### data_other/
 

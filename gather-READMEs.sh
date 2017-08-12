@@ -40,22 +40,24 @@ find dbCAN -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
 # find vep -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
 
 
-# Kraken and diamond are in /sw/data/uppnex and update via crontab with an
-# update script.  Fetch a copy of their READMEs and the scripts.
+function data_update() {
+    REMOTEDIR=${1}; LOCALDIR=${1##*/}; shift
+    mkdir -p ${LOCALDIR}; cd ${LOCALDIR}
+    files=("$@")
+    for F in ${files[@]} ; do
+        REMOTEFILE=${REMOTEDIR}/${F}; LOCALFILE=.
+        cp --update --preserve=timestamps -v ${REMOTEFILE} ${LOCALFILE}
+    done
+    cd ..
+}
+
+# These databases are in /sw/data/uppnex and update via crontab with an update
+# script.  Update the repository copy of their READMEs and the scripts.
 
 cd $DATA_UPPNEX_REPOSITORY
-mkdir -p Kraken
-cd Kraken
-cp --update --preserve=timestamps -v /sw/data/uppnex/Kraken/Kraken-update-db.sh .
-cp --update --preserve=timestamps -v /sw/data/uppnex/Kraken/Kraken-db-README.md .
-cd ..
-
-cd $DATA_UPPNEX_REPOSITORY
-mkdir -p diamond_databases
-cd diamond_databases
-cp --update --preserve=timestamps -v /sw/data/uppnex/diamond_databases/diamond-update-dbs.sh .
-cp --update --preserve=timestamps -v /sw/data/uppnex/diamond_databases/diamond-db-README.md .
-cd ..
+data_update  /sw/data/uppnex/Kraken             Kraken-db-README.md   Kraken-update-db.sh    
+data_update  /sw/data/uppnex/diamond_databases  diamond-db-README.md  diamond-update-dbs.sh
+data_update  /sw/data/uppnex/RTG                RTG-db-README.md      RTG-update-dbs.sh      
 
 
 # Databases in other locations
@@ -66,10 +68,5 @@ DATA_OTHER_REPOSITORY="$REPOSITORY/data_other"
 # with an update script.  Fetch a copy of their READMEs and the scripts.
 
 cd $DATA_OTHER_REPOSITORY
-mkdir -p BUSCO
-cd BUSCO
-cp --update --preserve=timestamps -v /sw/apps/bioinfo/BUSCO/v1_lineage_sets/BUSCO-update-v1-lineage-sets.sh .
-cp --update --preserve=timestamps -v /sw/apps/bioinfo/BUSCO/v2_lineage_sets/BUSCO-update-v2-lineage-sets.sh .
-cp --update --preserve=timestamps -v /sw/apps/bioinfo/BUSCO/BUSCO-db-README.md .
-cd ..
+data_update  /sw/apps/bioinfo/BUSCO  BUSCO-db-README.md v1_lineage_sets/BUSCO-update-v1-lineage-sets.sh v2_lineage_sets/BUSCO-update-v2-lineage-sets.sh 
 
