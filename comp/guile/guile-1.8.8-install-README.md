@@ -1,5 +1,3 @@
-# guile-1.8.8-install-README.md
-
 guile/1.8.8
 ===========
 
@@ -8,21 +6,31 @@ guile/1.8.8
 Log
 ---
 
+    VERSION=1.8.8
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
     cd /sw/comp
     mkdir guile
     cd guile/
-    mkdir 1.8.8
-    cd 1.8.8/
-    mkdir milou src
-    cd milou
+    mkdir ${VERSION}
+    cd ${VERSION}/
+    mkdir $CLUSTER src
+    cd $CLUSTER
     P=$PWD
     cd ../src
-    wget ftp://ftp.gnu.org/gnu/guile/guile-1.8.8.tar.gz
-    tar xzf guile-1.8.8.tar.gz 
-    cd guile-1.8.8/
+    [[ -f guile-${VERSION}.tar.gz ]] || wget ftp://ftp.gnu.org/gnu/guile/guile-${VERSION}.tar.gz
+    tar xzf guile-${VERSION}.tar.gz 
+    mv guile-${VERSION} guile-${VERSION}-$CLUSTER/
+    cd guile-${VERSION}-$CLUSTER/
     module load gcc/5.3.0
+    module load build-tools
+    module load libtool/2.4.6
 
-Now, disable -Werror inclusion by setting, within `configure`,
+This latter is needed to provide `libltdl`, without it `./configure` will error out with
+
+    checking for lt_dlinit in -lltdl... no
+    configure: error: libltdl not found.  See README.
+
+Also disable `-Werror` inclusion in the compilation by setting, within `./configure`, at line 12612:
 
     GUILE_ERROR_ON_WARNING="no"
 
@@ -33,9 +41,8 @@ If you fail to do this, it will fail with something like:
 Continue with configure, and build/install.
 
     ./configure --prefix=$P
-    make
+    make -j 8
     make install
 
-Now use mf template from zlib, but add info and aclocal directories.
+Now make sure mf also sets info and aclocal directories.
 
-Repeat for tintin.

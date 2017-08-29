@@ -116,6 +116,15 @@ As I encounter additional Perl modules, I install them in this package.  Is ther
 Apparently not.  I just installed `Array::Unique`, and I'm sure there are others.
 
 
+Modules 'by hand'
+-----------------
+
+FAlite.pm is a widely used lightweight Fasta reader.
+
+    cd $MODULE_DEPS/lib/perl5
+    wget http://korflab.ucdavis.edu/Unix_and_Perl/FAlite.pm
+
+
 Generate list of installed modules
 ----------------------------------
 

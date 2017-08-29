@@ -12,19 +12,22 @@ current limitation.  The 5.18.4 version was restricted to milou, but no longer.
 Initial setup
 -------------
 
+**See below for adding new modules**
+
 Get environment set up, and once cpanm is downloaded, get it out of the bin
 directory and use it above.  Create setup script to unset variables and use
 minimal path.
 
-    unset PERL5LIB
-    module load perl/5.24.1
-
-    TOOL=perl_modules
     VERSION=5.24.1
-    LOCALVERSION=${VERSION}
     CLUSTER=${CLUSTER:?CLUSTER must be set}
-
+    unset PERL5LIB
+    module load perl/${VERSION}
+    TOOL=perl_modules
+    LOCALVERSION=${VERSION}
     export MODULE_DEPS=/sw/comp/${TOOL}/${LOCALVERSION}/${CLUSTER}
+    unset PERL5LIB
+    module load perl/${VERSION}
+
     wget -O- http://cpanmin.us | perl - -l $MODULE_DEPS App::cpanminus local::lib
 
     cd $MODULE_DEPS
@@ -58,6 +61,26 @@ minimal path.
     echo 'echo' >> $setup_script
 
     source $setup_script
+
+
+Adding new modules
+------------------
+
+If you are adding new modules, rather than setting up a new version, follow
+these steps.  Then use `cpanm` as below.
+
+    VERSION=5.24.1
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
+    unset PERL5LIB
+    module load perl/${VERSION}
+    TOOL=perl_modules
+    LOCALVERSION=${VERSION}
+    export MODULE_DEPS=/sw/comp/${TOOL}/${LOCALVERSION}/${CLUSTER}
+    cd $MODULE_DEPS
+    setup_script=source-${CLUSTER}-perl_module-deps-setup
+
+    source $setup_script
+
 
 First modules
 -------------
@@ -187,6 +210,9 @@ installations.
 
     cpanm Path::IsDev Parse::Yapp Path::FindDev Perl::Unsafe::Signals PerlIO::gzip Pod::Find
 
+These are needed by `circos/0.66`, there may be others needed by a later `circos`.
+
+    cpanm Math::Bezier Math::VecStat Text::Format
 
 Interactive installations
 -------------------------
@@ -227,6 +253,15 @@ Any additional modules?
 -----------------------
 
 If any additional modules are installed here, add them to this section.
+
+
+Modules 'by hand'
+-----------------
+
+FAlite.pm is a widely used lightweight Fasta reader.
+
+    cd $MODULE_DEPS/lib/perl5
+    wget http://korflab.ucdavis.edu/Unix_and_Perl/FAlite.pm
 
 
 For a first installation

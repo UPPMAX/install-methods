@@ -59,6 +59,7 @@ continue with these, including some from BioConductor.
     install.packages(c('dendextend','dendextendRcpp','cluster','naturalsort','gplots','tkrplot'))
     install.packages("tmod")
     install.packages(c('Lahman','RJSONIO','ecodist','gee','hflights','igraph','optparse','proto','reshape'))
+    install.packages("mixOmics")
 
     source('https://bioconductor.org/biocLite.R')
     biocLite()

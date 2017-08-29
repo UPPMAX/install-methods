@@ -19,7 +19,7 @@ LOG
     mkdir $CLUSTER
     mkdir -p src
     cd src
-    wget wget http://ftp.acc.umu.se/mirror/gnu.org/gnu/coreutils/coreutils-${VERSION}.tar.xz
+    [[ -f coreutils-${VERSION}.tar.xz ]] || wget http://ftp.acc.umu.se/mirror/gnu.org/gnu/coreutils/coreutils-${VERSION}.tar.xz
     tar xJfv coreutils-${VERSION}.tar.xz
     mv coreutils-${VERSION} coreutils-${VERSION}-$CLUSTER
     cd coreutils-${VERSION}-$CLUSTER

@@ -19,6 +19,7 @@ Log
     tar xzf 0.1.tar.gz 
     cd pblat-cluster-0.1/
     module load gcc/4.9.2
+    module load openmpi/1.8.4
     make
     cp pblat-cluster ../../milou/
     cd ../..

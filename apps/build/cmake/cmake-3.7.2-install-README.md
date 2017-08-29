@@ -1,27 +1,26 @@
-# cmake-3.7.2-install-README.md
+cmake/3.7.2
+===========
 
 <https://cmake.org/>
 
 LOG
 ---
-Fetch (once)
-    TOOL=/sw/apps/build/cmake
-    VERS=3.7.2
-    mkdir -p $VERS/src
-    cd $VERS/src
-    wget https://cmake.org/files/v${VERS%.*}/cmake-$VERS.tar.gz
 
-Prep (for each cluster)
+    VERSION=3.7.2
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
+    TOOL=/sw/apps/build/cmake
+    cd $TOOL
+    mkdir -p $VERSION
+    cd $VERSION
+    mkdir -p $CLUSTER src_$CLUSTER
+    cd $CLUSTER
+    PFX=$PWD
+    cd ../src_$CLUSTER
+    [[ -f cmake-$VERSION.tar.gz ]] || wget https://cmake.org/files/v${VERSION%.*}/cmake-$VERSION.tar.gz
+    tar xzf cmake-$VERSION.tar.gz 
+    cd cmake-$VERSION
     module load gcc/6.3.0
-    cd /sw/apps/build/cmake/$VERS
-    mkdir $CLUSTER
-    cd src
-    tar xzf cmake-$VERS.tar.gz 
-    cd cmake-$VERS
-Make (for each cluster)
-    ./bootstrap --prefix=/sw/apps/build/cmake/$VERS/$CLUSTER
+    ./bootstrap --prefix=$PFX
     make
     make install
 
-Could keep each install folder (suffixed with $CLUSTER), 
-reuse (after "make clean") or delete (easy but may loose information).
