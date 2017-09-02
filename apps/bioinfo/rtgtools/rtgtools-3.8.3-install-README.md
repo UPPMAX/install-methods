@@ -1,4 +1,4 @@
-rtgtools/3.8.1
+rtgtools/3.8.3
 ==============
 
 <https://github.com/RealTimeGenomics/rtg-tools>
@@ -8,17 +8,16 @@ LOG
 
 A precompiled bundle is downloaded, so we use that for all systems.
 
-    VERSION=3.8.1
+    VERSION=3.8.3
     cd /sw/apps/bioinfo/rtgtools/
-    VERSION=3.8.1
     mkdir $VERSION
     cd $VERSION
     mkdir src
     cd src
     wget https://github.com/RealTimeGenomics/rtg-tools/releases/download/${VERSION}/rtg-tools-${VERSION}-linux-x64.zip
     unzip rtg-tools-${VERSION}-linux-x64.zip 
-    fixup -g rtg-tools-3.8.1
-    mv rtg-tools-3.8.1 ../milou
+    fixup -g rtg-tools-${VERSION}
+    mv rtg-tools-${VERSION} ../milou
     cd ..
     ln -s milou rackham
     ln -s milou irma
@@ -36,7 +35,7 @@ pingback feature as well.
     cp -av rtg.cfg rtg.cfg-orig
     vi rtg.cfg
 
-Around line 49 of `rtg.cfg`, set `RTG_TALKBACK=false`:
+Around line 28 of `rtg.cfg`, set `RTG_TALKBACK=false`:
 
     RTG_TALKBACK=false
 
@@ -47,3 +46,4 @@ and remove write permission from the copies:
 We also download preformatted references for human and metagenomics from
 <https://www.realtimegenomics.com/news/pre-formatted-reference-datasets>, put
 on a monthly crontab entry.
+

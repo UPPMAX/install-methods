@@ -1,27 +1,13 @@
-# AAT-r03052011-install-README.md, douglas.scofield@ebc.uu.se
+AAT/r03052011
+=============
 
-TITLE
-=====
+AAT Analysis and Annotation Tool packag
 
-    AAT r03052011
+Huang X, Adams MD, Zhou H, Kerlavage, AR.  1997.  A for analyzing and annotating
+genomic sequences.  Genomics 46:37-45. http://aatpackage.sourceforge.net/AAT.pdf
 
-DESCRIPTION
------------
+<http://aatpackage.sourceforge.net/>
 
-    AAT Analysis and Annotation Tool packag
-
-    Huang X, Adams MD, Zhou H, Kerlavage, AR.  1997.  A for analyzing and annotating
-    genomic sequences.  Genomics 46:37-45. http://aatpackage.sourceforge.net/AAT.pdf
-
-WEBSITE
--------
-
-    http://aatpackage.sourceforge.net/
-
-MODULE REQUIREMENTS
--------------------
-
-    Simply add /sw/apps/bioinfo/AAT/r03052011/milou/bin to the user's PATH
 
 LOG
 ---
@@ -52,3 +38,4 @@ by the AAT.pl script
     cd ../mf
     # etc...
 
+For the mf file, add /sw/apps/bioinfo/AAT/r03052011/milou/bin to the user's PATH.

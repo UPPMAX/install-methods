@@ -24,6 +24,6 @@ LOG
     cp -av * ../../$CLUSTER/
     cd ../../$CLUSTER/bin/
 
-Find python with the path.
+Find python with the path using `#!/usr/bin/env python`.
 
     vi *.py
