@@ -19,7 +19,7 @@ Default kmer size.
     cd $CLUSTER
     PFX=$PWD
     cd ../src_$CLUSTER
-    wget http://www.bcgsc.ca/platform/bioinfo/software/abyss/releases/${VERSION}/abyss-${VERSION}.tar.gz
+    [[ -f abyss-${VERSION}.tar.gz ]] || wget http://www.bcgsc.ca/platform/bioinfo/software/abyss/releases/${VERSION}/abyss-${VERSION}.tar.gz
     tar xzf abyss-${VERSION}.tar.gz 
     cd abyss-${VERSION}/
     module load gcc/6.3.0
@@ -27,32 +27,32 @@ Default kmer size.
     module load boost/1.63.0_gcc6.3.0
     module load sparsehash/2.0.3
     module load sqlite/3.16.2
-    ./configure --prefix=$PFX
+    ./configure --with-mpi=$MPI_ROOT --prefix=$PFX
     make -j 8
     make install
 
 Max kmer 128 bp.
 
     MAXK=128
-    REMOTEVERSION=2.0.2
-    VERSION=${REMOTEVERSION}-k${MAXK}
+    VERSION=2.0.2
+    LOCALVERSION=${VERSION}-k${MAXK}
     CLUSTER=${CLUSTER:?CLUSTER must be set}
     cd /sw/apps/bioinfo/abyss
-    mkdir $VERSION
-    cd $VERSION
+    mkdir $LOCALVERSION
+    cd $LOCALVERSION
     mkdir $CLUSTER src_$CLUSTER
     cd $CLUSTER
     PFX=$PWD
     cd ../src_$CLUSTER
-    wget http://www.bcgsc.ca/platform/bioinfo/software/abyss/releases/${REMOTEVERSION}/abyss-${REMOTEVERSION}.tar.gz
-    tar xzf abyss-${REMOTEVERSION}.tar.gz 
-    cd abyss-${REMOTEVERSION}/
+    [[ -f abyss-${VERSION}.tar.gz ]] || wget http://www.bcgsc.ca/platform/bioinfo/software/abyss/releases/${VERSION}/abyss-${VERSION}.tar.gz
+    tar xzf abyss-${VERSION}.tar.gz 
+    cd abyss-${VERSION}/
     module load gcc/6.3.0
     module load openmpi/2.1.0
     module load boost/1.63.0_gcc6.3.0
     module load sparsehash/2.0.3
     module load sqlite/3.16.2
-    ./configure --enable-maxk=$MAXK --prefix=$PFX
+    ./configure --enable-maxk=$MAXK --with-mpi=$MPI_ROOT --prefix=$PFX
     make -j 8
     make install
 
