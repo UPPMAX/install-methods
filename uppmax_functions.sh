@@ -62,7 +62,7 @@ function mfshow() {
     esac
     M=$1
     if [[ ! -z "$SUBDIR" ]] ; then
-        ls -l /sw/mf/*/$SUBDIR/$M/
+        ls -la /sw/mf/*/$SUBDIR/$M/
     else
         COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$M)
         if [[ ! -d $COMMONDIR ]] ; then
@@ -71,7 +71,7 @@ function mfshow() {
             SUBDIR=${COMMONDIR#/sw/mf/common/bioinfo-tools/}
             SUBDIR=${SUBDIR%/$M}
         fi
-        ls -l /sw/mf/*/bioinfo-tools/$SUBDIR/$M/
+        ls -la /sw/mf/*/bioinfo-tools/$SUBDIR/$M/
     fi
 }
 
@@ -134,9 +134,9 @@ function all_mflink() {
                 ( cd /sw/mf/$C/$SUBDIR/ && mflink $OPT $M $V ) || { echo "*** problem with $C/$SUBDIR/$M/$V"; }
             done
         fi
-        echo -e "\n*** End result: ls -l /sw/mf/*/$SUBDIR/$M/ \n"
+        echo -e "\n*** End result: ls -la /sw/mf/*/$SUBDIR/$M/ \n"
         [[ ! -z "$FORCE" ]] && echo -e "\n*** FORCED\n"
-        ls -l /sw/mf/*/$SUBDIR/$M/
+        ls -la /sw/mf/*/$SUBDIR/$M/
     else
         COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$M)
         if [[ ! -d $COMMONDIR ]] ; then
@@ -155,9 +155,9 @@ function all_mflink() {
                 ( cd /sw/mf/$C/bioinfo-tools/$SUBDIR/ && mflink $M $V ) || { echo "*** problem with $C/bioinfo-tools/$SUBDIR/$M/$V"; }
             done
         fi
-        echo -e "\n*** End result: ls -l /sw/mf/*/bioinfo-tools/$SUBDIR/$M/ \n"
+        echo -e "\n*** End result: ls -la /sw/mf/*/bioinfo-tools/$SUBDIR/$M/ \n"
         [[ ! -z "$FORCE" ]] && echo -e "\n*** FORCED\n"
-        ls -l /sw/mf/*/bioinfo-tools/$SUBDIR/$M/
+        ls -la /sw/mf/*/bioinfo-tools/$SUBDIR/$M/
     fi
 }
 
@@ -186,8 +186,8 @@ function rackham_mfupdate() {
                 ( cd /sw/mf/$C/$SUBDIR/ && pwd && rsync --dry-run -Pa --del /mnt/$PWD/$M . )
             done
         fi
-        echo -e "\n*** End result: ls -l /sw/mf/*/$SUBDIR/$M/ \n"
-        ls -l /sw/mf/*/$SUBDIR/$M/
+        echo -e "\n*** End result: ls -la /sw/mf/*/$SUBDIR/$M/ \n"
+        ls -la /sw/mf/*/$SUBDIR/$M/
         [[ -z "$FORCE" ]] && echo -e "\n*** DRY RUN\n"
     else
         MNTDIR=(/mnt/sw/mf/common/bioinfo-tools/*/$M)
@@ -210,8 +210,8 @@ function rackham_mfupdate() {
                 ( cd $THISDIR/ && cd .. && pwd && rsync --dry-run -Pa --del /mnt/$PWD/$M . )
             done
         fi
-        echo -e "\n*** End result: ls -l /sw/mf/*/bioinfo-tools/*/$M/ \n"
-        ls -l /sw/mf/*/bioinfo-tools/*/$M/
+        echo -e "\n*** End result: ls -la /sw/mf/*/bioinfo-tools/*/$M/ \n"
+        ls -la /sw/mf/*/bioinfo-tools/*/$M/
         [[ -z "$FORCE" ]] && echo -e "\n*** DRY RUN\n"
     fi
 }

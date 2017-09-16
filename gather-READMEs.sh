@@ -56,7 +56,7 @@ function data_update() {
 
 cd $DATA_UPPNEX_REPOSITORY
 data_update  /sw/data/uppnex/Kraken             Kraken-db-README.md   Kraken-update-db.sh    
-data_update  /sw/data/uppnex/diamond_databases  diamond-db-README.md  diamond-update-dbs.sh
+data_update  /sw/data/uppnex/diamond_databases  diamond-db-README.md  diamond-update-dbs.sh  diamond-check-dbs.sh
 data_update  /sw/data/uppnex/RTG                RTG-db-README.md      RTG-update-dbs.sh      
 
 
