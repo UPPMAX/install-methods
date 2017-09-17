@@ -1,8 +1,8 @@
 #!/bin/bash
 
 module load bioinfo-tools
-module load diamond/0.8.26
-module load gnuparallel/20150522
+module load diamond/0.9.10
+module load gnuparallel/20170122
 
 ROOT=/sw/data/uppnex/diamond_databases
 THREADS=10

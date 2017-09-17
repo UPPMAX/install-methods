@@ -1,4 +1,4 @@
-jemalloc/3.6.0
+jemalloc/5.0.1
 ==============
 
 (from the website) jemalloc is a general purpose malloc(3) implementation that
@@ -13,14 +13,18 @@ development efforts trend toward making jemalloc among the best allocators for
 a broad range of demanding applications, and eliminating/mitigating weaknesses
 that have practical repercussions for real world applications.
 
-<http://www.canonware.com/jemalloc/>
+Moved to a new website, etc.
+
+<http://jemalloc.net/>
+
+Change from 3.6.0: build with system gcc.
 
 
 LOG
 ---
 
     TOOL=/sw/apps/jemalloc
-    VERSION=3.6.0
+    VERSION=5.0.1
     TOOLDIR=$TOOL/$VERSION
     CLUSTER=${CLUSTER:?CLUSTER must be set}
     CLUSTERDIR=$TOOLDIR/$CLUSTER
@@ -30,7 +34,7 @@ LOG
     cd $TOOLDIR
     mkdir -p src $CLUSTER 
     cd src
-    [[ -f jemalloc-${VERSION}.tar.bz2 ]] || wget http://www.canonware.com/download/jemalloc/jemalloc-${VERSION}.tar.bz2
+    [[ -f jemalloc-${VERSION}.tar.bz2 ]] || wget https://github.com/jemalloc/jemalloc/releases/download/${VERSION}/jemalloc-${VERSION}.tar.bz2
     tar xjf jemalloc-${VERSION}.tar.bz2
     mv jemalloc-${VERSION}/ jemalloc-${VERSION}-${CLUSTER}/
     cd jemalloc-${VERSION}-${CLUSTER}/
@@ -40,22 +44,11 @@ INSTALL but we are accepting the default configuration.  config.log contains
 many details, including configuration programs that fail.  As far as I can
 tell, this is all OK.
 
-
-    module load build-tools
-    module load gcc/4.8.3
-
     ./configure --prefix=$CLUSTERDIR
     make
     make install
 
-Following what I did for gsl (Gnu Scientific Library), we should probably set
-both LD_LIBRARY_PATH and LD_RUN_PATH to point to $CLUSTERDIR/lib when loading
-this module.  We should also arrange for include directories via CPATH.  So in
-the mf file we need
-
-    prepend-path LD_LIBRARY_PATH $modpath/lib
-    prepend-path LD_RUN_PATH     $modpath/lib
-    prepend-path CPATH           $modpath/include
+See the mf file for what is added here.
 
 Set up for other systems.
 

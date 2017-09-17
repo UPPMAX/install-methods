@@ -1,5 +1,3 @@
-# hdf4-4.2.11_gcc4.9.2-install-README.md
-
 hdf4/4.2.11_gcc4.9.2
 ====================
 
@@ -12,20 +10,26 @@ This also provides 'compiler' wrappers `h4cc` and `h4fc` so I chose to make the 
 Log
 ---
 
+    REMOTEVERSION=4.2.11
+    GCCVERSION=4.9.2
+    VERSION=${REMOTEVERSION}_gcc${GCCVERSION}
+    CLUSTER=${CLUSTER?:CLUSTER must be set}
     cd /sw/libs/
     mkdir hdf4
     cd hdf4/
-    mkdir 4.2.11_gcc4.9.2 mf
-    cd 4.2.11_gcc4.9.2
-    mkdir src 
-    cd src
-    wget http://www.hdfgroup.org/ftp/HDF/HDF_Current/src/hdf-4.2.11.tar
-    tar xf hdf-4.2.11.tar 
-    mv hdf-4.2.11 hdf-4.2.11-milou
-    cd hdf-4.2.11-milou
-    module load gcc/4.9.2
-    module load szip/2.1
-    ./configure --prefix=/sw/libs/hdf4/4.2.11_gcc4.9.2/milou --with-szlib=/sw/libs/szip/2.1_gcc4.9.2/milou
+    mkdir $VERSION mf
+    cd $VERSION
+    mkdir $CLUSTER src
+    cd $CLUSTER
+    PFX=$PWD
+    cd ../src
+    wget http://www.hdfgroup.org/ftp/HDF/HDF_Current/src/hdf-${REMOTEVERSION}.tar
+    tar xf hdf-${REMOTEVERSION}.tar 
+    mv hdf-${REMOTEVERSION} hdf-${REMOTEVERSION}-${CLUSTER}
+    cd hdf-${REMOTEVERSION}-${CLUSTER}
+    module load gcc/$GCCVERSION
+    module load szip/2.1_gcc4.9.2
+    ./configure --prefix=$PFX --with-szlib=/sw/libs/szip/2.1_gcc4.9.2/$CLUSTER
     make >& make.out.milou
     make check >& check.out
     cat check.out 

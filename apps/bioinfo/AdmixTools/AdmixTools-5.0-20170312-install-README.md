@@ -11,10 +11,10 @@ LOG
     VERSION=5.0-20170312
     mkdir $VERSION
     cd $VERSION
-    mkdir $CLUSTER src_$CLUSTER
-    cd src_$CLUSTER
-    git clone https://github.com/DReichLab/AdmixTools
-    cd AdmixTools/
+    mkdir $CLUSTER src
+    cd src
+    [[ -d AdmixTools ]] || git clone https://github.com/DReichLab/AdmixTools
+    cd AdmixTools
 
 Wes's instructions show that we should modify the makefile to point to local
 openblas.  I'll copy over his Makefile.
@@ -35,7 +35,7 @@ Nope.
     make all
     make install
 
-Installs into `..bin/`.  It won't work to change `BIN` in the makefile, we just
+Installs into `../bin/`.  It won't work to change `BIN` in the makefile, we just
 move them later.
 
     cd ../

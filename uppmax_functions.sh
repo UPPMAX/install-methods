@@ -50,7 +50,7 @@ function section() {
 
 # Full listing of all mf files for a given module under /sw/mf
 function mfshow() {
-    [[ $# == 0 ]] && { echo -e "usage: mfshow [--{libs,apps,comp,build,par,bioinfo} ] modulename\n       default is --bioinfo"; return; }
+    [[ $# == 0 ]] && { echo -e "usage: mfshow [--{libs,apps,comp,build,par,bioinfo} ] [ -C ] modulename\n       default is --bioinfo     use -c to show only current clusters {common,bianca,irma,milou,rackham}"; return; }
     SUBDIR=
     case "$1" in
         --libs)	    SUBDIR=libraries; OPT="$1"; shift ;;
@@ -60,9 +60,14 @@ function mfshow() {
         --par)      SUBDIR=parallel; OPT="$1"; shift ;;
         --bioinfo)  SUBDIR=; OPT="$1"; shift ;;
     esac
+    [[ "$1" = "-c" ]] && { CURRENT=yes; shift; } || CURRENT=
     M=$1
     if [[ ! -z "$SUBDIR" ]] ; then
-        ls -la /sw/mf/*/$SUBDIR/$M/
+        if [[ ! -z "$CURRENT" ]] ; then
+            ls -la /sw/mf/{common,bianca,irma,milou,rackham}/$SUBDIR/$M/
+        else
+            ls -la /sw/mf/*/$SUBDIR/$M/
+        fi
     else
         COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$M)
         if [[ ! -d $COMMONDIR ]] ; then
@@ -71,7 +76,11 @@ function mfshow() {
             SUBDIR=${COMMONDIR#/sw/mf/common/bioinfo-tools/}
             SUBDIR=${SUBDIR%/$M}
         fi
-        ls -la /sw/mf/*/bioinfo-tools/$SUBDIR/$M/
+        if [[ ! -z "$CURRENT" ]] ; then
+            ls -la /sw/mf/{common,bianca,irma,milou,rackham}/bioinfo-tools/$SUBDIR/$M/
+        else
+            ls -la /sw/mf/*/bioinfo-tools/$SUBDIR/$M/
+        fi
     fi
 }
 

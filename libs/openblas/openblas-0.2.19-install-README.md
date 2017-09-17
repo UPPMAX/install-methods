@@ -1,4 +1,4 @@
-OpenBLAS 0.2.19
+openblas/0.2.19
 ===============
 
 <https://github.com/xianyi/OpenBLAS>
@@ -6,16 +6,25 @@ OpenBLAS 0.2.19
 LOG
 ---
 
-    cd /sw/libs/openblas
+    TOOL=/sw/libs/openblas
     VERSION=0.2.19
     CLUSTER=${CLUSTER:?CLUSTER must be set}
-    mkdir $VERSION
-    cd $VERSION
+    mkdir -p $TOOL/$VERSION/src
+    cd $TOOL/$VERSION
     mkdir $CLUSTER
-    mkdir src_$CLUSTER
-    cd src_$CLUSTER
-    wget https://github.com/xianyi/OpenBLAS/archive/v${VERSION}.tar.gz
+    cd $CLUSTER
+    PFX=$PWD
+    cd ../src/
+    rm -rf OpenBLAS-$VERSION
+    [[ -f v${VERSION}.tar.gz ]] || wget https://github.com/xianyi/OpenBLAS/archive/v${VERSION}.tar.gz
     tar xzf v${VERSION}.tar.gz
     cd OpenBLAS-$VERSION
-    make -j 10
-    make PREFIX=/sw/libs/openblas/$VERSION/$CLUSTER install
+    module load gcc/6.3.0
+    make clean
+    [[ $CLUSTER = rackham ]] && NUM_CORES=20 || NUM_CORES=16
+    make NUM_CORES=$NUM_CORES
+    make NUM_CORES=$NUM_CORES PREFIX=$PFX install
+    cd ..
+    rm -rf OpenBLAS-$VERSION
+
+

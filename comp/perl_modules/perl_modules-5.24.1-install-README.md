@@ -254,6 +254,14 @@ Any additional modules?
 
 If any additional modules are installed here, add them to this section.
 
+### More stuff requested by BioPerl
+
+    cpanm Algorithm::Munkres Class::AutoClass Convert::Binary::C Data::Stag::Writer DB_File DBD::mysql GD::SVG Graph::Directed GraphViz
+    cpanm HTML::Entities HTML::HeadParser HTML::Parser HTML::TableExtract HTTP::Request::Common IO::String IO::Scalar List::MoreUtils
+    cpanm LWP::UserAgent PostScript::TextBlock Scalar::Util Set::Scalar SOAP::Lite Sort::Naturally Spreadsheet::ParseExcel Storable
+    cpanm SVG SVG::Graph Text::ParseWords XML::DOM XML::DOM::XPath XML::LibXML XML::Parser XML::Parser::PerlSAX XML::SAX XML::SAX::Writer
+    cpanm XML::Simple XML::Twig XML::Writer YAML
+
 
 Modules 'by hand'
 -----------------
@@ -281,4 +289,3 @@ When in `/sw/comp/perl_modules/${VERSION}/${CLUSTER}`:
 There will be a few messages to stderr about the search directories, which should be underneath.
 
 See `/sw/comp/perl_modules/${VERSION}/${CLUSTER}/README.md` for more on updating the module table on the website.
-

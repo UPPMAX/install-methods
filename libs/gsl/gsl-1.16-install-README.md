@@ -1,12 +1,7 @@
-# gsl-1.16-install-README.md, douglas.scofield@ebc.uu.se
+gsl/1.16
+========
 
-TITLE
-=====
-
-    Gnu Scientific Library 1.16
-
-DESCRIPTION
------------
+Gnu Scientific Library 1.16
 
 The GNU Scientific Library (GSL) is a numerical library for C and C++
 programmers. It is free software under the GNU General Public License.
@@ -15,20 +10,9 @@ The library provides a wide range of mathematical routines such as random
 number generators, special functions and least-squares fitting. There are over
 1000 functions in total with an extensive test suite.
 
-    GNU Scientific Library Reference Manual - Third Edition (January 2009),
-    M. Galassi et al, ISBN 0954612078
+GNU Scientific Library Reference Manual - Third Edition (January 2009), M. Galassi et al, ISBN 0954612078.
 
-WEBSITE
--------
-
-    http://www.gnu.org/software/gsl/
-
-MODULE REQUIREMENTS
--------------------
-
-Built with
-
-    gcc/4.8.3
+<http://www.gnu.org/software/gsl/>
 
 
 LOG
@@ -37,7 +21,7 @@ LOG
     TOOL=/sw/libs/gsl
     VERSION=1.16
     TOOLDIR=$TOOL/$VERSION
-    CLUSTER=milou
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
     CLUSTERDIR=$TOOLDIR/$CLUSTER
     mkdir -p $TOOL
     cd $TOOL
@@ -45,9 +29,10 @@ LOG
     cd $TOOLDIR
     mkdir -p src $CLUSTER 
     cd src
-    wget http://ftp.df.lth.se/pub/ftp.gnu.org/pub/gnu/gsl/gsl-${VERSION}.tar.gz
+    [[ -f gsl-${VERSION}.tar.gz ]] || wget http://ftp.df.lth.se/pub/ftp.gnu.org/pub/gnu/gsl/gsl-${VERSION}.tar.gz
     tar xzf gsl-${VERSION}.tar.gz 
-    cd gsl-${VERSION}/
+    mv gsl-${VERSION}/ gsl-${VERSION}-$CLUSTER/
+    cd gsl-${VERSION}-$CLUSTER/
 
 Now load pieces for the build and build it.
 

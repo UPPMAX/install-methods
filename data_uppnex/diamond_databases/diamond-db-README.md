@@ -9,3 +9,8 @@ It builds five databases:
 * UniRef90, built if the `version` within the remote `RELEASE.metalink` file is different
 * RefSeq, built if the remote `RELEASE_NUMBER` file is different
 
+
+Notes
+-----
+
+Switched from building with `diamond/0.8.26` to `diamond/0.9.10` on 2017-09-04.

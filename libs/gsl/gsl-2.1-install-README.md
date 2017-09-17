@@ -37,7 +37,7 @@ LOG
     TOOL=/sw/apps/gsl
     VERSION=2.1
     TOOLDIR=$TOOL/$VERSION
-    CLUSTER=milou
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
     CLUSTERDIR=$TOOLDIR/$CLUSTER
     mkdir -p $TOOL
     cd $TOOL
@@ -86,21 +86,4 @@ Set up for other systems.
     ln -s ./milou halvan
 
 Repeat for tintin.
-
-    TOOL=/sw/libs/gsl
-    VERSION=2.1
-    TOOLDIR=$TOOL/$VERSION
-    CLUSTER=tintin
-    CLUSTERDIR=$TOOLDIR/$CLUSTER
-    cd $TOOLDIR
-    mkdir -p $CLUSTER 
-    cd src
-    cd gsl-${VERSION}/
-    make clean
-    module load build-tools
-    module load gcc/4.9.2
-    ./configure --prefix=$CLUSTERDIR
-    make
-    make install
-
 

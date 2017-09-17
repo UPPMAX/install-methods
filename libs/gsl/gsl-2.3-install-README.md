@@ -1,12 +1,7 @@
-# gsl-2.3-install-README.md, douglas.scofield@ebc.uu.se
+gsl/2.3
+=======
 
-TITLE
-=====
-
-    Gnu Scientific Library 2.3
-
-DESCRIPTION
------------
+Gnu Scientific Library 2.3
 
 The GNU Scientific Library (GSL) is a numerical library for C and C++
 programmers. It is free software under the GNU General Public License.
@@ -15,20 +10,9 @@ The library provides a wide range of mathematical routines such as random
 number generators, special functions and least-squares fitting. There are over
 1000 functions in total with an extensive test suite.
 
-    GNU Scientific Library Reference Manual - Third Edition (January 2009),
-    M. Galassi et al, ISBN 0954612078
+GNU Scientific Library Reference Manual - Third Edition (January 2009), M. Galassi et al, ISBN 0954612078
 
-WEBSITE
--------
-
-    http://www.gnu.org/software/gsl/
-
-MODULE REQUIREMENTS
--------------------
-
-Built with
-
-    gcc/6.3.0
+<http://www.gnu.org/software/gsl/>
 
 
 LOG
