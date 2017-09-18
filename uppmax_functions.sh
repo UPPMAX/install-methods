@@ -32,6 +32,8 @@ function projvol() {
 # Appexpert functions for managing mf files.  Use no arguments to get brief help.
 #
 
+_CURRENT_CLUSTERS="bianca irma milou rackham"
+
 # Show section of bioinfo-tools in which each module is found
 function section() {
     [[ $# == 0 ]] && { echo "usage: section bioinfo-modulename [ bioinfo-modulename ... ]"; return; }
@@ -50,7 +52,7 @@ function section() {
 
 # Full listing of all mf files for a given module under /sw/mf
 function mfshow() {
-    [[ $# == 0 ]] && { echo -e "usage: mfshow [--{libs,apps,comp,build,par,bioinfo} ] [ -C ] modulename\n       default is --bioinfo     use -c to show only current clusters {common,bianca,irma,milou,rackham}"; return; }
+    [[ $# == 0 ]] && { echo -e "usage: mfshow [ --{libs,apps,comp,build,par,bioinfo} ] [ -c ] modulename\n    default is --bioinfo\n    -c : show only current clusters and common {common,${_CURRENT_CLUSTERS// /,}}"; return; }
     SUBDIR=
     case "$1" in
         --libs)	    SUBDIR=libraries; OPT="$1"; shift ;;
@@ -64,7 +66,7 @@ function mfshow() {
     M=$1
     if [[ ! -z "$SUBDIR" ]] ; then
         if [[ ! -z "$CURRENT" ]] ; then
-            ls -la /sw/mf/{common,bianca,irma,milou,rackham}/$SUBDIR/$M/
+            eval ls -la /sw/mf/{common,{${_CURRENT_CLUSTERS// /,}}}/$SUBDIR/$M/
         else
             ls -la /sw/mf/*/$SUBDIR/$M/
         fi
@@ -77,7 +79,7 @@ function mfshow() {
             SUBDIR=${SUBDIR%/$M}
         fi
         if [[ ! -z "$CURRENT" ]] ; then
-            ls -la /sw/mf/{common,bianca,irma,milou,rackham}/bioinfo-tools/$SUBDIR/$M/
+            eval ls -la /sw/mf/{common,{${_CURRENT_CLUSTERS// /,}}}/bioinfo-tools/$SUBDIR/$M/
         else
             ls -la /sw/mf/*/bioinfo-tools/$SUBDIR/$M/
         fi
@@ -135,11 +137,11 @@ function all_mflink() {
     if [[ ! -z "$SUBDIR" ]] ; then
         if [[ ! -z "$FORCE" ]] ; then
             shift
-            for C in milou rackham bianca irma ; do
+            for C in $_CURRENT_CLUSTERS ; do
                 ( cd /sw/mf/$C/$SUBDIR/ && mflink $OPT -f $M $V ) || { echo "*** problem with $C/$SUBDIR/$M/$V"; }
             done
         else
-            for C in milou rackham bianca irma ; do
+            for C in $_CURRENT_CLUSTERS ; do
                 ( cd /sw/mf/$C/$SUBDIR/ && mflink $OPT $M $V ) || { echo "*** problem with $C/$SUBDIR/$M/$V"; }
             done
         fi
@@ -156,11 +158,11 @@ function all_mflink() {
         fi
         if [[ ! -z "$FORCE" ]] ; then
             shift
-            for C in milou rackham bianca irma ; do
+            for C in $_CURRENT_CLUSTERS ; do
                 ( cd /sw/mf/$C/bioinfo-tools/$SUBDIR/ && mflink -f $M $V ) || { echo "*** problem with $C/bioinfo-tools/$SUBDIR/$M/$V"; }
             done
         else
-            for C in milou rackham bianca irma ; do
+            for C in $_CURRENT_CLUSTERS ; do
                 ( cd /sw/mf/$C/bioinfo-tools/$SUBDIR/ && mflink $M $V ) || { echo "*** problem with $C/bioinfo-tools/$SUBDIR/$M/$V"; }
             done
         fi
@@ -187,11 +189,11 @@ function rackham_mfupdate() {
     if [[ ! -z "$SUBDIR" ]] ; then
         if [[ ! -z "$FORCE" ]] ; then
             shift
-            for C in common milou rackham bianca irma ; do
+            for C in common $_CURRENT_CLUSTERS ; do
                 ( cd /sw/mf/$C/$SUBDIR/ && pwd && rsync -Pa --del /mnt/$PWD/$M . )
             done
         else
-            for C in common milou rackham bianca irma ; do
+            for C in common $_CURRENT_CLUSTERS ; do
                 ( cd /sw/mf/$C/$SUBDIR/ && pwd && rsync --dry-run -Pa --del /mnt/$PWD/$M . )
             done
         fi
@@ -207,13 +209,13 @@ function rackham_mfupdate() {
         fi
         if [[ ! -z "$FORCE" ]] ; then
             shift
-            for C in common milou rackham bianca irma ; do
+            for C in common $_CURRENT_CLUSTERS ; do
                 THISDIR=/sw/mf/$C/$SUFFDIR
                 [[ -d $THISDIR ]] || mkdir -p $THISDIR
                 ( cd $THISDIR/ && cd .. && pwd && rsync -Pa --del /mnt/$PWD/$M . )
             done
         else
-            for C in common milou rackham bianca irma ; do
+            for C in common $_CURRENT_CLUSTERS ; do
                 THISDIR=/sw/mf/$C/$SUFFDIR
                 [[ -d $THISDIR ]] || mkdir -p $THISDIR
                 ( cd $THISDIR/ && cd .. && pwd && rsync --dry-run -Pa --del /mnt/$PWD/$M . )
