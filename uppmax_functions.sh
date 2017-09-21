@@ -52,20 +52,20 @@ function section() {
 
 # Full listing of all mf files for a given module under /sw/mf
 function mfshow() {
-    [[ $# == 0 ]] && { echo -e "usage: mfshow [ --{libs,apps,comp,build,par,bioinfo} ] [ -c ] modulename\n    default is --bioinfo\n    -c : show only current clusters and common {common,${_CURRENT_CLUSTERS// /,}}"; return; }
+    [[ $# == 0 ]] && { echo -e "usage: mfshow [ --{libs,apps,comp,build,par,bioinfo} ] [ -c ] modulename\n    default is --bioinfo\n    -a : show all clusters, not just current and common {common,${_CURRENT_CLUSTERS// /,}}"; return; }
     SUBDIR=
     case "$1" in
-        --libs)	    SUBDIR=libraries; OPT="$1"; shift ;;
-        --apps)	    SUBDIR=applications; OPT="$1"; shift ;;
-        --comp)	    SUBDIR=compilers; OPT="$1"; shift ;;
+        --libs)     SUBDIR=libraries; OPT="$1"; shift ;;
+        --apps)     SUBDIR=applications; OPT="$1"; shift ;;
+        --comp)     SUBDIR=compilers; OPT="$1"; shift ;;
         --build)    SUBDIR=build-tools; OPT="$1"; shift ;;
         --par)      SUBDIR=parallel; OPT="$1"; shift ;;
         --bioinfo)  SUBDIR=; OPT="$1"; shift ;;
     esac
-    [[ "$1" = "-c" ]] && { CURRENT=yes; shift; } || CURRENT=
+    [[ "$1" = "-a" ]] && { ALL=yes; shift; } || ALL=
     M=$1
     if [[ ! -z "$SUBDIR" ]] ; then
-        if [[ ! -z "$CURRENT" ]] ; then
+        if [[ -z "$ALL" ]] ; then
             eval ls -la /sw/mf/{common,{${_CURRENT_CLUSTERS// /,}}}/$SUBDIR/$M/
         else
             ls -la /sw/mf/*/$SUBDIR/$M/
@@ -78,7 +78,7 @@ function mfshow() {
             SUBDIR=${COMMONDIR#/sw/mf/common/bioinfo-tools/}
             SUBDIR=${SUBDIR%/$M}
         fi
-        if [[ ! -z "$CURRENT" ]] ; then
+        if [[ -z "$ALL" ]] ; then
             eval ls -la /sw/mf/{common,{${_CURRENT_CLUSTERS// /,}}}/bioinfo-tools/$SUBDIR/$M/
         else
             ls -la /sw/mf/*/bioinfo-tools/$SUBDIR/$M/
@@ -92,9 +92,9 @@ function mflink() {
     [[ $# == 0 ]] && { echo "usage: mflink [ |--{libs,apps,comp,build,bioinfo} ] [ -f ] modulename version"; return; }
     SUBDIR=
     case "$1" in
-        --libs)	    SUBDIR=libraries; shift ;;
-        --apps)	    SUBDIR=applications; shift ;;
-        --comp)	    SUBDIR=compilers; shift ;;
+        --libs)     SUBDIR=libraries; shift ;;
+        --apps)     SUBDIR=applications; shift ;;
+        --comp)     SUBDIR=compilers; shift ;;
         --build)    SUBDIR=build-tools; shift ;;
         --par)      SUBDIR=parallel; shift ;;
         --bioinfo)  SUBDIR=; shift ;;
@@ -124,9 +124,9 @@ function all_mflink() {
     [[ $# == 0 ]] && { echo -e "usage: all_mflink [ |--{libs,apps,comp,build,par,bioinfo} ] [ -f ] modulename version\n       default is --bioinfo"; return; }
     SUBDIR=
     case "$1" in
-        --libs)	    SUBDIR=libraries; OPT="$1"; shift ;;
-        --apps)	    SUBDIR=applications; OPT="$1"; shift ;;
-        --comp)	    SUBDIR=compilers; OPT="$1"; shift ;;
+        --libs)     SUBDIR=libraries; OPT="$1"; shift ;;
+        --apps)     SUBDIR=applications; OPT="$1"; shift ;;
+        --comp)     SUBDIR=compilers; OPT="$1"; shift ;;
         --build)    SUBDIR=build-tools; OPT="$1"; shift ;;
         --par)      SUBDIR=parallel; OPT="$1"; shift ;;
         --bioinfo)  SUBDIR=; OPT="$1"; shift ;;
@@ -147,7 +147,8 @@ function all_mflink() {
         fi
         echo -e "\n*** End result: ls -la /sw/mf/*/$SUBDIR/$M/ \n"
         [[ ! -z "$FORCE" ]] && echo -e "\n*** FORCED\n"
-        ls -la /sw/mf/*/$SUBDIR/$M/
+        #ls -la /sw/mf/*/$SUBDIR/$M/
+        mfshow $OPT $M
     else
         COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$M)
         if [[ ! -d $COMMONDIR ]] ; then
@@ -168,7 +169,8 @@ function all_mflink() {
         fi
         echo -e "\n*** End result: ls -la /sw/mf/*/bioinfo-tools/$SUBDIR/$M/ \n"
         [[ ! -z "$FORCE" ]] && echo -e "\n*** FORCED\n"
-        ls -la /sw/mf/*/bioinfo-tools/$SUBDIR/$M/
+        #ls -la /sw/mf/*/bioinfo-tools/$SUBDIR/$M/
+        mfshow $OPT $M
     fi
 }
 
@@ -178,11 +180,12 @@ function rackham_mfupdate() {
     [[ $# == 0 ]] && { echo "usage: rackham_mfupdate [ |--{libs,apps,comp,build,bioinfo} ] [ -f ] modulename"; return; }
     SUBDIR=
     case "$1" in
-        --libs)	    SUBDIR=libraries; shift ;;
-        --apps)	    SUBDIR=applications; shift ;;
-        --comp)	    SUBDIR=compilers; shift ;;
-        --build)    SUBDIR=build-tools; shift ;;
-        --bioinfo)  SUBDIR=; shift ;;
+        --libs)     SUBDIR=libraries; OPT="$1"; shift ;;
+        --apps)     SUBDIR=applications; OPT="$1"; shift ;;
+        --comp)     SUBDIR=compilers; OPT="$1"; shift ;;
+        --build)    SUBDIR=build-tools; OPT="$1"; shift ;;
+        --par)      SUBDIR=parallel; OPT="$1"; shift ;;
+        --bioinfo)  SUBDIR=; OPT="$1"; shift ;;
     esac
     [[ "$1" = "-f" ]] && { FORCE=yes; shift; } || FORCE=
     M=$1
@@ -198,7 +201,7 @@ function rackham_mfupdate() {
             done
         fi
         echo -e "\n*** End result: ls -la /sw/mf/*/$SUBDIR/$M/ \n"
-        ls -la /sw/mf/*/$SUBDIR/$M/
+        mfshow $OPT $M
         [[ -z "$FORCE" ]] && echo -e "\n*** DRY RUN\n"
     else
         MNTDIR=(/mnt/sw/mf/common/bioinfo-tools/*/$M)
@@ -222,7 +225,7 @@ function rackham_mfupdate() {
             done
         fi
         echo -e "\n*** End result: ls -la /sw/mf/*/bioinfo-tools/*/$M/ \n"
-        ls -la /sw/mf/*/bioinfo-tools/*/$M/
+        mfshow $OPT $M
         [[ -z "$FORCE" ]] && echo -e "\n*** DRY RUN\n"
     fi
 }
