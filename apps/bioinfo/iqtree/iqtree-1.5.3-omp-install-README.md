@@ -1,5 +1,5 @@
-iqtree-1.5.3-omp-install-README.md
-==================================
+iqtree/1.5.3-omp
+================
 
 IQ-TREE, providing both OMP and single-core versions
 
@@ -18,12 +18,12 @@ The tool has one version, the module has an -omp suffix, hence `VERSIONTOOL` and
     VERSION=${VERSIONTOOL}-omp
     mkdir ${VERSION}
     cd ${VERSION}
-    mkdir -p $CLUSTER/bin src_$CLUSTER
-    cd src_$CLUSTER
+    mkdir -p $CLUSTER/bin src
+    cd src
 
 Can we use the precompiled version?
 
-wget https://github.com/Cibiv/IQ-TREE/releases/download/v${VERSIONTOOL}/iqtree-omp-${VERSIONTOOL}-Linux.tar.gz
+    wget https://github.com/Cibiv/IQ-TREE/releases/download/v${VERSIONTOOL}/iqtree-omp-${VERSIONTOOL}-Linux.tar.gz
 
     tar xvzf iqtree-omp-${VERSIONTOOL}-Linux.tar.gz 
     cd iqtree-omp-${VERSIONTOOL}-Linux/
@@ -43,7 +43,8 @@ Now, build from source, first the OMP version.
 
     module load cmake/3.5.1
     module load gcc/6.3.0
-    wget https://github.com/Cibiv/IQ-TREE/archive/v1.5.3.tar.gz 
+    [[ -f v1.5.3.tar.gz ]] || wget https://github.com/Cibiv/IQ-TREE/archive/v1.5.3.tar.gz 
+    rm -rf IQ-TREE-1.5.3
     tar xvzf v1.5.3.tar.gz 
     cd IQ-TREE-1.5.3/
     mkdir build_omp

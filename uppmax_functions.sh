@@ -14,13 +14,13 @@ function purge-cache() { rm -rf $HOME/.lmod.d ; }
 
 # Get real locations and disk usage of project backup and nobackup volumes
 function projvol() {
-    p=${1:?Must provide project name}
-    B=/proj/$p;          [[ -L $B ]] || { echo "correct $B not found"; return; }
-    N=/proj/$p/nobackup; [[ -L $N ]] || { echo "correct $N not found"; return; }
-    B=$(readlink -f $B)
-    N=$(readlink -f $N)
-    VB=$(dirname $B)
-    VN=$(dirname $N)
+    local p=${1:?Must provide project name}
+    local B=/proj/$p;          [[ -L $B ]] || { echo "correct $B not found"; return; }
+    local N=/proj/$p/nobackup; [[ -L $N ]] || { echo "correct $N not found"; return; }
+    local B=$(readlink -f $B)
+    local N=$(readlink -f $N)
+    local VB=$(dirname $B)
+    local VN=$(dirname $N)
     [[ $B && $N && $VB && $VN ]] || { echo "Could not resolve symlinks"; return; }
     echo -e "\n$p backup    ---- $B"
     df -kh $VB
@@ -37,13 +37,14 @@ _CURRENT_CLUSTERS="bianca irma milou rackham"
 # Show section of bioinfo-tools in which each module is found
 function section() {
     [[ $# == 0 ]] && { echo "usage: section bioinfo-modulename [ bioinfo-modulename ... ]"; return; }
-    args=("$@")
+    local args=("$@")
+    local M=
     for M in ${args[@]} ; do
-        COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$M)
+        local COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$M)
         if [[ ! -d $COMMONDIR ]] ; then
             echo "*** $COMMONDIR doesn't exist"
         else
-            SUBDIR=${COMMONDIR#/sw/mf/common/bioinfo-tools/}
+            local SUBDIR=${COMMONDIR#/sw/mf/common/bioinfo-tools/}
             SUBDIR=${SUBDIR%/$M}
             echo -e "$M\t$SUBDIR\t$COMMONDIR"
         fi
@@ -53,7 +54,8 @@ function section() {
 # Full listing of all mf files for a given module under /sw/mf
 function mfshow() {
     [[ $# == 0 ]] && { echo -e "usage: mfshow [ --{libs,apps,comp,build,par,bioinfo} ] [ -c ] modulename\n    default is --bioinfo\n    -a : show all clusters, not just current and common {common,${_CURRENT_CLUSTERS// /,}}"; return; }
-    SUBDIR=
+    local SUBDIR=
+    local OPT=
     case "$1" in
         --libs)     SUBDIR=libraries; OPT="$1"; shift ;;
         --apps)     SUBDIR=applications; OPT="$1"; shift ;;
@@ -62,8 +64,9 @@ function mfshow() {
         --par)      SUBDIR=parallel; OPT="$1"; shift ;;
         --bioinfo)  SUBDIR=; OPT="$1"; shift ;;
     esac
-    [[ "$1" = "-a" ]] && { ALL=yes; shift; } || ALL=
-    M=$1
+    local ALL=
+    [[ "$1" = "-a" ]] && { ALL=yes; shift; }
+    local M=$1
     if [[ ! -z "$SUBDIR" ]] ; then
         if [[ -z "$ALL" ]] ; then
             eval ls -la /sw/mf/{common,{${_CURRENT_CLUSTERS// /,}}}/$SUBDIR/$M/
@@ -71,7 +74,7 @@ function mfshow() {
             ls -la /sw/mf/*/$SUBDIR/$M/
         fi
     else
-        COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$M)
+        local COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$M)
         if [[ ! -d $COMMONDIR ]] ; then
             echo "*** $COMMONDIR doesn't exist"; return
         else
@@ -90,7 +93,7 @@ function mfshow() {
 # Create a cluster-specific symlink to /sw/mf/common/... for an mf file
 function mflink() {
     [[ $# == 0 ]] && { echo "usage: mflink [ |--{libs,apps,comp,build,bioinfo} ] [ -f ] modulename version"; return; }
-    SUBDIR=
+    local SUBDIR=
     case "$1" in
         --libs)     SUBDIR=libraries; shift ;;
         --apps)     SUBDIR=applications; shift ;;
@@ -122,7 +125,8 @@ function mflink() {
 # /sw/mf/common/... must already exist.  Uses mflink function above
 function all_mflink() {
     [[ $# == 0 ]] && { echo -e "usage: all_mflink [ |--{libs,apps,comp,build,par,bioinfo} ] [ -f ] modulename version\n       default is --bioinfo"; return; }
-    SUBDIR=
+    local SUBDIR=
+    local OPT=
     case "$1" in
         --libs)     SUBDIR=libraries; OPT="$1"; shift ;;
         --apps)     SUBDIR=applications; OPT="$1"; shift ;;
@@ -131,9 +135,11 @@ function all_mflink() {
         --par)      SUBDIR=parallel; OPT="$1"; shift ;;
         --bioinfo)  SUBDIR=; OPT="$1"; shift ;;
     esac
-    [[ "$1" = "-f" ]] && { FORCE=yes; shift; } || FORCE=
-    M=$1
-    V=$2
+    local FORCE=
+    [[ "$1" = "-f" ]] && { FORCE=yes; shift; }
+    local M=$1
+    local V=$2
+    local C=
     if [[ ! -z "$SUBDIR" ]] ; then
         if [[ ! -z "$FORCE" ]] ; then
             shift
@@ -150,7 +156,7 @@ function all_mflink() {
         #ls -la /sw/mf/*/$SUBDIR/$M/
         mfshow $OPT $M
     else
-        COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$M)
+        local COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$M)
         if [[ ! -d $COMMONDIR ]] ; then
             echo "*** $COMMONDIR doesn't exist and it must, before running this"; return
         else
@@ -178,7 +184,8 @@ function all_mflink() {
 # Update mf files for a module while on rackham5. Requires /mnt/sw mount point
 function rackham_mfupdate() {
     [[ $# == 0 ]] && { echo "usage: rackham_mfupdate [ |--{libs,apps,comp,build,bioinfo} ] [ -f ] modulename"; return; }
-    SUBDIR=
+    local SUBDIR=
+    local OPT=
     case "$1" in
         --libs)     SUBDIR=libraries; OPT="$1"; shift ;;
         --apps)     SUBDIR=applications; OPT="$1"; shift ;;
@@ -187,8 +194,10 @@ function rackham_mfupdate() {
         --par)      SUBDIR=parallel; OPT="$1"; shift ;;
         --bioinfo)  SUBDIR=; OPT="$1"; shift ;;
     esac
-    [[ "$1" = "-f" ]] && { FORCE=yes; shift; } || FORCE=
-    M=$1
+    local FORCE=
+    [[ "$1" = "-f" ]] && { FORCE=yes; shift; }
+    local M=$1
+    local C=
     if [[ ! -z "$SUBDIR" ]] ; then
         if [[ ! -z "$FORCE" ]] ; then
             shift
@@ -204,7 +213,9 @@ function rackham_mfupdate() {
         mfshow $OPT $M
         [[ -z "$FORCE" ]] && echo -e "\n*** DRY RUN\n"
     else
-        MNTDIR=(/mnt/sw/mf/common/bioinfo-tools/*/$M)
+        local MNTDIR=(/mnt/sw/mf/common/bioinfo-tools/*/$M)
+        local SUFFDIR=
+        local THISDIR=
         if [[ ! -d $MNTDIR ]] ; then
             echo "*** $MNTDIR doesn't exist "; return
         else

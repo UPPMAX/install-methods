@@ -14,9 +14,7 @@ Log
     cd qctool/
     mkdir 1.4
     cd 1.4
-    ln -s ./milou tintin
-    ln -s ./milou nestor
-    ln -s ./milou halvan
+    for S in rackham irma bianca ; do ln -s milou $S; done
 
 Note: the `milou/` directory will not yet exist!
 

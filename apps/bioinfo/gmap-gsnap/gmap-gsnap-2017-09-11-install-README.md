@@ -1,4 +1,4 @@
-gmap-gsnap/2014-01-21
+gmap-gsnap/2017-09-11
 =====================
 
 GMAP and GSNAP alignment tools
@@ -16,7 +16,7 @@ LOG
 ---
 
     TOOL=/sw/apps/bioinfo/gmap-gsnap
-    VERSION=2014-01-21
+    VERSION=2017-09-11
     CLUSTER=${CLUSTER:?CLUSTER must be set}
     cd $TOOL
     mkdir $VERSION
@@ -28,19 +28,14 @@ LOG
     [[ -f gmap-gsnap-$VERSION.tar.gz ]] || wget http://research-pub.gene.com/gmap/src/gmap-gsnap-$VERSION.tar.gz
     tar xzf gmap-gsnap-$VERSION.tar.gz
     cd gmap-$VERSION
-    ./configure --prefix="$PFX" MAX_READLENGTH=1000
-    make && make check && make install
+    module load gcc/6.3.0 bzip2/1.0.6 zlib/1.2.11
+    ./configure --prefix="$PFX" MAX_READLENGTH=20000
+    make -j 8 && make check && make install
     cd ..
     rm -rf gmap-$VERSION
 
-Note that by default this defines `GMAPDB=/sw/apps/bioinfo/gmap-gsnap/2014-01-21/milou/share`,
-so if we download prebuilt GMAP DBs, and I think we should provide some/all, then that is
-where they should go.  We download the one available, for hg19.
+The prebuilt index for hg19 made available with previous versions lacks the
+most recent features (see the web site for more details).  So we are not
+installing it nor are we defining `GMAPDB`.
 
-    cd $PFX
-    mkdir share
-    cd share
-    wget http://research-pub.gene.com/gmap/genomes/hg19.tar.gz
-    tar xvzf hg19.tar.gz
-    rm -f hg19.tar.gz
-
+Reuse the previous mf.

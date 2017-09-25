@@ -29,6 +29,7 @@ find Pfam -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
 find cdd -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
 find dbCAN -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
 find annovar -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+find Chromium -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
 # find dbSNP -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
 # find SGDP -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
 # find blast_databases -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
