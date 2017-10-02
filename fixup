@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# NOTE: Gnu xargs assumed, providing --no-run-if-empty
+
 GROUP=sw
 
 while getopts "gG:h" o; do
@@ -18,5 +20,5 @@ args=("$@")
 for arg in ${args[@]} ; do
     chgrp -hR $GROUP "$arg"
     chmod -R u+rwX,g+rwX,o+rX-w "$arg"
-    [[ $SETGID_DIRS ]] && find "$arg" -type d -print0 | xargs -0 chmod g+s
+    [[ $SETGID_DIRS ]] && find "$arg" -type d -print0 | xargs -0 --no-run-if-empty chmod g+s
 done
