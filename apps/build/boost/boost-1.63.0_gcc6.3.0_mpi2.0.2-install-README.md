@@ -21,8 +21,10 @@ LOG
     cd $VERSION/$CLUSTER
     PFX=$PWD
     cd ../../src
-    tar xjf boost_${BOOSTVERSION//./_}.tar.bz2
-    mv boost_${BOOSTVERSION//./_} boost_${BOOSTVERSION//./_}-$CLUSTER
+    if [[ ! -d boost_${BOOSTVERSION//./_}-$CLUSTER ]] ; then
+        tar xjf boost_${BOOSTVERSION//./_}.tar.bz2
+        mv boost_${BOOSTVERSION//./_} boost_${BOOSTVERSION//./_}-$CLUSTER
+    fi
     cd boost_${BOOSTVERSION//./_}-$CLUSTER
 
     module load gcc/$GCCVERSION

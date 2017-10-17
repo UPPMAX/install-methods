@@ -61,3 +61,5 @@ assumption holding over from the K&R days :-)
     make
     make install
 
+Also, check `#!` in the installed file `tRNAscan-SE`.  It may need to be changed
+to `#!/usr/bin/env perl`.

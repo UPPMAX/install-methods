@@ -1,5 +1,5 @@
-Scipio 1.4
-==========
+Scipio/1.4.1
+============
 
 <http://www.webscipio.org/>
 
@@ -9,9 +9,9 @@ LOG
     cd /sw/apps/bioinfo/
     mkdir Scipio
     cd Scipio/
-    mkdir 1.4
+    mkdir 1.4.1
     mkdir mf
-    cd 1.4
+    cd 1.4.1
     mkdir milou
     mkdir src_milou
     cd src_milou/
@@ -44,10 +44,4 @@ Loads perl and perl_modules along with BioPerl.
     ln -s yaml2gff.1.4.pl yaml2gff.pl 
     ln -s yaml2log.1.4.pl yaml2log.pl 
     cd ../../mf/
-
-Start with Roary mf file.
-
-    cp /sw/mf/common/bioinfo-tools/misc/Roary/3.6.2 1.4
-
-Only load BioPerl, and since it's an older tool, the older `blat/34`.
 

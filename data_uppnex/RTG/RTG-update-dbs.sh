@@ -43,27 +43,25 @@ function fetch_reference() {
         wget --quiet -O $NEW $REMOTE
         if diff $D/$LOCAL $NEW ; then
             echo "no new content in $SUBDIR reference ${LOCAL}"
-            echo
             rm -f $NEW
             EXPAND=
         else
             echo "found update for $SUBDIR reference ${LOCAL}"
-            echo
             mv -f $NEW ${LOCAL}
         fi
     else 
-        echo "found new $SUBDIR reference ${LOCAL}"
-        echo
+        echo -n "found new $SUBDIR reference ${LOCAL}, downloading ... "
         wget --quiet -O $LOCAL $REMOTE
     fi
     if [[ "$EXPAND" ]] ; then
-        echo "expanding $SUBDIR ${LOCAL} ... "
+        echo -n "expanding $SUBDIR ${LOCAL} ... "
         unzip ${LOCAL}
         mv -f ${LOCAL} $D/${LOCAL}
     else
-        echo "touching $D/${LOCAL}_checked ... "
+        echo -n "touching $D/${LOCAL}_checked ... "
         touch $D/${LOCAL}_checked
     fi
+    echo done
     echo
 }
 

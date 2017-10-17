@@ -24,7 +24,7 @@ Command line
     TARGET=/sw/comp/python/${VERSION}_$CLUSTER
     mkdir -p $TARGET
     cd $TARGET
-    wget https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz
+    [[ -f Python-$VERSION.tgz ]] || wget https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz
     tar xzf Python-$VERSION.tgz
     cd Python-$VERSION/
 

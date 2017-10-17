@@ -262,6 +262,20 @@ If any additional modules are installed here, add them to this section.
     cpanm SVG SVG::Graph Text::ParseWords XML::DOM XML::DOM::XPath XML::LibXML XML::Parser XML::Parser::PerlSAX XML::SAX XML::SAX::Writer
     cpanm XML::Simple XML::Twig XML::Writer YAML
 
+Additional statistics-oriented modules.  Two have pod errors and another has an
+odd error and these three must be forced.
+
+    cpanm --force Math::MatrixReal Statistics::Normality Statistics::FactorAnalysis
+
+    cpanm Statistics::Zed Statistics::Standard_Normal Statistics::Cook Statistics::TopK Statistics::ANOVA Statistics::Robust
+    cpanm Statistics::Simpson Statistics::Shannon Statistics::Discrete Statistics::Sequences Statistics::ChiSquare
+    cpanm Statistics::Frequency Statistics::Histogram Statistics::MaxEntropy Statistics::Contingency Statistics::FisherPitman
+    cpanm Statistics::KruskalWallis Statistics::RankCorrelation Statistics::ANOVA::KW Statistics::ANOVA::JT Statistics::Data::Rank
+    cpanm Statistics::ANOVA::Page Statistics::ANOVA::Friedman Statistics::Sequences::Runs Statistics::Sequences::Pot
+    cpanm Statistics::Sequences::Turns Statistics::Sequences::Joins Statistics::Sequences::Vnomes Statistics::Data::Dichotomize
+    cpanm Statistics::Diversity::Shannon Statistics::Sampler::Multinomial Statistics::Distributions::GTest
+    cpanm Statistics::Descriptive::LogScale Statistics::Descriptive::Discrete Statistics::Distributions::Bartlett 
+
 
 Modules 'by hand'
 -----------------
@@ -289,3 +303,4 @@ When in `/sw/comp/perl_modules/${VERSION}/${CLUSTER}`:
 There will be a few messages to stderr about the search directories, which should be underneath.
 
 See `/sw/comp/perl_modules/${VERSION}/${CLUSTER}/README.md` for more on updating the module table on the website.
+

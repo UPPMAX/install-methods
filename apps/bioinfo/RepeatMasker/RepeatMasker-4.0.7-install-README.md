@@ -3,6 +3,8 @@ RepeatMasker/4.0.7
 
 <http://www.repeatmasker.org/>
 
+Update 9-Oct-2017: vers2 patch for rmblast/2.6.0+
+
 LOG
 ---
 
@@ -49,11 +51,11 @@ RMBlastn 2.6.0+, do NOT configure this to build with boost, it is slower.
     RMB_PREFIX=$PWD
     cd ..
     wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.6.0/ncbi-blast-2.6.0+-src.tar.gz
-    wget http://www.repeatmasker.org/isb-2.6.0+-changes.patch.gz
-    tar xvzf ncbi-blast-2.6.0+-src.tar.gz 
-    gunzip isb-2.6.0+-changes.patch.gz 
+    wget http://www.repeatmasker.org/isb-2.6.0+-changes-vers2.patch.gz
+    tar xzf ncbi-blast-2.6.0+-src.tar.gz 
+    gunzip isb-2.6.0+-changes-vers2.patch.gz 
     cd ncbi-blast-2.6.0+-src/
-    patch -p1 < ../isb-2.6.0+-changes.patch
+    patch -p1 < ../isb-2.6.0+-changes-vers2.patch
     cd c++/
     module load gcc/6.3.0
     ./configure --with-mt --prefix=$RMB_PREFIX --without-debug --without-bdb --without-boost

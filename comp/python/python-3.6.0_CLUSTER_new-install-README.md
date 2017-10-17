@@ -1,60 +1,65 @@
-# python-3.6.0_COALUSTER-install-README.md
+python/3.6.0
+============
 
-Installation of python/3.6.0
-----------------------------
+Not actually following this for 3.6.0.  Build problems on milou related to
+ATLAS.  Built find on rackham.
 
-Similar to installation of "new 2.7.6" but skips pysqlite and rpy2.
-Note also that pip3 gets installed automatically.
+Neither PYTHONHOME nor LD_LIBRARY_PATH should be set:
 
-    VERS=3.6.0
-    INST=/sw/comp/python/${VERS}_${CLUSTER}
-    mkdir -p $INST/src
-    cd $INST/src
-    chgrp -R sw $INST
+* If PYTHONHOME is set, this interferes when a user runs other Python
+  interpreters. The correct PYTHONHOME is figured out by the interpreter
+  anyway if the correct --prefix= parameter was given to the configure
+  script.
 
-Get latest release from <https://www.python.org/downloads/source/> and
-build with system gcc.
+* LD_LIBRARY_PATH also interferes with other Pythons. Especially when
+  compiling extension modules, the wrong Python shared libraries may
+  be picked up. Instead of LD_LIBRARY_PATH, embed the correct path to
+  the shared library into the binary using the linker's -rpath option
+  (see command below).
 
-    wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
-    md5sum Python-3.6.0.tgz
-    tar xzf Python-3.6.0.tgz
-    cd Python-3.6.0/
-    ./configure --enable-shared --prefix=$INST
+LOG
+---
+
+    VERSION=3.6.0
+    CLUSTER=${CLUSTER?:CLUSTER must be set}
+    TARGET=/sw/comp/python/${VERSION}_${CLUSTER}_new
+    mkdir -p $TARGET/src
+    fixup -g $TARGET
+    cd $TARGET/src
+    [[ -f Python-${VERSION}.tgz ]] || wget https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tgz
+    rm -rf Python-${VERSION}/
+    tar xzf Python-${VERSION}.tgz 
+    cd Python-${VERSION}/
+    ./configure --prefix=$TARGET --enable-shared LDFLAGS="-Wl,-rpath=$TARGET/lib,-rpath=/sw/libs/wxWidgets/lib"
     make && make install
 
 Set up variables. Make sure no other python loaded.
 
     cd ../../bin
     export PATH=$PWD:$PATH
-    cd ../lib
-    export LD_LIBRARY_PATH=$PWD:$LD_LIBRARY_PATH
-    cd python3.6
+    cd ../lib/python${VERSION%.?}
     export PYTHONPATH=$PWD
 
 Make sure `python3` is the newly-built python.
 
     which python3
+    which easy_install-3.6
 
-Now install basic packages, for historical reasons. Note the use of 'pip3'.
-Skip pysqlite since Python 3 has a good version internally.
+Add to the the local packages.
 
-    pip3 install numpy scipy ipython Cython matplotlib mock nose pytz six singledispatch pyparsing
+On milou, this wants ATLAS libraries.  These are installed on rackham, but not
+milou.
+
+    easy_install-3.6 Cython
+    easy_install-3.6 nose
+    easy_install-3.6 mock
+    easy_install-3.6 pytz
+    easy_install-3.6 six
+    easy_install-3.6 numpy 
+    easy_install-3.6 scipy
+    easy_install-3.6 matplotlib
+    easy_install-3.6 ipython
+    easy_install-3.6 singledispatch
+    easy_install-3.6 pyparsing
     easy_install-3.6 virtualenv
-
-Reduce access so admins don't overwrite installation when adding new packages.
-
-    chmod -R -w $INST
-
-Have not done the "rpath stuff" since that method seems to interfere with the way _I_
-install python-dependent modules (e.g., MultiQC).
- 
-
-If built away from the dominant storage cluster (currently: Pica), rename before copying
-to avoid the potential race condition where the synchronization overwrites partially copied
-files. For example, on Rackham, where Pica is mounted on '/mnt':
-
-    cd /sw/comp/python
-    mv ${VERS}_${CLUSTER} ${VERS}_${CLUSTER}_tmp
-    cp -rp ${VERS}_${CLUSTER}_tmp /mnt$(pwd)/${VERS}_${CLUSTER}
-    rm -rf ${VERS}_${CLUSTER}_tmp
 

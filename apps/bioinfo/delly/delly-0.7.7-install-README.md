@@ -66,3 +66,14 @@ Edit `#!` line of installed perl scripts to use the env mechanism, if necessary.
 Since it doesn't add the gcc library path, we add it in the mf file.  Prepend
 `/sw/comp/gcc/5.4.0_$Cluster/lib64` to `LD_LIBRARY_PATH`.  Also, add
 `$modroot` to `PATH`, `$modroot/man` to `MANPATH`.
+
+### note 8 Oct 2017
+
+Inconveniently, retains requirement to load shared libraries from the source
+directories.  Switch delly to the precompiled static version.
+
+    cd /sw/apps/bioinfo/delly/$VERSION/$CLUSTER
+    mv delly _delly_shared_broken
+    # wget -O delly_static https://github.com/dellytools/delly/releases/download/v0.7.7/delly_v0.7.7_parallel_linux_x86_64bit
+    # chmod +x delly_static
+    ln -s delly_static delly
