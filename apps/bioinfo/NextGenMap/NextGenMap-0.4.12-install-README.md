@@ -32,28 +32,30 @@ LOG
     TOOL=/sw/apps/bioinfo/NextGenMap
     VERSION=0.4.12
     VERSIONDIR=$TOOL/$VERSION
-    CLUSTER=milou
-    CLUSTERDIR=$VERSIONDIR/$CLUSTER
+    CLUSTER=${CLUSTER?:CLUSTER must be set}
+    PFX=$VERSIONDIR/$CLUSTER
     mkdir -p $VERSIONDIR
-    cd $TOOL
-    mkdir -p mf src
+    cd $VERSIONDIR
+    mkdir -p src
     cd src
-    wget http://github.com/Cibiv/NextGenMap/archive/v0.4.12.tar.gz
-    tar xzf v0.4.12.tar.gz
-    cd NextGenMap-0.4.12
+    [[ -f v${VERSION}.tar.gz ]] || wget http://github.com/Cibiv/NextGenMap/archive/v${VERSION}.tar.gz
+    tar xzf v${VERSION}.tar.gz
+    cd NextGenMap-${VERSION}
     mkdir -p build/release
     cd build/release/
     cmake -DCMAKE_BUILD_TYPE=Release ../..
     make
 
-Executables are now in ../../bin/ngm-0.4.12/ so test with
+Executables are now in ../../bin/ngm-${VERSION}/ so test with
 
-    ../../bin/ngm-0.4.12/ngm
+    ../../bin/ngm-${VERSION}/ngm
 
 Rename the executable directory to the cluster directory.
 
     cd ../../bin
-    mv ngm-0.4.12 $VERSIONDIR/$CLUSTER
+    mv ngm-${VERSION} $PFX
+    cd ../..
+    rm -rf NextGenMap-${VERSION}
 
 Now create mf with above requirements for PATH and LD_LIBRARY_PATH.
 

@@ -1,6 +1,14 @@
 IGV/3.0-beta
 ============
 
+NOTE: All features in this release are now in IGV/2.4.2, so disabling the module version.
+
+From <https://software.broadinstitute.org/software/igv/download>:
+<blockquote>
+If you are looking for IGV 3.0 Early Access or IGV 3.0 Beta, note that all new features introduced in that version have been released in IGV 2.4
+</blockquote>
+
+
 <http://software.broadinstitute.org/software/igv/>
 
 LOG

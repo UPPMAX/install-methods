@@ -5,13 +5,21 @@ Velvet assembler
 
 <https://www.ebi.ac.uk/~zerbino/velvet/>
 
-Compile with OPENMP, and provide two versions, default and
-with long sequences set.  Add message to module load.
+Compile with OPENMP, and provide three versions:
+
+* `make 'MAXKMERLENGTH=128' 'OPENMP=1'`
+* `make 'MAXKMERLENGTH=128' 'OPENMP=1' 'LONGSEQUENCES=1'`
+* `make 'MAXKMERLENGTH=128' 'OPENMP=1' 'LONGSEQUENCES=1' 'BIGASSEMBLY=1'`
+
+Add message to module load.
+
+Copy over `contrib/` directory as well.
 
 
 LOG
 ---
 
+Build 
 
     TOOLVERSION=1.2.10
     VERSION=${TOOLVERSION}
@@ -29,21 +37,15 @@ LOG
     [[ -f velvet_${TOOLVERSION}.tgz ]] || wget https://www.ebi.ac.uk/~zerbino/velvet/velvet_${TOOLVERSION}.tgz
     tar xzf velvet_${TOOLVERSION}.tgz
     cd velvet_${TOOLVERSION}
-    make MAXKMERLENGTH=128 OPENMP=1
+    make 'MAXKMERLENGTH=128' 'OPENMP=1'
     cp -av velvet? $PFX/bin/
     make clean
-    make MAXKMERLENGTH=128 OPENMP=1 LONGSEQUENCES=1
+    make 'MAXKMERLENGTH=128' 'OPENMP=1' 'LONGSEQUENCES=1'
     for F in velvet? ; do cp -av $F $PFX/bin/${F}_longsequences; done
     make clean
-    make MAXKMERLENGTH=128 OPENMP=1 LONGSEQUENCES=1 BIGASSEMBLY=1
+    make 'MAXKMERLENGTH=128' 'OPENMP=1' 'LONGSEQUENCES=1' 'BIGASSEMBLY=1'
     for F in velvet? ; do cp -av $F $PFX/bin/${F}_longsequences_bigassembly; done
-
-Copy over the contrib directory.
-
     cp -av contrib $PFX/
-
-Remove source tree.
-
     cd ..
     rm -rf velvet_${TOOLVERSION}
 
