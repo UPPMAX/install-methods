@@ -1,0 +1,64 @@
+BLASTN 2.6.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: NCBI genome chromosomes - human
+           3,505 sequences; 64,036,671,579 total letters
+
+
+
+Query= testnucl1 lcl|NM_113339.3_cdsid_NP_189075.2 [gene=MSH1]
+[protein=MUTL protein-like protein 1] [protein_id=NP_189075.2]
+[location=124..3480]
+
+Length=3354
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 212537305812376
+
+
+Query= testnucl2 lcl|NM_103665.2_cdsid_NP_175203.2 [gene=OSB1]
+[protein=protein OSB1] [protein_id=NP_175203.2] [location=25..810]
+
+Length=783
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 47963377754341
+
+
+  Database: NCBI genome chromosomes - human
+    Posted date:  Jul 19, 2017  11:08 PM
+  Number of letters in database: 64,036,671,579
+  Number of sequences in database:  3,505
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5

@@ -1,0 +1,166 @@
+BLASTN 2.6.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: NCBI Genomic Reference Sequences
+           25,600,293 sequences; 1,138,980,721,869 total letters
+
+
+
+Query= testnucl1 lcl|NM_113339.3_cdsid_NP_189075.2 [gene=MSH1]
+[protein=MUTL protein-like protein 1] [protein_id=NP_189075.2]
+[location=124..3480]
+
+Length=3354
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+NC_012011.3  Vitis vinifera cultivar PN40024 chromosome 5, 12X, w...  171     1e-36
+NW_003724021.1  Vitis vinifera cultivar PN40024 chromosome 5 geno...  171     1e-36
+NC_032028.1  Lupinus angustifolius cultivar Tanjil chromosome LG2...  161     8e-34
+NW_017715302.1  Lupinus angustifolius cultivar Tanjil chromosome ...  161     8e-34
+
+
+>NC_012011.3 Vitis vinifera cultivar PN40024 chromosome 5, 12X, whole genome 
+shotgun sequence
+Length=25021643
+
+ Score = 171 bits (92),  Expect = 1e-36
+ Identities = 217/279 (78%), Gaps = 2/279 (1%)
+ Strand=Plus/Plus
+
+Query  2185     CCTCTTGATGGAGCTTCTAGAATGAAGCTTACTGGACTTTCTCCTTATTGGTTTGATGTT  2244
+                ||||| |||||||||  | | |||||| | |||||  | || || |||||||| || || 
+Sbjct  9712341  CCTCTGGATGGAGCTAATTGGATGAAGATAACTGGTTTATCACCATATTGGTTGGACGTG  9712400
+
+Query  2245     TCTTCTGGAACTGCTGTTCATAATACTGTTGATATGCAATCTCTTTTTCTTCTTACTGGA  2304
+                 |    || | |||||| |||||||| ||||||||| ||||  | |||||| | || |||
+Sbjct  9712401  GCACAAGGCAGTGCTGTGCATAATACAGTTGATATGAAATCATTGTTTCTTTTGACAGGA  9712460
+
+Query  2305     CCTAATGGAGGAGGAAAGTCTTCTCTTCTTAGATCTATTTGTGCTGCTGCTCTTCTTGGA  2364
+                |||||||| || || || ||   | | ||| |||| |||||||| || ||  | ||||||
+Sbjct  9712461  CCTAATGGGGGTGGTAAATCAAGTTTGCTTCGATCAATTTGTGCAGCCGCATTACTTGGA  9712520
+
+Query  2365     ATTTCTGGACTTATGGTTCCTGCTGAATCTGC-TTGTATTCCTCATTTTGATTCTATTAT  2423
+                || | |||| ||||||| ||||| ||||| || ||| |||||||||||||||||||||||
+Sbjct  9712521  ATATGTGGATTTATGGTGCCTGCAGAATCGGCCTTG-ATTCCTCATTTTGATTCTATTAT  9712579
+
+Query  2424     GCTTCATATGAAGTCTTATGATTCTCCTGTTGATGGAAA  2462
+                |||||| ||||| |||||||||   || | |||||||||
+Sbjct  9712580  GCTTCACATGAAATCTTATGATAGCCCAGCTGATGGAAA  9712618
+
+
+ Score = 97.1 bits (52),  Expect = 2e-14
+ Identities = 75/86 (87%), Gaps = 2/86 (2%)
+ Strand=Plus/Plus
+
+Query  419      TTCTTTGT-AGAGTTGGAGAATTTTATGAAGCTATTGGAATTGATGCTTGTATTCTTGTT  477
+                |||||| | || || || || ||||||||||| || ||||||||||||||||||||||||
+Sbjct  9642089  TTCTTTTTCAG-GTAGGGGATTTTTATGAAGCCATCGGAATTGATGCTTGTATTCTTGTT  9642147
+
+Query  478      GAATATGCTGGACTTAATCCTTTTGG  503
+                |||||||||||  | |||||||||||
+Sbjct  9642148  GAATATGCTGGTTTGAATCCTTTTGG  9642173
+
+
+>NW_003724021.1 Vitis vinifera cultivar PN40024 chromosome 5 genomic scaffold, 
+12X scaffold_49.assembly12x, whole genome shotgun sequence
+Length=3109742
+
+ Score = 171 bits (92),  Expect = 1e-36
+ Identities = 217/279 (78%), Gaps = 2/279 (1%)
+ Strand=Plus/Plus
+
+Query  2185     CCTCTTGATGGAGCTTCTAGAATGAAGCTTACTGGACTTTCTCCTTATTGGTTTGATGTT  2244
+                ||||| |||||||||  | | |||||| | |||||  | || || |||||||| || || 
+Sbjct  2687609  CCTCTGGATGGAGCTAATTGGATGAAGATAACTGGTTTATCACCATATTGGTTGGACGTG  2687668
+
+Query  2245     TCTTCTGGAACTGCTGTTCATAATACTGTTGATATGCAATCTCTTTTTCTTCTTACTGGA  2304
+                 |    || | |||||| |||||||| ||||||||| ||||  | |||||| | || |||
+Sbjct  2687669  GCACAAGGCAGTGCTGTGCATAATACAGTTGATATGAAATCATTGTTTCTTTTGACAGGA  2687728
+
+Query  2305     CCTAATGGAGGAGGAAAGTCTTCTCTTCTTAGATCTATTTGTGCTGCTGCTCTTCTTGGA  2364
+                |||||||| || || || ||   | | ||| |||| |||||||| || ||  | ||||||
+Sbjct  2687729  CCTAATGGGGGTGGTAAATCAAGTTTGCTTCGATCAATTTGTGCAGCCGCATTACTTGGA  2687788
+
+Query  2365     ATTTCTGGACTTATGGTTCCTGCTGAATCTGC-TTGTATTCCTCATTTTGATTCTATTAT  2423
+                || | |||| ||||||| ||||| ||||| || ||| |||||||||||||||||||||||
+Sbjct  2687789  ATATGTGGATTTATGGTGCCTGCAGAATCGGCCTTG-ATTCCTCATTTTGATTCTATTAT  2687847
+
+Query  2424     GCTTCATATGAAGTCTTATGATTCTCCTGTTGATGGAAA  2462
+                |||||| ||||| |||||||||   || | |||||||||
+Sbjct  2687848  GCTTCACATGAAATCTTATGATAGCCCAGCTGATGGAAA  2687886
+
+
+ Score = 97.1 bits (52),  Expect = 2e-14
+ Identities = 75/86 (87%), Gaps = 2/86 (2%)
+ Strand=Plus/Plus
+
+Query  419      TTCTTTGT-AGAGTTGGAGAATTTTATGAAGCTATTGGAATTGATGCTTGTATTCTTGTT  477
+                |||||| | || || || || ||||||||||| || ||||||||||||||||||||||||
+Sbjct  2617357  TTCTTTTTCAG-GTAGGGGATTTTTATGAAGCCATCGGAATTGATGCTTGTATTCTTGTT  2617415
+
+Query  478      GAATATGCTGGACTTAATCCTTTTGG  503
+                |||||||||||  | |||||||||||
+Sbjct  2617416  GAATATGCTGGTTTGAATCCTTTTGG  2617441
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 3772411359115230
+
+
+Query= testnucl2 lcl|NM_103665.2_cdsid_NP_175203.2 [gene=OSB1]
+[protein=protein OSB1] [protein_id=NP_175203.2] [location=25..810]
+
+Length=783
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+NW_017372370.1  Scleropages formosus breed golden arowana unplace...  52.8    0.11 
+
+
+>NW_017372370.1 Scleropages formosus breed golden arowana unplaced genomic scaffold, 
+ASM162426v1 scaffold93, whole genome shotgun sequence
+Length=4551542
+
+ Score = 52.8 bits (28),  Expect = 0.11
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Minus
+
+Query  44      CTTCTCAAATTTCTTCTTCTTTTCCTAA  71
+               ||||||||||||||||||||||||||||
+Sbjct  162790  CTTCTCAAATTTCTTCTTCTTTTCCTAA  162763
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 848972999226888
+
+
+  Database: NCBI Genomic Reference Sequences
+    Posted date:  Oct 25, 2017  3:00 PM
+  Number of letters in database: 1,138,980,721,869
+  Number of sequences in database:  25,600,293
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5

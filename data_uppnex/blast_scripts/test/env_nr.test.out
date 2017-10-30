@@ -1,0 +1,175 @@
+BLASTP 2.6.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for composition-based statistics: Alejandro A. Schaffer,
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
+
+
+Database: Proteins from WGS metagenomic projects (env_nr).
+           7,003,679 sequences; 1,396,601,938 total letters
+
+
+
+Query= testprot1 lcl|NM_113339.3_cdsid_NP_189075.2 [gene=MSH1]
+[protein=MUTL protein-like protein 1] [protein_id=NP_189075.2]
+[location=124..3480]
+
+Length=1118
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+EDI20519.1  hypothetical protein GOS_470942 [marine metagenome]       231     1e-64
+EBB25705.1  hypothetical protein GOS_263783 [marine metagenome]       150     3e-38
+EBC04214.1  hypothetical protein GOS_133739 [marine metagenome]       140     1e-34
+EBE83820.1  hypothetical protein GOS_9696397 [marine metagenome]      143     5e-34
+
+
+>EDI20519.1 hypothetical protein GOS_470942, partial [marine metagenome]
+Length=437
+
+ Score = 231 bits (590),  Expect = 1e-64, Method: Compositional matrix adjust.
+ Identities = 160/456 (35%), Positives = 243/456 (53%), Gaps = 29/456 (6%)
+
+Query  662   ASENAKARVLELLRELSVKLQTKINVLVFASMLLVISKALFSHACEGRRRKWVFPTLVGF  721
+             AS  A   V   LR L+  L+T +  LV A+    ++ A   HA     R W    L+  
+Sbjct  1     ASFEAGKEVAGALRTLAADLETSVADLVSAATFSAVATAASLHARHAASRGWRPAQLLPA  60
+
+Query  722   SLDEGAKPLDGASRMKLTGLSPYWFDVSSGTAVHNTVDMQSLFLLTGPNGGGKSSLLRSI  781
+             +        D ++   L GL P+W D     AV N V +  + LLTGPN  GKS++LR+ 
+Sbjct  61    N--------DASTPWLLEGLVPFWMDRDD--AVVNDVSLDGVSLLTGPNMAGKSTILRAT  110
+
+Query  782   CAAALLGISGLMVPAESACIPHFDSIMLHMKSYDSPVDGKSSFQVEMSEIRSIVSQATSR  841
+              AAALL   GL  P  SA +P FDS+++ M S DSP +G SS+ VEM+E+  ++   T++
+Sbjct  111   AAAALLASCGLHCPVTSASVPFFDSLIVRMSSTDSPAEGLSSYAVEMAEVGQMLDVVTAK  170
+
+Query  842   SLVLIDEICRGTETAKGTCIAGSVVESLDTSGCLGIVSTHLHGIFSLPLTAKNITYKAM-  900
+             S V IDE+ RGTE   GT + G+VVE LD SG  GI +THLHG+  L L       + M 
+Sbjct  171   SAVFIDELGRGTEARHGTAMGGAVVEELDRSGARGIFATHLHGVLDLGLNLSPFAKRMMM  230
+
+Query  901   -GAENVEGQTKPTWKLTDGVCRESLAFETAKREGVPESVIQRAEALYLSVYAKDASAEVV  959
+                E+ +G+ +PT ++  G CRESLA +TA   GV + V+ R++ L   +       E V
+Sbjct  231   ETREDNDGRLRPTLRMIPGECRESLALQTATDMGVSDEVVHRSQELLAQI------PETV  284
+
+Query  960   KPDQIITSSNNDQQIQKPVSSERSLEKDLAKAIVKICGKKM-IEPEAIECLSIGARELPP  1018
+                +   ++  +        +     + L + +V +   ++   PEA     + A+++PP
+Sbjct  285   VVGKTAPAAEEEASPTAAALAAAPPLESLRELLVSVGSLELGTVPEAG---IVHAQDVPP  341
+
+Query  1019  PSTVGSSCVYVMRRPDKRLYIGQTDDLEGRIRAHRAKEGLQGSSFL---YLMVQ----GK  1071
+             P+    SCVYV+RR D   Y G++DDL GR+ +HRA    +GSS +   ++ V     GK
+Sbjct  342   PAARAWSCVYVLRRGDGWAYCGESDDLSGRLASHRANAAREGSSDVECTFITVPREDGGK  401
+
+Query  1072  SMACQLETLLINQLHEQGYSLANLADGKHRNFGTSS  1107
+             S A  LE+ +I +L  +G  L + +D ++ +FG+++
+Sbjct  402   SRARALESRVIRKLRAEGIPLLSGSDARNTSFGSAA  437
+
+
+>EBB25705.1 hypothetical protein GOS_263783, partial [marine metagenome]
+Length=297
+
+ Score = 150 bits (380),  Expect = 3e-38, Method: Compositional matrix adjust.
+ Identities = 104/286 (36%), Positives = 146/286 (51%), Gaps = 39/286 (14%)
+
+Query  129  LQFKSRFPREVLLCRVGEFYEAIGIDACILVEYAGLNPFGGLRSDSIPKAGCPIMNLRQT  188
+            +  K+R PR++ L RVG+FYE +G DA +LV +AGLNP G      +P+AGCP++ +++T
+Sbjct  25   VTVKARHPRKISLIRVGDFYECLGYDAVMLVLFAGLNPMG---ISGVPRAGCPVVKIQET  81
+
+Query  189  LDDLTRNGYSVCIVEEVQG------PTPARSRKGRFISGHAHPGSP-YVYGLVGVDHDLD  241
+            LD LT  GYS  + EEV        PTP    K R+I+    P SP YV G   +  D+D
+Sbjct  82   LDRLTSRGYSCVVCEEVPAMTKYGQPTPP---KDRYIAAIVTPASPNYVKGAASMGEDVD  138
+
+Query  242  FPD--PMPVVGISRSARGYCMISIFETMKAYSLDDGLTEEALVTKLRTRR-CHHLFLHAS  298
+            F D    PVVG++  A GY +++    ++  S+ +GLT EA   KL        L+ H S
+Sbjct  139  FGDGCAPPVVGLASGALGYTVVTCEPDLRRVSVLEGLTAEAAAAKLSAGGIAPPLYRHES  198
+
+Query  299  LRHNASGTCRWGEFGEGGLLWGECSSRNFEW----------------FEGDTLSELLSRV  342
+            L    SG  + G    G        SR   W                + GD + +LL  V
+Sbjct  199  L---GSGHAQGGRHSAG----TSAPSRRLRWEVQSILSAAEGVDAVKYSGDVVEKLLDLV  251
+
+Query  343  KDVYGLDDEVSFRNVNVPSKNRPRPLHLGTATQIGALPTEGIPCLL  388
+            +  +GL  +  F  V+V ++ RP PL L TA Q+  LPT  +P LL
+Sbjct  252  RLDHGLGPDEVFDRVSVTNEGRPAPLSLATAQQLSVLPTRSVPPLL  297
+
+
+
+Lambda      K        H        a         alpha
+   0.319    0.134    0.401    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 428793054615
+
+
+Query= testprot2 lcl|NM_103665.2_cdsid_NP_175203.2 [gene=OSB1]
+[protein=protein OSB1] [protein_id=NP_175203.2] [location=25..810]
+
+Length=261
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+EBP51255.1  hypothetical protein GOS_7899445 [marine metagenome]      70.5    2e-12
+EBN47640.1  hypothetical protein GOS_8240314 [marine metagenome]      35.0    1.2  
+ECX62314.1  hypothetical protein GOS_2505172 [marine metagenome]      35.0    2.8  
+KKK84965.1  hypothetical protein LCGC14_2778020 [marine sediment ...  33.9    2.9  
+
+
+>EBP51255.1 hypothetical protein GOS_7899445, partial [marine metagenome]
+Length=234
+
+ Score = 70.5 bits (171),  Expect = 2e-12, Method: Compositional matrix adjust.
+ Identities = 33/58 (57%), Positives = 38/58 (66%), Gaps = 3/58 (5%)
+
+Query  180  ESKKDEIYLWQVFFSNPYDWWDNRRNKKNPKQPDFKHKDTGEALWLCS-DLPDWITRR  236
+            +S KD   LW+  F  P  WWDNR NK+NP+ PDFKHKDTGE LWL   D P W+  R
+Sbjct  107  QSPKDA--LWRSVFDAPDRWWDNRENKRNPRAPDFKHKDTGEGLWLTGRDTPPWVMER  162
+
+
+>EBN47640.1 hypothetical protein GOS_8240314, partial [marine metagenome]
+Length=114
+
+ Score = 35.0 bits (79),  Expect = 1.2, Method: Compositional matrix adjust.
+ Identities = 22/68 (32%), Positives = 37/68 (54%), Gaps = 8/68 (12%)
+
+Query  96   FRISLRMWDAMARTCIAHLKLNDHILVSGRLESYSKSSSDVYSGLNLDYQVKVAEVNYV-  154
+            FR+S   W+ +A  C   L+    + V GRL S +  S+D  + ++LD  V  +EV ++ 
+Sbjct  31   FRVS--AWNRLAENCNQFLQRGSKVYVEGRLSSRTYVSNDGETRVSLD--VNASEVRFLD  86
+
+Query  155  ---AAPPS  159
+               +APP+
+Sbjct  87   SRNSAPPA  94
+
+
+
+Lambda      K        H        a         alpha
+   0.319    0.134    0.407    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 70875320568
+
+
+  Database: Proteins from WGS metagenomic projects (env_nr).
+    Posted date:  Oct 19, 2017  8:41 PM
+  Number of letters in database: 1,396,601,938
+  Number of sequences in database:  7,003,679
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40

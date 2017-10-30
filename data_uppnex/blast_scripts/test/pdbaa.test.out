@@ -1,0 +1,207 @@
+BLASTP 2.6.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for composition-based statistics: Alejandro A. Schaffer,
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
+
+
+Database: PDB protein database
+           94,405 sequences; 23,733,367 total letters
+
+
+
+Query= testprot1 lcl|NM_113339.3_cdsid_NP_189075.2 [gene=MSH1]
+[protein=MUTL protein-like protein 1] [protein_id=NP_189075.2]
+[location=124..3480]
+
+Length=1118
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+1NNE_A  Chain A, Crystal Structure Of The Muts-adpbef3-dna Complex    115     6e-26
+2O8B_B  Chain B, Human Mutsalpha (Msh2MSH6) BOUND TO ADP AND A G ...  110     3e-24
+1EWR_A  Chain A, Crystal Structure Of Taq Muts                        104     1e-22
+1EWQ_A  Chain A, Crystal Structure Taq Muts Complexed With A Hete...  104     2e-22
+
+
+>1NNE_A Chain A, Crystal Structure Of The Muts-adpbef3-dna Complex
+ 1NNE_B Chain B, Crystal Structure Of The Muts-adpbef3-dna Complex
+Length=765
+
+ Score = 115 bits (289),  Expect = 6e-26, Method: Compositional matrix adjust.
+ Identities = 74/201 (37%), Positives = 105/201 (52%), Gaps = 5/201 (2%)
+
+Query  754  VHNTVDM-QSLFLLTGPNGGGKSSLLRSICAAALLGISGLMVPAESACIPHFDSIMLHMK  812
+            V N ++M   L L+TGPN  GKS+ LR     ALL   G  VPAE A +P FD I   + 
+Sbjct  568  VPNDLEMAHELVLITGPNMAGKSTFLRQTALIALLAQVGSFVPAEEAHLPLFDGIYTRIG  627
+
+Query  813  SYDSPVDGKSSFQVEMSEIRSIVSQATSRSLVLIDEICRGTETAKGTCIAGSVVESLDTS  872
+            + D    GKS+F VEM E+  I+ +AT  SLVL+DE+ RGT +  G  IA +V E+L   
+Sbjct  628  ASDDLAGGKSTFMVEMEEVALILKEATENSLVLLDEVGRGTSSLDGVAIATAVAEALHER  687
+
+Query  873  GCLGIVSTHLHGIFSLPLTA-KNITYKAMGAENVEGQTKPTWKLTDGVCRESLAFETAKR  931
+                + +TH   + +L L   KN+    + A    G      ++  G   +S   E A  
+Sbjct  688  RAYTLFATHYFELTALGLPRLKNLH---VAAREEAGGLVFYHQVLPGPASKSYGVEVAAM  744
+
+Query  932  EGVPESVIQRAEALYLSVYAK  952
+             G+P+ V+ RA AL  ++ A+
+Sbjct  745  AGLPKEVVARARALLQAMAAR  765
+
+
+ Score = 40.8 bits (94),  Expect = 0.010, Method: Compositional matrix adjust.
+ Identities = 27/105 (26%), Positives = 49/105 (47%), Gaps = 1/105 (1%)
+
+Query  124  LNWEMLQFKSRFPREVLLCRVGEFYEAIGIDACILVEYAGLNPFGGLRSD-SIPKAGCPI  182
+            L  + ++ + ++P  +LL +VG+FYE  G DA  L    GL        D + P AG P+
+Sbjct  16   LLQQYVELRDQYPDYLLLFQVGDFYECFGEDAERLARALGLVLTHKTSKDFTTPMAGIPL  75
+
+Query  183  MNLRQTLDDLTRNGYSVCIVEEVQGPTPARSRKGRFISGHAHPGS  227
+                   + L + G+ + + ++V+    A     R ++    PG+
+Sbjct  76   RAFEAYAERLLKMGFRLAVADQVEPAEEAEGLVRREVTQLLTPGT  120
+
+
+>2O8B_B Chain B, Human Mutsalpha (Msh2MSH6) BOUND TO ADP AND A G T MISPAIR
+ 2O8C_B Chain B, Human Mutsalpha (msh2/msh6) Bound To Adp And An O6-methyl-guanine 
+T Mispair
+ 2O8D_B Chain B, Human Mutsalpha (Msh2MSH6) BOUND TO ADP AND A G DU MISPAIR
+ 2O8E_B Chain B, Human Mutsalpha (Msh2MSH6) BOUND TO A G T MISPAIR, WITH 
+ADP BOUND TO Msh2 Only
+ 2O8F_B Chain B, Human Mutsalpha (Msh2MSH6) BOUND TO DNA WITH A SINGLE 
+BASE T INSERT
+Length=1022
+
+ Score = 110 bits (276),  Expect = 3e-24, Method: Compositional matrix adjust.
+ Identities = 68/186 (37%), Positives = 100/186 (54%), Gaps = 8/186 (4%)
+
+Query  765  LLTGPNGGGKSSLLRSICAAALLGISGLMVPAESACIPHFDSIMLHMKSYDSPVDGKSSF  824
+            L+TGPN GGKS+L+R     A++   G  VPAE   +   D +   + + D  + G+S+F
+Sbjct  793  LVTGPNMGGKSTLMRQAGLLAVMAQMGCYVPAEVCRLTPIDRVFTRLGASDRIMSGESTF  852
+
+Query  825  QVEMSEIRSIVSQATSRSLVLIDEICRGTETAKGTCIAGSVVESL-DTSGCLGIVSTHLH  883
+             VE+SE  SI+  AT+ SLVL+DE+ RGT T  GT IA +VV+ L +T  C  + STH H
+Sbjct  853  FVELSETASILMHATAHSLVLVDELGRGTATFDGTAIANAVVKELAETIKCRTLFSTHYH  912
+
+Query  884  GI---FSLPLTAKNITYKAMGAENVEGQTKPT----WKLTDGVCRESLAFETAKREGVPE  936
+             +   +S  +  +      M     E  ++ T    +K   G C +S  F  A+   +PE
+Sbjct  913  SLVEDYSQNVAVRLGHMACMVENECEDPSQETITFLYKFIKGACPKSYGFNAARLANLPE  972
+
+Query  937  SVIQRA  942
+             VIQ+ 
+Sbjct  973  EVIQKG  978
+
+
+ Score = 39.7 bits (91),  Expect = 0.021, Method: Compositional matrix adjust.
+ Identities = 32/95 (34%), Positives = 45/95 (47%), Gaps = 6/95 (6%)
+
+Query  130  QFKSRFPREVLLCRVGEFYEAIGIDACILVEYAGLNPFGGLRSDSIPKAGCPIMNLRQTL  189
+            Q KS+    V+  +VG+FYE   +DA I V   GL    G    +   +G P +   +  
+Sbjct  77   QIKSQNFDLVICYKVGKFYELYHMDALIGVSELGLVFMKG----NWAHSGFPEIAFGRYS  132
+
+Query  190  DDLTRNGYSVCIVEEVQGP--TPARSRKGRFISGH  222
+            D L + GY V  VE+ + P    AR RK   IS +
+Sbjct  133  DSLVQKGYKVARVEQTETPEMMEARCRKMAHISKY  167
+
+
+
+Lambda      K        H        a         alpha
+   0.319    0.134    0.401    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 13130930010
+
+
+Query= testprot2 lcl|NM_103665.2_cdsid_NP_175203.2 [gene=OSB1]
+[protein=protein OSB1] [protein_id=NP_175203.2] [location=25..810]
+
+Length=261
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+5JC3_A  Chain A, Crystal Structure Of Chicken Mda5 With 5'p 10-me...  30.8    2.0  
+4J87_A  Chain A, Crystal Structure Of Alpha-cop                       28.5    8.3  
+
+
+>5JC3_A Chain A, Crystal Structure Of Chicken Mda5 With 5'p 10-mer Dsrna 
+And Adp-mg2+ At 2.6 A Resolution (monoclinic Form, Twinned).
+ 5JC3_B Chain B, Crystal Structure Of Chicken Mda5 With 5'p 10-mer Dsrna 
+And Adp-mg2+ At 2.6 A Resolution (monoclinic Form, Twinned).
+ 5JC7_A Chain A, Crystal Structure Of Chicken Mda5 With 5'p 24-mer Dsrna 
+And Adp-mg2+ At 2.75 A Resolution.
+ 5JC7_B Chain B, Crystal Structure Of Chicken Mda5 With 5'p 24-mer Dsrna 
+And Adp-mg2+ At 2.75 A Resolution.
+ 5JCF_A Chain A, Crystal Structure Of Chicken Mda5 With 5'p 10-mer Dsrna 
+And Adp-mg2+ At 2.6 A Resolution (orthorhombic Form).
+ 5JCF_B Chain B, Crystal Structure Of Chicken Mda5 With 5'p 10-mer Dsrna 
+And Adp-mg2+ At 2.6 A Resolution (orthorhombic Form).
+ 5JCH_A Chain A, Crystal Structure Of Chicken Mda5 With 5'p 10-mer Dsrna 
+And Adp-mg2+ At 2.95 A Resolution (untwinned).
+ 5JCH_B Chain B, Crystal Structure Of Chicken Mda5 With 5'p 10-mer Dsrna 
+And Adp-mg2+ At 2.95 A Resolution (untwinned).
+Length=701
+
+ Score = 30.8 bits (68),  Expect = 2.0, Method: Compositional matrix adjust.
+ Identities = 23/78 (29%), Positives = 37/78 (47%), Gaps = 4/78 (5%)
+
+Query  185  EIYLWQVFFSNPYDWWDNRRNKKNPKQPDFKHKDTGEALWLCSD---LPDWITRRLELFD  241
+            ++Y    F S PY+ W  R  ++  K+   K +   E L   +D   + D I R ++ ++
+Sbjct  265  QLYPKSEFGSQPYEQWVIREERRAAKEEKRKERVCAEHLKKYNDALQINDTI-RMVDAYN  323
+
+Query  242  QKNRFYDEEKTRRDRLSD  259
+              N FY E K R+   SD
+Sbjct  324  HLNNFYKELKRRKTAESD  341
+
+
+>4J87_A Chain A, Crystal Structure Of Alpha-cop
+ 4J8B_A Chain A, Crystal Structure Of Alpha-cop/emp47p Complex
+ 4J8G_A Chain A, Crystal Structure Of Alpha-cop/e19 Complex
+ 4J8G_B Chain B, Crystal Structure Of Alpha-cop/e19 Complex
+Length=327
+
+ Score = 28.5 bits (62),  Expect = 8.3, Method: Compositional matrix adjust.
+ Identities = 20/82 (24%), Positives = 40/82 (49%), Gaps = 8/82 (10%)
+
+Query  99   SLRMWDAMARTCIAHLKLNDHILVSGRLESYSKSSSDVYSGLNLDYQVKVAEVNYV----  154
+            ++R+W+  +R CIA L  + H ++          S D+    +LD  V+V +++ +    
+Sbjct  118  TIRIWNWQSRNCIAILTGHSHYVMCAAFH----PSEDLIVSASLDQTVRVWDISGLRMKN  173
+
+Query  155  AAPPSHVLDSQISKNPKTKTED  176
+            AAP S   + Q ++   + + D
+Sbjct  174  AAPVSMSKEDQKAQAHNSISND  195
+
+
+
+Lambda      K        H        a         alpha
+   0.319    0.134    0.407    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 2301151587
+
+
+  Database: PDB protein database
+    Posted date:  Oct 26, 2017  11:54 AM
+  Number of letters in database: 23,733,367
+  Number of sequences in database:  94,405
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40

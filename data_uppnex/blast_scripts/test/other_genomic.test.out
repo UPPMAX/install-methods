@@ -1,0 +1,149 @@
+BLASTN 2.6.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: NCBI genome chromosomes - other
+           153,013 sequences; 598,252,580,061 total letters
+
+
+
+Query= testnucl1 lcl|NM_113339.3_cdsid_NP_189075.2 [gene=MSH1]
+[protein=MUTL protein-like protein 1] [protein_id=NP_189075.2]
+[location=124..3480]
+
+Length=3354
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+NC_032028.1  Lupinus angustifolius cultivar Tanjil chromosome LG2...  161     4e-34
+NW_017715302.1  Lupinus angustifolius cultivar Tanjil chromosome ...  161     4e-34
+CM007380.1  Lupinus angustifolius cultivar Tanjil chromosome LG20...  161     4e-34
+KV862163.1  Lupinus angustifolius cultivar Tanjil chromosome LG20...  161     4e-34
+
+
+>NC_032028.1 Lupinus angustifolius cultivar Tanjil chromosome LG20, LupAngTanjil_v1.0, 
+whole genome shotgun sequence
+Length=21988590
+
+ Score = 161 bits (87),  Expect = 4e-34
+ Identities = 156/190 (82%), Gaps = 2/190 (1%)
+ Strand=Plus/Plus
+
+Query  2257     GCTGTTCATAATACTGTTGATATGCAATCTCTTTTTCTTCTTACTGGACCTAATGGAGGA  2316
+                |||||||||||||||||||||||||||||  | |||||| | |||||||| ||||| || 
+Sbjct  8305956  GCTGTTCATAATACTGTTGATATGCAATCATTGTTTCTTTTGACTGGACCAAATGGTGGT  8306015
+
+Query  2317     GGAAAGTCTTCTCTTCTTAGATCTATT-TGTGCTGCTGCTCTTCTTGGAATTTCTGGACT  2375
+                || || |||  | | ||| | || ||| ||||||||||| || |||||  | | ||||||
+Sbjct  8306016  GGCAAATCTAGTTTACTTCGGTC-ATTATGTGCTGCTGCGCTACTTGGTGTATGTGGACT  8306074
+
+Query  2376     TATGGTTCCTGCTGAATCTGCTTGTATTCCTCATTTTGATTCTATTATGCTTCATATGAA  2435
+                ||  |||||||||||||| ||||  || |||  ||||||||| || ||||||||||||||
+Sbjct  8306075  TACAGTTCCTGCTGAATCAGCTTTGATGCCTTGTTTTGATTCCATCATGCTTCATATGAA  8306134
+
+Query  2436     GTCTTATGAT  2445
+                ||||||||||
+Sbjct  8306135  GTCTTATGAT  8306144
+
+
+>NW_017715302.1 Lupinus angustifolius cultivar Tanjil chromosome LG20 genomic 
+scaffold, LupAngTanjil_v1.0 Scaffold_108_1, whole genome shotgun 
+sequence
+Length=1176273
+
+ Score = 161 bits (87),  Expect = 4e-34
+ Identities = 178/223 (80%), Gaps = 2/223 (1%)
+ Strand=Plus/Minus
+
+Query  2257    GCTGTTCATAATACTGTTGATATGCAATCTCTTTTTCTTCTTACTGGACCTAATGGAGGA  2316
+               |||||||||||||||||||||||||||||  | |||||| | |||||||| ||||| || 
+Sbjct  889593  GCTGTTCATAATACTGTTGATATGCAATCATTGTTTCTTTTGACTGGACCAAATGGTGGT  889534
+
+Query  2317    GGAAAGTCTTCTCTTCTTAGATCTATT-TGTGCTGCTGCTCTTCTTGGAATTTCTGGACT  2375
+               || || |||  | | ||| | || ||| ||||||||||| || |||||  | | ||||||
+Sbjct  889533  GGCAAATCTAGTTTACTTCGGTC-ATTATGTGCTGCTGCGCTACTTGGTGTATGTGGACT  889475
+
+Query  2376    TATGGTTCCTGCTGAATCTGCTTGTATTCCTCATTTTGATTCTATTATGCTTCATATGAA  2435
+               ||  |||||||||||||| ||||  || |||  ||||||||| || ||||||||||||||
+Sbjct  889474  TACAGTTCCTGCTGAATCAGCTTTGATGCCTTGTTTTGATTCCATCATGCTTCATATGAA  889415
+
+Query  2436    GTCTTATGATTCTCCTGTTGATGGAAAGTCTTCTTTTCAAGTT  2478
+               ||||||||||   || | ||||| |||   ||| ||||| |||
+Sbjct  889414  GTCTTATGATAGCCCAGCTGATGAAAAAAGTTCATTTCAGGTT  889372
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 1983786274620172
+
+
+Query= testnucl2 lcl|NM_103665.2_cdsid_NP_175203.2 [gene=OSB1]
+[protein=protein OSB1] [protein_id=NP_175203.2] [location=25..810]
+
+Length=783
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+KV407969.1  Scleropages formosus breed red arowana unplaced genom...  52.8    0.056
+NW_017372370.1  Scleropages formosus breed golden arowana unplace...  52.8    0.056
+
+
+>KV407969.1 Scleropages formosus breed red arowana unplaced genomic scaffold 
+scaffold166, whole genome shotgun sequence
+Length=2322693
+
+ Score = 52.8 bits (28),  Expect = 0.056
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Minus
+
+Query  44      CTTCTCAAATTTCTTCTTCTTTTCCTAA  71
+               ||||||||||||||||||||||||||||
+Sbjct  154056  CTTCTCAAATTTCTTCTTCTTTTCCTAA  154029
+
+
+>NW_017372370.1 Scleropages formosus breed golden arowana unplaced genomic scaffold, 
+ASM162426v1 scaffold93, whole genome shotgun sequence
+ KV411281.1 Scleropages formosus breed golden arowana unplaced genomic scaffold 
+scaffold93, whole genome shotgun sequence
+Length=4551542
+
+ Score = 52.8 bits (28),  Expect = 0.056
+ Identities = 28/28 (100%), Gaps = 0/28 (0%)
+ Strand=Plus/Minus
+
+Query  44      CTTCTCAAATTTCTTCTTCTTTTCCTAA  71
+               ||||||||||||||||||||||||||||
+Sbjct  162790  CTTCTCAAATTTCTTCTTCTTTTCCTAA  162763
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 446890562479971
+
+
+  Database: NCBI genome chromosomes - other
+    Posted date:  Jun 25, 2017  6:41 AM
+  Number of letters in database: 598,252,580,061
+  Number of sequences in database:  153,013
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5
