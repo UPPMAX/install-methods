@@ -1,5 +1,5 @@
 <h1 id="blast-databases-available-locally">Blast databases available locally</h1>
-<p>Many pipelines involving annotation/assembly comparison involve BLAST (<a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi" class="uri">http://blast.ncbi.nlm.nih.gov/Blast.cgi</a>). Several blast versions are available as modules, for example:</p>
+<p>Many pipelines involving annotation/assembly comparison involve Blast (<a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi" class="uri">http://blast.ncbi.nlm.nih.gov/Blast.cgi</a>). Several Blast versions are available as modules, for example:</p>
 <ul>
 <li><strong>blast/2.6.0+</strong>, etc. : the Blast+ suites (<code>blastp</code>, <code>tblastn</code>, etc.), <strong>recommended</strong></li>
 <li><strong>blast/2.2.26</strong>, etc. : 'legacy' Blast (<code>blastall</code>, <code>megablast</code>, etc)</li>
@@ -11,12 +11,12 @@
 <li>New versions are installed <strong>the first day of each month at 00.01</strong> from local copies updated <strong>the 28th of the previous month beginning at 00.01</strong></li>
 </ul>
 <p>The databases available are:</p>
-<table style="width:40%;">
+<table style="width:100%;">
 <colgroup>
-<col width="8%" />
+<col width="25%" />
 <col width="9%" />
-<col width="12%" />
 <col width="9%" />
+<col width="55%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -118,7 +118,7 @@
 <td align="left">alias for <strong>uniprot_sptrembl</strong></td>
 </tr>
 <tr class="even">
-<td align="left"><strong>uniprot_all</strong>.fasta</td>
+<td align="left"><strong>uniprot_all.fasta</strong></td>
 <td align="left">protein</td>
 <td align="left"></td>
 <td align="left">alias for <strong>uniprot_sptrembl</strong></td>
@@ -155,7 +155,12 @@
 <p>When any of the <strong>blast</strong> modules is loaded, the <code>BLASTDB</code> environment variable is set to the location of the local database copies (<code>/sw/data/uppnex/blast_databases</code>). The various Blast tools can use this variable to find the locations of databases, so that only the name needs to be specified.</p>
 <pre><code>module load bioinfo-tools blast/2.6.0+
 blastp -db nr -query input.fasta</code></pre>
-<p>After loading the <code>blast/2.6.0+</code> module, specifying <code>blastp -db nr</code> results in <code>blastp</code> searching the local copy of <code>nr</code>, because the <code>BLASTDB</code> environment variable is set when the module is loaded.</p>
+<p>After loading the <code>blast/2.6.0+</code> module, specifying <code>blastp -db nr</code> results in <code>blastp</code> searching the local copy of <code>nr</code>, because the <code>BLASTDB</code> environment variable is set when the module is loaded. Similarly, each of these would result in searching the local copy of the given database:</p>
+<pre><code>blastp -db pdbaa ...
+blastp -db uniprot_sprot ...
+blastp -db uniprot_uniref90 ...
+blastn -db nt ...
+blastn -db refseq_genomic ...</code></pre>
 <h2 id="wgs-tsa-and-sra-sequence-databases-are-not-included">WGS, TSA and SRA sequence databases are not included</h2>
 <p>The NCBI <a href="https://www.ncbi.nlm.nih.gov/genbank/wgs/">Whole-Genome Shotgun</a> is no longer downloaded locally. NCBI provides special versions of Blast and other tools that can be used to search the remote versions of <a href="https://www.ncbi.nlm.nih.gov/genbank/wgs/">WGS</a>, the <a href="https://www.ncbi.nlm.nih.gov/genbank/tsa/">Transcriptome Shotgun Assembly</a>, and the <a href="https://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive</a>.</p>
 <p>These special blast versions and other tools are part of NCBI's <a href="https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc">SRA Tools</a>, which is available at Uppmax as the <strong>sratools</strong> module. We have also include <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/WGS_TOOLS/README_BLASTWGS.txt">auxiliary NCBI scripts</a> in the <strong>sratools</strong> module to convert taxonomic IDs to WGS and TSA identifiers.</p>

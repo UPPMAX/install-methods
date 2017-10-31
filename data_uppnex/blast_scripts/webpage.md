@@ -1,8 +1,8 @@
 Blast databases available locally
 =================================
 
-Many pipelines involving annotation/assembly comparison involve BLAST
-(<http://blast.ncbi.nlm.nih.gov/Blast.cgi>). Several blast versions are available
+Many pipelines involving annotation/assembly comparison involve Blast
+(<http://blast.ncbi.nlm.nih.gov/Blast.cgi>). Several Blast versions are available
 as modules, for example:
 
 * **blast/2.6.0+**, etc. : the Blast+ suites (`blastp`, `tblastn`, etc.), **recommended**
@@ -38,7 +38,7 @@ The databases available are:
 **uniprot_trembl** | protein | [UniProt][UniProtSPT] | TrEMBL high quality but unreviewed protein sequence database
 **uniprot_sptrembl** | protein | | **uniprot_sprot** and **uniprot_trembl** combined
 **uniprot_all** | protein | | alias for **uniprot_sptrembl**
-**uniprot_all**.fasta | protein | | alias for **uniprot_sptrembl**
+**uniprot_all.fasta** | protein | | alias for **uniprot_sptrembl**
 **uniprot_sprot_varsplic** | protein | [UniProt][UniProtIsoforms] | UniProt canonical and isoform sequences (see link)
 **uniprot_uniref50** | protein | [UniProt][UniRef] | Clustered sets of 50%-similar protein sequences (see link)
 **uniprot_uniref90** | protein | [UniProt][UniRef] | Clustered sets of 90%-similar protein sequences (see link)
@@ -67,8 +67,14 @@ find the locations of databases, so that only the name needs to be specified.
 
 After loading the `blast/2.6.0+` module, specifying `blastp -db nr` results in
 `blastp` searching the local copy of `nr`, because the `BLASTDB` environment
-variable is set when the module is loaded.
+variable is set when the module is loaded.  Similarly, each of these would
+result in searching the local copy of the given database:
 
+    blastp -db pdbaa ...
+    blastp -db uniprot_sprot ...
+    blastp -db uniprot_uniref90 ...
+    blastn -db nt ...
+    blastn -db refseq_genomic ...
 
 
 WGS, TSA and SRA sequence databases are not included

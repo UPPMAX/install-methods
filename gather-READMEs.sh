@@ -3,9 +3,13 @@
 set -x
 set -e
 
-# make nonempty to skip the long finds within the module and database trees
-SKIP_FIND_MODULES=
-SKIP_FIND_DATABASES=
+# Make nonempty on the command line to skip the long finds within the module and database trees, for example
+#     SKIP_FIND=yes ./gather-READMEs.sh
+# to skip both, or
+#     SKIP_FIND_MODULES=yes ./gather-READMEs.sh
+# to skip one
+SKIP_FIND_MODULES=${SKIP_FIND_MODULES-$SKIP_FIND}
+SKIP_FIND_DATABASES=${SKIP_FIND_DATABASES-$SKIP_FIND}
 
 # export INSTALL_METHODS_REPOSITORY to indicate your own clone's location
 REPOSITORY=${INSTALL_METHODS_REPOSITORY:-/home/douglas/github-sync/local/install-methods}
