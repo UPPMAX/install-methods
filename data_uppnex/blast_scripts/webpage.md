@@ -23,17 +23,17 @@ The databases available are:
 
 **Name** | **Type** | **Source** | **Notes**
 -----|------|--------|------
-**env_nr** | protein | [NCBI][] | Protein sequences for metagenomes
-**env_nt** | nucleotide | [NCBI][] | Nucleotide sequences for metagenomes
-**human_genomic** | nucleotide | [NCBI][] | Human RefSeq chromosome records
-**nr** | protein | [NCBI][] | Non-redundant protein sequences
-**nt** | nucleotide | [NCBI][] | Partially non-redundant nucleotide sequences
-**other_genomic** | nucleotide | [NCBI][] | RefSeq chromosome records for non-human organisms
-**pdbaa** | protein | [NCBI][] | Sequences for protein structures from Protein Data Bank
-**refseq_genomic** | nucleotide | [NCBI][] | NCBI genomic reference sequences
-**refseq_protein** | protein | [NCBI][] | NCBI protein reference sequences
-**refseq_rna** | nucleotide | [NCBI][] |  NCBI Transcript reference sequences
-**swissprot** | protein | [NCBI][] | Swiss-Prot sequence database
+**env_nr** | protein | [NCBI][NCBI] | Protein sequences for metagenomes
+**env_nt** | nucleotide | [NCBI][NCBI] | Nucleotide sequences for metagenomes
+**human_genomic** | nucleotide | [NCBI][NCBI] | Human RefSeq chromosome records
+**nr** | protein | [NCBI][NCBI] | Non-redundant protein sequences
+**nt** | nucleotide | [NCBI][NCBI] | Partially non-redundant nucleotide sequences
+**other_genomic** | nucleotide | [NCBI][NCBI] | RefSeq chromosome records for non-human organisms
+**pdbaa** | protein | [NCBI][NCBI] | Sequences for protein structures from Protein Data Bank
+**refseq_genomic** | nucleotide | [NCBI][NCBI] | NCBI genomic reference sequences
+**refseq_protein** | protein | [NCBI][NCBI] | NCBI protein reference sequences
+**refseq_rna** | nucleotide | [NCBI][NCBI] |  NCBI Transcript reference sequences
+**swissprot** | protein | [NCBI][NCBI] | Swiss-Prot sequence database
 **uniprot_sprot** | protein | [UniProt][UniProtSPT]  | Swiss-Prot high quality manually annotated and non-redundant protein sequence database
 **uniprot_trembl** | protein | [UniProt][UniProtSPT] | TrEMBL high quality but unreviewed protein sequence database
 **uniprot_sptrembl** | protein | | **uniprot_sprot** and **uniprot_trembl** combined
