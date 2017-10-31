@@ -1,0 +1,167 @@
+<h1 id="blast-databases-available-locally">Blast databases available locally</h1>
+<p>Many pipelines involving annotation/assembly comparison involve BLAST (<a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi" class="uri">http://blast.ncbi.nlm.nih.gov/Blast.cgi</a>). Several blast versions are available as modules, for example:</p>
+<ul>
+<li><strong>blast/2.6.0+</strong>, etc. : the Blast+ suites (<code>blastp</code>, <code>tblastn</code>, etc.), <strong>recommended</strong></li>
+<li><strong>blast/2.2.26</strong>, etc. : 'legacy' Blast (<code>blastall</code>, <code>megablast</code>, etc)</li>
+</ul>
+<p>Use <code>module spider blast</code> to see available versions. As for all bioinformatics tools at Uppmax, <code>module load bioinfo-tools</code> is required before the blast modules are available.</p>
+<p>Uppmax maintains local copies of many Blast databases, including those available at NCBI (<a href="ftp://ftp.ncbi.nih.gov/blast/db/README" class="uri">ftp://ftp.ncbi.nih.gov/blast/db/README</a>) as well as several UniProt databases (<a href="http://www.uniprot.org/" class="uri">http://www.uniprot.org/</a>). Note that:</p>
+<ul>
+<li>The local copies are found at <code>/sw/data/uppnex/blast_databases</code></li>
+<li>New versions are installed <strong>the first day of each month at 00.01</strong> from local copies updated <strong>the 28th of the previous month beginning at 00.01</strong></li>
+</ul>
+<p>The databases available are:</p>
+<table style="width:40%;">
+<colgroup>
+<col width="8%" />
+<col width="9%" />
+<col width="12%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"><strong>Name</strong></th>
+<th align="left"><strong>Type</strong></th>
+<th align="left"><strong>Source</strong></th>
+<th align="left"><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>env_nr</strong></td>
+<td align="left">protein</td>
+<td align="left"><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
+<td align="left">Protein sequences for metagenomes</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>env_nt</strong></td>
+<td align="left">nucleotide</td>
+<td align="left"><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
+<td align="left">Nucleotide sequences for metagenomes</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>human_genomic</strong></td>
+<td align="left">nucleotide</td>
+<td align="left"><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
+<td align="left">Human RefSeq chromosome records</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>nr</strong></td>
+<td align="left">protein</td>
+<td align="left"><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
+<td align="left">Non-redundant protein sequences</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>nt</strong></td>
+<td align="left">nucleotide</td>
+<td align="left"><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
+<td align="left">Partially non-redundant nucleotide sequences</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>other_genomic</strong></td>
+<td align="left">nucleotide</td>
+<td align="left"><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
+<td align="left">RefSeq chromosome records for non-human organisms</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>pdbaa</strong></td>
+<td align="left">protein</td>
+<td align="left"><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
+<td align="left">Sequences for protein structures from Protein Data Bank</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>refseq_genomic</strong></td>
+<td align="left">nucleotide</td>
+<td align="left"><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
+<td align="left">NCBI genomic reference sequences</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>refseq_protein</strong></td>
+<td align="left">protein</td>
+<td align="left"><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
+<td align="left">NCBI protein reference sequences</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>refseq_rna</strong></td>
+<td align="left">nucleotide</td>
+<td align="left"><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
+<td align="left">NCBI Transcript reference sequences</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>swissprot</strong></td>
+<td align="left">protein</td>
+<td align="left"><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
+<td align="left">Swiss-Prot sequence database</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>uniprot_sprot</strong></td>
+<td align="left">protein</td>
+<td align="left"><a href="http://www.uniprot.org/help/uniprotkb_sections">UniProt</a></td>
+<td align="left">Swiss-Prot high quality manually annotated and non-redundant protein sequence database</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>uniprot_trembl</strong></td>
+<td align="left">protein</td>
+<td align="left"><a href="http://www.uniprot.org/help/uniprotkb_sections">UniProt</a></td>
+<td align="left">TrEMBL high quality but unreviewed protein sequence database</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>uniprot_sptrembl</strong></td>
+<td align="left">protein</td>
+<td align="left"></td>
+<td align="left"><strong>uniprot_sprot</strong> and <strong>uniprot_trembl</strong> combined</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>uniprot_all</strong></td>
+<td align="left">protein</td>
+<td align="left"></td>
+<td align="left">alias for <strong>uniprot_sptrembl</strong></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>uniprot_all</strong>.fasta</td>
+<td align="left">protein</td>
+<td align="left"></td>
+<td align="left">alias for <strong>uniprot_sptrembl</strong></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>uniprot_sprot_varsplic</strong></td>
+<td align="left">protein</td>
+<td align="left"><a href="http://www.uniprot.org/help/canonical_and_isoforms">UniProt</a></td>
+<td align="left">UniProt canonical and isoform sequences (see link)</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>uniprot_uniref50</strong></td>
+<td align="left">protein</td>
+<td align="left"><a href="http://www.uniprot.org/uniref/">UniProt</a></td>
+<td align="left">Clustered sets of 50%-similar protein sequences (see link)</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>uniprot_uniref90</strong></td>
+<td align="left">protein</td>
+<td align="left"><a href="http://www.uniprot.org/uniref/">UniProt</a></td>
+<td align="left">Clustered sets of 90%-similar protein sequences (see link)</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>uniprot_uniref100</strong></td>
+<td align="left">protein</td>
+<td align="left"><a href="http://www.uniprot.org/uniref/">UniProt</a></td>
+<td align="left">Clustered sets of identical protein sequences (see link)</td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, <code>taxdb.btd</code> and <code>taxdb.bti</code> are downloaded, which provide <a href="ftp://ftp.ncbi.nih.gov/blast/db/README">additional taxonomy information for these databases</a>.</p>
+<p>The exact times all databases were updated are provided by <em>database</em>.timestamp files located in the directory</p>
+<h2 id="databases-are-available-automatically-after-loading-any-blast-module">Databases are available automatically after loading any blast module</h2>
+<p>When any of the <strong>blast</strong> modules is loaded, the <code>BLASTDB</code> environment variable is set to the location of the local database copies (<code>/sw/data/uppnex/blast_databases</code>). The various Blast tools can use this variable to find the locations of databases, so that only the name needs to be specified.</p>
+<pre><code>module load bioinfo-tools blast/2.6.0+
+blastp -db nr -query input.fasta</code></pre>
+<p>After loading the <code>blast/2.6.0+</code> module, specifying <code>blastp -db nr</code> results in <code>blastp</code> searching the local copy of <code>nr</code>, because the <code>BLASTDB</code> environment variable is set when the module is loaded.</p>
+<h2 id="wgs-tsa-and-sra-sequence-databases-are-not-included">WGS, TSA and SRA sequence databases are not included</h2>
+<p>The NCBI <a href="https://www.ncbi.nlm.nih.gov/genbank/wgs/">Whole-Genome Shotgun</a> is no longer downloaded locally. NCBI provides special versions of Blast and other tools that can be used to search the remote versions of <a href="https://www.ncbi.nlm.nih.gov/genbank/wgs/">WGS</a>, the <a href="https://www.ncbi.nlm.nih.gov/genbank/tsa/">Transcriptome Shotgun Assembly</a>, and the <a href="https://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive</a>.</p>
+<p>These special blast versions and other tools are part of NCBI's <a href="https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc">SRA Tools</a>, which is available at Uppmax as the <strong>sratools</strong> module. We have also include <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/WGS_TOOLS/README_BLASTWGS.txt">auxiliary NCBI scripts</a> in the <strong>sratools</strong> module to convert taxonomic IDs to WGS and TSA identifiers.</p>
+<!--
+NCBI Taxonomy database also available
+-------------------------------------
+
+The [NCBI Taxonomy database](https://www.ncbi.nlm.nih.gov/taxonomy) is also available in this same location and updated on the same schedule.
+-->
