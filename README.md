@@ -56,6 +56,9 @@ directories containing `*-install-README.md` files are updated manually.
 Database directories containing `*-db-README.md` files and scripts (currently,
 `Kraken`, `diamond_databases` and `RTG`) are updated monthly via crontab entries.
 
+Blast database updates are included here, and involve multiple scripts, crontab
+entries and a test directory.  These are updated monthly via crontab entries.
+
 ### data_other/
 
 Installation instructions for databases under other locations, currently just
