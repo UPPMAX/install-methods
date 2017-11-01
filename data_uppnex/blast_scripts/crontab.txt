@@ -5,3 +5,5 @@
 # Install blast database updates every 1st of the month at 00.01 (douglas)
 # This is a simple mv of updates that have previously been staged by Andreas K every 28th of the month
  1 0 1 * * /sw/data/uppnex/blast_scripts/install_blastdb.sh
+# Remove old blast databases every 2nd of the month at 00.01 (douglas)
+ 1 0 2 * * /sw/data/uppnex/blast_scripts/remove_old_blastdb.sh
