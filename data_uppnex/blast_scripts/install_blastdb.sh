@@ -12,13 +12,8 @@ set -x
 # scripts know what they are supposed to do
 #
 # This script will remove the directory of old inactive databases if it exists,
-# before moving the current to the old.  Should this be the script to do this
-# in general?  Don't think so, they should be removed earlier than this, too
-# much unused space otherwise.
-#
-# I may set up a cron job to remove it a few days after installing the new one,
-# but I haven't decided.  Better to get the new versions out, and remind me
-# to deal with the old DBs in the email.
+# before moving the current to the old.  But it should already be removed by a cron
+# job which runs 24 hours after this one.
 
 STAGED=(/sw/data/uppnex/blast_tmp/blastdb /sw/data/uppnex/blast_tmp/uniprot/blastdb)
 

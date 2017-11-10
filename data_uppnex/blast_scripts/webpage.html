@@ -1,4 +1,3 @@
-<h1 id="blast-databases-available-locally">Blast databases available locally</h1>
 <p>Many pipelines involving annotation/assembly comparison involve Blast (<a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi" class="uri">http://blast.ncbi.nlm.nih.gov/Blast.cgi</a>). Several Blast versions are available as modules, for example:</p>
 <ul>
 <li><strong>blast/2.6.0+</strong>, etc. : the Blast+ suites (<code>blastp</code>, <code>tblastn</code>, etc.), <strong>recommended</strong></li>
@@ -9,6 +8,8 @@
 <ul>
 <li>The local copies are found at <code>/sw/data/uppnex/blast_databases</code></li>
 <li>New versions are installed <strong>the first day of each month at 00.01</strong> from local copies updated <strong>the 28th of the previous month beginning at 00.01</strong></li>
+<li>When new versions are installed, the directory containing the previous versions is renamed to <code>blast_databases_old</code>, then a new <code>blast_databases</code> directory is created for the new versions</li>
+<li><code>blast_databases_old</code> is deleted the second data of each month at 00.01</li>
 </ul>
 <p>The databases available are:</p>
 <table style="width:100%;">
@@ -147,9 +148,22 @@
 <td align="left"><a href="http://www.uniprot.org/uniref/">UniProt</a></td>
 <td align="left">Clustered sets of identical protein sequences (see link)</td>
 </tr>
+<tr class="odd">
+<td align="left"><strong>UniVec</strong></td>
+<td align="left">nucleotide</td>
+<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/UniVec/README.uv">UniVec</a></td>
+<td align="left">Sequences commonly attached to cDNA/genomic DNA during the cloning process</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>UniVec_Core</strong></td>
+<td align="left">nucleotide</td>
+<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/UniVec/README.uv">UniVec</a></td>
+<td align="left">A subset of UniVec chosen to minimise false positives</td>
+</tr>
 </tbody>
 </table>
 <p>Additionally, <code>taxdb.btd</code> and <code>taxdb.bti</code> are downloaded, which provide <a href="ftp://ftp.ncbi.nih.gov/blast/db/README">additional taxonomy information for these databases</a>.</p>
+<p>For <code>UniVec</code> and <code>UniVec_Core</code>, Fasta-format files containing the vector sequences are also available with the given names (e.g., <code>/sw/data/uppnex/blast_databases/UniVec</code>), alongside the Blast-format databases built from the same Fasta files.</p>
 <p>The exact times all databases were updated are provided by <em>database</em>.timestamp files located in the directory</p>
 <h2 id="databases-are-available-automatically-after-loading-any-blast-module">Databases are available automatically after loading any blast module</h2>
 <p>When any of the <strong>blast</strong> modules is loaded, the <code>BLASTDB</code> environment variable is set to the location of the local database copies (<code>/sw/data/uppnex/blast_databases</code>). The various Blast tools can use this variable to find the locations of databases, so that only the name needs to be specified.</p>

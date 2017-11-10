@@ -1,12 +1,9 @@
-Blast databases available locally
-=================================
-
 Many pipelines involving annotation/assembly comparison involve Blast
 (<http://blast.ncbi.nlm.nih.gov/Blast.cgi>). Several Blast versions are available
 as modules, for example:
 
-* **blast/2.6.0+**, etc. : the Blast+ suites (`blastp`, `tblastn`, etc.), **recommended**
-* **blast/2.2.26**, etc. : 'legacy' Blast (`blastall`, `megablast`, etc)
+  * **blast/2.6.0+**, etc. : the Blast+ suites (`blastp`, `tblastn`, etc.), **recommended**
+  * **blast/2.2.26**, etc. : 'legacy' Blast (`blastall`, `megablast`, etc)
 
 Use `module spider blast` to see available versions.  As for all bioinformatics
 tools at Uppmax, `module load bioinfo-tools` is required before the blast
@@ -16,8 +13,10 @@ Uppmax maintains local copies of many Blast databases, including those
 available at NCBI (<ftp://ftp.ncbi.nih.gov/blast/db/README>) as well as
 several UniProt databases (<http://www.uniprot.org/>).  Note that:
 
-* The local copies are found at `/sw/data/uppnex/blast_databases`
-* New versions are installed **the first day of each month at 00.01** from local copies updated **the 28th of the previous month beginning at 00.01**
+  * The local copies are found at `/sw/data/uppnex/blast_databases`
+  * New versions are installed **the first day of each month at 00.01** from local copies updated **the 28th of the previous month beginning at 00.01**
+  * When new versions are installed, the directory containing the previous versions is renamed to `blast_databases_old`, then a new `blast_databases` directory is created for the new versions
+  * `blast_databases_old` is deleted the second data of each month at 00.01
 
 The databases available are:
 
@@ -43,15 +42,26 @@ The databases available are:
 **uniprot_uniref50** | protein | [UniProt][UniRef] | Clustered sets of 50%-similar protein sequences (see link)
 **uniprot_uniref90** | protein | [UniProt][UniRef] | Clustered sets of 90%-similar protein sequences (see link)
 **uniprot_uniref100** | protein | [UniProt][UniRef] | Clustered sets of identical protein sequences (see link)
+**UniVec** | nucleotide | [UniVec][UniVec] | Sequences commonly attached to cDNA/genomic DNA during the cloning process
+**UniVec_Core** | nucleotide | [UniVec][UniVec] | A subset of UniVec chosen to minimise false positives
 
-Additionally, `taxdb.btd` and `taxdb.bti` are downloaded, which provide [additional taxonomy information for these databases][NCBI].
+Additionally, `taxdb.btd` and `taxdb.bti` are downloaded, which provide
+[additional taxonomy information for these databases][NCBI].
 
-The exact times all databases were updated are provided by *database*.timestamp files located in the directory
+For `UniVec` and `UniVec_Core`, Fasta-format files containing the vector
+sequences are also available with the given names (e.g.,
+`/sw/data/uppnex/blast_databases/UniVec`), alongside the Blast-format databases
+built from the same Fasta files.
+
+The exact times all databases were updated are provided by *database*.timestamp
+files located in the directory
+
 
 [NCBI]:            ftp://ftp.ncbi.nih.gov/blast/db/README
 [UniRef]:          http://www.uniprot.org/uniref/
 [UniProtSPT]:      http://www.uniprot.org/help/uniprotkb_sections
 [UniProtIsoforms]: http://www.uniprot.org/help/canonical_and_isoforms
+[UniVec]:          ftp://ftp.ncbi.nlm.nih.gov/pub/UniVec/README.uv
 
 
 Databases are available automatically after loading any blast module

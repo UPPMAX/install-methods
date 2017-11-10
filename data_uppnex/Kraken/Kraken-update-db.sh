@@ -1,28 +1,19 @@
 #!/bin/bash
 
-K_DB_BASE=/sw/data/uppnex/Kraken
-K_VERSION=0.10.5-beta
-THREADS=${1:-16}
+#SBATCH -A staff
+#SBATCH -J Kraken-update-db.sh
+#SBATCH -p node
+#SBATCH -n 16
+#SBATCH -C mem256GB
+#SBATCH -t 12:00:00
+#SBATCH --mail-user douglas.scofield@ebc.uu.se
+#SBATCH --mail-type=ALL
 
-# The first time I did this (20151201), apart from the ftp messages, I got
-#
-# Unpacking... complete.
-# Kraken build set to minimize disk writes.
-# Creating k-mer set (step 1 of 6)...
-# Found jellyfish v1.1.11
-# Hash size not specified, using '11639921252'
-# K-mer set created. [25m41.147s]
-# Skipping step 2, no database reduction requested.
-# Sorting k-mer set (step 3 of 6)...
-# K-mer set sorted. [1h37m24.863s]
-# Creating GI number to seqID map (step 4 of 6)...
-# GI number to seqID map created. [3m36.319s]
-# Creating seqID to taxID map (step 5 of 6)...
-# 217526 sequences mapped to taxa. [1m24.881s]
-# Setting LCAs in database (step 6 of 6)...
-# Finished processing 217833 sequences
-# Database LCAs set. [1h3m28.361s]
-# Database construction complete. [Total: 3h11m35.699s]
+K_DB_BASE=/sw/data/uppnex/Kraken
+K_VERSION=1.0
+THREADS=${1:-$SLURM_NPROCS}
+
+# This now must run on a 256GB node, it needs just under 200GB to build the standard database
 
 function error_send_email()
 {
@@ -32,7 +23,8 @@ function error_send_email()
 }
 
 
-[[ $(uname -n) = 'milou-b.uppmax.uu.se' ]] || error_send_email "This is a long multi-core process and must be run on milou-b"
+# building the standard database now must run on a fat node
+# [[ $(uname -n) = 'milou-b.uppmax.uu.se' ]] || error_send_email "This is a long multi-core process and must be run on milou-b"
 
 set -e
 
@@ -45,7 +37,7 @@ VERSION=$(date +'%Y%m%d')
 K_DB=$K_DB_BASE/$VERSION
 
 cd $K_DB_BASE
-mkdir $VERSION || error_send_email "In $K_DB_BASE, new directory '$VERSION' exists, quitting..."
+#mkdir $VERSION || error_send_email "In $K_DB_BASE, new directory '$VERSION' exists, quitting..."
 
 # comment kraken-build and uncomment cd;touch to test the script
 # ( cd $VERSION ; touch a1 a2 a3 )
