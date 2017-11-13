@@ -12,6 +12,8 @@ fastadir=/sw/data/uppnex/blast_tmp/uniprot
 # sprot_varsplic:	1
 
 blastdbs= \
+    UniVec \
+    UniVec_Core \
     uniprot_uniref100 \
     uniprot_sptrembl \
     uniprot_trembl \
@@ -34,6 +36,9 @@ $(blastdbdir)/uniprot_uniref100.timestamp: title="UniProt release $(release): Un
 $(blastdbdir)/uniprot_uniref90.timestamp: title="UniProt release $(release): UniProt Reference Clusters (UniRef90)"
 $(blastdbdir)/uniprot_uniref50.timestamp: title="UniProt release $(release): UniProt Reference Clusters (UniRef50)"
 
+$(blastdbdir)/UniVec.timestamp: $(blastdbdir)/UniVec
+$(blastdbdir)/UniVec_Core.timestamp: $(blastdbdir)/UniVec_Core
+
 $(blastdbdir)/uniprot_sprot.timestamp: $(fastadir)/uniprot_sprot.fasta.gz
 $(blastdbdir)/uniprot_sprot_varsplic.timestamp: $(fastadir)/uniprot_sprot_varsplic.fasta.gz
 $(blastdbdir)/uniprot_sptrembl.timestamp: $(fastadir)/uniprot_sprot.fasta.gz $(fastadir)/uniprot_trembl.fasta.gz
@@ -42,6 +47,17 @@ $(blastdbdir)/uniprot_uniref100.timestamp: $(fastadir)/uniref100.fasta.gz
 $(blastdbdir)/uniprot_uniref100.timestamp: $(fastadir)/uniref100.fasta.gz
 $(blastdbdir)/uniprot_uniref90.timestamp: $(fastadir)/uniref90.fasta.gz
 $(blastdbdir)/uniprot_uniref50.timestamp: $(fastadir)/uniref50.fasta.gz
+
+%/UniVec.timestamp:
+	cat $^ | \
+	nice -n 10 makeblastdb -parse_seqids -hash_index -dbtype nucl -title UniVec \
+	    -out $(blastdbdir)/UniVec
+	date >$(blastdbdir)/UniVec.timestamp
+%/UniVec_Core.timestamp:
+	cat $^ | \
+	nice -n 10 makeblastdb -parse_seqids -hash_index -dbtype nucl -title UniVec_Core \
+	    -out $(blastdbdir)/UniVec_Core
+	date >$(blastdbdir)/UniVec_Core.timestamp
 
 %.timestamp:
 	nice -n 5 gzip -cd $^ | \

@@ -81,7 +81,7 @@ data_update  /sw/data/uppnex/Kraken             Kraken-db-README.md   Kraken-upd
 data_update  /sw/data/uppnex/diamond_databases  diamond-db-README.md  diamond-update-dbs.sh  diamond-check-dbs.sh
 data_update  /sw/data/uppnex/RTG                RTG-db-README.md      RTG-update-dbs.sh      
 data_update  /sw/data/uppnex/blast_scripts      README.md README-uniprot.md update_blastdb.sh update_blastdb-uniprot.sh uniprot.mk install_blastdb.sh remove_old_blastdb.sh cron-wrapper.sh crontab.txt test/test_blastdb.sh test/prots.fa test/nucls.fa test/*.out webpage.mk webpage.md webpage.html
-
+data_update  /sw/data/uppnex/ncbi_taxonomy      ncbi_taxonomy-db-README.md ncbi_taxonomy-update-dbs.sh crontab.txt webpage.html webpage.md webpage.mk
 
 # Databases in other locations
 

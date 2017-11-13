@@ -1,0 +1,2 @@
+# Run taxonomy database update script at 0:10 on the 1st of every month
+10  0  1 * * /sw/data/uppnex/ncbi_taxonomy/ncbi_taxonomy-update-dbs.sh

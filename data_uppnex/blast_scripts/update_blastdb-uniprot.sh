@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# See README.md
+# See README-uniprot.md
 
 module load bioinfo-tools
 module load blast/2.6.0+
@@ -27,6 +27,12 @@ lftp -c mirror --continue --no-empty-dirs \
     -I uniprot_sprot_varsplic.fasta.gz \
     "$uniprot_url" \
     "$staging_dir/uniprot/"
+
+echo '### Fetching UniVec fasta files'
+rsync --no-motd -a rsync://ftp.ncbi.nlm.nih.gov/pub/UniVec/UniVec \
+    $staging_dir/uniprot/blastdb/
+rsync --no-motd -a rsync://ftp.ncbi.nlm.nih.gov/pub/UniVec/UniVec_Core \
+    $staging_dir/uniprot/blastdb/
 
 echo '### Build blast databases'
 ( cd "$staging_dir/uniprot" &&
