@@ -22,6 +22,13 @@ setting up prior to adding new packages to this installation.
     cd $CLUSTER/
     export R_LIBS_USER=$PWD
     module load R/3.4.0
+    module load build-tools
+    module load autoconf/2.69
+    module load automake/1.14.1
+    module load m4/1.4.17
+
+The build tools modules are required for some more recent configure scripts
+within R packages.
 
 Loading R loads a bunch of stuff including gcc that will be used for building
 R packages.  So, like with perl_modules, R_packages is associated with a
@@ -60,6 +67,7 @@ continue with these, including some from BioConductor.
     install.packages("tmod")
     install.packages(c('Lahman','RJSONIO','ecodist','gee','hflights','igraph','optparse','proto','reshape'))
     install.packages("mixOmics")
+    install.packages('vcfR')
 
     source('https://bioconductor.org/biocLite.R')
     biocLite()
@@ -68,18 +76,32 @@ continue with these, including some from BioConductor.
     biocLite(c('AnnotationDbi','impute','preprocessCore'))
     biocLite(c('MODA'))
     biocLite(c('ROC','TCC','baySeq','multtest','phyloseq'))
+    biocLite(c('DiffBind','ChIPpeakAnno','csaw','tximport','Glimma','MultiAssayExperiment','scater','scran'))
+    biocLite(c('ChIPQC','chipseq','htSeqTools'))
 
 See the README for 3.3.0 if you get the messages about instruction problems or
 too-new or too-old BioConductor packages when using `biocLite`.
 
+Interim updates
+---------------
+
+If updating an R package from CRAN, simply use `install.packages(...)` within R.
+
+If updating BioConductor to an already-existing module, just do the `source...()` and then launch right into using `biocLite(...)`.
+
+    source('https://bioconductor.org/biocLite.R')
+    biocLite(c('ChIPQC','chipseq','htSeqTools'))
+
+Updating existing packages in this module
+-----------------------------------------
+
+Note that after installing some packages, the existence of additional updates
+might be announced.  It is OK to accept these updates; updates to the base R
+packages has write permissions are locked down on the R module itself so those
+can't be updated.  Be sure to update the list of installed packages.
+
 Do not update base R packages.  See the following section if you get the
 message about updating base backages such as Matrix, mgcv, nlme, and survival.
-In short, choose 'n' to update none of them.
-
-In general, also do not update installed packages within this module.  New
-versions of R are released often enough that we will have new R and R_packages
-modules containing fixes.  If there are serious bugs uncovered, of course we
-should update.
 
 Quit R, save the environment.
 
