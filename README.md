@@ -65,3 +65,13 @@ Installation instructions for databases under other locations, currently just
 `BUSCO` lineage sets, which are kept in the module installation directory.
 These are updated monthly via crontab entries.
 
+Testing -- [httpsreference][reference] -- [numberreference][1] -- [reference][] -- [reference].
+
+[reference]: https://www.ncbi.nlm.nih.gov/taxonomy
+[1]: https://www.ncbi.nlm.nih.gov/taxonomy
+
+Testing ftp -- [ftp][ftp] -- [numberftp][2] -- [ftp][] -- [ftp].
+
+[ftp]: ftp://ftp.ncbi.nih.gov/pub/taxonomy
+[2]: ftp://ftp.ncbi.nih.gov/pub/taxonomy
+
