@@ -41,7 +41,7 @@ In the `latest/accession2taxid` subdirectory:
 
 Biocollection information in the `latest` and `latest/biocollections` subdirectories:
 
-* `coll_dump.txt` (taxonomy) | 
+* `coll_dump.txt` (taxonomy)
 * `biocollections/Collection_codes.txt` (biocoll)
 * `biocollections/Institution_codes.txt` (biocoll)
 * `biocollections/Unique_institution_codes.txt` (biocoll)
