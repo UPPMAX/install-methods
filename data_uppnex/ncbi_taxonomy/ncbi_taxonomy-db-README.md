@@ -48,10 +48,10 @@ Biocollection information in the `latest` and `latest/biocollections` subdirecto
 
 
 
-1 **taxdump**:  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump_readme.txt
-2 **taxcat**:   ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxcat_readme.txt
-3 **gi_taxid**: ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme
-4 **acc2tax**:  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README
-5 **taxonomy**: ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy
-6 **biocoll**:  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections
+1. **taxdump**:  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump_readme.txt
+2. **taxcat**:   ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxcat_readme.txt
+3. **gi_taxid**: ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme
+4. **acc2tax**:  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README
+5. **taxonomy**: ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy
+6. **biocoll**:  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections
 
