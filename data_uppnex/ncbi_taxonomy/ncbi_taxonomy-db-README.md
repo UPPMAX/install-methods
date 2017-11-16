@@ -12,42 +12,46 @@ It updates several taxonomy databases from <ftp://ftp.ncbi.nlm.nih.gov/pub/taxon
 * When new versions are successfully installed, the `latest/` symbolic link is updated to point to the new dated directory
 * The previous version of the taxonomy databases are removed when the new versions have completed installation
 
-See the links for each database for specifics on file format and contents.
-Many tools know how to make use of these databases; follow each tool's specific
-instructions.  The files can be found in the indicated directories.
+See the links for each database (given at the bottom of the page, referenced by
+(...) within each table line because github doesn't allow ftp URLs, for
+specifics on file format and contents.  Many tools know how to make use of
+these databases; follow each tool's specific instructions.  The files can be
+found in the indicated directories.
 
 In the `latest` subdirectory:
 
-* [`taxdump.tar.gz`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump_readme.txt), which contains several `.dmp` files
-* [`taxcat.tar.gz`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxcat_readme.txt), which contains `categories.dmp`
-* [`gi_taxid_nucl.dmp.gz`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme), which contains `gi_taxid_nucl.dmp`
-* [`gi_taxid_nucl_diff.dmp.gz`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme), which contains `gi_taxid_nucl_diff.dmp`
-* [`gi_taxid_prot.dmp.gz`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme), which contains `gi_taxid_prot.dmp`
-* [`gi_taxid_prot_diff.dmp.gz`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme), which contains `gi_taxid_prot_diff.dmp`
+* `taxdump.tar.gz` (taxdump), which contains several `.dmp` files
+* `taxcat.tar.gz` (taxcat), which contains `categories.dmp`
+* `gi_taxid_nucl.dmp.gz` (gi_taxid), which contains `gi_taxid_nucl.dmp`
+* `gi_taxid_nucl_diff.dmp.gz` (gi_taxid), which contains `gi_taxid_nucl_diff.dmp`
+* `gi_taxid_prot.dmp.gz` (gi_taxid), which contains `gi_taxid_prot.dmp`
+* `gi_taxid_prot_diff.dmp.gz` (gi_taxid), which contains `gi_taxid_prot_diff.dmp`
 
 In the `latest/accession2taxid` subdirectory:
 
-* [`nucl_est.accession2taxid`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README),TaxID mapping for nucleotide records of type EST
-* [`nucl_gss.accession2taxid`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README), TaxID mapping for nucleotide records of type GSS
-* [`nucl_wgs.accession2taxid`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README), TaxID mapping for nucleotide records of type WGS or TSA
-* [`nucl_gb.accession2taxid`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README), TaxID mapping for nucleotide records not of the above types
-* [`prot.accession2taxid`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README), TaxID mapping for protein records
-* [`pdb.accession2taxid`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README), TaxID mapping for PDB protein records
-* [`dead_nucl.accession2taxid`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README), TaxID mapping for dead nucleotide records
-* [`dead_prot.accession2taxid`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README), TaxID mapping for dead protein records
-* [`dead_wgs.accession2taxid`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README), TaxID mapping for dead WGS or TSA records
+* `nucl_est.accession2taxid` (acc2tax),TaxID mapping for nucleotide records of type EST
+* `nucl_gss.accession2taxid` (acc2tax), TaxID mapping for nucleotide records of type GSS
+* `nucl_wgs.accession2taxid` (acc2tax), TaxID mapping for nucleotide records of type WGS or TSA
+* `nucl_gb.accession2taxid` (acc2tax), TaxID mapping for nucleotide records not of the above types
+* `prot.accession2taxid` (acc2tax), TaxID mapping for protein records
+* `pdb.accession2taxid` (acc2tax), TaxID mapping for PDB protein records
+* `dead_nucl.accession2taxid` (acc2tax), TaxID mapping for dead nucleotide records
+* `dead_prot.accession2taxid` (acc2tax), TaxID mapping for dead protein records
+* `dead_wgs.accession2taxid` (acc2tax), TaxID mapping for dead WGS or TSA records
 
 Biocollection information in the `latest` and `latest/biocollections` subdirectories:
 
-* [`coll_dump.txt`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy) | 
-* [`biocollections/Collection_codes.txt`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections)
-* [`biocollections/Institution_codes.txt`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections)
-* [`biocollections/Unique_institution_codes.txt`](ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections)
+* `coll_dump.txt` (taxonomy) | 
+* `biocollections/Collection_codes.txt` (biocoll)
+* `biocollections/Institution_codes.txt` (biocoll)
+* `biocollections/Unique_institution_codes.txt` (biocoll)
 
-[taxdump]:  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump_readme.txt
-[taxcat]:   ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxcat_readme.txt
-[gi_taxid]: ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme
-[acc2tax]:  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README
-[taxonomy]: ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy
-[biocoll]:  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections
+
+
+1 **taxdump**:  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump_readme.txt
+2 **taxcat**:   ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxcat_readme.txt
+3 **gi_taxid**: ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme
+4 **acc2tax**:  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README
+5 **taxonomy**: ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy
+6 **biocoll**:  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections
 
