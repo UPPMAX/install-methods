@@ -1,2 +1,2 @@
-# Run taxonomy database update script at 0:10 on the 1st of every month
-10  0  1 * * /sw/data/uppnex/ncbi_taxonomy/ncbi_taxonomy-update-dbs.sh
+# Run taxonomy database update script at 0:10 on Sunday of each week
+10  0  * * sun /sw/data/uppnex/ncbi_taxonomy/ncbi_taxonomy-update-dbs.sh

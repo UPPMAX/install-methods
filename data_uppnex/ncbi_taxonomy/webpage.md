@@ -1,11 +1,13 @@
 Uppmax maintains local copies of the full set of NCBI Taxonomy databases
 (<https://www.ncbi.nlm.nih.gov/guide/taxonomy/>).  Note that:
 
-  * The local copies are found at `/sw/data/uppnex/ncbi_taxonomy/latest/` and `/sw/data/uppnex/ncbi_taxonomy/accession2taxid/latest/`
-  * The installation of new versions begins **the first day of each month at 00.10**.  The update may take several minutes up to an hour, depending on network speeds.
-  * The `latest/` directories are symbolic links to a directory named from the date of the database update
-  * When new versions are successfully installed, the `latest/` symbolic link is updated to point to the new dated directory
-  * The previous version of the taxonomy databases are removed on a haphazard schedule
+* The local copies are found at `/sw/data/uppnex/ncbi_taxonomy/latest`
+* This also contains the subdirectories `accession2taxid` and `biocollections` containing those databases, see the tables below for their contents
+* `latest` is a symbolic link to a directory named from the date of the most recent update
+* There is also a subdirectory `download` containing the files as downloaded from NCBI
+* The installation of new versions begins **the first day of each month at 00.10**.  The update may take several minutes up to an hour, depending on network speeds.
+* When new versions are successfully installed, the `latest/` symbolic link is updated to point to the new dated directory
+* The previous version of the taxonomy databases are removed when the new versions have completed installation
 
 See the links for each database for specifics on file format and contents.
 Many tools know how to make use of these databases; follow each tool's specific
@@ -16,8 +18,8 @@ below.  For more on each, see the links.
 
 **Name** | **Source** | **Notes**
 -----|------|--------
-**taxdump** | [NCBI][taxdump] | NCBI taxonomic database
-**taxcat** | [NCBI][taxcat] | NCBI taxonomic categories (see link)
+**taxdump** | [NCBI][taxdump] | NCBI taxonomic database, in multiple **.dmp** files (see link)
+**taxcat** | [NCBI][taxcat] | NCBI taxonomic categories, in **categories.dmp** (see link)
 **gi_taxid_nucl.dmp** | [NCBI][gi_taxid] | Mappings of nucleotide GI to taxid (DEPRECATED)
 **gi_taxid_nucl_diff.dmp** | [NCBI][gi_taxid] | Differences between this and previous gi_taxid_nucl.dmp (DEPRECATED)
 **gi_taxid_prot.dmp** | [NCBI][gi_taxid] | Mappings of protein GI to taxid (DEPRECATED)
@@ -25,7 +27,7 @@ below.  For more on each, see the links.
 
 
 The databases available within
-`/sw/data/uppnex/ncbi_taxonomy/accession2taxid/latest` are below.  The
+`/sw/data/uppnex/ncbi_taxonomy/latest/accession2taxid` are below.  The
 **dead_** files contain accession-to-TaxID mappings for dead (suppressed or
 withdrawn) sequence records.  For more on each, see the links.
 
@@ -42,11 +44,13 @@ withdrawn) sequence records.  For more on each, see the links.
 **dead_wgs.accession2taxid** | [NCBI][acc2tax] | TaxID mapping for dead WGS or TSA records
 
 
-The **biocollections** databases contain collections information.  `coll_dump.txt` is located within the `/sw/data/uppnex/ncbi_taxonomy/latest` directory.
-Those marked **biocollections** are located within the `/sw/data/uppnex/ncbi_taxonomy/biocollections/latest` directory.
+The **biocollections** databases contain collections location information.
+`coll_dump.txt` is located within the `/sw/data/uppnex/ncbi_taxonomy/latest`
+directory.  Those marked **biocollections** are located within the
+`/sw/data/uppnex/ncbi_taxonomy/latest/biocollections` directory.
 
 **Name** | **Source** | **Notes**
------|------|--------
+-----|------|-----
 **coll_dump.txt** | [NCBI][taxonomy] | 
 **Collection_codes.txt** | [NCBI][biocoll] | **biocollections**
 **Institution_codes.txt** | [NCBI][biocoll] | **biocollections**
