@@ -29,30 +29,26 @@ LOG
     ./configure --prefix=$TARGET --enable-shared LDFLAGS="-Wl,-rpath=$TARGET/lib,-rpath=/sw/libs/wxWidgets/lib"
     make && make install
 
-Set up variables. Make sure no other python loaded.
+Make sure `python3` is the newly-built python.  Add to the the local packages.
 
-    cd ../../bin
-    export PATH=$PWD:$PATH
-    cd ../lib
-    export LD_LIBRARY_PATH=$PWD:$LD_LIBRARY_PATH
-    cd python3.4
-    export PYTHONPATH=$PWD
-
-Make sure `python3` is the newly-built python.
-
+    module load python/$VERSION
     which python3
-    which easy_install-3.4
+    which pip3
 
-Add to the the local packages.
-
-    easy_install-3.4 Cython
-    easy_install-3.4 nose
-    easy_install-3.4 mock
-    easy_install-3.4 pytz
-    easy_install-3.4 six
-    easy_install-3.4 numpy 
-    easy_install-3.4 scipy
-    easy_install-3.4 matplotlib
-    easy_install-3.4 ipython
-    easy_install-3.4 virtualenv # Added 2016-12-02
+    pip3 install Cython
+    pip3 install nose
+    pip3 install mock
+    pip3 install pytz
+    pip3 install six
+    pip3 install numpy 
+    pip3 install scipy
+    pip3 install matplotlib
+    pip3 install ipython
+    pip3 install jupyter
+    pip3 install singledispatch
+    pip3 install pyparsing
+    pip3 install virtualenv
+    pip3 install gitpython
+    pip3 install python-graph-dot
+    pip3 install graphviz
 

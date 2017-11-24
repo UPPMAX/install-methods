@@ -48,27 +48,25 @@ Fix the module system WITHOUT having `LD_LIBRARY_PATH` contain the path to libpy
     # for everyone (easy_install-3.4 for version 3.*)
     easy_install Cython
     easy_install nose
-
-    #can install numpy and scipy with easy_install now without having to do it manually
+    easy_install mock
+    easy_install pytz
+    easy_install stix
     easy_install numpy 
     easy_install scipy
-
     easy_install matplotlib
+    easy_install tornado
+    easy_install jupyter_client
+    easy_install jupyter
     easy_install ipython
-
-    easy_install virtualenv  # added 2016-12-02
+    easy_install singledispatch
+    easy_install pyparsing
+    easy_install virtualenv
+    easy_install gitpython
+    easy_install python-graph-dot
+    easy_install graphviz
 
 Close things up.
 
     fixup -g $TARGET
     chmod -R -w $TARGET
 
-Added 2016-12-02.  We need to install virtualenvs, so open up for that if not
-already done.  Follow this procedure if anything further needs to be added.
-
-    module load python/${VERSION}
-    TARGET=/sw/comp/python/${VERSION}_$CLUSTER
-    cd $TARGET
-    chmod -R u+w,g+w .
-    easy_install virtualenv
-    chmod -R u-w,g-w .

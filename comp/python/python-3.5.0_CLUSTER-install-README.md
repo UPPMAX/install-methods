@@ -1,4 +1,4 @@
-python/3.6.0
+python/3.5.0
 ============
 
 Followed this, 
@@ -27,33 +27,25 @@ set rpath accordingly.
 LOG
 ---
 
-    VERSION=3.6.0
+    VERSION=3.5.0
     CLUSTER=${CLUSTER?:CLUSTER must be set}
     TARGET=/sw/comp/python/${VERSION}_${CLUSTER}
-    mkdir -p $TARGET
-    chmod g+s $TARGET
-    mkdir $TARGET/src
+    mkdir -p $TARGET/src
+    #fixup -g $TARGET
     cd $TARGET/src
     [[ -f Python-${VERSION}.tgz ]] || wget https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tgz
     rm -rf Python-${VERSION}/
     tar xzf Python-${VERSION}.tgz 
     cd Python-${VERSION}/
-    module load sqlite/3.16.2
-    SQLITE_LIBDIR=$(pkg-config sqlite3 --variable=libdir)
-    ./configure --prefix=$TARGET --enable-shared --enable-loadable-sqlite-extensions LDFLAGS="-Wl,-rpath=$TARGET/lib,-rpath=$SQLITE_LIBDIR,-rpath=/sw/libs/wxWidgets/lib"
+    #module load sqlite/3.16.2
+    #SQLITE_LIBDIR=$(pkg-config sqlite3 --variable=libdir)
+    #./configure --prefix=$TARGET --enable-shared --enable-loadable-sqlite-extensions LDFLAGS="-Wl,-rpath=$TARGET/lib,-rpath=$SQLITE_LIBDIR,-rpath=/sw/libs/wxWidgets/lib"
+    ./configure --prefix=$TARGET --enable-shared --enable-loadable-sqlite-extensions LDFLAGS="-Wl,-rpath=$TARGET/lib,-rpath=/sw/libs/wxWidgets/lib"
     make && make install
 
 
 PREINSTALLED PACKAGES
 ---------------------
-
-The load of ATLAS is required for numpy.  The install of `gitpython`,
-`python-graph-dot` and `graphviz` is for
-[EasyBuild](https://easybuild.readthedocs.io/en/latest/Installation.html#optional-python-packages),
-which seems to build with python2.
-
-    module load ATLAS/3.10.3
-    echo ${ATLAS:?ATLAS environment variable must be set}
 
     module load python/$VERSION
     which python3
@@ -68,6 +60,7 @@ which seems to build with python2.
     pip3 install numpy 
     pip3 install scipy
     pip3 install matplotlib
+    pip3 install jupyter_client
     pip3 install ipython
     pip3 install jupyter
     pip3 install singledispatch
@@ -76,4 +69,3 @@ which seems to build with python2.
     pip3 install gitpython
     pip3 install python-graph-dot
     pip3 install graphviz
-

@@ -1,8 +1,11 @@
-R_packages/3.4.0
+R_packages/3.4.2
 ================
 
 Module holding installations of some commonly-used R packages.  Not
 comprehensive with respect to CRAN, but should be useful for some.
+
+Addendum 2017-11-21: use `dependencies=TRUE` to install `Suggests` dependencies
+along with the other strict ones.
 
 LOG
 ---
@@ -10,7 +13,7 @@ LOG
 Run these commands to start the installation, and also run these commands for
 setting up prior to adding new packages to this installation.
 
-    VERSION=3.4.0
+    VERSION=3.4.2
     CLUSTER=${CLUSTER?:For some reason, CLUSTER is not set}
     cd /sw/apps
     mkdir -p R_packages
@@ -21,7 +24,7 @@ setting up prior to adding new packages to this installation.
     mkdir $CLUSTER
     cd $CLUSTER/
     export R_LIBS_USER=$PWD
-    module load R/3.4.0
+    module load R/$VERSION
     module load build-tools
     module load autoconf/2.69
     module load automake/1.14.1
@@ -32,7 +35,7 @@ within R packages.
 
 Loading R loads a bunch of stuff including gcc that will be used for building
 R packages.  So, like with perl_modules, R_packages is associated with a
-specific R module version.  Make sure you are using R/3.4.0:
+specific R module version.  Make sure you are using R/3.4.2:
 
     which R
 
@@ -52,7 +55,7 @@ Within R
 Now, within R, install this packages from CRAN, ensuring that it was installed
 within this R_packages tree:
 
-    install.packages('getopt')
+    install.packages('getopt', dependencies=TRUE)
 
 In another shell outside R (substituting `VERSION` and `CLUSTER`):
 
@@ -62,32 +65,20 @@ After checking that was installed within the appropriate R_packages tree,
 continue with these, including some from BioConductor.
 
 
-    install.packages(c('ggplot2','tidyr','hexbin','lmerTest','microbenchmark','xtable','testthat','DBI','VennDiagram','ade4','adegenet','vegan','ape','assertthat','akima','bitops','boot','caTools','chron','combinat','data.table','reshape2','kernlab','foreach','geiger','dplyr','picante','plyr','pvclust','rmarkdown','permute','markdown','plotrix','openssl','curl','seqinr','stringr','survival','vegan','whisker','zoo','maps','mvtnorm'))
-    install.packages(c('dendextend','dendextendRcpp','cluster','naturalsort','gplots','tkrplot'))
-    install.packages("tmod")
-    install.packages(c('Lahman','RJSONIO','ecodist','gee','hflights','igraph','optparse','proto','reshape'))
-    install.packages("mixOmics")
-    install.packages('vcfR')
+    install.packages(c('Rcpp','ggplot2','tidyr','hexbin','lmerTest','microbenchmark','xtable','testthat','DBI','VennDiagram','ade4','adegenet','vegan','ape','assertthat','akima','bitops','boot','caTools','chron','combinat','data.table','reshape2','kernlab','foreach','geiger','dplyr','picante','plyr','pvclust','rmarkdown','permute','markdown','plotrix','openssl','curl','seqinr','stringr','survival','vegan','whisker','zoo','maps','mvtnorm','dendextend','cluster','naturalsort','gplots','tkrplot','tmod','Lahman','RJSONIO','ecodist','gee','hflights','igraph','optparse','proto','reshape','mixOmics','vcfR','EMT','forecast','devtools','withr','rlang','car','gclus'),dependencies=TRUE)
+    install.packages('rstan', dependencies=TRUE)
+
+The `'rstan'` installation will fail while attempting to install `rstan`
+itself, though it will be able to install several dependencies.  Rstan 2.16.2
+is incompatible with the latest version of `boost` provided in the `BH`
+package.  `rstan` will eventually get fixed.
 
     source('https://bioconductor.org/biocLite.R')
     biocLite()
-    biocLite(c('ggtree','Rhtslib','zlibbioc','edgeR','DEXSeq','goseq','GO.db','reactome.db','Gviz','org.Mm.eg.db','sva','dada2'))
-    biocLite(c('DESeq','DESeq2','limma'))
-    biocLite(c('AnnotationDbi','impute','preprocessCore'))
-    biocLite(c('MODA'))
-    biocLite(c('ROC','TCC','baySeq','multtest','phyloseq'))
-    biocLite(c('DiffBind','ChIPpeakAnno','csaw','tximport','Glimma','MultiAssayExperiment','scater','scran'))
-    biocLite(c('ChIPQC','chipseq','htSeqTools'))
+    biocLite(c('ggtree','Rhtslib','zlibbioc','edgeR','DEXSeq','goseq','GO.db','reactome.db','Gviz','org.Mm.eg.db','sva','dada2','DESeq','DESeq2','limma','AnnotationDbi','impute','preprocessCore','MODA','ROC','TCC','baySeq','multtest','phyloseq','DiffBind','ChIPpeakAnno','csaw','tximport','Glimma','MultiAssayExperiment','scater','scran','ChIPQC','chipseq','htSeqTools','ChIPQC','chipseq','htSeqTools'), dependencies=TRUE)
 
 Packages not added yet:
 
-    install.packages('EMT')
-    install.packages('knitr', dependencies=TRUE)
-
-Note: rstan will not install because the version of boost in BH is new and
-rstan doesn't work with it.  It is up to rstan to provide a fix.
-
-    install.packages('rstan')
 
 
 See the README for 3.3.0 if you get the messages about instruction problems or
@@ -101,7 +92,7 @@ If updating an R package from CRAN, simply use `install.packages(...)` within R.
 If updating BioConductor to an already-existing module, just do the `source...()` and then launch right into using `biocLite(...)`.
 
     source('https://bioconductor.org/biocLite.R')
-    biocLite(c('ChIPQC','chipseq','htSeqTools'))
+    biocLite(c(...), dependencies=TRUE)
 
 Updating existing packages in this module
 -----------------------------------------
@@ -136,14 +127,16 @@ Install a non-CRAN package ASCAT.
 
 Download the latest release here (https://github.com/Crick-CancerGenomics/ascat/releases).
 
-    wget https://github.com/Crick-CancerGenomics/ascat/releases/download/v2.4.4/ASCAT_2.4.4.tar.gz
-    R CMD INSTALL ASCAT_2.4.4.tar.gz
+    ASCAT_VERSION=2.5
+    [[ -f ASCAT_${ASCAT_VERSION}.tar.gz ]] || wget https://github.com/Crick-CancerGenomics/ascat/releases/download/v2.5/ASCAT_${ASCAT_VERSION}.tar.gz
+    R CMD INSTALL ASCAT_${ASCAT_VERSION}.tar.gz
 
 Also, install an outdated package `igraph0`, which has been superseded by
 `igraph` (installed above) but needed by some older procedures.
 
-    wget https://cran.r-project.org/src/contrib/Archive/igraph0/igraph0_0.5.7.tar.gz
-    R CMD INSTALL igraph0_0.5.7.tar.gz
+    IGRAPH0_VERSION=0.5.7
+    [[ -f igraph0_${IGRAPH0_VERSION}.tar.gz ]] || wget https://cran.r-project.org/src/contrib/Archive/igraph0/igraph0_${IGRAPH0_VERSION}.tar.gz
+    R CMD INSTALL igraph0_${IGRAPH0_VERSION}.tar.gz
 
 
 After adding new packages

@@ -162,7 +162,7 @@
 </tr>
 </tbody>
 </table>
-<p>Additionally, <code>taxdb.btd</code> and <code>taxdb.bti</code> are downloaded, which provide <a href="ftp://ftp.ncbi.nih.gov/blast/db/README">additional taxonomy information for these databases</a>.</p>
+<p>Additionally, <code>taxdb.btd</code> and <code>taxdb.bti</code> are downloaded, which provide <a href="ftp://ftp.ncbi.nih.gov/blast/db/README">additional taxonomy information for these databases</a>. Local copies of the NCBI Taxonomy databases are also available; <a href="http://www.uppmax.uu.se/resources/databases/ncbi-taxonomy-databases">further details are available on a separate page</a>.</p>
 <p>For <code>UniVec</code> and <code>UniVec_Core</code>, Fasta-format files containing the vector sequences are also available with the given names (e.g., <code>/sw/data/uppnex/blast_databases/UniVec</code>), alongside the Blast-format databases built from the same Fasta files.</p>
 <p>The exact times all databases were updated are provided by <em>database</em>.timestamp files located in the directory</p>
 <h2 id="databases-are-available-automatically-after-loading-any-blast-module">Databases are available automatically after loading any blast module</h2>
@@ -178,9 +178,3 @@ blastn -db refseq_genomic ...</code></pre>
 <h2 id="wgs-tsa-and-sra-sequence-databases-are-not-included">WGS, TSA and SRA sequence databases are not included</h2>
 <p>The NCBI <a href="https://www.ncbi.nlm.nih.gov/genbank/wgs/">Whole-Genome Shotgun</a> is no longer downloaded locally. NCBI provides special versions of Blast and other tools that can be used to search the remote versions of <a href="https://www.ncbi.nlm.nih.gov/genbank/wgs/">WGS</a>, the <a href="https://www.ncbi.nlm.nih.gov/genbank/tsa/">Transcriptome Shotgun Assembly</a>, and the <a href="https://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive</a>.</p>
 <p>These special blast versions and other tools are part of NCBI's <a href="https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc">SRA Tools</a>, which is available at Uppmax as the <strong>sratools</strong> module. We have also include <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/WGS_TOOLS/README_BLASTWGS.txt">auxiliary NCBI scripts</a> in the <strong>sratools</strong> module to convert taxonomic IDs to WGS and TSA identifiers.</p>
-<!--
-NCBI Taxonomy database also available
--------------------------------------
-
-The [NCBI Taxonomy database](https://www.ncbi.nlm.nih.gov/taxonomy) is also available in this same location and updated on the same schedule.
--->

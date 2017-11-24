@@ -5,7 +5,7 @@ Uppmax maintains local copies of the full set of NCBI Taxonomy databases
 * This also contains the subdirectories `accession2taxid` and `biocollections` containing those databases, see the tables below for their contents
 * `latest` is a symbolic link to a directory named from the date of the most recent update
 * There is also a subdirectory `download` containing the files as downloaded from NCBI
-* The installation of new versions begins **the first day of each month at 00.10**.  The update may take several minutes up to an hour, depending on network speeds.
+* The installation of new versions begins **Sunday of each week at 00.10**.  The update may take several minutes up to an hour, depending on network speeds.
 * When new versions are successfully installed, the `latest/` symbolic link is updated to point to the new dated directory
 * The previous version of the taxonomy databases are removed when the new versions have completed installation
 

@@ -46,7 +46,9 @@ The databases available are:
 **UniVec_Core** | nucleotide | [UniVec][UniVec] | A subset of UniVec chosen to minimise false positives
 
 Additionally, `taxdb.btd` and `taxdb.bti` are downloaded, which provide
-[additional taxonomy information for these databases][NCBI].
+[additional taxonomy information for these databases][NCBI]. Local copies
+of the NCBI Taxonomy databases are also available; [further details are
+available on a separate page][localNCBItax].
 
 For `UniVec` and `UniVec_Core`, Fasta-format files containing the vector
 sequences are also available with the given names (e.g.,
@@ -62,6 +64,7 @@ files located in the directory
 [UniProtSPT]:      http://www.uniprot.org/help/uniprotkb_sections
 [UniProtIsoforms]: http://www.uniprot.org/help/canonical_and_isoforms
 [UniVec]:          ftp://ftp.ncbi.nlm.nih.gov/pub/UniVec/README.uv
+[localNCBItax]:    http://www.uppmax.uu.se/resources/databases/ncbi-taxonomy-databases
 
 
 Databases are available automatically after loading any blast module
@@ -107,9 +110,3 @@ module to convert taxonomic IDs to WGS and TSA identifiers.
 [aux_scripts]: ftp://ftp.ncbi.nlm.nih.gov/blast/WGS_TOOLS/README_BLASTWGS.txt
 
 
-<!--
-NCBI Taxonomy database also available
--------------------------------------
-
-The [NCBI Taxonomy database](https://www.ncbi.nlm.nih.gov/taxonomy) is also available in this same location and updated on the same schedule.
--->

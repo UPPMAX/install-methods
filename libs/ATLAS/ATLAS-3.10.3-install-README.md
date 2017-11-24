@@ -1,7 +1,10 @@
 ATLAS 3.10.3 
 ============
 
-ATLAS (Automatically Tuned Linear Algebra Software) library with LAPACK and BLAS/CBLAS
+ATLAS (Automatically Tuned Linear Algebra Software) library with LAPACK and
+BLAS/CBLAS.  Include full LAPACK library, and build with system gcc.
+
+This would be much easier with EasyBuild.
 
 <http://math-atlas.sourceforge.net/>
 
@@ -19,16 +22,16 @@ LOG
     cd $CLUSTER/
     PREFIX=$PWD
     cd ../src_$CLUSTER/
-    wget http://downloads.sourceforge.net/project/math-atlas/Stable/${VERSION}/atlas${VERSION}.tar.bz2
+    [[ -f lapack-3.8.0.tar.gz ]] || wget http://www.netlib.org/lapack/lapack-3.8.0.tar.gz
+    NETLIB_LAPACK=$PWD/lapack-3.8.0.tar.gz
+    [[ -f atlas${VERSION}.tar.bz2 ]] || wget http://downloads.sourceforge.net/project/math-atlas/Stable/${VERSION}/atlas${VERSION}.tar.bz2
     tar xjf atlas${VERSION}.tar.bz2 
     cd ATLAS/
-
-Build requires interior directory and builds static libraries, by default.  Built with gcc/4.9.2.
-
     mkdir build
     cd build
-    module load gcc/4.9.2
-    ../configure --prefix=$PREFIX
+
+    ../configure --prefix=$PREFIX  --shared -Fa alg -fPIC --with-netlib-lapack-tarfile=$NETLIB_LAPACK --cripple-atlas-performance
+
     make
     make install
 
@@ -39,3 +42,4 @@ Ensure 64-bit compilation.
     file ATL_dgelq2.o
     rm ATL_dgelq2.o 
 
+In the mf file, set 
