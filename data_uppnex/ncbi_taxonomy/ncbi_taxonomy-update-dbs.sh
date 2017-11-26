@@ -2,6 +2,8 @@
 
 ROOT=/sw/data/uppnex/ncbi_taxonomy
 
+WGET_OPTIONS="--quiet --timestamping"
+
 # Much of the guts come from diamond-db-update.sh, but this is much simplified
 # by moving the temp directory and latest symlink to be done once in the script
 # script
@@ -9,6 +11,12 @@ ROOT=/sw/data/uppnex/ncbi_taxonomy
 DateFormat='%Y%m%d'  # used for databases where the version tag is a date
 TODAY=`date +"$DateFormat"`
 NEWVERSION="$TODAY"
+
+# This will set NEWVERSION based on the last-modified time of a file, but we
+# don't do that for these databases because they are all bundled under the date
+# the whole set was updated
+#
+# [[ "$DateSource" = 'now' ]] && NEWVERSION="$TODAY" || NEWVERSION=`date --date=@$(stat -c'%Y' $DB_FILE) +"$DateFormat"`
 
 set -x
 
@@ -68,15 +76,15 @@ function get_db_single() {
     local DB_FILE=$3      # 3  data filename
     local DB_MD5_FILE=$4  # 4  md5 checksum filename, md5sum -c with this checks $DB_FILE
     local METHOD=$5       # 5  method to unpack, 'tar' or 'zcat'
-    local FUNC="$0: get_db_single"
+    local FUNC="get_db_single"
 
     cd $ROOT
     cd $TMPDIR
     mkdir -p $DB_DIR
     cd $DB_DIR
 
-    wget --timestamping $URL_DIR/$DB_MD5_FILE  # fetch the md5 file, preserving its server time
-    wget --timestamping $URL_DIR/$DB_FILE  # fetch the database file
+    wget $WGET_OPTIONS $URL_DIR/$DB_MD5_FILE  # fetch the md5 file, preserving its server time
+    wget $WGET_OPTIONS $URL_DIR/$DB_FILE  # fetch the database file
     if md5sum -c $DB_MD5_FILE ; then  # it looks good, update to this version
         echo -e "\n$FUNC: successfully downloaded update for $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
         unpack_db_single  $DB_FILE  $METHOD
@@ -98,14 +106,13 @@ function get_db_SIMPLE() {
     local DB_DIR=$1       # 1  base directory, . for current directory
     local URL_DIR=$2      # 2  base url/directory for wget
     local DB_FILE=$3      # 3  data filename
-    local FUNC="$0: get_db_SIMPLE"
+    local FUNC="get_db_SIMPLE"
 
     cd $ROOT
     cd $TMPDIR
     mkdir -p $DB_DIR
     cd $DB_DIR
-    wget --timestamping $URL_DIR/$DB_FILE
-    [[ "$DateSource" = 'now' ]] && NEWVERSION="$TODAY" || NEWVERSION=`date --date=@$(stat -c'%Y' $DB_FILE) +"$DateFormat"`
+    wget $WGET_OPTIONS $URL_DIR/$DB_FILE
     echo -e "\n$FUNC: successfully downloaded update for $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
     mkdir -p download && cp -avf $DB_FILE download/ || { echo "could not move files to download/"; exit 1; }
     echo -e "\n$FUNC: successfully updated $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"

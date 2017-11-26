@@ -10,6 +10,8 @@ DateFormat='%Y%m%d'  # used for databases where the version tag is a date
 DateSource='now'  # 'now' means use today's date as in TODAY below, otherwise means use date on downloaded md5 checksum file
 TODAY=`date +"$DateFormat"`
 
+WGET_OPTIONS="--quiet --timestamping"
+
 echo "$0: building databases with $(diamond version)"
 
 set -x
@@ -38,7 +40,7 @@ set -e
 function create_diamond_db_single() {
     DB_OUTPUT=$1
     DB_INPUT=$2
-    FUNC="$0: create_diamond_db_single"
+    FUNC="create_diamond_db_single"
     FAA_FILE=${DB_OUTPUT}.faa
     zcat $DB_INPUT > $FAA_FILE
     cmd="/usr/bin/time -v diamond makedb --in $FAA_FILE --threads $THREADS -d $DB_OUTPUT"
@@ -55,7 +57,7 @@ function create_diamond_db_multiple() {
     DB_OUTPUT=$1
     shift
     DB_INPUTS=$*
-    FUNC="$0: create_diamond_db_multiple"
+    FUNC="create_diamond_db_multiple"
     FAA_FILE=${DB_OUTPUT}.faa
     zcat $DB_INPUTS > $FAA_FILE
     cmd="/usr/bin/time -v diamond makedb --in $FAA_FILE --threads $THREADS -d $DB_OUTPUT"
@@ -82,7 +84,7 @@ function get_db_single() {
     DB_FILE=$3      # $3  data filename
     DB_MD5_FILE=$4  # $4  md5 checksum filename, md5sum -c with this checks $DB_FILE
     DB_OUTPUT=$5    # $5  name of output file
-    FUNC="$0: get_db_single"
+    FUNC="get_db_single"
 
     cd $ROOT
     mkdir -p $DB_DIR
@@ -90,7 +92,7 @@ function get_db_single() {
     TMPDIR=tmp.$$
     mkdir $TMPDIR || { echo "$FUNC: $DB_DIR temp directory $TMPDIR, error during mkdir"; exit 1; }
     cd $TMPDIR
-    wget --timestamping $URL_DIR/$DB_MD5_FILE  # fetch the md5 file, preserving its server time
+    wget $WGET_OPTIONS $URL_DIR/$DB_MD5_FILE  # fetch the md5 file, preserving its server time
     [[ "$DateSource" = 'now' ]] && NEWVERSION="$TODAY" || NEWVERSION=`date --date=@$(stat -c'%Y' $DB_MD5_FILE) +"$DateFormat"`
     if [[ -d ../$NEWVERSION ]] && diff -q ../$NEWVERSION/download/$DB_MD5_FILE $DB_MD5_FILE ; then
         echo
@@ -104,7 +106,7 @@ function get_db_single() {
         make_latest_symlink  "$FUNC"  "$NEWVERSION"
         rm -rf $TMPDIR
     else
-        wget --timestamping $URL_DIR/$DB_FILE  # fetch the database file
+        wget $WGET_OPTIONS $URL_DIR/$DB_FILE  # fetch the database file
         if md5sum -c $DB_MD5_FILE ; then  # it looks good, update to this version
             echo "$FUNC: successfully downloaded update for $DB_DIR to $ROOT/$DB_DIR/$NEWVERSION"
 
@@ -150,7 +152,7 @@ function update_UniRef90() {
     TMPDIR=tmp.$$
     mkdir $TMPDIR
     cd $TMPDIR
-    wget --timestamping $DownloadDir/RELEASE.metalink
+    wget $WGET_OPTIONS $DownloadDir/RELEASE.metalink
     NEWVERSION=$(xml_grep --text_only version RELEASE.metalink)
     if [[ -d ../$NEWVERSION ]] && diff ../$NEWVERSION/download/RELEASE.metalink RELEASE.metalink ; then
         set +x
@@ -165,7 +167,7 @@ function update_UniRef90() {
         rm -rf $TMPDIR
         make_latest_symlink  "db $DB"  "$NEWVERSION"
     else
-        wget --timestamping $DownloadDir/uniref90.fasta.gz
+        wget $WGET_OPTIONS $DownloadDir/uniref90.fasta.gz
 
         create_diamond_db_single  uniref90  uniref90.fasta.gz
 
@@ -194,7 +196,7 @@ function update_RefSeq() {
     TMPDIR=tmp.$$
     mkdir $TMPDIR
     cd $TMPDIR
-    wget --timestamping ftp://ftp.ncbi.nlm.nih.gov/refseq/release/RELEASE_NUMBER
+    wget $WGET_OPTIONS ftp://ftp.ncbi.nlm.nih.gov/refseq/release/RELEASE_NUMBER
     NEWVERSION=$(< RELEASE_NUMBER)
     if [[ -d ../$NEWVERSION ]] && diff ../$NEWVERSION/download/RELEASE_NUMBER RELEASE_NUMBER ; then
         set +x
