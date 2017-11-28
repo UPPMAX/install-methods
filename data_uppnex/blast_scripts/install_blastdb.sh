@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#set -x
-
 # Install new blast dbs in these directories to /sw/data/uppnex/blast_databases:
 #
 # * /sw/data/uppnex/blast_tmp/blastdb/
@@ -22,6 +20,10 @@
 # This script will remove the directory of old inactive databases if it exists,
 # before moving the current to the old.  But it should already be removed by a cron
 # job which runs 24 hours after this one.
+
+#set -x
+
+shopt -s nullglob  # this will make STAGED_DBS_TIMESTAMPS be empty if the globs match nothing
 
 STAGED_DBS_TIMESTAMPS=( /sw/data/uppnex/blast_tmp/blastdb/*.timestamp /sw/data/uppnex/blast_tmp/uniprot/blastdb/*.timestamp )
 
