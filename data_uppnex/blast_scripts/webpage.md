@@ -15,7 +15,7 @@ several UniProt databases (<http://www.uniprot.org/>).  Note that:
 
   * The local copies are found at `/sw/data/uppnex/blast_databases`
   * New versions are installed **the first day of each month at 00.01** from local copies updated **the 28th of the previous month beginning at 00.01**
-  * When new versions are installed, the directory containing the previous versions is renamed to `blast_databases_old`, then a new `blast_databases` directory is created for the new versions
+  * When new versions are installed, the directory containing the previous versions is renamed to `blast_databases_old`
   * `blast_databases_old` is deleted the second data of each month at 00.01
 
 The databases available are:

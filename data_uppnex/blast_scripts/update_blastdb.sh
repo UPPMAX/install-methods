@@ -2,9 +2,6 @@
 
 # See README.md
 
-#trap 'exit 1' TERM INT
-#trap 'module unload gnuparallel/20170122' EXIT
-
 module load gnuparallel/20170122
 
 # The databases to fetch:
@@ -17,7 +14,7 @@ MD5SUM_JOBS=${MD5SUM_JOBS:-8}
 TAR_JOBS=${TAR_JOBS:-4}
 
 # How many times should we retry the rsync jobs?
-RSYNC_RETRY_MAX=${RSYNC_RETRY_MAX:-5}
+RSYNC_RETRY_MAX=${RSYNC_RETRY_MAX:-10}
 
 staging_dir='/sw/data/uppnex/blast_tmp'
 
