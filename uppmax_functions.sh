@@ -15,17 +15,63 @@ function purge-cache() { rm -rf $HOME/.lmod.d ; }
 # Get real locations and disk usage of project backup and nobackup volumes
 function projvol() {
     local p=${1:?Must provide project name}
-    local B=/proj/$p;          [[ -L $B ]] || { echo "correct $B not found"; return; }
-    local N=/proj/$p/nobackup; [[ -L $N ]] || { echo "correct $N not found"; return; }
+    local k=${2}
+    local B=/proj/$p;          [[ -L $B ]] || { echo "correct $B not found" >/dev/stderr; return; }
+    local N=/proj/$p/nobackup; [[ -L $N ]] || { echo "correct $N not found" >/dev/stderr; return; }
     local B=$(readlink -f $B)
     local N=$(readlink -f $N)
     local VB=$(dirname $B)
     local VN=$(dirname $N)
-    [[ $B && $N && $VB && $VN ]] || { echo "Could not resolve symlinks"; return; }
-    echo -e "\n$p backup    ---- $B"
-    df -kh $VB
-    echo -e "\n$p nobackup  ---- $N"
-    df -kh $VN
+    [[ $B && $N && $VB && $VN ]] || { echo "Could not resolve symlinks" >/dev/stderr; return; }
+    if [[ $k == b ]] ; then
+        df -k $B | tail -n 1
+    elif [[ $k == n ]] ; then
+        df -k $N | tail -n 1
+    else
+        echo -e "\n$p backup    ---- $B"
+        df -kh $B
+        echo -e "\n$p nobackup  ---- $N"
+        df -kh $N
+    fi
+}
+
+function projvolpi() {
+    local pi=${1:?Must provide PI name}
+    local grep=$(which --skip-alias --skip-functions grep)
+    local projdb=/sw/uppmax/etc/projects
+    local proj=
+    $grep --quiet "^Principal: .*$pi" $projdb || { echo "PI '$pi' not found in $projdb"; return; }
+    [[ $($grep "^Principal: .*$pi" $projdb | sed 's/\([^(]\+\) (.*$/\1/' | uniq | wc -l) == 1 ]] || { echo "More than one PI matched '$pi' in $projdb"; $grep "^Principal: .*$pi" $projdb | uniq; return; }
+    local fullpi=$($grep -m 1 "^Principal: .*$pi" $projdb | sed 's/^Principal:  *\(.*\)$/\1/')
+    echo "found fullpi $fullpi"
+    proj=$($grep -B 6 "^Principal: .*$pi" $projdb | $grep '^Name: ' | $grep -v 'delivery' | awk '{print $2}')
+    for pr in $proj ; do
+        projvol $pr
+    done 2>/dev/null
+    echo -e "\nTotal space for PI '$pi', which matches '$fullpi', in both GiB and TiB:"
+    local bsz=0; local nsz=0
+    local n=
+    for n in $(for pr in $proj ; do projvol $pr b | awk '{print $2}'; done) ; do
+        (( bsz += n ))
+    done 2>/dev/null
+    for n in $(for pr in $proj ; do projvol $pr n | awk '{print $2}'; done) ; do
+        (( nsz += n ))
+    done 2>/dev/null
+    local about=$(bc <<< "scale=0; $bsz / 1024^2"); about+=" GiB \t"; about+=$(bc <<< "scale=2; $bsz / 1024^3"); about+=" TiB"
+    local anout=$(bc <<< "scale=0; $nsz / 1024^2"); anout+=" GiB \t"; anout+=$(bc <<< "scale=2; $nsz / 1024^3"); anout+=" TiB"
+    echo -e "Allocation\tbackup  \t$about"
+    echo -e "Allocation\tnobackup\t$anout"
+    bsz=0; nsz=0
+    for n in $(for pr in $proj ; do projvol $pr b | awk '{print $3}'; done) ; do
+        (( bsz += n ))
+    done 2>/dev/null
+    for n in $(for pr in $proj ; do projvol $pr n | awk '{print $3}'; done) ; do
+        (( nsz += n ))
+    done 2>/dev/null
+    local ubout=$(bc <<< "scale=0; $bsz / 1024^2"); ubout+=" GiB \t"; ubout+=$(bc <<< "scale=2; $bsz / 1024^3"); ubout+=" TiB"
+    local unout=$(bc <<< "scale=0; $nsz / 1024^2"); unout+=" GiB \t"; unout+=$(bc <<< "scale=2; $nsz / 1024^3"); unout+=" TiB"
+    echo -e "Space_InUse\tbackup  \t$ubout"
+    echo -e "Space_InUse\tnobackup\t$unout"
 }
 
 #
