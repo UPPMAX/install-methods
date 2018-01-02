@@ -14,7 +14,7 @@ WGET_OPTIONS="--quiet --timestamping"
 
 echo "$0: building databases with $(diamond version)"
 
-set -x
+#set -x
 
 # TODO: for get_db_single(), when checking for previous download, we should compare md5 against previous md5s, if they exist
 # TODO: for uniref90, extract md5 sum from xml and check against it
@@ -249,6 +249,7 @@ cd $ROOT
 
 chgrp -hR sw .
 chmod -R u+rwX,g+rwX,o+rX .
+find . -type d -exec chmod g+s {} \;
 
 unset TMPDIR
 LOG=diamond-$(diamond version | cut -f3 -d' ')-database-compatibility-${TODAY}.log

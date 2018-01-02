@@ -1,6 +1,7 @@
 #!/bin/bash
 
 BLS_BASE=/sw/apps/bioinfo/BUSCO/v1_lineage_sets
+WGET_OPTIONS="--quiet --timestamping"
 echo "Updating lineage sets in $BLS_BASE"
 cd $BLS_BASE
 
@@ -13,7 +14,7 @@ function fetch_lineage_set() {
     echo "fetching lineage set ${LS} ... "
     if test -f ${LS} ; then
         NEW=${LS}.new
-        wget -O $NEW http://busco.ezlab.org/v1/files/${LS}
+        wget $WGET_OPTIONS -O $NEW http://busco.ezlab.org/v1/files/${LS}
         if diff ${LS} $NEW ; then
             echo "no new content in lineage set ${LS}"
             echo
@@ -27,7 +28,7 @@ function fetch_lineage_set() {
     else 
         echo "found new lineage set ${LS}"
         echo
-        wget http://busco.ezlab.org/v1/files/${LS}
+        wget $WGET_OPTIONS http://busco.ezlab.org/v1/files/${LS}
     fi
     if [[ "$EXPAND" ]] ; then
         echo "expanding ${LS} ... "
@@ -59,4 +60,5 @@ done
 echo "Updating groups and permissions ..."
 chgrp -hR sw *
 chmod -R u+rwX,g+rwX,o+rX-w *
+find . -type d -exec chmod g+s {} \;
 

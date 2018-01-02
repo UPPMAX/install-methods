@@ -142,7 +142,7 @@ Subtree options:   -i   bioinfo-tools (default)
                    -l   libraries
                    -a   applications
                    -c   comp
-                   -b   build
+                   -b   build-tools
                    -p   parallel
 Other options:     -A   show trees for all clusters, not just {common,${_CURRENT_CLUSTERS// /,}}
 _usage_
@@ -203,7 +203,7 @@ Subtree options:   -i   bioinfo-tools (default)
                    -l   libraries
                    -a   applications
                    -c   comp
-                   -b   build
+                   -b   build-tools
                    -p   parallel
 Other options:     -f   force creating the link and intervening directories
                    -q   work quietly
@@ -257,7 +257,7 @@ Subtree options:   -i   bioinfo-tools (default)
                    -l   libraries
                    -a   applications
                    -c   comp
-                   -b   build
+                   -b   build-tools
                    -p   parallel
 Other options:     -f   force; basically required
 _usage_
@@ -275,9 +275,10 @@ _usage_
                 ( cd /sw/mf/$C/$SUBDIR/ && mflink $OPT -q $M $V ) || { echo "*** problem with $C/$SUBDIR/$M/$V"; }
             done
         fi
+        [[ $FORCE ]] && echo -e "\n*** FORCED"
+        echo -e "\n*** Done"
         echo -e "\n*** mfshow $OPT $M\n"
         mfshow $OPT $M
-        [[ $FORCE ]] && echo -e "\n*** FORCED\n"
     else
         local COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$M)
         [[ -d $COMMONDIR ]] || { echo "*** $COMMONDIR doesn't exist and it must, before running this"; return; }
@@ -292,9 +293,10 @@ _usage_
                 ( cd /sw/mf/$C/bioinfo-tools/$SUBDIR/ && mflink -q $M $V ) || { echo "*** problem with $C/bioinfo-tools/$SUBDIR/$M/$V"; }
             done
         fi
+        [[ $FORCE ]] && echo -e "\n*** FORCED"
+        echo -e "\n*** Done"
         echo -e "\n*** mfshow $OPT $M\n"
         mfshow $OPT $M
-        [[ $FORCE ]] && echo -e "\n*** FORCED\n"
     fi
 }
 
@@ -327,7 +329,7 @@ Subtree options:   -i   bioinfo-tools (default)
                    -l   libraries
                    -a   applications
                    -c   comp
-                   -b   build
+                   -b   build-tools
                    -p   parallel
 Other options:     -f   force; basically required
 _usage_
@@ -344,9 +346,9 @@ _usage_
                 ( cd /sw/mf/$C/$SUBDIR/ && pwd && rsync --dry-run -Pa --del /mnt/$PWD/$M . )
             done
         fi
+        [[ $FORCE ]] && echo -e "\n*** Done" || echo -e "\n*** DRY RUN"
         echo -e "\n*** mfshow $OPT $M\n"
         mfshow $OPT $M
-        [[ ! $FORCE ]] && echo -e "\n*** DRY RUN\n"
     else
         local MNTDIR=(/mnt/sw/mf/common/bioinfo-tools/*/$M)
         local SUFFDIR=
@@ -366,9 +368,9 @@ _usage_
                 ( cd $THISDIR/ && cd .. && pwd && rsync --dry-run -Pa --del /mnt/$PWD/$M . )
             done
         fi
+        [[ $FORCE ]] && echo -e "\n*** Done" || echo -e "\n*** DRY RUN"
         echo -e "\n*** mfshow $OPT $M\n"
         mfshow $OPT $M
-        [[ ! $FORCE ]] && echo -e "\n*** DRY RUN\n"
     fi
 }
 

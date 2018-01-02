@@ -47,19 +47,18 @@ for S in ${STAGED_DBS_TIMESTAMPS[@]} ; do
     SS=${S%.timestamp}
     DB=${SS##*/}
     echo -e "\n$S found staged"
-    echo -e "    $DB: removing hardlinks to existing in $NEW ..."
+    echo -ne "    $DB:$NEW: removing hardlinks to existing ... "
     rm -f ${DB}.*
     [[ $DB == UniVec || $DB == UniVec_Core ]] && rm -f ${DB}
-    echo -e "    $DB: creating hardlinks to staged in $NEW ..."
+    echo -e "creating hardlinks to staged... "
     ln ${SS}.* .
     [[ $DB == UniVec || $DB == UniVec_Core ]] && ln ${SS} .
 done
 
 [[ -e $OLD ]] && { echo -e "\nremoving $OLD ..."; rm -vrf $OLD; }
 
-echo -e "\nmoving $INSTALL to $OLD"
+echo -e "$0: $INSTALL to $OLD and $NEW to $INSTALL"
 mv -v $INSTALL $OLD
-echo -e "\nmoving $NEW to $INSTALL"
 mv -v $NEW $INSTALL
 
 echo -e "$0: Installed blast databases to $INSTALL\n$0: now check on old databases in $OLD\n" | mailx -s "blast databases installed" douglas.scofield@ebc.uu.se

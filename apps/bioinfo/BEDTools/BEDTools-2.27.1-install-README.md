@@ -1,3 +1,4 @@
+
 BEDTools/2.25.0
 ===============
 
@@ -6,7 +7,7 @@ BEDTools/2.25.0
 LOG
 ---
 
-    VERSION=2.25.0
+    VERSION=2.27.1
     CLUSTER=${CLUSTER:?CLUSTER must be set}
     cd /sw/apps/bioinfo/BEDTools
     mkdir $VERSION
@@ -20,4 +21,6 @@ LOG
     make clean
     make -j 8
     cp -av bin ../../$CLUSTER
+    cd ..
+    rm -rf bedtools2 
 

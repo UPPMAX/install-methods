@@ -18,17 +18,18 @@ NEWVERSION="$TODAY"
 #
 # [[ "$DateSource" = 'now' ]] && NEWVERSION="$TODAY" || NEWVERSION=`date --date=@$(stat -c'%Y' $DB_FILE) +"$DateFormat"`
 
-set -x
+#set -x
 
 cd $ROOT
 [[ -L latest ]] && PREVIOUSVERSION=$(readlink latest) || PREVIOUSVERSION=
-[[ ! "$PREVIOUSVERSION" || "$PREVIOUSVERSION" != "$NEWVERSION" ]] || { echo "latest already points to $NEWVERSION, exiting..."; exit 1; }
+[[ ! "$PREVIOUSVERSION" || "$PREVIOUSVERSION" != "$NEWVERSION" ]] || error_send_email "latest already points to $NEWVERSION"
 
 TMPDIR=tmp.$$.$TODAY
-mkdir $TMPDIR || { echo "$FUNC: $DB_FILE, temp directory $TMPDIR, error during mkdir"; exit 1; }
+mkdir $TMPDIR || error_send_email "error during mkdir $TMPDIR"
 
 function error_send_email() {
     local MSG="Error within $0: '$1'"
+    echo -e "$MSG"
 	mailx -s "$0 error: '$1'" douglas.scofield@ebc.uu.se <<< $MSG
     exit 1
 }
@@ -37,7 +38,7 @@ function make_latest_symlink() {
     local NEWVERSION=$1
     local HERE=$PWD
     cd $ROOT
-    { rm -f latest && ln -sf $NEWVERSION latest; } || { echo "could not create 'latest' symlink"; exit 1; }
+    { rm -f latest && ln -sf $NEWVERSION latest; } || error_send_email "could not create 'latest' symlink"
     cd $HERE
 }
 
@@ -51,13 +52,11 @@ function unpack_db_single() {
     local FUNC="$0: unpack_db_single"
     local cmd=
     case $METHOD in
-        tar)  cmd="tar xzvf $DB_INPUT" ;;
+        tar)  cmd="tar xzf $DB_INPUT" ;;
         zcat) cmd="zcat $DB_INPUT > ${DB_INPUT%.gz}" ;;
         none) cmd="echo $DB_INPUT" ;;
     esac 
-    echo
-    echo "$FUNC: unpacking DB in directory $PWD with command '$cmd'"
-    echo
+    echo "$FUNC:$PWD:$cmd"
     eval $cmd
 }
 
@@ -86,13 +85,12 @@ function get_db_single() {
     wget $WGET_OPTIONS $URL_DIR/$DB_MD5_FILE  # fetch the md5 file, preserving its server time
     wget $WGET_OPTIONS $URL_DIR/$DB_FILE  # fetch the database file
     if md5sum -c $DB_MD5_FILE ; then  # it looks good, update to this version
-        echo -e "\n$FUNC: successfully downloaded update for $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
+        #echo -e "\n$FUNC: successfully downloaded update for $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
         unpack_db_single  $DB_FILE  $METHOD
-        mkdir -p download && mv -vf $DB_FILE $DB_MD5_FILE download/ || { echo "could not move files to download/"; exit 1; }
-        echo -e "\n$FUNC: successfully updated $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
+        mkdir -p download && mv -vf $DB_FILE $DB_MD5_FILE download/ || error_send_email "could not move files to download/"
+        #echo -e "\n$FUNC: successfully updated $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
     else 
-        echo -e "\n\n$FUNC: md5 checksum didn't match for $DB_FILE, exiting...\n\n"
-        exit 1
+        error_send_email "$FUNC: $DB_FILE md5 checksum do not match"
     fi
     cd $ROOT
 }
@@ -113,15 +111,15 @@ function get_db_SIMPLE() {
     mkdir -p $DB_DIR
     cd $DB_DIR
     wget $WGET_OPTIONS $URL_DIR/$DB_FILE
-    echo -e "\n$FUNC: successfully downloaded update for $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
+    #echo -e "\n$FUNC: successfully downloaded update for $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
     mkdir -p download && cp -avf $DB_FILE download/ || { echo "could not move files to download/"; exit 1; }
-    echo -e "\n$FUNC: successfully updated $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
+    #echo -e "\n$FUNC: successfully updated $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
     cd $ROOT
 }
 
 
 
-set -x
+# set -x
 
 # taxonomy database
 

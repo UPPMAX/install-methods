@@ -31,7 +31,7 @@ set -e
 module load bioinfo-tools
 module load Kraken/$K_VERSION
 
-set -x
+#set -x
 
 VERSION=$(date +'%Y%m%d')
 K_DB=$K_DB_BASE/$VERSION
