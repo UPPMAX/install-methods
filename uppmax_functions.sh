@@ -26,6 +26,24 @@ _usage_
     module spider ${args[@]}
 }
 
+# Starting in the current directory, find symlinks owned by a specific user then
+# remove and recreate them, which switches ownership to the current user
+
+function ownlinks() {
+    local U=${1:-wesleys}
+    local LINKS=("$(find . -type l -user $U)")
+    local L
+    for L in ${LINKS[@]} ; do
+        local D=$(dirname "$L")
+        local N=$(basename "$L")
+        local T=$(readlink "$L")
+        local CMD="( cd \"$D\" ; ls -l \"$N\" ; rm -f \"$N\" ; ln -s \"$T\" \"$N\" ; ls -l \"$N\"; )"
+        # echo "$CMD"
+        echo "$L"
+        eval "$CMD"
+    done
+}
+
 
 # Helpers for gathering info about SLURM jobs, no special privileges required
 
