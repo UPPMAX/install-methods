@@ -1,5 +1,32 @@
 # Various helper functions for UPPMAX
 
+# "module show" loading subgroupings before running
+function mshow()
+{
+    [[ $# != 0 ]] || { cat <<_usage_
+USAGE:  mshow module  or  mshow module/version
+
+Perform 'module show module/version' after loading bioinfo-tools and build-tools subgroupings in a subshell
+_usage_
+    return; }
+    local M=${1:?module or module/version required}
+    ( module load bioinfo-tools build-tools ; module show "$M" )
+}
+
+# "module spider" shortcut
+function mspid()
+{
+    [[ $# != 0 ]] || { cat <<_usage_
+USAGE:  mspid word [ word ... ]
+
+Perform 'module spider' on the word or words provided
+_usage_
+    return; }
+    local args=("$@")
+    module spider ${args[@]}
+}
+
+
 # Helpers for gathering info about SLURM jobs, no special privileges required
 
 function jiu() { jobinfo -u ${1:-$USER} ; }
@@ -304,10 +331,12 @@ _usage_
 # Update mf files for a module while on rackham5. Requires /mnt/sw mount point
 function rackham_mfupdate() {
     local SUBDIR
+    local SECTION
     local FORCE
     local OPT
     local OPTIND
-    while getopts ":ilacbpf" opt "$@"; do
+    local OPTARG
+    while getopts ":ilacbpfs:" opt "$@"; do
         case $opt in
             i)  SUBDIR= ; OPT="-$opt" ;;
             l)  SUBDIR=libraries ; OPT="-$opt" ;;
@@ -316,14 +345,19 @@ function rackham_mfupdate() {
             b)  SUBDIR=build-tools ; OPT="-$opt" ;;
             p)  SUBDIR=parallel ; OPT="-$opt" ;;
             f)  FORCE=yes ;;
+            s)  SECTION=$OPTARG ;;
+            :)  echo "option -$OPTARG requires an argument"; return ;;
             *)  echo "unknown option" ; return ;;
         esac
     done
     shift $((OPTIND-1))
     [[ $# == 1 ]] || { cat <<_usage_
-USAGE:  rackham_mfupdate [ -i (default) | -l | -a | -c | -b | -p ] [ -f ] modulename
+USAGE:  rackham_mfupdate [ -i (default) | -l | -a | -c | -b | -p ] [ -f ] [ -s section ] modulename
 
-**While on rackham**, rsync /sw/mf/... trees to rackham; may ask to authenticate
+**While on rackham**, does an rsync of /sw/mf/... trees to rackham; may ask to authenticate
+
+If on rackham5, looks for /mnt/sw/mf/...
+If not, rsync via milou-b.  -s section may be required.
 
 Subtree options:   -i   bioinfo-tools (default)
                    -l   libraries
@@ -332,40 +366,52 @@ Subtree options:   -i   bioinfo-tools (default)
                    -b   build-tools
                    -p   parallel
 Other options:     -f   force; basically required
+                   -s section   bioinfo-tools section, may be required if new module for rackham and not running on rackham5; ignored on rackham5
 _usage_
     return; }
+    local MNTROOT=
+    local R5=
+    [[ $(uname -n | cut -f1 -d.) == "rackham5" ]] && { MNTROOT="/mnt"; R5=yes; } || MNTROOT="${USER}@milou-b.uppmax.uu.se:"
     local M=$1
     local C=
     if [[ $SUBDIR ]] ; then
         if [[ $FORCE ]] ; then
             for C in common $_CURRENT_CLUSTERS ; do
-                ( cd /sw/mf/$C/$SUBDIR/ && pwd && rsync -Pa --del /mnt/$PWD/$M . )
+                ( cd /sw/mf/$C/$SUBDIR/ && pwd && rsync -Pa --del $MNTROOT/$PWD/$M . )
             done
         else
             for C in common $_CURRENT_CLUSTERS ; do
-                ( cd /sw/mf/$C/$SUBDIR/ && pwd && rsync --dry-run -Pa --del /mnt/$PWD/$M . )
+                ( cd /sw/mf/$C/$SUBDIR/ && pwd && rsync --dry-run -Pa --del $MNTROOT/$PWD/$M . )
             done
         fi
         [[ $FORCE ]] && echo -e "\n*** Done" || echo -e "\n*** DRY RUN"
         echo -e "\n*** mfshow $OPT $M\n"
         mfshow $OPT $M
     else
-        local MNTDIR=(/mnt/sw/mf/common/bioinfo-tools/*/$M)
+        local MNTDIR=
         local SUFFDIR=
         local THISDIR=
-        [[ -d $MNTDIR ]] || { echo "*** $MNTDIR doesn't exist "; return; }
-        SUFFDIR=${MNTDIR#/mnt/sw/mf/common}
+        if [[ "$SECTION" ]] ; then
+            [[ $SECTION ]] && echo -e "\n*** using section $SECTION"
+            MNTDIR=/sw/mf/common/bioinfo-tools/$SECTION/$M
+            SUFFDIR=${MNTDIR#/sw/mf/common}
+        else
+            [[ $R5 ]] || { echo -e "\n*** Must be run on rackham5 or provide -s section option"; return; }
+            MNTDIR=(/mnt/sw/mf/common/bioinfo-tools/*/$M)
+            SUFFDIR=${MNTDIR#/mnt/sw/mf/common}
+        fi
+        [[ -d $MNTDIR ]] || { echo "*** $MNTDIR doesn't exist, if this is new on rackham you may need to run this on rackham5 or provide -s section"; return; }
         if [[ $FORCE ]] ; then
             for C in common $_CURRENT_CLUSTERS ; do
                 THISDIR=/sw/mf/$C/$SUFFDIR
                 [[ -d $THISDIR ]] || mkdir -p $THISDIR
-                ( cd $THISDIR/ && cd .. && pwd && rsync -Pa --del /mnt/$PWD/$M . )
+                ( cd $THISDIR/ && cd .. && pwd && rsync -Pa --del $MNTROOT/$PWD/$M . )
             done
         else
             for C in common $_CURRENT_CLUSTERS ; do
                 THISDIR=/sw/mf/$C/$SUFFDIR
                 [[ -d $THISDIR ]] || mkdir -p $THISDIR
-                ( cd $THISDIR/ && cd .. && pwd && rsync --dry-run -Pa --del /mnt/$PWD/$M . )
+                ( cd $THISDIR/ && cd .. && pwd && rsync --dry-run -Pa --del $MNTROOT/$PWD/$M . )
             done
         fi
         [[ $FORCE ]] && echo -e "\n*** Done" || echo -e "\n*** DRY RUN"
