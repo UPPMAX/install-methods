@@ -4,9 +4,13 @@ ROOT=/sw/data/uppnex/ncbi_taxonomy
 
 WGET_OPTIONS="--quiet --timestamping"
 
+VERBOSE=
+MOVE_TO_FINAL=yes
+
+echo "Updating NCBI taxonomy files to $ROOT"
+
 # Much of the guts come from diamond-db-update.sh, but this is much simplified
 # by moving the temp directory and latest symlink to be done once in the script
-# script
 
 DateFormat='%Y%m%d'  # used for databases where the version tag is a date
 TODAY=`date +"$DateFormat"`
@@ -20,19 +24,20 @@ NEWVERSION="$TODAY"
 
 #set -x
 
-cd $ROOT
-[[ -L latest ]] && PREVIOUSVERSION=$(readlink latest) || PREVIOUSVERSION=
-[[ ! "$PREVIOUSVERSION" || "$PREVIOUSVERSION" != "$NEWVERSION" ]] || error_send_email "latest already points to $NEWVERSION"
-
-TMPDIR=tmp.$$.$TODAY
-mkdir $TMPDIR || error_send_email "error during mkdir $TMPDIR"
-
 function error_send_email() {
     local MSG="Error within $0: '$1'"
     echo -e "$MSG"
 	mailx -s "$0 error: '$1'" douglas.scofield@ebc.uu.se <<< $MSG
     exit 1
 }
+
+cd $ROOT
+[[ -L latest ]] && PREVIOUSVERSION=$(readlink latest) || PREVIOUSVERSION=
+[[ (! "$PREVIOUSVERSION" || "$PREVIOUSVERSION" != "$NEWVERSION") || ! $MOVE_TO_FINAL ]] || error_send_email "latest already points to $NEWVERSION"
+
+TMPDIR=tmp.$$.$TODAY
+mkdir $TMPDIR || error_send_email "error during mkdir $TMPDIR"
+[[ $MOVE_TO_FINAL ]] || echo "... but not actually finalising the update, leaving files in the tmp directory $ROOT/$TMPDIR"
 
 function make_latest_symlink() {
     local NEWVERSION=$1
@@ -56,7 +61,7 @@ function unpack_db_single() {
         zcat) cmd="zcat $DB_INPUT > ${DB_INPUT%.gz}" ;;
         none) cmd="echo $DB_INPUT" ;;
     esac 
-    echo "$FUNC:$PWD:$cmd"
+    [[ $VERBOSE ]] && echo "$FUNC:$PWD:$cmd"
     eval $cmd
 }
 
@@ -73,9 +78,11 @@ function get_db_single() {
     local DB_DIR=$1       # 1  base directory, . for current directory
     local URL_DIR=$2      # 2  base url/directory for wget
     local DB_FILE=$3      # 3  data filename
-    local DB_MD5_FILE=$4  # 4  md5 checksum filename, md5sum -c with this checks $DB_FILE
+    local DB_MD5_FILE=$4  # 4  md5 checksum filename, md5sum --quiet -c with this checks $DB_FILE
     local METHOD=$5       # 5  method to unpack, 'tar' or 'zcat'
     local FUNC="get_db_single"
+
+    [[ $VERBOSE ]] || echo "$DB_DIR/$DB_FILE ..."
 
     cd $ROOT
     cd $TMPDIR
@@ -84,11 +91,11 @@ function get_db_single() {
 
     wget $WGET_OPTIONS $URL_DIR/$DB_MD5_FILE  # fetch the md5 file, preserving its server time
     wget $WGET_OPTIONS $URL_DIR/$DB_FILE  # fetch the database file
-    if md5sum -c $DB_MD5_FILE ; then  # it looks good, update to this version
-        #echo -e "\n$FUNC: successfully downloaded update for $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
+    if md5sum --quiet -c $DB_MD5_FILE ; then  # it looks good, update to this version
+        [[ $VERBOSE ]] && echo -e "\n$FUNC: successfully downloaded update for $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
         unpack_db_single  $DB_FILE  $METHOD
-        mkdir -p download && mv -vf $DB_FILE $DB_MD5_FILE download/ || error_send_email "could not move files to download/"
-        #echo -e "\n$FUNC: successfully updated $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
+        mkdir -p download && mv -f $DB_FILE $DB_MD5_FILE download/ || error_send_email "could not move files to download/"
+        [[ $VERBOSE ]] && echo -e "\n$FUNC: successfully updated $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
     else 
         error_send_email "$FUNC: $DB_FILE md5 checksum do not match"
     fi
@@ -106,14 +113,16 @@ function get_db_SIMPLE() {
     local DB_FILE=$3      # 3  data filename
     local FUNC="get_db_SIMPLE"
 
+    [[ $VERBOSE ]] || echo "$DB_DIR/$DB_FILE ..."
+
     cd $ROOT
     cd $TMPDIR
     mkdir -p $DB_DIR
     cd $DB_DIR
     wget $WGET_OPTIONS $URL_DIR/$DB_FILE
-    #echo -e "\n$FUNC: successfully downloaded update for $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
-    mkdir -p download && cp -avf $DB_FILE download/ || { echo "could not move files to download/"; exit 1; }
-    #echo -e "\n$FUNC: successfully updated $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
+    [[ $VERBOSE ]] && echo -e "\n$FUNC: successfully downloaded update for $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
+    mkdir -p download && cp -af $DB_FILE download/ || { echo "could not move files to download/"; exit 1; }
+    [[ $VERBOSE ]] && echo -e "\n$FUNC: successfully updated $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
     cd $ROOT
 }
 
@@ -153,6 +162,8 @@ get_db_SIMPLE  biocollections   ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocolle
 get_db_SIMPLE  biocollections   ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections   Unique_institution_codes.txt
 
 # remove previous version, place update, and update latest symlink
+[[ $MOVE_TO_FINAL ]] && { echo "Final move to $ROOT/$NEWVERSION ..."; } || { echo "No final move, downloaded versions left in $ROOT/$TMPDIR"; exit 0; }
+
 cd $ROOT
 [[ -d $PREVIOUSVERSION ]] && rm -rf $PREVIOUSVERSION
 mv $TMPDIR $NEWVERSION
