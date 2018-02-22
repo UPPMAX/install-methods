@@ -1,7 +1,7 @@
 prank/170427
 ============
 
-They now provide precompiled binaries!
+They now provide precompiled binaries!  Unfortunately they will not work on milou (gcc 2.14).
 
 <http://wasabiapp.org/software/prank/>
 
@@ -17,7 +17,7 @@ LOG
     mkdir src
     CC=rackham
     mkdir $CC
-    for C in milou bianca irma ; do ln -s $CC $C; done
+    for C in bianca irma ; do ln -s $CC $C; done
     cd $CC
     PFX=$PWD
     mkdir -p share/man/man1

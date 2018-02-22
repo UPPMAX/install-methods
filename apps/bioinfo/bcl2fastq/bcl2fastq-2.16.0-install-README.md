@@ -46,4 +46,3 @@ For tintin, after the 'tar xvzf' step above has been completed:
     make
     make install
 
-Be sure to add the GCC 4.8.3 library directories to the mf file.

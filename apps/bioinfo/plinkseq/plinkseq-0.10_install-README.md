@@ -22,3 +22,7 @@ LOG
     cd ../rackham/bin
     cp -av ../../src/plinkseq-0.10/build/execs/{behead,gcol,mongoose,tab2vcf,pseq} .
     cp -av ../../src/plinkseq-0.10/{browser,mm,pbrowse,smp} .
+
+####NEWS 2017-01-29
+    Apparently, that didn't work, so I now replaced the compiled ones with the binaries.
+    Only tab2vcf is now compiled for rackham.

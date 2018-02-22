@@ -26,18 +26,5 @@ Log
     cd ..
     mv Linux-amd64 ../../milou/
 
-Repeat on tintin.
-
-    cd /sw/apps/bioinfo/canu/1.1/src
-    module load gcc/4.9.2
-    module load zlib/1.2.8
-    tar xzf v1.1.tar.gz 
-    mv canu-1.1 canu-1.1-tintin
-    cd canu-1.1-tintin
-    cd src/
-    make -j 8
-    cd ..
-    mv Linux-amd64 ../../tintin/
-
-Use mf from 1.0.
+Note that `$CLUSTER/Linux-amd64/bin/canu.defaults` now contains an additional line `useGrid=false`.
 

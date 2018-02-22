@@ -31,3 +31,5 @@ Repeat on rackham but I skipped loading zlib since the system is reasonably new.
 
 Use mf from 1.1.
 
+Note that `$CLUSTER/Linux-amd64/bin/canu.defaults` now contains an additional line `useGrid=false`.
+

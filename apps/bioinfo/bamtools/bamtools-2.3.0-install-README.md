@@ -17,10 +17,11 @@ For building on rackham, just copy the tree and build with the default gcc.
     cd /sw/apps/bioinfo/bamtools/2.3.0/
     cp -a milou rackham
     cd rackham
+    PFX=$PWD
     rm -rf build
     mkdir build
     cd build
-    cmake ..
+    cmake -DCMAKE_INSTALL_PREFIX=$PFX ..
     make
     cd ../..
     ln -s ./rackham irma

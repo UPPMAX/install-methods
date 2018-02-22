@@ -1,31 +1,13 @@
-# BEETL-1.0.2-install-README.md, douglas.scofield@ebc.uu.se
+BEETL/1.0.2
+===========
 
-TITLE
-=====
+BEETL sequence database tool
 
-    BEETL 1.0.2
+Markus J. Bauer, Anthony J. Cox and Giovanna Rosone
+Lightweight BWT Construction for Very Large String Collections.
+Proceedings of CPM 2011, pp.219-231
 
-DESCRIPTION
------------
-
-    BEETL sequence database tool
-
-    Markus J. Bauer, Anthony J. Cox and Giovanna Rosone
-    Lightweight BWT Construction for Very Large String Collections.
-    Proceedings of CPM 2011, pp.219-231
-
-WEBSITE
--------
-
-    https://github.com/BEETL/BEETL
-
-MODULE REQUIREMENTS
--------------------
-
-    gcc 4.8.3 (or at least later than 4.4)
-    boost/1.55.0
-    SeqAn/1.4.2
-    automake 1.14+
+<https://github.com/BEETL/BEETL>
 
 LOG
 ---
@@ -33,7 +15,7 @@ LOG
     TOOL=/sw/apps/bioinfo/BEETL
     VERSION=1.0.2
     TOOLDIR=$TOOL/$VERSION
-    CLUSTER=milou
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
     CLUSTERDIR=$TOOLDIR/$CLUSTER
     mkdir -p $CLUSTERDIR
     cd $TOOL
@@ -41,7 +23,7 @@ LOG
     cd $TOOLDIR
     mkdir src
     cd src
-    git clone https://github.com/BEETL/BEETL.git
+    #git clone https://github.com/BEETL/BEETL.git
     cd BEETL/
 
 Now to build... use new build tools but eventually module load build-tools
@@ -49,7 +31,7 @@ will load these.
 
     export PATH=/sw/comp/m4/1.4.17/milou/bin:/sw/comp/autoconf/2.69/milou/bin:/sw/comp/automake/1.14.1/milou/bin:$PATH
     module load gcc/4.8.3
-    module load boost/1.55.0
+    module load boost/1.55.0_gcc4.8.3
     module load bioinfo-tools
     module load SeqAn/1.4.2
 

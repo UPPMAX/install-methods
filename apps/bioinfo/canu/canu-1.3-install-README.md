@@ -27,7 +27,5 @@ Log
     cd ..
     mv Linux-amd64 ../../$CLUSTER/
 
-Repeat on tintin.
-
-Use mf from 1.1.
+Note that `$CLUSTER/Linux-amd64/bin/canu.defaults` now contains an additional line `useGrid=false`.
 

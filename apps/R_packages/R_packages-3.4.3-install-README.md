@@ -50,7 +50,7 @@ installing new packages.  This will be undone later.
 
 and run R:
 
-    R
+    R --no-init-file
 
 
 Within R
@@ -72,28 +72,13 @@ dependencies can't be installed, then the package won't be installed.  For
 that reason, we install the packages twice, once with `dependencies=TRUE` and
 once without.
 
-    cran.packages = c('Rcpp','ggplot2','tidyr','hexbin','lmerTest','microbenchmark','xtable','testthat','DBI','VennDiagram','ade4','adegenet','vegan','ape','assertthat','akima','bitops','boot','caTools','chron','combinat','data.table','reshape2','kernlab','foreach','geiger','dplyr','picante','plyr','pvclust','rmarkdown','permute','markdown','plotrix','openssl','curl','seqinr','stringr','survival','vegan','whisker','zoo','maps','mvtnorm','dendextend','cluster','naturalsort','gplots','tkrplot','tmod','Lahman','RJSONIO','ecodist','gee','hflights','igraph','optparse','proto','reshape','mixOmics','vcfR','EMT','forecast','devtools','withr','rlang','car','gclus','gam','RcppGSL')
+    cran.packages = c('Rcpp','ggplot2','tidyr','hexbin','lmerTest','microbenchmark','xtable','testthat','DBI','VennDiagram','ade4','adegenet','vegan','ape','assertthat','akima','bitops','boot','caTools','chron','combinat','data.table','reshape2','kernlab','foreach','geiger','dplyr','picante','plyr','pvclust','rmarkdown','permute','markdown','plotrix','openssl','curl','seqinr','stringr','survival','vegan','whisker','zoo','maps','mvtnorm','dendextend','cluster','naturalsort','gplots','tkrplot','tmod','Lahman','RJSONIO','ecodist','gee','hflights','igraph','optparse','proto','reshape','mixOmics','vcfR','EMT','forecast','devtools','withr','rlang','car','gclus','gam','RcppGSL','rstan')
     install.packages(cran.packages, dependencies=TRUE, Ncpus=8)
     install.packages(cran.packages, Ncpus=8)
 
-For `rstan`, it cannot compile with versions of the `BH` package >= 1.64.  So,
-install RStan with dependencies, it will break, then uninstall BH, install an
-older BH, thein install RStan again.  When it asked to update the 'old' package
-`BH`, answer (n)o.
-
-    install.packages('rstan', dependencies=TRUE, Ncpus=8)
-    remove.packages('BH')
-    devtools::install_url("https://cran.r-project.org/src/contrib/Archive/BH/BH_1.62.0-1.tar.gz")
-    install.packages('rstan', Ncpus=8)
-
-The `'rstan'` installation will fail while attempting to install `rstan`
-itself, though it will be able to install several dependencies.  Rstan 2.16.2
-is incompatible with the latest version of `boost` provided in the `BH`
-package.  `rstan` will eventually get fixed.
-
     source('https://bioconductor.org/biocLite.R')
     biocLite()
-    bioc.packages = c('ggtree','Rhtslib','zlibbioc','edgeR','DEXSeq','goseq','GO.db','reactome.db','Gviz','org.Mm.eg.db','sva','dada2','DESeq','DESeq2','limma','AnnotationDbi','impute','preprocessCore','MODA','ROC','TCC','baySeq','multtest','phyloseq','DiffBind','ChIPpeakAnno','csaw','tximport','Glimma','MultiAssayExperiment','scater','scran','ChIPQC','chipseq','htSeqTools','ChIPQC','chipseq','htSeqTools')
+    bioc.packages = c('ggtree','Rhtslib','zlibbioc','edgeR','DEXSeq','goseq','GO.db','reactome.db','Gviz','org.Mm.eg.db','sva','dada2','DESeq','DESeq2','limma','AnnotationDbi','impute','preprocessCore','MODA','ROC','TCC','baySeq','multtest','phyloseq','DiffBind','ChIPpeakAnno','csaw','tximport','Glimma','MultiAssayExperiment','scater','scran','ChIPQC','chipseq','htSeqTools','ChIPQC','chipseq','htSeqTools','SNPRelate')
     biocLite(bioc.packages, dependencies=TRUE, Ncpus=8)
     biocLite(bioc.packages, Ncpus=8)
 
@@ -103,6 +88,23 @@ Packages not added yet:
 
 See the README for 3.3.0 if you get the messages about instruction problems or
 too-new or too-old BioConductor packages when using `biocLite`.
+
+Adding a new package
+---------------
+
+Do everything above between lines 16 and 33, from `VERSION=` through `echo -e`.  Load R, then
+
+    new.packages = c('package_a')
+    install.packages(new.packages, dependencies=TRUE, Ncpus=8)
+    install.packages(new.packages, Ncpus=8)
+
+For bioconductor,
+
+    new.packages = c('package_a')
+    source('https://bioconductor.org/biocLite.R')
+    biocLite()
+    biocLite(new.packages, dependencies=TRUE, Ncpus=8)
+    biocLite(new.packages, Ncpus=8)
 
 Interim updates
 ---------------
