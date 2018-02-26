@@ -101,19 +101,19 @@ getCluster
 set components [ file split [ module-info name ] ]
 set version [ lindex $components 1 ]
 
-set     modroot         /sw/apps/bioinfo/$TOOL/\$version/\$Cluster
+set     modroot         /sw/apps/bioinfo/$TOOL/\\\$version/\\\$Cluster
 
 proc ModulesHelp { } {
 global version modroot
     
-    puts stderr "$TOOL - use $TOOL $version"
+    puts stderr "$TOOL - use $TOOL \$version"
     puts stderr "\nDescription"
-    puts stderr "\nVersion $version"
+    puts stderr "\nVersion \\\$version"
     puts stderr "\nhttp://"
     puts stderr "\nUsage:"
 }
 
-module-whatis   "Loads $TOOL module environment, version $version"
+module-whatis   "Loads $TOOL module environment, version \$version"
 
 # Only one version at a time
 conflict $TOOL
@@ -128,13 +128,13 @@ logToSyslog
 
 module load
 
-prepend-path    PATH            /sw/apps/bioinfo/${TOOL}/${VERSION}/${CLUSTER}
-prepend-path    PATH            /sw/apps/bioinfo/${TOOL}/${VERSION}/${CLUSTER}/bin
+prepend-path    PATH            /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster
+prepend-path    PATH            /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster/bin
 
-prepend-path    LD_LIBRARY_PATH /sw/apps/bioinfo/${TOOL}/${VERSION}/${CLUSTER}/lib
-prepend-path    PYTHONPATH      /sw/apps/bioinfo/${TOOL}/${VERSION}/${CLUSTER}/lib/python3.6/site-packages
+prepend-path    LD_LIBRARY_PATH /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster/lib
+prepend-path    PYTHONPATH      /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster/lib/python3.6/site-packages
 
-prepend-path    MANPATH         /sw/apps/bioinfo/${TOOL}/${VERSION}/${CLUSTER}/share/man
+prepend-path    MANPATH         /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster/share/man
 
 EOF
 else
@@ -158,17 +158,17 @@ I did..
     CLUSTER=${CLUSTER:?CLUSTER must be set}
     ${0}
     ./$SCRIPTFILE
-    cd /sw/apps/bioinfo/\$TOOL/\$VERSION/src
+    cd /sw/apps/bioinfo/\\\$TOOL/\\\$VERSION/src
     wget http://
     tar xvf 
     make
 
 EOF2
     
-echo "Please modify ${module_file} if needed."
+echo -e "\nPlease modify ${module_file} if needed."
 echo "If new, it contains some examples that will most likely need to be changed"
 echo "Then copy it to /sw/mf/common/bioinfo-tools/$SECTION/$TOOL/$VERSION"
-echo "\nAlso, please modify ${readme_file}"
+echo -e "\nAlso, please modify ${readme_file}\n"
 
 umask 0022
 
