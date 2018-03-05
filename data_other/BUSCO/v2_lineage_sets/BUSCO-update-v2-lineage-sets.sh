@@ -65,33 +65,30 @@ SITE=http://busco.ezlab.org/v2/datasets
 function fetch_lineage_set() {
     LS=$1
     EXPAND=yes # default
-    echo "fetching lineage set ${LS} ... "
+    echo -n "Fetching lineage set ${LS} ... "
     if test -f ${LS} ; then
         NEW=${LS}.new
         wget $WGET_OPTIONS -O $NEW $SITE/${LS}
         if diff ${LS} $NEW ; then
-            echo "no new content in lineage set ${LS}"
-            echo
+            echo -n "no new content."
             rm -f $NEW
             EXPAND=
         else
-            echo "found update for lineage set ${LS}"
-            echo
+            echo -n "found update!"
             mv -f $NEW ${LS}
         fi
     else 
-        echo "found new lineage set ${LS}"
-        echo
+        echo -n "this is a new lineage set."
         wget $WGET_OPTIONS $SITE/${LS}
     fi
     if [[ "$EXPAND" ]] ; then
-        echo "expanding ${LS} ... "
+        echo -n " Expanding ... "
         tar xzf ${LS}
     else
-        echo "touching ${LS}_checked ... "
+        echo -n " Touching ${LS}_checked ... "
         touch ${LS}_checked
     fi
-    echo
+    echo "done."
 }
 
 for LS in ${Bacteria[@]}
@@ -108,4 +105,4 @@ echo "Updating groups and permissions ..."
 chgrp -hR sw *
 chmod -R u+rwX,g+rwX,o+rX-w *
 find . -type d -exec chmod g+s {} \;
-
+echo "Done."

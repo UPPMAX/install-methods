@@ -7,14 +7,14 @@ WGET_OPTIONS="--quiet --timestamping"
 VERBOSE=
 MOVE_TO_FINAL=yes
 
-echo "Updating NCBI taxonomy files to $ROOT"
-
 # Much of the guts come from diamond-db-update.sh, but this is much simplified
 # by moving the temp directory and latest symlink to be done once in the script
 
 DateFormat='%Y%m%d'  # used for databases where the version tag is a date
 TODAY=`date +"$DateFormat"`
 NEWVERSION="$TODAY"
+
+echo "Updating NCBI taxonomy files to version $NEWVERSION"
 
 # This will set NEWVERSION based on the last-modified time of a file, but we
 # don't do that for these databases because they are all bundled under the date
@@ -172,4 +172,5 @@ make_latest_symlink  "$NEWVERSION"
 chgrp -hR sw .
 chmod -R u+rwX,g+rwX,o+rX .
 find . -type d -exec chmod g+s {} \;
+echo "Done."
 

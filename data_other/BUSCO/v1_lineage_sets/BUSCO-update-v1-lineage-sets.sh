@@ -11,33 +11,30 @@ set -e
 function fetch_lineage_set() {
     LS=$1
     EXPAND=yes # default
-    echo "fetching lineage set ${LS} ... "
+    echo -n "Fetching lineage set ${LS} ... "
     if test -f ${LS} ; then
         NEW=${LS}.new
         wget $WGET_OPTIONS -O $NEW http://busco.ezlab.org/v1/files/${LS}
         if diff ${LS} $NEW ; then
-            echo "no new content in lineage set ${LS}"
-            echo
+            echo -n "no new content."
             rm -f $NEW
             EXPAND=
         else
-            echo "found update for lineage set ${LS}"
-            echo
+            echo -n "found update!"
             mv -f $NEW ${LS}
         fi
     else 
-        echo "found new lineage set ${LS}"
-        echo
+        echo -n "this is a new lineage set."
         wget $WGET_OPTIONS http://busco.ezlab.org/v1/files/${LS}
     fi
     if [[ "$EXPAND" ]] ; then
-        echo "expanding ${LS} ... "
+        echo -n " Expanding ... "
         tar xzf ${LS}
     else
-        echo "touching ${LS}_checked ... "
+        echo -n " Touching ${LS}_checked ... "
         touch ${LS}_checked
     fi
-    echo
+    echo "done."
 }
 
 #for LS in plant_early_release.tar.gz
@@ -47,7 +44,7 @@ do
 
     # special behaviour for plant early release, there is a subarchive that needs to be unpacked and lifted
     if [[ "${LS}" = "plant_early_release.tar.gz" && "$EXPAND" ]] ; then
-        echo "expanding subarchive plantae.tar.gz ... "
+        echo -n "Expanding subarchive plantae.tar.gz ... "
         cd plant_early_release
         tar xzf plantae.tar.gz
         mv -f plantae ..
@@ -61,4 +58,4 @@ echo "Updating groups and permissions ..."
 chgrp -hR sw *
 chmod -R u+rwX,g+rwX,o+rX-w *
 find . -type d -exec chmod g+s {} \;
-
+echo "Done."

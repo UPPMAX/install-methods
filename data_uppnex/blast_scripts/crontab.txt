@@ -1,6 +1,8 @@
-# crntab entry for blast database updates (andrek)
+# crontab entry for blast database updates (andrek)
 # Run blast database update script at 0:01 on the 28th of every month
-1 0 28 * *      /sw/data/uppnex/blast_scripts/cron-wrapper.sh
+# 2018-02-28: Also on the 7th, 14th and 21st so that the job on the 28th
+#             does not have to get such an extraordinary amount of data.
+1 0 7,14,21,28 * *      /sw/data/uppnex/blast_scripts/cron-wrapper.sh
 
 # Install blast database updates every 1st of the month at 00.01 (douglas)
 # This is a simple mv of updates that have previously been staged by Andreas K every 28th of the month

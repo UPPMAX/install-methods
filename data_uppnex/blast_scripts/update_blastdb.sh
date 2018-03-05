@@ -30,12 +30,12 @@ get_remote_filelist () {
 
 rsync_filelist () {
     # Will fetch the files in files.list.  Distributes the list to four
-    # rsync instances that will handle at most 100 files each before
+    # rsync instances that will handle at most 10 files each before
     # they are respawned.  Errors are written to rsync-errors.txt and
     # the files that are actually fetched are logged to rsync-report.txt.
 
-    sort -R "$staging_dir/files.list" |
-    parallel --line-buffer --jobs "$RSYNC_JOBS" --pipe --cat -N 100 \
+    sort -rV "$staging_dir/files.list" |
+    parallel --line-buffer --jobs "$RSYNC_JOBS" --pipe --cat -N 10 \
         nice rsync --no-motd --timeout=60 --archive --no-perms \
             --out-format='%t\ %i\ %b/%l\ %n' \
             --link-dest="$staging_dir/files-current" \

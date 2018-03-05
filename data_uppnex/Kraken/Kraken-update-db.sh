@@ -3,17 +3,17 @@
 #SBATCH -A staff
 #SBATCH -J Kraken-update-db.sh
 #SBATCH -p node
-#SBATCH -n 16
 #SBATCH -C mem256GB
-#SBATCH -t 12:00:00
+#SBATCH -t 24:00:00
 #SBATCH --mail-user douglas.scofield@ebc.uu.se
 #SBATCH --mail-type=ALL
+#SBATCH -o /sw/data/uppnex/Kraken/slurm-%j.out
 
 K_DB_BASE=/sw/data/uppnex/Kraken
 K_VERSION=1.0
-THREADS=${1:-$SLURM_NPROCS}
-
-# This now must run on a 256GB node, it needs just under 200GB to build the standard database
+THREADS=${1:-$SLURM_JOB_CPUS_PER_NODE}
+MEMGB=${SLURM_MEM_PER_NODE%???}  # truncated value, remove last 3 chars (128GB node reports 128000)
+MINGB=200 # This now must run on a 256GB node, it needs just under 200GB to build the standard database
 
 function error_send_email()
 {
@@ -22,9 +22,9 @@ function error_send_email()
     exit 1
 }
 
+(( MEMGB >= MINGB )) || error_send_email "This node has $MEMGB GB but needs at least $MINGB GB"
 
-# building the standard database now must run on a fat node
-# [[ $(uname -n) = 'milou-b.uppmax.uu.se' ]] || error_send_email "This is a long multi-core process and must be run on milou-b"
+echo "$0: working with $THREADS threads on a node with at least $MEMGB GB.  On rackham 12h wasn't enough on 20180302 so running for 24h"
 
 set -e
 
