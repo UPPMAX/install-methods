@@ -1,5 +1,18 @@
 # Various helper functions for UPPMAX
 
+# "module help" loading subgroupings before running
+function mhelp()
+{
+    [[ $# != 0 ]] || { cat <<_usage_
+USAGE:  mhelp module  or  mhelp module/version
+
+Perform 'module help module/version' after loading bioinfo-tools and build-tools subgroupings in a subshell
+_usage_
+    return; }
+    local M=${1:?module or module/version required}
+    ( module load bioinfo-tools build-tools ; module help "$M" )
+}
+
 # "module show" loading subgroupings before running
 function mshow()
 {
