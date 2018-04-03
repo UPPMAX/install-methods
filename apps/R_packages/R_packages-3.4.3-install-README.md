@@ -7,6 +7,7 @@ comprehensive with respect to CRAN, but should be useful for some.
 Addendum 2017-11-21: use `dependencies=TRUE` to install `Suggests` dependencies
 along with the other strict ones.
 
+
 LOG
 ---
 
@@ -30,23 +31,25 @@ setting up prior to adding new packages to this installation.
     module load automake/1.14.1
     module load m4/1.4.17
     module load MariaDB/10.1.29
+    module load PostgreSQL/10.3
     echo -e "\nThis should have been set to the appropriate directory in this module, is it?\n\nR_LIBS_USER = $R_LIBS_USER\n"
 
 The build tools modules are required for some more recent configure scripts
 within R packages.  MariaDB (*this 10.1.x version*, not 10.2.x) is required for
 installing the `RMySQL` package, which is needed as a prereq by several
-BioConductor pacakges.
+BioConductor packages.  We also load `PostgreSQL/10.3` for the same reason for
+`RPostgreSQL`.
+
+The installation of `formattable` and `kableExtra` requires
+`ImageMagick/6.9.9-35` with rsvg support.  Compiling against that tool requires
+a lot of other modules that we don't want to have loaded for the general
+installation. See below for this special case.
 
 Loading R loads a bunch of stuff including gcc that will be used for building
 R packages.  So, like with perl_modules, R_packages is associated with a
 specific R module version.  Make sure you are using R/3.4.3:
 
     which R
-
-Set the cluster directory contents to be writable for the owner only, if
-installing new packages.  This will be undone later.
-
-    chmod -R u+rwX .
 
 and run R:
 
@@ -67,18 +70,18 @@ In another shell outside R (substituting `VERSION` and `CLUSTER`):
 
 After checking that was installed within the appropriate R_packages tree,
 continue with these, including some from BioConductor.  Note that specifying
-`dependencies+TRUE` seems to indicate that, at least for some packages, if the
+`dependencies=TRUE` seems to indicate that, at least for some packages, if the
 dependencies can't be installed, then the package won't be installed.  For
 that reason, we install the packages twice, once with `dependencies=TRUE` and
 once without.
 
-    cran.packages = c('Rcpp','ggplot2','tidyr','hexbin','lmerTest','microbenchmark','xtable','testthat','DBI','VennDiagram','ade4','adegenet','vegan','ape','assertthat','akima','bitops','boot','caTools','chron','combinat','data.table','reshape2','kernlab','foreach','geiger','dplyr','picante','plyr','pvclust','rmarkdown','permute','markdown','plotrix','openssl','curl','seqinr','stringr','survival','vegan','whisker','zoo','maps','mvtnorm','dendextend','cluster','naturalsort','gplots','tkrplot','tmod','Lahman','RJSONIO','ecodist','gee','hflights','igraph','optparse','proto','reshape','mixOmics','vcfR','EMT','forecast','devtools','withr','rlang','car','gclus','gam','RcppGSL','rstan')
+    cran.packages = c('Rcpp','ggplot2','tidyr','hexbin','lmerTest','microbenchmark','xtable','testthat','DBI','VennDiagram','ade4','adegenet','vegan','ape','assertthat','akima','bitops','boot','caTools','chron','combinat','data.table','reshape2','kernlab','foreach','geiger','dplyr','picante','plyr','pvclust','rmarkdown','permute','markdown','plotrix','openssl','curl','seqinr','stringr','survival','vegan','whisker','zoo','maps','mvtnorm','dendextend','cluster','naturalsort','gplots','tkrplot','tmod','Lahman','RJSONIO','ecodist','gee','hflights','igraph','optparse','proto','reshape','mixOmics','vcfR','EMT','forecast','devtools','withr','rlang','car','gclus','gam','RcppGSL','rstan','RMySQL','RPostgreSQL','gsalib','qqman','manhattanly','GenABEL','FactoMineR')
     install.packages(cran.packages, dependencies=TRUE, Ncpus=8)
     install.packages(cran.packages, Ncpus=8)
 
     source('https://bioconductor.org/biocLite.R')
     biocLite()
-    bioc.packages = c('ggtree','Rhtslib','zlibbioc','edgeR','DEXSeq','goseq','GO.db','reactome.db','Gviz','org.Mm.eg.db','sva','dada2','DESeq','DESeq2','limma','AnnotationDbi','impute','preprocessCore','MODA','ROC','TCC','baySeq','multtest','phyloseq','DiffBind','ChIPpeakAnno','csaw','tximport','Glimma','MultiAssayExperiment','scater','scran','ChIPQC','chipseq','htSeqTools','ChIPQC','chipseq','htSeqTools','SNPRelate')
+    bioc.packages = c('ggtree','Rhtslib','zlibbioc','edgeR','DEXSeq','goseq','GO.db','reactome.db','Gviz','org.Mm.eg.db','sva','dada2','DESeq','DESeq2','limma','AnnotationDbi','impute','preprocessCore','MODA','ROC','TCC','baySeq','multtest','phyloseq','DiffBind','ChIPpeakAnno','csaw','tximport','Glimma','MultiAssayExperiment','scater','scran','ChIPQC','chipseq','htSeqTools','ChIPQC','chipseq','htSeqTools','SNPRelate','chimeraviz','bumphunter')
     biocLite(bioc.packages, dependencies=TRUE, Ncpus=8)
     biocLite(bioc.packages, Ncpus=8)
 
@@ -87,7 +90,9 @@ Packages not added yet:
 
 
 See the README for 3.3.0 if you get the messages about instruction problems or
-too-new or too-old BioConductor packages when using `biocLite`.
+too-new or too-old BioConductor packages when using `biocLite`.  Short answer:
+do not update packages.
+
 
 Adding a new package
 ---------------
@@ -106,6 +111,37 @@ For bioconductor,
     biocLite(new.packages, dependencies=TRUE, Ncpus=8)
     biocLite(new.packages, Ncpus=8)
 
+
+Installation which requires additional modules
+----------------------------------------------
+
+A few R packages or their dependencies require some further loads:
+`formattable`, `kableExtra`, `magick`, `rgdal`.  This requires some additional
+module loads that are best left out of the general compilation.
+
+Outside R, load modules then run R:
+
+    module load ImageMagick/6.9.9-35
+    module load gcc/6.3.0
+    module load bzip2/1.0.6
+    module load freetype/2.7.1
+    module load texlive/2016
+    module load zlib/1.2.11
+    module load xz/5.2.2
+    module load cairo/1.14.8
+    module load giflib/5.1.4
+    module load Poppler/0.54.0
+    module load GDAL/2.1.0
+    R
+
+Install.  The `tesseract` dependency won't be installable unless this OCR system
+is eventually installed at Uppmax.  Should be no problem to leave it out.
+
+    xtra.list = c('formattable','kableExtra','magick','rgdal')
+    install.packages(xtra.list, dependencies=TRUE, Ncpus=8)
+    install.packages(xtra.list, Ncpus=8)
+
+
 Interim updates
 ---------------
 
@@ -115,6 +151,7 @@ If updating BioConductor to an already-existing module, just do the `source...()
 
     source('https://bioconductor.org/biocLite.R')
     biocLite(c(...), dependencies=TRUE)
+
 
 Updating existing packages in this module
 -----------------------------------------
@@ -164,12 +201,13 @@ Also, install an outdated package `igraph0`, which has been superseded by
 After adding new packages
 -------------------------
 
-Within R, get a list of installed packages and their versions:
+Within R, get a list of installed packages and their versions.  This
+modification produces a case-insensitive sorted list.
 
     ip <- as.data.frame(installed.packages()[, c(1, 3:4)])
     rownames(ip) <- NULL
     ip <- ip[is.na(ip$Priority), 1:2, drop=FALSE]
-    print(ip, row.names=FALSE)
+    print(ip[order(tolower(ip$Package)),], row.names=FALSE)
 
 Copy-paste the table into `table.txt` and then create the HTML table from the shell with
 

@@ -17,14 +17,16 @@ LOG
     cd gvcftools
     mkdir ${VERSION}
     cd ${VERSION}
-    mkdir $CLUSTER src_$CLUSTER
-    cd src_$CLUSTER
-    wget https://github.com/sequencing/gvcftools/releases/download/v${VERSION}/gvcftools-${VERSION}.tar.gz
+    mkdir $CLUSTER
+    [[ "$CLUSTER" = "rackham" ]] && for CC in bianca irma ; do ln -s $CLUSTER $CC; done
+    PFX=$PWD/$CLUSTER
+    mkdir src
+    cd src
+    [[ -f gvcftools-${VERSION}.tar.gz ]] || wget https://github.com/sequencing/gvcftools/releases/download/v${VERSION}/gvcftools-${VERSION}.tar.gz
+    [[ -d gvcftools-${VERSION} ]] && rm -rf gvcftools-${VERSION}
     tar xzf gvcftools-${VERSION}.tar.gz 
     cd gvcftools-${VERSION}/
     make
-
-Now make sure no dynamic libs to worry about.
 
     cd bin
     ldd break_blocks 
@@ -32,9 +34,5 @@ Now make sure no dynamic libs to worry about.
     ldd twins 
     cd ..
 
-And move the bin/ directory to the cluster directory.
-
-    mv bin ../../$CLUSTER/
-
-Now do the same on tintin.
+    cp -av bin $PFX/ && cd .. && rm -rf gvcftools-${VERSION}
 

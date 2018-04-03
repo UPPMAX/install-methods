@@ -1,4 +1,4 @@
-Stacks/1.48
+Stacks/2.0Beta9
 ===========
 
 Stacks short-read variant pipeline
@@ -9,7 +9,14 @@ Stacks short-read variant pipeline
 LOG
 ---
 
-    VERSION=1.48
+No longer using sparsehash ?  The README mentions an `--enable-sparsehash`
+option for `./configure` but nope.
+
+Install required perl modules `Spreadsheet::WriteExcel` and `DBD::mysql`, so
+load newer perl and MariaDB prior to installing.
+
+
+    VERSION=2.0Beta9
     CLUSTER=${CLUSTER?:CLUSTER must be set}
     TOOL=Stacks
     cd /sw/apps/bioinfo
@@ -28,21 +35,6 @@ LOG
 
     module load gcc/6.3.0
 
-Install sparsehash for better memory management.
-
-    SH_VERSION=2.0.3
-    [[ -f sparsehash-${SH_VERSION}.tar.gz ]] || wget https://github.com/sparsehash/sparsehash/archive/sparsehash-${SH_VERSION}.tar.gz
-    [[ -d sparsehash-sparsehash-${SH_VERSION} ]] && rm -rf sparsehash-${SH_VERSION}
-    tar xzf sparsehash-${SH_VERSION}.tar.gz
-    cd sparsehash-sparsehash-${SH_VERSION}
-    ./configure --prefix=$PFX
-    make && make install
-    cd ..
-    rm -rf sparsehash-sparsehash-${SH_VERSION}
-
-Install required perl modules `Spreadsheet::WriteExcel` and `DBD::mysql`, so
-load newer perl and MariaDB prior to installing.
-
     module load perl/5.24.1
     module load MariaDB/10.1.29
 
@@ -56,13 +48,8 @@ load newer perl and MariaDB prior to installing.
     cpanm DBI
     cpanm DBD::mysql
 
-Stacks has a complete web interface via Apache to view results from
-a loaded MySql database.  This module does not implement that, but it
-does include tools for filling a MySql database if you happen to have
-gotten that to work for you personally.
-
     cd stacks-${VERSION}
-    ./configure --prefix=$PFX --enable-sparsehash --with-sparsehash-include-path=$PFX/include
+    ./configure --prefix=$PFX
 
     make && make install
 
