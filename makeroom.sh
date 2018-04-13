@@ -135,6 +135,7 @@ prepend-path    LD_LIBRARY_PATH /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster/
 prepend-path    PYTHONPATH      /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster/lib/python3.6/site-packages
 
 prepend-path    MANPATH         /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster/share/man
+setenv          ${TOOL}_ROOT    /sw/apps/bioinfo/$TOOL/\\\$version/\\\$Cluster
 
 EOF
 else
@@ -174,4 +175,5 @@ umask 0022
 
 TMP
 
+echo "TOOL=$TOOL VERSION=$VERSION"
 chmod +x $SCRIPTFILE
