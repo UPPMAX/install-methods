@@ -49,7 +49,7 @@ COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$TOOL)
 
 if [ -z "$SECTION" ] ; then
     if [[ ! -d $COMMONDIR ]] ; then
-        echo "*** $TOOL is a new software. You need to provide a SECTION with -s"
+        echo "### $TOOL is a new software. You need to provide a SECTION with -s"
         exit 1
     else
         SUBDIR=${COMMONDIR#/sw/mf/common/bioinfo-tools/}
@@ -173,6 +173,7 @@ echo -e "\nAlso, please modify ${readme_file}\n"
 
 umask 0022
 
+mv $PWD/$SCRIPTFILE /sw/apps/bioinfo/${TOOL}/
 TMP
 
 echo "TOOL=$TOOL VERSION=$VERSION"
