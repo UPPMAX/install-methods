@@ -157,7 +157,11 @@ I did..
     TOOL=$TOOL
     VERSION=$VERSION
     CLUSTER=${CLUSTER:?CLUSTER must be set}
+    VERSIONDIR=/sw/apps/bioinfo/\\\$TOOL/\\\$VERSION
     ${0}
+
+NOTE: I use my own script which is located at /sw/apps/bioinfo/$TOOL/makeroom_$TOOL_$VERSION.sh
+
     ./$SCRIPTFILE
     cd /sw/apps/bioinfo/\\\$TOOL/\\\$VERSION/src
     wget http://
@@ -176,5 +180,5 @@ umask 0022
 mv $PWD/$SCRIPTFILE /sw/apps/bioinfo/${TOOL}/
 TMP
 
-echo "TOOL=$TOOL VERSION=$VERSION"
+echo "TOOL=$TOOL VERSION=$VERSION VERSIONDIR=/sw/apps/bioinfo/$TOOL/$VERSION"
 chmod +x $SCRIPTFILE
