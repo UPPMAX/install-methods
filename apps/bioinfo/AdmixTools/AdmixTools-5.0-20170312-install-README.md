@@ -19,7 +19,35 @@ LOG
 Wes's instructions show that we should modify the makefile to point to local
 openblas.  I'll copy over his Makefile.
 
-    diff ../../../20160803/milou/src/Makefile src/Makefile
+    diff src/Makefile ../../../20160803/milou/src/Makefile
+
+Which produces
+
+    16a17
+    > BLASLIB= -L/sw/libs/openblas/0.2.14a/$(CLUSTER)/lib
+    25c26
+    < QCC =  -Wl,-Bdynamic -lgsl -Wl,-Bstatic -l$(BLAS) -Wl,-Bdynamic -lgfortran  -lm
+    ---
+    > QCC =  -Wl,-Bdynamic -lgsl -Wl,-Bstatic $(BLASLIB) -l$(BLAS) -Wl,-Bdynamic -lgfortran  -lm
+    136c137
+    <     gcc -I$(IDIR) $(DEBUG_OPTIONS) -l$(BLAS) -fopenmp $(M8O) $(NLIB) $(QCC) -o $(M8)
+    ---
+    >     gcc -I$(IDIR) $(DEBUG_OPTIONS) $(BLASLIB) -l$(BLAS) -fopenmp $(M8O) $(NLIB) $(QCC) -o $(M8)
+    139c140
+    <     gcc -I$(IDIR) $(DEBUG_OPTIONS) -l$(BLAS) -fopenmp $(M9O) $(NLIB) $(QCC) -o $(M9)
+    ---
+    >     gcc -I$(IDIR) $(DEBUG_OPTIONS) $(BLASLIB) -l$(BLAS) -fopenmp $(M9O) $(NLIB) $(QCC) -o $(M9)
+    170c171
+    <
+    ---
+    >
+    208c209
+    <     gcc -I$(IDIR) $(DEBUG_OPTIONS) -lgsl -lopenblas -lm -llapack -o $(M9F2) $(M9F2O) $(NLIB)
+    ---
+    >     gcc -I$(IDIR) $(DEBUG_OPTIONS) -lgsl $(BLASLIB) -l$(BLAS) -lm -llapack -o $(M9F2) $(M9F2O) $(NLIB)
+
+So use the new Makefile.
+
     mv src/Makefile src/Makefile.orig
     cp ../../../20160803/milou/src/Makefile src/Makefile
 

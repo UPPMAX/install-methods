@@ -5,6 +5,7 @@ BUSCO lineage sets are kept in the top of the BUSCO module directory.
 
 * BUSCO version 1: `/sw/apps/bioinfo/BUSCO/v1_lineage_sets/`
 * BUSCO version 2: `/sw/apps/bioinfo/BUSCO/v2_lineage_sets/`
+* BUSCO version 3: this uses v2 lineage sets
 
 The download scripts fetch the lineage sets again and check to see if they are
 different from what is already downloaded.  If so, the lineage set is updated,

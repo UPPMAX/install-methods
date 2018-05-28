@@ -1,11 +1,44 @@
-R_packages/3.4.3
+R_packages/3.5.0
 ================
 
-Module holding installations of some commonly-used R packages.  Not
-comprehensive with respect to CRAN, but should be useful for some.
+Module holding installations of CRAN and BioConductor.  An attempt to be
+comprehensive.  We can't be completely, because we don't have certain
+libraries, Oracle, GPUs, etc. installed, nor did I load specialist modules that
+might be connectable.
 
-Addendum 2017-11-21: use `dependencies=TRUE` to install `Suggests` dependencies
-along with the other strict ones.
+I'll pick those up by hand afterward.  I want to make sure everything that a
+user has requested is definitely installed.
+
+There is a hacky R script `/sw/apps/R_packages/3.5.0/inst.R` that checks for
+available packages at CRAN and BioConductor that are uninstalled and installs
+from CRAN then BioC, Cran then BioC up to 10 times until the number of
+installed packages is the same between two iterations.
+
+    After iteration 3 :
+
+    11932 CRAN packages installed, out of total 12565
+    14730 BioConductor packages installed, out of total 15405
+
+The sizes are significantly different to:
+
+    10G   3.4.3/rackham
+    201G  3.5.0/rackham
+
+Some of the packages that didn't get picked up are:
+
+    Warning messages:
+    1: In install.packages(pkgs = doing, lib = lib, ...) :
+    installation of one or more packages failed,
+    probably �bgx�, �BiocSklearn�, �ChemmineOB�, �dSimer�, �flipflop�, �rsbml�, �rTANDEM�, �xps�, �bamboo�, �bayesCL�, �bioacoustics�, �biospear�, �BRugs�, �cld3�, �clpAPI�, �cplexAPI�, �cudaBayesreg�, �glpkAPI�, �gpg�, �gpuR�, �h5�, �HierO�, �jqr�, �keyring�, �kmcudaR�, �ldat�, �loon�, �magick�, �mongolite�, �odbc�, �OpenCL�, �pbdMPI�, �pbdPROF�, �pcaL1�, �pdftools�, �permGPU�, �proj4�, �protolite�, �qtbase�, �Rcplex�, �RcppAPT�, �RcppRedis�, �rDEA�, �RDieHarder�, �redland�, �redux�, �rgdal�, �rggobi�, �Rglpk�, �Rhpc�, �rjags�, �rLindo�, �RmecabKo�, �Rmosek�, �rMouse�, �Rmpi�, �RNetCDF�, �RODBC�, �ROracle�, �rpanel�, �Rpoppler�, �RProtoBuf�, �RQuantLib�, �RSAP�, �Rsymphony�, �runjags� [... truncated]
+    2: In install.packages(setdiff(cran.pkgs, rownames(installed.packages())),  :
+      installation of one or more packages failed,
+        probably �bamboo�, �bayesCL�, �bioacoustics�, �biospear�, �BRugs�, �cld3�, �clpAPI�, �cplexAPI�, �cRegulome�, �cudaBayesreg�, �glpkAPI�, �gpg�, �gpuR�, �h5�, �HierO�, �jqr�,keyring�, �kmcudaR�, �ldat�, �loon�, �magick�, �mongolite�, �odbc�, �OpenCL�, �pbdMPI�, �pbdPROF�, �pcaL1�, �pdftools�, �permGPU�, �proj4�, �protolite�, �qtbase�, �Rcplex�, �RcppAPT�, �RcppRedis�, �rDEA�, �RDieHarder�, �redland�, �redux�, �rgdal�, �rggobi�, �Rglpk�, �Rhpc�, �rjags�, �rLindo�, �RmecabKo�, �Rmosek�, �rMouse�, �Rmpi�, �RNetCDF�, �RODBC�, �ROracle�, �rpanel�, �Rpoppler�, �RProtoBuf�, �RQuantLib�, �RSAP�, �Rsymphony�, �runjags�, �RVowpalWabbit�, �rzmq�, �sdols�, �seewave�, �shallot�, �smacof�, �sodi [... truncated]
+    3: In install.packages(pkgs = doing, lib = lib, ...) :
+      installation of one or more packages failed,
+    probably �bgx�, �BiocSklearn�, �ChemmineOB�, �dSimer�, �facopy�, �flipflop�, �HilbertVisGUI�, �rsbml�, �rTANDEM�, �xps�, �bamboo�, �bayesCL�, �bioacoustics�, �biospear�, �BRugs�, �cld3�, �clpAPI�, �cplexAPI�, �cudaBayesreg�, �glpkAPI�, �gpg�, �gpuR�, �h5�, �HierO�, �jqr�, �keyring�, �kmcudaR�, �ldat�, �loon�, �magick�, �mongolite�, �odbc�, �OpenCL�, �pbdMPI�, �pbdPROF�, �pcaL1�, �pdftools�, �permGPU�, �proj4�, �protolite�, �qtbase�, �Rcplex�, �RcppAPT�, �RcppRedis�, �rDEA�, �RDieHarder�, �redland�, �redux�, �rgdal�, �rggobi�, �Rglpk�, �Rhpc�, �rjags�, �rLindo�, �RmecabKo�, �Rmosek�, �rMouse�, �Rmpi�, �RNetCDF�, �RODBC�, �ROracle�, �rpanel�, �Rpoppler�, �RProtoBuf�, �RQuantLib�, �RSA [... truncated]
+    4: In install.packages(setdiff(cran.pkgs, rownames(installed.packages())),  :
+    installation of one or more packages failed,
+    probably �bamboo�, �bayesCL�, �bioacoustics�, �biospear�, �BRugs�, �cld3�, �clpAPI�, �cplexAPI�, �cRegulome�, �cudaBayesreg�, �glpkAPI�, �gpg�, �gpuR�, �h5�, �HierO�, �jqr�, �keyring�, �kmcudaR�, �ldat�, �loon�, �magick�, �mongolite�, �odbc�, �OpenCL�, �pbdMPI�, �pbdPROF�, �pcaL1�, �pdftools�, �permGPU�, �proj4�, �protolite�, �qtbase�, �Rcplex�, �RcppAPT�, �RcppRedis�, �rDEA�, �RDieHarder�, �redland�, �redux�, �rgdal�, �rggobi�, �Rglpk�, �Rhpc�, �rjags�, �rLindo�, �RmecabKo�, �Rmosek�, �rMouse�, �Rmpi�, �RNetCDF�, �RODBC�, �ROracle�, �rpanel�, �Rpoppler�, �RProtoBuf�, �RQuantLib�, �RSAP�, �Rsymphony�, �runjags�, �RVowpalWabbit�, �rzmq�, �sdols�, �seewave�, �shallot�, �smacof�, �sodi [... truncated]
 
 
 LOG
@@ -14,7 +47,7 @@ LOG
 Run these commands to start the installation, and also run these commands for
 setting up prior to adding new packages to this installation.
 
-    VERSION=3.4.3
+    VERSION=3.5.0
     CLUSTER=${CLUSTER?:For some reason, CLUSTER is not set}
     cd /sw/apps
     mkdir -p R_packages
@@ -23,6 +56,7 @@ setting up prior to adding new packages to this installation.
     mkdir -p mf
     cd $VERSION
     mkdir $CLUSTER
+    [[ "$CLUSTER" == "rackham" ]] && for CL in irma bianca ; do ln -s $CLUSTER $CL; done
     cd $CLUSTER/
     export R_LIBS_USER=$PWD
     module load R/$VERSION
@@ -68,12 +102,23 @@ In another shell outside R (substituting `VERSION` and `CLUSTER`):
 
     ls -l /sw/apps/R_packages/$VERSION/$CLUSTER
 
+
+
+
 After checking that was installed within the appropriate R_packages tree,
 continue with these, including some from BioConductor.  Note that specifying
 `dependencies=TRUE` seems to indicate that, at least for some packages, if the
 dependencies can't be installed, then the package won't be installed.  For
 that reason, we install the packages twice, once with `dependencies=TRUE` and
 once without.
+
+    # back up a gcc major version
+    module load gcc/6.2.0
+    R
+    install.packages('uroot')
+    q()
+    module load gcc77.3.0
+    R
 
     cran.packages = c('Rcpp','ggplot2','tidyr','hexbin','lmerTest','microbenchmark','xtable','testthat','DBI','VennDiagram','ade4','adegenet','vegan','ape','assertthat','akima','bitops','boot','caTools','chron','combinat','data.table','reshape2','kernlab','foreach','geiger','dplyr','picante','plyr','pvclust','rmarkdown','permute','markdown','plotrix','openssl','curl','seqinr','stringr','survival','vegan','whisker','zoo','maps','mvtnorm','dendextend','cluster','naturalsort','gplots','tkrplot','tmod','Lahman','RJSONIO','ecodist','gee','hflights','igraph','optparse','proto','reshape','mixOmics','vcfR','EMT','forecast','devtools','withr','rlang','car','gclus','gam','RcppGSL','rstan','RMySQL','RPostgreSQL','gsalib','qqman','manhattanly','GenABEL','FactoMineR','OxyBS','heatmap3','metap','MAd','metafor')
     install.packages(cran.packages, dependencies=TRUE, Ncpus=8)
@@ -130,22 +175,25 @@ module loads that are best left out of the general compilation.
 Outside R, load modules then run R:
 
     module load ImageMagick/6.9.9-35
-    module load gcc/6.3.0
-    module load bzip2/1.0.6
-    module load freetype/2.7.1
-    module load texlive/2016
-    module load zlib/1.2.11
-    module load xz/5.2.2
-    module load cairo/1.14.8
     module load giflib/5.1.4
     module load Poppler/0.54.0
     module load GDAL/2.1.0
     R
 
-Install.  The `tesseract` dependency won't be installable unless this OCR system
+For installing magick, I had to back up to gcc/6.2.0 when building, then move forward.
+
+    module load gcc/6.2.0
+    R
+    install.packages('magick')
+    q()
+    module load gcc/7.3.0
+
+    R
+
+Install the rest.  The `tesseract` dependency won't be installable unless this OCR system
 is eventually installed at Uppmax.  Should be no problem to leave it out.
 
-    xtra.list = c('formattable','kableExtra','magick','rgdal')
+    xtra.list = c('formattable','kableExtra','rgdal')
     install.packages(xtra.list, dependencies=TRUE, Ncpus=8)
     install.packages(xtra.list, Ncpus=8)
 
@@ -194,8 +242,8 @@ Install a non-CRAN package ASCAT.
 
 Download the latest release here (https://github.com/Crick-CancerGenomics/ascat/releases).
 
-    ASCAT_VERSION=2.5
-    [[ -f ASCAT_${ASCAT_VERSION}.tar.gz ]] || wget --timestamping https://github.com/Crick-CancerGenomics/ascat/releases/download/v2.5/ASCAT_${ASCAT_VERSION}.tar.gz
+    ASCAT_VERSION=2.5.1
+    [[ -f ASCAT_${ASCAT_VERSION}.tar.gz ]] || wget --timestamping https://github.com/Crick-CancerGenomics/ascat/releases/download/v${ASCAT_VERSION}/ASCAT_${ASCAT_VERSION}.tar.gz
     R CMD INSTALL ASCAT_${ASCAT_VERSION}.tar.gz
 
 Also, install an outdated package `igraph0`, which has been superseded by

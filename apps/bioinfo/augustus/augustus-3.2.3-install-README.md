@@ -108,6 +108,9 @@ Make scripts find perl using the path, change `#!/usr/bin/perl` to `#!/usr/bin/e
     vi $(file * | grep -i perl | cut -f1 -d:)
     cd ..
 
+2018-04-06: We'll have two versions: one that loads perl/5.18.4 etc and one
+that loads perl/5.24.1.
+
 Copy the whole tree over to the cluster directory.
 We require the config/ directory contents, might as well copy everything.
 

@@ -14,7 +14,8 @@ LOG
     cd $VERSION
     mkdir $CLUSTER src
     cd src
-    wget https://github.com/arq5x/bedtools2/releases/download/v${VERSION}/bedtools-${VERSION}.tar.gz
+    [[ -f bedtools-${VERSION}.tar.gz ]] || wget https://github.com/arq5x/bedtools2/releases/download/v${VERSION}/bedtools-${VERSION}.tar.gz
+    [[ -d bedtools2 ]] && rm -rf bedtools2
     tar xzf bedtools-${VERSION}.tar.gz 
     cd bedtools2/
     module load gcc/6.4.0

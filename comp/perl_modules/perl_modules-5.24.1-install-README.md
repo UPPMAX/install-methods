@@ -8,6 +8,44 @@ We should probably do the same for Python.
 The version (5.24.1) reflects the version of Perl these accompany.  This is its
 current limitation.  The 5.18.4 version was restricted to milou, but no longer.
 
+IMPORTANT
+---------
+
+Perl does not provide a 'site' method to specify where these modules are
+located akin to R's `R_LIBS_SITE` variable: we are modifying `PERL5LIB` along
+with users and other modules.
+
+For this reason, members of group `sw` can step on the contents of this module
+when installing perl modules either for themselves or for other modules.
+
+The cluster trees beneath the version directories are write-protected by default:
+
+    rackham5: /sw/comp/perl_modules/5.24.1 $ ll
+    total 8
+    lrwxrwxrwx 1 douglas sw    7 Aug  9  2017 bianca -> rackham
+    lrwxrwxrwx 1 douglas sw    7 Aug  9  2017 irma -> rackham
+    dr-xr-sr-x 5 douglas sw 4096 May  3 16:26 milou
+    dr-xr-sr-x 5 douglas sw 4096 Sep 28  2017 rackham
+
+These need to be de-write-protected prior to installing additional modules, for
+example:
+
+    chmod -R ug+w rackham
+
+After the installation is completed, they need to be closed back down.
+
+    chmod -R -w rackham
+
+This is not possible to do without being the actual owner of the tree.  It was
+possible to get around this on SL6 by doing `cp -av` of the tree to a temp
+name, removing the existing tree, and `mv` the temp name to the name of the
+existing tree.  But on CentOs7 I believe it is not possible to remove files
+even if you share their group.
+
+For the time being, the owner of the tree handles installs there in
+coordination with other app experts that need the installs there.  Perhaps
+there can be another solution but this is not that inconvenient.
+
 
 Initial setup
 -------------
@@ -212,7 +250,7 @@ installations.
 
 These are needed by `circos/0.66`, there may be others needed by a later `circos`.
 
-    cpanm Math::Bezier Math::VecStat Text::Format
+    cpanm Math::Bezier Math::VecStat Text::Format Graph::Writer::Dot
 
 Interactive installations
 -------------------------
