@@ -25,4 +25,4 @@ shift $((OPTIND-1))
 
 me=${USER:-$(whoami)}
 proj=${PRO:-sens2016001}
-[[ ! -z "$*" ]] && sftp-upload.sh $* | sftp $me-$proj@bianca-sftp.uppmax.uu.se:$me-$proj || echo "No files selected for transfer"
+[[ ! -z "$*" ]] && find $* -maxdepth 0 | awk '{print "put", $0}' | sftp -r $me-$proj@bianca-sftp.uppmax.uu.se:$me-$proj || echo "No files selected for transfer"
