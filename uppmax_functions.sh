@@ -66,12 +66,13 @@ function scsv() { scontrol show --details --details jobid=${1:-1} ; }
 function scu() { scontrol update jobid=${1:-1} ${2} ; }
 function sj() { squeue -a -o"%.7i  %.8a %.9P %.8f  %50j  %.8u %.8T  %.10M  %.10l  %.10L  %.3D %.3C %.12R" -S j,-T,    i -u ${1:-$USER} ; }
 
-# Remove a personal module cache, can be annoying when built on rackham but sitting on milou.
+# Remove a personal module cache, can be annoying when built on rackham but sitting on another system.
 # No special privileges required
 function purge-cache() { rm -rf $HOME/.lmod.d ; }
 
 # Get real locations and disk usage of project backup and nobackup volumes
 function projvol() {
+    [[ $CLUSTER == milou ]] || { echo "This will only work on milou"; return; }
     [[ $# != 0 ]] || { cat <<_usage_
 USAGE:  projvol project-name [ b | n ]
 
@@ -103,6 +104,7 @@ _usage_
 }
 
 function projvolpi() {
+    [[ $CLUSTER == milou ]] || { echo "This will only work on milou"; return; }
     [[ $# != 0 ]] || { cat <<_usage_
 USAGE:  projvolpi pi-name
 
@@ -154,7 +156,7 @@ _usage_
 # Appexpert functions for managing mf files.  Use no arguments to get brief help.
 #
 
-_CURRENT_CLUSTERS="bianca irma milou rackham"
+_CURRENT_CLUSTERS="bianca irma rackham"
 
 # Show section of bioinfo-tools in which each module is found
 function section() {
@@ -254,7 +256,7 @@ function mflink() {
 USAGE:  mflink [ -i (default) | -l | -a | -c | -b | -p ] [ -f ] modulename version
 
 Create cluster-specific link to /sw/mf/common/... for an mf file, when positioned where
-the modulename directories are (e.g., /sw/mf/milou/bioinfo-tools/misc).
+the modulename directories are (e.g., /sw/mf/rackham/bioinfo-tools/misc).
 NOTE: all_mflink is better for general use, and there is no position requirement.
 
 Subtree options:   -i   bioinfo-tools (default)
@@ -361,6 +363,7 @@ _usage_
 
 # Update mf files for a module while on rackham5. Requires /mnt/sw mount point
 function rackham_mfupdate() {
+    echo "This is no longer necessary."; return;
     local SUBDIR
     local SECTION
     local FORCE
