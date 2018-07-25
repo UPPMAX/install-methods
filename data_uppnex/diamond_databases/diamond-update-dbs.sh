@@ -31,7 +31,7 @@ function make_latest_symlink() {
     { rm -f latest && ln -sf $NEWVERSION latest; } || { echo "$FUNC: could not create 'latest' symlink"; exit 1; }
 }
 
-[[ $(uname -n) = 'milou-b.uppmax.uu.se' ]] || error_send_email "This is a long multi-core process and must be run on milou-b"
+[[ $(uname -n) = 'rackham5.uppmax.uu.se' ]] || error_send_email "This is a long multi-core process and must be run on rackham5"
 
 set -e
 

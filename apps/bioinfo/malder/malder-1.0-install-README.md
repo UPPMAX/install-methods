@@ -14,6 +14,7 @@ LOG
     mkdir $VERSION
     cd $VERSION
     mkdir src $CLUSTER
+    [[ $CLUSTER == rackham ]] && for CL in bianca irma ; do ln -s $CLUSTER $CL ; done
     cd $CLUSTER
     PFX=$PWD
     cd ../src

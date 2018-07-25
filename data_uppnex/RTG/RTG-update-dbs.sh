@@ -37,31 +37,32 @@ function fetch_reference() {
     cd $RTG_REFS_BASE
     mkdir -p $SUBDIR
     cd $SUBDIR
-    echo -n "Fetching $SUBDIR reference ${LOCAL} ... "
+    echo "fetching $SUBDIR reference ${LOCAL} ... "
     if test -f $D/${LOCAL} ; then
         NEW=${LOCAL}.new
         wget --quiet -O $NEW $REMOTE
         if diff $D/$LOCAL $NEW ; then
-            echo -n "no new content."
+            echo "no new content in $SUBDIR reference ${LOCAL}"
             rm -f $NEW
             EXPAND=
         else
-            echo -n "found update!"
+            echo "found update for $SUBDIR reference ${LOCAL}"
             mv -f $NEW ${LOCAL}
         fi
     else 
-        echo -n "this is a new reference."
+        echo -n "found new $SUBDIR reference ${LOCAL}, downloading ... "
         wget --quiet -O $LOCAL $REMOTE
     fi
     if [[ "$EXPAND" ]] ; then
-        echo -n " Expanding ... "
+        echo -n "expanding $SUBDIR ${LOCAL} ... "
         unzip ${LOCAL}
         mv -f ${LOCAL} $D/${LOCAL}
     else
-        echo -n " Touching $D/${LOCAL}_checked ... "
+        echo -n "touching $D/${LOCAL}_checked ... "
         touch $D/${LOCAL}_checked
     fi
-    echo "done."
+    echo done
+    echo
 }
 
 for REF in ${human[@]}
@@ -78,4 +79,4 @@ echo "Updating groups and permissions ..."
 chgrp -hR sw *
 chmod -R u+rwX,g+rwX,o+rX-w *
 find . -type d -print0 | xargs -0 chmod g+s
-echo "Done."
+

@@ -47,7 +47,7 @@ function make_latest_symlink() {
     cd $HERE
 }
 
-[[ $(uname -n) = 'milou-b.uppmax.uu.se' ]] || error_send_email "This is a long multi-core process and must be run on milou-b"
+[[ $(uname -n) = 'rackham5.uppmax.uu.se' ]] || error_send_email "This is a long multi-core process and must be run on rackham5"
 
 
 # unpack a single gzipped database file

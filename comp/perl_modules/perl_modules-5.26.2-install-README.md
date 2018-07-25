@@ -1,11 +1,11 @@
-perl_modules/5.24.1
+perl_modules/5.26.2
 ===================
 
 A catch-all for Perl modules.  Any time an install wants a Perl module, I put it here.
 
 We should probably do the same for Python.
 
-The version (5.24.1) reflects the version of Perl these accompany.  This is its
+The version (5.26.2) reflects the version of Perl these accompany.  This is its
 current limitation.  The 5.18.4 version was restricted to milou, but no longer.
 
 IMPORTANT
@@ -20,7 +20,7 @@ when installing perl modules either for themselves or for other modules.
 
 The cluster trees beneath the version directories are write-protected by default:
 
-    rackham5: /sw/comp/perl_modules/5.24.1 $ ll
+    rackham5: /sw/comp/perl_modules/5.26.2 $ ll
     total 8
     lrwxrwxrwx 1 douglas sw    7 Aug  9  2017 bianca -> rackham
     lrwxrwxrwx 1 douglas sw    7 Aug  9  2017 irma -> rackham
@@ -56,7 +56,7 @@ Get environment set up, and once cpanm is downloaded, get it out of the bin
 directory and use it above.  Create setup script to unset variables and use
 minimal path.
 
-    VERSION=5.24.1
+    VERSION=5.26.2
     CLUSTER=${CLUSTER:?CLUSTER must be set}
     unset PERL5LIB
     module load perl/${VERSION}
@@ -76,7 +76,7 @@ minimal path.
     rm -f $setup_script && touch $setup_script
 
     echo 'unset MODULE_DEPS PERL5LIB LD_LIBRARY_PATH' >> $setup_script
-    echo 'VERSION=5.24.1' >> $setup_script
+    echo 'VERSION=5.26.2' >> $setup_script
     echo 'CLUSTER=${CLUSTER:?CLUSTER must be set}' >> $setup_script
     echo 'module purge' >> $setup_script
     echo 'module load uppmax' >> $setup_script
@@ -107,7 +107,7 @@ Adding new modules
 If you are adding new modules, rather than setting up a new version, follow
 these steps.  Then use `cpanm` as below.
 
-    VERSION=5.24.1
+    VERSION=5.26.2
     CLUSTER=${CLUSTER:?CLUSTER must be set}
     unset PERL5LIB
     module load perl/${VERSION}
@@ -223,6 +223,8 @@ Straightforward installations, and some prereqs for the interactive
 installations.
 
     cpanm List::Util List::MoreUtils common::sense YAML::XS Test::FailWarnings Test::Warnings Term::Size Curses
+    cpanm Unicode::EastAsianWidth Unicode::GCString Unicode::LineBreak
+    cpanm Text::SimpleTable
     cpanm Socket::GetAddrInfo Log::Log4perl HPC::Runner::Slurm
     cpanm HTML::Perlinfo Array::Unique Scalar::Util::Numeric Perl::Tidy Data::Dumper::Perltidy Data::Dumper::Again
     cpanm Carp::REPL Devel::Leak IPC::ShareLite Cache::Cache
@@ -230,13 +232,21 @@ installations.
     cpanm Test::Identity Test::Refcount Module::Faker::Dist Plack::Test Test::File Test::LWP::UserAgent
     cpanm Catalyst::Devel Task::Catalyst
     cpanm MooseX::Singleton MooseX::Storage URI::sftp Crypt::Random::Seed Crypt::Random::TESHA2 DateTime::Astro DateTimeX::Easy
-    cpanm XS XSLoader XML::LibXML::Simple XML::Compile WWW::Pastebin::PastebinCom::Create UNIVERSAL::ref 
+
+WWW::Pastebin::PastebinCom::Create has a silly error when http got to https in matching. Just --force it. 
+Also, UNIVERSAL::ref is not functional since perl 5.25.1
+
+    cpanm --force WWW::Pastebin::PastebinCom::Create  
+    cpanm XS XSLoader XML::LibXML::Simple XML::Compile #UNIVERSAL::ref 
     cpanm Encode Unicode::Map Unicode::Map8 Unicode::String
-    cpanm Unicode::EastAsianWidth Unicode::GCString Unicode::LineBreak
     enc2xs -C  # this creates default Unicode encodings and the Encode::ConfigLocal module
     cpanm Types::Serialiser Time::Piece Time::Seconds Time::HiRes Algorithm::FastPermute Algorithm::Loops Algorithm::Permute
     cpanm Array::Utils Bit::Vector Compress::Raw::Bzip2 Compress::Raw::Zlib Cwd autodie asa CPAN::Meta
-    cpanm Text::CSV Text::LineFold Term::ReadLine::Perl5 TAP::Parser Statistics::Basic Statistics::R String::Diff String::Print
+
+String::Diff has a test that fails due to new yaml versions. Just --force install it.
+
+    cpanm --force String::Diff  
+    cpanm Text::CSV Text::LineFold Term::ReadLine::Perl5 TAP::Parser Statistics::Basic Statistics::R String::Print
     cpanm String::Truncate Set::IntSpan Set::IntervalTree Set::Infinite::Arithmetic Pod::Elemental  Pod::Parser
     cpanm Math::Combinatorics Math::Prime::Util Math::Random::ISAAC Math::Round Logger::Simple Log::Report Method::Inliner 
     cpanm MIME::Charset forks GD::Graph Image::PNG Inline Font::TTF
@@ -248,10 +258,17 @@ installations.
     cpanm Devel::Hide Env::Path Eval::WithLexicals Eval::WithLexicals::WithHintPersistence ExtUtils::Manifest File::Spec
     cpanm Path::IsDev Parse::Yapp Path::FindDev Perl::Unsafe::Signals PerlIO::gzip Pod::Find
     cpanm Math::Bezier Math::VecStat Text::Format Graph::Writer::Dot
+
+Load MariaDB/10.1.29 before installing DBD::mysql
+
     cpanm Algorithm::Munkres Class::AutoClass Convert::Binary::C Data::Stag::Writer DB_File DBD::mysql GD::SVG Graph::Directed GraphViz
     cpanm HTML::Entities HTML::HeadParser HTML::Parser HTML::TableExtract HTTP::Request::Common IO::String IO::Scalar List::MoreUtils
     cpanm LWP::UserAgent PostScript::TextBlock Scalar::Util Set::Scalar SOAP::Lite Sort::Naturally Spreadsheet::ParseExcel Storable
-    cpanm SVG SVG::Graph Text::ParseWords XML::DOM XML::DOM::XPath XML::LibXML XML::Parser XML::Parser::PerlSAX XML::SAX XML::SAX::Writer
+
+XML::DOM::XPath has a test error, --force it!
+    
+    cpanm --force XML::DOM::XPath 
+    cpanm SVG SVG::Graph Text::ParseWords XML::DOM XML::LibXML XML::Parser XML::Parser::PerlSAX XML::SAX XML::SAX::Writer
     cpanm XML::Simple XML::Twig XML::Writer YAML
     cpanm Statistics::Zed Statistics::Standard_Normal Statistics::Cook Statistics::TopK Statistics::ANOVA Statistics::Robust
     cpanm Statistics::Simpson Statistics::Shannon Statistics::Discrete Statistics::Sequences Statistics::ChiSquare
@@ -261,11 +278,12 @@ installations.
     cpanm Statistics::Sequences::Turns Statistics::Sequences::Joins Statistics::Sequences::Vnomes Statistics::Data::Dichotomize
     cpanm Statistics::Diversity::Shannon Statistics::Sampler::Multinomial Statistics::Distributions::GTest
     cpanm Statistics::Descriptive::LogScale Statistics::Descriptive::Discrete Statistics::Distributions::Bartlett 
+    cpanm Math::MatrixReal 
 
 Additional statistics-oriented modules.  Two have pod errors and another has an
-odd error and these three must be forced.
+odd error and these two must be forced.
 
-    cpanm --force Math::MatrixReal Statistics::Normality Statistics::FactorAnalysis
+    cpanm --force Statistics::Normality Statistics::FactorAnalysis
 
 
 Modules 'by hand'
@@ -283,7 +301,7 @@ Interactive installations
 These are longer, and especially the Task::Kensho takes a long time with many
 `y` responses required after several minutes.
 
-Install POE, interactively and say `n` to performing network tests.
+Install POE, interactively and say `y` to skipping network tests.
 
     cpanm --interactive POE
 
@@ -302,15 +320,12 @@ After installing everything you want to install, definitely do
     cd $MODULE_DEPS/bin
     head -n 1 *
 
-and check that everything is capable of finding the 5.24.1 perl.  Some will
+and check that everything is capable of finding the 5.26.2 perl.  Some will
 have the path hardcoded, some will use `#!/usr/bin/env perl`.  Make sure none use
 `#!/usr/bin/perl` or something like that.
 
-This also means `perl/5.24.1` must be loaded when using this module, but of
+This also means `perl/5.26.2` must be loaded when using this module, but of
 course that will be true.
-
-Some pick up the `/pica` prefix for the milou install, but that should be OK
-*for the milou install only*.  Another reason to build natively on rackham.
 
 
 For a first installation
@@ -318,14 +333,18 @@ For a first installation
 
 It doesn't hurt to re-install everything by re-entering the `cpanm ...` lines
 during a first install, just to make sure intermediate failures weren't missed.
+Do it! I caught a couple of weird things that I would have missed otherwise.
+Also, remember to turn off testing for Tk.
 
 
 Generate list of installed modules
 ----------------------------------
 
 When in `/sw/comp/perl_modules/${VERSION}/${CLUSTER}`:
-
+    cp -av ../../5.24.1/rackham/create_module_table .
+    cp -av ../../5.24.1/rackham/README.md .
     ./create_module_table > module_table.html
+    tail -2 README.md | head -1 > module_table_again.html; ./create_module_table >> module_table_180720.html
 
 There will be a few messages to stderr about the search directories, which should be underneath.
 

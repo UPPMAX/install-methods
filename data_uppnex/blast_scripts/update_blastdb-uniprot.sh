@@ -4,6 +4,7 @@
 
 module load bioinfo-tools
 module load blast/2.6.0+
+module load perl_modules/5.24.1
 
 staging_dir='/sw/data/uppnex/blast_tmp'
 script_dir='/sw/data/uppnex/blast_scripts'

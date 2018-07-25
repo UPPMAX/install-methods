@@ -46,3 +46,4 @@ LOG
     cd /sw/apps/bioinfo
    rsync -n --del -Pa bcftools /mnt/sw/apps/bioinfo/
 rsync --del -Pa bcftools /mnt/sw/apps/bioinfo/
+cp -av ${VERSION} /sw/mf/common/bioinfo-tools/misc/bcftools/

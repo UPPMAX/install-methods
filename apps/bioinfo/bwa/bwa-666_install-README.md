@@ -1,4 +1,4 @@
-snakemake/4.5.0
+bwa/666
 ========================
 
 <http://>
@@ -8,11 +8,11 @@ LOG
 
 I did..
 
-    TOOL=snakemake
-    VERSION=4.5.0
+    TOOL=bwa
+    VERSION=666
     CLUSTER=rackham
-    /home/jonass/uppmax/bin/makeroom.sh
-    ./makeroom_snakemake_4.5.0.sh
+    ./makeroom.sh
+    ./makeroom_bwa_666.sh
     cd /sw/apps/bioinfo///src
     wget http://
     tar xvf 

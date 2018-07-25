@@ -1,4 +1,4 @@
-snpEff/4.2
+snpEff/4.3t
 ==========
 
 Basic installation

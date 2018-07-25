@@ -1,12 +1,20 @@
 vep/92
-======
+========================
+
+<http://>
+
+LOG
+---
+
+I did..
 
     TOOL=vep
     VERSION=92
-    CLUSTER=milou
+    CLUSTER=rackham
+    VERSIONDIR=/sw/apps/bioinfo/$TOOL/$VERSION
     /home/jonass/uppmax/bin/makeroom.sh
 
-NOTE: I use my own script which is located at /sw/apps/bioinfo/$TOOL/makeroom_$TOOL_$VERSION.sh
+NOTE: I use my own script which is located at /sw/apps/bioinfo/vep/makeroom_92.sh
 
     ./makeroom_vep_92.sh
     cd /sw/apps/bioinfo/$TOOL/$VERSION
@@ -21,6 +29,7 @@ NOTE: I use my own script which is located at /sw/apps/bioinfo/$TOOL/makeroom_$T
     module load htslib/1.8
     CACHEDIR=/sw/data/uppnex/$TOOL/$VERSION
     mkdir -p $CACHEDIR
+    PFX=$VERSIONDIR/$CLUSTER
     export PATH=$PFX/htslib:$PATH
     export PERL5LIB=$PFX:$PERL5LIB
     ./INSTALL.pl -d $PFX -t -c $CACHEDIR

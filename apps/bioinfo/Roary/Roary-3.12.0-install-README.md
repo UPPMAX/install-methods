@@ -70,4 +70,9 @@ ml BEDTools/2.27.1
 ml FastTree/2.1.10
 ml MAFFT/7.310
 ml prank/170427
+ml Kraken/1.1-352e780
 
+The mf currently loads the folowoing modules:
+1) uppmax                4) BioPerl/1.7.1_Perl5.24.1   7) gnuparallel/20170122  10) cd-hit/4.6.8-2017-1208  13) prank/170427      16) Kraken/1.1-352e780
+  2) bioinfo-tools         5) mcl/14-137                 8) BEDTools/2.27.1       11) blast/2.6.0+            14) jellyfish/1.1.11
+  3) perl_modules/5.24.1   6) FastTree/2.1.10            9) MAFFT/7.310           12) Roary/3.12.0            15) perl/5.24.1

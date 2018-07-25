@@ -14,12 +14,13 @@ LOG
     mkdir -p $VERSION
     cd $VERSION
     mkdir $CLUSTER src_$CLUSTER
+    [[ $CLUSTER == rackham ]] && for CL in bianca irma ; do ln -s $CLUSTER $CL; done
+    PFX=$PWD/$CLUSTER
     cd src_$CLUSTER
     module load git/2.10.2
     git clone --recursive https://github.com/vcflib/vcflib.git
     cd vcflib/
     module load zlib/1.2.11 gcc/6.3.0
     make -j 4
-    cp -av bin ../../$CLUSTER/
+    cp -av bin scripts $PFX/
 
-Complete for both milou and rackham.

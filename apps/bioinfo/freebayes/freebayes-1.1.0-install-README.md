@@ -19,7 +19,6 @@ done.  Also, define `FREEBAYES_ROOT` in the mf file.
 
     TOOL=/sw/apps/bioinfo/freebayes
     VERSION=1.1.0
-    CC=milou
     mkdir -p $TOOL
     cd $TOOL
     mkdir $VERSION
@@ -34,6 +33,6 @@ done.  Also, define `FREEBAYES_ROOT` in the mf file.
     ldd bin/bamleftalign 
     ldd bin/freebayes 
     cd ..
-    mv freebayes ../$CC
-    for C in rackham irma bianca ; do         ln -s $CC $C;     done
+    mv freebayes ../$CLUSTER
+    for C in rackham irma bianca ; do         ln -s $CLUSTER $C;     done
 
