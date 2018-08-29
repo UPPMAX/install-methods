@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-usage="$(basename "$0") [-h] -t TOOL -v VERSION -s SECTION --
+usage="$(basename "$0") [-h] -t TOOL -v VERSION -s SECTION [-w WEBSITE] --
 
     Makes some directories at places
 
@@ -12,9 +12,12 @@ usage="$(basename "$0") [-h] -t TOOL -v VERSION -s SECTION --
     Parameters:
         -t  name of the \$TOOL
         -v  version of the \$TOOL
-        -s  section of the \$TOOL"
+        -s  section of the \$TOOL
+        -w  website of the \$TOOL"
 
-while getopts "ht:v:s:" option
+WEBSITE=http://
+
+while getopts "ht:v:s:w:" option
     do
         case $option in
             h) echo "$usage"
@@ -25,6 +28,8 @@ while getopts "ht:v:s:" option
             v) VERSION="$OPTARG"
                 ;;
             s) SECTION="$OPTARG"
+                ;;
+            w) WEBSITE="$OPTARG"
                 ;;
             :) printf "missing argument for -%s\n" "$OPTARG" >&2
             echo "$usage" >&2
@@ -99,7 +104,7 @@ source /sw/mf/common/includes/functions.tcl
 getCluster
 
 set components [ file split [ module-info name ] ]
-set version [ lindex $components 1 ]
+set version [ lindex \\\$components 1 ]
 
 set     modroot         /sw/apps/bioinfo/$TOOL/\\\$version/\\\$Cluster
 
@@ -109,7 +114,7 @@ global version modroot
     puts stderr "$TOOL - use $TOOL \$version"
     puts stderr "\nDescription"
     puts stderr "\nVersion \\\$version"
-    puts stderr "\nhttp://"
+    puts stderr "\n$WEBSITE"
     puts stderr "\nUsage:"
 }
 
@@ -147,7 +152,7 @@ cat > "$readme_file" <<EOF2
 ${TOOL}/${VERSION}
 ========================
 
-<http://>
+<$WEBSITE>
 
 LOG
 ---
