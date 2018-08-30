@@ -11,7 +11,6 @@ wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://
 wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://repo.continuum.io/pkgs/free/noarch/
 wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://repo.continuum.io/pkgs/r/noarch/
 wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://repo.continuum.io/pkgs/pro/noarch/
-cd ..
-mv noarch/repodata.json repodata.json.bak
-mv noarch/.index.json .index.json.bak
+mv repodata.json ../repodata.json.bak
+mv .index.json ../.index.json.bak
 conda index
