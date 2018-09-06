@@ -52,6 +52,7 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
     find annovar -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
     find Chromium -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
     find Centrifuge-indices -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+    find panther -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
     ###  The following should eventually get brought in as well
     # find dbSNP -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
     # find SGDP -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
