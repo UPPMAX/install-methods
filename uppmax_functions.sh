@@ -1,5 +1,10 @@
 # Various helper functions for UPPMAX
 
+# currently active clusters
+
+_CURRENT_CLUSTERS="bianca irma rackham snowy"
+
+
 # "module help" loading subgroupings before running
 function mhelp()
 {
@@ -155,8 +160,6 @@ _usage_
 #
 # Appexpert functions for managing mf files.  Use no arguments to get brief help.
 #
-
-_CURRENT_CLUSTERS="bianca irma rackham"
 
 # Show section of bioinfo-tools in which each module is found
 function section() {

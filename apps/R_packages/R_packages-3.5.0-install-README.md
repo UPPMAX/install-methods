@@ -66,6 +66,10 @@ setting up prior to adding new packages to this installation.
     module load m4/1.4.17
     module load MariaDB/10.1.29
     module load PostgreSQL/10.3
+    module load UDUNITS/2.2.26  # these further modules were added
+    module load GDAL/2.1.0
+    module load Poppler/0.54.0
+    module load JAGS/4.3.0
     echo -e "\nThis should have been set to the appropriate directory in this module, is it?\n\nR_LIBS_USER = $R_LIBS_USER\n"
 
 The build tools modules are required for some more recent configure scripts
@@ -169,15 +173,14 @@ Installation which requires additional modules
 ----------------------------------------------
 
 A few R packages or their dependencies require some further loads:
-`formattable`, `kableExtra`, `magick`, `rgdal`.  This requires some additional
-module loads that are best left out of the general compilation.
+`formattable`, `kableExtra`, `magick`.  This requires some additional
+module loads that were left out of the general compilation.
 
 Outside R, load modules then run R:
 
     module load ImageMagick/6.9.9-35
     module load giflib/5.1.4
-    module load Poppler/0.54.0
-    module load GDAL/2.1.0
+    #  module load Poppler/0.54.0  # does not need to be loaded, already loaded earlier
     R
 
 For installing magick, I had to back up to gcc/6.2.0 when building, then move forward.
@@ -193,7 +196,7 @@ For installing magick, I had to back up to gcc/6.2.0 when building, then move fo
 Install the rest.  The `tesseract` dependency won't be installable unless this OCR system
 is eventually installed at Uppmax.  Should be no problem to leave it out.
 
-    xtra.list = c('formattable','kableExtra','rgdal')
+    xtra.list = c('formattable','kableExtra')
     install.packages(xtra.list, dependencies=TRUE, Ncpus=8)
     install.packages(xtra.list, Ncpus=8)
 

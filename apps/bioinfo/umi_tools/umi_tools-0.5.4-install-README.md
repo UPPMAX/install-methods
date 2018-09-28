@@ -1,4 +1,4 @@
-umi_tools/0.5.3
+umi_tools/0.5.4
 ===============
 
 Installs UMI-tools from:
@@ -11,7 +11,7 @@ LOG
 Simple to install with `pip` and the `--user` trick setting `PYTHONUSERBASE` to the prefix.
 This leaves us with no `src` directory, cleaner!
 
-    VERSION=0.5.3
+    VERSION=0.5.4
     PYTHONVERSION=2.7.15
     CLUSTER=${CLUSTER:?CLUSTER must be set}
     cd /sw/apps/bioinfo/umi_tools/
@@ -23,6 +23,6 @@ This leaves us with no `src` directory, cleaner!
     PFX=$PWD
     module load python/$PYTHONVERSION
     PYTHONUSERBASE=$PFX pip install --user umi_tools==$VERSION
-    mkdir /sw/mf/common/bioinfo-tools/misc/umi_tools
-    cp mf/$VERSION /sw/mf/common/bioinfo-tools/misc/umi_tools/
+
+Use mf file from 0.5.3.
 

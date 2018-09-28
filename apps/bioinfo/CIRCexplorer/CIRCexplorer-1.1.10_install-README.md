@@ -11,6 +11,7 @@ I did..
     TOOL=CIRCexplorer
     VERSION=1.1.10
     CLUSTER=rackham
+    OTHERCLUSTER=bianca
     VERSIONDIR=/sw/apps/bioinfo/$TOOL/$VERSION
     /home/jonass/uppmax/bin/makeroom.sh
 
@@ -23,4 +24,8 @@ NOTE: I use my own script which is located at /sw/apps/bioinfo/CIRCexplorer/make
     ml bioinfo-tools python/2.7.11 pysam/0.13-python2.7.11
     PYTHONUSERBASE=$PREFIX pip install --user docopt
     PYTHONUSERBASE=$PREFIX python setup.py install --user
+    for c in $OTHERCLUSTER; do
+      ln -s $c $CLUSTER
+    done
+
 

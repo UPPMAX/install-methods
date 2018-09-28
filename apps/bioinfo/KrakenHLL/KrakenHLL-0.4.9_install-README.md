@@ -11,6 +11,7 @@ I did..
     TOOL=KrakenHLL
     VERSION=0.4.9
     CLUSTER=rackham
+    OTHERCLUSTER=bianca
     VERSIONDIR=/sw/apps/bioinfo/$TOOL/$VERSION
     /home/jonass/uppmax/bin/makeroom.sh
 
@@ -26,4 +27,8 @@ NOTE: I use my own script which is located at /sw/apps/bioinfo/KrakenHLL/makeroo
     INSTALLDIR=$VERSIONDIR/rackham/bin
     ml gcc/6.3.0
     ./install_krakenhll.sh $INSTALLDIR
+    cd $VERSIONDIR
+    for c in $OTHERCLUSTER; do
+      ln -s $c $CLUSTER
+    done
 
