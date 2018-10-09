@@ -13,4 +13,5 @@ wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://
 wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://repo.continuum.io/pkgs/pro/noarch/
 mv repodata.json ../repodata.json.bak
 mv .index.json ../.index.json.bak
+module load mc3/latest
 conda index
