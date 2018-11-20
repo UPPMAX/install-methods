@@ -13,7 +13,14 @@ wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://
 wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://repo.continuum.io/pkgs/free/noarch/
 wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://repo.continuum.io/pkgs/r/noarch/
 wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://repo.continuum.io/pkgs/pro/noarch/
+wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://conda.anaconda.org/qiime2/noarch/
+wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://conda.anaconda.org/qiime2/linux-64/
+wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://conda.anaconda.org/biocore/noarch
+wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://conda.anaconda.org/biocore/linux-64
+wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://conda.anaconda.org/qiime2/label/r2018.11/noarch
+wget -N -c -r -np -nH --cut-dirs=3 -R "index.html*" -R "repodata.json*" https://conda.anaconda.org/qiime2/label/r2018.11/linux-64
 cp -av repodata.json ../repodata.json.bak
 cp -av .index.json ../.index.json.bak
 module load mc3/latest
+conda update conda
 conda-index --channel-name CONDA_UPPMAX
