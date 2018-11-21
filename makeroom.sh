@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-usage="$(basename "$0") [-h] -t TOOL -v VERSION -s SECTION [-w WEBSITE] --
+usage="$(basename "$0") [-h] -t TOOL -v VERSION -s SECTION [-w WEBSITE] [-c CATEGORY]--
 
     Makes some directories at places
 
-    Makes stuff in /sw/apps/bioinfo/\$TOOL/\$VERSION/ and
-    a module file called /sw/apps/bioinfo/\$TOOL/mf/\$VERSION
+    Makes stuff in /sw/$CATEGORY/\$TOOL/\$VERSION/ and
+    a module file called /sw/$CATEGORY/\$TOOL/mf/\$VERSION
 
     Please modify the module file after running this
 
@@ -13,11 +13,14 @@ usage="$(basename "$0") [-h] -t TOOL -v VERSION -s SECTION [-w WEBSITE] --
         -t  name of the \$TOOL
         -v  version of the \$TOOL
         -s  section of the \$TOOL
-        -w  website of the \$TOOL"
+        -w  website of the \$TOOL
+        -c  category of the \$TOOL (bioinfo, apps, comp or libs)"
 
 WEBSITE=http://
+CATEGORY=bioinfo
+MF_CATEGORY=bioinfo-tools
 
-while getopts "ht:v:s:w:" option
+while getopts "ht:v:s:w:c:" option
     do
         case $option in
             h) echo "$usage"
@@ -30,6 +33,8 @@ while getopts "ht:v:s:w:" option
             s) SECTION="$OPTARG"
                 ;;
             w) WEBSITE="$OPTARG"
+                ;;
+            c) CATEGORY="$OPTARG"
                 ;;
             :) printf "missing argument for -%s\n" "$OPTARG" >&2
             echo "$usage" >&2
@@ -50,31 +55,50 @@ if [ -z "${VERSION+x}" ]
     then printf "%s\n\nEmply value for -v\n" "$usage" >&2; exit 1
 fi
 
-COMMONDIR=(/sw/mf/common/bioinfo-tools/*/$TOOL)
+case $CATEGORY in
+    bioinfo) MF_CATEGORY=bioinfo-tools
+        ;;
+    apps) MF_CATEGORY=applications
+        ;;
+    comp) MF_CATEGORY=compilers
+        ;;
+    libs) MF_CATEGORY=libraries
+        ;;
+esac
 
-if [ -z "$SECTION" ] ; then
-    if [[ ! -d $COMMONDIR ]] ; then
-        echo "### $TOOL is a new software. You need to provide a SECTION with -s"
-        exit 1
-    else
-        SUBDIR=${COMMONDIR#/sw/mf/common/bioinfo-tools/}
-        SUBDIR=${SUBDIR%/$TOOL}
-        SECTION=$SUBDIR
+
+COMMONDIR=(/sw/mf/common/$MF_CATEGORY/$TOOL)
+
+if [ $CATEGORY == "bioinfo" ] ; then
+    #remove this later when bioinfo is under sw and not sw/apps
+    CATEGORY=apps/bioinfo
+    COMMONDIR=(/sw/mf/common/$MF_CATEGORY/*/$TOOL)
+    if [ -z "$SECTION" ] ; then
+        if [[ ! -d $COMMONDIR ]] ; then
+            echo "### $TOOL is a new software. You need to provide a SECTION with -s"
+            exit 1
+        else
+            SUBDIR=${COMMONDIR#/sw/mf/common/$MF_CATEGORY/}
+            SUBDIR=${SUBDIR%/$TOOL}
+            SECTION=$SUBDIR
+        fi
     fi
+    COMMONDIR=/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL
 fi
 
-module_directory="/sw/apps/bioinfo/${TOOL}/mf"
-src_directory="/sw/apps/bioinfo/${TOOL}/${VERSION}/src"
-cluster_directory="/sw/apps/bioinfo/${TOOL}/${VERSION}/${CLUSTER}"
+module_directory="/sw/$CATEGORY/${TOOL}/mf"
+src_directory="/sw/$CATEGORY/${TOOL}/${VERSION}/src"
+cluster_directory="/sw/$CATEGORY/${TOOL}/${VERSION}/${CLUSTER}"
 module_file="${module_directory}/${VERSION}"
-TOOL_dir="/sw/apps/bioinfo/${TOOL}/${VERSION}"
-readme_file=/sw/apps/bioinfo/${TOOL}/${TOOL}-${VERSION}_install-README.md
+version_directory="/sw/$CATEGORY/${TOOL}/${VERSION}"
+tool_directory="/sw/$CATEGORY/${TOOL}"
+readme_file=/sw/$CATEGORY/${TOOL}/${TOOL}-${VERSION}_install-README.md
 SCRIPTFILE=makeroom_${TOOL}_${VERSION}.sh
 
 cat > $SCRIPTFILE <<TMP
 umask 0002
-if [ ! -d "$TOOL_dir" ]; then
-	mkdir -p "${TOOL_dir}"
+if [ ! -d "$version_directory" ]; then
+	mkdir -p "${version_directory}"
 fi
 if [ ! -d "$module_directory" ]; then
 	mkdir -p "${module_directory}"
@@ -85,13 +109,21 @@ else
           [[ \$file -nt \$latest ]] && latest=\$file
     done
 fi
+if [ ! -d "$COMMONDIR" ]; then
+	mkdir -p "${COMMONDIR}"
+fi
 if [ ! -d "$src_directory" ]; then
 	mkdir -p "${src_directory}"
 fi
 if [ ! -d "$cluster_directory" ]; then
 	mkdir -p "${cluster_directory}"
 fi
-fixup /sw/apps/bioinfo/${TOOL}/${VERSION}
+cd $version_directory
+for C in irma bianca snowy; do 
+    ln -s rackham \$C 
+done
+cd -
+fixup /sw/$CATEGORY/${TOOL}/${VERSION}
 
 if [ -z "\$latest" ]; then
     cat > "$module_file" <<EOF
@@ -106,7 +138,7 @@ getCluster
 set components [ file split [ module-info name ] ]
 set version [ lindex \\\$components 1 ]
 
-set     modroot         /sw/apps/bioinfo/$TOOL/\\\$version/\\\$Cluster
+set     modroot         /sw/$CATEGORY/$TOOL/\\\$version/\\\$Cluster
 
 proc ModulesHelp { } {
 global version modroot
@@ -118,7 +150,7 @@ global version modroot
     puts stderr "\nUsage:"
 }
 
-module-whatis   "Loads $TOOL module environment, version \$version"
+module-whatis   "Loads $TOOL module environment, version \\\$version"
 
 # Only one version at a time
 conflict $TOOL
@@ -133,14 +165,14 @@ logToSyslog
 
 module load
 
-prepend-path    PATH            /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster
-prepend-path    PATH            /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster/bin
+prepend-path    PATH            /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster
+prepend-path    PATH            /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/bin
 
-prepend-path    LD_LIBRARY_PATH /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster/lib
-prepend-path    PYTHONPATH      /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster/lib/python3.6/site-packages
+prepend-path    LD_LIBRARY_PATH /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/lib
+prepend-path    PYTHONPATH      /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/lib/python3.6/site-packages
 
-prepend-path    MANPATH         /sw/apps/bioinfo/${TOOL}/${VERSION}/\\\$Cluster/share/man
-setenv          ${TOOL}_ROOT    /sw/apps/bioinfo/$TOOL/\\\$version/\\\$Cluster
+prepend-path    MANPATH         /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/share/man
+setenv          ${TOOL}_ROOT    /sw/$CATEGORY/$TOOL/\\\$version/\\\$Cluster
 
 EOF
 else
@@ -157,19 +189,17 @@ ${TOOL}/${VERSION}
 LOG
 ---
 
-I did..
-
     TOOL=$TOOL
     VERSION=$VERSION
     CLUSTER=${CLUSTER:?CLUSTER must be set}
-    VERSIONDIR=/sw/apps/bioinfo/\\\$TOOL/\\\$VERSION
-    PREFIX=/sw/apps/bioinfo/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
+    VERSIONDIR=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION
+    PREFIX=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
+
     ${0}
 
-NOTE: I use my own script which is located at /sw/apps/bioinfo/$TOOL/makeroom_$TOOL_$VERSION.sh
-
+NOTE: I use my own script which is located at /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
     ./$SCRIPTFILE
-    cd /sw/apps/bioinfo/\\\$TOOL/\\\$VERSION/src
+    cd /sw/$CATEGORY/\\\$TOOL/\\\$VERSION/src
     wget http://
     tar xvf 
     make
@@ -178,13 +208,13 @@ EOF2
     
 echo -e "\nPlease modify ${module_file} if needed."
 echo "If new, it contains some examples that will most likely need to be changed"
-echo "Then copy it to /sw/mf/common/bioinfo-tools/$SECTION/$TOOL/$VERSION"
+echo "Then copy it to /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION"
 echo -e "\nAlso, please modify ${readme_file}\n"
 
 umask 0022
 
-mv $PWD/$SCRIPTFILE /sw/apps/bioinfo/${TOOL}/
+mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
 TMP
 
-echo "TOOL=$TOOL VERSION=$VERSION VERSIONDIR=/sw/apps/bioinfo/$TOOL/$VERSION PREFIX=/sw/apps/bioinfo/$TOOL/$VERSION/$CLUSTER"
+echo "TOOL=$TOOL VERSION=$VERSION VERSIONDIR=$version_directory PREFIX=/sw/$CATEGORY/$TOOL/$VERSION/$CLUSTER COMMONDIR=$COMMONDIR"
 chmod +x $SCRIPTFILE
