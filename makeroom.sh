@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-usage="$(basename "$0") [-h] -t TOOL -v VERSION -s SECTION [-w WEBSITE] [-c CATEGORY]--
+usage="$(basename "$0") [-h] -t TOOL -v VERSION -s SECTION [-w WEBSITE] [-c CATEGORY] [-x MODE] --
 
     Makes some directories at places
 
@@ -14,13 +14,15 @@ usage="$(basename "$0") [-h] -t TOOL -v VERSION -s SECTION [-w WEBSITE] [-c CATE
         -v  version of the \$TOOL
         -s  section of the \$TOOL
         -w  website of the \$TOOL
-        -c  category of the \$TOOL (bioinfo, apps, comp or libs)"
+        -c  category of the \$TOOL (bioinfo, apps, comp or libs)
+        -x  flag for mode, i.e. INSTALL or REMOVE"
 
 WEBSITE=http://
 CATEGORY=bioinfo
 MF_CATEGORY=bioinfo-tools
+MODE=INSTALL
 
-while getopts "ht:v:s:w:c:" option
+while getopts "ht:v:s:w:c:x:" option
     do
         case $option in
             h) echo "$usage"
@@ -35,6 +37,8 @@ while getopts "ht:v:s:w:c:" option
             w) WEBSITE="$OPTARG"
                 ;;
             c) CATEGORY="$OPTARG"
+                ;;
+            x) MODE="$OPTARG"
                 ;;
             :) printf "missing argument for -%s\n" "$OPTARG" >&2
             echo "$usage" >&2
@@ -94,6 +98,40 @@ version_directory="/sw/$CATEGORY/${TOOL}/${VERSION}"
 tool_directory="/sw/$CATEGORY/${TOOL}"
 readme_file=/sw/$CATEGORY/${TOOL}/${TOOL}-${VERSION}_install-README.md
 SCRIPTFILE=makeroom_${TOOL}_${VERSION}.sh
+REMOVEFILE=makeroom_REMOVE_${TOOL}_${VERSION}.sh
+
+####################### REMOVE ############################################
+
+if [ $MODE == "REMOVE" ] ; then
+    cat > $REMOVEFILE <<RMVTMP
+    umask 0002
+    rm -f $module_file
+    rm -rf $version_directory
+    rm -f $readme_file
+    rm -f $tool_directory/$SCRIPTFILE
+    if [ -d "$module_directory" ]; then
+        if [ -z "\$(ls -A $module_directory)" ]; then
+            rm -rf $module_directory
+        fi
+    fi
+    if [ -d "$tool_directory" ]; then
+        if [ -z "\$(ls -A $tool_directory)" ]; then
+            rm -rf $tool_directory
+        fi
+    fi
+    if [ -d "$COMMONDIR" ]; then
+        if [ -z "\$(ls -A $COMMONDIR)" ]; then
+            rm -rf ${COMMONDIR}
+        fi
+    fi
+    rm $REMOVEFILE
+RMVTMP
+    echo "TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR=''"
+    chmod +x $REMOVEFILE
+    exit 0;
+fi
+
+############################### INSTALL ########################################
 
 cat > $SCRIPTFILE <<TMP
 umask 0002
@@ -106,7 +144,7 @@ else
     unset -v latest
     cd $module_directory
     for file in *; do
-          [[ \$file -nt \$latest ]] && latest=\$file
+        [[ \$file -nt \$latest ]] && latest=\$file
     done
 fi
 if [ ! -d "$COMMONDIR" ]; then
@@ -160,16 +198,19 @@ logToSyslog
 
 #Needed modules
 
+module load 
+
 # Directories for the program:
 #
-
-module load
 
 prepend-path    PATH            /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster
 prepend-path    PATH            /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/bin
 
 prepend-path    LD_LIBRARY_PATH /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/lib
 prepend-path    PYTHONPATH      /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/lib/python3.6/site-packages
+prepend-path    PYTHONPATH      /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/lib/python2.7/site-packages
+
+set-alias       $TOOL "singularity exec /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/$TOOL.img $TOOL"
 
 prepend-path    MANPATH         /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/share/man
 setenv          ${TOOL}_ROOT    /sw/$CATEGORY/$TOOL/\\\$version/\\\$Cluster
