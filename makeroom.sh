@@ -104,6 +104,7 @@ REMOVEFILE=makeroom_REMOVE_${TOOL}_${VERSION}.sh
 
 if [ $MODE == "REMOVE" ] ; then
     cat > $REMOVEFILE <<RMVTMP
+    PREUMASK=\$(umask)
     umask 0002
     rm -f $module_file
     rm -rf $version_directory
@@ -124,6 +125,7 @@ if [ $MODE == "REMOVE" ] ; then
             rm -rf ${COMMONDIR}
         fi
     fi
+    umask \$PREUMASK
     rm $REMOVEFILE
 RMVTMP
     echo "TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR=''"
@@ -134,6 +136,7 @@ fi
 ############################### INSTALL ########################################
 
 cat > $SCRIPTFILE <<TMP
+PREUMASK=\$(umask)
 umask 0002
 if [ ! -d "$version_directory" ]; then
 	mkdir -p "${version_directory}"
@@ -252,7 +255,7 @@ echo "If new, it contains some examples that will most likely need to be changed
 echo "Then copy it to /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION"
 echo -e "\nAlso, please modify ${readme_file}\n"
 
-umask 0022
+umask \$PREUMASK
 
 mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
 TMP
