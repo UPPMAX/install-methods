@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-usage="$(basename "$0") [-h] -t TOOL -v VERSION -s SECTION [-w WEBSITE] [-c CATEGORY] [-x MODE] --
+usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CATEGORY] [-x MODE] --
 
     Makes some directories at places
 
@@ -12,9 +12,9 @@ usage="$(basename "$0") [-h] -t TOOL -v VERSION -s SECTION [-w WEBSITE] [-c CATE
     Parameters:
         -t  name of the \$TOOL
         -v  version of the \$TOOL
-        -s  section of the \$TOOL
+        -s  section of the \$TOOL for use with category bioinfo and new software only.
         -w  website of the \$TOOL
-        -c  category of the \$TOOL (bioinfo, apps, comp or libs)
+        -c  category of the \$TOOL (bioinfo, apps, comp or libs) DEFAULT is bioinfo.
         -x  flag for mode, i.e. INSTALL or REMOVE"
 
 WEBSITE=http://
