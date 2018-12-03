@@ -23,40 +23,47 @@ MF_CATEGORY=bioinfo-tools
 MODE=INSTALL
 
 while getopts "ht:v:s:w:c:x:" option
-    do
-        case $option in
-            h) echo "$usage"
+do
+    case $option in
+        h) echo "$usage"
             exit 0
-                ;;
-            t) TOOL="$OPTARG"
-                ;;
-            v) VERSION="$OPTARG"
-                ;;
-            s) SECTION="$OPTARG"
-                ;;
-            w) WEBSITE="$OPTARG"
-                ;;
-            c) CATEGORY="$OPTARG"
-                ;;
-            x) MODE="$OPTARG"
-                ;;
-            :) printf "missing argument for -%s\n" "$OPTARG" >&2
+            ;;
+        t) TOOL="$OPTARG"
+            ;;
+        v) VERSION="$OPTARG"
+            ;;
+        s) SECTION="$OPTARG"
+            ;;
+        w) WEBSITE="$OPTARG"
+            ;;
+        c) CATEGORY="$OPTARG"
+            ;;
+        x) MODE="$OPTARG"
+            ;;
+        :) printf "missing argument for -%s\n" "$OPTARG" >&2
             echo "$usage" >&2
             exit 1
-                ;;
-            \?) printf "illegal option -%s\n" "$OPTARG" >&2
+            ;;
+        \?) printf "illegal option -%s\n" "$OPTARG" >&2
             echo "$usage" >&2
             exit 1
-                ;;
-        esac
-    done
+            ;;
+    esac
+done
 shift $((OPTIND-1))
 
+PREV_INSTALL=$(module -t --redirect spider | grep --ignore-case -e "^$TOOL/$" | rev | cut -c 2- | rev)
+if [ ! -z $PREV_INSTALL ] && [ $PREV_INSTALL != $TOOL ]
+then
+    echo "Matching software already installed under name $PREV_INSTALL"
+    exit 1
+fi
+
 if [ -z "${TOOL+x}" ]
-    then printf "%s\n\nEmply value for -s\n" "$usage" >&2; exit 1
+then printf "%s\n\nEmply value for -s\n" "$usage" >&2; exit 1
 fi
 if [ -z "${VERSION+x}" ]
-    then printf "%s\n\nEmply value for -v\n" "$usage" >&2; exit 1
+then printf "%s\n\nEmply value for -v\n" "$usage" >&2; exit 1
 fi
 
 case $CATEGORY in
