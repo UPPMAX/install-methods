@@ -215,7 +215,7 @@ module load
 
 prepend-path    PATH            /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster
 prepend-path    PATH            /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/bin
-
+prepend-path    PERL5LIB        \\\$modroot/perl-packages/lib/perl5
 prepend-path    LD_LIBRARY_PATH /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/lib
 prepend-path    PYTHONPATH      /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/lib/python3.6/site-packages
 prepend-path    PYTHONPATH      /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/lib/python2.7/site-packages
