@@ -33,6 +33,9 @@ wget -N -c -r -np -nH --cut-dirs=4 -R "index.html*" -R "repodata.json*" https://
 cp -av repodata.json ../repodata.json.bak
 cp -av .index.json ../.index.json.bak
 module load mc3/latest
+echo "UPDATING CONDA" >> $LOGFILE
 conda update conda -y
-conda-index --channel-name CONDA_UPPMAX
+echo "INDEXING CONDA" >> $LOGFILE
+conda-index # --channel-name CONDA_UPPMAX
 chmod -w /sw/apps/mc3/latest/rackham/repo/noarch
+echo "FINISHED" >> $LOGFILE
