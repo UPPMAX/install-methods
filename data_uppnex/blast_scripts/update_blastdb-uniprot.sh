@@ -22,6 +22,7 @@ curl -o "$staging_dir/uniprot/RELEASE.metalink" \
 echo '### Mirror fasta files'
 lftp -c mirror --continue --no-empty-dirs \
     --parallel=4 \
+    --use-cache \
     -i "uniref(50|90|100).fasta.gz" \
     -I uniprot_sprot.fasta.gz \
     -I uniprot_trembl.fasta.gz \
@@ -30,10 +31,10 @@ lftp -c mirror --continue --no-empty-dirs \
     "$staging_dir/uniprot/"
 
 echo '### Fetching UniVec fasta files'
-rsync --no-motd -a rsync://ftp.ncbi.nlm.nih.gov/pub/UniVec/UniVec \
-    $staging_dir/uniprot/blastdb/
-rsync --no-motd -a rsync://ftp.ncbi.nlm.nih.gov/pub/UniVec/UniVec_Core \
-    $staging_dir/uniprot/blastdb/
+rsync --no-motd -ai rsync://ftp.ncbi.nlm.nih.gov/pub/UniVec/UniVec \
+    "$staging_dir/uniprot/blastdb/"
+rsync --no-motd -ai rsync://ftp.ncbi.nlm.nih.gov/pub/UniVec/UniVec_Core \
+    "$staging_dir/uniprot/blastdb/"
 
 echo '### Build blast databases'
 ( cd "$staging_dir/uniprot" &&
@@ -50,6 +51,10 @@ find "$staging_dir/uniprot/blastdb"  -type f -name '*.pal' \
   ln -sf uniprot_sptrembl.pal uniprot_all.pal &&
   ln -sf uniprot_sptrembl.pal uniprot_all.fasta.pal
 )
+
+echo '### Fixing permissions'
+find "$staging_dir/uniprot/blastdb" \
+    -type f ! -perm 664 -exec chmod 664 {} +
 
 printf 'Finished: %s\n' "$(date)" >>"$staging_dir/timestamp-uniprot"
 echo 'Done.'

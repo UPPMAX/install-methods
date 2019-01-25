@@ -23,7 +23,7 @@ get_remote_filelist () {
     # be fetched.  Errors are written to rsync-errors.txt.
 
     printf '%s.*\n' "${dbs[@]}" |
-    xargs -P 4 -I % rsync --no-motd \
+    xargs -P 4 -I % rsync --ipv4 --no-motd \
             "rsync://ftp.ncbi.nlm.nih.gov/blast/db/%" | awk '{ print $NF }' \
         >"$staging_dir/files.list" 2>"$staging_dir/rsync-errors.txt"
 }
@@ -36,7 +36,8 @@ rsync_filelist () {
 
     sort -rV "$staging_dir/files.list" |
     parallel --line-buffer --jobs "$RSYNC_JOBS" --pipe --cat -N 10 \
-        nice rsync --no-motd --timeout=60 --archive --no-perms \
+        nice rsync --ipv4 -yy --no-motd --timeout=60 --archive --no-perms \
+            --copy-links \
             --out-format='%t\ %i\ %b/%l\ %n' \
             --link-dest="$staging_dir/files-current" \
             --partial-dir=".rsync-partial" --files-from={} \
@@ -150,8 +151,7 @@ done
 
 echo '### Fixing permissions'
 find "$staging_dir/files-new" "$staging_dir/blastdb" \
-    -type f ! -perm 664 -print |
-xargs -r -P 4 -L 25 chmod 664
+    -type f ! -perm 664 -exec chmod 664 {} +
 
 echo '### Cleaning up'
 rm -rf "$staging_dir/files-current"

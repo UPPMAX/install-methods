@@ -261,6 +261,7 @@ installations.
     cpanm Statistics::Sequences::Turns Statistics::Sequences::Joins Statistics::Sequences::Vnomes Statistics::Data::Dichotomize
     cpanm Statistics::Diversity::Shannon Statistics::Sampler::Multinomial Statistics::Distributions::GTest
     cpanm Statistics::Descriptive::LogScale Statistics::Descriptive::Discrete Statistics::Distributions::Bartlett 
+    cpanm Sort::Fields  # this will not install in perl_modules/5.26.2
 
 Additional statistics-oriented modules.  Two have pod errors and another has an
 odd error and these three must be forced.

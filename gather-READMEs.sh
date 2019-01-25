@@ -29,6 +29,7 @@ if [[ ! $SKIP_FIND_MODULES ]] ; then
     cd /sw
 
     find apps -name '*install-README.md' | cpio -pdm $REPOSITORY
+    find bioinfo -name '*install-README.md' | cpio -pdm $REPOSITORY
     find libs -name '*install-README.md' | cpio -pdm $REPOSITORY
     find comp -name '*install-README.md' | cpio -pdm $REPOSITORY
 

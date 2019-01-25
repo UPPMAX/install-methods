@@ -22,6 +22,7 @@
 # job which runs 24 hours after this one.
 
 #set -x
+set -e
 
 shopt -s nullglob  # this will make STAGED_DBS_TIMESTAMPS be empty if the globs match nothing
 
@@ -51,7 +52,7 @@ for S in ${STAGED_DBS_TIMESTAMPS[@]} ; do
     rm -f ${DB}.*
     [[ $DB == UniVec || $DB == UniVec_Core ]] && rm -f ${DB}
     echo -e "creating hardlinks to staged... "
-    ln ${SS}.* .
+    ln ${SS}.* . || { echo -e "$0: Failed to hardlink '${SS}.*'\n" | mailx -s "blast database installation error" douglas.scofield@ebc.uu.se; exit 1; }
     [[ $DB == UniVec || $DB == UniVec_Core ]] && ln ${SS} .
 done
 

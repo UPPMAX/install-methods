@@ -238,13 +238,11 @@ along with updating R.
 External packages
 -----------------
 
-Install a non-CRAN package ASCAT.
+Install a non-CRAN package ASCAT.  Download the latest release here (https://github.com/Crick-CancerGenomics/ascat/releases).
+
   
     mkdir -p /sw/apps/R_packages/$VERSION/external_packages
     cd /sw/apps/R_packages/$VERSION/external_packages
-
-Download the latest release here (https://github.com/Crick-CancerGenomics/ascat/releases).
-
     ASCAT_VERSION=2.5.1
     [[ -f ASCAT_${ASCAT_VERSION}.tar.gz ]] || wget --timestamping https://github.com/Crick-CancerGenomics/ascat/releases/download/v${ASCAT_VERSION}/ASCAT_${ASCAT_VERSION}.tar.gz
     R CMD INSTALL ASCAT_${ASCAT_VERSION}.tar.gz
@@ -252,9 +250,34 @@ Download the latest release here (https://github.com/Crick-CancerGenomics/ascat/
 Also, install an outdated package `igraph0`, which has been superseded by
 `igraph` (installed above) but needed by some older procedures.
 
+    mkdir -p /sw/apps/R_packages/$VERSION/external_packages
+    cd /sw/apps/R_packages/$VERSION/external_packages
     IGRAPH0_VERSION=0.5.7
     [[ -f igraph0_${IGRAPH0_VERSION}.tar.gz ]] || wget --timestamping https://cran.r-project.org/src/contrib/Archive/igraph0/igraph0_${IGRAPH0_VERSION}.tar.gz
     R CMD INSTALL igraph0_${IGRAPH0_VERSION}.tar.gz
+
+Added the module dnase2tf from the source under source tree directory for calcDFT/1.0.1
+Inside R (3.5.0):
+
+    install.packages('/sw/apps/bioinfo/calcDFT/1.0.1/src/dnase2tf', repos = NULL, type="source")
+
+Install rrbgen for reading BGEN files.
+
+    mkdir -p /sw/apps/R_packages/$VERSION/external_packages
+    cd /sw/apps/R_packages/$VERSION/external_packages
+    RRBGEN_VERSION=0.0.6
+    [[ -f rrbgen_${RRBGEN_VERSION}.tar.gz ]] || wget --timestamping https://github.com/rwdavies/rrbgen/releases/download/${RRBGEN_VERSION}/rrbgen_${RRBGEN_VERSION}.tar.gz
+    R CMD INSTALL rrbgen_${RRBGEN_VERSION}.tar.gz
+
+Install STITCH for haplotype imputation.  I was worried about its requirement
+for htslib but it has incorporated that into its own source tree.  This module
+also requires both `bgzip` and `tabix`, which are provided by `htslib/1.8`.
+
+    mkdir -p /sw/apps/R_packages/$VERSION/external_packages
+    cd /sw/apps/R_packages/$VERSION/external_packages
+    STITCH_VERSION=1.5.4
+    [[ -f STITCH_${STITCH_VERSION}.tar.gz ]] || wget --timestamping https://github.com/rwdavies/STITCH/releases/download/${STITCH_VERSION}/STITCH_${STITCH_VERSION}.tar.gz
+    R CMD INSTALL STITCH_${STITCH_VERSION}.tar.gz
 
 
 After adding new packages

@@ -279,6 +279,9 @@ XML::DOM::XPath has a test error, --force it!
     cpanm Statistics::Diversity::Shannon Statistics::Sampler::Multinomial Statistics::Distributions::GTest
     cpanm Statistics::Descriptive::LogScale Statistics::Descriptive::Discrete Statistics::Distributions::Bartlett 
     cpanm Math::MatrixReal 
+    cpanm Config::Simple
+    # cpanm Sort::Fields  # this will not install in perl_modules/5.26.2
+    cpanm Text::NSP
 
 Additional statistics-oriented modules.  Two have pod errors and another has an
 odd error and these two must be forced.

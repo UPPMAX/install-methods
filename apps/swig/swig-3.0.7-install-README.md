@@ -27,3 +27,9 @@ LOG
     make
     make install
 
+### 2018/11/27
+
+
+Add the `preinst-swig` executable to the bin directory.
+
+    cp -av preinst-swig ../../rackham/bin/

@@ -3,8 +3,10 @@
 #SBATCH -A staff
 #SBATCH -J Kraken-update-db.sh
 #SBATCH -p node
+#SBATCH -n 20
 #SBATCH -C mem256GB
-#SBATCH -t 24:00:00
+#SBATCH -t 48:00:00
+##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@ebc.uu.se
 #SBATCH --mail-type=ALL
 #SBATCH -o /sw/data/uppnex/Kraken/slurm-%j.out
