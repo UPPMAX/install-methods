@@ -105,3 +105,43 @@ Then run several PBSuite executables just to check.
     Setup.py
     Support.py
 
+### 2018/12/06 more double-dash options to change
+
+Thanks to Valentina Peona for calling these to my attention.  From her message:
+
+    1. /sw/apps/bioinfo/PBSuite/15.8.24/rackham/bin/Assembly.py
+
+    From
+
+    c = ("blasr %s %s -m %s -bestn %d -nCandidates %d -minMatch 8 -sdpTupleSize 6 -affineAlign "
+                     "-nproc %d -noSplitSubreads -out %s -minPctIdentity 60 -minReadLength 5") % \
+                     (query, target, fmt, bestn, nCandidates, nproc, outname)
+
+    To
+
+    c = ("blasr %s %s --m %s --bestn %d --nCandidates %d --minMatch 8 --sdpTupleSize 6 --affineAlign "
+                     "--nproc %d --noSplitSubreads --out %s --minPctIdentity 60 --minReadLength 5") % \
+                     (query, target, fmt, bestn, nCandidates, nproc, outname)
+
+    also see Github: https://github.com/dbrowneup/PBSuite/commit/2ce2e194292643cd74da473469213985a15a0464#diff-46a4ea6633648d06f95b73a2c41591d5
+
+    2. /sw/apps/bioinfo/PBSuite/15.8.24/rackham/pbsuite/jelly/QFix.py
+    From
+
+    print exe(("blasr input.fastq ref.fasta  -bestn 2 -m 5 -noSplitSubreads > out.m5"))
+
+    To
+
+    print exe(("blasr input.fastq ref.fasta  --bestn 2 --m 5 --noSplitSubreads > out.m5"))
+
+    Github: https://github.com/dbrowneup/PBSuite/commit/f2c1234bb02f558e53680d680d78ac94b4fdc35b#diff-46a4ea6633648d06f95b73a2c41591d5
+
+These changes, but the `-m` options stay single-dash.
+
+Also changing `./15.8.24/milou/pbsuite/banana/Polish.py`.  The changes to
+`QFix.py` refer to a `pbjPolish.py` file that doesn't exist.  But, `Polish.py`
+has some blasr arguments that are out of date.
+
+Ultimately, I changed all `blasr`-related commands in PBSuite.
+
+    vi $(find . -name '*.py' -exec grep -Hn 'blasr ' {} \; | cut -f1 -d: | sort -u)

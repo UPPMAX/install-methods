@@ -38,3 +38,7 @@ Remove source.
 
 We can use the mf from 4.6, which adds `$modroot/bin` to `PATH`, but also
 define `PAML_ROOT` since there are other things available there.
+
+EDIT: 20181123
+    cd /sw/apps/bioinfo/paml/4.9e/rackham
+    mv src/mcmctree bin/

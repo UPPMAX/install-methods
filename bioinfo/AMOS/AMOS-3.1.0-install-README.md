@@ -39,3 +39,7 @@ to the top of `toAmos_new.cc` and that finally fixed that.  Compiling with a new
     make
     make install
 
+EDIT 2018-12-06:
+
+    cd /sw/apps/bioinfo/AMOS/3.1.0/rackham/bin
+    sed -i "1s/usr\/bin\/perl/usr\/bin\/env\ perl/" *
