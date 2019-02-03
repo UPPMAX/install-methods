@@ -1,3 +1,4 @@
+#!/usr/bin/bash -l
 chmod 2775 /sw/apps/mc3/latest/rackham/repo
 chmod 2775 /sw/apps/mc3/latest/rackham/repo/noarch
 cd /sw/apps/mc3/latest/rackham/repo/noarch
