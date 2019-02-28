@@ -25,4 +25,5 @@ shift $((OPTIND-1))
 
 me=${USER:-$(whoami)}
 proj=${PRO:-sens2016001}
-[[ ! -z "$*" ]] && find $* -maxdepth 0 | awk '{print "put", $0}' | sftp -r $me-$proj@bianca-sftp.uppmax.uu.se:$me-$proj || echo "No files selected for transfer"
+SFTP_CMD="sftp -r $me-$proj@bianca-sftp.uppmax.uu.se:$me-$proj"
+[[ ! -z "$*" ]] && find $* -maxdepth 0 | awk -v SFTP_CMD="$SFTP_CMD" '{ut = ut "put " $0 "\n"} END { if(length(ut)>0) {system("echo \"" ut "\"" "\|" SFTP_CMD)} else {print "No files found, please rephrase"} }' || echo "No files selected for transfer"
