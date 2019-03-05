@@ -10,11 +10,12 @@ usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CA
     Please modify the module file after running this
 
     Parameters:
-        -t  name of the \$TOOL
-        -v  version of the \$TOOL
+        -t  name of the \$TOOL (REQUIRED)
+        -v  version of the \$TOOL (REQUIRED)
         -s  section of the \$TOOL for use with category bioinfo and new software only.
-        -w  website of the \$TOOL
+        -w  website of the \$TOOL (no DEFAULT)
         -c  category of the \$TOOL (bioinfo, apps, comp or libs) DEFAULT is bioinfo.
+        -l  license of the \$TOOL (no DEFAULT)
         -x  flag for mode, i.e. INSTALL or REMOVE"
 
 WEBSITE=http://
@@ -22,7 +23,7 @@ CATEGORY=bioinfo
 MF_CATEGORY=bioinfo-tools
 MODE=INSTALL
 
-while getopts "ht:v:s:w:c:x:" option
+while getopts "ht:v:s:w:c:l:x:" option
 do
     case $option in
         h) echo "$usage"
@@ -37,6 +38,8 @@ do
         w) WEBSITE="$OPTARG"
             ;;
         c) CATEGORY="$OPTARG"
+            ;;
+        l) LICENSE="$OPTARG"
             ;;
         x) MODE="$OPTARG"
             ;;
@@ -212,17 +215,17 @@ module load
 # Directories for the program:
 #
 
-prepend-path    PATH            /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster
-prepend-path    PATH            /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/bin
+prepend-path    PATH            \\\$modroot
+prepend-path    PATH            \\\$modroot/bin
 prepend-path    PERL5LIB        \\\$modroot/perl-packages/lib/perl5
-prepend-path    LD_LIBRARY_PATH /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/lib
-prepend-path    PYTHONPATH      /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/lib/python3.6/site-packages
-prepend-path    PYTHONPATH      /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/lib/python2.7/site-packages
+prepend-path    LD_LIBRARY_PATH \\\$modroot/lib
+prepend-path    PYTHONPATH      \\\$modroot/lib/python3.6/site-packages
+prepend-path    PYTHONPATH      \\\$modroot/lib/python2.7/site-packages
 
-set-alias       $TOOL "singularity exec /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/$TOOL.img $TOOL"
+set-alias       $TOOL "singularity exec \\\$modroot/$TOOL.img $TOOL"
 
-prepend-path    MANPATH         /sw/$CATEGORY/${TOOL}/\\\$version/\\\$Cluster/share/man
-setenv          ${TOOL}_ROOT    /sw/$CATEGORY/$TOOL/\\\$version/\\\$Cluster
+prepend-path    MANPATH         \\\$modroot/share/man
+setenv          ${TOOL}_ROOT    \\\$modroot
 
 EOF
 else
@@ -236,6 +239,9 @@ ${TOOL}/${VERSION}
 
 <$WEBSITE>
 
+Used under license:
+$LICENSE
+
 LOG
 ---
 
@@ -244,6 +250,7 @@ LOG
     CLUSTER=${CLUSTER:?CLUSTER must be set}
     VERSIONDIR=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION
     PREFIX=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
+    LICENSE=$LICENSE
 
     ${0}
 
