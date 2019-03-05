@@ -84,7 +84,6 @@ esac
 COMMONDIR=(/sw/mf/common/$MF_CATEGORY/$TOOL)
 
 if [ $CATEGORY == "bioinfo" ] ; then
-    CATEGORY=bioinfo
     COMMONDIR=(/sw/mf/common/$MF_CATEGORY/*/$TOOL)
     if [ -z "$SECTION" ] ; then
         if [[ ! -d $COMMONDIR ]] ; then
@@ -108,6 +107,19 @@ tool_directory="/sw/$CATEGORY/${TOOL}"
 readme_file=/sw/$CATEGORY/${TOOL}/${TOOL}-${VERSION}_install-README.md
 SCRIPTFILE=makeroom_${TOOL}_${VERSION}.sh
 REMOVEFILE=makeroom_REMOVE_${TOOL}_${VERSION}.sh
+
+####################### NEWS ##############################################
+if [ $CATEGORY == "bioinfo" ] ; then
+    NEWSCAT="bio"
+else
+    NEWSCAT=$CATEGORY
+fi
+NEWS="[$NEWSCAT] $TOOL version $VERSION installed on all systems
+$TOOL version $VERSION installed on all systems as module $TOOL/$VERSION.
+$WEBSITE
+Rackham, Irma, Bianca, Snowy
+$VERSION
+$LICENSE"
 
 ####################### REMOVE ############################################
 
@@ -137,7 +149,7 @@ if [ $MODE == "REMOVE" ] ; then
     umask \$PREUMASK
     rm $REMOVEFILE
 RMVTMP
-    echo "TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR=''"
+    echo "TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR='' NEW=''"
     chmod +x $REMOVEFILE
     exit 0;
 fi
@@ -250,7 +262,6 @@ LOG
     CLUSTER=${CLUSTER:?CLUSTER must be set}
     VERSIONDIR=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION
     PREFIX=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
-    LICENSE=$LICENSE
 
     ${0}
 
@@ -267,6 +278,8 @@ echo -e "\nPlease modify ${module_file} if needed."
 echo "If new, it contains some examples that will most likely need to be changed"
 echo "Then copy it to /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION"
 echo -e "\nAlso, please modify ${readme_file}\n"
+echo -e "\nThis might help too:\n"
+echo "$NEWS"
 
 umask \$PREUMASK
 
