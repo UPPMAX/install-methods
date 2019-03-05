@@ -81,8 +81,7 @@ esac
 COMMONDIR=(/sw/mf/common/$MF_CATEGORY/$TOOL)
 
 if [ $CATEGORY == "bioinfo" ] ; then
-    #remove this later when bioinfo is under sw and not sw/apps
-    CATEGORY=apps/bioinfo
+    CATEGORY=bioinfo
     COMMONDIR=(/sw/mf/common/$MF_CATEGORY/*/$TOOL)
     if [ -z "$SECTION" ] ; then
         if [[ ! -d $COMMONDIR ]] ; then
