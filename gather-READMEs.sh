@@ -54,6 +54,7 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
     find Chromium -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
     find Centrifuge-indices -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
     find panther -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+    find eggNOG -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
     ###  The following should eventually get brought in as well
     # find dbSNP -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
     # find SGDP -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
@@ -102,5 +103,5 @@ DATA_OTHER_REPOSITORY="$REPOSITORY/data_other"
 # with an update script.  Fetch a copy of their READMEs and the scripts.
 
 cd $DATA_OTHER_REPOSITORY
-data_update  /sw/apps/bioinfo/BUSCO  BUSCO-db-README.md v1_lineage_sets/BUSCO-update-v1-lineage-sets.sh v2_lineage_sets/BUSCO-update-v2-lineage-sets.sh 
+data_update  /sw/bioinfo/BUSCO  BUSCO-db-README.md v1_lineage_sets/BUSCO-update-v1-lineage-sets.sh v2_lineage_sets/BUSCO-update-v2-lineage-sets.sh 
 
