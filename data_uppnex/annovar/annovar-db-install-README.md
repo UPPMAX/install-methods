@@ -22,18 +22,19 @@ even earlier ones against build hg18 that were already in this directory.
 
 The set of databases downloaded for hg19 and hg38 are:
 
-    cd /sw/data/uppnex/annotations/annovar
+    cd /sw/data/uppnex/annovar
+    ANNOVAR_VERSION=2018.04.16
     mkdir humandb
     for BUILD in hg19 hg38 ; do
         for DB in dbnsfp33a ljb26_all gme gnomad_exome gnomad_genome avsnp147 snp138 esp6500siv2_all cosmic70 snp138 gerp++elem cadd13 eigen gwava kaviar_20150923 hrcr1 1000g2015aug 1000g2015aug fathmm exac03
         do
-            /sw/apps/bioinfo/annovar/2017.07.16/milou/annotate_variation.pl -v --downdb --webfrom annovar --buildver $BUILD $DB humandb/
+            /sw/bioinfo/annovar/$ANNOVAR_VERSION/$CLUSTER/annotate_variation.pl -v --downdb --webfrom annovar --buildver $BUILD $DB humandb/
         done
     done
 
 To download a reference sequence for a new build, for example hg38, do
 
-    /sw/apps/bioinfo/annovar/2017.07.16/milou/annotate_variation.pl -v --downdb seq --build hg38 humandb/hg38_seq/
+    /sw/apps/bioinfo/annovar/$ANNOVAR_VERSION/$CLUSTER/annotate_variation.pl -v --downdb seq --build hg38 humandb/hg38_seq/
 
 We have reference sequences in `humandb/{hg18,hg19,hg38}_seq/`.
 

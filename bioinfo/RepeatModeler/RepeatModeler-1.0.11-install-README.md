@@ -26,24 +26,40 @@ As for RepeatMasker, move the unpacked directory to be $CLUSTER and configure th
     cd ../$CLUSTER
     module load perl/5.26.2 perl_modules/5.26.2
 
-Check for files to fix `#!` lines for.
+RepeatModeler 1.0.11 fixes the `use Cwd;` bug fixed by us in 1.0.8, so no need
+to repeat that.
+
+Check for files to fix `#!` lines for.  First command shows the files, second opens vi for all.
 
     find . -type f -exec grep -Hn -m1 '^#!.*perl' {} \; | grep -v '\.pm:' | grep -vF '#!/usr/bin/env'
+    vi $(find . -type f -exec grep -Hn -m1 '^#!.*perl' {} \; | grep -v '\.pm:' | grep -vF '#!/usr/bin/env' | cut -f1 -d:)
 
 Turns out I have to do some `#!` fixing right away.  This also doesn't have the
 env option that RepeatMasker/4.0.7 does, so give full path to perl interpreter.
 Don't include `/pica` prefix.  Include setups for RepeatMasker/4.0.7, rmblast
-2.6.0+, TRF 4.09, RECON, RepeatScout.
+2.6.0+, TRF 4.09, RECON, RepeatScout, NSEG:
 
-    vi configure RepeatModeler
-
-    vi configure 
     ./configure 
 
-Check for missing `#!` fixes.
+For RepeatMasker, the directory is
 
-    find . -type f -exec grep -Hn -m1 '^#!.*perl' {} \; | grep -v '\.pm:' | grep -vF '5.18.4'
-    vi util/Linup util/viewMSA.pl 
+RECON:
 
-RepeatModeler 1.0.11 fixes the `use Cwd;` bug fixed by us in 1.0.8.
+    /sw/apps/bioinfo/RepeatMasker/aux_rackham/RECON/1.08/bin
+
+TRF (note not direct path to program, which is what RepeatMasker wants):
+
+    /sw/apps/bioinfo/RepeatMasker/aux_rackham/TRF/4.09
+
+RepeatScout:
+
+    /sw/apps/bioinfo/RepeatMasker/aux_rackham/RepeatScout/1.0.5/bin
+
+NSEG:
+
+    /sw/bioinfo/RepeatMasker/aux_rackham/nseg
+
+RMBlast:
+
+    /sw/bioinfo/RepeatMasker/aux_rackham/rmblast/2.6.0+/bin
 

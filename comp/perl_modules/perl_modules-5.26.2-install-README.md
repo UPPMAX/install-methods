@@ -344,8 +344,8 @@ Generate list of installed modules
 ----------------------------------
 
 When in `/sw/comp/perl_modules/${VERSION}/${CLUSTER}`:
-    cp -av ../../5.24.1/rackham/create_module_table .
-    cp -av ../../5.24.1/rackham/README.md .
+    cp -av ../../5.26.2/rackham/create_module_table .
+    cp -av ../../5.26.2/rackham/README.md .
     ./create_module_table > module_table.html
     tail -2 README.md | head -1 > module_table_again.html; ./create_module_table >> module_table_180720.html
 
