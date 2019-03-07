@@ -36,12 +36,13 @@ cp -av repodata.json /sw/apps/mc3/latest/rackham/backups/repodata.json.bak
 cp -av .index.json /sw/apps/mc3/latest/rackham/backups/.index.json.bak
 module load mc3/latest 2>>$LOGFILE
 echo "UPDATING CONDA" >> $LOGFILE
-conda update conda -y -c defaults --override-channels 2>&1 | tee -a $LOGFILE
+conda update conda -y -c defaults --override-channels -vvv 2>&1 | tee -a $LOGFILE
 echo "UPDATING CONDA-BUILD" >> $LOGFILE
-conda update conda-build -y -c defaults --override-channels 2>&1 | tee -a $LOGFILE
+conda update conda-build -y -c defaults --override-channels -vvv 2>&1 | tee -a $LOGFILE
 echo "INDEXING CONDA" >> $LOGFILE
 cd /sw/apps/mc3/latest/rackham/repo
-conda-index --channel-name CONDA_UPPMAX 2>&1 | tee -a $LOGFILE
-chmod -w /sw/apps/mc3/latest/rackham/repo
-chmod -w /sw/apps/mc3/latest/rackham/repo/noarch
+conda-index --channel-name CONDA_UPPMAX --verbose 2>&1 | tee -a $LOGFILE
+module unload mc3
+#chmod -w /sw/apps/mc3/latest/rackham/repo
+#chmod -w /sw/apps/mc3/latest/rackham/repo/noarch
 echo "FINISHED" >> $LOGFILE
