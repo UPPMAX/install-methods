@@ -24,7 +24,7 @@ Command line
     TARGET=/sw/comp/python/${VERSION}_$CLUSTER
     mkdir -p $TARGET
     if [[ $CLUSTER == rackham ]] ; then
-        for CL in bianca irma ; do
+        for CL in bianca irma snowy ; do
             ln -s ${TARGET##*/} ${VERSION}_$CL
         done
     fi
@@ -85,4 +85,24 @@ Close things up.
 
     fixup -g $TARGET
     chmod -R -w $TARGET
+
+
+2019-03-13: upgrade setuptools and wheel and pip
+---------------
+
+Was trying to install `mapDamage/2.0.9` and saw the error
+
+    error: option --single-version-externally-managed not recognized
+
+[This link](https://stackoverflow.com/questions/14296531/what-does-error-option-single-version-externally-managed-not-recognized-ind)
+suggested that setuptools and wheel were old.  So, I am upgrading these packages in python/2.7.15, and also pip.
+
+
+    cd /sw/comp/python/2.7.15_rackham
+    chmod -R u+w .
+    module load python/2.7.15
+    pip install --upgrade pip
+    pip install --verbose --upgrade setuptools
+    pip install --verbose --upgrade wheel
+
 

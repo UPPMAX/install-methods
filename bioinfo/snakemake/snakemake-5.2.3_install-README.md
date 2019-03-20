@@ -20,8 +20,12 @@ LOG
 NOTE: I use my own script which is located at /sw/bioinfo/snakemake/makeroom_5.2.3.sh
 
     ./makeroom_snakemake_5.2.3.sh
-    cd $TOOL/$VERSION/src
+    cd $VERSIONDIR/src
     module load python/3.6.0
-    export PYTHONPATH=$PREFIX/jsonschema:$PREFIX/lib/python3.6/site-packages/
+    mkdir $PREFIX/jsonschema
+    mkdir $PREFIX/idna
+    export PYTHONPATH=$PREFIX/idna:$PREFIX/jsonschema:$PREFIX/lib/python3.6/site-packages/
     pip3 install jsonschema --target=$PREFIX/jsonschema
+    pip3 install idna --target=$PREFIX/idna
+    cd $TOOL
     python3 setup.py install --prefix $PREFIX

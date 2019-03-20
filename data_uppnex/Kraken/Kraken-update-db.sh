@@ -2,14 +2,15 @@
 
 #SBATCH -A staff
 #SBATCH -J Kraken-update-db.sh
+#SBATCH -M snowy
 #SBATCH -p node
-#SBATCH -n 20
-#SBATCH -C mem1TB
-#SBATCH -t 120:00:00
+#SBATCH -n 16
+#SBATCH -C mem512GB
+#SBATCH -t 24:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@ebc.uu.se
 #SBATCH --mail-type=ALL
-#SBATCH -o /sw/data/uppnex/Kraken/slurm-%j.out
+#SBATCH -o /sw/data/uppnex/Kraken/slurm-snowy-%j.out
 
 K_DB_BASE=/sw/data/uppnex/Kraken
 K_VERSION=1.0

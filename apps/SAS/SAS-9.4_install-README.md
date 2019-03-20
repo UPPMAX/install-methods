@@ -62,4 +62,4 @@ Follow onscreen instructions to pre-install in SAS_install
 Follow onscreen instructions to install in /sw/apps/SAS/9.4/rackham/
 Pick /sw/apps/SAS/9.4/src/SAS_install/sid_files/SAS94_9BXN77_51302519_LINUX_X86-64.txt
 Use defaults
-
+!!!!!!!!!! Remember to include rbrowser !!!!!!!!!!!
