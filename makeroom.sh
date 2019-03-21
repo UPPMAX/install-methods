@@ -282,12 +282,15 @@ cat > "$YAMLFILE" <<EOF3
 - TOOL:$TOOL
 - VERSION:$VERSION
 - CLUSTER:
-      - rackham
-      - bianca
-      - irma
-      - snowy
+    - rackham
+    - bianca
+    - irma
+    - snowy
 - LICENSE:$LICENSE
 - WEBSITE:$WEBSITE
+- MODULEFILE:
+    - LOCAL:$module_file
+    - COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
 EOF3
 
 echo -e "\nPlease modify ${module_file} if needed."
