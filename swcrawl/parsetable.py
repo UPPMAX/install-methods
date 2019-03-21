@@ -33,7 +33,7 @@ class MyHTMLParser(HTMLParser):
             version = self.current[self.label[5]].split(",")
             for ver in version:
                 ver = ' '.join(ver.split())
-                self.current[self.label[0]] = self.current[self.label[2]] + ver.split(" ")[0]
+                self.current[self.label[0]] = self.current[self.label[2]] + "_" + ver.split(" ")[0]
                 self.current[self.label[5]] = ver
                 tab = []
                 for x in range(0, 8):

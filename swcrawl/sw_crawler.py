@@ -63,7 +63,7 @@ for root, dirs, files in os.walk("/sw/mf/", topdown=True):
             name = m.group(3)
             version = f
             cluster = m.group(1)
-            key = name + version
+            key = name + "_" + version
             print(key, name, version, cluster)
             dirs[:] = ''
             # New insert of all table
