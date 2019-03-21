@@ -23,6 +23,8 @@ CATEGORY=bioinfo
 MF_CATEGORY=bioinfo-tools
 MODE=INSTALL
 
+[[ $# -eq 0 ]] && echo "$usage" >&2 && exit 1
+
 while getopts "ht:v:s:w:c:l:x:" option
 do
     case $option in
@@ -107,6 +109,7 @@ tool_directory="/sw/$CATEGORY/${TOOL}"
 readme_file=/sw/$CATEGORY/${TOOL}/${TOOL}-${VERSION}_install-README.md
 SCRIPTFILE=makeroom_${TOOL}_${VERSION}.sh
 REMOVEFILE=makeroom_REMOVE_${TOOL}_${VERSION}.sh
+YAMLFILE=$TOOL_$VERSION.yaml
 
 ####################### NEWS ##############################################
 if [ $CATEGORY == "bioinfo" ] ; then
@@ -222,7 +225,7 @@ logToSyslog
 
 #Needed modules
 
-module load 
+module load uppmax
 
 # Directories for the program:
 #
@@ -242,7 +245,8 @@ setenv          ${TOOL}_ROOT    \\\$modroot
 EOF
 else
     cd $module_directory
-    ln -s \$latest $module_file
+## Not linking, but copying now
+cp -av \$latest $module_file
 fi
 
 cat > "$readme_file" <<EOF2
@@ -273,7 +277,19 @@ NOTE: I use my own script which is located at /sw/$CATEGORY/$TOOL/makeroom_$TOOL
     make
 
 EOF2
-    
+
+cat > "$YAMLFILE" <<EOF3
+- TOOL:$TOOL
+- VERSION:$VERSION
+- CLUSTER:
+      - rackham
+      - bianca
+      - irma
+      - snowy
+- LICENSE:$LICENSE
+- WEBSITE:$WEBSITE
+EOF3
+
 echo -e "\nPlease modify ${module_file} if needed."
 echo "If new, it contains some examples that will most likely need to be changed"
 echo "Then copy it to /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION"
@@ -284,6 +300,7 @@ echo "$NEWS"
 umask \$PREUMASK
 
 mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
+mv $PWD/$YAMLFILE /sw/$CATEGORY/$TOOL/
 TMP
 
 echo "TOOL=$TOOL VERSION=$VERSION VERSIONDIR=$version_directory PREFIX=/sw/$CATEGORY/$TOOL/$VERSION/$CLUSTER COMMONDIR=$COMMONDIR"

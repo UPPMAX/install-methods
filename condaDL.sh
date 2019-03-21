@@ -42,6 +42,7 @@ conda update conda-build -y -c defaults --override-channels -vvv 2>&1 | tee -a $
 echo "INDEXING CONDA" >> $LOGFILE
 cd /sw/apps/mc3/latest/rackham/repo
 conda-index --channel-name CONDA_UPPMAX --verbose 2>&1 | tee -a $LOGFILE
+conda clean -ilpt
 module unload mc3
 #chmod -w /sw/apps/mc3/latest/rackham/repo
 #chmod -w /sw/apps/mc3/latest/rackham/repo/noarch
