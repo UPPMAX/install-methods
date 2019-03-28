@@ -12,7 +12,8 @@ db.text_factory = str
 cursor = db.cursor()
 
 # Create SQL as per requirement
-sql = """SELECT * FROM webpage"""
+sql = """SELECT * FROM swtree WHERE name='x86_64'"""
+#sql = """SELECT * FROM webpage INNER JOIN swtree ON webpage.key = swtree.key GROUP BY webpage.name"""
 
 cursor.execute(sql)
 rows = cursor.fetchall()

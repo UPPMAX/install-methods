@@ -19,29 +19,43 @@ sql = """CREATE TABLE swtree (
    key  CHAR(120),
    name  CHAR(30) NOT NULL,
    cluster CHAR(40),
-   version CHAR(120))"""
+   version CHAR(120),
+   path CHAR(320))"""
 
 cursor.execute(sql)
 
 for root, dirs, files in os.walk("/sw/apps/", topdown=True):
-    m = re.search('/sw/apps.*/(.+?)/(.+?)/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)$', root)
+    m = re.search('/sw/.+/(.+?)/(.+?)/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)$', root)
     if m:
-        name = m.group(1)
+        path = root
         version = m.group(2)
         cluster = m.group(3)
-        print(name, version, cluster, root)
-        key = name + version
+        if (m.group(1) == "x86_64" or m.group(1) == "build") and "old" in m.group(2):
+            m = re.search('/sw/.+/(.+?)/.+/(.+?)/(.+?)/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)$', root)
+            version = m.group(2) + m.group(3)
+            cluster = m.group(4)
+        elif (m.group(1) == "x86_64" or m.group(1) == "build"):
+            m = re.search('/sw/.+/(.+?)/.+/(.+?)/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)$', root)
+            version = m.group(2)
+            cluster = m.group(3)
+        elif "old" in m.group(2) or m.group(2) == "gcc":
+            m = re.search('/sw/.+/(.+?)/(.+?)/(.+?)/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)$', root)
+            version = m.group(2) + m.group(3)
+            cluster = m.group(4)
+        name = m.group(1)
+        key = name + "_" + version
+        print(key, name, version, cluster, path)
         dirs[:] = ''
         # New insert of all table
-        sql = "INSERT INTO swtree (key, name, cluster, version) VALUES (?, ?, ?, ?)"
+        sql = "INSERT INTO swtree (key, name, cluster, version, path) VALUES (?, ?, ?, ?, ?)"
         try:
             # Execute the SQL command
-           cursor.execute(sql, (key, name,cluster, version))
+           cursor.execute(sql, (key, name,cluster, version, path))
            # Commit your changes in the database
            db.commit()
         except:
             # Rollback in case there is any error
-           print("ERROR!\n")
+           print("ERROR SW!\n")
            db.rollback()
 
 # Drop table if it already exist. Remove this later.
@@ -52,7 +66,8 @@ sql = """CREATE TABLE mftree (
    key  CHAR(120),
    name  CHAR(30) NOT NULL,
    cluster CHAR(40),
-   version CHAR(120))"""
+   version CHAR(120),
+   path CHAR(320))"""
 
 cursor.execute(sql)
 
@@ -64,18 +79,18 @@ for root, dirs, files in os.walk("/sw/mf/", topdown=True):
             version = f
             cluster = m.group(1)
             key = name + "_" + version
-            print(key, name, version, cluster)
+            print(key, name, version, cluster, root)
             dirs[:] = ''
             # New insert of all table
-            sql = "INSERT INTO mftree (key, name, cluster, version) VALUES (?, ?, ?, ?)"
+            sql = "INSERT INTO mftree (key, name, cluster, version, path) VALUES (?, ?, ?, ?, ?)"
             try:
                 # Execute the SQL command
-               cursor.execute(sql, (key, name,cluster, version))
+               cursor.execute(sql, (key, name,cluster, version, root))
                # Commit your changes in the database
                db.commit()
             except:
                 # Rollback in case there is any error
-               print("ERROR!\n")
+               print("ERROR MF!\n")
                db.rollback()
 
 sql = "SELECT swtree.* FROM swtree NATURAL LEFT JOIN mftree WHERE mftree.key IS NULL;"
