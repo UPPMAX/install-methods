@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BLS_BASE=/sw/apps/bioinfo/BUSCO/v2_lineage_sets
+BLS_BASE=/sw/bioinfo/BUSCO/v2_lineage_sets
 WGET_OPTIONS="--quiet --timestamping"
 echo "Updating lineage sets in $BLS_BASE"
 cd $BLS_BASE
