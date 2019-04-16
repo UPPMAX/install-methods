@@ -24,8 +24,18 @@ LOG
 
 The default makefile is OK here.
 
+### Added 2019-04-12
+
+The default `make` target does not build everything we should be providing, as
+it only provides the `7za` executable, not `7z` nor `7zr`.  Instead we should
+build the `all3` target.
+
+    make clean
     module load gcc/5.4.0
-    make
+    make -j4 all3
+    make test
+    make test_7z
+    make test_7zr
     make DEST_HOME=$PFX install
 
 

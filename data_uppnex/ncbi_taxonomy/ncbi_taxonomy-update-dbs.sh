@@ -31,6 +31,12 @@ function error_send_email() {
     exit 1
 }
 
+function warning_send_email() {
+    local MSG="Warning within $0: '$1'"
+    echo -e "$MSG"
+	mailx -s "$0 warning: '$1'" douglas.scofield@ebc.uu.se <<< $MSG
+}
+
 cd $ROOT
 [[ -L latest ]] && PREVIOUSVERSION=$(readlink latest) || PREVIOUSVERSION=
 [[ (! "$PREVIOUSVERSION" || "$PREVIOUSVERSION" != "$NEWVERSION") || ! $MOVE_TO_FINAL ]] || error_send_email "latest already points to $NEWVERSION"
@@ -89,17 +95,23 @@ function get_db_single() {
     mkdir -p $DB_DIR
     cd $DB_DIR
 
-    wget $WGET_OPTIONS $URL_DIR/$DB_MD5_FILE  # fetch the md5 file, preserving its server time
-    wget $WGET_OPTIONS $URL_DIR/$DB_FILE  # fetch the database file
-    if md5sum --quiet -c $DB_MD5_FILE ; then  # it looks good, update to this version
-        [[ $VERBOSE ]] && echo -e "\n$FUNC: successfully downloaded update for $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
-        unpack_db_single  $DB_FILE  $METHOD
-        mkdir -p download && mv -f $DB_FILE $DB_MD5_FILE download/ || error_send_email "could not move files to download/"
-        [[ $VERBOSE ]] && echo -e "\n$FUNC: successfully updated $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
+    if wget $WGET_OPTIONS $URL_DIR/$DB_MD5_FILE ; then  # fetch the md5 file, preserving its server time
+        if wget $WGET_OPTIONS $URL_DIR/$DB_FILE ; then  # fetch the database file
+            if md5sum --quiet -c $DB_MD5_FILE ; then  # it looks good, update to this version
+                [[ $VERBOSE ]] && echo -e "\n$FUNC: successfully downloaded update for $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
+                unpack_db_single  $DB_FILE  $METHOD
+                mkdir -p download && mv -f $DB_FILE $DB_MD5_FILE download/ || error_send_email "could not move files to download/"
+                [[ $VERBOSE ]] && echo -e "\n$FUNC: successfully updated $DB_FILE to $ROOT/$TMPDIR/$NEWVERSION\n"
+            else 
+                error_send_email "$FUNC: $DB_FILE md5 checksum do not match"
+            fi
+            cd $ROOT
+        else 
+            warning_send_email "$FUNC: $DB_FILE could not be fetched"
+        fi
     else 
-        error_send_email "$FUNC: $DB_FILE md5 checksum do not match"
+        warning_send_email "$FUNC: $URL_DIR/$DB_MD5_FILE could not be fetched, so not fetching $URL_DIR/$DB_FILE"
     fi
-    cd $ROOT
 }
 
 # get_db_SIMPLE()

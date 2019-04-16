@@ -83,6 +83,8 @@ which seems to build with python2.
     pip3 install python-graph-dot
     pip3 install graphviz
 
+Pypi does not have a recent jpy, so install it from its github repository, which is in the directory `./t` here.
+
 Now lock it down.
 
     chmod -R -w /sw/comp/python/${VERSION}_${CLUSTER}

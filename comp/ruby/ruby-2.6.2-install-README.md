@@ -1,4 +1,4 @@
-ruby/2.5.0
+ruby/2.6.2
 ==========
 
 Compile with system compiler.
@@ -8,7 +8,7 @@ Compile with system compiler.
 LOG
 ---
 
-    VERSION=2.5.0
+    VERSION=2.6.2
     CLUSTER=${CLUSTER:?CLUSTER must be set}
     mkdir -p /sw/comp/ruby
     cd /sw/comp/ruby
@@ -22,7 +22,7 @@ LOG
     [[ -d ruby-${VERSION} ]] && rm -rf ruby-${VERSION}
     tar xzf ruby-${VERSION}.tar.gz
     cd ruby-${VERSION}
-    module load gcc/6.3.0
+    module load gcc/7.4.0
     ./configure --enable-load-relative --enable-shared --enable-install-static-library --prefix=$PFX
     make -j 8
     make test
@@ -33,7 +33,6 @@ LOG
 Ruby can be built against, so add its `pkgconfig/` directory to
 `PKG_CONFIG_PATH` in the mf file.
 
-The mf file also needs to load include files from 2.5.0, though this matches
-this version it would still be 2.5.0 if this version was 2.5.1.  So, add some
+The mf file also needs to load include files from 2.6.0, not 2.6.2, so add some
 tcl to derive this from the version string.
 
