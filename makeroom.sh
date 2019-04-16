@@ -22,10 +22,11 @@ WEBSITE=http://
 CATEGORY=bioinfo
 MF_CATEGORY=bioinfo-tools
 MODE=INSTALL
+forced=0
 
 [[ $# -eq 0 ]] && echo "$usage" >&2 && exit 1
 
-while getopts "ht:v:s:w:c:l:x:" option
+while getopts "ht:v:s:w:c:l:x:f" option
 do
     case $option in
         h) echo "$usage"
@@ -45,6 +46,9 @@ do
             ;;
         x) MODE="$OPTARG"
             ;;
+        f) echo "Forcing..."
+            forced=1
+            ;;
         :) printf "missing argument for -%s\n" "$OPTARG" >&2
             echo "$usage" >&2
             exit 1
@@ -60,8 +64,22 @@ shift $((OPTIND-1))
 PREV_INSTALL=$(module -t --redirect spider | grep --ignore-case -e "^$TOOL/$" | rev | cut -c 2- | rev)
 if [ ! -z $PREV_INSTALL ] && [ $PREV_INSTALL != $TOOL ]
 then
-    echo "Matching software already installed under name $PREV_INSTALL"
-    exit 1
+    echo "Possibly matching software already installed under name $PREV_INSTALL"
+    if [ forced == 0 ]
+    then
+        echo "You can force install by using -f"
+        exit 1
+    fi
+fi
+
+if [ ! -z $PREV_INSTALL ] && [ $PREV_INSTALL == $TOOL ]
+then
+    echo "Exactly matching software already installed under name $PREV_INSTALL"
+    if [ forced == 0 ]
+    then
+        echo "Make sure it really IS the same software and use -f"
+        exit 1
+    fi
 fi
 
 if [ -z "${TOOL+x}" ]
