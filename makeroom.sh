@@ -85,6 +85,12 @@ fi
 if [ -z "${TOOL+x}" ]
 then printf "%s\n\nEmply value for -s\n" "$usage" >&2; exit 1
 fi
+if [ $TOOL contains spaces or *] && [ $forced == 0 ]; then
+    echo "Are you sure about the name $TOOL?"
+    echo "It might cause problems in the file tree."
+    echo "If you are sure, use -f to force it."
+    exit 1
+fi
 if [ -z "${VERSION+x}" ]
 then printf "%s\n\nEmply value for -v\n" "$usage" >&2; exit 1
 fi
@@ -97,6 +103,10 @@ case $CATEGORY in
     comp) MF_CATEGORY=compilers
         ;;
     libs) MF_CATEGORY=libraries
+        ;;
+    \?) printf "No such category, -%s\n" "$CATEGORY" >&2
+        echo "$usage" >&2
+        exit 1
         ;;
 esac
 
