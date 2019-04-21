@@ -24,7 +24,7 @@ get_remote_filelist () {
 
     printf '%s.*\n' "${dbs[@]}" |
     xargs -P 4 -I % rsync --ipv4 --no-motd \
-            "rsync://ftp.ncbi.nlm.nih.gov/blast/db/%" | awk '{ print $NF }' \
+            "ftp.ncbi.nlm.nih.gov::blast/db/%" | awk '{ print $NF }' \
         >"$staging_dir/files.list" 2>"$staging_dir/rsync-errors.txt"
 }
 
@@ -41,7 +41,7 @@ rsync_filelist () {
             --out-format='%t\ %i\ %b/%l\ %n' \
             --link-dest="$staging_dir/files-current" \
             --partial-dir=".rsync-partial" --files-from={} \
-            "rsync://ftp.ncbi.nlm.nih.gov/blast/db/" "$staging_dir/files-new/" \
+            "ftp.ncbi.nlm.nih.gov::blast/db/" "$staging_dir/files-new/" \
             2>>"$staging_dir/rsync-errors.txt" |
     tee -a "$staging_dir/rsync-report.txt"
 }
@@ -49,10 +49,18 @@ rsync_filelist () {
 verify_md5 () {
     # Verify the MD5 checksums of all archives of the databases
     # transferred during this session.  Creates md5-report.txt.
+    #
+    # 2019-03-21: Skip MD5 files that does not have a corresponding
+    # MD5 file.  The "nt" database has a couple of MD5 files that
+    # appears to correspond to deleted database segments.
 
     for db in $(<"$staging_dir/updated.txt"); do
         find "$staging_dir/files-new" -type f \
-            \( -name "$db.tar.gz.md5" -o -name "$db.*.tar.gz.md5" \) -print
+            \( -name "$db.tar.gz.md5" -o -name "$db.*.tar.gz.md5" \) \
+            -exec sh -c '
+                for pathname do
+                    [ -e "${pathname%.md5}" ] && printf "%s\n" "$pathname"
+                done' sh {} +
     done | sort -rV |
     ( cd "$staging_dir/files-new" &&
       parallel --line-buffer --jobs "$MD5SUM_JOBS" nice md5sum -c ) |
