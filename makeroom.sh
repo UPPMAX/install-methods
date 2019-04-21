@@ -46,7 +46,7 @@ do
             ;;
         x) MODE="$OPTARG"
             ;;
-        f) echo "Forcing..."
+        f) printf "Forcing...\n\n" >&2
             forced=1
             ;;
         :) printf "missing argument for -%s\n" "$OPTARG" >&2
@@ -62,7 +62,7 @@ done
 shift $((OPTIND-1))
 
 PREV_INSTALL=$(module -t --redirect spider | grep --ignore-case -e "^$TOOL/$" | rev | cut -c 2- | rev)
-if [ ! -z $PREV_INSTALL ] && [ $PREV_INSTALL != $TOOL ]
+if [ ! -z "$PREV_INSTALL" ] && [ "$PREV_INSTALL" != "$TOOL" ]
 then
     echo "Possibly matching software already installed under name $PREV_INSTALL"
     if [ forced == 0 ]
@@ -72,7 +72,7 @@ then
     fi
 fi
 
-if [ ! -z $PREV_INSTALL ] && [ $PREV_INSTALL == $TOOL ]
+if [ ! -z "$PREV_INSTALL" ] && [ "$PREV_INSTALL" == "$TOOL" ]
 then
     echo "Exactly matching software already installed under name $PREV_INSTALL"
     if [ forced == 0 ]
@@ -82,18 +82,22 @@ then
     fi
 fi
 
-if [ -z "${TOOL+x}" ]
-then printf "%s\n\nEmply value for -s\n" "$usage" >&2; exit 1
+######## Check input #################
+if [ -z "${TOOL}" ]
+then printf "%s\n\nEmply value for -t\n" "$usage" >&2; exit 1
 fi
-if [ $TOOL contains spaces or *] && [ $forced == 0 ]; then
-    echo "Are you sure about the name $TOOL?"
-    echo "It might cause problems in the file tree."
-    echo "If you are sure, use -f to force it."
+
+if [[ $TOOL == *['!'@#\$%^\&*()_+\ ]* ]] && [[ $forced == 0 ]]; then
+    printf "Are you sure about the name '%s'?\n" "$TOOL" >&2
+    printf "It might cause problems in the file tree.\n" >&2
+    printf "If you are sure, use -f to force it.\n" >&2
     exit 1
 fi
-if [ -z "${VERSION+x}" ]
+
+if [ -z "${VERSION}" ]
 then printf "%s\n\nEmply value for -v\n" "$usage" >&2; exit 1
 fi
+##################################
 
 case $CATEGORY in
     bioinfo) MF_CATEGORY=bioinfo-tools
@@ -202,7 +206,7 @@ RMVTMP
         fi
     fi
 ##### DRYRUN END ######
-    echo "TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR='' NEW=''"
+    echo "TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR='' NEWS=''"
     chmod +x $REMOVEFILE
     exit 0;
 fi
@@ -356,4 +360,5 @@ mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
 TMP
 
 echo "TOOL=$TOOL VERSION=$VERSION VERSIONDIR=$version_directory PREFIX=/sw/$CATEGORY/$TOOL/$VERSION/$CLUSTER COMMONDIR=$COMMONDIR"
+#printf "TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s NEWS=%s" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$CLUSTER" "$COMMONDIR" "${NEWS}"
 chmod +x $SCRIPTFILE
