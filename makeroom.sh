@@ -127,7 +127,7 @@ tool_directory="/sw/$CATEGORY/${TOOL}"
 readme_file=/sw/$CATEGORY/${TOOL}/${TOOL}-${VERSION}_install-README.md
 SCRIPTFILE=makeroom_${TOOL}_${VERSION}.sh
 REMOVEFILE=makeroom_REMOVE_${TOOL}_${VERSION}.sh
-YAMLFILE=$TOOL_$VERSION.yaml
+YAMLFILE=/sw/$CATEGORY/${TOOL}/$TOOL-$VERSION.yaml
 
 ####################### NEWS ##############################################
 if [ $CATEGORY == "bioinfo" ] ; then
@@ -170,6 +170,28 @@ if [ $MODE == "REMOVE" ] ; then
     umask \$PREUMASK
     rm $REMOVEFILE
 RMVTMP
+###### DRYRUN ######
+    echo "These files will be removed:" 1>&2
+    echo "      $module_file" 1>&2
+    echo "      $version_directory" 1>&2
+    echo "      $readme_file" 1>&2
+    echo "      $tool_directory/$SCRIPTFILE" 1>&2
+    if [ -d "$module_directory" ]; then
+        if [ -z "\$(ls -A $module_directory)" ]; then
+            echo "      $module_directory" 1>&2
+        fi
+    fi
+    if [ -d "$tool_directory" ]; then
+        if [ -z "\$(ls -A $tool_directory)" ]; then
+            echo "      $tool_directory" 1>&2
+        fi
+    fi
+    if [ -d "$COMMONDIR" ]; then
+        if [ -z "\$(ls -A $COMMONDIR)" ]; then
+            echo "      ${COMMONDIR}" 1>&2
+        fi
+    fi
+##### DRYRUN END ######
     echo "TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR='' NEW=''"
     chmod +x $REMOVEFILE
     exit 0;
@@ -321,7 +343,6 @@ echo "$NEWS"
 umask \$PREUMASK
 
 mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
-mv $PWD/$YAMLFILE /sw/$CATEGORY/$TOOL/
 TMP
 
 echo "TOOL=$TOOL VERSION=$VERSION VERSIONDIR=$version_directory PREFIX=/sw/$CATEGORY/$TOOL/$VERSION/$CLUSTER COMMONDIR=$COMMONDIR"
