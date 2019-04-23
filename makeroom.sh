@@ -149,12 +149,12 @@ if [ $CATEGORY == "bioinfo" ] ; then
 else
     NEWSCAT=$CATEGORY
 fi
-NEWS="[$NEWSCAT] $TOOL version $VERSION installed on all systems
-$TOOL version $VERSION installed on all systems as module $TOOL/$VERSION.
-$WEBSITE
-Rackham, Irma, Bianca, Snowy
-$VERSION
-$LICENSE"
+NEWS1="[$NEWSCAT] $TOOL version $VERSION installed on all systems"
+NEWS2="$TOOL version $VERSION installed on all systems as module $TOOL/$VERSION."
+NEWS3="$WEBSITE"
+NEWS4="Rackham, Irma, Bianca, Snowy"
+NEWS5="$VERSION"
+NEWS6="$LICENSE"
 
 ####################### REMOVE ############################################
 
@@ -359,6 +359,8 @@ umask \$PREUMASK
 mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
 TMP
 
-echo "TOOL=$TOOL VERSION=$VERSION VERSIONDIR=$version_directory PREFIX=/sw/$CATEGORY/$TOOL/$VERSION/$CLUSTER COMMONDIR=$COMMONDIR"
-#printf "TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s NEWS=%s" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$CLUSTER" "$COMMONDIR" "${NEWS}"
+#echo "TOOL=$TOOL VERSION=$VERSION VERSIONDIR=$version_directory PREFIX=/sw/$CATEGORY/$TOOL/$VERSION/$CLUSTER COMMONDIR=$COMMONDIR"
+printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$CLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}"> TMPFILE_${TOOL}_$VERSION
+chmod +x TMPFILE_${TOOL}_$VERSION
+echo TMPFILE_${TOOL}_$VERSION
 chmod +x $SCRIPTFILE
