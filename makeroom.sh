@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CATEGORY] [-x MODE] --
+usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CATEGORY] [-l LICENSE] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
 
@@ -16,17 +16,20 @@ usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CA
         -w  website of the \$TOOL (no DEFAULT)
         -c  category of the \$TOOL (bioinfo, apps, comp or libs) DEFAULT is bioinfo.
         -l  license of the \$TOOL (no DEFAULT)
-        -x  flag for mode, i.e. INSTALL or REMOVE"
+        -u  list of clusters to install to. Start with the main target. (DEFAULT is \"Rackham Irma Bianca Snowy\")
+        -x  flag for mode, i.e. INSTALL or REMOVE (DEFAULT is INSTALL)
+        -f  forcing the script to ignore warnings."
 
 WEBSITE=http://
 CATEGORY=bioinfo
 MF_CATEGORY=bioinfo-tools
+CLUSTERS=(Rackham Irma Bianca Snowy)
 MODE=INSTALL
 forced=0
 
 [[ $# -eq 0 ]] && echo "$usage" >&2 && exit 1
 
-while getopts "ht:v:s:w:c:l:x:f" option
+while getopts "ht:v:s:w:c:l:u:x:f" option
 do
     case $option in
         h) echo "$usage"
@@ -43,6 +46,8 @@ do
         c) CATEGORY="$OPTARG"
             ;;
         l) LICENSE="$OPTARG"
+            ;;
+        u) CLUSTERS=($OPTARG)
             ;;
         x) MODE="$OPTARG"
             ;;
@@ -97,6 +102,17 @@ fi
 if [ -z "${VERSION}" ]
 then printf "%s\n\nEmply value for -v\n" "$usage" >&2; exit 1
 fi
+
+INSTALLCLUSTER=${CLUSTERS[0]}
+
+for i in ${CLUSTERS[@]}
+do 
+    if [ $i == $CLUSTER ] ; then
+        INSTALLCLUSTER=$CLUSTER
+        break
+    fi
+done
+
 ##################################
 
 case $CATEGORY in
@@ -134,7 +150,7 @@ fi
 
 module_directory="/sw/$CATEGORY/${TOOL}/mf"
 src_directory="/sw/$CATEGORY/${TOOL}/${VERSION}/src"
-cluster_directory="/sw/$CATEGORY/${TOOL}/${VERSION}/${CLUSTER}"
+cluster_directory="/sw/$CATEGORY/${TOOL}/${VERSION}/${INSTALLCLUSTER}"
 module_file="${module_directory}/${VERSION}"
 version_directory="/sw/$CATEGORY/${TOOL}/${VERSION}"
 tool_directory="/sw/$CATEGORY/${TOOL}"
@@ -152,7 +168,7 @@ fi
 NEWS1="[$NEWSCAT] $TOOL version $VERSION installed on all systems"
 NEWS2="$TOOL version $VERSION installed on all systems as module $TOOL/$VERSION."
 NEWS3="$WEBSITE"
-NEWS4="Rackham, Irma, Bianca, Snowy"
+NEWS4=$(echo ${CLUSTERS[@]} | sed "s/ /, /g") 
 NEWS5="$VERSION"
 NEWS6="$LICENSE"
 
@@ -163,6 +179,7 @@ if [ $MODE == "REMOVE" ] ; then
     PREUMASK=\$(umask)
     umask 0002
     rm -f $module_file
+    rm -f $YAMLFILE
     rm -rf $version_directory
     rm -f $readme_file
     rm -f $tool_directory/$SCRIPTFILE
@@ -186,27 +203,40 @@ if [ $MODE == "REMOVE" ] ; then
 RMVTMP
 ###### DRYRUN ######
     echo "These files will be removed:" 1>&2
-    echo "      $module_file" 1>&2
-    echo "      $version_directory" 1>&2
-    echo "      $readme_file" 1>&2
-    echo "      $tool_directory/$SCRIPTFILE" 1>&2
+    if [ -f $module_file ]; then
+        echo "      $module_file" 1>&2
+    fi
+    if [ -f $YAMLFILE ]; then
+        echo "      $YAMLFILE" 1>&2
+    fi
+    if [ -f $version_directory ]; then
+        echo "      $version_directory" 1>&2
+    fi
+    if [ -f $readme_file ]; then
+        echo "      $readme_file" 1>&2
+    fi
+    if [ -f $tool_directory/$SCRIPTFILE ]; then
+        echo "      $tool_directory/$SCRIPTFILE" 1>&2
+    fi
     if [ -d "$module_directory" ]; then
-        if [ -z "\$(ls -A $module_directory)" ]; then
+        if [ -z "$(ls -A $module_directory)" ]; then
             echo "      $module_directory" 1>&2
         fi
     fi
     if [ -d "$tool_directory" ]; then
-        if [ -z "\$(ls -A $tool_directory)" ]; then
+        if [ -z "$(ls -A $tool_directory)" ]; then
             echo "      $tool_directory" 1>&2
         fi
     fi
     if [ -d "$COMMONDIR" ]; then
-        if [ -z "\$(ls -A $COMMONDIR)" ]; then
+        if [ -z "$(ls -A $COMMONDIR)" ]; then
             echo "      ${COMMONDIR}" 1>&2
         fi
     fi
 ##### DRYRUN END ######
-    echo "TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR='' NEWS=''"
+    printf "export TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR='' NEWS=''" > TMPFILE_${TOOL}_$VERSION
+    chmod +x TMPFILE_${TOOL}_$VERSION
+    echo TMPFILE_${TOOL}_$VERSION
     chmod +x $REMOVEFILE
     exit 0;
 fi
@@ -238,8 +268,10 @@ if [ ! -d "$cluster_directory" ]; then
 	mkdir -p "${cluster_directory}"
 fi
 cd $version_directory
-for C in irma bianca snowy; do 
-    ln -s rackham \$C 
+for C in ${CLUSTERS[@]}; do
+    if [ \$C != $INSTALLCLUSTER ]; then
+        ln -s $INSTALLCLUSTER \$C
+    fi
 done
 cd -
 fixup /sw/$CATEGORY/${TOOL}/${VERSION}
@@ -317,7 +349,7 @@ LOG
 
     TOOL=$TOOL
     VERSION=$VERSION
-    CLUSTER=${CLUSTER:?CLUSTER must be set}
+    CLUSTER=${INSTALLCLUSTER:?CLUSTER must be set}
     VERSIONDIR=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION
     PREFIX=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
 
@@ -346,20 +378,24 @@ cat > "$YAMLFILE" <<EOF3
     - COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
 EOF3
 
-echo -e "\nPlease modify ${module_file} if needed."
-echo "If new, it contains some examples that will most likely need to be changed"
-echo "Then copy it to /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION"
-echo -e "\nAlso, please modify ${readme_file}\n"
-echo -e "\nThis might help too:\n"
-echo "$NEWS"
+echo -e "\nPlease modify ${module_file} if needed." 1>&2
+echo "If new, it contains some examples that will most likely need to be changed" 1>&2
+echo "Then copy it to /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION" 1>&2
+echo -e "\nAlso, please modify ${readme_file}\n" 1>&2
+echo -e "\nThis might help too:\n" 1>&2
+echo "$NEWS1" 1>&2
+echo "$NEWS2" 1>&2
+echo "$NEWS3" 1>&2
+echo "$NEWS4" 1>&2
+echo "$NEWS5" 1>&2
+echo "$NEWS6" 1>&2
 
 umask \$PREUMASK
 
 mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
 TMP
 
-#echo "TOOL=$TOOL VERSION=$VERSION VERSIONDIR=$version_directory PREFIX=/sw/$CATEGORY/$TOOL/$VERSION/$CLUSTER COMMONDIR=$COMMONDIR"
-printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$CLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}"> TMPFILE_${TOOL}_$VERSION
+printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > TMPFILE_${TOOL}_$VERSION
 chmod +x TMPFILE_${TOOL}_$VERSION
 echo TMPFILE_${TOOL}_$VERSION
 chmod +x $SCRIPTFILE
