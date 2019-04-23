@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 #run this with source run_makeroom to get your variables set.
 OUTPUT=`makeroom.sh ${@+"$@"}`
-if echo "$OUTPUT" | tail | grep -q 'TOOL='; then
-    export `echo "$OUTPUT" | tail`
+if echo "$OUTPUT" | tail | grep -q 'TMPFILE'; then
+    source ./$OUTPUT
+    rm -rf $OUTPUT
+    #export `echo "$OUTPUT" | tail`
 else
     echo $OUTPUT
     echo "Run the wrapper with 'source run_makeroom' to get your variables set."
