@@ -86,7 +86,8 @@ then
         exit 1
     fi
 fi
-
+##################### Make a cluster list in YAML format ####################
+YAMLLIST=$(echo " "${CLUSTERS[@]} | sed "s/ /\n    - /g")
 ######## Check input #################
 if [ -z "${TOOL}" ]
 then printf "%s\n\nEmply value for -t\n" "$usage" >&2; exit 1
@@ -366,11 +367,7 @@ EOF2
 cat > "$YAMLFILE" <<EOF3
 - TOOL:$TOOL
 - VERSION:$VERSION
-- CLUSTER:
-    - rackham
-    - bianca
-    - irma
-    - snowy
+- CLUSTER:$YAMLLIST
 - LICENSE:$LICENSE
 - WEBSITE:$WEBSITE
 - MODULEFILE:
