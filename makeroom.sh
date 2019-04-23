@@ -321,9 +321,8 @@ LOG
     VERSIONDIR=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION
     PREFIX=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
 
-    ${0}
-
 NOTE: I use my own script which is located at /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
+
     ./$SCRIPTFILE
     cd /sw/$CATEGORY/\\\$TOOL/\\\$VERSION/src
     wget http://
