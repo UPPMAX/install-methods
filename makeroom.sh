@@ -21,6 +21,8 @@ usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CA
         -f  forcing the script to ignore warnings."
 
 WEBSITE=http://
+TOOL=''
+VERSION=''
 CATEGORY=bioinfo
 MF_CATEGORY=bioinfo-tools
 CLUSTERS=(Rackham Irma Bianca Snowy)

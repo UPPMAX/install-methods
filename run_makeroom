@@ -7,6 +7,6 @@ if echo "$OUTPUT" | tail | grep -q 'TMPFILE'; then
     #export `echo "$OUTPUT" | tail`
 else
     echo $OUTPUT
-    echo "Run the wrapper with 'source run_makeroom' to get your variables set."
+    echo "Run the wrapper with 'source run_makeroom [parameters]' instead of 'makeroom.sh [parameters]' to get your variables set."
     echo ""
 fi
