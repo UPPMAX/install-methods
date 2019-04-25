@@ -355,10 +355,10 @@ LOG
     CLUSTER=${INSTALLCLUSTER:?CLUSTER must be set}
     VERSIONDIR=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION
     PREFIX=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
-
-NOTE: I use my own script which is located at /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
-
     ./$SCRIPTFILE
+
+Structure creating script ($SCRIPTFILE) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
+
     cd /sw/$CATEGORY/\\\$TOOL/\\\$VERSION/src
     wget http://
     tar xvf 
