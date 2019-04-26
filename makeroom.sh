@@ -16,7 +16,7 @@ usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CA
         -w  website of the \$TOOL (no DEFAULT)
         -c  category of the \$TOOL (bioinfo, apps, comp or libs) DEFAULT is bioinfo.
         -l  license of the \$TOOL (no DEFAULT)
-        -u  list of clusters to install to. Start with the main target. (DEFAULT is \"Rackham Irma Bianca Snowy\")
+        -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
         -x  flag for mode, i.e. INSTALL or REMOVE (DEFAULT is INSTALL)
         -f  forcing the script to ignore warnings."
 
@@ -25,7 +25,7 @@ TOOL=''
 VERSION=''
 CATEGORY=bioinfo
 MF_CATEGORY=bioinfo-tools
-CLUSTERS=(Rackham Irma Bianca Snowy)
+CLUSTERS=(rackham irma bianca snowy)
 MODE=INSTALL
 forced=0
 
@@ -230,7 +230,7 @@ RMVTMP
     if [ -f $YAMLFILE ]; then
         printf "%s\n" "      $YAMLFILE" 1>&2
     fi
-    if [ -f $version_directory ]; then
+    if [ -d $version_directory ]; then
         printf "%s\n" "      $version_directory" 1>&2
     fi
     if [ -f $readme_file ]; then
