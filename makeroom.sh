@@ -29,12 +29,13 @@ CLUSTERS=(Rackham Irma Bianca Snowy)
 MODE=INSTALL
 forced=0
 
-[[ $# -eq 0 ]] && printf "%s\n" "$usage" >&2 && exit 1
+[[ $# -eq 0 ]] && echo "$usage" >&2 && exit 1
 
 while getopts "ht:v:s:w:c:l:u:x:f" option
 do
     case $option in
-        h) printf "%s\n" "$usage"
+        h) 
+            echo "$usage" >&2
             exit 0
             ;;
         t) TOOL="$OPTARG"
@@ -57,11 +58,11 @@ do
             forced=1
             ;;
         :) printf "missing argument for -%s\n" "$OPTARG" >&2
-            printf "%s\n" "$usage" >&2
+            echo "$usage" >&2
             exit 1
             ;;
         \?) printf "illegal option -%s\n" "$OPTARG" >&2
-            printf "%s\n" "$usage" >&2
+            echo "$usage" >&2
             exit 1
             ;;
     esac
@@ -145,7 +146,7 @@ case $CATEGORY in
     libs) MF_CATEGORY=libraries
         ;;
     \?) printf "No such category, -%s\n" "$CATEGORY" >&2
-        printf "%s\n" "$usage" >&2
+        echo "$usage" >&2
         exit 1
         ;;
 esac
