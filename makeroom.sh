@@ -71,20 +71,20 @@ shift $((OPTIND-1))
 PREV_INSTALL=$(module -t --redirect spider | grep --ignore-case -e "^$TOOL/$" | rev | cut -c 2- | rev)
 if [ ! -z "$PREV_INSTALL" ] && [ "$PREV_INSTALL" != "$TOOL" ]
 then
-    echo "Possibly matching software already installed under name $PREV_INSTALL"
+    echo "Possibly matching software already installed under name $PREV_INSTALL" >&2
     if [ forced == 0 ]
     then
-        echo "You can force install by using -f"
+        echo "You can force install by using -f" >&2
         exit 1
     fi
 fi
 
 if [ ! -z "$PREV_INSTALL" ] && [ "$PREV_INSTALL" == "$TOOL" ]
 then
-    echo "Exactly matching software already installed under name $PREV_INSTALL"
+    echo "Exactly matching software already installed under name $PREV_INSTALL" >&2
     if [ forced == 0 ]
     then
-        echo "Make sure it really IS the same software and use -f"
+        echo "Make sure it really IS the same software and use -f" >&2
         exit 1
     fi
 fi
