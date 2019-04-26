@@ -29,12 +29,12 @@ CLUSTERS=(Rackham Irma Bianca Snowy)
 MODE=INSTALL
 forced=0
 
-[[ $# -eq 0 ]] && echo "$usage" >&2 && exit 1
+[[ $# -eq 0 ]] && printf "%s\n" "$usage" >&2 && exit 1
 
 while getopts "ht:v:s:w:c:l:u:x:f" option
 do
     case $option in
-        h) echo "$usage"
+        h) printf "%s\n" "$usage"
             exit 0
             ;;
         t) TOOL="$OPTARG"
@@ -53,39 +53,55 @@ do
             ;;
         x) MODE="$OPTARG"
             ;;
-        f) printf "Forcing...\n\n" >&2
+        f) printf "\nForcing...\n\n" >&2
             forced=1
             ;;
         :) printf "missing argument for -%s\n" "$OPTARG" >&2
-            echo "$usage" >&2
+            printf "%s\n" "$usage" >&2
             exit 1
             ;;
         \?) printf "illegal option -%s\n" "$OPTARG" >&2
-            echo "$usage" >&2
+            printf "%s\n" "$usage" >&2
             exit 1
             ;;
     esac
 done
 shift $((OPTIND-1))
 
+################### Checking previous versions #####################
 PREV_INSTALL=$(module -t --redirect spider | grep --ignore-case -e "^$TOOL/$" | rev | cut -c 2- | rev)
+PREV_VERSIONS=$(module -t --redirect spider | grep --ignore-case -e "^$TOOL/.*" | cut -d "/" -f 2)
 if [ ! -z "$PREV_INSTALL" ] && [ "$PREV_INSTALL" != "$TOOL" ]
 then
-    echo "Possibly matching software already installed under name $PREV_INSTALL" >&2
-    if [ forced == 0 ]
+    printf "\n%s\n" "Possibly matching software already installed under name $PREV_INSTALL" >&2
+    printf "\n%s\n" "These versions are installed (according to the module system):" >&2
+    for i in ${PREV_VERSIONS[@]}
+    do
+        printf "%s\n" "$i" >&2
+    done
+    if [[ $forced == 0 ]]
     then
-        echo "You can force install by using -f" >&2
+        printf "%s\n" "You can force install by using -f" >&2
         exit 1
+    else
+        printf "\nForcing override using TOOL = %s and VERSION = %s\n\n" "$TOOL" "$VERSION"  >&2
     fi
 fi
 
 if [ ! -z "$PREV_INSTALL" ] && [ "$PREV_INSTALL" == "$TOOL" ]
 then
-    echo "Exactly matching software already installed under name $PREV_INSTALL" >&2
-    if [ forced == 0 ]
+    printf "\n%s\n" "Exactly matching software already installed under name $PREV_INSTALL" >&2
+    printf "\n%s\n" "These versions are installed (according to the module system):" >&2
+    for i in ${PREV_VERSIONS[@]}
+    do
+        printf "%s\n" "$i" >&2
+    done
+    if [[ $forced == 0 ]]
     then
-        echo "Make sure it really IS the same software and use -f" >&2
+        printf "%s\n" "Make sure it really IS the same software and use -f" >&2
         exit 1
+    else
+        printf "\nForcing override using TOOL = %s and VERSION = %s\n\n" "$TOOL" "$VERSION"  >&2
     fi
 fi
 ##################### Make a cluster list in YAML format ####################
@@ -101,6 +117,7 @@ if [[ $TOOL == *['!'@#\$%^\&*()_+\ ]* ]] && [[ $forced == 0 ]]; then
     printf "If you are sure, use -f to force it.\n" >&2
     exit 1
 fi
+
 
 if [ -z "${VERSION}" ]
 then printf "%s\n\nEmply value for -v\n" "$usage" >&2; exit 1
@@ -128,7 +145,7 @@ case $CATEGORY in
     libs) MF_CATEGORY=libraries
         ;;
     \?) printf "No such category, -%s\n" "$CATEGORY" >&2
-        echo "$usage" >&2
+        printf "%s\n" "$usage" >&2
         exit 1
         ;;
 esac
@@ -140,7 +157,7 @@ if [ $CATEGORY == "bioinfo" ] ; then
     COMMONDIR=(/sw/mf/common/$MF_CATEGORY/*/$TOOL)
     if [ -z "$SECTION" ] ; then
         if [[ ! -d $COMMONDIR ]] ; then
-            echo "### $TOOL is a new software. You need to provide a SECTION with -s"
+            printf "\n%s\n" "### $TOOL is a new software. You need to provide a SECTION with -s" >&2
             exit 1
         else
             SUBDIR=${COMMONDIR#/sw/mf/common/$MF_CATEGORY/}
@@ -205,41 +222,41 @@ if [ $MODE == "REMOVE" ] ; then
     rm $REMOVEFILE
 RMVTMP
 ###### DRYRUN ######
-    echo "These files will be removed:" 1>&2
+    printf "%s\n" "These files will be removed:" 1>&2
     if [ -f $module_file ]; then
-        echo "      $module_file" 1>&2
+        printf "%s\n" "      $module_file" 1>&2
     fi
     if [ -f $YAMLFILE ]; then
-        echo "      $YAMLFILE" 1>&2
+        printf "%s\n" "      $YAMLFILE" 1>&2
     fi
     if [ -f $version_directory ]; then
-        echo "      $version_directory" 1>&2
+        printf "%s\n" "      $version_directory" 1>&2
     fi
     if [ -f $readme_file ]; then
-        echo "      $readme_file" 1>&2
+        printf "%s\n" "      $readme_file" 1>&2
     fi
     if [ -f $tool_directory/$SCRIPTFILE ]; then
-        echo "      $tool_directory/$SCRIPTFILE" 1>&2
+        printf "%s\n" "      $tool_directory/$SCRIPTFILE" 1>&2
     fi
     if [ -d "$module_directory" ]; then
         if [ -z "$(ls -A $module_directory)" ]; then
-            echo "      $module_directory" 1>&2
+            printf "%s\n" "      $module_directory" 1>&2
         fi
     fi
     if [ -d "$tool_directory" ]; then
         if [ -z "$(ls -A $tool_directory)" ]; then
-            echo "      $tool_directory" 1>&2
+            printf "%s\n" "      $tool_directory" 1>&2
         fi
     fi
     if [ -d "$COMMONDIR" ]; then
         if [ -z "$(ls -A $COMMONDIR)" ]; then
-            echo "      ${COMMONDIR}" 1>&2
+            printf "%s\n" "      ${COMMONDIR}" 1>&2
         fi
     fi
 ##### DRYRUN END ######
     printf "export TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR='' NEWS=''" > TMPFILE_${TOOL}_$VERSION
     chmod +x TMPFILE_${TOOL}_$VERSION
-    echo TMPFILE_${TOOL}_$VERSION
+    printf "%s\n" TMPFILE_${TOOL}_$VERSION
     chmod +x $REMOVEFILE
     exit 0;
 fi
@@ -372,7 +389,6 @@ cat > "$YAMLFILE" <<EOF3
 - CLUSTER:$YAMLLIST
 - LICENSE:$LICENSE
 - WEBSITE:$WEBSITE
-- MODULEFILE:
     - LOCAL:$module_file
     - COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
 EOF3
