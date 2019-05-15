@@ -1,12 +1,12 @@
-#minimap2/2.4
-# Uses pre-compiled binaries
-#============
+minimap2/2.4
+============
 
-#<https://github.com/lh3/minimap2>
+<https://github.com/lh3/minimap2>
 
+Uses pre-compiled binaries
 
-#LOG
-#---
+LOG
+---
 
     TOOL=/sw/apps/bioinfo/minimap2
     VERSION=2.14

@@ -9,7 +9,7 @@ ROOT=/sw/data/uppnex/diamond_databases
 
 # The database query command 'getseq' didn't appear until diamond 0.8.x so don't check 0.7.x
 
-for VERSION in 0.8.26 0.9.10 ; do
+for VERSION in 0.8.26 0.9.10 0.9.24 ; do
     module load diamond/$VERSION
     echo -e "\n$0: checking databases with $(diamond version)\n"
     find . -name '*.dmnd' | parallel -v --line-buffer -j 1 diamond getseq --db {} '|' head '>/dev/null' 

@@ -5,8 +5,8 @@
 module load gnuparallel/20170122
 
 # The databases to fetch:
-dbs=( env_nr env_nt human_genomic nr nt other_genomic pdbaa refseq_genomic
-      refseq_protein refseq_rna swissprot taxdb )
+dbs=( cdd_delta env_nr env_nt human_genomic nr nt other_genomic pataa patnt
+      pdbaa pdbnt refseq_genomic refseq_protein refseq_rna swissprot taxdb )
 
 # Resource restrictions:
 RSYNC_JOBS=${RSYNC_JOBS:-4}

@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/bash 
 
 module load bioinfo-tools
-module load diamond/0.9.10
+module load diamond/0.9.24
 module load gnuparallel/20170122
 
 ROOT=/sw/data/uppnex/diamond_databases
@@ -9,7 +9,8 @@ THREADS=10
 DateFormat='%Y%m%d'  # used for databases where the version tag is a date
 DateSource='now'  # 'now' means use today's date as in TODAY below, otherwise means use date on downloaded md5 checksum file
 TODAY=`date +"$DateFormat"`
-
+TAXONMAP=/sw/data/uppnex/ncbi_taxonomy/latest/accession2taxid/download/prot.accession2taxid.gz
+TAXONNODES=/sw/data/uppnex/ncbi_taxonomy/latest/nodes.dmp
 WGET_OPTIONS="--quiet --timestamping"
 
 echo "$0: building databases with $(diamond version)"
@@ -40,10 +41,12 @@ set -e
 function create_diamond_db_single() {
     DB_OUTPUT=$1
     DB_INPUT=$2
+    shift;shift
+    EXTRA_ARG="$@" #This allows for passing any new or future ofoptins when creating the db if no args given none are set.
     FUNC="create_diamond_db_single"
     FAA_FILE=${DB_OUTPUT}.faa
     zcat $DB_INPUT > $FAA_FILE
-    cmd="/usr/bin/time -v diamond makedb --in $FAA_FILE --threads $THREADS -d $DB_OUTPUT"
+    cmd="/usr/bin/time -v diamond makedb --in $FAA_FILE --threads $THREADS -d $DB_OUTPUT $EXTRA_ARGS"
     echo
     echo "$FUNC: creating diamond DB in directory $PWD with command:"
     echo "$FUNC:     $cmd"
@@ -84,8 +87,15 @@ function get_db_single() {
     DB_FILE=$3      # $3  data filename
     DB_MD5_FILE=$4  # $4  md5 checksum filename, md5sum -c with this checks $DB_FILE
     DB_OUTPUT=$5    # $5  name of output file
+    USE_TAX=$6      # $6  true if compiling with taxonomy from files defined in $TAXON_NODES and $TAXON_MAP_
     FUNC="get_db_single"
 
+    
+    if [[ $USE_TAX == true ]]; then
+      USE_TAX="--taxonmap $TAXONMAP --taxonnodes $TAXONNODES"
+    else
+      USE_TAX=""
+    fi
     cd $ROOT
     mkdir -p $DB_DIR
     cd $DB_DIR
@@ -110,7 +120,7 @@ function get_db_single() {
         if md5sum -c $DB_MD5_FILE ; then  # it looks good, update to this version
             echo "$FUNC: successfully downloaded update for $DB_DIR to $ROOT/$DB_DIR/$NEWVERSION"
 
-            create_diamond_db_single  $DB_OUTPUT  $DB_FILE
+            create_diamond_db_single  $DB_OUTPUT  $DB_FILE $USE_TAX
 
             # database is created in current directory, need to stash downloaded files into download/
             mkdir download && mv -vf $DB_FILE $DB_MD5_FILE download/ || { echo "could not move files to download/"; exit 1; }
@@ -234,7 +244,7 @@ __REFSEQ__
 
 set -x
 
-get_db_single  Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  nr.gz         nr.gz.md5         nr
+get_db_single  Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  nr.gz         nr.gz.md5         nr        true
 
 get_db_single  Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  env_nr.gz     env_nr.gz.md5     env_nr
 

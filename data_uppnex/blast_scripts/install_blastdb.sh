@@ -48,6 +48,14 @@ for S in ${STAGED_DBS_TIMESTAMPS[@]} ; do
     SS=${S%.timestamp}
     DB=${SS##*/}
     echo -e "\n$S found staged"
+    ALL_SS=(${SS}.*)
+    if [[ ${#ALL_SS[@]} == 1 ]] ; then
+        echo "Only the timestamp file was found; will only unlik the old timestamp and link the new timestamp"
+        rm -f ${DB}.timestamp
+        echo "Existing database files not touched: " ${DB}.*
+        ln ${SS}.timestamp .
+        continue
+    fi
     echo -ne "    $DB:$NEW: removing hardlinks to existing ... "
     rm -f ${DB}.*
     [[ $DB == UniVec || $DB == UniVec_Core ]] && rm -f ${DB}

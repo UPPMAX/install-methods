@@ -2,7 +2,7 @@ Many pipelines involving annotation/assembly comparison involve Blast
 (<http://blast.ncbi.nlm.nih.gov/Blast.cgi>). Several Blast versions are available
 as modules, for example:
 
-  * **blast/2.6.0+**, etc. : the Blast+ suites (`blastp`, `tblastn`, etc.), **recommended**
+  * **blast/2.7.1+**, etc. : the Blast+ suites (`blastp`, `tblastn`, etc.), **recommended**
   * **blast/2.2.26**, etc. : 'legacy' Blast (`blastall`, `megablast`, etc)
 
 Use `module spider blast` to see available versions.  As for all bioinformatics
@@ -22,13 +22,17 @@ The databases available are:
 
 **Name** | **Type** | **Source** | **Notes**
 -----|------|--------|------
-**env_nr** | protein | [NCBI][NCBI] | Protein sequences for metagenomes
+**cdd_delta** | protein | [NCBI][NCBI] | Conserved domain database for use with `delta-blast`
+**env_nr** | protein | [NCBI][NCBI] | Protein sequences for metagenomes (EXCLUDED from nr)
 **env_nt** | nucleotide | [NCBI][NCBI] | Nucleotide sequences for metagenomes
 **human_genomic** | nucleotide | [NCBI][NCBI] | Human RefSeq chromosome records
 **nr** | protein | [NCBI][NCBI] | Non-redundant protein sequences
 **nt** | nucleotide | [NCBI][NCBI] | Partially non-redundant nucleotide sequences
 **other_genomic** | nucleotide | [NCBI][NCBI] | RefSeq chromosome records for non-human organisms
+**pataa** | protein | [NCBI][NCBI] | Sequences for protein structures from patents (EXCLUDED from nr)
+**patnt** | nucleotide | [NCBI][NCBI] | Nucleotide sequences for pataa protein structures from patents
 **pdbaa** | protein | [NCBI][NCBI] | Sequences for protein structures from Protein Data Bank
+**pdbnt** | nucleitide | [NCBI][NCBI] | Nucleotide sequences for pdbaa protein structures from Protein Data Bank
 **refseq_genomic** | nucleotide | [NCBI][NCBI] | NCBI genomic reference sequences
 **refseq_protein** | protein | [NCBI][NCBI] | NCBI protein reference sequences
 **refseq_rna** | nucleotide | [NCBI][NCBI] |  NCBI Transcript reference sequences
@@ -75,10 +79,10 @@ is set to the location of the local database copies
 (`/sw/data/uppnex/blast_databases`).  The various Blast tools can use this variable to 
 find the locations of databases, so that only the name needs to be specified.
 
-    module load bioinfo-tools blast/2.6.0+
+    module load bioinfo-tools blast/2.7.1+
     blastp -db nr -query input.fasta
 
-After loading the `blast/2.6.0+` module, specifying `blastp -db nr` results in
+After loading the `blast/2.7.1+` module, specifying `blastp -db nr` results in
 `blastp` searching the local copy of `nr`, because the `BLASTDB` environment
 variable is set when the module is loaded.  Similarly, each of these would
 result in searching the local copy of the given database:
