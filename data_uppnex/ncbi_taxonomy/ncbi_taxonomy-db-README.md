@@ -23,14 +23,17 @@ In the `latest` subdirectory:
 * `taxdump.tar.gz` (taxdump), which contains several `.dmp` files
 * `taxcat.tar.gz` (taxcat), which contains `categories.dmp`
 * `gi_taxid_nucl.dmp.gz` (gi_taxid), which contains `gi_taxid_nucl.dmp`
-* `gi_taxid_nucl_diff.dmp.gz` (gi_taxid), which contains `gi_taxid_nucl_diff.dmp`
 * `gi_taxid_prot.dmp.gz` (gi_taxid), which contains `gi_taxid_prot.dmp`
-* `gi_taxid_prot_diff.dmp.gz` (gi_taxid), which contains `gi_taxid_prot_diff.dmp`
+* `taxdump_readme.txt` (taxdump), which describes the taxdump format
+* `taxcat_readme.txt` (taxcat), which describes the taxcat format
+
+In the `latest/new_taxdump` subdirectory:
+
+* `new_taxdump.tar.gz` (new_taxdump), which contains several `.dmp` files
+* `taxdump_readme.txt` (new_taxdump), which describes the new_taxdump format
 
 In the `latest/accession2taxid` subdirectory:
 
-* `nucl_est.accession2taxid` (acc2tax),TaxID mapping for nucleotide records of type EST
-* `nucl_gss.accession2taxid` (acc2tax), TaxID mapping for nucleotide records of type GSS
 * `nucl_wgs.accession2taxid` (acc2tax), TaxID mapping for nucleotide records of type WGS or TSA
 * `nucl_gb.accession2taxid` (acc2tax), TaxID mapping for nucleotide records not of the above types
 * `prot.accession2taxid` (acc2tax), TaxID mapping for protein records
