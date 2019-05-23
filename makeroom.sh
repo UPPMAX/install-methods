@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CATEGORY] [-l LICENSE] [-u CLUSTERS] [-x MODE] [-f] --
+usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CATEGORY] [-l LICENSE] [-d description] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
 
@@ -16,6 +16,7 @@ usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CA
         -w  website of the \$TOOL (no DEFAULT)
         -c  category of the \$TOOL (bioinfo, apps, comp or libs) DEFAULT is bioinfo.
         -l  license of the \$TOOL (no DEFAULT)
+        -d  short description of the \$TOOL (no DEFAULT)
         -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
         -x  flag for mode, i.e. INSTALL or REMOVE (DEFAULT is INSTALL)
         -f  forcing the script to ignore warnings."
@@ -31,7 +32,7 @@ forced=0
 
 [[ $# -eq 0 ]] && echo "$usage" >&2 && exit 1
 
-while getopts "ht:v:s:w:c:l:u:x:f" option
+while getopts "ht:v:s:w:c:l:d:u:x:f" option
 do
     case $option in
         h) 
@@ -49,6 +50,8 @@ do
         c) CATEGORY="$OPTARG"
             ;;
         l) LICENSE="$OPTARG"
+            ;;
+        d) DESC="$OPTARG"
             ;;
         u) CLUSTERS=($OPTARG)
             ;;
@@ -186,8 +189,13 @@ if [ $CATEGORY == "bioinfo" ] ; then
 else
     NEWSCAT=$CATEGORY
 fi
+if [ -z "$DESC" ] ; then
+    NEWSDESC="version"
+else
+    NEWSDESC="($DESC) version"
+fi
 NEWS1="[$NEWSCAT] $TOOL version $VERSION installed on all systems"
-NEWS2="$TOOL version $VERSION installed on all systems as module $TOOL/$VERSION."
+NEWS2="$TOOL $NEWSDESC $VERSION installed on all systems as module $TOOL/$VERSION."
 NEWS3="$WEBSITE"
 NEWS4=$(echo ${CLUSTERS[@]} | sed "s/ /, /g") 
 NEWS5="$VERSION"
@@ -317,6 +325,7 @@ global version modroot
     
     puts stderr "$TOOL - use $TOOL \$version"
     puts stderr "\nDescription"
+    puts stderr "\n$DESC"
     puts stderr "\nVersion \\\$version"
     puts stderr "\n$WEBSITE"
     puts stderr "\nUsage:"
