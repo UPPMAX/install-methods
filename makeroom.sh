@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+INVOKE="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CATEGORY] [-l LICENSE] [-d description] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
@@ -18,7 +19,7 @@ usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CA
         -l  license of the \$TOOL (no DEFAULT)
         -d  short description of the \$TOOL (no DEFAULT)
         -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
-        -x  flag for mode, i.e. INSTALL or REMOVE (DEFAULT is INSTALL)
+        -x  flag for mode, i.e. INSTALL, RESUME or REMOVE (DEFAULT is INSTALL, RESUME just sets the variables and exits.)
         -f  forcing the script to ignore warnings."
 
 WEBSITE=http://
@@ -71,57 +72,59 @@ do
     esac
 done
 shift $((OPTIND-1))
-
-################### Checking previous versions #####################
-PREV_INSTALL=$(module -t --redirect spider | grep --ignore-case -e "^$TOOL/$" | rev | cut -c 2- | rev)
-PREV_VERSIONS=$(module -t --redirect spider | grep --ignore-case -e "^$TOOL/.*" | cut -d "/" -f 2)
-if [ ! -z "$PREV_INSTALL" ] && [ "$PREV_INSTALL" != "$TOOL" ]
-then
-    printf "\n%s\n" "Possibly matching software already installed under name $PREV_INSTALL" >&2
-    printf "\n%s\n" "These versions are installed (according to the module system):" >&2
-    for i in ${PREV_VERSIONS[@]}
-    do
-        printf "%s\n" "$i" >&2
-    done
-    if [[ $forced == 0 ]]
+################### If resuming, skip constructing and just set the variables #####################
+if [ $MODE != "RESUME" ] ; then
+    ################### Checking previous versions #####################
+    PREV_INSTALL=$(module -t --redirect spider | grep --ignore-case -e "^$TOOL/$" | rev | cut -c 2- | rev)
+    PREV_VERSIONS=$(module -t --redirect spider | grep --ignore-case -e "^$TOOL/.*" | cut -d "/" -f 2)
+    if [ ! -z "$PREV_INSTALL" ] && [ "$PREV_INSTALL" != "$TOOL" ]
     then
-        printf "%s\n" "You can force install by using -f" >&2
-        exit 1
-    else
-        printf "\nForcing override using TOOL = %s and VERSION = %s\n\n" "$TOOL" "$VERSION"  >&2
+        printf "\n%s\n" "Possibly matching software already installed under name $PREV_INSTALL" >&2
+        printf "\n%s\n" "These versions are installed (according to the module system):" >&2
+        for i in ${PREV_VERSIONS[@]}
+        do
+            printf "%s\n" "$i" >&2
+        done
+        if [[ $forced == 0 ]]
+        then
+            printf "%s\n" "You can force install by using -f" >&2
+            exit 1
+        else
+            printf "\nForcing override using TOOL = %s and VERSION = %s\n\n" "$TOOL" "$VERSION"  >&2
+        fi
     fi
-fi
 
-if [ ! -z "$PREV_INSTALL" ] && [ "$PREV_INSTALL" == "$TOOL" ]
-then
-    printf "\n%s\n" "Exactly matching software already installed under name $PREV_INSTALL" >&2
-    printf "\n%s\n" "These versions are installed (according to the module system):" >&2
-    for i in ${PREV_VERSIONS[@]}
-    do
-        printf "%s\n" "$i" >&2
-    done
-    if [[ $forced == 0 ]]
+    if [ ! -z "$PREV_INSTALL" ] && [ "$PREV_INSTALL" == "$TOOL" ]
     then
-        printf "%s\n" "Make sure it really IS the same software and use -f" >&2
-        exit 1
-    else
-        printf "\nForcing override using TOOL = %s and VERSION = %s\n\n" "$TOOL" "$VERSION"  >&2
+        printf "\n%s\n" "Exactly matching software already installed under name $PREV_INSTALL" >&2
+        printf "\n%s\n" "These versions are installed (according to the module system):" >&2
+        for i in ${PREV_VERSIONS[@]}
+        do
+            printf "%s\n" "$i" >&2
+        done
+        if [[ $forced == 0 ]]
+        then
+            printf "%s\n" "Make sure it really IS the same software and use -f" >&2
+            exit 1
+        else
+            printf "\nForcing override using TOOL = %s and VERSION = %s\n\n" "$TOOL" "$VERSION"  >&2
+        fi
     fi
-fi
-##################### Make a cluster list in YAML format ####################
-YAMLLIST=$(echo " "${CLUSTERS[@]} | sed "s/ /\n    - /g")
-######## Check input #################
-if [ -z "${TOOL}" ]
-then printf "%s\n\nEmply value for -t\n" "$usage" >&2; exit 1
-fi
+    ##################### Make a cluster list in YAML format ####################
+    YAMLLIST=$(echo " "${CLUSTERS[@]} | sed "s/ /\n    - /g")
+    ######## Check input #################
+    if [ -z "${TOOL}" ]
+    then printf "%s\n\nEmply value for -t\n" "$usage" >&2; exit 1
+    fi
 
-if [[ $TOOL == *['!'@#\$%^\&*()_+\ ]* ]] && [[ $forced == 0 ]]; then
-    printf "Are you sure about the name '%s'?\n" "$TOOL" >&2
-    printf "It might cause problems in the file tree.\n" >&2
-    printf "If you are sure, use -f to force it.\n" >&2
-    exit 1
+    if [[ $TOOL == *['!'@#\$%^\&*()_+\ ]* ]] && [[ $forced == 0 ]]; then
+        printf "Are you sure about the name '%s'?\n" "$TOOL" >&2
+        printf "It might cause problems in the file tree.\n" >&2
+        printf "If you are sure, use -f to force it.\n" >&2
+        exit 1
+    fi
+    ################### End of RESUME skipping ###################
 fi
-
 
 if [ -z "${VERSION}" ]
 then printf "%s\n\nEmply value for -v\n" "$usage" >&2; exit 1
@@ -201,6 +204,13 @@ NEWS4=$(echo ${CLUSTERS[@]} | sed "s/ /, /g")
 NEWS5="$VERSION"
 NEWS6="$LICENSE"
 
+################### If resuming, now we exit #####################
+if [ $MODE == "RESUME" ] ; then
+    printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > TMPFILE_${TOOL}_$VERSION
+    chmod +x TMPFILE_${TOOL}_$VERSION
+    echo TMPFILE_${TOOL}_$VERSION
+    exit 0
+fi
 ####################### REMOVE ############################################
 
 if [ $MODE == "REMOVE" ] ; then
@@ -273,6 +283,7 @@ fi
 ############################### INSTALL ########################################
 
 cat > $SCRIPTFILE <<TMP
+## Invoked with $INVOKE
 PREUMASK=\$(umask)
 umask 0002
 if [ ! -d "$version_directory" ]; then
