@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-INVOKE="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
+INVOKE_UNFORMATTED="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
+INVOKE=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//')
 usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CATEGORY] [-l LICENSE] [-d description] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
