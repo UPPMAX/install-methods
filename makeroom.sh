@@ -316,8 +316,10 @@ for C in ${CLUSTERS[@]}; do
 done
 cd -
 fixup /sw/$CATEGORY/${TOOL}/${VERSION}
+fixup /sw/$module_directory
 
 if [ -z "\$latest" ]; then
+    printf "\n%s\n" "Making a new module file $module_file" 1>&2
     cat > "$module_file" <<EOF
 #%Module1.0#####################################################################
 ##
@@ -373,8 +375,9 @@ setenv          ${TOOL}_ROOT    \\\$modroot
 EOF
 else
     cd $module_directory
+    printf "\n%s\n" "Copying $latest as the module file $module_file" 1>&2
 ## Not linking, but copying now
-cp -av \$latest $module_file
+    cp -av \$latest $module_file
 fi
 
 cat > "$readme_file" <<EOF2
