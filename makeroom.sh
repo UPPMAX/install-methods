@@ -186,6 +186,8 @@ readme_file=/sw/$CATEGORY/${TOOL}/${TOOL}-${VERSION}_install-README.md
 SCRIPTFILE=makeroom_${TOOL}_${VERSION}.sh
 REMOVEFILE=makeroom_REMOVE_${TOOL}_${VERSION}.sh
 YAMLFILE=/sw/$CATEGORY/${TOOL}/$TOOL-$VERSION.yaml
+SOURCEMEFILE=/sw/$CATEGORY/${TOOL}/SOURCEME_${TOOL}_$VERSION
+TMPFILE=/scratch/TMPFILE_${TOOL}_$VERSION
 
 ####################### NEWS ##############################################
 if [ $CATEGORY == "bioinfo" ] ; then
@@ -207,9 +209,8 @@ NEWS6="$LICENSE"
 
 ################### If resuming, now we exit #####################
 if [ $MODE == "RESUME" ] ; then
-    printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > TMPFILE_${TOOL}_$VERSION
-    chmod +x TMPFILE_${TOOL}_$VERSION
-    echo TMPFILE_${TOOL}_$VERSION
+    printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+    echo $TMPFILE
     exit 0
 fi
 ####################### REMOVE ############################################
@@ -220,6 +221,7 @@ if [ $MODE == "REMOVE" ] ; then
     umask 0002
     rm -f $module_file
     rm -f $YAMLFILE
+    rm -f $SOURCEMEFILE
     rm -rf $version_directory
     rm -f $readme_file
     rm -f $tool_directory/$SCRIPTFILE
@@ -249,6 +251,9 @@ RMVTMP
     if [ -f $YAMLFILE ]; then
         printf "%s\n" "      $YAMLFILE" 1>&2
     fi
+    if [ -f $SOURCEMEFILE ]; then
+        printf "%s\n" "      $SOURCEMEFILE" 1>&2
+    fi
     if [ -d $version_directory ]; then
         printf "%s\n" "      $version_directory" 1>&2
     fi
@@ -274,9 +279,9 @@ RMVTMP
         fi
     fi
 ##### DRYRUN END ######
-    printf "export TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR='' NEWS=''" > TMPFILE_${TOOL}_$VERSION
-    chmod +x TMPFILE_${TOOL}_$VERSION
-    printf "%s\n" TMPFILE_${TOOL}_$VERSION
+    printf "export TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR='' NEWS=''" > $TMPFILE
+    chmod +x $TMPFILE
+    printf "%s\n" $TMPFILE
     chmod +x $REMOVEFILE
     exit 0;
 fi
@@ -292,6 +297,7 @@ if [ ! -d "$version_directory" ]; then
 fi
 if [ ! -d "$module_directory" ]; then
 	mkdir -p "${module_directory}"
+    printf "\n%s\n" "No previous module file found" 1>&2
 else
     unset -v latest
     cd $module_directory
@@ -299,6 +305,12 @@ else
         [[ \$file -nt \$latest ]] && latest=\$file
     done
 fi
+######### Checking for readme files
+unset -v latest_README
+cd $tool_directory
+for file in *README.md; do
+    [[ \$file -nt \$latest_README ]] && latest_README=\$file
+done
 if [ ! -d "$COMMONDIR" ]; then
 	mkdir -p "${COMMONDIR}"
 fi
@@ -316,9 +328,9 @@ for C in ${CLUSTERS[@]}; do
 done
 cd -
 fixup /sw/$CATEGORY/${TOOL}/${VERSION}
-fixup /sw/$module_directory
+fixup $COMMONDIR
 
-if [ -z "\$latest" ]; then
+if [ -z "\$latest" ] || [ "\$latest" = \$(basename $module_file) ]; then
     printf "\n%s\n" "Making a new module file $module_file" 1>&2
     cat > "$module_file" <<EOF
 #%Module1.0#####################################################################
@@ -375,7 +387,7 @@ setenv          ${TOOL}_ROOT    \\\$modroot
 EOF
 else
     cd $module_directory
-    printf "\n%s\n" "Copying $latest as the module file $module_file" 1>&2
+    printf "\n%s\n" "Copying \$latest as the module file $module_file" 1>&2
 ## Not linking, but copying now
     cp -av \$latest $module_file
 fi
@@ -389,6 +401,13 @@ ${TOOL}/${VERSION}
 Used under license:
 $LICENSE
 
+Structure creating script ($SCRIPTFILE) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
+
+EOF2
+
+if [ -z "\$latest_README" ] || [ "\$latest_README" = \$(basename $readme_file) ]; then
+    printf "\n%s\n" "Making a new readme file $readme_file" 1>&2
+    cat >> "$readme_file" <<EOF3
 LOG
 ---
 
@@ -398,17 +417,19 @@ LOG
     VERSIONDIR=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION
     PREFIX=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
     ./$SCRIPTFILE
-
-Structure creating script ($SCRIPTFILE) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
-
     cd /sw/$CATEGORY/\\\$TOOL/\\\$VERSION/src
     wget http://
     tar xvf 
     make
 
-EOF2
+EOF3
 
-cat > "$YAMLFILE" <<EOF3
+else
+    printf "\n%s\n" "Adding the old readme file \$latest_README to the new readme file $readme_file" 1>&2
+    cat "\$latest_README" >> "$readme_file"
+fi
+
+cat > "$YAMLFILE" <<EOF4
 - TOOL:$TOOL
 - VERSION:$VERSION
 - CLUSTER:$YAMLLIST
@@ -416,7 +437,7 @@ cat > "$YAMLFILE" <<EOF3
 - WEBSITE:$WEBSITE
     - LOCAL:$module_file
     - COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
-EOF3
+EOF4
 
 echo -e "\nPlease modify ${module_file} if needed." 1>&2
 echo "If new, it contains some examples that will most likely need to be changed" 1>&2
@@ -433,8 +454,9 @@ echo "$NEWS6" 1>&2
 umask \$PREUMASK
 
 mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
+printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
 TMP
 
-printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > TMPFILE_${TOOL}_$VERSION
-echo TMPFILE_${TOOL}_$VERSION
+printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+echo $TMPFILE
 chmod +x $SCRIPTFILE

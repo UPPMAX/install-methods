@@ -2,7 +2,7 @@
 #run this with source run_makeroom to get your variables set.
 OUTPUT=`makeroom.sh ${@+"$@"}`
 if echo "$OUTPUT" | tail | grep -q 'TMPFILE'; then
-    source ./$OUTPUT
+    source $OUTPUT
     rm -rf $OUTPUT
     #export `echo "$OUTPUT" | tail`
 else
