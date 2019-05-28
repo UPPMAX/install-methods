@@ -1,3 +1,10 @@
+BioPerl/1.6.924_Perl5.18.4
+==========================
+
+
+LOG
+---
+
 Get environment set up, and once cpanm is downloaded, get it out of the BioPerl bin directory and use it above.
 
     unset PERL5LIB
@@ -24,7 +31,7 @@ Get environment set up, and once cpanm is downloaded, get it out of the BioPerl 
 Installing GD.  This is a bit of a twist.  First get libgd, and compile it
 starting with its ./bootstrap.sh script, but do NOT load the recent
 build-tools, it seems to have a problem with newer autoconf.  On milou, it also
-fails to substitute @LIBICONV@ in its _build/build-params.  Then the same issue
+fails to substitute @LIBICONV@ in its `_build/build-params`.  Then the same issue
 comes up with GD, and it will not pass tests until ./Build install.  Let me
 know if you need help.
 

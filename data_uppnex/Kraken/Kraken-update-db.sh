@@ -13,7 +13,7 @@
 #SBATCH -o /sw/data/uppnex/Kraken/slurm-snowy-%j.out
 
 K_DB_BASE=/sw/data/uppnex/Kraken
-K_VERSION=1.0
+K_VERSION=1.1.1
 THREADS=${1:-$SLURM_JOB_CPUS_PER_NODE}
 MEMGB=${SLURM_MEM_PER_NODE%???}  # truncated value, remove last 3 chars (128GB node reports 128000)
 MINGB=200 # This now must run on a 256GB node, it needs just under 200GB to build the standard database

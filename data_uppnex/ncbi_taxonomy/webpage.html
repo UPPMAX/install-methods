@@ -1,7 +1,7 @@
 <p>Uppmax maintains local copies of the full set of NCBI Taxonomy databases (<a href="https://www.ncbi.nlm.nih.gov/guide/taxonomy/" class="uri">https://www.ncbi.nlm.nih.gov/guide/taxonomy/</a>). Note that:</p>
 <ul>
 <li>The local copies are found at <code>/sw/data/uppnex/ncbi_taxonomy/latest</code></li>
-<li>This also contains the subdirectories <code>accession2taxid</code> and <code>biocollections</code> containing those databases, see the tables below for their contents</li>
+<li>This also contains the subdirectories <code>new_taxdump</code>, <code>accession2taxid</code> and <code>biocollections</code> containing those databases, see the tables below for their contents</li>
 <li><code>latest</code> is a symbolic link to a directory named from the date of the most recent update</li>
 <li>There is also a subdirectory <code>download</code> containing the files as downloaded from NCBI</li>
 <li>The installation of new versions begins <strong>Sunday of each week at 00.10</strong>. The update may take several minutes up to an hour, depending on network speeds.</li>
@@ -16,43 +16,80 @@
 <col width="25%" />
 <col width="50%" />
 </colgroup>
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 36%" />
+<col style="width: 16%" />
+</colgroup>
 <thead>
 <tr class="header">
-<th align="left"><strong>Name</strong></th>
-<th align="left"><strong>Source</strong></th>
-<th align="left"><strong>Notes</strong></th>
+<th><strong>Name</strong></th>
+<th><strong>Source</strong></th>
+<th><strong>Notes</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><strong>taxdump</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump_readme.txt">NCBI</a></td>
-<td align="left">NCBI taxonomic database, in multiple <strong>.dmp</strong> files (see link)</td>
+<td><strong>taxdump</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump_readme.txt">NCBI</a></td>
+<td>NCBI taxonomic database, in multiple <strong>.dmp</strong> files (see <code>taxdump_readme.txt</code> or link)</td>
 </tr>
 <tr class="even">
-<td align="left"><strong>taxcat</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxcat_readme.txt">NCBI</a></td>
-<td align="left">NCBI taxonomic categories, in <strong>categories.dmp</strong> (see link)</td>
+<td><strong>taxcat</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxcat_readme.txt">NCBI</a></td>
+<td>NCBI taxonomic categories, in <strong>categories.dmp</strong> (see <code>taxcat_readme.txt</code> or link)</td>
 </tr>
 <tr class="odd">
-<td align="left"><strong>gi_taxid_nucl.dmp</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme">NCBI</a></td>
-<td align="left">Mappings of nucleotide GI to taxid (DEPRECATED)</td>
+<td><strong>taxdump_readme.txt</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump_readme.txt">NCBI</a></td>
+<td>NCBI taxdump file description</td>
 </tr>
 <tr class="even">
-<td align="left"><strong>gi_taxid_nucl_diff.dmp</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme">NCBI</a></td>
-<td align="left">Differences between this and previous gi_taxid_nucl.dmp (DEPRECATED)</td>
+<td><strong>taxcat_readme.txt</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxcat_readme.txt">NCBI</a></td>
+<td>NCBI taxcat file description</td>
 </tr>
 <tr class="odd">
-<td align="left"><strong>gi_taxid_prot.dmp</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme">NCBI</a></td>
-<td align="left">Mappings of protein GI to taxid (DEPRECATED)</td>
+<td><strong>gi_taxid_nucl.dmp</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme">NCBI</a></td>
+<td>Mappings of nucleotide GI to taxid (DEPRECATED)</td>
 </tr>
 <tr class="even">
-<td align="left"><strong>gi_taxid_prot_diff.dmp</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme">NCBI</a></td>
-<td align="left">Differences between this and previous gi_taxid_prot.dmp (DEPRECATED)</td>
+<td><strong>gi_taxid_prot.dmp</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/gi_taxid.readme">NCBI</a></td>
+<td>Mappings of protein GI to taxid (DEPRECATED)</td>
+</tr>
+</tbody>
+</table>
+<p>The databases available within <code>/sw/data/uppnex/ncbi_taxonomy/latest/new_taxdump</code> are below. For more on each, see the links.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="50%" />
+</colgroup>
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 40%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Source</strong></th>
+<th><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>new_taxdump</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/taxdump_readme.txt">NCBI</a></td>
+<td>NCBI new-format taxonomic database, in multiple <strong>.dmp</strong> files (see this <code>taxdump_readme.txt</code> or link)</td>
+</tr>
+<tr class="even">
+<td><strong>taxdump_readme.txt</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/taxdump_readme.txt">NCBI</a></td>
+<td>NCBI new-format taxonomic database file description</td>
 </tr>
 </tbody>
 </table>
@@ -63,58 +100,53 @@
 <col width="25%" />
 <col width="50%" />
 </colgroup>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 31%" />
+<col style="width: 42%" />
+</colgroup>
 <thead>
 <tr class="header">
-<th align="left"><strong>Name</strong></th>
-<th align="left"><strong>Source</strong></th>
-<th align="left"><strong>Notes</strong></th>
+<th><strong>Name</strong></th>
+<th><strong>Source</strong></th>
+<th><strong>Notes</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><strong>nucl_est.accession2taxid</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
-<td align="left">TaxID mapping for nucleotide records of type EST</td>
+<td><strong>nucl_wgs.accession2taxid</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
+<td>TaxID mapping for nucleotide records of type WGS or TSA</td>
 </tr>
 <tr class="even">
-<td align="left"><strong>nucl_gss.accession2taxid</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
-<td align="left">TaxID mapping for nucleotide records of type GSS</td>
+<td><strong>nucl_gb.accession2taxid</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
+<td>TaxID mapping for nucleotide records not of the above types</td>
 </tr>
 <tr class="odd">
-<td align="left"><strong>nucl_wgs.accession2taxid</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
-<td align="left">TaxID mapping for nucleotide records of type WGS or TSA</td>
+<td><strong>prot.accession2taxid</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
+<td>TaxID mapping for protein records</td>
 </tr>
 <tr class="even">
-<td align="left"><strong>nucl_gb.accession2taxid</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
-<td align="left">TaxID mapping for nucleotide records not of the above types</td>
+<td><strong>pdb.accession2taxid</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
+<td>TaxID mapping for PDB protein records</td>
 </tr>
 <tr class="odd">
-<td align="left"><strong>prot.accession2taxid</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
-<td align="left">TaxID mapping for protein records</td>
+<td><strong>dead_nucl.accession2taxid</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
+<td>TaxID mapping for dead nucleotide records</td>
 </tr>
 <tr class="even">
-<td align="left"><strong>pdb.accession2taxid</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
-<td align="left">TaxID mapping for PDB protein records</td>
+<td><strong>dead_prot.accession2taxid</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
+<td>TaxID mapping for dead protein records</td>
 </tr>
 <tr class="odd">
-<td align="left"><strong>dead_nucl.accession2taxid</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
-<td align="left">TaxID mapping for dead nucleotide records</td>
-</tr>
-<tr class="even">
-<td align="left"><strong>dead_prot.accession2taxid</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
-<td align="left">TaxID mapping for dead protein records</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>dead_wgs.accession2taxid</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
-<td align="left">TaxID mapping for dead WGS or TSA records</td>
+<td><strong>dead_wgs.accession2taxid</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/README">NCBI</a></td>
+<td>TaxID mapping for dead WGS or TSA records</td>
 </tr>
 </tbody>
 </table>
@@ -127,30 +159,31 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left"><strong>Name</strong></th>
-<th align="left"><strong>Source</strong></th>
-<th align="left"><strong>Notes</strong></th>
+<th><strong>Name</strong></th>
+<th><strong>Source</strong></th>
+<th><strong>Notes</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><strong>coll_dump.txt</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy">NCBI</a></td>
+<td><strong>coll_dump.txt</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy">NCBI</a></td>
+<td></td>
 </tr>
 <tr class="even">
-<td align="left"><strong>Collection_codes.txt</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections">NCBI</a></td>
-<td align="left"><strong>biocollections</strong></td>
+<td><strong>Collection_codes.txt</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections">NCBI</a></td>
+<td><strong>biocollections</strong></td>
 </tr>
 <tr class="odd">
-<td align="left"><strong>Institution_codes.txt</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections">NCBI</a></td>
-<td align="left"><strong>biocollections</strong></td>
+<td><strong>Institution_codes.txt</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections">NCBI</a></td>
+<td><strong>biocollections</strong></td>
 </tr>
 <tr class="even">
-<td align="left"><strong>Unique_institution_codes.txt</strong></td>
-<td align="left"><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections">NCBI</a></td>
-<td align="left"><strong>biocollections</strong></td>
+<td><strong>Unique_institution_codes.txt</strong></td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections">NCBI</a></td>
+<td><strong>biocollections</strong></td>
 </tr>
 </tbody>
 </table>

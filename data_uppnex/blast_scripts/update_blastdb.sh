@@ -36,9 +36,10 @@ rsync_filelist () {
 
     sort -rV "$staging_dir/files.list" |
     parallel --line-buffer --jobs "$RSYNC_JOBS" --pipe --cat -N 10 \
-        nice rsync --ipv4 -yy --no-motd --timeout=60 --archive --no-perms \
-            --copy-links \
+        nice rsync --ipv4 --no-motd --timeout=60 --archive --no-perms \
+            --copy-links --delay-updates \
             --out-format='%t\ %i\ %b/%l\ %n' \
+            --fuzzy --fuzzy \
             --link-dest="$staging_dir/files-current" \
             --partial-dir=".rsync-partial" --files-from={} \
             "ftp.ncbi.nlm.nih.gov::blast/db/" "$staging_dir/files-new/" \

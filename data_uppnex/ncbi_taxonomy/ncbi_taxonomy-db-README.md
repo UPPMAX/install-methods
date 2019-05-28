@@ -18,7 +18,7 @@ specifics on file format and contents.  Many tools know how to make use of
 these databases; follow each tool's specific instructions.  The files can be
 found in the indicated directories.
 
-In the `latest` subdirectory:
+## In the `latest` subdirectory:
 
 * `taxdump.tar.gz` (taxdump), which contains several `.dmp` files
 * `taxcat.tar.gz` (taxcat), which contains `categories.dmp`
@@ -27,12 +27,12 @@ In the `latest` subdirectory:
 * `taxdump_readme.txt` (taxdump), which describes the taxdump format
 * `taxcat_readme.txt` (taxcat), which describes the taxcat format
 
-In the `latest/new_taxdump` subdirectory:
+## In the `latest/new_taxdump` subdirectory:
 
 * `new_taxdump.tar.gz` (new_taxdump), which contains several `.dmp` files
 * `taxdump_readme.txt` (new_taxdump), which describes the new_taxdump format
 
-In the `latest/accession2taxid` subdirectory:
+## In the `latest/accession2taxid` subdirectory:
 
 * `nucl_wgs.accession2taxid` (acc2tax), TaxID mapping for nucleotide records of type WGS or TSA
 * `nucl_gb.accession2taxid` (acc2tax), TaxID mapping for nucleotide records not of the above types
@@ -42,7 +42,9 @@ In the `latest/accession2taxid` subdirectory:
 * `dead_prot.accession2taxid` (acc2tax), TaxID mapping for dead protein records
 * `dead_wgs.accession2taxid` (acc2tax), TaxID mapping for dead WGS or TSA records
 
-Biocollection information in the `latest` and `latest/biocollections` subdirectories:
+The former `nucl_est.accession2taxid.gz` is now included in `nucl_gb.accession2taxid.gz`.
+
+## Biocollection information in the `latest` and `latest/biocollections` subdirectories:
 
 * `coll_dump.txt` (taxonomy)
 * `biocollections/Collection_codes.txt` (biocoll)
