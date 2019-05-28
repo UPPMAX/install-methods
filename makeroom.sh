@@ -436,6 +436,5 @@ mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
 TMP
 
 printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > TMPFILE_${TOOL}_$VERSION
-chmod +x TMPFILE_${TOOL}_$VERSION
 echo TMPFILE_${TOOL}_$VERSION
 chmod +x $SCRIPTFILE
