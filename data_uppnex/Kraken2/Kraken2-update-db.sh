@@ -13,11 +13,9 @@
 #SBATCH -o /sw/data/uppnex/Kraken2/slurm-%j.out
 
 K2_DB_BASE=/sw/data/uppnex/Kraken2
-K2_VERSION=2.0.7-beta-bc14b13
+K2_VERSION=2.0.8-beta
 THREADS=${1:-$SLURM_JOB_CPUS_PER_NODE}
 export KRAKEN2_THREAD_COUNT=$THREADS
-#MEMGB=${SLURM_MEM_PER_NODE%???}  # truncated value, remove last 3 chars (128GB node reports 128000)
-#MINGB=200 # This now must run on a 256GB node, it needs just under 200GB to build the standard database
 
 function error_send_email()
 {
@@ -38,7 +36,7 @@ module load gnuparallel/20180822
 
 #set -x
 
-VERSION=$(date +'%Y%m%d')
+VERSION=$(date +'%Y%m%d-%H%M%S')
 
 cd $K2_DB_BASE
 #mkdir $VERSION || error_send_email "In $K2_DB_BASE, new directory '$VERSION' exists, quitting..."

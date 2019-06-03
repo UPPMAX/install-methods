@@ -36,7 +36,7 @@ module load Kraken/$K_VERSION
 
 #set -x
 
-VERSION=$(date +'%Y%m%d')
+VERSION=$(date +'%Y%m%d-%H%M%S')
 K_DB=$K_DB_BASE/$VERSION
 
 cd $K_DB_BASE

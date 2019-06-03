@@ -16,7 +16,7 @@
 # that will fit on a mem256GB node
 
 K2_DB_BASE=/sw/data/uppnex/Kraken2
-K2_VERSION=2.0.7-beta-bc14b13
+K2_VERSION=2.0.8-beta
 THREADS=${1:-$SLURM_JOB_CPUS_PER_NODE}
 export KRAKEN2_THREAD_COUNT=$THREADS
 #MEMGB=${SLURM_MEM_PER_NODE%???}  # truncated value, remove last 3 chars (128GB node reports 128000)
@@ -41,7 +41,7 @@ module load gnuparallel/20180822
 
 #set -x
 
-VERSION=$(date +'%Y%m%d')
+VERSION=$(date +'%Y%m%d-%H%M%S')
 
 cd $K2_DB_BASE
 #mkdir $VERSION || error_send_email "In $K2_DB_BASE, new directory '$VERSION' exists, quitting..."

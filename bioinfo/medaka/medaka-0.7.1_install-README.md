@@ -18,5 +18,12 @@ LOG
 
 Structure creating script (makeroom_medaka_0.7.1.sh) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/bioinfo/medaka/makeroom_0.7.1.sh
 
-    ml python3
-
+    cd $PREFIX
+    singularity build --sandbox image docker://quay.io/biocontainers/medaka:0.7.1--py36h2b5150b_1
+    cd image
+    rm -rf tmp
+    cd image/var/
+    rm *
+    ##only remove the links to tmp
+    singularity build medaka.sif image/
+    ./medaka.sif

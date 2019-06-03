@@ -5,7 +5,7 @@ LOG
 ---
 
     VERSION=16.02
-    CLUSTER+${CLUSTER:?CLUSTER must be set}
+    CLUSTER=${CLUSTER:?CLUSTER must be set}
     cd /sw/apps
     mkdir p7zip
     cd p7zip/
@@ -13,11 +13,12 @@ LOG
     mkdir ${VERSION}
     cd ${VERSION}/
     mkdir $CLUSTER
+    [[ $CLUSTER == rackham ]] && for CL in irma snowy bianca ; do ln -s $CLUSTER $CL ; done
     cd $CLUSTER/
     PFX=$PWD
     cd ../
-    mkdir src_$CLUSTER
-    cd src_$CLUSTER
+    mkdir src
+    cd src
     wget https://downloads.sourceforge.net/project/p7zip/p7zip/${VERSION}/p7zip_${VERSION}_src_all.tar.bz2
     tar xvjf p7zip_${VERSION}_src_all.tar.bz2 
     cd p7zip_${VERSION}/

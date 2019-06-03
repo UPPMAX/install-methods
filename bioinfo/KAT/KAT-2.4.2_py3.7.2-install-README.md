@@ -1,4 +1,4 @@
-KAT/2.4.2
+KAT/2.4.2_py3.7.2
 =========
 
 K-mer Analysis Toolkit
@@ -10,48 +10,50 @@ LOG
 
 Continue.
 
-    VERSION=2.4.2
+    PYTHONVERSION=3.7.2
+    REMOTEVERSION=2.4.2
+    VERSION=${REMOTEVERSION}_py${PYTHONVERSION}
     CLUSTER=${CLUSTER:?CLUSTER must be set}
-    cd /sw/apps/bioinfo
+    cd /sw/bioinfo
     mkdir -p KAT
     cd KAT
     mkdir $VERSION
     cd $VERSION
     mkdir $CLUSTER src
+    [[ $CLUSTER == rackham ]] && for CL in irma bianca snowy ; do ln -s $CLUSTER $CL ; done
     PFX=$PWD/$CLUSTER
     cd src
-    [[ -f kat-${VERSION}.tar.gz ]] || wget https://github.com/TGAC/KAT/archive/Release-${VERSION}.tar.gz
-    tar xzf Release-${VERSION}.tar.gz 
-    cd KAT-Release-${VERSION}
+    [[ -f kat-${REMOTEVERSION}.tar.gz ]] || wget https://github.com/TGAC/KAT/archive/Release-${REMOTEVERSION}.tar.gz
+    tar xzf Release-${REMOTEVERSION}.tar.gz 
+    cd KAT-Release-${REMOTEVERSION}
     module load gcc/6.3.0
-    module load python/3.5.0
+    module load python/$PYTHONVERSION
     ./build_boost.sh
     ./autogen.sh
-    PYTHONUSERBASE=$PFX pip3 install --user tabulate
-    PYTHONUSERBASE=$PFX pip3 install --user sphinx==1.3
+    PYTHONUSERBASE=$PFX pip install --user tabulate
+    PYTHONUSERBASE=$PFX pip install --user sphinx==1.3
     PATH=$PFX/bin:$PATH
     ./configure --prefix=$PFX
     make
 
 There is an error in the install script for the `scripts` directory.
 
-    cd scripts
-    vi Makefile
+    vi scripts/Makefile
 
 Find the `setup.py install` line, and remove the option `--root=$(DESTDIR)`
 since we don't set destdir.  Then do the installation.
 
+    export PYTHONPATH=$PFX/lib/python${PYTHONVERSION%.*}/site-packages
     make install
 
 Now copy the locally-built boost libraries to `$PFX/lib`.
 
-    cd deps/boost/build/lib
-    cp -av * $PFX/lib
+    cp -av deps/boost/build/lib/* $PFX/lib
 
 Remove sphinx scripts, not needed for KAT.
 
     cd $PFX/bin
-    rm -rf chardetect pybabel pygmentize rst* sphinx-* __pycache__
+    rm -rf easy_install* f2py* chardetect pybabel pygmentize rst* sphinx-* __pycache__
 
 Now make sure the executables can find their libraries.  After installation,
 the executables could not find two shared objects; the .so for python, and the
