@@ -32,6 +32,10 @@ echo "https://conda.anaconda.org/biocore/linux-64/" >> $LOGFILE
 wget -N -c -r -np -nH --cut-dirs=2 -R "index.html*" -R "repodata.json*" -R "tensorflow-base-1.9.0-gpu_py27h9f529ab_*" https://conda.anaconda.org/biocore/linux-64/ 2>&1 | tee -a $LOGFILE
 echo "https://conda.anaconda.org/qiime2/label/r2018.11/linux-64/" >> $LOGFILE
 wget -N -c -r -np -nH --cut-dirs=4 -R "index.html*" -R "repodata.json*" -R "tensorflow-base-1.9.0-gpu_py27h9f529ab_*" https://conda.anaconda.org/qiime2/label/r2018.11/linux-64/ 2>&1 | tee -a $LOGFILE
+echo "https://conda.anaconda.org/r/linux-64/" >> $LOGFILE
+wget -N -c -r -np -nH --cut-dirs=4 -R "index.html*" -R "repodata.json*" -R "tensorflow-base-1.9.0-gpu_py27h9f529ab_*" https://conda.anaconda.org/r/linux-64/ 2>&1 | tee -a $LOGFILE
+echo "https://conda.anaconda.org/dranew/linux-64/" >> $LOGFILE
+wget -N -c -r -np -nH --cut-dirs=4 -R "index.html*" -R "repodata.json*" -R "tensorflow-base-1.9.0-gpu_py27h9f529ab_*" https://conda.anaconda.org/dranew/linux-64/ 2>&1 | tee -a $LOGFILE
 cp -av repodata.json /sw/apps/mc3/latest/rackham/backups/repodata.json.bak
 cp -av .index.json /sw/apps/mc3/latest/rackham/backups/.index.json.bak
 module load mc3/latest 2>>$LOGFILE
