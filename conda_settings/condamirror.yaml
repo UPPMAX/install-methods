@@ -1,0 +1,39 @@
+mirror_dir: /sw/apps/mc3/latest/rackham/condamirror/
+platforms:
+  - linux-64
+  - noarch
+python_versions:
+  - 2.7
+  - 3.6
+dest_channel:
+  - local_repo
+dest_site:
+  - UPPMAX  
+channels:
+  - https://conda.anaconda.org/scilifelab-lts/
+  - https://repo.anaconda.com/pkgs/main/
+  - https://repo.continuum.io/pkgs/main/
+  - https://conda.anaconda.org/bioconda/
+  - https://conda.anaconda.org/conda-forge/
+  - https://repo.continuum.io/pkgs/free/
+  - https://repo.continuum.io/pkgs/r/
+  - https://repo.continuum.io/pkgs/pro/
+  - https://conda.anaconda.org/bioconda/
+  - https://conda.anaconda.org/conda-forge/
+  - https://repo.continuum.io/pkgs/free/
+  - https://conda.anaconda.org/qiime2/
+  - https://conda.anaconda.org/biocore/
+  - https://conda.anaconda.org/qiime2/label/r2018.11/
+  - https://conda.anaconda.org/r/
+  - https://conda.anaconda.org/dranew/
+blacklist:
+  - 2pg_cartesian-1.0.1-0
+  - lts-workflows-sm-scrnaseq-slim-0.3.6-py36_1
+  - nbgrader-0.5.5-py_2
+  - conda-build-3.18.2-py27_0
+  - circos-0.69.8-0
+log_dir: /home/jonass/conda_logs
+server_log_dir: /home/jonass/conda_logs
+delta: true
+delta_dir: delta_pkgs
+
