@@ -17,6 +17,7 @@ blacklist:
   - nbgrader-0.5.5-py_2
   - conda-build-3.18.2-py27_0
   - circos-0.69.8-0
+  - _r-mutex-1.0.0-anacondar_1
 log_dir: /home/jonass/conda_logs
 server_log_dir: /home/jonass/conda_logs
 delta: true

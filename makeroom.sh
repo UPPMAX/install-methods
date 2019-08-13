@@ -172,7 +172,24 @@ if [ $CATEGORY == "bioinfo" ] ; then
             SUBDIR=${SUBDIR%/$TOOL}
             SECTION=$SUBDIR
         fi
+    else
+############ Check for weird section names here ################
+        dirlist=("$(ls /sw/mf/common/$MF_CATEGORY/)")
+        for i in ${dirlist[@]}
+        do
+            if [ $i == $SECTION ] ; then
+                sectiontest=passed
+                break
+            else
+                sectiontest=failed
+            fi
+        done
+        if [ $sectiontest == "failed" ] ; then
+            printf "\n%s\n%s\n" "ERROR: $SECTION is not a valid SECTION. Choose from the following:" "$dirlist" >&2
+            exit 1
+        fi
     fi
+    
     COMMONDIR=/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL
 fi
 
@@ -311,6 +328,7 @@ cd $tool_directory
 for file in *README.md; do
     [[ \$file -nt \$latest_README ]] && latest_README=\$file
 done
+######### Making all dirs and links
 if [ ! -d "$COMMONDIR" ]; then
 	mkdir -p "${COMMONDIR}"
 fi
