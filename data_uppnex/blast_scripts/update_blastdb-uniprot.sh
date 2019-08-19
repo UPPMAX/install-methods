@@ -22,7 +22,7 @@ curl -o "$staging_dir/uniprot/RELEASE.metalink" \
 echo '### Mirror fasta files'
 lftp -c mirror --continue --no-empty-dirs \
     --parallel=4 \
-    --use-cache \
+    --loop \
     -i "uniref(50|90|100).fasta.gz" \
     -I uniprot_sprot.fasta.gz \
     -I uniprot_trembl.fasta.gz \

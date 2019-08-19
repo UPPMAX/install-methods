@@ -2,91 +2,86 @@
 
 # See README.md
 
-module load gnuparallel/20170122
-
 # The databases to fetch:
-dbs=( cdd_delta env_nr env_nt human_genomic nr nt other_genomic pataa patnt
-      pdbaa pdbnt refseq_genomic refseq_protein refseq_rna swissprot taxdb )
+dbs=(
+    cdd_delta env_nr env_nt human_genomic nr nt other_genomic pataa patnt
+    pdbaa pdbnt refseq_genomic refseq_protein refseq_rna swissprot taxdb
+)
 
 # Resource restrictions:
-RSYNC_JOBS=${RSYNC_JOBS:-4}
-MD5SUM_JOBS=${MD5SUM_JOBS:-8}
+LFTP_PARALLEL=${LFTP_PARALLEL:-4}
+MD5SUM_JOBS=${MD5SUM_JOBS:-4}
 TAR_JOBS=${TAR_JOBS:-4}
 
-# How many times should we retry the rsync jobs?
-RSYNC_RETRY_MAX=${RSYNC_RETRY_MAX:-10}
+staging_dir='/sw/data/uppnex/blast_tmp'         # top staging dir
+files_dir="$staging_dir/files-current"          # remote files fetched
+blastdb_dir="$staging_dir/blastdb"              # final extracted databases
 
-staging_dir='/sw/data/uppnex/blast_tmp'
+stamp_dir="$files_dir/stamp"                    # 0-length stamp files
 
-get_remote_filelist () {
-    # Creates the files.list file with database archives that should
-    # be fetched.  Errors are written to rsync-errors.txt.
+fetch_files () {
+    local include=()
+    for db in "${dbs[@]}"; do
+        include+=( --include-glob "$db*" )
+    done
 
-    printf '%s.*\n' "${dbs[@]}" |
-    xargs -P 4 -I % rsync --ipv4 --no-motd \
-            "ftp.ncbi.nlm.nih.gov::blast/db/%" | awk '{ print $NF }' \
-        >"$staging_dir/files.list" 2>"$staging_dir/rsync-errors.txt"
-}
-
-rsync_filelist () {
-    # Will fetch the files in files.list.  Distributes the list to four
-    # rsync instances that will handle at most 10 files each before
-    # they are respawned.  Errors are written to rsync-errors.txt and
-    # the files that are actually fetched are logged to rsync-report.txt.
-
-    sort -rV "$staging_dir/files.list" |
-    parallel --line-buffer --jobs "$RSYNC_JOBS" --pipe --cat -N 10 \
-        nice rsync --ipv4 --no-motd --timeout=60 --archive --no-perms \
-            --copy-links --delay-updates \
-            --out-format='%t\ %i\ %b/%l\ %n' \
-            --fuzzy --fuzzy \
-            --link-dest="$staging_dir/files-current" \
-            --partial-dir=".rsync-partial" --files-from={} \
-            "ftp.ncbi.nlm.nih.gov::blast/db/" "$staging_dir/files-new/" \
-            2>>"$staging_dir/rsync-errors.txt" |
-    tee -a "$staging_dir/rsync-report.txt"
+    for dir in db db/v5; do
+        printf -- '-- %s\n' "$dir"
+        lftp -c mirror --parallel="${LFTP_PARALLEL}" --continue --loop \
+            --no-recursion --delete \
+            "${include[@]}" \
+            "ftp://ftp.ncbi.nlm.nih.gov/blast/$dir/" \
+            "$files_dir/"
+    done
 }
 
 verify_md5 () {
     # Verify the MD5 checksums of all archives of the databases
     # transferred during this session.  Creates md5-report.txt.
-    #
-    # 2019-03-21: Skip MD5 files that does not have a corresponding
-    # MD5 file.  The "nt" database has a couple of MD5 files that
-    # appears to correspond to deleted database segments.
 
-    for db in $(<"$staging_dir/updated.txt"); do
-        find "$staging_dir/files-new" -type f \
-            \( -name "$db.tar.gz.md5" -o -name "$db.*.tar.gz.md5" \) \
-            -exec sh -c '
-                for pathname do
-                    [ -e "${pathname%.md5}" ] && printf "%s\n" "$pathname"
-                done' sh {} +
-    done | sort -rV |
-    ( cd "$staging_dir/files-new" &&
-      parallel --line-buffer --jobs "$MD5SUM_JOBS" nice md5sum -c ) |
+    for pathname in "$files_dir"/{db,v5}/*.md5; do
+        name=${pathname##*/}
+        if [[ ! -e "$stamp_dir/$name" ]] ||
+           [[ "$pathname" -nt "$stamp_dir/$name" ]]
+        then
+            printf '%s\n' "$pathname"
+        fi
+    done |
+    xargs -L 10 -P "$MD5SUM_JOBS" sh -c '
+        stamp_dir=$1; shift
+        for pathname do
+            name=${pathname##*/}
+            (
+                cd "${pathname%/*}" &&
+                md5sum -c "$name" &&
+                touch "$stamp_dir/$name"
+            ) || printf "ERROR in %s\n" "$pathname"
+        done' sh-md5sum "$stamp_dir" |
     tee -a "$staging_dir/md5-report.txt"
 }
 
-remove_old () {
-    # Removes outdated blastdb files (any blast database file belonging
-    # to a transferred database whose archive files have been updated).
-
-    for db in $(<"$staging_dir/updated.txt"); do
-        find "$staging_dir/blastdb" -type f -name "$db.*" -print -delete
-    done
-}
-
-unpack_new () {
+unpack_archives () {
     # Unpacks any database archive belonging to a database that was
     # fetched in this session.
 
-    for db in $(<"$staging_dir/updated.txt"); do
-        find "$staging_dir/files-new" -type f \
-            \( -name "$db.tar.gz" -o -name "$db.*.tar.gz" \) -print
-    done | sort -rV |
-    parallel --line-buffer --jobs "${TAR_JOBS}" \
-        nice tar -xvzf {} -C "$staging_dir/blastdb"
+    for pathname in "$files_dir"/{db,v5}/*.tar.gz; do
+        name=${pathname##*/}
+        if [[ ! -e "$stamp_dir/$name" ]] ||
+           [[ "$pathname" -nt "$stamp_dir/$name" ]]
+        then
+            printf '%s\n' "$pathname"
+        fi
+    done |
+    xargs -L 10 -P "$TAR_JOBS" sh -c '
+        stamp_dir=$1; shift
+        blastdb_dir=$1; shift
+        for pathname do
+            name=${pathname##*/}
+            printf "Unpacking %s\n" "$name"
+            tar -xzf "$pathname" -C "$blastdb_dir" &&
+            touch "$stamp_dir/$name" &&
+            date >"$blastdb_dir/${name%%.*}.timestamp"
+        done' sh-tar "$stamp_dir" "$blastdb_dir"
 
     ## Unconditionally delete and recreate the symbolic links.
     #find "$staging_dir/blastdb" -type l -delete
@@ -94,49 +89,14 @@ unpack_new () {
     #    -execdir sh -c 'ln -sf "$1" "${1%.*}"' sh-ln {} ';'
 }
 
-printf 'Started: %s\n' "$(date)" >"$staging_dir/timestamp"
+printf 'Started: %s\n' "$(date)" | tee "$staging_dir/timestamp"
 
-rm -f "$staging_dir/files.list"
+mkdir -p "$blastdb_dir"
+mkdir -p "$files_dir"
+mkdir -p "$stamp_dir"
 
-if [ -d "$staging_dir/files-new" ]; then
-    echo "### Detected interrupted run"
-else
-    rm -f "$staging_dir"/{md5,rsync}-{errors,report}.txt
-fi
-
-mkdir -p "$staging_dir"/{files-{new,current},blastdb}
-
-echo '### Getting remote file list'
-tries=$RSYNC_RETRY_MAX
-while [ "$tries" -gt 0 ]; do
-    rm -f "$staging_dir/rsync-errors.txt"
-    get_remote_filelist
-    [ ! -s "$staging_dir/rsync-errors.txt" ] && break
-    echo 'Retrying...'
-    tries=$(( tries - 1 ))
-done
-if [ -s "$staging_dir/rsync-errors.txt" ]; then
-    printf 'There were rsync errors: %s\n' "$staging_dir/rsync-errors.txt" >&2
-    exit 1
-fi
-
-echo '### Syncing file list'
-tries=$RSYNC_RETRY_MAX
-while [ "$tries" -gt 0 ]; do
-    rm -f "$staging_dir/rsync-errors.txt"
-    rsync_filelist
-    [ ! -s "$staging_dir/rsync-errors.txt" ] && break
-    echo 'Retrying...'
-    tries=$(( tries - 1 ))
-done
-if [ -s "$staging_dir/rsync-errors.txt" ]; then
-    printf 'There were rsync errors: %s\n' "$staging_dir/rsync-errors.txt" >&2
-    exit 1
-fi
-
-awk '/tar\.gz$/ { sub(/\..*$/, "", $NF); print $NF }' \
-    "$staging_dir/rsync-report.txt" |
-sort -u -o "$staging_dir/updated.txt"
+echo '### Syncing files'
+fetch_files
 
 echo '### Verifying checksums'
 rm -f "$staging_dir/md5-report.txt"
@@ -148,24 +108,11 @@ then
     exit 1
 fi
 
-echo '### Removing old database files'
-remove_old
-
-echo '### Unpacking new database files'
-unpack_new
-
-for db in $(<"$staging_dir/updated.txt"); do
-    date >"$staging_dir/blastdb/$db.timestamp"
-done
+echo '### Unpacking database archives'
+unpack_archives
 
 echo '### Fixing permissions'
-find "$staging_dir/files-new" "$staging_dir/blastdb" \
+find "$files_dir" "$blastdb_dir" \
     -type f ! -perm 664 -exec chmod 664 {} +
 
-echo '### Cleaning up'
-rm -rf "$staging_dir/files-current"
-mv -f "$staging_dir/files-new" "$staging_dir/files-current"
-
-printf 'Finished: %s\n' "$(date)" >>"$staging_dir/timestamp"
-echo 'Done.'
-date
+printf 'Finished: %s\n' "$(date)" | tee -a "$staging_dir/timestamp"

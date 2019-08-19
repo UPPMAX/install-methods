@@ -5,7 +5,6 @@
 #SBATCH -p node
 #SBATCH -n 20
 #  Not necessary to use fat node for Kraken2.  Max on build of standard library was ~40GB
-##SBATCH -C mem256GB
 #SBATCH -t 24:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@ebc.uu.se
@@ -15,6 +14,7 @@
 K2_DB_BASE=/sw/data/uppnex/Kraken2
 K2_VERSION=2.0.8-beta
 THREADS=${1:-$SLURM_JOB_CPUS_PER_NODE}
+[[ -z "$THREADS" ]] && error_send_email "Threads count misconfigured: THREADS=$THREADS"
 export KRAKEN2_THREAD_COUNT=$THREADS
 
 function error_send_email()
