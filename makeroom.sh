@@ -131,19 +131,19 @@ if [ -z "${VERSION}" ]
 then printf "%s\n\nEmply value for -v\n" "$usage" >&2; exit 1
 fi
 ################## Check the cluster names ############################
-redo = 0
+redo=0
 for clu in "${CLUSTERS[@]}"
 do
-    if [[ $clu ~= ^(rackham|irma|bianca|snowy)$ && [[ $forced == 0 ]]; then
-        printf "Are you sure about the name '%s'?\n" "$clu" >&2
+    if ! [[ $clu =~ ^(rackham|irma|bianca|snowy)$ ]] && [[ $forced == 0 ]]; then
+        printf "Are you sure about the cluster '%s'?\n" "$clu" >&2
         printf "It might cause problems in the file tree.\n" >&2
-        printf "If you are sure, use -f to force it.\n" >&2
-        redo = 1
-    fi
-    if [[ $redo == 1 ]]; then
-        exit 1
+        printf "If you are sure you want to install there, use -f to force it.\n" >&2
+        redo=1
     fi
 done
+if [[ $redo == 1 ]]; then
+    exit 1
+fi
 
 INSTALLCLUSTER=${CLUSTERS[0]}
 
