@@ -364,7 +364,7 @@ fixup $COMMONDIR
 
 if [ -z "\$latest" ] || [ "\$latest" = \$(basename $module_file) ]; then
     printf "\n%s\n" "Making a new module file $module_file" 1>&2
-    cat > "$module_file" <<EOF
+    cat >> "$module_file" <<EOF
 #%Module1.0#####################################################################
 ##
 ## $TOOL modulefile
