@@ -130,6 +130,20 @@ fi
 if [ -z "${VERSION}" ]
 then printf "%s\n\nEmply value for -v\n" "$usage" >&2; exit 1
 fi
+################## Check the cluster names ############################
+redo = 0
+for clu in "${CLUSTERS[@]}"
+do
+    if [[ $clu ~= ^(rackham|irma|bianca|snowy)$ && [[ $forced == 0 ]]; then
+        printf "Are you sure about the name '%s'?\n" "$clu" >&2
+        printf "It might cause problems in the file tree.\n" >&2
+        printf "If you are sure, use -f to force it.\n" >&2
+        redo = 1
+    fi
+    if [[ $redo == 1 ]]; then
+        exit 1
+    fi
+done
 
 INSTALLCLUSTER=${CLUSTERS[0]}
 
@@ -226,7 +240,7 @@ NEWS6="$LICENSE"
 
 ################### If resuming, now we exit #####################
 if [ $MODE == "RESUME" ] ; then
-    printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+    printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$tool_directory" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
     echo $TMPFILE
     exit 0
 fi
@@ -296,7 +310,7 @@ RMVTMP
         fi
     fi
 ##### DRYRUN END ######
-    printf "export TOOL='' VERSION='' VERSIONDIR='' PREFIX='' COMMONDIR='' NEWS=''" > $TMPFILE
+    printf "export TOOL='' VERSION='' TOOLDIR='' VERSIONDIR='' PREFIX='' COMMONDIR='' NEWS=''" > $TMPFILE
     chmod +x $TMPFILE
     printf "%s\n" $TMPFILE
     chmod +x $REMOVEFILE
@@ -432,6 +446,7 @@ LOG
     TOOL=$TOOL
     VERSION=$VERSION
     CLUSTER=${INSTALLCLUSTER:?CLUSTER must be set}
+    TOOLDIR=/sw/$CATEGORY/\\\$TOOL
     VERSIONDIR=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION
     PREFIX=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
     ./$SCRIPTFILE
@@ -472,9 +487,9 @@ echo "$NEWS6" 1>&2
 umask \$PREUMASK
 
 mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
-printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
+printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$tool_directory" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
 TMP
 
-printf "export TOOL=%s VERSION=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$tool_directory" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
 echo $TMPFILE
 chmod +x $SCRIPTFILE
