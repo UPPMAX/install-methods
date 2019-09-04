@@ -22,7 +22,9 @@ LOG
     tar xvf 
     make
 
-    # /sw/bioinfo/LRSDAY/1.5.0/src/LRSDAY-v1.5.0 
+    rmdir $PREFIX
+    mv /sw/bioinfo/LRSDAY/1.5.0/src/LRSDAY-v1.5.0  $PREFIX
+    cd $PREFIX
 
     module load perl/5.26.2
     module load perl_modules/5.26.2
@@ -38,3 +40,5 @@ Now check whether all perl dependencies are available; not checking versions.
 There will be an error about using Inline::C directly but no big deal there.
 
     for D in $( cat perldeps | cut -f1 -d@) ; do perl -M$D -e 1 ; done
+
+    ./install_dependencies.sh

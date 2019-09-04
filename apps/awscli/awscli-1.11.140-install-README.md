@@ -1,11 +1,7 @@
 awscli/1.11.140
 ===========
 
-RNA-Seq quality control package
-
-<http://htseq.readthedocs.io/>
-
-Install like `rseqc/2.6.4`.
+Install amazon web services command line interface
 
 LOG
 ---
