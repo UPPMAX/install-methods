@@ -424,7 +424,13 @@ else
     cp -av \$latest $module_file
 fi
 
-cat > "$readme_file" <<EOF2
+###################### README creation/addition #########################
+
+if [ "\$latest_README" = \$(basename $readme_file) ]; then
+    printf "\n%s\n" "WARNING! Already existing readme file $readme_file for this exact version ($VERSION). Adding stuff at the bottom. Remove stuff you don't use from it." 1>&2
+fi
+
+cat >> "$readme_file" <<EOF2
 ${TOOL}/${VERSION}
 ========================
 
@@ -437,7 +443,7 @@ Structure creating script ($SCRIPTFILE) made with makeroom.sh (Author: Jonas Sö
 
 EOF2
 
-if [ -z "\$latest_README" ] || [ "\$latest_README" = \$(basename $readme_file) ]; then
+if [ -z "\$latest_README" ]; then
     printf "\n%s\n" "Making a new readme file $readme_file" 1>&2
     cat >> "$readme_file" <<EOF3
 LOG
@@ -461,6 +467,8 @@ else
     printf "\n%s\n" "Adding the old readme file \$latest_README to the new readme file $readme_file" 1>&2
     cat "\$latest_README" >> "$readme_file"
 fi
+
+##################### YAML #############################
 
 cat > "$YAMLFILE" <<EOF4
 - TOOL:$TOOL
