@@ -57,6 +57,7 @@ using them, which would be required anyway, so do nothing about them.
     cd build_omp/
     cmake -DEIGEN3_INCLUDE_DIR=$EIGEN_ROOT/include -DIQTREE_FLAGS=omp ..
     make -j$THREADS
+    patchelf --set-rpath /sw/comp/gcc/8.2.0_rackham/lib64 iqtree
     cp -av iqtree $PFX/iqtree-omp
     cd ..
 
@@ -68,6 +69,7 @@ using them, which would be required anyway, so do nothing about them.
     cd build
     cmake -DEIGEN3_INCLUDE_DIR=$EIGEN_ROOT/include ..
     make -j$THREADS
+    patchelf --set-rpath /sw/comp/gcc/8.2.0_rackham/lib64 iqtree
     cp -av iqtree $PFX/iqtree
     cd ..
 
@@ -94,4 +96,5 @@ using them, which would be required anyway, so do nothing about them.
     cp -av iqtree-mpi $PFX/iqtree-omp-mpi
 
 
-The mf file from 1.6.10-omp-mpi is fine.
+The mf file from 1.6.10-omp-mpi is fine, but with updated gcc and openmpi versions.
+

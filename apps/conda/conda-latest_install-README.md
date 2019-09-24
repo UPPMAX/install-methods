@@ -30,3 +30,10 @@ LOG
     /sw/apps/conda/latest/rackham/bin/conda update conda
     /sw/apps/conda/latest/rackham/bin/conda update conda-build
     /sw/apps/conda/latest/rackham/bin/conda install conda-mirror -c conda-forge
+    cd /sw/apps/conda/latest
+    unlink bianca
+    mkdir bianca
+    cd bianca
+    cp -av ../rackham/.condarc .
+    ln -s ../rackham/* .
+    vim .condarc

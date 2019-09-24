@@ -29,6 +29,7 @@ fetch_files () {
         printf -- '-- %s\n' "$dir"
         lftp -c mirror --parallel="${LFTP_PARALLEL}" --continue --loop \
             --no-recursion --delete \
+            --exclude-glob '*' \
             "${include[@]}" \
             "ftp://ftp.ncbi.nlm.nih.gov/blast/$dir/" \
             "$files_dir/"

@@ -5,12 +5,14 @@ Resource data for STAR-fusion fusion detection.
 
 <https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/>
 
-There are two separate versions depending on STAR-fusion version in use.  At
-UPPMAX (thus far) we have the modules star-fusion/1.0.0, star-fusion/1.2.0, and
-star-fusion/1.5.0.  Pre-1.3.0 STAR-fusion versions require a different
-processed format (the `Nov012017` version).
+There are currently three separate versions depending on STAR-fusion version in use.
 
-These are readily downloaded from the above link.  We want the prebuilt
+* STAR-fusion 1.7.0 requires the versions in `2019-08`, downloaded from <https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/__genome_libs_StarFv1.7/>
+* STAR-fusion 1.6.0 (not currently installed at UPPMAX) uses a newer version available at `2019-03`, downloaded from <https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/__genome_libs_StarFv1.6/>
+* STAR-fusion 1.3.0 to 1.5.0 use the version `2018-02`, downloaded from <https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/__genome_libs_StarFv1.3/>
+* Pre-1.3.0 STAR-fusion versions require the processed format that is found in `2017-11`, downloaded from <https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/__genome_libs_pre-StarFv1.3/>
+
+These are readily downloaded from the above links.  We want the prebuilt
 'plug-n-play' versions.
 
 A bash script for downloading and expanding the tarballs is in
