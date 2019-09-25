@@ -179,7 +179,8 @@ if [ $CATEGORY == "bioinfo" ] ; then
     COMMONDIR=(/sw/mf/common/$MF_CATEGORY/*/$TOOL)
     if [ -z "$SECTION" ] ; then
         if [[ ! -d $COMMONDIR ]] ; then
-            printf "\n%s\n" "### $TOOL is a new software. You need to provide a SECTION with -s" >&2
+            dirlist=("$(ls /sw/mf/common/$MF_CATEGORY/)")
+            printf "\n%s\n%s\n%s" "### $TOOL is a new software. You need to provide a SECTION with -s" "Choose from the following:" "$dirlist"" >&2
             exit 1
         else
             SUBDIR=${COMMONDIR#/sw/mf/common/$MF_CATEGORY/}
