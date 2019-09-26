@@ -402,6 +402,16 @@ logToSyslog
 
 module load uppmax
 
+#What happens on load and unload
+
+if [module-info mode remove] {
+#    puts stderr ""
+}
+
+if [module-info mode load] {
+#    puts stderr ""
+}
+
 # Directories for the program:
 #
 
@@ -412,7 +422,7 @@ prepend-path    LD_LIBRARY_PATH \\\$modroot/lib
 prepend-path    PYTHONPATH      \\\$modroot/lib/python3.6/site-packages
 prepend-path    PYTHONPATH      \\\$modroot/lib/python2.7/site-packages
 
-set-alias       $TOOL "singularity exec \\\$modroot/$TOOL.img $TOOL"
+#Don't use this for singularity set-alias       $TOOL "singularity exec \\\$modroot/$TOOL.img $TOOL"
 
 prepend-path    MANPATH         \\\$modroot/share/man
 setenv          ${TOOL}_ROOT    \\\$modroot
