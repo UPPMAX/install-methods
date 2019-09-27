@@ -491,11 +491,12 @@ cat > "$YAMLFILE" <<EOF4
     - COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
 EOF4
 
-echo -e "\nPlease modify ${module_file} if needed." 1>&2
-echo "If new, it contains some examples that will most likely need to be changed" 1>&2
-echo "Then copy it to /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION" 1>&2
-echo -e "\nAlso, please modify ${readme_file}\n" 1>&2
-echo -e "\nThis might help too:\n" 1>&2
+echo -e "\nMODULE: To get a funcioning module, first, please modify ${module_file} if needed." 1>&2
+echo -e "\tIf new, it contains some examples that will most likely need to be changed" 1>&2
+echo -e "\n\tSecondly, copy it to /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION" 1>&2
+echo -e "\n\tFinally, run \"all_mflink $TOOL $VERSION\" to create links for all clusters to the module file in /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION" 1>&2
+echo -e "\n\nAlso, please modify ${readme_file}\n" 1>&2
+echo -e "\n\nThis might help too:\n" 1>&2
 echo "$NEWS1" 1>&2
 echo "$NEWS2" 1>&2
 echo "$NEWS3" 1>&2
