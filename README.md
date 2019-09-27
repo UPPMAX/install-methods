@@ -19,6 +19,7 @@ Example workflow of a basic installation
 1. Edit the template module file `/sw/category/toolname/mf/version` to do what you want when the module loads.
 1. Copy the module file to the live location, `/sw/mf/common/category/[section]/toolname`
 1. Run `all_mflink toolname version` to create links for all clusters to the module file in `/sw/mf/common/category/[section]/toolname`
+1. Run `fixup /sw/category/toolname/version /sw/mf/common/category/[section]/toolname` to make sure the ownership and permissions are ok.
 
 Scripts
 -------
