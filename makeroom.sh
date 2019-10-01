@@ -421,9 +421,6 @@ prepend-path    PERL5LIB        \\\$modroot/perl-packages/lib/perl5
 prepend-path    LD_LIBRARY_PATH \\\$modroot/lib
 prepend-path    PYTHONPATH      \\\$modroot/lib/python3.6/site-packages
 prepend-path    PYTHONPATH      \\\$modroot/lib/python2.7/site-packages
-
-#Don't use this for singularity set-alias       $TOOL "singularity exec \\\$modroot/$TOOL.img $TOOL"
-
 prepend-path    MANPATH         \\\$modroot/share/man
 setenv          ${TOOL}_ROOT    \\\$modroot
 
@@ -493,9 +490,12 @@ EOF4
 
 echo -e "\nMODULE: To get a funcioning module, first, please modify ${module_file} if needed." 1>&2
 echo -e "\tIf new, it contains some examples that will most likely need to be changed" 1>&2
-echo -e "\n\tSecondly, copy it to /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION" 1>&2
+echo -e "\n\tSecondly, copy it to the mf common location with \"cp -av ${module_file} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION\"" 1>&2
 echo -e "\n\tFinally, run \"all_mflink $TOOL $VERSION\" to create links for all clusters to the module file in /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION" 1>&2
 echo -e "\n\nAlso, please modify ${readme_file}\n" 1>&2
+echo -e "\n\nFor Singularity, make a bash file in a directory you include in the module file, like this:\n" 1>&2
+echo -e "echo '#!/bin/bash' > /sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER/bin"
+echo -e "echo 'singularity exec $TOOL_ROOT/$TOOL.sif $TOOL \"@\"' >> /sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER/bin"
 echo -e "\n\nThis might help too:\n" 1>&2
 echo "$NEWS1" 1>&2
 echo "$NEWS2" 1>&2
