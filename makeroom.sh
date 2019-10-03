@@ -494,8 +494,8 @@ echo -e "\n\tSecondly, copy it to the mf common location with \"cp -av ${module_
 echo -e "\n\tFinally, run \"all_mflink $TOOL $VERSION\" to create links for all clusters to the module file in /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION" 1>&2
 echo -e "\n\nAlso, please modify ${readme_file}\n" 1>&2
 echo -e "\n\nFor Singularity, make a bash file in a directory you include in the module file, like this:\n" 1>&2
-echo -e "echo '#!/bin/bash' > /sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER/bin"
-echo -e "echo 'singularity exec $TOOL_ROOT/$TOOL.sif $TOOL \"@\"' >> /sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER/bin"
+echo -e "echo '#!/bin/bash' > /sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER/bin/$TOOL"
+echo -e "echo 'singularity exec $TOOL_ROOT/$TOOL.sif $TOOL \""\\$"@\"' >> /sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER/bin/$TOOL"
 echo -e "\n\nThis might help too:\n" 1>&2
 echo "$NEWS1" 1>&2
 echo "$NEWS2" 1>&2
