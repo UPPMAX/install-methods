@@ -523,8 +523,7 @@ chmod +x $POSTFILE
 
 echo -e "\nMODULE: To get a funcioning module, first, please modify ${MODULE_FILE} if needed." 1>&2
 echo -e "\tIf new, it contains some examples that will most likely need to be changed" 1>&2
-echo -e "\n\tSecondly, copy it to the mf common location with \"cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION\"" 1>&2
-echo -e "\n\tFinally, run \"all_mflink $TOOL $VERSION\" to create links for all clusters to the module file in /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION" 1>&2
+echo -e "\n\tAfter you are finished withe the module file, run ${LINKFILE} to copy it and invoke all_mflink correctly." 1>&2
 echo -e "\n\nAlso, please modify ${README_FILE}\n" 1>&2
 echo -e "\n\nFor Singularity, make a bash file in a directory you include in the module file, like this:\n" 1>&2
 echo -e "echo '#!/bin/bash' > /sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER/bin/$TOOL"
