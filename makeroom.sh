@@ -2,7 +2,7 @@
 
 INVOKE_UNFORMATTED="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 INVOKE=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//')
-usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CATEGORY] [-l LICENSE] [-d description] [-u CLUSTERS] [-x MODE] [-f] --
+USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CATEGORY] [-l LICENSE] [-d description] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
 
@@ -16,7 +16,7 @@ usage="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CA
         -v  version of the \$TOOL (REQUIRED)
         -s  section of the \$TOOL for use with category bioinfo and new software only.
         -w  website of the \$TOOL (no DEFAULT)
-        -c  category of the \$TOOL (bioinfo, apps, comp or libs) DEFAULT is bioinfo.
+        -c  category of the \$TOOL (bioinfo, apps, comp, libs, build or parallel) DEFAULT is bioinfo.
         -l  license of the \$TOOL (no DEFAULT)
         -d  short description of the \$TOOL (no DEFAULT)
         -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
@@ -28,17 +28,18 @@ TOOL=''
 VERSION=''
 CATEGORY=bioinfo
 MF_CATEGORY=bioinfo-tools
+LINKFLAG=-i
 CLUSTERS=(rackham irma bianca snowy)
 MODE=INSTALL
-forced=0
+FORCED=0
 
-[[ $# -eq 0 ]] && echo "$usage" >&2 && exit 1
+[[ $# -eq 0 ]] && echo "$USAGE" >&2 && exit 1
 
 while getopts "ht:v:s:w:c:l:d:u:x:f" option
 do
     case $option in
         h) 
-            echo "$usage" >&2
+            echo "$USAGE" >&2
             exit 0
             ;;
         t) TOOL="$OPTARG"
@@ -60,14 +61,14 @@ do
         x) MODE="$OPTARG"
             ;;
         f) printf "\nForcing...\n\n" >&2
-            forced=1
+            FORCED=1
             ;;
         :) printf "missing argument for -%s\n" "$OPTARG" >&2
-            echo "$usage" >&2
+            echo "$USAGE" >&2
             exit 1
             ;;
         \?) printf "illegal option -%s\n" "$OPTARG" >&2
-            echo "$usage" >&2
+            echo "$USAGE" >&2
             exit 1
             ;;
     esac
@@ -86,7 +87,7 @@ if [ $MODE != "RESUME" ] ; then
         do
             printf "%s\n" "$i" >&2
         done
-        if [[ $forced == 0 ]]
+        if [[ $FORCED == 0 ]]
         then
             printf "%s\n" "You can force install by using -f" >&2
             exit 1
@@ -103,7 +104,7 @@ if [ $MODE != "RESUME" ] ; then
         do
             printf "%s\n" "$i" >&2
         done
-        if [[ $forced == 0 ]]
+        if [[ $FORCED == 0 ]]
         then
             printf "%s\n" "Make sure it really IS the same software and use -f" >&2
             exit 1
@@ -115,10 +116,10 @@ if [ $MODE != "RESUME" ] ; then
     YAMLLIST=$(echo " "${CLUSTERS[@]} | sed "s/ /\n    - /g")
     ######## Check input #################
     if [ -z "${TOOL}" ]
-    then printf "%s\n\nEmply value for -t\n" "$usage" >&2; exit 1
+    then printf "%s\n\nEmply value for -t\n" "$USAGE" >&2; exit 1
     fi
 
-    if [[ $TOOL == *['!'@#\$%^\&*()_+\ ]* ]] && [[ $forced == 0 ]]; then
+    if [[ $TOOL == *['!'@#\$%^\&*()_+\ ]* ]] && [[ $FORCED == 0 ]]; then
         printf "Are you sure about the name '%s'?\n" "$TOOL" >&2
         printf "It might cause problems in the file tree.\n" >&2
         printf "If you are sure, use -f to force it.\n" >&2
@@ -128,13 +129,13 @@ if [ $MODE != "RESUME" ] ; then
 fi
 
 if [ -z "${VERSION}" ]
-then printf "%s\n\nEmply value for -v\n" "$usage" >&2; exit 1
+then printf "%s\n\nEmply value for -v\n" "$USAGE" >&2; exit 1
 fi
 ################## Check the cluster names ############################
 redo=0
 for clu in "${CLUSTERS[@]}"
 do
-    if ! [[ $clu =~ ^(rackham|irma|bianca|snowy)$ ]] && [[ $forced == 0 ]]; then
+    if ! [[ $clu =~ ^(rackham|irma|bianca|snowy)$ ]] && [[ $FORCED == 0 ]]; then
         printf "Are you sure about the cluster '%s'?\n" "$clu" >&2
         printf "It might cause problems in the file tree.\n" >&2
         printf "If you are sure you want to install there, use -f to force it.\n" >&2
@@ -159,19 +160,28 @@ done
 
 case $CATEGORY in
     bioinfo) MF_CATEGORY=bioinfo-tools
+        LINKFLAG=-i
         ;;
     apps) MF_CATEGORY=applications
+        LINKFLAG=-a
         ;;
     comp) MF_CATEGORY=compilers
+        LINKFLAG=-c
         ;;
     libs) MF_CATEGORY=libraries
+        LINKFLAG=-l
+        ;;
+    build) MF_CATEGORY=build-tools
+        LINKFLAG=-b
+        ;;
+    prarallel) MF_CATEGORY=parallel
+        LINKFLAG=-p
         ;;
     \?) printf "No such category, -%s\n" "$CATEGORY" >&2
-        echo "$usage" >&2
+        echo "$USAGE" >&2
         exit 1
         ;;
 esac
-
 
 COMMONDIR=(/sw/mf/common/$MF_CATEGORY/$TOOL)
 
@@ -208,16 +218,17 @@ if [ $CATEGORY == "bioinfo" ] ; then
     COMMONDIR=/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL
 fi
 
-module_directory="/sw/$CATEGORY/${TOOL}/mf"
-src_directory="/sw/$CATEGORY/${TOOL}/${VERSION}/src"
-cluster_directory="/sw/$CATEGORY/${TOOL}/${VERSION}/${INSTALLCLUSTER}"
-module_file="${module_directory}/${VERSION}"
-version_directory="/sw/$CATEGORY/${TOOL}/${VERSION}"
-tool_directory="/sw/$CATEGORY/${TOOL}"
-readme_file=/sw/$CATEGORY/${TOOL}/${TOOL}-${VERSION}_install-README.md
+MODULE_DIRECTORY="/sw/$CATEGORY/${TOOL}/mf"
+SRC_DIRECTORY="/sw/$CATEGORY/${TOOL}/${VERSION}/src"
+CLUSTER_DIRECTORY="/sw/$CATEGORY/${TOOL}/${VERSION}/${INSTALLCLUSTER}"
+MODULE_FILE="${MODULE_DIRECTORY}/${VERSION}"
+VERSION_DIRECTORY="/sw/$CATEGORY/${TOOL}/${VERSION}"
+TOOL_DIRECTORY="/sw/$CATEGORY/${TOOL}"
+README_FILE=/sw/$CATEGORY/${TOOL}/${TOOL}-${VERSION}_install-README.md
 SCRIPTFILE=makeroom_${TOOL}_${VERSION}.sh
 REMOVEFILE=makeroom_REMOVE_${TOOL}_${VERSION}.sh
 YAMLFILE=/sw/$CATEGORY/${TOOL}/$TOOL-$VERSION.yaml
+POSTFILE=/sw/$CATEGORY/${TOOL}/${TOOL}-${VERSION}_post-install.sh
 SOURCEMEFILE=/sw/$CATEGORY/${TOOL}/SOURCEME_${TOOL}_$VERSION
 TMPFILE=/scratch/TMPFILE_${TOOL}_$VERSION
 
@@ -241,7 +252,7 @@ NEWS6="$LICENSE"
 
 ################### If resuming, now we exit #####################
 if [ $MODE == "RESUME" ] ; then
-    printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$tool_directory" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+    printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOL_DIRECTORY" "$VERSION_DIRECTORY" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
     echo $TMPFILE
     exit 0
 fi
@@ -251,20 +262,21 @@ if [ $MODE == "REMOVE" ] ; then
     cat > $REMOVEFILE <<RMVTMP
     PREUMASK=\$(umask)
     umask 0002
-    rm -f $module_file
+    rm -f $MODULE_FILE
     rm -f $YAMLFILE
+    rm -f $POSTFILE
     rm -f $SOURCEMEFILE
-    rm -rf $version_directory
-    rm -f $readme_file
-    rm -f $tool_directory/$SCRIPTFILE
-    if [ -d "$module_directory" ]; then
-        if [ -z "\$(ls -A $module_directory)" ]; then
-            rm -rf $module_directory
+    rm -rf $VERSION_DIRECTORY
+    rm -f $README_FILE
+    rm -f $TOOL_DIRECTORY/$SCRIPTFILE
+    if [ -d "$MODULE_DIRECTORY" ]; then
+        if [ -z "\$(ls -A $MODULE_DIRECTORY)" ]; then
+            rm -rf $MODULE_DIRECTORY
         fi
     fi
-    if [ -d "$tool_directory" ]; then
-        if [ -z "\$(ls -A $tool_directory)" ]; then
-            rm -rf $tool_directory
+    if [ -d "$TOOL_DIRECTORY" ]; then
+        if [ -z "\$(ls -A $TOOL_DIRECTORY)" ]; then
+            rm -rf $TOOL_DIRECTORY
         fi
     fi
     if [ -d "$COMMONDIR" ]; then
@@ -277,32 +289,35 @@ if [ $MODE == "REMOVE" ] ; then
 RMVTMP
 ###### DRYRUN ######
     printf "%s\n" "These files will be removed:" 1>&2
-    if [ -f $module_file ]; then
-        printf "%s\n" "      $module_file" 1>&2
+    if [ -f $MODULE_FILE ]; then
+        printf "%s\n" "      $MODULE_FILE" 1>&2
     fi
     if [ -f $YAMLFILE ]; then
         printf "%s\n" "      $YAMLFILE" 1>&2
     fi
+    if [ -f $POSTFILE ]; then
+        printf "%s\n" "      $POSTFILE" 1>&2
+    fi
     if [ -f $SOURCEMEFILE ]; then
         printf "%s\n" "      $SOURCEMEFILE" 1>&2
     fi
-    if [ -d $version_directory ]; then
-        printf "%s\n" "      $version_directory" 1>&2
+    if [ -d $VERSION_DIRECTORY ]; then
+        printf "%s\n" "      $VERSION_DIRECTORY" 1>&2
     fi
-    if [ -f $readme_file ]; then
-        printf "%s\n" "      $readme_file" 1>&2
+    if [ -f $README_FILE ]; then
+        printf "%s\n" "      $README_FILE" 1>&2
     fi
-    if [ -f $tool_directory/$SCRIPTFILE ]; then
-        printf "%s\n" "      $tool_directory/$SCRIPTFILE" 1>&2
+    if [ -f $TOOL_DIRECTORY/$SCRIPTFILE ]; then
+        printf "%s\n" "      $TOOL_DIRECTORY/$SCRIPTFILE" 1>&2
     fi
-    if [ -d "$module_directory" ]; then
-        if [ -z "$(ls -A $module_directory)" ]; then
-            printf "%s\n" "      $module_directory" 1>&2
+    if [ -d "$MODULE_DIRECTORY" ]; then
+        if [ -z "$(ls -A $MODULE_DIRECTORY)" ]; then
+            printf "%s\n" "      $MODULE_DIRECTORY" 1>&2
         fi
     fi
-    if [ -d "$tool_directory" ]; then
-        if [ -z "$(ls -A $tool_directory)" ]; then
-            printf "%s\n" "      $tool_directory" 1>&2
+    if [ -d "$TOOL_DIRECTORY" ]; then
+        if [ -z "$(ls -A $TOOL_DIRECTORY)" ]; then
+            printf "%s\n" "      $TOOL_DIRECTORY" 1>&2
         fi
     fi
     if [ -d "$COMMONDIR" ]; then
@@ -324,22 +339,22 @@ cat > $SCRIPTFILE <<TMP
 ## Invoked with $INVOKE
 PREUMASK=\$(umask)
 umask 0002
-if [ ! -d "$version_directory" ]; then
-	mkdir -p "${version_directory}"
+if [ ! -d "$VERSION_DIRECTORY" ]; then
+	mkdir -p "${VERSION_DIRECTORY}"
 fi
-if [ ! -d "$module_directory" ]; then
-	mkdir -p "${module_directory}"
+if [ ! -d "$MODULE_DIRECTORY" ]; then
+	mkdir -p "${MODULE_DIRECTORY}"
     printf "\n%s\n" "No previous module file found" 1>&2
 else
     unset -v latest
-    cd $module_directory
+    cd $MODULE_DIRECTORY
     for file in *; do
         [[ \$file -nt \$latest ]] && latest=\$file
     done
 fi
 ######### Checking for readme files
 unset -v latest_README
-cd $tool_directory
+cd $TOOL_DIRECTORY
 for file in *README.md; do
     [[ \$file -nt \$latest_README ]] && latest_README=\$file
 done
@@ -347,13 +362,13 @@ done
 if [ ! -d "$COMMONDIR" ]; then
 	mkdir -p "${COMMONDIR}"
 fi
-if [ ! -d "$src_directory" ]; then
-	mkdir -p "${src_directory}"
+if [ ! -d "$SRC_DIRECTORY" ]; then
+	mkdir -p "${SRC_DIRECTORY}"
 fi
-if [ ! -d "$cluster_directory" ]; then
-	mkdir -p "${cluster_directory}"
+if [ ! -d "$CLUSTER_DIRECTORY" ]; then
+	mkdir -p "${CLUSTER_DIRECTORY}"
 fi
-cd $version_directory
+cd $VERSION_DIRECTORY
 for C in ${CLUSTERS[@]}; do
     if [ \$C != $INSTALLCLUSTER ]; then
         ln -s $INSTALLCLUSTER \$C
@@ -363,9 +378,11 @@ cd -
 fixup /sw/$CATEGORY/${TOOL}/${VERSION}
 fixup $COMMONDIR
 
-if [ -z "\$latest" ] || [ "\$latest" = \$(basename $module_file) ]; then
-    printf "\n%s\n" "Making a new module file $module_file" 1>&2
-    cat >> "$module_file" <<EOF
+######################## Using the module file template ############################
+
+if [ -z "\$latest" ] || [ "\$latest" = \$(basename $MODULE_FILE) ]; then
+    printf "\n%s\n" "Making a new module file $MODULE_FILE" 1>&2
+    cat >> "$MODULE_FILE" <<EOF
 #%Module1.0#####################################################################
 ##
 ## $TOOL modulefile
@@ -426,19 +443,19 @@ setenv          ${TOOL}_ROOT    \\\$modroot
 
 EOF
 else
-    cd $module_directory
-    printf "\n%s\n" "Copying \$latest as the module file $module_file" 1>&2
+    cd $MODULE_DIRECTORY
+    printf "\n%s\n" "Copying \$latest as the module file $MODULE_FILE" 1>&2
 ## Not linking, but copying now
-    cp -av \$latest $module_file
+    cp -av \$latest $MODULE_FILE
 fi
 
 ###################### README creation/addition #########################
 
-if [ "\$latest_README" = \$(basename $readme_file) ]; then
-    printf "\n%s\n" "WARNING! Already existing readme file $readme_file for this exact version ($VERSION). Adding stuff at the bottom. Remove stuff you don't use from it." 1>&2
+if [ "\$latest_README" = \$(basename $README_FILE) ]; then
+    printf "\n%s\n" "WARNING! Already existing readme file $README_FILE for this exact version ($VERSION). Adding stuff at the bottom. Remove stuff you don't use from it." 1>&2
 fi
 
-cat >> "$readme_file" <<EOF2
+cat >> "$README_FILE" <<EOF2
 ${TOOL}/${VERSION}
 ========================
 
@@ -452,8 +469,8 @@ Structure creating script ($SCRIPTFILE) made with makeroom.sh (Author: Jonas Sö
 EOF2
 
 if [ -z "\$latest_README" ]; then
-    printf "\n%s\n" "Making a new readme file $readme_file" 1>&2
-    cat >> "$readme_file" <<EOF3
+    printf "\n%s\n" "Making a new readme file $README_FILE" 1>&2
+    cat >> "$README_FILE" <<EOF3
 LOG
 ---
 
@@ -472,8 +489,8 @@ LOG
 EOF3
 
 else
-    printf "\n%s\n" "Adding the old readme file \$latest_README to the new readme file $readme_file" 1>&2
-    cat "\$latest_README" >> "$readme_file"
+    printf "\n%s\n" "Adding the old readme file \$latest_README to the new readme file $README_FILE" 1>&2
+    cat "\$latest_README" >> "$README_FILE"
 fi
 
 ##################### YAML #############################
@@ -484,15 +501,31 @@ cat > "$YAMLFILE" <<EOF4
 - CLUSTER:$YAMLLIST
 - LICENSE:$LICENSE
 - WEBSITE:$WEBSITE
-    - LOCAL:$module_file
+    - LOCAL:$MODULE_FILE
     - COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
 EOF4
 
-echo -e "\nMODULE: To get a funcioning module, first, please modify ${module_file} if needed." 1>&2
+################ Create a post-installation file ##########################
+cat > "$POSTFILE" <<EOF5
+cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
+all_mflink -f $LINKFLAG $TOOL $VERSION
+echo "News:"
+echo "$NEWS1" 1>&2
+echo "$NEWS2" 1>&2
+echo "$NEWS3" 1>&2
+echo "$NEWS4" 1>&2
+echo "$NEWS5" 1>&2
+echo "$NEWS6" 1>&2
+EOF5
+chmod +x $POSTFILE
+
+################ Ending messages ###########################
+
+echo -e "\nMODULE: To get a funcioning module, first, please modify ${MODULE_FILE} if needed." 1>&2
 echo -e "\tIf new, it contains some examples that will most likely need to be changed" 1>&2
-echo -e "\n\tSecondly, copy it to the mf common location with \"cp -av ${module_file} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION\"" 1>&2
+echo -e "\n\tSecondly, copy it to the mf common location with \"cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION\"" 1>&2
 echo -e "\n\tFinally, run \"all_mflink $TOOL $VERSION\" to create links for all clusters to the module file in /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION" 1>&2
-echo -e "\n\nAlso, please modify ${readme_file}\n" 1>&2
+echo -e "\n\nAlso, please modify ${README_FILE}\n" 1>&2
 echo -e "\n\nFor Singularity, make a bash file in a directory you include in the module file, like this:\n" 1>&2
 echo -e "echo '#!/bin/bash' > /sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER/bin/$TOOL"
 echo -e "echo 'singularity exec $TOOL_ROOT/$TOOL.sif $TOOL \""\\$"@\"' >> /sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER/bin/$TOOL"
@@ -507,9 +540,11 @@ echo "$NEWS6" 1>&2
 umask \$PREUMASK
 
 mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
-printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$tool_directory" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
+printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOL_DIRECTORY" "$VERSION_DIRECTORY" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
 TMP
 
-printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$tool_directory" "$version_directory" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+################# End of installation makeroom script #########################
+
+printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOL_DIRECTORY" "$VERSION_DIRECTORY" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
 echo $TMPFILE
 chmod +x $SCRIPTFILE
