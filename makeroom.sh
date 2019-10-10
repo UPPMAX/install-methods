@@ -507,8 +507,10 @@ EOF4
 
 ################ Create a post-installation file ##########################
 cat > "$POSTFILE" <<EOF5
+. uppmax_functions.sh
 cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
 all_mflink -f $LINKFLAG $TOOL $VERSION
+fixup $TOOLDIR
 echo "News:"
 echo "$NEWS1" 1>&2
 echo "$NEWS2" 1>&2
