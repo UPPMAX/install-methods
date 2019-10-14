@@ -7,6 +7,20 @@ available on Uppmax, and the individual READMEs may also be incomplete in terms
 of what was actually done to install the modules.  We are publicising these in
 the hopes that they can be helpful.
 
+Example workflow of a basic installation
+-------
+1. Clone the install methods git repo (`git clone https://github.com/UPPMAX/install-methods.git`)
+1. Add the repo to your `$PATH` and source the `uppmax_functions.sh` file to get access to the functions.
+1. Run `run_makeroom` with at least `-t` and `-v`, to generate a `.sh` (`makeroom_toolname_version.sh`) file that will create the directory structure needed in `/sw`
+1. Run the `.sh` file created in the directory you are standing to create the directory structure (`/sw/category/toolname/` and `/sw/mf/common/category`) and template files.
+1. Put the source code for the program in `/sw/category/toolname/version/src`
+1. Compile and/or install the tool in `/sw/category/toolname/version/cluster/bin` etc.
+1. Edit the readme file, explaining how you did the installation, in `/sw/category/toolname/toolname-version_install-README.md`
+1. Edit the template module file `/sw/category/toolname/mf/version` to do what you want when the module loads.
+1. Copy the module file to the live location, `/sw/mf/common/category/[section]/toolname`
+1. Run `all_mflink toolname version` to create links for all clusters to the module file in `/sw/mf/common/category/[section]/toolname`
+1. Run `fixup /sw/category/toolname/version /sw/mf/common/category/[section]/toolname` to make sure the ownership and permissions are ok.
+
 Scripts
 -------
 
