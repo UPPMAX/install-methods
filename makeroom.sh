@@ -16,7 +16,7 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CA
         -v  version of the \$TOOL (REQUIRED)
         -s  section of the \$TOOL for use with category bioinfo and new software only.
         -w  website of the \$TOOL (no DEFAULT)
-        -c  category of the \$TOOL (bioinfo, apps, comp, libs, build or parallel) DEFAULT is bioinfo.
+        -c  category of the \$TOOL (bioinfo, apps, comp, libs, build, data or parallel) DEFAULT is bioinfo.
         -l  license of the \$TOOL (no DEFAULT)
         -d  short description of the \$TOOL (no DEFAULT)
         -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
@@ -173,6 +173,9 @@ case $CATEGORY in
         ;;
     build) MF_CATEGORY=build-tools
         LINKFLAG=-b
+        ;;
+    data) MF_CATEGORY=data
+        LINKFLAG=-p
         ;;
     prarallel) MF_CATEGORY=parallel
         LINKFLAG=-p
