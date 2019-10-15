@@ -175,7 +175,7 @@ case $CATEGORY in
         LINKFLAG=-b
         ;;
     data) MF_CATEGORY=data
-        LINKFLAG=-p
+        LINKFLAG=-d
         ;;
     prarallel) MF_CATEGORY=parallel
         LINKFLAG=-p
