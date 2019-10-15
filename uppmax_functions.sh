@@ -183,7 +183,7 @@ function mfshow() {
     local SUBDIR
     local ALL
     local OPTIND
-    while getopts ":ilacbpA" opt "$@"; do
+    while getopts ":ilacbpdA" opt "$@"; do
         case $opt in
             i)  SUBDIR= ;;
             l)  SUBDIR=libraries ;;
@@ -191,13 +191,14 @@ function mfshow() {
             c)  SUBDIR=compilers ;;
             b)  SUBDIR=build-tools ;;
             p)  SUBDIR=parallel ;;
+            d)  SUBDIR=data ;;
             A)  ALL=yes ;;
             *)  echo "unknown option"; return ;;
         esac
     done
     shift $((OPTIND-1))
     [[ $# == 1 ]] || { cat <<_usage_
-USAGE:  mfshow [ -i (default) | -l | -a | -c | -b | -p ] [ -A ] modulename
+USAGE:  mfshow [ -i (default) | -l | -a | -c | -b | -p | -d ] [ -A ] modulename
 
 Full listing of all mf files for a given module under /sw/mf/...
 
@@ -207,6 +208,7 @@ Subtree options:   -i   bioinfo-tools (default)
                    -c   comp
                    -b   build-tools
                    -p   parallel
+                   -d   data
 Other options:     -A   show trees for all clusters, not just {common,${_CURRENT_CLUSTERS// /,}}
 _usage_
     return; }
@@ -241,7 +243,7 @@ function mflink() {
     local FORCE
     local QUIET
     local OPTIND
-    while getopts ":ilacbpfq" opt "$@"; do
+    while getopts ":ilacbpdfq" opt "$@"; do
         case $opt in
             i)  SUBDIR= ;;
             l)  SUBDIR=libraries ;;
@@ -249,6 +251,7 @@ function mflink() {
             c)  SUBDIR=compilers ;;
             b)  SUBDIR=build-tools ;;
             p)  SUBDIR=parallel ;;
+            d)  SUBDIR=data ;;
             f)  FORCE=yes ;;
             q)  QUIET=yes ;;
             *)  echo "unknown option"; return ;;
@@ -256,7 +259,7 @@ function mflink() {
     done
     shift $((OPTIND-1))
     [[ $# == 2 ]] || { cat <<_usage_
-USAGE:  mflink [ -i (default) | -l | -a | -c | -b | -p ] [ -f ] modulename version
+USAGE:  mflink [ -i (default) | -l | -a | -c | -b | -p | -d ] [ -f ] modulename version
 
 Create cluster-specific link to /sw/mf/common/... for an mf file, when positioned where
 the modulename directories are (e.g., /sw/mf/rackham/bioinfo-tools/misc).
@@ -268,6 +271,7 @@ Subtree options:   -i   bioinfo-tools (default)
                    -c   comp
                    -b   build-tools
                    -p   parallel
+                   -d   data
 Other options:     -f   force creating the link and intervening directories
                    -q   work quietly
 _usage_
@@ -298,7 +302,7 @@ function all_mflink() {
     local FORCE
     local OPT
     local OPTIND
-    while getopts ":ilacbpf" opt "$@"; do
+    while getopts ":ilacbpdf" opt "$@"; do
         case $opt in
             i)  SUBDIR= ; OPT="-$opt" ;;
             l)  SUBDIR=libraries ; OPT="-$opt" ;;
@@ -306,13 +310,14 @@ function all_mflink() {
             c)  SUBDIR=compilers ; OPT="-$opt" ;;
             b)  SUBDIR=build-tools ; OPT="-$opt" ;;
             p)  SUBDIR=parallel ; OPT="-$opt" ;;
+            p)  SUBDIR=data ; OPT="-$opt" ;;
             f)  FORCE=yes ;;
             *)  echo "unknown option" ; return ;;
         esac
     done
     shift $((OPTIND-1))
     [[ $# == 2 ]] || { cat <<_usage_
-USAGE:  all_mflink [ -i (default) | -l | -a | -c | -b | -p ] [ -f ] modulename version
+USAGE:  all_mflink [ -i (default) | -l | -a | -c | -b | -p | -d ] [ -f ] modulename version
 
 Create all cluster-specific links (/sw/mf/{$_CURRENT_CLUSTERS}/...) to /sw/mf/common/... for an mf file
 
@@ -322,6 +327,7 @@ Subtree options:   -i   bioinfo-tools (default)
                    -c   comp
                    -b   build-tools
                    -p   parallel
+                   -d   data
 Other options:     -f   force; basically required
 _usage_
     return; }
@@ -363,97 +369,4 @@ _usage_
     fi
 }
 
-
-# Update mf files for a module while on rackham5. Requires /mnt/sw mount point
-function rackham_mfupdate() {
-    echo "This is no longer necessary."; return;
-    local SUBDIR
-    local SECTION
-    local FORCE
-    local OPT
-    local OPTIND
-    local OPTARG
-    while getopts ":ilacbpfs:" opt "$@"; do
-        case $opt in
-            i)  SUBDIR= ; OPT="-$opt" ;;
-            l)  SUBDIR=libraries ; OPT="-$opt" ;;
-            a)  SUBDIR=applications ; OPT="-$opt" ;;
-            c)  SUBDIR=compilers ; OPT="-$opt" ;;
-            b)  SUBDIR=build-tools ; OPT="-$opt" ;;
-            p)  SUBDIR=parallel ; OPT="-$opt" ;;
-            f)  FORCE=yes ;;
-            s)  SECTION=$OPTARG ;;
-            :)  echo "option -$OPTARG requires an argument"; return ;;
-            *)  echo "unknown option" ; return ;;
-        esac
-    done
-    shift $((OPTIND-1))
-    [[ $# == 1 ]] || { cat <<_usage_
-USAGE:  rackham_mfupdate [ -i (default) | -l | -a | -c | -b | -p ] [ -f ] [ -s section ] modulename
-
-**While on rackham**, does an rsync of /sw/mf/... trees to rackham; may ask to authenticate
-
-If on rackham5, looks for /mnt/sw/mf/...
-If not, rsync via milou-b.  -s section may be required.
-
-Subtree options:   -i   bioinfo-tools (default)
-                   -l   libraries
-                   -a   applications
-                   -c   comp
-                   -b   build-tools
-                   -p   parallel
-Other options:     -f   force; basically required
-                   -s section   bioinfo-tools section, may be required if new module for rackham and not running on rackham5; ignored on rackham5
-_usage_
-    return; }
-    local MNTROOT=
-    local R5=
-    [[ $(uname -n | cut -f1 -d.) == "rackham5" ]] && { MNTROOT="/mnt"; R5=yes; } || MNTROOT="${USER}@milou-b.uppmax.uu.se:"
-    local M=$1
-    local C=
-    if [[ $SUBDIR ]] ; then
-        if [[ $FORCE ]] ; then
-            for C in common $_CURRENT_CLUSTERS ; do
-                ( cd /sw/mf/$C/$SUBDIR/ && pwd && rsync -Pa --del $MNTROOT/$PWD/$M . )
-            done
-        else
-            for C in common $_CURRENT_CLUSTERS ; do
-                ( cd /sw/mf/$C/$SUBDIR/ && pwd && rsync --dry-run -Pa --del $MNTROOT/$PWD/$M . )
-            done
-        fi
-        [[ $FORCE ]] && echo -e "\n*** Done" || echo -e "\n*** DRY RUN"
-        echo -e "\n*** mfshow $OPT $M\n"
-        mfshow $OPT $M
-    else
-        local MNTDIR=
-        local SUFFDIR=
-        local THISDIR=
-        if [[ "$SECTION" ]] ; then
-            [[ $SECTION ]] && echo -e "\n*** using section $SECTION"
-            MNTDIR=/sw/mf/common/bioinfo-tools/$SECTION/$M
-            SUFFDIR=${MNTDIR#/sw/mf/common}
-        else
-            [[ $R5 ]] || { echo -e "\n*** Must be run on rackham5 or provide -s section option"; return; }
-            MNTDIR=(/mnt/sw/mf/common/bioinfo-tools/*/$M)
-            SUFFDIR=${MNTDIR#/mnt/sw/mf/common}
-        fi
-        [[ -d $MNTDIR ]] || { echo "*** $MNTDIR doesn't exist, if this is new on rackham you may need to run this on rackham5 or provide -s section"; return; }
-        if [[ $FORCE ]] ; then
-            for C in common $_CURRENT_CLUSTERS ; do
-                THISDIR=/sw/mf/$C/$SUFFDIR
-                [[ -d $THISDIR ]] || mkdir -p $THISDIR
-                ( cd $THISDIR/ && cd .. && pwd && rsync -Pa --del $MNTROOT/$PWD/$M . )
-            done
-        else
-            for C in common $_CURRENT_CLUSTERS ; do
-                THISDIR=/sw/mf/$C/$SUFFDIR
-                [[ -d $THISDIR ]] || mkdir -p $THISDIR
-                ( cd $THISDIR/ && cd .. && pwd && rsync --dry-run -Pa --del $MNTROOT/$PWD/$M . )
-            done
-        fi
-        [[ $FORCE ]] && echo -e "\n*** Done" || echo -e "\n*** DRY RUN"
-        echo -e "\n*** mfshow $OPT $M\n"
-        mfshow $OPT $M
-    fi
-}
 
