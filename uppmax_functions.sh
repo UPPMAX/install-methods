@@ -310,7 +310,7 @@ function all_mflink() {
             c)  SUBDIR=compilers ; OPT="-$opt" ;;
             b)  SUBDIR=build-tools ; OPT="-$opt" ;;
             p)  SUBDIR=parallel ; OPT="-$opt" ;;
-            p)  SUBDIR=data ; OPT="-$opt" ;;
+            d)  SUBDIR=data ; OPT="-$opt" ;;
             f)  FORCE=yes ;;
             *)  echo "unknown option" ; return ;;
         esac
