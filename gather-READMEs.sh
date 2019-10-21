@@ -36,36 +36,36 @@ if [[ ! $SKIP_FIND_MODULES ]] ; then
 fi
 
 
-# databases from /sw/data/uppnex
+# databases from /sw/data
 
-DATA_UPPNEX_REPOSITORY="$REPOSITORY/data_uppnex"
+DATA_REPOSITORY="$REPOSITORY/data"
 
-mkdir -p $DATA_UPPNEX_REPOSITORY
+mkdir -p $DATA_REPOSITORY
 
 if [[ ! $SKIP_FIND_DATABASES ]] ; then
 
-    cd /sw/data/uppnex
+    cd /sw/data
 
-    find ExAC -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    find Pfam -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    find cdd -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    find dbCAN -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    find annovar -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    find Chromium -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    find Centrifuge-indices -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    find panther -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    find eggNOG -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+    find Chromium -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find Centrifuge-indices -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find ExAC -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find Pfam -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find cdd -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find dbCAN -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find annovar -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find panther -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find eggNOG -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find igenomes -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find silva -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     ###  The following should eventually get brought in as well
-    # find dbSNP -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    # find SGDP -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    # find blast_databases -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    # find chembl -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    # find igenomes -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    # find piper_references -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    # find pph2-db -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    # find reference -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    # find silva -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
-    # find vep -name '*install-README.md' | cpio -pdm $DATA_UPPNEX_REPOSITORY
+    # find dbSNP -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find SGDP -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find blast_databases -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find chembl -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find piper_references -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find pph2-db -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find reference -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find vep -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
 
 fi
 
@@ -83,23 +83,23 @@ function data_update() {
     cd ${CURDIR}
 }
 
-# These databases are in /sw/data/uppnex and update via crontab with an update
+# These databases are in /sw/data and update via crontab with an update
 # script.  Update the repository copy of their READMEs, scripts and other
 # files.
 
-cd $DATA_UPPNEX_REPOSITORY
-data_update  /sw/data/uppnex/Kraken             Kraken-db-README.md   Kraken-update-db.sh    
-data_update  /sw/data/uppnex/Kraken2            Kraken2-db-README.md   Kraken2-update-db.sh    Kraken2-update-nt.sh
-data_update  /sw/data/uppnex/diamond_databases  diamond-db-README.md  diamond-update-dbs.sh  diamond-check-dbs.sh
-data_update  /sw/data/uppnex/RTG                RTG-db-README.md      RTG-update-dbs.sh      
-data_update  /sw/data/uppnex/blast_scripts      README.md README-uniprot.md update_blastdb.sh update_blastdb-uniprot.sh uniprot.mk install_blastdb.sh remove_old_blastdb.sh cron-wrapper.sh crontab.txt test/test_blastdb.sh test/prots.fa test/nucls.fa test/*.out webpage.mk webpage.md webpage.html
-data_update  /sw/data/uppnex/ncbi_taxonomy      ncbi_taxonomy-db-README.md ncbi_taxonomy-update-dbs.sh crontab.txt webpage.html webpage.md webpage.mk
+cd $DATA_REPOSITORY
+data_update  /sw/data/Kraken             Kraken-db-README.md   Kraken-update-db.sh    
+data_update  /sw/data/Kraken2            Kraken2-db-README.md   Kraken2-update-db.sh    Kraken2-update-nt.sh
+data_update  /sw/data/diamond_databases  diamond-db-README.md  diamond-update-dbs.sh  diamond-check-dbs.sh
+data_update  /sw/data/RTG                RTG-db-README.md      RTG-update-dbs.sh      
+data_update  /sw/data/blast_scripts      README.md README-uniprot.md update_blastdb.sh update_blastdb-uniprot.sh uniprot.mk install_blastdb.sh remove_old_blastdb.sh cron-wrapper.sh crontab.txt test/test_blastdb.sh test/prots.fa test/nucls.fa test/*.out webpage.mk webpage.md webpage.html
+data_update  /sw/data/ncbi_taxonomy      ncbi_taxonomy-db-README.md ncbi_taxonomy-update-dbs.sh crontab.txt webpage.html webpage.md webpage.mk
 
-# These databases are in /sw/data/uppnex and DO NOT update via crontab.
+# These databases are in /sw/data and DO NOT update via crontab.
 # Update the repository copy of their READMEs, scripts and other files.
 
-cd $DATA_UPPNEX_REPOSITORY
-data_update  /sw/data/uppnex/CTAT_RESOURCE_LIB  CTAT_RESOURCE_LIB-db-README.md  CTAT_RESOURCE_LIB-download-db.sh
+cd $DATA_REPOSITORY
+data_update  /sw/data/CTAT_RESOURCE_LIB  CTAT_RESOURCE_LIB-db-README.md  CTAT_RESOURCE_LIB-download-db.sh
 
 
 # Databases in other locations
