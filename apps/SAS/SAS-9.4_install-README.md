@@ -63,3 +63,8 @@ Follow onscreen instructions to install in /sw/apps/SAS/9.4/rackham/
 Pick /sw/apps/SAS/9.4/src/SAS_install/sid_files/SAS94_9BXN77_51302519_LINUX_X86-64.txt
 Use defaults
 !!!!!!!!!! Remember to include rbrowser !!!!!!!!!!!
+
+########### TO UPDATE LICENSE ###############
+    /sw/apps/SAS/9.4/rackham/SASDeploymentManager/9.4/sasdm.sh
+In the SAS Deployment Manager, select the option to "Renew SAS Software"
+Click "Next" as in "http://support.sas.com/documentation/installcenter/en/ikunixplannedri/66610/PDF/default/setinit_planned.pdf"

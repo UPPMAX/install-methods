@@ -16,9 +16,10 @@ LOG
 
     VERSION=2.31.9
     CLUSTER=${CLUSTER?:CLUSTER must be set}
-    cd /sw/apps/bioinfo/maker
+    cd /sw/bioinfo/maker
     mkdir -p $VERSION
     cd $VERSION
+    for CL in irma bianca snowy ; do ( test -L $CL || ln -s $CLUSTER $CL ) ; done
     mkdir -p src
     cd src
 
