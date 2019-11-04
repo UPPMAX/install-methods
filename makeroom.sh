@@ -349,17 +349,23 @@ if [ ! -d "$MODULE_DIRECTORY" ]; then
 	mkdir -p "${MODULE_DIRECTORY}"
     printf "\n%s\n" "No previous module file found" 1>&2
 else
-    unset -v latest
+######### Sort by version to a list and print that with what was chosen ############
+    unset -v LATEST
     cd $MODULE_DIRECTORY
-    for file in *; do
-        [[ \$file -nt \$latest ]] && latest=\$file
-    done
+    PREV_MF=\$(ls * | sort -Vr)
+    LATEST=\$(echo "\$PREV_MF" | head -1)
+    printf "\n%s" "Found following module files:" 1>&2
+    printf "\n%s" "\$PREV_MF" 1>&2
+    printf "\n%s\n" ""\$LATEST" looks like the best file on which to base a new module file" 1>&2
+#    for FILE in *; do
+#        [[ \$FILE -nt \$LATEST ]] && LATEST=\$FILE
+#    done
 fi
 ######### Checking for readme files
-unset -v latest_README
+unset -v LATEST_README
 cd $TOOL_DIRECTORY
-for file in *README.md; do
-    [[ \$file -nt \$latest_README ]] && latest_README=\$file
+for FILE in *README.md; do
+    [[ \$FILE -nt \$LATEST_README ]] && LATEST_README=\$FILE
 done
 ######### Making all dirs and links
 if [ ! -d "$COMMONDIR" ]; then
@@ -383,7 +389,7 @@ fixup $COMMONDIR
 
 ######################## Using the module file template ############################
 
-if [ -z "\$latest" ] || [ "\$latest" = \$(basename $MODULE_FILE) ]; then
+if [ -z "\$LATEST" ] || [ "\$LATEST" = \$(basename $MODULE_FILE) ]; then
     printf "\n%s\n" "Making a new module file $MODULE_FILE" 1>&2
     cat >> "$MODULE_FILE" <<EOF
 #%Module1.0#####################################################################
@@ -447,14 +453,14 @@ setenv          ${TOOL}_ROOT    \\\$modroot
 EOF
 else
     cd $MODULE_DIRECTORY
-    printf "\n%s\n" "Copying \$latest as the module file $MODULE_FILE" 1>&2
+    printf "\n%s\n" "Copying \$LATEST as the module file $MODULE_FILE" 1>&2
 ## Not linking, but copying now
-    cp -av \$latest $MODULE_FILE
+    cp -av \$LATEST $MODULE_FILE
 fi
 
 ###################### README creation/addition #########################
 
-if [ "\$latest_README" = \$(basename $README_FILE) ]; then
+if [ "\$LATEST_README" = \$(basename $README_FILE) ]; then
     printf "\n%s\n" "WARNING! Already existing readme file $README_FILE for this exact version ($VERSION). Adding stuff at the bottom. Remove stuff you don't use from it." 1>&2
 fi
 
@@ -471,7 +477,7 @@ Structure creating script ($SCRIPTFILE) made with makeroom.sh (Author: Jonas Sö
 
 EOF2
 
-if [ -z "\$latest_README" ]; then
+if [ -z "\$LATEST_README" ]; then
     printf "\n%s\n" "Making a new readme file $README_FILE" 1>&2
     cat >> "$README_FILE" <<EOF3
 LOG
@@ -492,8 +498,8 @@ LOG
 EOF3
 
 else
-    printf "\n%s\n" "Adding the old readme file \$latest_README to the new readme file $README_FILE" 1>&2
-    cat "\$latest_README" >> "$README_FILE"
+    printf "\n%s\n" "Adding the old readme file \$LATEST_README to the new readme file $README_FILE" 1>&2
+    cat "\$LATEST_README" >> "$README_FILE"
 fi
 
 ##################### YAML #############################
