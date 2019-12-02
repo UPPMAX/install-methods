@@ -8,7 +8,7 @@
 #SBATCH -C mem256GB
 #SBATCH -t 24:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
-#SBATCH --mail-user douglas.scofield@ebc.uu.se
+#SBATCH --mail-user lars.eklund@uppmax.uu.se
 #SBATCH --mail-type=ALL
 #SBATCH -o /sw/data/Kraken2/slurm-nt-%j.out
 
@@ -25,7 +25,7 @@ export KRAKEN2_THREAD_COUNT=$THREADS
 function error_send_email()
 {
     MSG="Error while building Kraken2 DB: '$1'"
-	mailx -s "Kraken2 DB build error: '$1'" douglas.scofield@ebc.uu.se <<< $MSG
+	mailx -s "Kraken2 DB build error: '$1'" lars.eklund@uppmax.uu.se <<< $MSG
     exit 1
 }
 
@@ -64,5 +64,5 @@ for DB_TYPE in nt ; do
 done
 
 echo -e "In $K2_DB_BASE: prepared databases nt\n" \
-    | mailx -s "Kraken2 nt DB build successful as $DBNAME in $K2_DB_BASE" douglas.scofield@ebc.uu.se
+    | mailx -s "Kraken2 nt DB build successful as $DBNAME in $K2_DB_BASE" lars.eklund@uppmax.uu.se
 

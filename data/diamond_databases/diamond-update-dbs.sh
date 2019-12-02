@@ -1,12 +1,12 @@
 #!/bin/bash 
 
 module load bioinfo-tools
-module load diamond/0.9.24
+module load diamond/0.9.29
 module load gnuparallel/20170122
 
 ROOT=/sw/data/diamond_databases
 THREADS=10
-DateFormat='%Y%m%d'  # used for databases where the version tag is a date
+DateFormat='%Y%m%d-%H%M%S'  # used for databases where the version tag is date-time
 DateSource='now'  # 'now' means use today's date as in TODAY below, otherwise means use date on downloaded md5 checksum file
 TODAY=`date +"$DateFormat"`
 TAXONMAP=/sw/data/ncbi_taxonomy/latest/accession2taxid/download/prot.accession2taxid.gz
@@ -22,7 +22,7 @@ echo "$0: building databases with $(diamond version)"
 
 function error_send_email() {
     MSG="Error within $0: '$1'"
-	mailx -s "$0 error: '$1'" douglas.scofield@ebc.uu.se <<< $MSG
+	mailx -s "$0 error: '$1'" lars.eklund@uppmax.uu.se <<< $MSG
     exit 1
 }
 
@@ -264,5 +264,5 @@ find . -type d -exec chmod g+s {} \;
 unset TMPDIR
 LOG=diamond-$(diamond version | cut -f3 -d' ')-database-compatibility-${TODAY}.log
 find . -name '*.dmnd'| parallel -v --line-buffer -j 1 diamond getseq --db {} '|' head '>/dev/null' > "$LOG" 2>&1
-cat "$LOG" | mailx -s "diamond database version compatibility $TODAY" douglas.scofield@ebc.uu.se
+cat "$LOG" | mailx -s "diamond database version compatibility $TODAY" lars.eklund@uppmax.uu.se
 

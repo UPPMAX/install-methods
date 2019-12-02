@@ -58,7 +58,7 @@ setting up prior to adding new packages to this installation.
     module load Poppler/0.54.0
     module load JAGS/4.3.0
     module load gsl/2.3
-    module load curl/7.45.0   # there is a bug in the most recent libcurl preventing the 'curl' package from getting build
+    module load libcurl/7.45.0   # there is a bug in the most recent libcurl preventing the 'curl' package from getting build
     echo -e "\nThis should have been set to the appropriate directory in this module, is it?\n\nR_LIBS_USER = $R_LIBS_USER\n"
 
 Various other packages will be loaded when R/3.6.1 is loaded such as gcc/8.3.0, texinfo/6.6 and java/sun_jdk1.8.0_151.
@@ -179,14 +179,25 @@ along with updating R.
 External packages
 -----------------
 
-Install a non-CRAN package ASCAT.  Download the latest release here (https://github.com/Crick-CancerGenomics/ascat/releases).
+Several R packages found here are not on CRAN or BioConductor, as a result of either user requests or requirements by other modules.
 
+* For a github-hosted package that is not part of CRAN, see ASCAT, rrbgen or STITCH.  If the instructions of the package recommend using something like `devtools::github_install("repository/packagename")`, then the package is one of these.
+* For an "expired" CRAN package that is still in its archive, see igraph0.
+* For a "custom" R package that is part of another module, see dnase2tf.  This latter one uses a command within R.
+
+
+### ASCAT
+
+Install a non-CRAN package ASCAT, hosted on github.  Download the latest release here (https://github.com/Crick-CancerGenomics/ascat/releases).
   
     mkdir -p /sw/apps/R_packages/$VERSION/external_packages
     cd /sw/apps/R_packages/$VERSION/external_packages
     ASCAT_VERSION=2.5.2
     [[ -f ASCAT_${ASCAT_VERSION}.tar.gz ]] || wget --timestamping https://github.com/Crick-CancerGenomics/ascat/releases/download/v${ASCAT_VERSION}/ASCAT_${ASCAT_VERSION}.tar.gz
     R CMD INSTALL ASCAT_${ASCAT_VERSION}.tar.gz
+
+
+### igraph0
 
 Also, install an outdated package `igraph0`, which has been superseded by
 `igraph` (installed above) but needed by some older procedures.
@@ -197,12 +208,18 @@ Also, install an outdated package `igraph0`, which has been superseded by
     [[ -f igraph0_${IGRAPH0_VERSION}.tar.gz ]] || wget --timestamping https://cran.r-project.org/src/contrib/Archive/igraph0/igraph0_${IGRAPH0_VERSION}.tar.gz
     R CMD INSTALL igraph0_${IGRAPH0_VERSION}.tar.gz
 
-Added the module dnase2tf from the source under source tree directory for calcDFT/1.0.1
-Inside R (3.6.0):
+
+### dnase2tf
+
+Added the module dnase2tf from the source under source tree directory for
+calcDFT/1.0.1 Inside R (3.6.0):
 
     install.packages('/sw/bioinfo/calcDFT/1.0.1/src/dnase2tf', repos = NULL, type="source")
 
-Install rrbgen for reading BGEN files.
+
+### rrbgen
+
+Install rrbgen for reading BGEN files, hosted on github.
 
     mkdir -p /sw/apps/R_packages/$VERSION/external_packages
     cd /sw/apps/R_packages/$VERSION/external_packages
@@ -210,9 +227,13 @@ Install rrbgen for reading BGEN files.
     [[ -f rrbgen_${RRBGEN_VERSION}.tar.gz ]] || wget --timestamping https://github.com/rwdavies/rrbgen/releases/download/${RRBGEN_VERSION}/rrbgen_${RRBGEN_VERSION}.tar.gz
     R CMD INSTALL rrbgen_${RRBGEN_VERSION}.tar.gz
 
-Install STITCH for haplotype imputation.  I was worried about its requirement
-for htslib but it has incorporated that into its own source tree.  This module
-also requires both `bgzip` and `tabix`, which are provided by `htslib/1.8`.
+
+### STITCH
+
+Install STITCH for haplotype imputation, hosted on github.  I was worried about
+its requirement for htslib but it has incorporated that into its own source
+tree.  This module also requires both `bgzip` and `tabix`, which are provided
+by `htslib/1.8`.
 
     mkdir -p /sw/apps/R_packages/$VERSION/external_packages
     cd /sw/apps/R_packages/$VERSION/external_packages
@@ -221,6 +242,69 @@ also requires both `bgzip` and `tabix`, which are provided by `htslib/1.8`.
     R CMD INSTALL STITCH_${STITCH_VERSION}.tar.gz
 
 
+### SAIGE
+
+Install SAIGE, which is an R package with Scalable and Accurate Implementation
+of Generalized mixed model (Chen, H. et al. 2016). It accounts for sample
+relatedness and is feasible for genetic association tests in large cohorts and
+biobanks (N > 400,000).
+
+<https://github.com/weizhouUMICH/SAIGE>
+
+Building from source did not work well: compiling the source distribution via
+installation with `R CMD INSTALL` is a mess.  As we're not going to install
+this via an image, I will use the prebuilt binary which includes the
+shared library `SAIGE.so`.  It requires `libboost_iostreams.so.1.58.0`, so I'll
+compile that version of boost and update RPATH information in `SAIGE.so` to
+find it directly.
+
+    mkdir -p /sw/apps/R_packages/$VERSION/external_packages
+    cd /sw/apps/R_packages/$VERSION/external_packages
+    SAIGE_VERSION=0.35.8.8
+    [[ -f SAIGE_${SAIGE_VERSION}_R_x86_64-pc-linux-gnu.tar.gz ]] || wget --timestamping https://github.com/weizhouUMICH/SAIGE/releases/download/${SAIGE_VERSION}/SAIGE_${SAIGE_VERSION}_R_x86_64-pc-linux-gnu.tar.gz
+    R CMD INSTALL SAIGE_${SAIGE_VERSION}_R_x86_64-pc-linux-gnu.tar.gz
+    ldd /sw/apps/R_packages/3.6.1/rackham/SAIGE/libs/SAIGE.so
+
+This is installed, but not complete.  The shared library included with the
+package cannot find its required boost library.  `gcc/8.3.0` is used for
+`R/3.6.1`, so go build `boost/1.58.0-gcc8.3.0` and update `SAIGE.so` with the
+needed path.
+
+    cd /sw/apps/R_packages/3.6.1/rackham/SAIGE/libs/
+    ldd SAIGE.so
+    module load patchelf/0.8
+    patchelf --print-rpath SAIGE.so
+    patchelf --set-rpath /sw/libs/boost/1.58.0-gcc8.3.0/rackham/lib SAIGE.so
+    patchelf --print-rpath SAIGE.so
+    ldd SAIGE.so
+
+This package also contains example scripts and data in an `extdata/` directory
+that are heavily referenced in its documentation.  They seem to be wrappers for
+the functions provided in the package, but many users will probably want to use
+these scripts directly.  They are not included in the binary download, so
+download the source package and rename it to include SAIGE, lift this directory
+out into the installation directory, and document how to access them in the
+module help.
+
+    [[ -f SAIGE_${SAIGE_VERSION}.tar.gz ]] || wget -O SAIGE_${SAIGE_VERSION}.tar.gz --timestamping https://github.com/weizhouUMICH/SAIGE/archive/${SAIGE_VERSION}.tar.gz
+
+
+### MDInstruments, MRPracticals, TwoSampleMR
+
+Install github-hosted packages MDInstruments and MRPracticals.  Download the
+latest releases from <https://github.com/MRCIEU/MRInstruments/releases> and
+<https://github.com/WSpiller/MRPracticals>.  Note that MRPracticals does not
+have regular releases, and they also require another github-hosted package
+called TwoSampleMR.  So, we do the above to set up our R environment and do all
+this inside R:
+  
+    R --no-init-file
+
+and then within R
+
+    library(devtools)
+    install_github(c("MRCIEU/TwoSampleMR","MRCIEU/MRInstruments"))
+    install_github("WSpiller/MRPracticals",build_opts = c("--no-resave-data", "--no-manual"),build_vignettes = TRUE)
 
 Adding a new package
 ---------------

@@ -84,6 +84,7 @@ which seems to build with python2.
     pip3 install gitpython
     pip3 install python-graph-dot
     pip3 install graphviz
+    pip3 install cget
 
 
 Now lock it down.

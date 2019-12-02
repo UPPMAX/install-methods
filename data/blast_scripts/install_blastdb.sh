@@ -60,7 +60,7 @@ for S in ${STAGED_DBS_TIMESTAMPS[@]} ; do
     rm -f ${DB}.*
     [[ $DB == UniVec || $DB == UniVec_Core ]] && rm -f ${DB}
     echo -e "creating hardlinks to staged... "
-    ln ${SS}.* . || { echo -e "$0: Failed to hardlink '${SS}.*'\n" | mailx -s "blast database installation error" douglas.scofield@ebc.uu.se; exit 1; }
+    ln ${SS}.* . || { echo -e "$0: Failed to hardlink '${SS}.*'\n" | mailx -s "blast database installation error" lars.eklund@uppmax.uu.se; exit 1; }
     [[ $DB == UniVec || $DB == UniVec_Core ]] && ln ${SS} .
 done
 
@@ -70,5 +70,5 @@ echo -e "$0: $INSTALL to $OLD and $NEW to $INSTALL"
 mv -v $INSTALL $OLD
 mv -v $NEW $INSTALL
 
-echo -e "$0: Installed blast databases to $INSTALL\n$0: now check on old databases in $OLD\n" | mailx -s "blast databases installed" douglas.scofield@ebc.uu.se
+echo -e "$0: Installed blast databases to $INSTALL\n$0: now check on old databases in $OLD\n" | mailx -s "blast databases installed" lars.eklund@uppmax.uu.se
 

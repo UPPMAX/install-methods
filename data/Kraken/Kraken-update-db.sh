@@ -8,7 +8,7 @@
 #SBATCH -C mem512GB
 #SBATCH -t 24:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
-#SBATCH --mail-user douglas.scofield@ebc.uu.se
+#SBATCH --mail-user lars.eklund@uppmax.uu.se
 #SBATCH --mail-type=ALL
 #SBATCH -o /sw/data/Kraken/slurm-snowy-%j.out
 
@@ -16,12 +16,12 @@ K_DB_BASE=/sw/data/Kraken
 K_VERSION=1.1.1
 THREADS=${1:-$SLURM_JOB_CPUS_PER_NODE}
 MEMGB=${SLURM_MEM_PER_NODE%???}  # truncated value, remove last 3 chars (128GB node reports 128000)
-MINGB=200 # This now must run on a 256GB node, it needs just under 200GB to build the standard database
+MINGB=300 # This now must run on a 512 node, it needs just under 300GB to build the standard database
 
 function error_send_email()
 {
     MSG="Error while building Kraken DB: '$1'"
-	mailx -s "Kraken DB build error: '$1'" douglas.scofield@ebc.uu.se <<< $MSG
+	mailx -s "Kraken DB build error: '$1'" lars.eklund@uppmax.uu.se <<< $MSG
     exit 1
 }
 
@@ -58,8 +58,8 @@ chmod -R u+rwX,g+rwX,o+rX ./$VERSION
 #
 #echo -e "In $K_DB_BASE, prepared $K_DB and linked 'latest' to $K_DB; double-check the mf file $MF_K below:\n\n" \
 #    | cat - $MF_K \
-#    | mailx -s "Kraken DB build successful: '$K_DB'" douglas.scofield@ebc.uu.se
+#    | mailx -s "Kraken DB build successful: '$K_DB'" lars.eklund@uppmax.uu.se
 
 echo -e "In $K_DB_BASE, prepared $K_DB and linked 'latest' to $K_DB\n\n" \
-    | mailx -s "Kraken DB build successful: '$K_DB'" douglas.scofield@ebc.uu.se
+    | mailx -s "Kraken DB build successful: '$K_DB'" lars.eklund@uppmax.uu.se
 

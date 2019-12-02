@@ -7,7 +7,7 @@
 #  Not necessary to use fat node for Kraken2.  Max on build of standard library was ~40GB
 #SBATCH -t 24:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
-#SBATCH --mail-user douglas.scofield@ebc.uu.se
+#SBATCH --mail-user lars.eklund@uppmax.uu.se
 #SBATCH --mail-type=ALL
 #SBATCH -o /sw/data/Kraken2/slurm-%j.out
 
@@ -20,7 +20,7 @@ export KRAKEN2_THREAD_COUNT=$THREADS
 function error_send_email()
 {
     MSG="Error while building Kraken2 DB: '$1'"
-	mailx -s "Kraken2 DB build error: '$1'" douglas.scofield@ebc.uu.se <<< $MSG
+	mailx -s "Kraken2 DB build error: '$1'" lars.eklund@uppmax.uu.se <<< $MSG
     exit 1
 }
 
@@ -67,8 +67,8 @@ done
 #
 #echo -e "In $K2_DB_BASE, prepared $K2_DB and linked 'latest' to $K2_DB; double-check the mf file $MF_K below:\n\n" \
 #    | cat - $MF_K \
-#    | mailx -s "Kraken2 DB build successful: '$K2_DB'" douglas.scofield@ebc.uu.se
+#    | mailx -s "Kraken2 DB build successful: '$K2_DB'" lars.eklund@uppmax.uu.se
 
 echo -e "In $K2_DB_BASE: prepared databases latest, greengenes, rdp, silva\n" \
-    | mailx -s "Kraken2 DB build successful in $K2_DB_BASE" douglas.scofield@ebc.uu.se
+    | mailx -s "Kraken2 DB build successful in $K2_DB_BASE" lars.eklund@uppmax.uu.se
 

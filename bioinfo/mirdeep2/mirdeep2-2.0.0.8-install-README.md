@@ -85,3 +85,4 @@ Mark the installation as successful.
 
     touch $PFX/install_successful
 
+Addendum from Marcus: a user (Morteza Aslandzadeh) complained about "Rfam_for_miRDeep.fa not found in your miRDeep2 scripts directory" very urgently and I am on vacation, so I copied the file over to /bin as they asked me to and told them that this likely will not help, and to install the software for themselves instead. Sorry for the ugliness...

@@ -3,6 +3,7 @@ MUMmer/3.22
 
 Picked up 3.22 from <http://mummer.sourceforge.net/>
 
+Rebuilt 2019/10/22 DGS.
 
 LOG
 ---
@@ -26,20 +27,7 @@ LOG
     make clean
     make CFLAGS="-O3 -DSIXTYFOURBITS" CPPFLAGS="-O3 -DSIXTYFOURBITS" CXXFLAGS="-O3 -DSIXTYFOURBITS"
 
-----
-From Agback's earlier build notes:
+Now make the Perl scripts use the env mechanism.
 
-    make
-
-kopiera hela directoryt till //////sw/apps/bioinfo/MUMmer/3.22/kalkyl
-
-Jag har tester i: /bubo/home/staff/agback/kalkyl/mummer-test
-
-Kör:
-
-    mummer -mum -b -c H_pylori26695_Eslice.fasta H_pyloriJ99_Eslice.fasta > mummer.mums
-    mummerplot -x "[0,275287]" -y "[0,265111]" -postscript -p mummer mummer.mums
-    run-mummer3 H_pylori26695_Eslice.fasta H_pyloriJ99_Eslice.fasta mummer3
-
-Ska inte ge några fel, men skapa ett antal mummer.* filer.
+    sed -i -e 's,^#!.*/perl.*$,#!/usr/bin/env perl,' $(file * | grep 'Perl script' | cut -f1 -d:)
 

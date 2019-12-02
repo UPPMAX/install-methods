@@ -11,5 +11,5 @@ OLD=${INSTALL}_old
 
 [[ -e $OLD ]] && { echo -e "$0: removing $OLD ..."; rm -rf $OLD; }
 
-echo -e "$0: Removed $OLD\n" | mailx -s "$0: completed" douglas.scofield@ebc.uu.se
+echo -e "$0: Removed $OLD\n" | mailx -s "$0: completed" lars.eklund@uppmax.uu.se
 

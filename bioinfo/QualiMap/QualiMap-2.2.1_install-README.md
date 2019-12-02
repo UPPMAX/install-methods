@@ -21,3 +21,13 @@ LOG
     unzip qualimap_v${VERSION}.zip
     cp -rf qualimap_v${VERSION}/* ../$CC/
     chmod g+rws -R $TOOL/$VERSION
+
+Modify mf file so it loads with older java and older R, to use the libraries it already has installed.
+
+load("R/3.3.2")
+load("java/sun_jdk1.7.0_25")
+
+They must be loaded in this way, since the java version overrides the java 8 version loaded with R.
+
+prepend_path("PATH","/sw/bioinfo/QualiMap/2.2.1/rackham")
+prepend_path("R_LIBS_SITE","/sw/bioinfo/QualiMap/2.2.1/rackham")

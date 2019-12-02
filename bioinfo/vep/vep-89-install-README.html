@@ -1,0 +1,41 @@
+<h1 id="vep89">vep/89</h1>
+<pre><code>VERSION=89
+CLUSTER=${CLUSTER?:CLUSTER must be set}
+TOOL=/sw/apps/bioinfo/vep
+mkdir -p $TOOL
+cd $TOOL
+mkdir -p $VERSION mf
+VERSIONDIR=$TOOL/$VERSION
+cd $VERSIONDIR
+CLUSTERDIR=$VERSIONDIR/$CLUSTER
+mkdir -p $CLUSTER src_$CLUSTER
+cd src_$CLUSTER
+wget https://github.com/Ensembl/ensembl-tools/archive/release/${VERSION}.zip
+unzip ${VERSION}.zip 
+cd ensembl-tools-release-${VERSION}/scripts/variant_effect_predictor/</code></pre>
+<p>No need to install <code>DBD::mysql</code> within <code>perl_modules/5.18.4</code> since this was already done for <code>vep/82</code>.</p>
+<p>Now back to vep. Create the cache directory.</p>
+<pre><code>CACHEDIR=/sw/data/uppnex/vep/${VERSION}
+mkdir -p $CACHEDIR
+module load perl/5.18.4
+module load perl_modules/5.18.4
+export PATH=$CLUSTERDIR/htslib:$PATH
+export PERL5LIB=$CLUSTERDIR:$PERL5LIB
+./INSTALL.pl -d $CLUSTERDIR -t -c $CACHEDIR</code></pre>
+<p>NOTE: running the INSTALL.pl script will generate a question:</p>
+<pre><code>Have you
+1. added /sw/apps/bioinfo/vep/87/milou to your PERL5LIB environment variable?
+2. added /sw/apps/bioinfo/vep/87/milou/htslib to your PATH environment variable?
+(y/n)</code></pre>
+<p>The two <code>export</code> lines above do that, so answer <code>y</code>.</p>
+<p>Note: the installer claimed to be configured to install v88 of the Ensembl API. We are installing VEP/89, not sure it matters.</p>
+<p>Onwards, according to the instructions for 87: It will install BioPerl and htslib and maybe a few other things for itself as parts of the Ensembl API for VEP only. Seems to want its own versions, so just let it continue. It will also run some tests, which is nice.</p>
+<p>It will later ask if you want to install cache files, fasta files, and others. On milou, answer <code>y</code>, and then <code>0</code> to install all choices. This part takes a long time. If there is an error/message during cache installation (the first step), then it will not ask to install Fasta or plugins; if this happens, then rerun the INSTALL script, saying <code>n</code> to the cache installation but <code>y</code> to the rest. FASTA will probably not be installed (because of the cache installation) and install plugins, but not data. That will be up to the users of the plugins. One uses ExAC, which we do have as a database.</p>
+<p>If on rackham, answer <code>n</code> to all cache installation questions.</p>
+<p>Copy over the scripts.</p>
+<pre><code>cd $VERSIONDIR/src_$CLUSTER/ensembl-tools-release-${VERSION}/scripts/variant_effect_predictor/
+mkdir $CLUSTERDIR/scripts
+rsync -rPlt * $CLUSTERDIR/scripts/</code></pre>
+<p>Ensure all can find the proper perl via <code>#!/usr/bin/env perl</code> line to and (unlike earlier VEP versions) do not deactiveate the install script so users can install their own to their own project directories.</p>
+<pre><code>cd $CLUSTERDIR/scripts
+vi *.pl</code></pre>

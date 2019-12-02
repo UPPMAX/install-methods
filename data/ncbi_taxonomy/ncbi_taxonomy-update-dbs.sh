@@ -27,14 +27,14 @@ echo "Updating NCBI taxonomy files to version $NEWVERSION"
 function error_send_email() {
     local MSG="Error within $0: '$1'"
     echo -e "$MSG"
-	mailx -s "$0 error: '$1'" douglas.scofield@ebc.uu.se <<< $MSG
+	mailx -s "$0 error: '$1'" lars.eklund@uppmax.uu.se <<< $MSG
     exit 1
 }
 
 function warning_send_email() {
     local MSG="Warning within $0: '$1'"
     echo -e "$MSG"
-	mailx -s "$0 warning: '$1'" douglas.scofield@ebc.uu.se <<< $MSG
+	mailx -s "$0 warning: '$1'" lars.eklund@uppmax.uu.se <<< $MSG
 }
 
 cd $ROOT
