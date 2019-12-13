@@ -2,7 +2,7 @@
 
 INVOKE_UNFORMATTED="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 INVOKE=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//')
-USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CATEGORY] [-l LICENSE] [-d description] [-u CLUSTERS] [-x MODE] [-f] --
+USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CATEGORY] [-m MODULENAME] [-l LICENSE] [-d description] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
 
@@ -17,6 +17,7 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CA
         -s  section of the \$TOOL for use with category bioinfo and new software only.
         -w  website of the \$TOOL (no DEFAULT)
         -c  category of the \$TOOL (bioinfo, apps, comp, libs, build, data or parallel) DEFAULT is bioinfo.
+        -m  name of the module file (DEFAULT is the same as the name of the tool)
         -l  license of the \$TOOL (no DEFAULT)
         -d  short description of the \$TOOL (no DEFAULT)
         -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
@@ -28,6 +29,7 @@ TOOL=''
 VERSION=''
 CATEGORY=bioinfo
 MF_CATEGORY=bioinfo-tools
+MODULENAME=''
 LINKFLAG=-i
 CLUSTERS=(rackham irma bianca snowy)
 MODE=INSTALL
@@ -35,7 +37,7 @@ FORCED=0
 
 [[ $# -eq 0 ]] && echo "$USAGE" >&2 && exit 1
 
-while getopts "ht:v:s:w:c:l:d:u:x:f" option
+while getopts "ht:v:s:w:c:m:l:d:u:x:f" option
 do
     case $option in
         h) 
@@ -51,6 +53,8 @@ do
         w) WEBSITE="$OPTARG"
             ;;
         c) CATEGORY="$OPTARG"
+            ;;
+        m) MODULENAME="$OPTARG"
             ;;
         l) LICENSE="$OPTARG"
             ;;
@@ -74,11 +78,19 @@ do
     esac
 done
 shift $((OPTIND-1))
+
+############### Module file name set #####################
+if [ -z "$MODULENAME" ] ; then
+    MODULENAME=$TOOL
+fi
+
 ################### If resuming, skip constructing and just set the variables #####################
 if [ $MODE != "RESUME" ] ; then
     ################### Checking previous versions #####################
     PREV_INSTALL=$(module -t --redirect spider | grep --ignore-case -e "^$TOOL/$" | rev | cut -c 2- | rev)
     PREV_VERSIONS=$(module -t --redirect spider | grep --ignore-case -e "^$TOOL/.*" | cut -d "/" -f 2)
+    PREV_INSTALL_ALT=$(module -t --redirect spider | grep --ignore-case -e "^$MODULENAME/$" | rev | cut -c 2- | rev)
+    PREV_VERSIONS_ALT=$(module -t --redirect spider | grep --ignore-case -e "^$MODULENAME/.*" | cut -d "/" -f 2)
     if [ ! -z "$PREV_INSTALL" ] && [ "$PREV_INSTALL" != "$TOOL" ]
     then
         printf "\n%s\n" "Possibly matching software already installed under name $PREV_INSTALL" >&2
@@ -95,7 +107,24 @@ if [ $MODE != "RESUME" ] ; then
             printf "\nForcing override using TOOL = %s and VERSION = %s\n\n" "$TOOL" "$VERSION"  >&2
         fi
     fi
-
+    ################# Same thing for the alternate module name #############################    
+    if [ ! -z "$PREV_INSTALL_ALT" ] && [ "$PREV_INSTALL_ALT" != "$MODULENAME" ]
+    then
+        printf "\n%s\n" "Possibly matching software already installed under name $PREV_INSTALL_ALT" >&2
+        printf "\n%s\n" "These versions are installed (according to the module system):" >&2
+        for i in ${PREV_VERSIONS_ALT[@]}
+        do
+            printf "%s\n" "$i" >&2
+        done
+        if [[ $FORCED == 0 ]]
+        then
+            printf "%s\n" "You can force install by using -f" >&2
+            exit 1
+        else
+            printf "\nForcing override using TOOL = %s, MODULENAME = %s and VERSION = %s\n\n" "$TOOL" "$MODULENAME" "$VERSION"  >&2
+        fi
+    fi
+    ###################### Checking for exact match #################################################
     if [ ! -z "$PREV_INSTALL" ] && [ "$PREV_INSTALL" == "$TOOL" ]
     then
         printf "\n%s\n" "Exactly matching software already installed under name $PREV_INSTALL" >&2
@@ -110,6 +139,23 @@ if [ $MODE != "RESUME" ] ; then
             exit 1
         else
             printf "\nForcing override using TOOL = %s and VERSION = %s\n\n" "$TOOL" "$VERSION"  >&2
+        fi
+    fi
+    ###################### And again for the alternative module name #################################################
+    if [ ! -z "$PREV_INSTALL_ALT" ] && [ "$PREV_INSTALL_ALT" == "$MODULENAME" ]
+    then
+        printf "\n%s\n" "Exactly matching software already installed under name $PREV_INSTALL_ALT" >&2
+        printf "\n%s\n" "These versions are installed (according to the module system):" >&2
+        for i in ${PREV_VERSIONS_ALT[@]}
+        do
+            printf "%s\n" "$i" >&2
+        done
+        if [[ $FORCED == 0 ]]
+        then
+            printf "%s\n" "Make sure it really IS the same software and use -f" >&2
+            exit 1
+        else
+            printf "\nForcing override using TOOL = %s, MODULENAME = %s and VERSION = %s\n\n" "$TOOL" "$MODULENAME" "$VERSION"  >&2
         fi
     fi
     ##################### Make a cluster list in YAML format ####################
@@ -186,10 +232,12 @@ case $CATEGORY in
         ;;
 esac
 
-COMMONDIR=(/sw/mf/common/$MF_CATEGORY/$TOOL)
+############## Set COMMONDIR #######################
+
+COMMONDIR=(/sw/mf/common/$MF_CATEGORY/$MODULENAME)
 
 if [ $CATEGORY == "bioinfo" ] ; then
-    COMMONDIR=(/sw/mf/common/$MF_CATEGORY/*/$TOOL)
+    COMMONDIR=(/sw/mf/common/$MF_CATEGORY/*/$MODULENAME)
     if [ -z "$SECTION" ] ; then
         if [[ ! -d $COMMONDIR ]] ; then
             dirlist=("$(ls /sw/mf/common/$MF_CATEGORY/)")
@@ -197,7 +245,7 @@ if [ $CATEGORY == "bioinfo" ] ; then
             exit 1
         else
             SUBDIR=${COMMONDIR#/sw/mf/common/$MF_CATEGORY/}
-            SUBDIR=${SUBDIR%/$TOOL}
+            SUBDIR=${SUBDIR%/$MODULENAME}
             SECTION=$SUBDIR
         fi
     else
@@ -218,7 +266,7 @@ if [ $CATEGORY == "bioinfo" ] ; then
         fi
     fi
     
-    COMMONDIR=/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL
+    COMMONDIR=/sw/mf/common/$MF_CATEGORY/$SECTION/$MODULENAME
 fi
 
 MODULE_DIRECTORY="/sw/$CATEGORY/${TOOL}/mf"
@@ -419,7 +467,7 @@ global version modroot
 module-whatis   "Loads $TOOL module environment, version \\\$version"
 
 # Only one version at a time
-conflict $TOOL
+conflict $MODULENAME
 
 #Log loading to syslog
 logToSyslog
