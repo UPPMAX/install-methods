@@ -42,7 +42,7 @@ function create_diamond_db_single() {
     DB_OUTPUT=$1
     DB_INPUT=$2
     shift;shift
-    EXTRA_ARG="$@" #This allows for passing any new or future ofoptins when creating the db if no args given none are set.
+    EXTRA_ARGS="$@" #This allows for passing any new or future ofoptins when creating the db if no args given none are set.
     FUNC="create_diamond_db_single"
     FAA_FILE=${DB_OUTPUT}.faa
     zcat $DB_INPUT > $FAA_FILE

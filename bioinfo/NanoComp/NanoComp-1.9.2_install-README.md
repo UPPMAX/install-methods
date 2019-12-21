@@ -23,5 +23,16 @@ LOG
     PREFIX=$PWD/$CLUSTER
     PYTHONUSERBASE=$PREFIX pip install --user NanoComp==1.9.2
 
+And, provide the `orca` executable to flatten images.
+
+    mkdir src
+    cd src
+    wget https://github.com/plotly/orca/releases/download/v1.2.1/orca-1.2.1-x86_64.AppImage
+    chmod +x orca-1.2.1-x86_64.AppImage
+    cp -av orca-1.2.1-x86_64.AppImage $PREFIX/bin/
+    cd $PREFIX/bin
+    ln -s orca-1.2.1-x86_64.AppImage orca
+    ./orca --help
+
 Set up standard mf file using MultiQC/1.8 as a template.
 

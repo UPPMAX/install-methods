@@ -254,39 +254,44 @@ biobanks (N > 400,000).
 Building from source did not work well: compiling the source distribution via
 installation with `R CMD INSTALL` is a mess.  As we're not going to install
 this via an image, I will use the prebuilt binary which includes the
-shared library `SAIGE.so`.  It requires `libboost_iostreams.so.1.58.0`, so I'll
-compile that version of boost and update RPATH information in `SAIGE.so` to
-find it directly.
+shared library `SAIGE.so`.
+
+Version 0.35.8.8, the first version we installed, required
+`libboost_iostreams.so.1.58.0`, so I compiled that version of boost and updated
+the RPATH information in `SAIGE.so` to find it directly.  Version 0.36.2 does
+not use that library, instead it links to `libopenblas.so.0`.  It appears that
+our module openblas/0.2.19 will satisfy this.  We have both multi- and single-threaded versions of this library.
+From <http://eagle.r-forge.r-project.org/multithreadR.html> I am guessing that SAIGE is linking to this library to get
+multithreaded speedups.  So, I'll update its RPATH to point to the multichreaded version, which is `/sw/libs/openblas/0.2.19/rackham/lib/libopenblas.so.0`.
 
     mkdir -p /sw/apps/R_packages/$VERSION/external_packages
     cd /sw/apps/R_packages/$VERSION/external_packages
-    SAIGE_VERSION=0.35.8.8
+    SAIGE_VERSION=0.36.2
     [[ -f SAIGE_${SAIGE_VERSION}_R_x86_64-pc-linux-gnu.tar.gz ]] || wget --timestamping https://github.com/weizhouUMICH/SAIGE/releases/download/${SAIGE_VERSION}/SAIGE_${SAIGE_VERSION}_R_x86_64-pc-linux-gnu.tar.gz
     R CMD INSTALL SAIGE_${SAIGE_VERSION}_R_x86_64-pc-linux-gnu.tar.gz
-    ldd /sw/apps/R_packages/3.6.1/rackham/SAIGE/libs/SAIGE.so
-
-This is installed, but not complete.  The shared library included with the
-package cannot find its required boost library.  `gcc/8.3.0` is used for
-`R/3.6.1`, so go build `boost/1.58.0-gcc8.3.0` and update `SAIGE.so` with the
-needed path.
-
     cd /sw/apps/R_packages/3.6.1/rackham/SAIGE/libs/
     ldd SAIGE.so
-    module load patchelf/0.8
+    module load patchelf/0.10
+    module load openblas/0.2.19
     patchelf --print-rpath SAIGE.so
-    patchelf --set-rpath /sw/libs/boost/1.58.0-gcc8.3.0/rackham/lib SAIGE.so
+    patchelf --set-rpath $OPENBLAS_ROOT/lib SAIGE.so
     patchelf --print-rpath SAIGE.so
+    module unload openblas patchelf
     ldd SAIGE.so
 
 This package also contains example scripts and data in an `extdata/` directory
-that are heavily referenced in its documentation.  They seem to be wrappers for
-the functions provided in the package, but many users will probably want to use
+that are heavily referenced in its documentation.  They are wrappers for
+the functions provided in the package, and many users will want to use
 these scripts directly.  They are not included in the binary download, so
 download the source package and rename it to include SAIGE, lift this directory
 out into the installation directory, and document how to access them in the
 module help.
 
+    cd /sw/apps/R_packages/$VERSION/external_packages
     [[ -f SAIGE_${SAIGE_VERSION}.tar.gz ]] || wget -O SAIGE_${SAIGE_VERSION}.tar.gz --timestamping https://github.com/weizhouUMICH/SAIGE/archive/${SAIGE_VERSION}.tar.gz
+    tar xzvf SAIGE_${SAIGE_VERSION}.tar.gz SAIGE-${SAIGE_VERSION}/extdata 
+    mv SAIGE-${SAIGE_VERSION}/extdata /sw/apps/R_packages/$VERSION/$CLUSTER/SAIGE/
+    rmdir SAIGE-${SAIGE_VERSION}
 
 
 ### MDInstruments, MRPracticals, TwoSampleMR
