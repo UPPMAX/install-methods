@@ -24,7 +24,10 @@ sql = """CREATE TABLE swtree (
 
 cursor.execute(sql)
 
-for root, dirs, files in os.walk("/sw/apps/", topdown=True):
+for root, dirs, files in os.walk("/sw/", topdown=True):
+    if re.search('/sw/.+/src/', root):
+        continue
+    print(root)
     m = re.search('/sw/.+/(.+?)/(.+?)/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)$', root)
     if m:
         path = root
@@ -34,14 +37,22 @@ for root, dirs, files in os.walk("/sw/apps/", topdown=True):
             m = re.search('/sw/.+/(.+?)/.+/(.+?)/(.+?)/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)$', root)
             version = m.group(2) + m.group(3)
             cluster = m.group(4)
+#        elif (m.group(1) == "PLplot" and "old" in m.group(2)):
+#            m = re.search('/sw/.+/(.+?)/(.+?)/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)$', root)
+#            version = m.group(2)
+#            cluster = m.group(3)
         elif (m.group(1) == "x86_64" or m.group(1) == "build"):
             m = re.search('/sw/.+/(.+?)/.+/(.+?)/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)$', root)
             version = m.group(2)
             cluster = m.group(3)
-        elif "old" in m.group(2) or m.group(2) == "gcc":
+        elif ("old" in m.group(2) or m.group(2) == "gcc") and (m.group(1) != "PLplot" and m.group(1) != "piper"):
             m = re.search('/sw/.+/(.+?)/(.+?)/(.+?)/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)$', root)
             version = m.group(2) + m.group(3)
             cluster = m.group(4)
+        elif (m.group(1) == "matlab"):
+            m = re.search('/sw/.+/(.+?)/.+?/(.+?)/.+/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)$', root)
+            version = m.group(2)
+            cluster = m.group(3)
         name = m.group(1)
         key = name + "_" + version
         print(key, name, version, cluster, path)
@@ -64,7 +75,7 @@ cursor.execute("DROP TABLE IF EXISTS mftree")
 # Create table as per requirement
 sql = """CREATE TABLE mftree (
    key  CHAR(120),
-   name  CHAR(30) NOT NULL,
+   module  CHAR(30) NOT NULL,
    cluster CHAR(40),
    version CHAR(120),
    path CHAR(320))"""
@@ -75,17 +86,17 @@ for root, dirs, files in os.walk("/sw/mf/", topdown=True):
     m = re.search('/sw/mf/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)/.*(.+?)/(.+?)$', root)
     if m:
         for f in files:
-            name = m.group(3)
+            module = m.group(3)
             version = f
             cluster = m.group(1)
-            key = name + "_" + version
-            print(key, name, version, cluster, root)
+            key = module + "_" + version
+            print(key, module, version, cluster, root)
             dirs[:] = ''
             # New insert of all table
-            sql = "INSERT INTO mftree (key, name, cluster, version, path) VALUES (?, ?, ?, ?, ?)"
+            sql = "INSERT INTO mftree (key, module, cluster, version, path) VALUES (?, ?, ?, ?, ?)"
             try:
                 # Execute the SQL command
-               cursor.execute(sql, (key, name,cluster, version, root))
+               cursor.execute(sql, (key, module,cluster, version, root))
                # Commit your changes in the database
                db.commit()
             except:
@@ -107,7 +118,7 @@ try:
 except:
     print("ERROR!\n")
 
-#        cursor.execute(sql, (key, name,cluster, version,))
+#        cursor.execute(sql, (key, module,cluster, version,))
 #        sqlhits = cursor.fetchall()
 #        print(sqlhits[0])
 #        for row in sqlhits:
@@ -115,7 +126,7 @@ except:
 #                diff = "****DIFFER****"
 #            else:
 #                diff = ''
-#            print(row, name, version, cluster, diff)
+#            print(row, module, version, cluster, diff)
 
 # Crawl and collect path, mf and format for the database. update for skillnader i databasen. 
 # Set the insw and inmf parameters of the database or print them

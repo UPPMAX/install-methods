@@ -582,7 +582,7 @@ chmod +x $POSTFILE
 
 echo -e "\nMODULE: To get a funcioning module, first, please modify ${MODULE_FILE} if needed." 1>&2
 echo -e "\tIf new, it contains some examples that will most likely need to be changed" 1>&2
-echo -e "\n\tAfter you are finished withe the module file, run ${LINKFILE} to copy it and invoke all_mflink correctly." 1>&2
+echo -e "\n\tAfter you are finished withe the module file, run ${POSTFILE} to copy it and invoke all_mflink correctly." 1>&2
 echo -e "\n\nAlso, please modify ${README_FILE}\n" 1>&2
 echo -e "\n\nFor Singularity, make a bash file in a directory you include in the module file, like this:\n" 1>&2
 echo -e "echo '#!/bin/bash' > /sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER/bin/$TOOL"
