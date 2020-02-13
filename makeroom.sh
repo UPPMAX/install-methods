@@ -558,8 +558,8 @@ cat > "$YAMLFILE" <<EOF4
 - CLUSTER:$YAMLLIST
 - LICENSE:$LICENSE
 - WEBSITE:$WEBSITE
-    - LOCAL:$MODULE_FILE
-    - COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
+- LOCAL:$MODULE_FILE
+- COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
 EOF4
 
 ################ Create a post-installation file ##########################
@@ -598,7 +598,7 @@ echo "$NEWS6" 1>&2
 umask \$PREUMASK
 
 mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
-printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOL_DIRECTORY" "$VERSION_DIRECTORY" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
+printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOL_DIRECTORY" "$VERSION_DIRECTORY" "/sw/$CATEGORY/$TOOL/$VERSION/\\\$CLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
 TMP
 
 ################# End of installation makeroom script #########################

@@ -32,7 +32,7 @@ conda-mirror --upstream-channel r2018.11 --target-directory /sw/apps/conda/lates
 echo "INDEXING CONDA" >> $LOGFILE
 cd /sw/apps/conda/latest/rackham/local_repo
 conda-index --channel-name CONDA_UPPMAX --verbose */ 2>&1 | tee -a $LOGFILE
-conda clean -ilpt -y
+conda clean -a -y
 
 module unload conda
 echo "FINISHED" >> $LOGFILE
