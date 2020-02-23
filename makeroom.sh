@@ -558,8 +558,8 @@ cat > "$YAMLFILE" <<EOF4
 - CLUSTER:$YAMLLIST
 - LICENSE:$LICENSE
 - WEBSITE:$WEBSITE
-    - LOCAL:$MODULE_FILE
-    - COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
+- LOCAL:$MODULE_FILE
+- COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
 EOF4
 
 ################ Create a post-installation file ##########################
@@ -582,7 +582,7 @@ chmod +x $POSTFILE
 
 echo -e "\nMODULE: To get a funcioning module, first, please modify ${MODULE_FILE} if needed." 1>&2
 echo -e "\tIf new, it contains some examples that will most likely need to be changed" 1>&2
-echo -e "\n\tAfter you are finished withe the module file, run ${LINKFILE} to copy it and invoke all_mflink correctly." 1>&2
+echo -e "\n\tAfter you are finished withe the module file, run ${POSTFILE} to copy it and invoke all_mflink correctly." 1>&2
 echo -e "\n\nAlso, please modify ${README_FILE}\n" 1>&2
 echo -e "\n\nFor Singularity, make a bash file in a directory you include in the module file, like this:\n" 1>&2
 echo -e "echo '#!/bin/bash' > /sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER/bin/$TOOL"
@@ -598,7 +598,7 @@ echo "$NEWS6" 1>&2
 umask \$PREUMASK
 
 mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
-printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOL_DIRECTORY" "$VERSION_DIRECTORY" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
+printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOL_DIRECTORY" "$VERSION_DIRECTORY" "/sw/$CATEGORY/$TOOL/$VERSION/\\\$CLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
 TMP
 
 ################# End of installation makeroom script #########################
