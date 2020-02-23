@@ -12,7 +12,7 @@ Continue.
 
     VERSION=2.4.2
     CLUSTER=${CLUSTER:?CLUSTER must be set}
-    cd /sw/apps/bioinfo
+    cd /sw/bioinfo
     mkdir -p KAT
     cd KAT
     mkdir $VERSION
@@ -20,7 +20,8 @@ Continue.
     mkdir $CLUSTER src
     PFX=$PWD/$CLUSTER
     cd src
-    [[ -f kat-${VERSION}.tar.gz ]] || wget https://github.com/TGAC/KAT/archive/Release-${VERSION}.tar.gz
+    [[ -f Release-${VERSION}.tar.gz ]] || wget https://github.com/TGAC/KAT/archive/Release-${VERSION}.tar.gz
+    [[ -d KAT-Release-${VERSION} ]] && rm -rf KAT-Release-${VERSION}
     tar xzf Release-${VERSION}.tar.gz 
     cd KAT-Release-${VERSION}
     module load gcc/6.3.0

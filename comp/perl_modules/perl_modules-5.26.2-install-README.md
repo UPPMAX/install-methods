@@ -283,6 +283,8 @@ XML::DOM::XPath has a test error, --force it!
     # cpanm Sort::Fields  # this will not install in perl_modules/5.26.2
     cpanm Text::NSP
 
+    cpanm File::Util File::Path File::Basename Getopt::Long Text::Levenshtein::XS String::Approx MCE MCE::Loop MCE::Shared
+
 Additional statistics-oriented modules.  Two have pod errors and another has an
 odd error and these two must be forced.
 

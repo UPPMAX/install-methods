@@ -18,7 +18,7 @@ LOG
     [[ $CLUSTER == rackham ]] && for CL in snowy irma bianca milou ; do test -L $CL || ln -s rackham $CL; done
     cd src
     SRCDIR=$PWD
-    wget wget http://cf.10xgenomics.com/supp/cell-atac/refdata-cellranger-atac-GRCh38-1.2.0.tar.gz
+    wget http://cf.10xgenomics.com/supp/cell-atac/refdata-cellranger-atac-GRCh38-1.2.0.tar.gz
     wget http://cf.10xgenomics.com/supp/cell-atac/refdata-cellranger-atac-hg19-1.2.0.tar.gz
     wget http://cf.10xgenomics.com/supp/cell-atac/refdata-cellranger-atac-b37-1.2.0.tar.gz
     wget http://cf.10xgenomics.com/supp/cell-atac/refdata-cellranger-atac-mm10-1.2.0.tar.gz
@@ -29,7 +29,7 @@ LOG
     cp -av chromium-shared-sample-indexes-plate.* $PREFIX/
     cd $PREFIX
     for F in $SRCDIR/*.tar.gz ; do
-        echo tar xzvf $F
+        tar xzvf $F
     done
 
 In the mf file, set `CELLRANGER_ATAC_DATA` and `CELLRANGER_ATAC_DATA_ROOT`.

@@ -145,6 +145,22 @@ is eventually installed at Uppmax.  Should be no problem to leave it out.
     install.packages(xtra.list, Ncpus=8)
 
 
+The `hdf5r` module required a newer version of HDF5 than was on the system, so
+load `hdf5/1.8.18` and install it with that loaded.  Checking the shared object
+shows that it has proper RPATH info so the `hdf5` module does not need to be
+loaded.  Add a message to the mf indicating that it should be loaded if
+building against it, possibly.
+
+    cd $R_LIBS_USER
+    wget https://cran.r-project.org/src/contrib/hdf5r_1.3.1.tar.gz
+    module load hdf5/1.8.18
+    R CMD INSTALL hdf5r_1.3.1.tar.gz
+    mv hdf5r_1.3.1.tar.gz ../external_packages/
+    module unload hdf5
+    ldd hdf5r/libs/hdf5r.so
+
+
+
 Interim updates
 ---------------
 
@@ -184,6 +200,20 @@ Several R packages found here are not on CRAN or BioConductor, as a result of ei
 * For a github-hosted package that is not part of CRAN, see ASCAT, rrbgen or STITCH.  If the instructions of the package recommend using something like `devtools::github_install("repository/packagename")`, then the package is one of these.
 * For an "expired" CRAN package that is still in its archive, see igraph0.
 * For a "custom" R package that is part of another module, see dnase2tf.  This latter one uses a command within R.
+
+
+### LDna
+
+A github package.
+
+    devtools::install_github("petrikemppainen/LDna", ref = 'master')
+
+
+### velocyto.R
+
+This needed `hdf5r` installed, see above.
+
+    devtools::install_github("velocyto-team/velocyto.R")
 
 
 ### ASCAT
