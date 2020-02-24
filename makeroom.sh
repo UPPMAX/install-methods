@@ -507,7 +507,7 @@ else
 fi
 
 ###################### README creation/addition #########################
-
+cd $TOOL_DIRECTORY
 if [ "\$LATEST_README" = \$(basename $README_FILE) ]; then
     printf "\n%s\n" "WARNING! Already existing readme file $README_FILE for this exact version ($VERSION). Adding stuff at the bottom. Remove stuff you don't use from it." 1>&2
 fi
