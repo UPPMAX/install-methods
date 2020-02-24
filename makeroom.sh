@@ -523,6 +523,9 @@ $LICENSE
 
 Structure creating script ($SCRIPTFILE) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
 
+makeroom.sh invoked with:
+    $INVOKE
+
 EOF2
 
 if [ -z "\$LATEST_README" ]; then
