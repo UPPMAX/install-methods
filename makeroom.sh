@@ -524,7 +524,7 @@ $LICENSE
 Structure creating script ($SCRIPTFILE) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
 
 makeroom.sh invoked with:
-    $INVOKE
+$INVOKE
 
 EOF2
 
@@ -540,6 +540,7 @@ LOG
     TOOLDIR=/sw/$CATEGORY/\\\$TOOL
     VERSIONDIR=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION
     PREFIX=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
+    $INVOKE
     ./$SCRIPTFILE
     cd /sw/$CATEGORY/\\\$TOOL/\\\$VERSION/src
     wget http://
