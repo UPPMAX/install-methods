@@ -273,8 +273,8 @@ MODULE_DIRECTORY="/sw/$CATEGORY/${TOOL}/mf"
 SRC_DIRECTORY="/sw/$CATEGORY/${TOOL}/${VERSION}/src"
 CLUSTER_DIRECTORY="/sw/$CATEGORY/${TOOL}/${VERSION}/${INSTALLCLUSTER}"
 MODULE_FILE="${MODULE_DIRECTORY}/${VERSION}"
-VERSION_DIRECTORY="/sw/$CATEGORY/${TOOL}/${VERSION}"
-TOOL_DIRECTORY="/sw/$CATEGORY/${TOOL}"
+VERSIONDIR="/sw/$CATEGORY/${TOOL}/${VERSION}"
+TOOLDIR="/sw/$CATEGORY/${TOOL}"
 README_FILE=/sw/$CATEGORY/${TOOL}/${TOOL}-${VERSION}_install-README.md
 SCRIPTFILE=makeroom_${TOOL}_${VERSION}.sh
 REMOVEFILE=makeroom_REMOVE_${TOOL}_${VERSION}.sh
@@ -303,7 +303,7 @@ NEWS6="$LICENSE"
 
 ################### If resuming, now we exit #####################
 if [ $MODE == "RESUME" ] ; then
-    printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOL_DIRECTORY" "$VERSION_DIRECTORY" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+    printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
     echo $TMPFILE
     exit 0
 fi
@@ -317,17 +317,17 @@ if [ $MODE == "REMOVE" ] ; then
     rm -f $YAMLFILE
     rm -f $POSTFILE
     rm -f $SOURCEMEFILE
-    rm -rf $VERSION_DIRECTORY
+    rm -rf $VERSIONDIR
     rm -f $README_FILE
-    rm -f $TOOL_DIRECTORY/$SCRIPTFILE
+    rm -f $TOOLDIR/$SCRIPTFILE
     if [ -d "$MODULE_DIRECTORY" ]; then
         if [ -z "\$(ls -A $MODULE_DIRECTORY)" ]; then
             rm -rf $MODULE_DIRECTORY
         fi
     fi
-    if [ -d "$TOOL_DIRECTORY" ]; then
-        if [ -z "\$(ls -A $TOOL_DIRECTORY)" ]; then
-            rm -rf $TOOL_DIRECTORY
+    if [ -d "$TOOLDIR" ]; then
+        if [ -z "\$(ls -A $TOOLDIR)" ]; then
+            rm -rf $TOOLDIR
         fi
     fi
     if [ -d "$COMMONDIR" ]; then
@@ -352,23 +352,23 @@ RMVTMP
     if [ -f $SOURCEMEFILE ]; then
         printf "%s\n" "      $SOURCEMEFILE" 1>&2
     fi
-    if [ -d $VERSION_DIRECTORY ]; then
-        printf "%s\n" "      $VERSION_DIRECTORY" 1>&2
+    if [ -d $VERSIONDIR ]; then
+        printf "%s\n" "      $VERSIONDIR" 1>&2
     fi
     if [ -f $README_FILE ]; then
         printf "%s\n" "      $README_FILE" 1>&2
     fi
-    if [ -f $TOOL_DIRECTORY/$SCRIPTFILE ]; then
-        printf "%s\n" "      $TOOL_DIRECTORY/$SCRIPTFILE" 1>&2
+    if [ -f $TOOLDIR/$SCRIPTFILE ]; then
+        printf "%s\n" "      $TOOLDIR/$SCRIPTFILE" 1>&2
     fi
     if [ -d "$MODULE_DIRECTORY" ]; then
         if [ -z "$(ls -A $MODULE_DIRECTORY)" ]; then
             printf "%s\n" "      $MODULE_DIRECTORY" 1>&2
         fi
     fi
-    if [ -d "$TOOL_DIRECTORY" ]; then
-        if [ -z "$(ls -A $TOOL_DIRECTORY)" ]; then
-            printf "%s\n" "      $TOOL_DIRECTORY" 1>&2
+    if [ -d "$TOOLDIR" ]; then
+        if [ -z "$(ls -A $TOOLDIR)" ]; then
+            printf "%s\n" "      $TOOLDIR" 1>&2
         fi
     fi
     if [ -d "$COMMONDIR" ]; then
@@ -390,8 +390,8 @@ cat > $SCRIPTFILE <<TMP
 ## Invoked with $INVOKE
 PREUMASK=\$(umask)
 umask 0002
-if [ ! -d "$VERSION_DIRECTORY" ]; then
-	mkdir -p "${VERSION_DIRECTORY}"
+if [ ! -d "$VERSIONDIR" ]; then
+	mkdir -p "${VERSIONDIR}"
 fi
 if [ ! -d "$MODULE_DIRECTORY" ]; then
 	mkdir -p "${MODULE_DIRECTORY}"
@@ -411,7 +411,7 @@ else
 fi
 ######### Checking for readme files
 unset -v LATEST_README
-cd $TOOL_DIRECTORY
+cd $TOOLDIR
 for FILE in *README.md; do
     [[ \$FILE -nt \$LATEST_README ]] && LATEST_README=\$FILE
 done
@@ -425,7 +425,7 @@ fi
 if [ ! -d "$CLUSTER_DIRECTORY" ]; then
 	mkdir -p "${CLUSTER_DIRECTORY}"
 fi
-cd $VERSION_DIRECTORY
+cd $VERSIONDIR
 for C in ${CLUSTERS[@]}; do
     if [ \$C != $INSTALLCLUSTER ]; then
         ln -s $INSTALLCLUSTER \$C
@@ -507,7 +507,7 @@ else
 fi
 
 ###################### README creation/addition #########################
-cd $TOOL_DIRECTORY
+cd $TOOLDIR
 if [ "\$LATEST_README" = \$(basename $README_FILE) ]; then
     printf "\n%s\n" "WARNING! Already existing readme file $README_FILE for this exact version ($VERSION). Adding stuff at the bottom. Remove stuff you don't use from it." 1>&2
 fi
@@ -602,11 +602,11 @@ echo "$NEWS6" 1>&2
 umask \$PREUMASK
 
 mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
-printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOL_DIRECTORY" "$VERSION_DIRECTORY" "/sw/$CATEGORY/$TOOL/$VERSION/\\\$CLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
+printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "/sw/$CATEGORY/$TOOL/$VERSION/\\\$CLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
 TMP
 
 ################# End of installation makeroom script #########################
 
-printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOL_DIRECTORY" "$VERSION_DIRECTORY" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
 echo $TMPFILE
 chmod +x $SCRIPTFILE
