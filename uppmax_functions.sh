@@ -1,5 +1,9 @@
 # Various helper functions for UPPMAX
 
+#  unset or set to something other than "yes" to not export the install functions
+#  these include section mfshow mflink all_mflink 
+_EXPORT_UPPMAX_INSTALL_FUNCTIONS=yes
+
 # currently active clusters
 
 _CURRENT_CLUSTERS="bianca irma rackham snowy"
@@ -47,7 +51,8 @@ _usage_
 # Starting in the current directory, find symlinks owned by a specific user then
 # remove and recreate them, which switches ownership to the current user
 
-function ownlinks() {
+function ownlinks()
+{
     local U=${1:-wesleys}
     local LINKS=("$(find . -type l -user $U)")
     local L
@@ -75,94 +80,13 @@ function sj() { squeue -a -o"%.7i  %.8a %.9P %.8f  %50j  %.8u %.8T  %.10M  %.10l
 # No special privileges required
 function purge-cache() { rm -rf $HOME/.lmod.d ; }
 
-# Get real locations and disk usage of project backup and nobackup volumes
-function projvol() {
-    [[ $CLUSTER == milou ]] || { echo "This will only work on milou"; return; }
-    [[ $# != 0 ]] || { cat <<_usage_
-USAGE:  projvol project-name [ b | n ]
-
-Report project disk volumes and usage on /pica, for both backup and nobackup areas.
-
-When second option is provided and matches b or n' a single line is produced summarising
-usage for backup (b) or nobackup (n) in 1 KiB blocks; primerily used by projvolpi
-_usage_
-    return; }
-    local p=${1:?Must provide project name}
-    local k=${2}
-    local B=/proj/$p;          [[ -L $B ]] || { echo "correct $B not found" >/dev/stderr; return; }
-    local N=/proj/$p/nobackup; [[ -L $N ]] || { echo "correct $N not found" >/dev/stderr; return; }
-    local B=$(readlink -f $B)
-    local N=$(readlink -f $N)
-    local VB=$(dirname $B)
-    local VN=$(dirname $N)
-    [[ $B && $N && $VB && $VN ]] || { echo "Could not resolve symlinks" >/dev/stderr; return; }
-    if [[ $k == b ]] ; then
-        df -k $B | tail -n 1
-    elif [[ $k == n ]] ; then
-        df -k $N | tail -n 1
-    else
-        echo -e "\n$p backup    ---- $B"
-        df -kh $B
-        echo -e "\n$p nobackup  ---- $N"
-        df -kh $N
-    fi
-}
-
-function projvolpi() {
-    [[ $CLUSTER == milou ]] || { echo "This will only work on milou"; return; }
-    [[ $# != 0 ]] || { cat <<_usage_
-USAGE:  projvolpi pi-name
-
-For a given PI, do 'projvol' for all projects where 'Principal:' lines in /sw/uppmax/etc/projects match
-pi-name, and also summarise total allocation and usage for all projects, in GiB and TiB.
-
-pi-name may match a substring of the PI name, but must match just one PI (minus PI ID number) within the projects file
-_usage_
-    return; }
-    local pi=${1:?Must provide PI name}
-    local grep=$(which --skip-alias --skip-functions grep)
-    local projdb=/sw/uppmax/etc/projects
-    local proj=
-    $grep --quiet "^Principal: .*$pi" $projdb || { echo "PI '$pi' not found in $projdb"; return; }
-    [[ $($grep "^Principal: .*$pi" $projdb | sed 's/\([^(]\+\) (.*$/\1/' | uniq | wc -l) == 1 ]] || { echo "More than one PI matched '$pi' in $projdb"; $grep "^Principal: .*$pi" $projdb | uniq; return; }
-    local fullpi=$($grep -m 1 "^Principal: .*$pi" $projdb | sed 's/^Principal:  *\(.*\)$/\1/')
-    echo "found fullpi $fullpi"
-    proj=$($grep -B 6 "^Principal: .*$pi" $projdb | $grep '^Name: ' | $grep -v 'delivery' | awk '{print $2}')
-    for pr in $proj ; do
-        projvol $pr
-    done 2>/dev/null
-    echo -e "\nTotal space for PI '$pi', which matches '$fullpi', in both GiB and TiB:"
-    local bsz=0; local nsz=0
-    local n=
-    for n in $(for pr in $proj ; do projvol $pr b | awk '{print $2}'; done) ; do
-        (( bsz += n ))
-    done 2>/dev/null
-    for n in $(for pr in $proj ; do projvol $pr n | awk '{print $2}'; done) ; do
-        (( nsz += n ))
-    done 2>/dev/null
-    local about=$(bc <<< "scale=0; $bsz / 1024^2"); about+=" GiB \t"; about+=$(bc <<< "scale=2; $bsz / 1024^3"); about+=" TiB"
-    local anout=$(bc <<< "scale=0; $nsz / 1024^2"); anout+=" GiB \t"; anout+=$(bc <<< "scale=2; $nsz / 1024^3"); anout+=" TiB"
-    echo -e "Allocation\tbackup  \t$about"
-    echo -e "Allocation\tnobackup\t$anout"
-    bsz=0; nsz=0
-    for n in $(for pr in $proj ; do projvol $pr b | awk '{print $3}'; done) ; do
-        (( bsz += n ))
-    done 2>/dev/null
-    for n in $(for pr in $proj ; do projvol $pr n | awk '{print $3}'; done) ; do
-        (( nsz += n ))
-    done 2>/dev/null
-    local ubout=$(bc <<< "scale=0; $bsz / 1024^2"); ubout+=" GiB \t"; ubout+=$(bc <<< "scale=2; $bsz / 1024^3"); ubout+=" TiB"
-    local unout=$(bc <<< "scale=0; $nsz / 1024^2"); unout+=" GiB \t"; unout+=$(bc <<< "scale=2; $nsz / 1024^3"); unout+=" TiB"
-    echo -e "Space_InUse\tbackup  \t$ubout"
-    echo -e "Space_InUse\tnobackup\t$unout"
-}
-
 #
 # Appexpert functions for managing mf files.  Use no arguments to get brief help.
 #
 
 # Show section of bioinfo-tools in which each module is found
-function section() {
+function section()
+{
     [[ $# == 0 ]] && { echo "USAGE:  section bioinfo-modulename [ bioinfo-modulename ... ]"; return; }
     local args=("$@")
     local M=
@@ -179,7 +103,8 @@ function section() {
 }
 
 # Full listing of all mf files for a given module under /sw/mf
-function mfshow() {
+function mfshow()
+{
     local SUBDIR
     local ALL
     local OPTIND
@@ -238,7 +163,8 @@ _usage_
 
 
 # Create a cluster-specific symlink to /sw/mf/common/... for an mf file
-function mflink() {
+function mflink()
+{
     local SUBDIR
     local FORCE
     local QUIET
@@ -297,7 +223,8 @@ _usage_
 
 # Create all cluster mf symlinks for a given module. The version file in
 # /sw/mf/common/... must already exist.  Uses mflink function above
-function all_mflink() {
+function all_mflink()
+{
     local SUBDIR
     local FORCE
     local OPT
@@ -310,7 +237,7 @@ function all_mflink() {
             c)  SUBDIR=compilers ; OPT="-$opt" ;;
             b)  SUBDIR=build-tools ; OPT="-$opt" ;;
             p)  SUBDIR=parallel ; OPT="-$opt" ;;
-            d)  SUBDIR=data ; OPT="-$opt" ;;
+            p)  SUBDIR=data ; OPT="-$opt" ;;
             f)  FORCE=yes ;;
             *)  echo "unknown option" ; return ;;
         esac
@@ -369,4 +296,7 @@ _usage_
     fi
 }
 
+if [[ "$_EXPORT_UPPMAX_INSTALL_FUNCTIONS" == "yes" ]] ; then
+    export -f section mfshow mflink all_mflink 
+fi
 
