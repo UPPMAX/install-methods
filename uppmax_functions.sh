@@ -1,7 +1,7 @@
 # Various helper functions for UPPMAX
 
 #  unset or set to something other than "yes" to not export the install functions
-#  these include section mfshow mflink all_mflink 
+#  these include section mfshow mflink all_mflink fixup
 _EXPORT_UPPMAX_INSTALL_FUNCTIONS=yes
 
 # currently active clusters
@@ -296,7 +296,43 @@ _usage_
     fi
 }
 
+# Fix up the permissions and group ownership of installation directories.  Sets
+# group to 'sw' unless -G is given, setgid's directories unless -g is given, and
+# makes all files group writable and other unwritable.
+function fixup()
+{
+    # NOTE: Gnu xargs assumed, providing --no-run-if-empty
+
+    local GROUP=sw
+    local SETGID_DIRS=yes
+    local HELP
+    local OPTIND
+
+    while getopts "gG:h" o; do
+      case $o in
+        g) unset SETGID_DIRS ;;
+        G) GROUP=${OPTARG} ;;
+        h) HELP=yes ;;
+      esac
+    done
+    shift $((OPTIND-1))
+    [[ $# == 0 || $HELP ]] && { echo "USAGE: $0 [ -g, to NOT setgid g+s on dirs ] [ -G group, default '$GROUP' ] [ -h, for help ] dir-or-file ..." ; return; }
+
+    set -x
+
+    args=("$@")
+    for arg in ${args[@]} ; do
+        chgrp -hR $GROUP "$arg"
+        chmod -R u+rwX,g+rwX,o+rX-w "$arg"
+        [[ $SETGID_DIRS ]] && find "$arg" -type d -print0 | xargs -0 --no-run-if-empty chmod g+s
+    done
+
+    set +x
+}
+
+
 if [[ "$_EXPORT_UPPMAX_INSTALL_FUNCTIONS" == "yes" ]] ; then
-    export -f section mfshow mflink all_mflink 
+    export -f section mfshow mflink all_mflink fixup
 fi
+
 
