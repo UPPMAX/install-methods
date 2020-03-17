@@ -523,14 +523,6 @@ $LICENSE
 
 Structure creating script ($SCRIPTFILE) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
 
-makeroom.sh invoked with:
-$INVOKE
-
-EOF2
-
-if [ -z "\$LATEST_README" ]; then
-    printf "\n%s\n" "Making a new readme file $README_FILE" 1>&2
-    cat >> "$README_FILE" <<EOF3
 LOG
 ---
 
@@ -542,6 +534,11 @@ LOG
     PREFIX=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
     $INVOKE
     ./$SCRIPTFILE
+EOF2
+
+if [ -z "\$LATEST_README" ]; then
+    printf "\n%s\n" "Making a new readme file $README_FILE" 1>&2
+    cat >> "$README_FILE" <<EOF3
     cd /sw/$CATEGORY/\\\$TOOL/\\\$VERSION/src
     wget http://
     tar xvf 
