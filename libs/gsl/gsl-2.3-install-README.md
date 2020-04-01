@@ -43,6 +43,9 @@ Now load pieces for the build and build it.
     make
     make install
 
+    cd $CLUSTERDIR
+    ln -s lib lib64
+
 So paying attention to the output of make install, we should probably set both
 LD_LIBRARY_PATH and LD_RUN_PATH to point to $CLUSTERDIR/lib when loading this 
 module.  We should also arrange for include directories via CPATH.  So in the
@@ -59,9 +62,3 @@ mf file we need
     prepend-path MANPATH           $modroot/share/man
     prepend-path PKG_CONFIG_PATH   $modroot/lib/pkgconfig
 
-2016-12-19: We also must symlink `lib64` to `lib` or dump gcc might not link it correctly.
-
-    cd $CLUSTERDIR
-    ln -s lib lib64
-
-Set up for other systems.

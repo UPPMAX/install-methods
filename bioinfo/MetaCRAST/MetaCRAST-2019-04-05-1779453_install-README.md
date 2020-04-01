@@ -8,7 +8,12 @@ GPL v3
 
 Structure creating script (makeroom_MetaCRAST_2019-04-05-1779453.sh) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/bioinfo/MetaCRAST/makeroom_2019-04-05-1779453.sh
 
-Reading its `local_install.sh` script, it needs BioPerl, some other perl modules, cd-hit, and some perm changes.
+LOG
+---
+
+Reading its `local_install.sh` script, it needs BioPerl, some other perl
+modules, cd-hit, and some perm changes.  So, load BioPerl and that will get the
+other modules in.
 
 #!/bin/sh
 # How to install

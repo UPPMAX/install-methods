@@ -20,3 +20,11 @@ Structure creating script (makeroom_snakemake_5.4.5.sh) made with makeroom.sh (A
     ml python3/3.7.0
     pip3 install snakemake --target=$PREFIX
 
+Alternative:
+
+    cd $VERSIONDIR/src
+    git clone https://github.com/snakemake/snakemake.git
+    python3 setup.py install --prefix=$PREFIX
+    pip3 install pytest --target=$PREFIX
+
+

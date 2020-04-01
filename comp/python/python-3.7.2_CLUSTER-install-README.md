@@ -25,9 +25,9 @@ LOG
     VERSIONDIR=${VERSION}_${CLUSTER}
     mkdir -p $VERSIONDIR
     [[ $CLUSTER == rackham ]] && for CL in snowy irma bianca ; do ln -s $VERSIONDIR ${VERSION}_${CL} ; done
-    PFX=$PWD/$VERSIONDIR
-    chmod g+s $PFX
-    cd $PFX
+    PREFIX=$PWD/$VERSIONDIR
+    chmod g+s $PREFIX
+    cd $PREFIX
     mkdir src
     cd src
     [[ -f Python-${VERSION}.tgz ]] || wget https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tgz
@@ -36,7 +36,7 @@ LOG
     cd Python-${VERSION}/
     module load sqlite/3.24.0
     SQLITE_LIBDIR=$(pkg-config sqlite3 --variable=libdir)
-    ./configure --prefix=$PFX --enable-shared --enable-loadable-sqlite-extensions --enable-optimizations LDFLAGS="-Wl,-rpath=$PFX/lib,-rpath=$SQLITE_LIBDIR,-rpath=/sw/libs/wxWidgets/lib"
+    ./configure --prefix=$PREFIX --enable-shared --enable-loadable-sqlite-extensions --enable-optimizations LDFLAGS="-Wl,-rpath=$PREFIX/lib,-rpath=$SQLITE_LIBDIR,-rpath=/sw/libs/wxWidgets/lib"
     make && make install
 
 
@@ -91,3 +91,13 @@ Now lock it down.
 
     chmod -R -w /sw/comp/python/${VERSION}_${CLUSTER}
 
+
+## non-3-suffixed names
+
+For any of the python/3.* packages, we need to provide `python` and other names
+that point correctly to the python/3.* python.  Do *not* do this for the
+python3/3.* packages, which are meant to be loadable next to a python/2.*
+packages.
+
+    cd $PREFIX/bin
+    chmod u+w . && for B in python idle pydoc ; do ( test -f ${B}3 && ln -sf ${B}3 ${B} ) ; test -f python3-config && ln -sf python3-config python-config; done ; chmod u-w .

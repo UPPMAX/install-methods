@@ -1,4 +1,4 @@
-gsl/2.6
+gsl/2.5
 =======
 
 <https://www.gnu.org/software/gsl/>
@@ -6,9 +6,9 @@ gsl/2.6
 Used under license:
 GPL
 
-Structure creating script (makeroom_gsl_2.6.sh) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/libs/gsl/makeroom_2.6.sh
+Structure creating script (makeroom_gsl_2.5.sh) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/libs/gsl/makeroom_2.5.sh
 
-Gnu Scientific Library 2.6
+Gnu Scientific Library 2.5
 
 The GNU Scientific Library (GSL) is a numerical library for C and C++
 programmers. It is free software under the GNU General Public License.
@@ -27,11 +27,11 @@ LOG
 
     cd /sw/libs
     TOOL=gsl
-    VERSION=2.6
+    VERSION=2.5
     makeroom.sh -f -t $TOOL -v $VERSION -w https://www.gnu.org/software/gsl/ -c libs -l "GPL" -d "numerical library for C and C++ programmers"
     ./makeroom_${TOOL}_${VERSION}.sh
-    source SOURCEME_${TOOL}_${VERSION}
     cd gsl
+    source SOURCEME_${TOOL}_${VERSION}
     cd $VERSION/src
     [[ -f gsl-${VERSION}.tar.gz ]] || wget http://ftp.gnu.org/pub/gnu/gsl/gsl-${VERSION}.tar.gz
     tar xzf gsl-${VERSION}.tar.gz 
@@ -44,6 +44,7 @@ LOG
 
     cd $PREFIX
     ln -s lib lib64
+
 
 So paying attention to the output of make install, we should probably set both
 LD_LIBRARY_PATH and LD_RUN_PATH to point to $CLUSTERDIR/lib when loading this 

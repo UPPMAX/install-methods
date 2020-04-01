@@ -211,9 +211,22 @@ A github package.
 
 ### velocyto.R
 
-This needed `hdf5r` installed, see above.
+This needed `hdf5r` installed, see above.  It also expects boost to be in a
+system location, so we must load a boost module and install velocyto.R from my
+own fork so that it recognises `BOOST_ROOT`.
 
-    devtools::install_github("velocyto-team/velocyto.R")
+Outside R, load the boost module compatible with the version of gcc used to build R:
+
+    module load boost/1.66.0-gcc8.3.0
+
+Then inside R:
+
+    devtools::install_github("douglasgscofield/velocyto.R")
+
+And verify outside R:
+
+    module unload boost
+    ldd /sw/apps/R_packages/3.6.1/rackham/velocyto.R/libs/velocyto.R.so
 
 
 ### ASCAT
