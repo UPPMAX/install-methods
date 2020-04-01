@@ -294,8 +294,8 @@ if [ -z "$DESC" ] ; then
 else
     NEWSDESC="($DESC) version"
 fi
-NEWS1="[$NEWSCAT] $TOOL version $VERSION installed on all systems"
-NEWS2="$TOOL $NEWSDESC $VERSION installed on all systems as module $TOOL/$VERSION."
+NEWS1="[$NEWSCAT] $MODULENAME/$VERSION installed on all systems"
+NEWS2="$TOOL $NEWSDESC $VERSION installed on all systems as module $MODULENAME/$VERSION."
 NEWS3="$WEBSITE"
 NEWS4=$(echo ${CLUSTERS[@]} | sed "s/ /, /g") 
 NEWS5="$VERSION"
@@ -560,14 +560,14 @@ cat > "$YAMLFILE" <<EOF4
 - LICENSE:$LICENSE
 - WEBSITE:$WEBSITE
 - LOCAL:$MODULE_FILE
-- COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
+- COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$MODULENAME/$VERSION
 EOF4
 
 ################ Create a post-installation file ##########################
 cat > "$POSTFILE" <<EOF5
 . uppmax_functions.sh
-cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
-all_mflink -f $LINKFLAG $TOOL $VERSION
+cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$MODULENAME/$VERSION
+all_mflink -f $LINKFLAG $MODULENAME $VERSION
 fixup $TOOLDIR
 echo "News:"
 echo "$NEWS1" 1>&2
