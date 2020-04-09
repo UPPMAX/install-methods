@@ -28,6 +28,7 @@ for root, dirs, files in os.walk("/sw/", topdown=True):
     if re.search('/sw/.+/src/', root):
         continue
     print(root)
+    # Standard path is /sw/<category>/<sw_name>/<version>/<cluster>/ Thus the matching below.
     m = re.search('/sw/.+/(.+?)/(.+?)/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)$', root)
     if m:
         path = root
@@ -61,7 +62,7 @@ for root, dirs, files in os.walk("/sw/", topdown=True):
         sql = "INSERT INTO swtree (key, name, cluster, version, path) VALUES (?, ?, ?, ?, ?)"
         try:
             # Execute the SQL command
-           cursor.execute(sql, (key, name,cluster, version, path))
+           cursor.execute(sql, (key, name, cluster, version, path))
            # Commit your changes in the database
            db.commit()
         except:
@@ -83,7 +84,7 @@ sql = """CREATE TABLE mftree (
 cursor.execute(sql)
 
 for root, dirs, files in os.walk("/sw/mf/", topdown=True):
-    m = re.search('/sw/mf/(bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)/.*(.+?)/(.+?)$', root)
+    m = re.search('/sw/mf/(common|bianca|irma|isis|kalkyl|milou|rackham|snowy|terry|tintin)/.*(.+?)/(.+?)$', root)
     if m:
         for f in files:
             module = m.group(3)
