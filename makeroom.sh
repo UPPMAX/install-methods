@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+#
+# Author: Jonas Söderberg
+# E-mail: jonas.soderberg@scilifelab.se
+#
 
 INVOKE_UNFORMATTED="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 INVOKE=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//')
@@ -377,7 +381,7 @@ RMVTMP
         fi
     fi
 ##### DRYRUN END ######
-    printf "export TOOL='' VERSION='' TOOLDIR='' VERSIONDIR='' PREFIX='' COMMONDIR=''SRCDIR='' NEWS=''" > $TMPFILE
+    printf "export TOOL='' VERSION='' TOOLDIR='' VERSIONDIR='' PREFIX='' COMMONDIR='' SRCDIR='' NEWS=''" > $TMPFILE
     chmod +x $TMPFILE
     printf "%s\n" $TMPFILE
     chmod +x $REMOVEFILE
@@ -526,7 +530,7 @@ ${TOOL}/${VERSION}
 Used under license:
 $LICENSE
 
-Structure creating script ($SCRIPTFILE) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
+Structure creating script ($SCRIPTFILE) moved to /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
 
 LOG
 ---
