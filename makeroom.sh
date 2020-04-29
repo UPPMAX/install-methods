@@ -2,7 +2,7 @@
 
 INVOKE_UNFORMATTED="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 INVOKE=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//')
-USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CATEGORY] [-m MODULENAME] [-l LICENSE] [-d description] [-u CLUSTERS] [-x MODE] [-f] --
+USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-d description] [-m MODULENAME] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
 
@@ -15,11 +15,11 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-w WEBSITE] [-c CA
         -t  name of the \$TOOL (REQUIRED)
         -v  version of the \$TOOL (REQUIRED)
         -s  section of the \$TOOL for use with category bioinfo and new software only.
-        -w  website of the \$TOOL (no DEFAULT)
         -c  category of the \$TOOL (bioinfo, apps, comp, libs, build, data or parallel) DEFAULT is bioinfo.
-        -m  name of the module file (DEFAULT is the same as the name of the tool)
+        -w  website of the \$TOOL (no DEFAULT)
         -l  license of the \$TOOL (no DEFAULT)
         -d  short description of the \$TOOL (no DEFAULT)
+        -m  name of the module file (DEFAULT is the same as the name of the tool)
         -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
         -x  flag for mode, i.e. INSTALL, RESUME or REMOVE (DEFAULT is INSTALL, RESUME just sets the variables and exits.)
         -f  forcing the script to ignore warnings."
@@ -50,15 +50,15 @@ do
             ;;
         s) SECTION="$OPTARG"
             ;;
-        w) WEBSITE="$OPTARG"
-            ;;
         c) CATEGORY="$OPTARG"
             ;;
-        m) MODULENAME="$OPTARG"
+        w) WEBSITE="$OPTARG"
             ;;
         l) LICENSE="$OPTARG"
             ;;
         d) DESC="$OPTARG"
+            ;;
+        m) MODULENAME="$OPTARG"
             ;;
         u) CLUSTERS=($OPTARG)
             ;;
@@ -270,8 +270,8 @@ if [ $CATEGORY == "bioinfo" ] ; then
 fi
 
 MODULE_DIRECTORY="/sw/$CATEGORY/${TOOL}/mf"
-SRC_DIRECTORY="/sw/$CATEGORY/${TOOL}/${VERSION}/src"
-CLUSTER_DIRECTORY="/sw/$CATEGORY/${TOOL}/${VERSION}/${INSTALLCLUSTER}"
+SRCDIR="/sw/$CATEGORY/${TOOL}/${VERSION}/src"
+PREFIX="/sw/$CATEGORY/${TOOL}/${VERSION}/${INSTALLCLUSTER}"
 MODULE_FILE="${MODULE_DIRECTORY}/${VERSION}"
 VERSIONDIR="/sw/$CATEGORY/${TOOL}/${VERSION}"
 TOOLDIR="/sw/$CATEGORY/${TOOL}"
@@ -294,7 +294,7 @@ if [ -z "$DESC" ] ; then
 else
     NEWSDESC="($DESC) version"
 fi
-NEWS1="[$NEWSCAT] $MODULENAME/$VERSION installed on all systems"
+NEWS1="[$NEWSCAT] $TOOL/$VERSION installed on all systems"
 NEWS2="$TOOL $NEWSDESC $VERSION installed on all systems as module $MODULENAME/$VERSION."
 NEWS3="$WEBSITE"
 NEWS4=$(echo ${CLUSTERS[@]} | sed "s/ /, /g") 
@@ -303,7 +303,7 @@ NEWS6="$LICENSE"
 
 ################### If resuming, now we exit #####################
 if [ $MODE == "RESUME" ] ; then
-    printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+    printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s SRCDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "i$PREFIX" "$COMMONDIR" "$SRCDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
     echo $TMPFILE
     exit 0
 fi
@@ -377,7 +377,7 @@ RMVTMP
         fi
     fi
 ##### DRYRUN END ######
-    printf "export TOOL='' VERSION='' TOOLDIR='' VERSIONDIR='' PREFIX='' COMMONDIR='' NEWS=''" > $TMPFILE
+    printf "export TOOL='' VERSION='' TOOLDIR='' VERSIONDIR='' PREFIX='' COMMONDIR=''SRCDIR='' NEWS=''" > $TMPFILE
     chmod +x $TMPFILE
     printf "%s\n" $TMPFILE
     chmod +x $REMOVEFILE
@@ -419,11 +419,11 @@ done
 if [ ! -d "$COMMONDIR" ]; then
 	mkdir -p "${COMMONDIR}"
 fi
-if [ ! -d "$SRC_DIRECTORY" ]; then
-	mkdir -p "${SRC_DIRECTORY}"
+if [ ! -d "$SRCDIR" ]; then
+	mkdir -p "${SRCDIR}"
 fi
-if [ ! -d "$CLUSTER_DIRECTORY" ]; then
-	mkdir -p "${CLUSTER_DIRECTORY}"
+if [ ! -d "$PREFIX" ]; then
+	mkdir -p "${PREFIX}"
 fi
 cd $VERSIONDIR
 for C in ${CLUSTERS[@]}; do
@@ -489,14 +489,19 @@ if [module-info mode load] {
 # Directories for the program:
 #
 
-prepend-path    PATH            \\\$modroot
-prepend-path    PATH            \\\$modroot/bin
-prepend-path    PERL5LIB        \\\$modroot/perl-packages/lib/perl5
-prepend-path    LD_LIBRARY_PATH \\\$modroot/lib
-prepend-path    PYTHONPATH      \\\$modroot/lib/python3.6/site-packages
-prepend-path    PYTHONPATH      \\\$modroot/lib/python2.7/site-packages
-prepend-path    MANPATH         \\\$modroot/share/man
-setenv          ${TOOL}_ROOT    \\\$modroot
+prepend-path    PATH                \\\$modroot
+prepend-path    PATH                \\\$modroot/bin
+prepend-path    PERL5LIB            \\\$modroot/perl-packages/lib/perl5
+prepend-path    LD_LIBRARY_PATH     \\\$modroot/lib
+prepend-path    LD_RUN_PATH         \\\$modroot/lib 
+prepend-path    LIBRARY_PATH        \\\$modroot/lib 
+prepend-path    PKG_CONFIG_PATH     \\\$modroot/lib/pkgconfig 
+prepend-path    PYTHONPATH          \\\$modroot/lib/python3.6/site-packages
+prepend-path    PYTHONPATH          \\\$modroot/lib/python2.7/site-packages
+prepend-path    MANPATH             \\\$modroot/share/man
+prepend-path    CPATH               \\\$modroot/include 
+prepend-path    CPLUS_INCLUDE_PATH  \\\$modroot/include 
+setenv          ${TOOL^^}_ROOT      \\\$modroot
 
 EOF
 else
@@ -532,6 +537,7 @@ LOG
     TOOLDIR=/sw/$CATEGORY/\\\$TOOL
     VERSIONDIR=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION
     PREFIX=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
+    SRCDIR=$SRCDIR
     $INVOKE
     ./$SCRIPTFILE
 EOF2
@@ -539,7 +545,7 @@ EOF2
 if [ -z "\$LATEST_README" ]; then
     printf "\n%s\n" "Making a new readme file $README_FILE" 1>&2
     cat >> "$README_FILE" <<EOF3
-    cd /sw/$CATEGORY/\\\$TOOL/\\\$VERSION/src
+    cd $SRCDIR
     wget http://
     tar xvf 
     make
@@ -560,14 +566,14 @@ cat > "$YAMLFILE" <<EOF4
 - LICENSE:$LICENSE
 - WEBSITE:$WEBSITE
 - LOCAL:$MODULE_FILE
-- COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$MODULENAME/$VERSION
+- COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$MODU/$VERSION
 EOF4
 
 ################ Create a post-installation file ##########################
 cat > "$POSTFILE" <<EOF5
 . uppmax_functions.sh
-cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$MODULENAME/$VERSION
-all_mflink -f $LINKFLAG $MODULENAME $VERSION
+cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
+all_mflink -f $LINKFLAG $TOOL $VERSION
 fixup $TOOLDIR
 echo "News:"
 echo "$NEWS1" 1>&2
@@ -599,11 +605,11 @@ echo "$NEWS6" 1>&2
 umask \$PREUMASK
 
 mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
-printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "/sw/$CATEGORY/$TOOL/$VERSION/\\\$CLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
+printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s SRCDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "/sw/$CATEGORY/$TOOL/$VERSION/\\\$CLUSTER" "$COMMONDIR" "$SRCDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
 TMP
 
 ################# End of installation makeroom script #########################
 
-printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "/sw/$CATEGORY/$TOOL/$VERSION/$INSTALLCLUSTER" "$COMMONDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s SRCDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "$PREFIX" "$COMMONDIR" "$SRCDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
 echo $TMPFILE
 chmod +x $SCRIPTFILE
