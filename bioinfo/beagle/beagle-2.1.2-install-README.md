@@ -15,16 +15,12 @@ modules.  Build docs, OpenMP library versions, and disable OpenCL and CUDA.
     TOOL=beagle
     VERSION=2.1.2
     CLUSTER=${CLUSTER:?CLUSTER must be set}
-    mkdir -p /sw/apps/bioinfo/$TOOL
-    cd /sw/apps/bioinfo/$TOOL
+    mkdir -p /sw/bioinfo/$TOOL
+    cd /sw/bioinfo/$TOOL
     mkdir $VERSION
     cd $VERSION
     rm -rf $CLUSTER
     mkdir $CLUSTER
-    case $CLUSTER in
-        rackham) for CC in bianca irma    ; do rm -rf $CC ; ln -s $CLUSTER $CC ; done ;;
-        irma)    for CC in bianca rackham ; do rm -rf $CC ; ln -s $CLUSTER $CC ; done ;;
-    esac
     cd $CLUSTER
     PFX=$PWD
     cd ..

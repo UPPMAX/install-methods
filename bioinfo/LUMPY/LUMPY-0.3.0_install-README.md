@@ -21,25 +21,45 @@ This requires a python 2.
     cd $TOOL
     source SOURCEME_LUMPY_0.3.0 
     cd 0.3.0/
+    rmdir $PREFIX
+
     cd src/
-    wget https://github.com/arq5x/lumpy-sv/releases/download/0.3.0/lumpy-sv.tar.gz
+    [[ -f lumpy-sv.tar.gz ]] || wget https://github.com/arq5x/lumpy-sv/releases/download/${VERSION}/lumpy-sv.tar.gz
+    [[ -d lumpy-sv ]] && rm -rf lumpy-sv
     tar xzf lumpy-sv.tar.gz 
-    cd lumpy-sv/
+    mv lumpy-sv $PREFIX
+    cd $PREFIX
+
     module load python/2.7.15
     module load gcc/6.3.0
-    PYTHONUSERBASE=$PREFIX/python_packages pip install --user pysam
+    module load zlib/1.2.11
+    module load sambamba/0.7.1
+    module load samblaster/0.1.24
+    module load samtools/1.9
+    module load bwa/0.7.17
+
+    virtualenv $PREFIX/venv
+    $PREFIX/venv/bin/pip install pysam
+    $PREFIX/venv/bin/pip install numpy
+
     make
-    cp -av * $PREFIX/
-    cd ..
-    rmdir lumpy-sv
 
-This means that `$PREFIX/bin` and `$PREFIX/scripts` are added to `PATH`, and that we add our own directory to `PYTHONPATH` to pick up the pysam.
-
-Don't forget to change the `#!` lines.
-
-    cd $PREFIX
     cd scripts
-    sed -i 's,^#!.*python.*$,#!/usr/bin/env python,' *.py
-    sed -i 's,^#!.*perl.*$,#!/usr/bin/env perl,' *.pl
 
-For the mf file, load the modules python/2.7.15, sambamba/0.7.1, samblaster/0.1.24, samtools/1.9, bwa/0.7.17.
+    sed -i 's,^#!.*python.*$,#!PREFIXPREFIX,' *.py extractSplitReads_BwaMem lumpy_smooth lumpyexpress vcfToBedpe
+    sed -i 's,^#\!.*perl.*$,#!/usr/bin/env perl,' *.pl
+    sed -i "s,PREFIXPREFIX,$PREFIX/venv/bin/python2.7," *.py extractSplitReads_BwaMem lumpy_smooth lumpyexpress vcfToBedpe
+
+    cd bamkit
+
+    sed -i 's,^#!.*python.*$,#!PREFIXPREFIX,' *.py
+    sed -i "s,PREFIXPREFIX,$PREFIX/venv/bin/python2.7," *.py
+
+Make sure the virtualenv's python can find the python .so.
+
+    module unload python
+    ldd $PREFIX/venv/bin/python2.7
+
+For the mf file, load the modules sambamba/0.7.1, samblaster/0.1.24, samtools/1.9, bwa/0.7.17.
+
+

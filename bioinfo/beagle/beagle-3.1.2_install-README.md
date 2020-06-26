@@ -44,3 +44,24 @@ Change `SOURCEME_beagle_${VERSION}` to use `$CLUSTER` when setting `PREFIX`.
     make install
     cp -av doc $PREFIX
 
+After building on rackham, build for **snowy** using EasyBuild fosscuda/2019b.
+
+    [[ "$CLUSTER" != "snowy" ]] && { echo "MUST BUILD ON SNOWY"; exit 0; }
+    cd /sw/bioinfo/beagle/$VERSION
+    rm -rf $CLUSTER
+    mkdir $CLUSTER
+    PREFIX=$PWD/$CLUSTER
+    cd src
+    module purge
+    source /sw/EasyBuild/source-me-for-EasyBuild-4.2.0-$CLUSTER
+    rm -rf beagle-lib-${VERSION} beagle-lib-${VERSION}-$CLUSTER
+    tar xzf v${VERSION}.tar.gz
+    mv beagle-lib-${VERSION} beagle-lib-${VERSION}-$CLUSTER
+    cd beagle-lib-${VERSION}-$CLUSTER
+    module load fosscuda/2019b
+    CUDABASE=$(which nvcc)
+    CUDABASE=${CUDABASE%/bin/nvcc}
+    ./autogen.sh
+    ./configure --prefix=$PREFIX --with-cuda=$CUDABASE
+    make
+    make install

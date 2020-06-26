@@ -70,6 +70,7 @@ which seems to build with python2.
     pip3 install matplotlib
     pip3 install pyyaml
     pip3 install pandas
+    pip3 install reportlab
     pip3 install h5py
     pip3 install pysqlite3
     pip3 install twisted requests pillow pygments nltk

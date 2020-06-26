@@ -31,3 +31,5 @@ LOG
     pip install --upgrade .
 
     singularity pull -F docker://quay.io/comparative-genomics-toolkit/cactus:30682864ff2331d25f3b12f54b5fd37b46dbc946
+
+

@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 module load bioinfo-tools
-module load diamond/0.9.29
+module load diamond/0.9.31
 module load gnuparallel/20170122
 
 ROOT=/sw/data/diamond_databases

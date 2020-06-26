@@ -1,7 +1,5 @@
-# MEMEsuite-5.0.1-install-README.md
-
 MEMEsuite/5.0.1
-==================
+===============
 
 The MEME Suite: Motif-based sequence analysis tools
 
@@ -11,32 +9,28 @@ The MEME Suite: Motif-based sequence analysis tools
 
 LOG
 ---
-CLUSTER=rackham
-VERSION=5.0.1
-mkdir  -p $VERSION/$CLUSTER/src
-cd !$
-wget http://meme-suite.org/doc/download.html/
-tar zxf meme_5.0.1.tar.gz
-cd meme-5.0.1
 
-# I used latest gcc and MPI - and didnt feel too bad about it either.
-# MPI is needed to be in the environment for configure to recognize it
-module load gcc/8.2.0 openmpi
-# Perl with lots of modules is needed as a requisites
-module load perl_modules/5.18.4
+    TOOL=MEMEsuite
+    VERSION=5.0.1
+    cd /sw/bioinfo
+    mkdir -p $TOOL
+    cd $TOOL
+    mkdir -p $VERSION
+    cd $VERSION
+    mkdir $CLUSTER
+    [[ $CLUSTER == rackham ]] && for CL in irma bianca snowy ; do test -L $CL || ln -sf $CLUSTER $CL ; done
+    PREFIX=$PWD/rackham
+    cd src/
+    wget http://meme-suite.org/doc/download.html/
+    module load gcc/8.3.0 openmpi/3.1.3  # these are available on all clusters
+    module load perl/5.18.4 perl_modules/5.18.4
+    module load python/2.7.15
+    tar xzf meme_5.0.1_1.tar.gz 
+    cd meme-5.0.1/
+    ./configure --prefix=$PREFIX --with-url=http://meme-suite.org
+    make
+    make test
+    make install
 
-# You check if dependencies are satisfied by running cd scripts; perl dependencies.pl
-
-/configure prefix=/sw/apps/bioinfo/MEMEsuite/5.0.1/rackham --with-url=http://meme-suite.org
-make && make test && make install
-cd ../../
-for $c in $OTHERCLUSTERS; do
-  ln -fs $CLUSTER $c
-done
-
-fixup -g
-
-NOTE! I had 2 failed tests related to some diff with a .tsv table and .html. The rest PASSED.
-
-
+As Linus also found, 2 failed tests related to some diff with a .tsv table and .html.
 

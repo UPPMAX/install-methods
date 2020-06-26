@@ -21,3 +21,5 @@ LOG
         wget 'https://downloads.sourceforge.net/project/popoolation2/popoolation2_1201.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fpopoolation2%2F&ts=1498457202&use_mirror=vorboss' -O src/popoolation2_1201.zip
     fi
     unzip src/popoolation2_1201.zip
+
+Load perl_modules/5.18.4 and samtools/0.1.19.

@@ -41,3 +41,24 @@ Get local copy of the manual.
     cd $PREFIX/..
     wget https://github.com/bbuchfink/diamond/raw/master/diamond_manual.pdf
 
+diamond/0.9.29
+========================
+
+<https://github.com/bbuch>
+
+Used under license:
+
+
+Structure creating script (makeroom_diamond_0.9.29.sh) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/bioinfo/diamond/makeroom_0.9.29.sh
+
+LOG
+---
+
+    TOOL=diamond
+    VERSION=0.9.29
+    CLUSTER=rackham
+    TOOLDIR=/sw/bioinfo/$TOOL
+    VERSIONDIR=/sw/bioinfo/$TOOL/$VERSION
+    PREFIX=/sw/bioinfo/$TOOL/$VERSION/$CLUSTER
+    /home/laekl991/scripts/install-methods/makeroom.sh -f" -t "diamond" -v "0.9.29" -s "alignment" -w "https://github.com/bbuch "fink/diamond" -l "GPL v3" -d "sequence aligner for protein and translated DNA sea                                                                                                                                         rches\, designed for high performance analysis of big sequence data"
+    ./makeroom_diamond_0.9.29.sh

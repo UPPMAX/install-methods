@@ -354,6 +354,12 @@ and then within R
     install_github(c("MRCIEU/TwoSampleMR","MRCIEU/MRInstruments"))
     install_github("WSpiller/MRPracticals",build_opts = c("--no-resave-data", "--no-manual"),build_vignettes = TRUE)
 
+### EasyQC
+
+    wget https://homepages.uni-regensburg.de/~wit59712/easyqc/EasyQC_9.2.tar.gz
+    wget https://homepages.uni-regensburg.de/~wit59712/easyqc/EasyQC_9.0_Commands_140918_2.pdf
+
+
 Adding a new package
 ---------------
 

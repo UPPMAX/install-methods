@@ -52,9 +52,9 @@ cd $K2_DB_BASE
 for DB_TYPE in nt ; do
     DBNAME=${VERSION}_${DB_TYPE}
     DB=$K2_DB_BASE/$DBNAME
-    /usr/bin/time -v kraken2-build_parallel --download-taxonomy --db $DB
-    /usr/bin/time -v kraken2-build_parallel --download-library $DB_TYPE --db $DB
-    /usr/bin/time -v kraken2-build_parallel --build --threads $THREADS --db $DB
+    /usr/bin/time -v kraken2-build_parallel --use-ftp --download-taxonomy --db $DB
+    /usr/bin/time -v kraken2-build_parallel --use-ftp --download-library $DB_TYPE --db $DB
+    /usr/bin/time -v kraken2-build_parallel --use-ftp --build --threads $THREADS --db $DB
     LN=latest_${DB_TYPE}
     rm -f $LN
     ln -sf ./$DBNAME $LN

@@ -30,3 +30,18 @@ LOG
     mv beast $PREFIX
 
 Use the 2.4.8 mf file, but add `BEAST2_ROOT` variable.
+
+Install Beast2 system-level packages by setting a system directory explicitly.  In all the scripts that run Java, add the line
+
+    BEAST_PACKAGES="$BEAST/packages"
+
+and to the java invocations, the option
+
+    ...  -Dbeast.system.package.dir="$BEAST_PACKAGES" ...
+
+And then install all available packages system-wide with
+
+    for P in $(packagemanager -list | tail -n +5 | cut -f1 -d'|') ; do
+        echo $P ...
+        packagemanager -useAppDir -add $P
+    done

@@ -37,3 +37,11 @@ LOG
     cp -av ../rackham/.condarc .
     ln -s ../rackham/* .
     vim .condarc
+
+From 4.7 there is a need to replace things in /sw/apps/conda/latest/rackham/lib/python3.7/site-packages/conda/core/subdir_data.py
+At the following rows I inserted:
+
+66         ## Due to extensive file handling 200401
+67         ## if not cache_key[0].startswith('file://') and cache_key in SubdirData._cache_:
+68         if cache_key in SubdirData._cache_:
+
