@@ -23,6 +23,15 @@ singularity build REPET.sif image/
 
 
 
+export SINGULARITY_CACHEDIR=/sw/bioinfo/REPET/3.0/src/tmp
+export SINGULARITY_TMPDIR=/sw/bioinfo/REPET/3.0/src/tmp
+singularity build --sandbox --fix-perms REPET_sb docker://urgi/docker_vre_aio:latest
+##chmod -R u+rwX REPET_sb
+chmod -R 2777 REPET_sb
+singularity build REPET.sif REPET_sb
+
+
+
 
 
 

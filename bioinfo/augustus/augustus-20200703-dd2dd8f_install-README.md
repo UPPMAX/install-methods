@@ -1,22 +1,25 @@
-augustus/3.3.3
+augustus/20200703-dd2dd8f
 ========================
+
+<https://github.com/Gaius-Augustus/Augustus>
 
 <http://bioinf.uni-greifswald.de/augustus>
 
 Used under license:
 Artistic
 
-Structure creating script (makeroom_augustus_3.3.3.sh) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/bioinfo/augustus/makeroom_3.3.3.sh
-
+Structure creating script (makeroom_augustus_20200703-dd2dd8f.sh) moved to /sw/bioinfo/augustus/makeroom_20200703-dd2dd8f.sh
 
 LOG
 ---
 
-    VERSION=3.3.3
-    cd /sw/bioinfo/augustus
-    makeroom.sh -f -t augustus -v $VERSION -s annotation -w http://bioinf.uni-greifswald.de/augustus -l Artistic -d "find genes and their structures in one or more genomes"
-    ./makeroom_augustus_${VERSION}.sh
-    source SOURCEME_augustus_${VERSION}
+    TOOL=augustus
+    COMMIT=dd2dd8f
+    VERSION=20200703-${COMMIT}
+    cd /sw/bioinfo/$TOOL
+    makeroom.sh -f -t $TOOL -v $VERSION -s annotation -w http://bioinf.uni-greifswald.de/augustus -l Artistic -d "find genes and their structures in one or more genomes"
+    ./makeroom_${TOOL}_${VERSION}.sh
+    source SOURCEME_${TOOL}_${VERSION}
     cd $VERSION
     cd src
 
@@ -24,9 +27,12 @@ LOG
     module load boost/1.66.0-gcc8.3.0
     module load zlib/1.2.11
     module load bioinfo-tools bamtools/2.5.1
+    module load git/2.21.0
 
-    wget https://github.com/Gaius-Augustus/Augustus/releases/download/v${VERSION}/augustus-${VERSION}.tar.gz
-    tar xzf augustus-${VERSION}.tar.gz
+    git clone https://github.com/Gaius-Augustus/Augustus
+    cd Augustus
+    git reset --hard $COMMIT
+    cd ..
 
 Define this for some makefiles.
 
@@ -46,18 +52,26 @@ place using 4 threads.  These are needed for `bam2wig`.
 
 Now to begin building augustus.
 
-    cd augustus-${TOOLVERSION}/
+    cd Augustus
 
+    mkdir bin
 
 ## Modify augustus makefiles
 
-Uncomment this line in `common.mk` so that we can handle gzipped input files:
+Make sure this line in `common.mk` is uncommented so that we can handle gzipped input files:
 
     ZIPINPUT = true
 
-We will not build the comparative gene prediction (CGP) version.  We could, but
-no one has asked for this yet.  Be careful not to define SQLITE nor MYSQL
-support in common.mk, otherwise it will assume you want CGP.
+Define Augustus version to match the module version:
+
+    AUGVERSION = 20200703-dd2dd8f
+
+Do not build the comparative gene prediction (CGP) version.
+
+    COMPGENEPRED = false
+
+We could, but no one has asked for this yet.  Be careful not to define SQLITE
+nor MYSQL support in common.mk, otherwise it will assume you want CGP.
 
 Modify the augustus makefile to handle boost correctly.
 
@@ -66,13 +80,13 @@ Modify the augustus makefile to handle boost correctly.
     cd ..
 
 For the above, while the file is open, within the `ZIPINPUT`-dependent section,
-modify `CXXFLAGS` and `LIBS`.  At the `CXXFLAGS` line, add
+modify `CPPFLAGS` and `LIBS`.  At the `CPPFLAGS` line, add
 `-I${BOOST_ROOT}/include`.  At the `LIBS` line, add `-L${BOOST_ROOT}/lib`
 *prior to* `-lboost_iostreams`.  `BOOST_ROOT` is defined by the boost module loaded
 above.  The lines should look like:
 
-    ifdef ZIPINPUT
-        CXXFLAGS += -DZIPINPUT -I${BOOST_ROOT}/include
+    ifeq (,$(findstring $(ZIPINPUT),0 false False FALSE))  # if ZIPINPUT is not defined or is something else than 0, false, False or FALSE
+        CPPFLAGS += -DZIPINPUT -I${BOOST_ROOT}/include
         LIBS    = -L${BOOST_ROOT}/lib -lboost_iostreams
     endif
 
@@ -165,7 +179,7 @@ Set up the config copy script so users can set up their own augustus config
 directory since this one isn't writable by general users or (after the
 following step) by `sw` members.
 
-    sed -e "s/^TOOLVERSION=3\.2\.3$/TOOLVERSION=$TOOLVERSION/" < ../../3.2.3/$CLUSTER/augustus_config_copy > augustus_config_copy
+    sed -e "s/^TOOLVERSION=3\.3\.3$/TOOLVERSION=$TOOLVERSION/" < ../../3.3.3/$CLUSTER/augustus_config_copy > augustus_config_copy
 
 
 ## Final setup
@@ -179,17 +193,15 @@ Tighten up permissions on config directory so `sw` group members don't
 inadvertently write something there using BUSCO or some other tool.
 
     ( cd $TOOLDIR && fixup -g $VERSION )
+    cd $PREFIX
     chmod -R -w config
 
 
 ## mf file
 
-We can use the mf file from augustus/3.2.3.  All we need to do is add
+We can use the mf file from augustus/3.3.3.  All we need to do is add
 `$modroot/{bin,scripts}` to `PATH`, `$modroot/man` to `MANPATH` and set
 `AUGUSTUS_CONFIG_PATH` to `$modroot/config`.  And use `perl/5.26.2` and
 `perl_modules/5.26.2`.
 
 
-### 2020-07-01
-
-updated `scripts/bamToWig.py` to current master-branch version based on suggestion from braker how-to.

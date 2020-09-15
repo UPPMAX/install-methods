@@ -238,6 +238,13 @@ Several R packages found here are not on CRAN or BioConductor, as a result of ei
 * For a "custom" R package that is part of another module, see dnase2tf.  This latter one uses a command within R.
 
 
+### harmony
+
+A github package.
+
+    devtools::install_github("immunogenomics/harmony", ref = 'master')
+
+
 ### LDna
 
 A github package.
