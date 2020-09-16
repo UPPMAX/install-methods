@@ -496,6 +496,7 @@ if [module-info mode load] {
 prepend-path    PATH                \\\$modroot
 prepend-path    PATH                \\\$modroot/bin
 prepend-path    PERL5LIB            \\\$modroot/perl-packages/lib/perl5
+prepend-path    R_LIBS              \\\$modroot/lib
 prepend-path    LD_LIBRARY_PATH     \\\$modroot/lib
 prepend-path    LD_RUN_PATH         \\\$modroot/lib 
 prepend-path    LIBRARY_PATH        \\\$modroot/lib 
@@ -549,7 +550,7 @@ EOF2
 if [ -z "\$LATEST_README" ]; then
     printf "\n%s\n" "Making a new readme file $README_FILE" 1>&2
     cat >> "$README_FILE" <<EOF3
-    cd $SRCDIR
+    cd \\\$SRCDIR
     wget http://
     tar xvf 
     make

@@ -11,17 +11,64 @@ db.text_factory = str
 # prepare a cursor object using cursor() method
 cursor = db.cursor()
 
-sql = "SELECT swtree.* FROM swtree NATURAL LEFT JOIN mftree WHERE mftree.key IS NULL;"
-try:
-    for i in cursor.execute(sql).fetchall():
-        print i [0]
-except:
-    print("ERROR!\n")
+#CREATE TABLE software (
+#   web  CHAR(120),
+#   name  CHAR(30) NOT NULL,
+#   module CHAR(30),
+#   cluster CHAR(40),
+#   version CHAR(120),
+#   license CHAR(120),
+#   category CHAR(120));
+#CREATE TABLE webpage (
+#   key CHAR(120) NOT NULL,
+#   web  CHAR(120),
+#   name  CHAR(30) NOT NULL,
+#   module CHAR(30),
+#   cluster CHAR(40),
+#   version CHAR(120),
+#   license CHAR(120),
+#   category CHAR(120));
+#CREATE TABLE mftree (
+#   key  CHAR(120),
+#   module  CHAR(30),
+#   cluster CHAR(40),
+#   version CHAR(120),
+#   fullpath CHAR(320),
+#   modroot CHAR(320),
+#   link BIT,
+#   readable BIT);
+#CREATE TABLE vftree (
+#   module  CHAR(30),
+#   cluster CHAR(40),
+#   version CHAR(120),
+#   fullpath CHAR(320),
+#   link BIT,
+#   readable BIT);
+#CREATE TABLE swtree (
+#   key  CHAR(120),
+#   name  CHAR(30) NOT NULL,
+#   cluster CHAR(40),
+#   version CHAR(120),
+#   path CHAR(320));
 
-sql = "SELECT mftree.* FROM mftree NATURAL LEFT JOIN swtree WHERE swtree.key IS NULL;"
+#sql = "SELECT swtree.* FROM swtree NATURAL LEFT JOIN mftree WHERE mftree.key IS NULL;"
+#try:
+#    for i in cursor.execute(sql).fetchall():
+#        print i [0]
+#except:
+#    print("ERROR!\n")
+
+#sql = "SELECT mftree.* FROM mftree NATURAL LEFT JOIN swtree WHERE swtree.key IS NULL;"
+#try:
+#    for i in cursor.execute(sql).fetchall():
+#        print i [0]
+#except:
+#    print("ERROR!\n")
+
+sql = "SELECT webpage.* FROM webpage NATURAL LEFT JOIN mftree WHERE mftree.key IS NULL;"
 try:
     for i in cursor.execute(sql).fetchall():
-        print i [0]
+        print i
 except:
     print("ERROR!\n")
 
