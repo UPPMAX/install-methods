@@ -22,6 +22,7 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
         -c  category of the \$TOOL (bioinfo, apps, comp, libs, build, data or parallel) DEFAULT is bioinfo.
         -w  website of the \$TOOL (no DEFAULT)
         -l  license of the \$TOOL (no DEFAULT)
+        -L  URL to the license of the \$TOOL (no DEFAULT)
         -d  short description of the \$TOOL (no DEFAULT)
         -m  name of the module file (DEFAULT is the same as the name of the tool)
         -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
@@ -59,6 +60,8 @@ do
         w) WEBSITE="$OPTARG"
             ;;
         l) LICENSE="$OPTARG"
+            ;;
+        L) LICENSE_URL="$OPTARG"
             ;;
         d) DESC="$OPTARG"
             ;;
@@ -530,6 +533,7 @@ ${TOOL}/${VERSION}
 
 Used under license:
 $LICENSE
+<$LICENSE_URL>
 
 Structure creating script ($SCRIPTFILE) moved to /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
 
@@ -569,9 +573,11 @@ cat > "$YAMLFILE" <<EOF4
 - VERSION:$VERSION
 - CLUSTER:$YAMLLIST
 - LICENSE:$LICENSE
+- LICENSEURL:$LICENSE_URL
 - WEBSITE:$WEBSITE
 - LOCAL:$MODULE_FILE
 - COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$MODU/$VERSION
+- DESCRIPTION:$DESC
 EOF4
 
 ################ Create a post-installation file ##########################
