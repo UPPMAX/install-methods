@@ -47,13 +47,6 @@
             <td>GPL</td>
         </tr>
         <tr>
-            <td><a href="https://www.freepascal.org/">Free Pascal Compiler</a></td>
-            <td>fpc</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>3.0.4</td>
-            <td>GPL and LGPL</td>
-        </tr>
-        <tr>
             <td><a href="https://www.gnu.org/software/binutils/">Gnu binutils</a></td>
             <td>binutils</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
@@ -65,13 +58,13 @@
             <td>gcc</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
             <td>4.x, 5.x, 6.x, 7.x, 8.x, 9.x</td>
-            <td>GPL</td>
+            <td>gpl</td>
         </tr>
         <tr>
             <td><a href="https://git-scm.com/">Git</a></td>
             <td>git</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.5.0, 2.10.2, 2.16.1, 2.21.0, 2.24.0, 2.28.0</td>
+            <td>2.5.0, 2.10.2, 2.16.1, 2.21.0, 2.24.0</td>
             <td>LGPL 2.1</td>
         </tr>
         <tr>
@@ -210,13 +203,6 @@
             <td><a href="https://www.ruby-lang.org/en/about/license.txt">Ruby license</a></td>
         </tr>
         <tr>
-            <td><a href="https://www.rust-lang.org/">Rust</a></td>
-            <td>rust</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.43.1</td>
-            <td>Apache 2.0, MIT</td>
-        </tr>
-        <tr>
             <td><a href="https://subversion.apache.org/download.cgi">Subversion</a></td>
             <td>subversion</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
@@ -236,13 +222,6 @@
             <th></th>
             <th></th>
             <th></th>
-        </tr>
-        <tr>
-            <td><a href="https://www.abinit.org/">ABINIT</a></td>
-            <td>ABINIT</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>8.10.3</td>
-            <td>GPL v3</td>
         </tr>
         <tr>
             <td><a href="http://alps.comp-phys.org/mediawiki/index.php/Main_Page">ALPS</a>&nbsp;including Boost</td>
@@ -320,6 +299,13 @@
             <td>Milou</td>
             <td>2.2, 2.4, 2.4.2.1</td>
             <td>gpl</td>
+        </tr>
+        <tr>
+            <td>nonmem</td>
+            <td>nonmem</td>
+            <td>Milou</td>
+            <td>7.1.0, 7.1.2, 7.2.0, 7.3.0</td>
+            <td></td>
         </tr>
         <tr>
             <td>MOLDEN</td>
@@ -402,7 +388,7 @@
             <td><a href="http://www.gdal.org/">GDAL</a></td>
             <td>GDAL</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.1.0, 3.1.0</td>
+            <td>2.1.0</td>
             <td>X/MIT style Open Source</td>
         </tr>
         <tr>
@@ -434,13 +420,6 @@
             <td>Apache 2.0</td>
         </tr>
         <tr>
-            <td><a href="http://nco.sourceforge.net/">NCO</a></td>
-            <td>NCO</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>4.8.1, 4.9.2</td>
-            <td>BSD</td>
-        </tr>
-        <tr>
             <td><a href="https://github.com/kartverket/fyba">OpenFYBA</a> / SOSI</td>
             <td>FYBA</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
@@ -455,32 +434,11 @@
             <td>MIT</td>
         </tr>
         <tr>
-            <td><a href="https://proj.org">PROJ</a></td>
-            <td>PROJ</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>6.3.2</td>
-            <td>MIT</td>
-        </tr>
-        <tr>
             <td><a href="http://shapelib.maptools.org/">SHAPELIB</a></td>
             <td>SHAPELIB</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
             <td>1.5.0</td>
             <td>LGPL v2</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mmm.ucar.edu/weather-research-and-forecasting-model">WRF/WPS</a></td>
-            <td>WRF &amp; WPS</td>
-            <td>Rackham, Snowy</td>
-            <td>4.1.3</td>
-            <td>Custom open-source AS IS</td>
         </tr>
         <tr>
             <td></td>
@@ -504,32 +462,18 @@
             <td>GPL v2</td>
         </tr>
         <tr>
-            <td><a href="https://www.iconplc.com/innovation/nonmem/">NONMEM</a></td>
-            <td>nonmem</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>7.4.3, 7.4.3-intel</td>
-            <td>commercial</td>
-        </tr>
-        <tr>
-            <td><a href="https://uupharmacometrics.github.io/PsN/">Perl-speaks-NONMEM</a></td>
-            <td>PsN</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>5.0.0</td>
-            <td>GPL v2+</td>
-        </tr>
-        <tr>
             <td><a href="https://www.r-project.org/">R</a></td>
             <td>R</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>3.0.2, 3.2.3, 3.3.2, 3.4.0, 3.4.3, 3.5.0, 3.5.2, 3.6.0, 3.6.1, 4.0.0</td>
+            <td>3.0.2, 3.2.2, 3.2.3, 3.3.0, 3.3.1, 3.3.2, 3.4.0, 3.4.3, 3.5.0, 3.5.2, 3.6.0, 3.6.1</td>
             <td>GPL</td>
         </tr>
         <tr>
             <td><a href="$templateLogic.getPageUrl(149648, $templateLogic.languageId,-1)">R packages</a>. Starting with 3.5.0, includes most packages available on CRAN and Bioconductor</td>
             <td>R_packages</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>3.3.0, 3.3.1, 3.3.2, 3.4.0, 3.4.3, 3.5.0, 3.5.2, 3.6.0, 3.6.1, 4.0.0</td>
-            <td>GPL, LGPL. and others</td>
+            <td>3.3.0, 3.3.1, 3.3.2, 3.4.0, 3.4.3, 3.5.0, 3.5.2, 3.6.0, 3.6.1</td>
+            <td></td>
         </tr>
         <tr>
             <td><a href="https://www.rstudio.com/">RStudio</a></td>
@@ -598,7 +542,7 @@
             <td><a href="https://cmake.org/">CMake</a></td>
             <td>cmake</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>3.5.1, 3.7.2, 3.13.2, 3.17.3</td>
+            <td>3.5.1, 3.7.2, 3.13.2</td>
             <td>BSD 3-Clause</td>
         </tr>
         <tr>
@@ -702,7 +646,7 @@
         <tr>
             <td><a href="http://micans.org/mcl/">MCL</a></td>
             <td>mcl</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
             <td>14-137</td>
             <td>GPL v3</td>
         </tr>
@@ -714,16 +658,9 @@
             <td>LGPLv2</td>
         </tr>
         <tr>
-            <td><a href="https://pandoc.org/">Pandoc</a></td>
-            <td>pandoc</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.16.0.2, 2.2.3.2, 2.10.1</td>
-            <td>GPL v2</td>
-        </tr>
-        <tr>
             <td><a href="https://www.postgresql.org/">PostgreSQL</a></td>
             <td>PostgreSQL</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
             <td>10.3</td>
             <td><a href="https://opensource.org/licenses/postgresql">PostgreSQL Licence</a></td>
         </tr>
@@ -737,8 +674,8 @@
         <tr>
             <td><a href="https://root.cern.ch/">ROOT</a></td>
             <td>ROOT</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>6.06.08, 6.20.04</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>6.04.08, 6.06.08</td>
             <td>LGPL v2.1</td>
         </tr>
         <tr>
@@ -751,36 +688,36 @@
         <tr>
             <td><a href="http://scons.org">SCons</a></td>
             <td>SCons</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
             <td>2.5.0</td>
             <td>misc free software</td>
         </tr>
         <tr>
             <td><a href="http://www.swig.org/">SWIG</a></td>
             <td>swig</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>3.0.7, 3.0.12</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>3.0.7</td>
             <td>GPL v3 plus some &quot;as is&quot;</td>
         </tr>
         <tr>
-            <td><a href="https://www.sqlite.org/index.html">SQLite</a></td>
+            <td>SQLite</td>
             <td>sqlite</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>(system), 3.8.5, 3.11.1, 3.16.2, 3.24.0</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>(system), 3.8.5, 3.11.1, 3.16.2</td>
             <td>Public domain</td>
         </tr>
         <tr>
             <td><a href="https://www.gnu.org/software/texinfo/">Texinfo</a></td>
             <td>texinfo</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>6.0, 6.5, 6.6</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>6.0</td>
             <td>GPL v3</td>
         </tr>
         <tr>
             <td><a href="https://www.tug.org/texlive/">TeX Live</a></td>
             <td>texlive</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2015, 2016, 2018, 2019</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>2015, 2016</td>
             <td>misc free software</td>
         </tr>
         <tr>
@@ -791,11 +728,11 @@
             <td>GPLv2</td>
         </tr>
         <tr>
-            <td><a href="https://github.com/tmux/tmux/wiki">tmux</a></td>
             <td>tmux</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.9a, 2.5, 3.1b</td>
-            <td>Custom open-source AS IS</td>
+            <td>tmux</td>
+            <td>Milou</td>
+            <td>1.9a</td>
+            <td></td>
         </tr>
         <tr>
             <td><a href="http://tukaani.org/xz/">XZ Utils</a></td>
@@ -917,11 +854,11 @@
             <td><a href="https://github.com/dealii/dealii/blob/master/LICENSE.md">GNU LGPL v2.1 or later</a></td>
         </tr>
         <tr>
-            <td><a href="http://www.fftw.org">FFTW</a></td>
             <td>fftw</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>3.3.8</td>
-            <td>GPL</td>
+            <td>fftw</td>
+            <td>Milou</td>
+            <td>2.1.5, 3.2.2</td>
+            <td></td>
         </tr>
         <tr>
             <td><a href="https://www.freetype.org/">FreeType</a></td>
@@ -948,7 +885,7 @@
             <td><a href="http://www.gnu.org/software/gsl/">Gnu Scientific Library</a></td>
             <td>gsl</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.16, 2.1, 2.3, 2.5, 2.6</td>
+            <td>1.16, 2.1, 2.3, 2.6</td>
             <td>GPL</td>
         </tr>
         <tr>
@@ -994,17 +931,10 @@
             <td>Custom open source &quot;as is&quot;</td>
         </tr>
         <tr>
-            <td><a href="https://nlopt.readthedocs.io/">NLopt</a></td>
-            <td>NLopt</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.6.1</td>
-            <td>MIT</td>
-        </tr>
-        <tr>
             <td><a href="http://www.openblas.net/">OpenBLAS</a></td>
             <td>openblas</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.2.14a, 0.2.19, 0.2.19-singlethread, 0.2.20, 0.2.20-singlethread</td>
+            <td>0.2.14a, 0.2.19, 0.2.19-singlethread</td>
             <td>BSD 3-clause</td>
         </tr>
         <tr>
@@ -1137,8 +1067,8 @@
             <td><a href="https://github.com/tseemann/barrnap">Barrnap</a></td>
             <td>barrnap</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.2, 0.6, 0.8, 0.9</td>
-            <td>GPL v3</td>
+            <td>0.2, 0.6, 0.8</td>
+            <td></td>
         </tr>
         <tr>
             <td><a href="https://github.com/PacificBiosciences/blasr/blob/master/README.MANUAL.md">Blasr</a>&nbsp;and associated utilities</td>
@@ -1158,7 +1088,7 @@
             <td>BLAST</td>
             <td>blast</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.2.23+, 2.2.24+, 2.2.25+, 2.2.27+, 2.2.28+, 2.2.29+, 2.2.31+, 2.4.0+, 2.5.0+, 2.6.0+, 2.7.1+, 2.9.0+,2.10.1+</td>
+            <td>2.2.23+, 2.2.24+, 2.2.25+, 2.2.27+, 2.2.28+, 2.2.29+, 2.2.31+, 2.4.0+, 2.5.0+, 2.6.0+, 2.7.1+, 2.9.0+</td>
             <td>Public Domain</td>
         </tr>
         <tr>
@@ -1183,13 +1113,6 @@
             <td>GPL</td>
         </tr>
         <tr>
-            <td><a href="https://github.com/brentp/bwa-meth">bwa-meth</a></td>
-            <td>bwa-meth</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.2.2</td>
-            <td>MIT</td>
-        </tr>
-        <tr>
             <td><a href="https://www.ebi.ac.uk/seqdb/confluence/display/THD/Clustal+Omega">ClustalO</a></td>
             <td>clustalo</td>
             <td>Milou, Rackham, Irma, Bianca</td>
@@ -1207,7 +1130,7 @@
             <td><a href="https://github.com/bbuchfink/diamond">DIAMOND</a>&nbsp;</td>
             <td>diamond</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.7.9, 0.7.12, 0.8.26, 0.9.10, 0.9.24, 0.9.26, 0.9.29,0.9.31</td>
+            <td>0.7.9, 0.7.12, 0.8.26, 0.9.10, 0.9.24, 0.9.26, 0.9.29</td>
             <td>GPL v3</td>
         </tr>
         <tr>
@@ -1479,8 +1402,8 @@
         <tr>
             <td><a href="http://www.genome.ist.i.kyoto-u.ac.jp/~aln_user/spaln/">Spaln</a></td>
             <td>spaln</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.1.4, 2.3.1, 2.4.0</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>2.3.1</td>
             <td>GPL v2</td>
         </tr>
         <tr>
@@ -1514,11 +1437,11 @@
             <td>GPL v2</td>
         </tr>
         <tr>
-            <td><a href="https://github.com/Benson-Genomics-Lab/TRF">TRF</a></td>
+            <td>TRF</td>
             <td>trf</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>4.07b, 4.09, 4.09.1</td>
-            <td>Gnu Affero GPL v3</td>
+            <td>Milou</td>
+            <td>4.07b</td>
+            <td></td>
         </tr>
         <tr>
             <td><a href="http://eddylab.org/software.html">tRNAscan-SE</a></td>
@@ -1573,7 +1496,7 @@
             <td><a href="http://bioinf.uni-greifswald.de/augustus">Augustus</a></td>
             <td>augustus</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>3.2.2, 3.2.3, 3.2.3_Perl5.24.1, 3.3.3</td>
+            <td>3.2.2, 3.2.3, 3.2.3_Perl5.24.1</td>
             <td>Artistic License</td>
         </tr>
         <tr>
@@ -1608,7 +1531,7 @@
             <td><a href="http://genomethreader.org/">GenomeThreader</a></td>
             <td>GenomeThreader</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.7.0, 1.7.1</td>
+            <td>1.7.0</td>
             <td>Custom &quot;AS IS&quot;</td>
         </tr>
         <tr>
@@ -1619,32 +1542,11 @@
             <td>GNU GPL 3</td>
         </tr>
         <tr>
-            <td><a href="http://homer.ucsd.edu/homer/">HOMER</a></td>
-            <td>HOMER</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>4.10, 4.11</td>
-            <td>GPL v3</td>
-        </tr>
-        <tr>
             <td><a href="http://www.ebi.ac.uk/interpro/">InterProScan</a></td>
             <td>InterProScan</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
             <td>5.30-69.0</td>
             <td>Misc</td>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/dpryan79/libBigWig">libBigWig</a></td>
-            <td>libBigWig</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.4.4</td>
-            <td>MIT</td>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/Gaius-Augustus/MakeHub">MakeHub</a></td>
-            <td>MakeHub</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.0.5-1ecd6bb</td>
-            <td>GPL v3</td>
         </tr>
         <tr>
             <td><a href="http://www.yandell-lab.org/software/maker.html">MAKER</a></td>
@@ -1666,13 +1568,6 @@
             <td>Rackham, Irma, Bianca, Snowy</td>
             <td>1.01</td>
             <td>Private study, education and non-profit research only</td>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/gatech-genemark/ProtHint">ProtHint</a></td>
-            <td>ProtHint</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.4.0</td>
-            <td><a href="https://github.com/gatech-genemark/ProtHint/blob/master/LICENSE">GeneMark license</a>&nbsp;</td>
         </tr>
         <tr>
             <td><a href="http://www.webscipio.org/">Scipio</a></td>
@@ -1780,13 +1675,6 @@
             <td>Apache 2.0</td>
         </tr>
         <tr>
-            <td><a href="https://github.com/bcgsc/arcs">ARCS</a></td>
-            <td>ARCS</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.0.6, 1.1.1</td>
-            <td>GPL v3</td>
-        </tr>
-        <tr>
             <td>BESST</td>
             <td>BESST</td>
             <td>Milou</td>
@@ -1804,7 +1692,7 @@
             <td><a href="http://canu.readthedocs.io/">Canu</a></td>
             <td>canu</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.5, 1.6, 1.7,&nbsp;1.7-86da76b, 1.8, 2.0</td>
+            <td>1.5, 1.6, 1.7,&nbsp;1.7-86da76b, 1.8</td>
             <td>GPL v2 and others for subcomponents</td>
         </tr>
         <tr>
@@ -1850,13 +1738,6 @@
             <td>BSD 3-clause</td>
         </tr>
         <tr>
-            <td><a href="https://sourceforge.net/projects/gaa-wugi">GAA</a></td>
-            <td>GAA</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.1</td>
-            <td>GPL v2+</td>
-        </tr>
-        <tr>
             <td><a href="http://software.broadinstitute.org/software/gaemr/">GAEMR</a></td>
             <td>gaemr</td>
             <td>Milou, Rackham, Irma, Bianca</td>
@@ -1885,13 +1766,6 @@
             <td>BSD 3</td>
         </tr>
         <tr>
-            <td><a href="https://github.com/bcgsc/LINKS">LINKS</a></td>
-            <td>LINKS</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.8.7</td>
-            <td>GPL v3</td>
-        </tr>
-        <tr>
             <td><a href="https://gite.lirmm.fr/lordec/lordec-releases/wikis/home">LoRDEC</a></td>
             <td>LoRDEC</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
@@ -1899,10 +1773,10 @@
             <td><a href="https://spdx.org/licenses/CECILL-2.1.html">CeCILL 2.1</a></td>
         </tr>
         <tr>
-            <td><a href="https://github.com/alekseyzimin/masurca">MaSuRCA</a></td>
+            <td><a href="http://www.genome.umd.edu/masurca.html">MaSuRCA</a></td>
             <td>MaSuRCA</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.0.3.1, 2.1.0, 2.3.2, 3.1.3, 3.2.1, 3.2.2, 3.2.3, 3.3.5</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>2.0.3.1, 2.1.0, 2.3.2, 3.1.3, 3.2.1, 3.2.2, 3.2.3</td>
             <td></td>
         </tr>
         <tr>
@@ -1990,13 +1864,6 @@
             <td>GPL v3</td>
         </tr>
         <tr>
-            <td><a href="https://github.com/mahulchak/quickmerge">quickmerge</a></td>
-            <td>quickmerge</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.3-9233726</td>
-            <td>GPL v3</td>
-        </tr>
-        <tr>
             <td><a>RACA (Reference-Assisted Chromosome Assembly)</a></td>
             <td>RACA</td>
             <td>Milou</td>
@@ -2028,7 +1895,7 @@
             <td><a href="https://github.com/Gabaldonlab/redundans">Redundans</a></td>
             <td>Redundans</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.13a-20170321,&nbsp;0.14a-20190314-de_novo-42e8edf (development only),&nbsp;0.14a-20190313-d11d32b,&nbsp;0.14a-20190509-ffae69e</td>
+            <td>0.13a-20170321,&nbsp;0.14a-de_novo-42e8edf-20190314 (development only),&nbsp;0.14a-d11d32b-20190313</td>
             <td>GPL v2</td>
         </tr>
         <tr>
@@ -2083,12 +1950,12 @@
         <tr>
             <td><a href="https://ccb.jhu.edu/software/stringtie/">StringTie</a></td>
             <td>StringTie</td>
-            <td>Rackham, Irma, BIanca, Snowy</td>
-            <td>1.2.0, 1.3.3, 2.1.4</td>
-            <td>MIT</td>
+            <td>Milou, Rackham, Irma</td>
+            <td>1.2.0, 1.3.3</td>
+            <td>Artistic</td>
         </tr>
         <tr>
-            <td><a href="https://github.com/bcgsc/tigmint">Tigmint</a></td>
+            <td>Tigmint</td>
             <td>tigmint</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
             <td>1.1.2</td>
@@ -2146,8 +2013,8 @@
         <tr>
             <td><a href="https://github.com/DReichLab/AdmixTools">AdmixTools</a></td>
             <td>AdmixTools</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>20160803,&nbsp;5.0-20170312,&nbsp;5.0-20171024, 7.0.1</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>20160803,&nbsp;5.0-20170312,&nbsp;5.0-20171024</td>
             <td>Custom &quot;as-is&quot; open source</td>
         </tr>
         <tr>
@@ -2179,7 +2046,7 @@
             <td>GPL</td>
         </tr>
         <tr>
-            <td><a href="http://www.popgen.dk/angsd/index.php/ANGSD">ANGSD</a></td>
+            <td><a href="http://popgen.dk/wiki/index.php/ANGSD">ANGSD</a></td>
             <td>ANGSD</td>
             <td>Milou,&nbsp;Rackham, Irma, Bianca</td>
             <td>0.700, 0.902, 0.917, 0.917-g6522d3e, 0.921</td>
@@ -2219,20 +2086,6 @@
             <td>Milou, Rackham, Irma, Bianca</td>
             <td>2.8.3-1</td>
             <td>Academic use only</td>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/PacificBiosciences/bam2fastx">bam2fastx</a></td>
-            <td>bam2fastx</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.3.0-80dbf79</td>
-            <td>BSD 3-clause</td>
-        </tr>
-        <tr>
-            <td><a href="https://sourceforge.net/projects/bambam/">BamBam</a></td>
-            <td>bambam</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.4</td>
-            <td>MIT</td>
         </tr>
         <tr>
             <td><a href="https://github.com/pezmaster31/bamtools">Bamtools</a></td>
@@ -2294,7 +2147,7 @@
             <td><a href="http://biopython.org/wiki/Main_Page">BioPython</a></td>
             <td>biopython</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.68 (loads python 2.7.6), 1.68-py3 (loads python/3.4.3); 1.73 (python/2.7.15), 1.73-py3 (python/3.6.0), 1.76-py3 (python/3.7.2)</td>
+            <td>1.64 (loads python 2.7.6), 1.64-py3 (loads python 3.3.1), 1.65 (loads python 2.7.9), 1.65-py3 (loads python/3.4.3);&nbsp;1.68 (loads python 2.7.6), 1.68-py3 (loads python/3.4.3); 1.73 (python/2.7.15), 1.73-py3 (python/3.6.0)</td>
             <td>Biopython</td>
         </tr>
         <tr>
@@ -2322,7 +2175,7 @@
             <td><a href="https://github.com/Gaius-Augustus/BRAKER">BRAKER</a></td>
             <td>braker</td>
             <td>Rackham, Irma, Bianca, milou</td>
-            <td>2.1.1_Perl5.24.1, 2.1.5</td>
+            <td>2.1.1_Perl5.24.1</td>
             <td><a href="http://www.opensource.org/licenses/artistic-license.php">Artistic License</a></td>
         </tr>
         <tr>
@@ -2335,16 +2188,9 @@
         <tr>
             <td><a href="https://code.google.com/p/cdhit/">CD-Hit</a> aka cdhit</td>
             <td>cd-hit</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>3.1.1, 4.6.1, 4.6.4,&nbsp;4.6.8-2017-1208, 4.8.1</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>4.6.1, 4.6.4,&nbsp;4.6.8-2017-1208</td>
             <td>GPL v2</td>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/gpertea/cdbfasta">cdbfasta</a></td>
-            <td>cdbfasta</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.99, 1.00</td>
-            <td>Artistic 2.0</td>
         </tr>
         <tr>
             <td>Cell Profiler</td>
@@ -2378,7 +2224,7 @@
             <td><a href="http://ecogenomics.github.io/CheckM/">CheckM</a></td>
             <td>CheckM</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.0.11, 1.0.12, 1.1.2</td>
+            <td>1.0.11, 1.0.12</td>
             <td>GPL v3</td>
         </tr>
         <tr>
@@ -2387,13 +2233,6 @@
             <td>Rackham, Irma, Bianca</td>
             <td>1.1.10</td>
             <td></td>
-        </tr>
-        <tr>
-            <td><a href="https://hoohm.github.io/CITE-seq-Count/">CITE-seq-Count</a></td>
-            <td>CITE-seq-Count</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.4.3</td>
-            <td>MIT</td>
         </tr>
         <tr>
             <td><a href="http://sites.psu.edu/axtell/software/cleaveland4/">CleaveLand4</a></td>
@@ -2427,7 +2266,7 @@
             <td><a href="https://github.com/BinPro/CONCOCT">CONCOCT</a></td>
             <td>CONCOCT</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.5.0, 1.1.0</td>
+            <td>0.5.0</td>
             <td>FreeBSD</td>
         </tr>
         <tr>
@@ -2445,18 +2284,11 @@
             <td></td>
         </tr>
         <tr>
-            <td><a href="https://github.com/priyamoorjani/DATES">DATES</a></td>
-            <td>DATES</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>753</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/deeptools/deepTools">deepTools</a></td>
+            <td><a href="https://deeptools.github.io/">deepTools</a></td>
             <td>deepTools</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.2.3, 2.3.1, 2.4.3, 2.5.1, 3.1.0, 3.3.2</td>
-            <td>BSD and MIT</td>
+            <td>Rackham, Irma, Bianca</td>
+            <td>1.5.11 (milou only), 2.0.1, 2.2.3, 2.3.1, 2.4.3, 2.5.1, 3.1.0</td>
+            <td>GPL v3</td>
         </tr>
         <tr>
             <td><a href="https://github.com/Santy-8128/DosageConvertor">DosageConvertor</a></td>
@@ -2501,11 +2333,11 @@
             <td>GPL</td>
         </tr>
         <tr>
-            <td><a href="http://www.ensembl.org/info/docs/api/core/" title="EnsEMBL Perl API">EnsEMBL Perl API</a></td>
+            <td>EnsEMBL Perl API</td>
             <td>EnsEMBL-API</td>
-            <td>Milou,rackham, irma, bianca, snowy</td>
-            <td>87(Milou),94</td>
-            <td>Modified Apache, Apache 2.0</td>
+            <td>Milou</td>
+            <td>87</td>
+            <td>Modified Apache</td>
         </tr>
         <tr>
             <td><a href="http://genome.sph.umich.edu/wiki/EPACTS">EPACTS</a></td>
@@ -2543,13 +2375,6 @@
             <td></td>
         </tr>
         <tr>
-            <td><a href="https://github.com/OpenGene/fastp">fastp</a></td>
-            <td>fastp</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.20.0</td>
-            <td>MIT</td>
-        </tr>
-        <tr>
             <td><a href="http://scheet.org/software.html">fastPHASE</a></td>
             <td>fastPHASE</td>
             <td>Milou, Rackham, Irma, Bianca</td>
@@ -2566,15 +2391,15 @@
         <tr>
             <td><a href="http://www.bioinformatics.babraham.ac.uk/projects/fastq_screen/">fastq_screen</a></td>
             <td>fastq_screen</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.5.1, 0.9.2, 0.11.1</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>0.3.1, 0.4.3. 0.5.1, 0.9.2, 0.11.1</td>
             <td>GPL</td>
         </tr>
         <tr>
             <td><a href="https://github.com/agordon/fastx_toolkit">FASTX</a></td>
             <td>Fastx</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.0.14</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>0.0.13, 0.0.13.2, 0.0.14</td>
             <td>AGPLv3</td>
         </tr>
         <tr>
@@ -2623,7 +2448,7 @@
             <td><a href="https://github.com/ekg/freebayes">FreeBayes</a></td>
             <td>freebayes</td>
             <td>Milou, Rackham, Irma, Bianca</td>
-            <td>0.8.9, 0.9.4, 0.9.4_2012-04-16, 0.9.8, 0.9.21, 1.0.2, 1.1.0, 1.3.2</td>
+            <td>0.8.9, 0.9.4, 0.9.4_2012-04-16, 0.9.8, 0.9.21, 1.0.2, 1.1.0</td>
             <td>Custom open-source &quot;as-is&quot;</td>
         </tr>
         <tr>
@@ -2669,18 +2494,11 @@
             <td>Other</td>
         </tr>
         <tr>
-            <td><a href="https://kimura.univ-montp2.fr/~rousset/Genepop.htm">Genepop</a></td>
-            <td>Genepop</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>4.7</td>
-            <td>CeCILL (GPL compatible)</td>
-        </tr>
-        <tr>
             <td><a href="http://genometools.org/">GenomeTools</a></td>
             <td>GenomeTools</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.5.9, 1.6.1</td>
-            <td>ISC</td>
+            <td>Milou</td>
+            <td>1.3.5 (Milou), 1.5.8</td>
+            <td>BSD style</td>
         </tr>
         <tr>
             <td><a href="http://mendel.stanford.edu/SidowLab/downloads/gerp/index.html">GERP++</a></td>
@@ -2727,9 +2545,9 @@
         <tr>
             <td><a href="http://htseq.readthedocs.io/">HTSeq</a></td>
             <td>htseq</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.9.1, 0.12.4</td>
-            <td>GPL v3</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>0.4.6, 0.5.1. 0.6.1, 0.9.1</td>
+            <td>GPL</td>
         </tr>
         <tr>
             <td><a href="http://www.broadinstitute.org/igv/">Integrative Genomics Viewer</a></td>
@@ -2868,7 +2686,7 @@
             <td><a href="https://github.com/bvilhjal/ldpred">LDpred</a></td>
             <td>LDpred</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.9.9, 1.0.8, 1.0.10, 1.0.11</td>
+            <td>0.9.9, 1.0.8</td>
             <td>MIT</td>
         </tr>
         <tr>
@@ -2888,16 +2706,20 @@
         <tr>
             <td><a href="https://github.com/arq5x/lumpy-sv">LUMPY</a></td>
             <td>LUMPY</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.2.13-97cf18c, 0.2.13-213a417, 0.3.0</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>0.2.12,&nbsp;0.2.13-213a417</td>
             <td>MIT</td>
         </tr>
         <tr>
             <td><a href="https://github.com/taoliu/MACS">MACS</a></td>
             <td>MACS</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.1.0, 2.1.2, 2.2.6</td>
-            <td>BSD 3-clause</td>
+            <td>
+            <p>Milou; Rackham, Irma, Bianca</p>
+            </td>
+            <td>
+            <p>1.4.1, 1.4.2, 2.1.0; 2.1.2</p>
+            </td>
+            <td>Other</td>
         </tr>
         <tr>
             <td><a href="http://chipexo.sourceforge.net/">MACE</a></td>
@@ -2945,7 +2767,7 @@
             <td><a href="https://downloads.jbei.org/data/microbial_communities/MaxBin/MaxBin.html">MaxBin</a></td>
             <td>MaxBin</td>
             <td>Rackham, Bianca, Irma, Snowy</td>
-            <td>2.2.5, 2.2.7</td>
+            <td>2.2.5</td>
             <td>BSD</td>
         </tr>
         <tr>
@@ -2984,13 +2806,6 @@
             <td>BSD-like</td>
         </tr>
         <tr>
-            <td><a href="http://csg.sph.umich.edu/abecasis/Metal/">METAL</a></td>
-            <td>METAL</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2011-03-25</td>
-            <td>open source</td>
-        </tr>
-        <tr>
             <td><a href="https://github.com/bioinform/metasv">MetaSV</a></td>
             <td>MetaSV</td>
             <td>Milou, Rackham, Irma, Bianca</td>
@@ -3007,16 +2822,16 @@
         <tr>
             <td><a href="http://smithlabresearch.org/software/methpipe/">MethPipe</a></td>
             <td>MethPipe</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>3.4.3, 4.1.1</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>3.4.3</td>
             <td>GPL v3+</td>
         </tr>
         <tr>
             <td><a href="https://github.com/dpryan79/MethylDackel">MethylDackel</a></td>
             <td>MethylDackel</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.2.1, 0.5.1</td>
-            <td>MIT</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>0.2.1</td>
+            <td></td>
         </tr>
         <tr>
             <td><a href="http://https://github.com/AlexanderDilthey/MHC-PRG">MHC-PRG</a></td>
@@ -3068,24 +2883,17 @@
             <td>GPL v3</td>
         </tr>
         <tr>
-            <td><a href="http://home.uchicago.edu/~rhudson1/source/mksamples.html">ms</a></td>
-            <td>ms</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>20071014</td>
-            <td>open source</td>
-        </tr>
-        <tr>
             <td><a href="https://github.com/stschiff/msmc">MSMC</a></td>
             <td>msmc</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.1.0, 1.1.0</td>
-            <td>GPL v3</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>2014-09-29, 0.1.0</td>
+            <td>GPL</td>
         </tr>
         <tr>
             <td><a href="http://multiqc.info/">MultiQC</a></td>
             <td>MultiQC</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.6, 0.7, 0.8, 0.9, 1.0, 1.2, 1.3, 1.5, 1.6, 1.7, 1.8, 1.9</td>
+            <td>0.6, 0.7, 0.8, 0.9, 1.0, 1.2, 1.3, 1.5, 1.6, 1.7, 1.8</td>
             <td>MIT</td>
         </tr>
         <tr>
@@ -3145,20 +2953,6 @@
             <td>MIT + BSD</td>
         </tr>
         <tr>
-            <td><a href="https://github.com/jebrosen/nseg">nseg</a></td>
-            <td>nseg</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.0.1</td>
-            <td>Public Domain</td>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/nanoporetech/ont_fast5_api">ont_fast5_api</a></td>
-            <td>ont_fast5_api</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>3.1.6</td>
-            <td>Mozilla Public LIcense 2.0</td>
-        </tr>
-        <tr>
             <td><a href="http://open-ms.sourceforge.net">OpenMS</a></td>
             <td>OpenMS</td>
             <td>Milou</td>
@@ -3180,13 +2974,6 @@
             <td></td>
         </tr>
         <tr>
-            <td><a href="https://github.com/Rosemeis/pcangsd">PCAngsd</a></td>
-            <td>PCAngsd</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.982</td>
-            <td>GPL v3</td>
-        </tr>
-        <tr>
             <td><a href="https://sco.h-its.org/exelixis/web/software/pear/doc.html">PEAR</a></td>
             <td>pear</td>
             <td>Milou, Rackham, Irma, Bianca</td>
@@ -3199,6 +2986,13 @@
             <td>Milou</td>
             <td>20151014</td>
             <td>Public domain</td>
+        </tr>
+        <tr>
+            <td><a href="http://web.expasy.org/pftools/">Pftools</a></td>
+            <td>pftools</td>
+            <td>Milou</td>
+            <td>2.3</td>
+            <td></td>
         </tr>
         <tr>
             <td><a href="https://code.google.com/p/phantompeakqualtools/">phantompeakqualtools</a></td>
@@ -3218,7 +3012,7 @@
             <td><a href="http://broadinstitute.github.io/picard/">Picard</a></td>
             <td>picard</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.92, 1.118, 1.141, 2.0.1, 2.10.3, 2.19.2, 2.20.4, 2.23.4</td>
+            <td>1.92, 1.118, 1.141, 2.0.1, 2.10.3, 2.19.2, 2.20.4</td>
             <td>MIT</td>
         </tr>
         <tr>
@@ -3238,22 +3032,15 @@
         <tr>
             <td><a href="https://www.cog-genomics.org/plink2">PLINK</a></td>
             <td>plink</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.07, 1.90b3n, 1.90b4.9</td>
-            <td>GPL v3</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.cog-genomics.org/plink/2.0/">PLINK2</a></td>
-            <td>plink2</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.00-alpha-2-20180704,&nbsp;2.00-alpha-2-20190429,&nbsp;2.00-alpha-2.3-20200124</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>1.07, 1.90b3n (formerly version 1.90), 1.90b4.9, 2.00-c1defe4</td>
             <td>GPL v3</td>
         </tr>
         <tr>
             <td>PLINK/SEQ</td>
             <td>plinkseq</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.08, 0.10</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>0.08 (formerly mislabelled as 0.8), 0.10</td>
             <td>Other</td>
         </tr>
         <tr>
@@ -3306,18 +3093,18 @@
             <td></td>
         </tr>
         <tr>
-            <td><a href="https://www.prsice.info/">PRSice</a></td>
-            <td>PRSice</td>
-            <td>rackham, irma, bianca, snowy</td>
-            <td>2.2.11.b</td>
-            <td>GPL3</td>
-        </tr>
-        <tr>
             <td><a href="https://github.com/lh3/psmc">PSMC</a></td>
             <td>psmc</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
             <td>0.6.5-r67-e5f7df5</td>
             <td>MIT</td>
+        </tr>
+        <tr>
+            <td>PSORTb</td>
+            <td>psortb</td>
+            <td>Milou</td>
+            <td>3.0</td>
+            <td>GPL</td>
         </tr>
         <tr>
             <td><a href="https://github.com/deeptools/pyGenomeTracks">pyGenomeTracks</a></td>
@@ -3376,13 +3163,6 @@
             <td>open source</td>
         </tr>
         <tr>
-            <td><a href="http://eddylab.org/software/recon/">RECON</a></td>
-            <td>RECON</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.08</td>
-            <td>GPL</td>
-        </tr>
-        <tr>
             <td><a href="https://www.geenivaramu.ee/en/tools/regscan">RegScan</a></td>
             <td>RegScan</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
@@ -3393,7 +3173,7 @@
             <td><a href="http://www.repeatmasker.org">RepeatMasker</a></td>
             <td>RepeatMasker</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>4.0.7, 4.0.7_Perl5.24.1, 4.0.8, 4.1.0</td>
+            <td>4.0.7, 4.0.7_Perl5.24.1, 4.0.8</td>
             <td>open source</td>
         </tr>
         <tr>
@@ -3401,13 +3181,6 @@
             <td>RepeatModeler</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
             <td>1.0.8_RM4.0.7, 1.0.11</td>
-            <td>open source</td>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/mmcco/RepeatScout">RepeatScout</a></td>
-            <td>RepeatScout</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.0.5, 1.0.6</td>
             <td>open source</td>
         </tr>
         <tr>
@@ -3427,9 +3200,9 @@
         <tr>
             <td><a href="http://deweylab.github.io/RSEM/">RSEM</a></td>
             <td>rsem</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.3.1, 1.3.3</td>
-            <td>GPL v3</td>
+            <td>Milou</td>
+            <td>1.2.12, 1.2.29</td>
+            <td>GPL</td>
         </tr>
         <tr>
             <td><a href="http://rseqc.sourceforge.net/">RSeqC</a></td>
@@ -3455,49 +3228,42 @@
         <tr>
             <td><a href="http://sailfish.readthedocs.org/en/master/">Sailfish</a></td>
             <td>Sailfish</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Milou</td>
             <td>0.8.0</td>
             <td>GPL v3+</td>
         </tr>
         <tr>
             <td><a href="http://salmon.readthedocs.org/en/latest/index.html">Salmon</a></td>
             <td>Salmon</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.8.2, 0.9.1, 1.1.0</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>0.6.0, 0.8.2, 0.9.1</td>
             <td>GPL v3+</td>
-        </tr>
-        <tr>
-            <td>SalmonTE</td>
-            <td>SalmonTE</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>20180926</td>
-            <td></td>
         </tr>
         <tr>
             <td><a href="http://lomereiter.github.io/sambamba/">sambamba</a></td>
             <td>sambamba</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.5.9, 0.6.6, 0.7.1</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>0.5.9, 0.6.6</td>
             <td>GPL v2+</td>
         </tr>
         <tr>
             <td><a href="https://github.com/GregoryFaust/samblaster">samblaster</a></td>
             <td>samblaster</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
             <td>0.1.22, 0.1.24</td>
             <td>MIT</td>
         </tr>
         <tr>
             <td><a href="https://github.com/maaskola/samplefq">samplefq</a></td>
             <td>samplefq</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
             <td>0.2</td>
             <td>GPL v3</td>
         </tr>
         <tr>
             <td><a href="http://samstat.sourceforge.net/">samstat</a></td>
             <td>samstat</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Rackham, Irma, Bianca</td>
             <td>1.5.1</td>
             <td>GPL v3</td>
         </tr>
@@ -3617,7 +3383,7 @@
             <td><a href="https://messerlab.org/slim/">SLiM</a></td>
             <td>SLiM</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.6, 3.2.1, 3.3.2</td>
+            <td>3.2.1</td>
             <td>GPL v3</td>
         </tr>
         <tr>
@@ -3673,7 +3439,7 @@
             <td><a href="http://catchenlab.life.illinois.edu/stacks/">Stacks</a></td>
             <td>Stacks</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.48, 2.0Beta9, 2.0b, 2.2, 2.41, 2.53</td>
+            <td>1.48, 2.0Beta9, 2.0b, 2.2, 2.41</td>
             <td>GPL v3</td>
         </tr>
         <tr>
@@ -3698,11 +3464,11 @@
             <td>GPL v3</td>
         </tr>
         <tr>
-            <td><a href="http://subread.sourceforge.net">Subread</a></td>
+            <td><a href="http://subread.sourceforge.net/">Subread</a></td>
             <td>subread</td>
-            <td>Rackham, Irma, Bianca, Snowhy</td>
-            <td>1.5.0, 1.5.1, 1.5.2, 2.0.0</td>
-            <td>GPL v3</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>1.4.5, 1.4.5-p, 1.5.0, 1.5.1, 1.5.2</td>
+            <td>GPL</td>
         </tr>
         <tr>
             <td><a href="http://svdetect.sourceforge.net/Site/Home.html">SVDetect</a></td>
@@ -3775,13 +3541,6 @@
             <td>GPL v3</td>
         </tr>
         <tr>
-            <td><a href="https://github.com/nanoporetech/tombo">Tombo</a></td>
-            <td>Tombo</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.5.1</td>
-            <td>Mozilla Public License 2.0</td>
-        </tr>
-        <tr>
             <td><a href="https://github.com/cboursnell/transfuse">transfuse</a></td>
             <td>tranfuse</td>
             <td>Milou, Rackham, Irma, Bianca</td>
@@ -3826,9 +3585,9 @@
         <tr>
             <td><a href="http://hgdownload.soe.ucsc.edu/admin/exe/">UCSC Bioinformatics Utilities</a></td>
             <td>ucsc-utilities</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>v287, v334, v345, v398</td>
-            <td>Non-commercial</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>v287, v334, v345</td>
+            <td>Other</td>
         </tr>
         <tr>
             <td><a href="https://github.com/CGATOxford/UMI-tools">UMI-tools</a></td>
@@ -3866,13 +3625,6 @@
             <td>Other open-source</td>
         </tr>
         <tr>
-            <td><a href="https://github.com/cc2qe/vawk">vawk</a></td>
-            <td>vawk</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.0.1</td>
-            <td>MIT</td>
-        </tr>
-        <tr>
             <td><a href="https://github.com/tobiasrausch/vcfaid">VCFaid</a></td>
             <td>VCFaid</td>
             <td>Milou, Rackham, Irma, Bianca</td>
@@ -3880,10 +3632,10 @@
             <td>GPL v3</td>
         </tr>
         <tr>
-            <td><a href="https://github.com/vcflib/vcflib">vcflib</a></td>
             <td>vcflib</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2017-04-04, 1.0.1</td>
+            <td>vcflib</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>2014-07-22 (milou only), 2016-08-29, 2017-04-04</td>
             <td>MIT</td>
         </tr>
         <tr>
@@ -3945,8 +3697,8 @@
         <tr>
             <td><a href="https://github.com/beagle-dev/beagle-lib">beagle-lib</a></td>
             <td>beagle</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.1.2, 3.1.2</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>1.0.0, 2.1.2</td>
             <td>GPL</td>
         </tr>
         <tr>
@@ -3959,8 +3711,8 @@
         <tr>
             <td><a href="http://beast2.org/">BEAST2</a></td>
             <td>beast2</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.1.2, 2.3.1, 2.4.0, 2.4.8, 2.6.2pre</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>2.1.2, 2.3.1, 2.4.0, 2.4.8</td>
             <td>LGPL v2.1</td>
         </tr>
         <tr>
@@ -4023,7 +3775,7 @@
             <td><a href="http://www.iqtree.org/">IQ-TREE</a></td>
             <td>iqtree</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.5.3-omp, 1.5.4-omp-mpi, 1.6.5-omp-mpi, 1.6.10-omp-mpi, 1.6.12-omp-mpi, 2.0-rc2-omp-mpi</td>
+            <td>1.4.3-pomp, 1.5.3-omp, 1.5.4-omp-mpi, 1.6.5-omp-mpi, 1.6.10-omp-mpi, 1.6.12-omp-mpi</td>
             <td>GPL v2</td>
         </tr>
         <tr>
@@ -4071,15 +3823,15 @@
         <tr>
             <td><a href="http://megasun.bch.umontreal.ca/People/lartillot/www/download.html">PhyloBayes</a></td>
             <td>phylobayes</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
             <td>4.1c</td>
             <td></td>
         </tr>
         <tr>
             <td><a href="https://github.com/bayesiancook/pbmpi">PhyloBayes MPI</a></td>
             <td>phylobayesmpi</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.8, 1.8b</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>1.3b, 1.4f, 1.5a, 1.7a, 1.8</td>
             <td>GPL v2</td>
         </tr>
         <tr>
@@ -4100,8 +3852,8 @@
             <td><a href="http://sco.h-its.org/exelixis/web/software/raxml/index.html">RAxML</a></td>
             <td>raxml</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>7.3.0, 8.2.10-gcc, 8.2.10-gcc-mpi, 8.2.12-gcc, 8.2.12-gcc-mpi</td>
-            <td>GPL v3</td>
+            <td>7.0.4, 7.2.7, 7.2.8, 7.4.7, 8.0.20, 8.0.20-mpi, 8.2.0-gcc, 8.2.0-icc, 8.2.0-gcc-mpi, 8.2.0-icc-mpi, 8.2.4-gcc, 8.2.4-gcc-mpi, 8.2.10-gcc, 8.2.10-gcc-mpi</td>
+            <td>GPL</td>
         </tr>
         <tr>
             <td><a href="https://github.com/amkozlov/raxml-ng/wiki">RAxML-NG</a></td>
@@ -4289,13 +4041,15 @@
             <td><a href="http://annovar.openbioinformatics.org/en/latest/">ANNOVAR</a></td>
             <td>annovar</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2014.11.12, 2015.06.17, 2016.05.11, 2017.07.16, 2018.04.16</td>
+            <td>
+            <p>2014.11.12, 2015.06.17, 2016.05.11,&nbsp;2017.07.16, 2018.04.16</p>
+            </td>
             <td>Strictly non-commercial usage</td>
         </tr>
         <tr>
             <td><a href="https://www.niehs.nih.gov/research/resources/software/biostatistics/art/" title="ART">ART</a></td>
             <td>ART</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>rackham, irma, bianca, snowy</td>
             <td>2016-06-05</td>
             <td></td>
         </tr>
@@ -4309,35 +4063,35 @@
         <tr>
             <td><a href="http://support.illumina.com/downloads/bcl2fastq_conversion_software.html">bcl2fastq</a></td>
             <td>bcl2fastq</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.8.4, 2.15.0, 2.16.0, 2.17.1, 2.20.0</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>1.8.3 (milou), 1.8.4, 2.15.0, 2.16.0, 2.17.1, 2.20.0</td>
             <td></td>
         </tr>
         <tr>
             <td><a href="https://bedops.readthedocs.io/en/latest/">BEDOPS</a></td>
             <td>BEDOPS</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.4.3, 2.4.28, 2.4.39</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>2.4.3, 2.4.28</td>
             <td>GPL v2</td>
         </tr>
         <tr>
             <td><a href="http://bedtools.readthedocs.org/en/latest/">BEDTools</a></td>
             <td>BEDTools</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>2.21.0, 2.23.0, 2.25.0, 2.26.0, 2.27.1, 2.29.2</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>2.10.0, 2.11.2, 2.16.2, 2.20.1, 2.21.0, 2.23.0, 2.25.0, 2.26.0, 2.27.1</td>
             <td>GPL</td>
         </tr>
         <tr>
-            <td><a href="https://www.thermofisher.com/se/en/home/life-science/sequencing/next-generation-sequencing.html">BioScope</a></td>
-            <td>BioScope</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>1.3.1</td>
+            <td>bioscope</td>
+            <td>bioscope</td>
+            <td>Milou</td>
+            <td>1.2.1, 1.3.1</td>
             <td>Commercial</td>
         </tr>
         <tr>
             <td>CASAVA</td>
             <td>CASAVA</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
             <td>1.7.0, 1.8.2</td>
             <td></td>
         </tr>
@@ -4358,35 +4112,37 @@
         <tr>
             <td><a href="http://emboss.sourceforge.net/">EMBOSS</a></td>
             <td>emboss</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>6.6.0</td>
+            <td>Milou</td>
+            <td>6.3.1, 6.4.0, 6.5.7</td>
             <td>GPL</td>
         </tr>
         <tr>
             <td><a href="https://www.broadinstitute.org/gatk/">GATK</a></td>
             <td>GATK</td>
             <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>3.5.0, 3.6, build-20160727,&nbsp;3.7, 3.8-0, 4.beta.5, 4.1.0.0, 4.1.1.0</td>
+            <td>3.5.0, 3.6, build-20160727,&nbsp;3.7, 3.8-0, 4.beta.5,
+            <p>4.1.0.0, 4.1.1.0</p>
+            </td>
             <td>BSD Style</td>
         </tr>
         <tr>
             <td>GATK-Queue</td>
             <td>GATK-Queue</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>3.6, 3.7, 3.8-0</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>3.2.2, 3.6, 3.7, 3.8-0</td>
             <td>MIT + academic non-commercial</td>
         </tr>
         <tr>
             <td><a href="http://software.broadinstitute.org/software/genomestrip/index.html">GenomeSTRiP</a></td>
             <td>GenomeSTRiP</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
             <td>2.00.1650, 2.00.1685, 2.00.1710</td>
             <td>Custom 'as is' redistributable</td>
         </tr>
         <tr>
             <td>HiSeq</td>
             <td>HiSeq</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Milou</td>
             <td>0.9</td>
             <td></td>
         </tr>
@@ -4400,37 +4156,51 @@
         <tr>
             <td><a href="http://meme-suite.org">MEME Suite</a></td>
             <td>MEMEsuite</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>5.0.1</td>
+            <td>Milou</td>
+            <td>4.11.1, 4.11.2_1</td>
             <td>BSD Style</td>
         </tr>
         <tr>
             <td><a href="https://github.com/hall-lab/speedseq">SpeedSeq</a></td>
             <td>SpeedSeq</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.1.2-20170504-30f8dc6,&nbsp;0.1.2-20180208-4e60002</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>0.1.0-20151121,&nbsp;0.1.2-20170504-30f8dc6</td>
             <td>MIT</td>
         </tr>
         <tr>
             <td>Staden</td>
             <td>staden</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Milou</td>
             <td>2.0.0b6</td>
             <td>BSD</td>
         </tr>
         <tr>
             <td><a href="https://support.10xgenomics.com/de-novo-assembly/software/overview/welcome">Supernova</a>&nbsp;(Chromium 10X)</td>
             <td>supernova</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
             <td>1.0.0, 1.1.1, 1.1.4, 2.0.0</td>
             <td><a href="https://support.10xgenomics.com/docs/license">other</a></td>
         </tr>
         <tr>
-            <td><a href="https://vcftools.github.io/index.html">VCFtools</a></td>
+            <td><a href="http://vcftools.github.io/index.html">VCFtools</a></td>
             <td>vcftools</td>
-            <td>Rackham, Irma, Bianca, Snowy</td>
-            <td>0.1.12, 0.1.13, 0.1.14, 0.1.15, 0.1.16</td>
-            <td>GPL v3</td>
+            <td>Milou, Rackham, Irma, Bianca</td>
+            <td>0.1.8a, 0.1.11, 0.1.12, 0.1.13, 0.1.14, 0.1.15</td>
+            <td>GPL</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
     </tbody>
 </table>

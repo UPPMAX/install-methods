@@ -5,8 +5,8 @@ import sqlite3
 
 class MyHTMLParser(HTMLParser):
     def print_sw(self, html):
-        self.label = ["key", "web", "name", "module", "cluster", "version", "license", "category"]
-        self.current = {"key":"", "web":"", "name":"", "module":"", "cluster":"", "version":"", "license":"", "category":""}
+        self.label = ["key", "web", "name", "module", "cluster", "version", "license", "licURL", "category"]
+        self.current = {"key":"", "web":"", "name":"", "module":"", "cluster":"", "version":"", "license":"", "licURL":"", "category":""}
         self.cat = 0
         self.count = 1
         self.sw_index = 0
@@ -26,6 +26,8 @@ class MyHTMLParser(HTMLParser):
         for attr in attrs:
             if self.count == 2:
                 self.current[self.label[1]] += attr[1]
+            if self.count == 6:
+                self.current[self.label[7]] += attr[1]
 
     def handle_endtag(self, tag):
         if tag == "tr":
@@ -37,10 +39,10 @@ class MyHTMLParser(HTMLParser):
                 self.current["key"] = self.current["module"] + "_" + ver.split(" ")[0]
                 self.current[self.label[5]] = ver
                 tab = []
-                for x in range(0, 8):
+                for x in range(0, 9):
                     tab.append(self.current[self.label[x]])
                 self.table.append(tab)
-            self.current = {"key":"", "web":"", "name":"", "module":"", "cluster":"", "version":"", "license":"", "category":self.current["category"]}
+            self.current = {"key":"", "web":"", "name":"", "module":"", "cluster":"", "version":"", "license":"", "licURL":"", "category":self.current["category"]}
 
     def handle_data(self, data):
         if not data.strip():
@@ -75,12 +77,13 @@ sql = """CREATE TABLE webpage (
    cluster CHAR(40),
    version CHAR(120),
    license CHAR(120),
+   licURL CHAR(120),
    category CHAR(120))"""
 
 cursor.execute(sql)
 
 # New insert of all table
-sql = "INSERT INTO webpage (key, web, name, module, cluster, version, license, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+sql = "INSERT INTO webpage (key, web, name, module, cluster, version, license, licURL, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
 try:
    # Execute the SQL command

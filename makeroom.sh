@@ -42,7 +42,7 @@ FORCED=0
 
 [[ $# -eq 0 ]] && echo "$USAGE" >&2 && exit 1
 
-while getopts "ht:v:s:w:c:m:l:d:u:x:f" option
+while getopts "ht:v:s:w:c:m:l:L:d:u:x:f" option
 do
     case $option in
         h) 
