@@ -29,19 +29,20 @@ LOG
     cd $TOOLDIR
     mkdir -p src $CLUSTER 
     cd src
-    [[ -f gsl-${VERSION}.tar.gz ]] || wget http://ftp.df.lth.se/pub/ftp.gnu.org/pub/gnu/gsl/gsl-${VERSION}.tar.gz
+    [[ -f gsl-${VERSION}.tar.gz ]] || wget http://ftp.gnu.org/pub/gnu/gsl/gsl-${VERSION}.tar.gz
     tar xzf gsl-${VERSION}.tar.gz 
     mv gsl-${VERSION}/ gsl-${VERSION}-$CLUSTER/
     cd gsl-${VERSION}-$CLUSTER/
 
-Now load pieces for the build and build it.
-
-    module load build-tools
     module load gcc/4.8.3
 
     ./configure --prefix=$CLUSTERDIR
     make
     make install
+    cd ..
+    rm -rf gsl-${VERSION}-$CLUSTER/
+    cd $CLUSTERDIR
+    ln -s lib lib64
 
 So paying attention to the output of make install, we should probably set both
 LD_LIBRARY_PATH and LD_RUN_PATH to point to $CLUSTERDIR/lib when loading this 

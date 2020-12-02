@@ -22,7 +22,7 @@ LOG
     PREFIX=$PWD/rackham
     cd src/
     wget http://meme-suite.org/doc/download.html/
-    module load gcc/8.3.0 openmpi/3.1.3  # these are available on all clusters
+    module load gcc/9.2.0 openmpi/3.1.3  # these are available on all clusters
     module load perl/5.18.4 perl_modules/5.18.4
     module load python/2.7.15
     tar xzf meme_5.0.1_1.tar.gz 

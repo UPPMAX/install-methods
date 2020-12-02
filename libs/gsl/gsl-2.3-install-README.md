@@ -1,6 +1,8 @@
 gsl/2.3
 =======
 
+2020-09-23: Building separate snowy and rackham versions.
+
 Gnu Scientific Library 2.3
 
 The GNU Scientific Library (GSL) is a numerical library for C and C++

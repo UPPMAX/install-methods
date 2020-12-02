@@ -41,6 +41,7 @@ setting up prior to adding new packages to this installation.
     mkdir -p $VERSION
     mkdir -p mf
     cd $VERSION
+    VERSIONDIR=$PWD
     mkdir $CLUSTER
     [[ "$CLUSTER" == "rackham" ]] && for CL in irma bianca snowy ; do test -L $CL || ln -s $CLUSTER $CL; done
     cd $CLUSTER/
@@ -127,6 +128,26 @@ Installation which requires additional modules
 ----------------------------------------------
 
 A few R packages or their dependencies require some further loads.
+
+
+### Rmpi
+
+Load the most common openmpi module for the gcc version used by R.  In this case, R/4.0.0 loads gcc/9.3.0.  There is an openmpi/4.0.2 and openmpi/4.0.3, but there is also openmpi/3.1.5, which is a more established major version.  That is what we'll load
+
+Outside R:
+
+    module load openmpi/3.1.5
+
+Inside R:
+
+    install.packages("Rmpi", dependencies=TRUE)
+
+Outside R:
+
+    module unload openmpi
+
+This openmpi module version should also be noted in the module help.
+
 
 
 ### magick
@@ -252,6 +273,39 @@ A github package.
     devtools::install_github("petrikemppainen/LDna", ref = 'master')
 
 
+### HDL
+
+A github repository that contains as a subdirectory a CRAN-like repository
+directory.  Create a new `external_repositories` directory within VERSIONDIR
+and clone the HDL repository there.
+
+    cd $VERSIONDIR
+    mkdir -p external_repositories
+    cd external_repositories
+    module load git/2.28.0
+    git clone https://github.com/zhenin/HDL
+    cd HDL
+
+This repository contains a script `HDL.install.R` that indicates `dplyr` and
+`data.table >= 1.12.1` is required.  We satisfy these requirements within
+R_packages/4.0.0 (data.table is currently 1.12.8).  So, install the HDL
+repository from this subdirectory using standard R procedures.
+
+    R
+
+Within R:
+
+    install.packages("HDL", repos=NULL)
+
+Make sure this loads correctly:
+
+    library(HDL)
+
+The repository also contains some scripts and datasets that the users may wish
+to use.  Added a note to the module help, and defined the new mf file variable
+`reposroot` to point to `$VERSIONDIR/external_repositories`.
+
+
 ### velocyto.R
 
 This needed `hdf5r` installed, see above.  It also expects boost to be in a
@@ -329,6 +383,9 @@ by `htslib/1.8`.
 
 
 ### SAIGE
+
+**NOTE** SAIGE is now installed in its own module, SAIGE/0.42.1 on its first installation.
+
 
 Install SAIGE, which is an R package with Scalable and Accurate Implementation
 of Generalized mixed model (Chen, H. et al. 2016). It accounts for sample

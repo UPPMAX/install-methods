@@ -1,7 +1,7 @@
 REAPR/1.0.18
 ============
 
-<ihttp://www.sanger.ac.uk/science/tools/reapr>
+<http://www.sanger.ac.uk/science/tools/reapr>
 
 LOG
 ---
@@ -26,4 +26,6 @@ LOG
     ./install.sh 
     cd ..
     mv Reapr_1.0.18 ../$CLUSTER
+
+Turns out perl_modules/5.24.1 was not part of the module file.
 

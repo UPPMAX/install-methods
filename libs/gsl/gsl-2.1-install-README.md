@@ -3,6 +3,9 @@
 TITLE
 =====
 
+build for both snowy and rackham
+
+
     Gnu Scientific Library 2.1
 
 DESCRIPTION
@@ -34,7 +37,7 @@ Built with
 LOG
 ---
 
-    TOOL=/sw/apps/gsl
+    TOOL=/sw/libs/gsl
     VERSION=2.1
     TOOLDIR=$TOOL/$VERSION
     CLUSTER=${CLUSTER:?CLUSTER must be set}
@@ -45,18 +48,19 @@ LOG
     cd $TOOLDIR
     mkdir -p src $CLUSTER 
     cd src
-    wget http://ftp.df.lth.se/pub/ftp.gnu.org/pub/gnu/gsl/gsl-${VERSION}.tar.gz
+    [[ -f gsl-${VERSION}.tar.gz ]] || wget http://ftp.gnu.org/pub/gnu/gsl/gsl-${VERSION}.tar.gz
     tar xzf gsl-${VERSION}.tar.gz 
     cd gsl-${VERSION}/
 
-Now load pieces for the build and build it.
-
-    module load build-tools
     module load gcc/4.9.2
 
     ./configure --prefix=$CLUSTERDIR
     make
     make install
+    cd ..
+    rm -rf gsl-${VERSION}/
+    cd $CLUSTERDIR
+    ln -s lib lib64
 
 So paying attention to the output of make install, we should probably set both
 LD_LIBRARY_PATH and LD_RUN_PATH to point to $CLUSTERDIR/lib when loading this 

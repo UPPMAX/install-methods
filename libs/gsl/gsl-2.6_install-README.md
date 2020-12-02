@@ -1,6 +1,9 @@
 gsl/2.6
 =======
 
+build separate for snowy and rackham.
+
+
 <https://www.gnu.org/software/gsl/>
 
 Used under license:
@@ -30,8 +33,8 @@ LOG
     VERSION=2.6
     makeroom.sh -f -t $TOOL -v $VERSION -w https://www.gnu.org/software/gsl/ -c libs -l "GPL" -d "numerical library for C and C++ programmers"
     ./makeroom_${TOOL}_${VERSION}.sh
-    source SOURCEME_${TOOL}_${VERSION}
     cd gsl
+    source SOURCEME_${TOOL}_${VERSION}
     cd $VERSION/src
     [[ -f gsl-${VERSION}.tar.gz ]] || wget http://ftp.gnu.org/pub/gnu/gsl/gsl-${VERSION}.tar.gz
     tar xzf gsl-${VERSION}.tar.gz 

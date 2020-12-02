@@ -17,9 +17,12 @@ LOG
     ./makeroom_PsN_5.0.0.sh
     cd /sw/apps/$TOOL
     source SOURCEME_PsN_5.0.0
-    cd $VERSION/src
-    wget https://github.com/UUPharmacometrics/PsN/releases/download/5.0.0/PsN-5.0.0.tar.gz
+    cd $SRCDIR
+    [[ -e PsN-5.0.0.tar.gz ]] || wget https://github.com/UUPharmacometrics/PsN/releases/download/5.0.0/PsN-5.0.0.tar.gz
+    [[ -e PsN-Source ]] && rm -rf PsN-Source
     tar xzf PsN-5.0.0.tar.gz
+
+    cd PsN-Source
 
     module load perl/5.26.2
     module load perl_modules/5.26.2
@@ -27,11 +30,19 @@ LOG
     module load python/3.7.2
     module load MariaDB/10.1.29
     module load pandoc/2.10.1
-    module load nonmem/7.4.3
+    module load nonmem/7.5.0
 
     PERLSITE=$PREFIX/lib/site_perl/5.26.2
 
-Both PREFIX and PERLSITE are needed during installation.  Place PREFIX where it asks for
+Both PREFIX and PERLSITE are needed during installation.
+
+Now do
+
+    echo PREFIX=$PREFIX
+    echo PERLSITE=$PERLSITE
+    perl setup.pl
+
+Place PREFIX where it asks for
 
     PsN Utilities installation directory [/usr/local/bin]:
 
@@ -49,29 +60,22 @@ Answer y to the remaining question.  When it gets to NM versions, it will not
 be able to find the correct directory even if you have a nonmem module loaded.
 So, use
 
+    /sw/apps/nonmem/7.3.0/rackham
     /sw/apps/nonmem/7.4.3/rackham
     /sw/apps/nonmem/7.4.4/rackham
+    /sw/apps/nonmem/7.5.0/rackham
 
-and
+and call the them,
 
-    /sw/apps/nonmem/7.4.3-intel/snowy
-    /sw/apps/nonmem/7.4.4-intel/rackham
-
-and call the first two,
-
+    7_3_0
     7_4_3
     7_4_4
+    7_5_0
 
-and the third and fourth,
-
-    7_4_3_intel
-    7_4_4_intel
-
-Make 7_4_4 be the default.
+Make 7_5_0 be the default.
 
 Now add comments on the versions of NONMEM that we support, indicating that
-7_4_3 and 7_4_4 are set up to use gcc/8.3.0 and 7_4_3_intel and 7_4_4_intel are
-set up to use intel/19.5.  The intel compiler will not work on bianca.
+7_3_0, 7_4_3, 7_4_4 and 7_5_0 are set up to use gcc/8.3.0.
 
     vi /sw/apps/PsN/5.0.0/rackham/lib/site_perl/5.26.2/PsN_5_0_0/psn.conf
 

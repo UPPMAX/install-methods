@@ -15,7 +15,7 @@ LOG
     VERSION=1.9
     CLUSTER=rackham
     cd /sw/bioinfo/$TOOL
-    makeroom.sh -f" -s "misc" -t "MultiQC" -v "1.9" -w "https://multiqc.info" -l "MIT" -d "Aggregate results from bioinformatics analyses across many samples into a single report"
+    makeroom.sh -f -s "misc" -t "MultiQC" -v "1.9" -w "https://multiqc.info" -l "MIT" -d "Aggregate results from bioinformatics analyses across many samples into a single report"
     ./makeroom_${TOOL}_${VERSION}.sh
     source SOURCEME_${TOOL}_${VERSION}
 
