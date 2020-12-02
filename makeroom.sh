@@ -6,7 +6,8 @@
 
 INVOKE_UNFORMATTED="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 INVOKE=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//')
-USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-d description] [-m MODULENAME] [-u CLUSTERS] [-x MODE] [-f] --
+#echo $INVOKE
+USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d description] [-m MODULENAME] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
 
@@ -16,6 +17,7 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
     Please modify the module file after running this
 
     Parameters:
+        -i  input file to be sourced; contains all the relevant parameters [[WORK IN PROGRESS]]
         -t  name of the \$TOOL (REQUIRED)
         -v  version of the \$TOOL (REQUIRED)
         -s  section of the \$TOOL for use with category bioinfo and new software only.
@@ -42,11 +44,40 @@ FORCED=0
 
 [[ $# -eq 0 ]] && echo "$USAGE" >&2 && exit 1
 
-while getopts "ht:v:s:w:c:m:l:L:d:u:x:f" option
+while getopts "hi:t:v:s:w:c:m:l:L:d:u:x:f" option
 do
     case $option in
         h) 
             echo "$USAGE" >&2
+            exit 0
+            ;;
+        i) INPUTFILE="$OPTARG"
+#            if [ ! -f $INPUTFILE ]; then
+#                printf "Input file %s not found!\n" "$INPUTFILE" >&2
+#            else
+#                while IFS= read -r line
+#                do
+#                    TOOLSTRING+=" "$line
+##                    eval 'for word in '$line'; do TOOLSTRING+=" "$word; done'
+#                done < "$INPUTFILE"
+#            fi
+#            INVOKE_UNFORMATTED="$(printf %q)$((($#)) && printf ' %q' "$@")"
+#            INVOKE_FILE="$(printf " %s" "$TOOLSTRING")"
+#            INVOKE_ARGS=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//' | sed "s/''//")
+#            INVOKE=$INVOKE_FILE" "$INVOKE_ARGS 
+#            INVOKE=$(echo $INVOKE | sed "s/-i \"\S*\"//g")
+#            INVOKE_BASH=$(echo $INVOKE | sed "s/\\\"//g")
+#            printf "%s\n" "" >&2
+#            printf "%s\n" "INVOKE" >&2
+#            echo $INVOKE >&2
+#            printf "%s\n" "" >&2
+#            printf "%s\n" "INVOKE_BASH" >&2
+#            echo $INVOKE_BASH >&2
+#            printf "%s\n" "" >&2
+#            printf "%s\n" "ANNAT" >&2
+#            printf "%s" "\n" >&2
+#            printf "%s" "\n" >&2
+#            bash $BASH_SOURCE $INVOKE_BASH
             exit 0
             ;;
         t) TOOL="$OPTARG"
@@ -276,7 +307,7 @@ if [ $CATEGORY == "bioinfo" ] ; then
     COMMONDIR=/sw/mf/common/$MF_CATEGORY/$SECTION/$MODULENAME
 fi
 
-MODULE_DIRECTORY="/sw/$CATEGORY/${TOOL}/mf"
+MODULE_DIRECTORY="/sw/$CATEGORY/${MODULENAME}/mf"
 SRCDIR="/sw/$CATEGORY/${TOOL}/${VERSION}/src"
 PREFIX="/sw/$CATEGORY/${TOOL}/${VERSION}/${INSTALLCLUSTER}"
 MODULE_FILE="${MODULE_DIRECTORY}/${VERSION}"
