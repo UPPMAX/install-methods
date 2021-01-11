@@ -259,6 +259,13 @@ Several R packages found here are not on CRAN or BioConductor, as a result of ei
 * For a "custom" R package that is part of another module, see dnase2tf.  This latter one uses a command within R.
 
 
+### lme4qtl
+
+A github package.
+
+    devtools::install_github("variani/lme4qtl", ref='master', dependencies=TRUE)
+
+
 ### harmony
 
 A github package.
