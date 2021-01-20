@@ -7,7 +7,7 @@
 INVOKE_UNFORMATTED="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 INVOKE=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//')
 #echo $INVOKE
-USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d description] [-m MODULENAME] [-u CLUSTERS] [-x MODE] [-f] --
+USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d description] [-m MODULENAME] [-T TAGS/KEYWORDS] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
 
@@ -27,6 +27,7 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
         -L  URL to the license of the \$TOOL (no DEFAULT)
         -d  short description of the \$TOOL (no DEFAULT)
         -m  name of the module file (DEFAULT is the same as the name of the tool)
+        -T  list of tags/keywords to make the \$TOOL easier to find. (DEFAULT is \"\$TOOL\")
         -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
         -x  flag for mode, i.e. INSTALL, RESUME or REMOVE (DEFAULT is INSTALL, RESUME just sets the variables and exits.)
         -f  forcing the script to ignore warnings."
@@ -524,6 +525,10 @@ if [module-info mode load] {
 #    puts stderr ""
 }
 
+if { \\\$Cluster == "bianca" } {
+#
+}
+
 # Directories for the program:
 #
 
@@ -541,6 +546,7 @@ prepend-path    MANPATH             \\\$modroot/share/man
 prepend-path    CPATH               \\\$modroot/include 
 prepend-path    CPLUS_INCLUDE_PATH  \\\$modroot/include 
 setenv          ${TOOL^^}_ROOT      \\\$modroot
+setenv          HOME                \\\$::env(HOME)
 
 EOF
 else
