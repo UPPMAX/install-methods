@@ -1,0 +1,15 @@
+#!/bin/bash 
+FILE=${1:?Please provide a parameter} 
+if [[ ! -e "$FILE" ]] ; then     
+	echo "$FILE does not exist" >&2 ; exit 1 
+elif [[ -d "$FILE" ]] ; then     
+	echo "$FILE is a directory">&2 ; exit 1 
+else     
+	TYPE=$(file --mime-type -b $FILE)
+	if [[ $TYPE == 'text/'* ]] ; then
+		echo -e "file \"$FILE\" of type $TYPE" >&2
+		cat $FILE
+	else
+		echo -e "\"$FILE\" is not a text file. It is a file of type $TYPE." >&2 ; exit 1
+        fi
+fi
