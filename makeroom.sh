@@ -17,7 +17,6 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
     Please modify the module file after running this
 
     Parameters:
-        -i  input file to be sourced; contains all the relevant parameters [[WORK IN PROGRESS]]
         -t  name of the \$TOOL (REQUIRED)
         -v  version of the \$TOOL (REQUIRED)
         -s  section of the \$TOOL for use with category bioinfo and new software only.
@@ -31,6 +30,8 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
         -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
         -x  flag for mode, i.e. INSTALL, RESUME or REMOVE (DEFAULT is INSTALL, RESUME just sets the variables and exits.)
         -f  forcing the script to ignore warnings."
+
+#        -i  input file to be sourced; contains all the relevant parameters [[WORK IN PROGRESS]]
 
 WEBSITE=http://
 TOOL=''
@@ -512,8 +513,7 @@ conflict $MODULENAME
 logToSyslog
 
 #Needed modules
-
-module load uppmax
+#module load uppmax
 
 #What happens on load and unload
 
@@ -535,16 +535,16 @@ if { \\\$Cluster == "bianca" } {
 prepend-path    PATH                \\\$modroot
 prepend-path    PATH                \\\$modroot/bin
 prepend-path    PERL5LIB            \\\$modroot/perl-packages/lib/perl5
-prepend-path    R_LIBS              \\\$modroot/lib
+prepend-path    R_LIBS_SITE         \\\$modroot/lib
 prepend-path    LD_LIBRARY_PATH     \\\$modroot/lib
-prepend-path    LD_RUN_PATH         \\\$modroot/lib 
-prepend-path    LIBRARY_PATH        \\\$modroot/lib 
-prepend-path    PKG_CONFIG_PATH     \\\$modroot/lib/pkgconfig 
+prepend-path    LD_RUN_PATH         \\\$modroot/lib
+prepend-path    LIBRARY_PATH        \\\$modroot/lib
+prepend-path    PKG_CONFIG_PATH     \\\$modroot/lib/pkgconfig
 prepend-path    PYTHONPATH          \\\$modroot/lib/python3.6/site-packages
 prepend-path    PYTHONPATH          \\\$modroot/lib/python2.7/site-packages
 prepend-path    MANPATH             \\\$modroot/share/man
-prepend-path    CPATH               \\\$modroot/include 
-prepend-path    CPLUS_INCLUDE_PATH  \\\$modroot/include 
+prepend-path    CPATH               \\\$modroot/include
+prepend-path    CPLUS_INCLUDE_PATH  \\\$modroot/include
 setenv          ${TOOL^^}_ROOT      \\\$modroot
 setenv          HOME                \\\$::env(HOME)
 
@@ -577,13 +577,6 @@ Structure creating script ($SCRIPTFILE) moved to /sw/$CATEGORY/$TOOL/makeroom_$T
 LOG
 ---
 
-    TOOL=$TOOL
-    VERSION=$VERSION
-    CLUSTER=${INSTALLCLUSTER:?CLUSTER must be set}
-    TOOLDIR=/sw/$CATEGORY/\\\$TOOL
-    VERSIONDIR=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION
-    PREFIX=/sw/$CATEGORY/\\\$TOOL/\\\$VERSION/\\\$CLUSTER
-    SRCDIR=$SRCDIR
     $INVOKE
     ./$SCRIPTFILE
 EOF2
