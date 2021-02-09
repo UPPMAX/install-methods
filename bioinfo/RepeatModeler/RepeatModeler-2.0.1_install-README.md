@@ -18,8 +18,61 @@ LOG
     VERSIONDIR=/sw/bioinfo/$TOOL/$VERSION
     PREFIX=/sw/bioinfo/$TOOL/$VERSION/$CLUSTER
     SRCDIR=/sw/bioinfo/RepeatModeler/2.0.1/src
-    /home/douglas/bin/makeroom.sh -f" -t "RepeatModeler" -v "2.0.1" -s "misc" -w "http://www.repeatmasker.org/RepeatModeler/" -l "open source" -d "de novo transposable element \(TE\) family identification and modeling package"
+    /home/douglas/bin/makeroom.sh -f" -t "RepeatModeler" -v "2.0.1" -s "misc" -w "http://www.repeatmasker.org/RepeatModeler/" -l "open source" -d "de novo transposable element \(TE\) family identification and modeling package""
     ./makeroom_RepeatModeler_2.0.1.sh
+
+module load perl/5.26.2 perl_modules/5.26.2
+
+RepeatMasker:
+    
+    /sw/bioinfo/RepeatMasker/4.1.0/rackham
+
+RECON:
+
+    /sw/bioinfo/RepeatMasker/aux_rackham/RECON/1.08/bin
+
+TRF (note not direct path to program, which is what RepeatMasker wants):
+
+    /sw/bioinfo/RepeatMasker/aux_rackham/TRF/4.09/trf
+
+RepeatScout:
+
+    /sw/bioinfo/RepeatScout/1.0.6/rackham
+    #/sw/apps/bioinfo/RepeatMasker/aux_rackham/RepeatScout/1.0.5/bin
+
+NSEG:
+
+    /sw/bioinfo/RepeatMasker/aux_rackham/nseg
+
+RMBlast:
+
+    /sw/bioinfo/RepeatMasker/aux_rackham/rmblast/rmblast-2.10.0/bin
+
+
+GenomeTools:
+
+    /sw/bioinfo/GenomeTools/1.6.1/rackham/bin
+    #/sw/apps/bioinfo/RepeatMasker/aux_rackham/GenomeTools/genometools-1.6.1/bin
+
+LTR_retriever:
+
+    /sw/bioinfo/LTR_retriever/2.9.0/src/LTR_retriever
+
+MAFFT
+
+    /sw/apps/bioinfo/MAFFT/7.407/rackham/bin
+
+NINJA:
+
+    /sw/bioinfo/NINJA/0.97-cluster_only/rackham
+    #/sw/apps/build/ninja/1.9.0/rackham
+
+CD-hit
+
+    /sw/bioinfo/cd-hit/4.8.1/rackham
+
+
+
 RepeatModeler/1.0.11
 ===========================
 
@@ -46,7 +99,7 @@ As for RepeatMasker, move the unpacked directory to be $CLUSTER and configure th
 
     mv RepeatModeler-open-${VERSION} ../$CLUSTER
     cd ../$CLUSTER
-    module load perl/5.26.2 perl_modules/5.26.2
+    module load perl/7.26.2 perl_modules/5.26.2
 
 RepeatModeler 1.0.11 fixes the `use Cwd;` bug fixed by us in 1.0.8, so no need
 to repeat that.

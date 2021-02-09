@@ -22,5 +22,7 @@ LOG
     /home/jonass/uppmax/install-methods/makeroom.sh -t "Nextflow" -v "20.10.0" -d "A DSL for data-driven computational pipelines http://nextflow.io" -w "https://github.com/nextflow-io/nextflow" -l "Creative Commons Attribution-ShareAlike 4.0 International Public License" -L "https://github.com/nextflow-io/nextflow/blob/master/docs/LICENCE.txt" -f"
     ./makeroom_Nextflow_20.10.0.sh
     cd $SCRDIR
-    wget -qO- https://get.nextflow.io | bash
-    mv nextflow $PREFIX/
+    wget https://github.com/nextflow-io/nextflow/releases/download/v20.10.0/nextflow-20.10.0-all
+    chmod +x nextflow-20.10.0-all
+    cp nextflow-20.10.0-all ../rackham/nextflow
+ 

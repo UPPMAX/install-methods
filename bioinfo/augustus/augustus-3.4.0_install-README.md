@@ -13,11 +13,7 @@ LOG
 
     TOOL=augustus
     VERSION=3.4.0
-    CLUSTER=rackham
-    TOOLDIR=/sw/bioinfo/$TOOL
-    VERSIONDIR=/sw/bioinfo/$TOOL/$VERSION
-    PREFIX=/sw/bioinfo/$TOOL/$VERSION/$CLUSTER
-    SRCDIR=/sw/bioinfo/augustus/3.4.0/src
+    cd /sw/bioinfo/$TOOL
     makeroom.sh -f -t "augustus" -v "3.4.0" -w "http://bioinf.uni-greifswald.de/augustus" -l "Artistic" -d "find genes and their structures in one or more genomes"
     ./makeroom_augustus_3.4.0.sh
     source SOURCEME_augustus_${VERSION}
@@ -31,12 +27,16 @@ Artistic
 Structure creating script (makeroom_augustus_3.3.3.sh) made with makeroom.sh (Author: Jonas Söderberg) and moved to /sw/bioinfo/augustus/makeroom_3.3.3.sh
 
 
-    module load gcc/9.1.0
-    module load openmpi/3.1.3
-    module load boost/1.70.0-gcc9.1.0-mpi3.1.3
+    module load gcc/9.3.0
+    module load openmpi/3.1.5
+    module load boost/1.70.0_gcc9.3.0_mpi3.1.5
     module load zlib/1.2.11
     module load sqlite/3.34.0
-    module load bioinfo-tools bamtools/2.5.1
+    module load lpsolve/5.5.2.9
+    module load gsl/2.6
+    module load SuiteSparse/5.8.1
+    module load bioinfo-tools
+    module load bamtools/2.5.1
 
 For comparative gene prediction, we also require
 LPSolve 5.5.x.y, gsl/2.6, suitesparse.
@@ -72,7 +72,7 @@ Uncomment this line in `common.mk` so that we can handle gzipped input files:
     ZIPINPUT = true
 
 We also keep the building of comparative gene prediction (CGP), which is newly default in 3.4.0.
-Leave the definition of SQLITE and remove the definition of MYSQL in common.mk.
+Add a definition of `SQLITE = true` and a definition of `MYSQL = false` in common.mk.
 
 Modify the augustus makefile to handle boost correctly.
 
@@ -81,55 +81,27 @@ Modify the augustus makefile to handle boost correctly.
     cd ..
 
 For the above, while the file is open, within the `ZIPINPUT`-dependent section,
-modify `CXXFLAGS` and `LIBS`.  At the `CXXFLAGS` line, add
+modify `CPPFLAGS` and `LIBS`.  At the `CPPFLAGS` line, add
 `-I${BOOST_ROOT}/include`.  At the `LIBS` line, add `-L${BOOST_ROOT}/lib`
 *prior to* `-lboost_iostreams`.  `BOOST_ROOT` is defined by the boost module loaded
 above.  The lines should look like:
 
     ifdef ZIPINPUT
-        CXXFLAGS += -DZIPINPUT -I${BOOST_ROOT}/include
+        CPPFLAGS += -DZIPINPUT -I${BOOST_ROOT}/include
         LIBS    = -L${BOOST_ROOT}/lib -lboost_iostreams
     endif
 
 
+Build augustus.
+
+    make
+
+
 ## Modify auxprogs/ makefiles
 
-Now make changes to `auxprogs/` makefiles as follows.
+Now handle some issues in `auxprogs/` as follows.
 
     cd auxprogs
-
-### checkTergetSortedness
-
-Change `checkTargetSortedness/Makefile` lines to use `samtools/0.1.19` API.
-
-    cd checkTargetSortedness
-    module load samtools/0.1.19
-    vi Makefile
-
-The Makefile lines should read
-
-    #SAMTOOLS = /usr/include/samtools
-    SAMTOOLS = ${SAMTOOLS_ROOT}/../src
-    #INCLUDES = -I$(SAMTOOLS) -I.
-    INCLUDES = -I$(SAMTOOLS) -I.
-    # replace -lbam with the following in case you have your own samtools library: $(SAMTOOLS)/libbam.a
-    #LIBS=-lbam -lcurses -lm -lz -lpthread
-    LIBS=$(SAMTOOLS)/libbam.a -lcurses -lm -lz -lpthread
-
-Then
-
-    make clean
-    make
-    cp -av checkTargetSortedness ../../bin/
-    module unload samtools/0.1.19
-    cd ..
-
-### filterBam
-
-    cd filterBam
-    make clean
-    make BAMTOOLS=$BAMTOOLS_ROOT
-    cd ..
 
 ### utrrnaseq
 
@@ -141,19 +113,6 @@ This is built successfully, it just needs to be lifted out.
 
 Done with `auxprogs/`.
 
-    cd ..
-
-
-## auxiliary scripts
-
-
-Make scripts find perl using the path, change `#!/usr/bin/perl` to `#!/usr/bin/env perl`.
-Most scripts use `env` but a few do not.
-
-    cd scripts
-    for F in $(file * | grep 'Perl script' | cut -f1 -d:) ; do
-        sed -i 's,^#!/usr/bin/perl.*$,#!/usr/bin/env perl,' "$F"
-    done
     cd ..
 
 
@@ -193,7 +152,7 @@ Make sure shared libraries can be found.
 Tighten up permissions on config directory so `sw` group members don't
 inadvertently write something there using BUSCO or some other tool.
 
-    ( cd $TOOLDIR && fixup -g $VERSION )
+    ( cd $PREFIX && fixup . )
     chmod -R -w config
 
 
@@ -205,6 +164,7 @@ We can use the mf file from augustus/3.2.3.  All we need to do is add
 `perl_modules/5.26.2`.
 
 
-### 2020-07-01
+After running the post-install script, do
 
-updated `scripts/bamToWig.py` to current master-branch version based on suggestion from braker how-to.
+    cd /sw/bioinfo/augustus
+    chmod -R -w */rackham/config

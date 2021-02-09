@@ -68,10 +68,14 @@ Begin by installing the BioPerl dependencies, which install all their dependenci
 
 For now GD is installed in the BioPerl trees, but I should install it here as well.  I will address that a bit later.
 
-A few other moduless.
+A few other modules.
 
     cpanm re::engine::RE2 List::Util List::MoreUtils common::sense YAML::XS Test::FailWarnings Test::Warnings Term::Size Curses Socket::GetAddrInfo 
     cpanm Log::Log4perl HPC::Runner::Slurm HTML::Perlinfo
+
+Force-install to get around a test failure.
+
+    cpanm --force Acme::Tools
 
 And in preparation for Task::Kensho ...
 

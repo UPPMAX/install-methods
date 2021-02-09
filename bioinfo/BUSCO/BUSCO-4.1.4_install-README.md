@@ -19,8 +19,55 @@ LOG
     VERSIONDIR=/sw/bioinfo/$TOOL/$VERSION
     PREFIX=/sw/bioinfo/$TOOL/$VERSION/$CLUSTER
     SRCDIR=/sw/bioinfo/BUSCO/4.1.4/src
-    /home/douglas/bin/makeroom.sh -f" -t "BUSCO" -v "4.1.4" -w "https://busco.ezlab.org/" -c "bioinfo" -s "misc" -d "assessing genome assembly and annotation completeness"
+    /home/douglas/bin/makeroom.sh -f" -t "BUSCO" -v "4.1.4" -w "https://busco.ezlab.org/" -c "bioinfo" -s "misc" -d "assessing genome assembly and annotation completeness""
     ./makeroom_BUSCO_4.1.4.sh
+    source /sw/bioinfo/BUSCO/SOURCEME_BUSCO_4.1.4
+
+# The download was already done when I started but should look like this
+    cd $SRCDIR
+    git clone --depth 1 --branch 4.1.4 https://gitlab.com/ezlab/busco.git 
+    cd busco
+
+    module load bioinfo-tools
+    module load augustus/3.4.0
+    module load blast/2.10.1+
+    module load prodigal/2.6.3
+    module load metaeuk/4-a0f584d
+    module load hmmer/3.2.1
+    module load sepp/4.3.10
+    module load biopython/1.76-py3
+
+    python3 scripts/busco_configurator.py config/config.ini /config/config.ini
+    cp $SRCDIR/busco/config/config.ini $PREFIX
+    export PYTHONPATH=${PREFIX}/lib/python3.7/site-packages/:${PYTHONPATH}
+    export BUSCO_CONFIG_FILE=${PREFIX}/config.ini
+    python3 setup.py install --prefix=$PREFIX
+
+    cp -av $SRCDIR/busco/scripts/generate_plot.py $PREFIX/bin
+    #cp -av /sw/bioinfo/augustus/3.4.0/rackham/augustus_config_copy $PREFIX
+    mv $PREFIX/bin/busco $PREFIX/bin/run_BUSCO.py
+Modify the header of $PREFIX/bin/run_BUSCO.py to #!/usr/bin/env python3
+    
+
+
+
+#Download v4_lineage_sets. The script $TOOLDIR/v4_lineage_sets/BUSCO-update-v4-lineage-sets.sh updates the database.
+    mkdir $TOOLDIR/v4_lineage_sets
+    cd $TOOLDIR/v4_lineage_sets
+    wget -r -np --cut-dirs=2 -nH -R index.html https://busco-data.ezlab.org/v4/data/
+    cd $TOOLDIR/v4_lineage_sets/information && find -iname "*.tar.gz" -exec tar xfvz {} \;
+    cd $TOOLDIR/v4_lineage_sets/placement_files && find -iname "*.tar.gz" -exec tar xfvz {} \;
+    cd $TOOLDIR/v4_lineage_sets/lineages && find -iname "*.tar.gz" -exec tar xfvz {} \;
+
+
+    export BUSCO_LINEAGE_SETS=${TOOLDIR}/v4_lineage_sets/lineages
+
+
+
+
+
+
+
 BUSCO/3.0.2b
 ============
 

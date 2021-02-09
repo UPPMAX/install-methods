@@ -79,3 +79,9 @@ Now add comments on the versions of NONMEM that we support, indicating that
 
     vi /sw/apps/PsN/5.0.0/rackham/lib/site_perl/5.26.2/PsN_5_0_0/psn.conf
 
+Also, add an additional `module_dir_name=1` option under '[default_execute_options]':
+
+    [default_execute_options]
+    display_iterations=1
+    model_dir_name=1
+

@@ -159,6 +159,12 @@ so perhaps a taint problem in the test suite.  Force-install it and skip the tes
     cpanm --force --notest App::Ack
 
 
+### Acme::Tools
+
+Force-install to get around a test failure.
+
+    cpanm --force Acme::Tools
+
 ### Tk and Devel::ptkdb
 
 Install Tk and the graphical debugger.
