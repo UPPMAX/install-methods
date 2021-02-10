@@ -9,6 +9,19 @@ _EXPORT_UPPMAX_INSTALL_FUNCTIONS=yes
 _CURRENT_CLUSTERS="bianca irma rackham snowy"
 
 
+# "module avail" loading subgroupings before running
+function mavail()
+{
+    [[ $# != 0 ]] || { cat <<_usage_
+USAGE:  mavail module  or  mavail module/version
+
+Perform 'module avail module/version' after loading bioinfo-tools and build-tools subgroupings in a subshell
+_usage_
+    return; }
+    local M=${1:?module or module/version required}
+    ( module load bioinfo-tools build-tools ; module avail "$M" )
+}
+
 # "module help" loading subgroupings before running
 function mhelp()
 {
