@@ -44,8 +44,8 @@ LOG
     cd build-$CLUSTER
     export CPATH=$MPI_ROOT/include:$CPATH
     export LIBRARY_PATH=$MPI_ROOT/lib:$LIBRARY_PATH
-
     MPICC=$(which mpicc)
+
     ../configure --with-beagle=$BEAGLE_ROOT --with-readline --with-mpi=$(with mpicc) --prefix=$PREFIX
     make -j 10
     make install
@@ -57,7 +57,7 @@ LOG
     source SOURCEME_mrbayes_3.2.7a-mpi
     cd $SRCDIR
 # then continue as above from     ml bioinfo-tools
-# until     cd build-$CLUSTER   then
+# until         MPICC=$(which mpicc)   then
     source /sw/EasyBuild/source-me-for-EasyBuild-4.3.2-snowy
  #important that the above source is done after the other ml:s. Otherwise the modules are not found
     ml fosscuda/2019b
