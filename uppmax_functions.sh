@@ -87,7 +87,7 @@ function jiu() { jobinfo -u ${1:-$USER} ; }
 function scs() { scontrol show jobid=${1:-1} ; }
 function scsv() { scontrol show --details --details jobid=${1:-1} ; }
 function scu() { scontrol update jobid=${1:-1} ${2} ; }
-function sj() { squeue -a -o"%.7i  %.8a %.9P %.8f  %50j  %.8u %.8T  %.10M  %.10l  %.10L  %.3D %.3C %.12R" -S j,-T,    i -u ${1:-$USER} ; }
+function sj() { squeue -a -o"%.7i  %.8a %.9P %.8f  %50j  %.8u %.8T  %.10M  %.10l  %.10L  %.3D %.3C %.12R" -S j,-T,i -u ${1:-$USER} ; }
 function userproj() { 
     local U=${1:-$USER}
     sacctmgr -n list assoc where user=$U -P format=account | cat <(id -Gn $U | tr ' ' '\n') - | sort -Vu | grep -vP "($U|no_project)"
