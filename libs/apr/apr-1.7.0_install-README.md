@@ -18,17 +18,17 @@ LOG
     VERSIONDIR=/sw/libs/$TOOL/$VERSION
     PREFIX=/sw/libs/$TOOL/$VERSION/$CLUSTER
 
-# Installera apr innan apr-utils
-module load gcc/9.3.0
-source $TOOLDIR/SOURCEME_apr_1.7.0
-cd $PREFIX
+    # Installera apr innan apr-utils
+    module load gcc/9.3.0
+    source $TOOLDIR/SOURCEME_apr_1.7.0
+    cd $PREFIX
 
-wget https://github.com/apache/apr/archive/1.7.0.tar.g
-mv 1.7.0.tar.gz apr-1.7.0.tar.gz
-tar xfvz apr-1.7.0.tar.gz
-cd $PREFIX/apr-1.7.0
-./buildconf 
-touch libtoolT #A wierd bug. See https://stackoverflow.com/questions/18091991/error-while-compiling-apache-apr-make-file-not-found
-./configure --prefix=$PREFIX/prefix 
-make -j 8
-make install
+    wget https://github.com/apache/apr/archive/1.7.0.tar.g
+    mv 1.7.0.tar.gz apr-1.7.0.tar.gz
+    tar xfvz apr-1.7.0.tar.gz
+    cd $PREFIX/apr-1.7.0
+    ./buildconf 
+    touch libtoolT #A wierd bug. See https://stackoverflow.com/questions/18091991/error-while-compiling-apache-apr-make-file-not-found
+    ./configure --prefix=$PREFIX/prefix 
+    make -j 8
+    make install

@@ -18,14 +18,14 @@ LOG
     VERSIONDIR=/sw/libs/$TOOL/$VERSION
     PREFIX=/sw/libs/$TOOL/$VERSION/$CLUSTER
 
-source $TOOLDIR/SOURCEME_cyrus-sasl_2.1.27
-mkdir $PREFIX/src
-cd $PREFIX/src
+    source $TOOLDIR/SOURCEME_cyrus-sasl_2.1.27
+    mkdir $PREFIX/src
+    cd $PREFIX/src
 
-wget https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.27/cyrus-sasl-2.1.27.tar.gz
-tar xfvz cyrus-sasl-2.1.27.tar.gz --strip 1
+    wget https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.27/cyrus-sasl-2.1.27.tar.gz
+    tar xfvz cyrus-sasl-2.1.27.tar.gz --strip 1
 
-./configure --prefix=$PREFIX
-make
-make install
+    ./configure --prefix=$PREFIX
+    make
+    make install
 

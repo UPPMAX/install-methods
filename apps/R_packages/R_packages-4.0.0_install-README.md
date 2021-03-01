@@ -279,7 +279,12 @@ A github package.
 
     devtools::install_github("petrikemppainen/LDna", ref = 'master')
 
+### ampvis2
 
+A github package.
+
+    remotes::install_github("madsalbertsen/ampvis2", Ncpus = 6)
+    
 ### HDL
 
 A github repository that contains as a subdirectory a CRAN-like repository

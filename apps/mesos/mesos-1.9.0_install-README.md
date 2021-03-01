@@ -19,19 +19,19 @@ LOG
     PREFIX=/sw/apps/$TOOL/$VERSION/$CLUSTER
     boost_path=/sw/libs/boost/1.66.0/
 
-module load gcc/9.3.0
-module load apr/1.7.0
-module load maven/3.6.0
-module load cyrus-sasl/2.1.27
-module load subversion/1.10.6
+    module load gcc/9.3.0
+    module load apr/1.7.0
+    module load maven/3.6.0
+    module load cyrus-sasl/2.1.27
+    module load subversion/1.10.6
 
-mkdir $PREFIX/src
-cd $PREFIX/src
-wget http://archive.apache.org/dist/mesos/1.9.0/mesos-1.9.0.tar.gz
-tar xfvz mesos-1.9.0.tar.gz --strip 1
-mkdir build
-cd build
-../configure --prefix=$PREFIX --with-boost=$boost_path
-make -j 40
-make install
+    mkdir $PREFIX/src
+    cd $PREFIX/src
+    wget http://archive.apache.org/dist/mesos/1.9.0/mesos-1.9.0.tar.gz
+    tar xfvz mesos-1.9.0.tar.gz --strip 1
+    mkdir build
+    cd build
+    ../configure --prefix=$PREFIX --with-boost=$boost_path
+    make -j 40
+    make install
 
