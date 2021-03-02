@@ -21,6 +21,7 @@ SKIP_FIND_DATABASES=${SKIP_FIND_DATABASES-$SKIP_FIND}
 # export INSTALL_METHODS_REPOSITORY to indicate your own clone's location
 REPOSITORY=${INSTALL_METHODS_REPOSITORY:-/home/douglas/github-sync/local/install-methods}
 
+FIND_OPTS="-maxdepth 4"
 
 # modules
 
@@ -28,10 +29,10 @@ if [[ ! $SKIP_FIND_MODULES ]] ; then
 
     cd /sw
 
-    find apps    -name '*install-README.md' | cpio -pdm $REPOSITORY &
-    find bioinfo -name '*install-README.md' | cpio -pdm $REPOSITORY &
-    find libs    -name '*install-README.md' | cpio -pdm $REPOSITORY &
-    find comp    -name '*install-README.md' | cpio -pdm $REPOSITORY &
+    find apps    ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $REPOSITORY &
+    find bioinfo ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $REPOSITORY &
+    find libs    ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $REPOSITORY &
+    find comp    ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $REPOSITORY &
 
     wait
 
@@ -48,26 +49,26 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
 
     cd /sw/data
 
-    find Chromium           -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find Centrifuge-indices -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find ExAC               -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find Pfam               -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find cdd                -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find dbCAN              -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find annovar            -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find panther            -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find eggNOG             -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find igenomes           -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find silva              -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find Chromium           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find Centrifuge-indices ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find ExAC               ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find Pfam               ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find cdd                ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find dbCAN              ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find annovar            ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find panther            ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find eggNOG             ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find igenomes           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find silva              ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     ###  The following should eventually get brought in as well
-    # find dbSNP -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find SGDP -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find blast_databases -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find chembl -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find piper_references -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find pph2-db -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find reference -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find vep -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find dbSNP ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find SGDP ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find blast_databases ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find chembl ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find piper_references ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find pph2-db ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find reference ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    # find vep ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
 
 fi
 

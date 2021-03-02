@@ -14,9 +14,17 @@ LOG
 
     /home/bjornv/git/install-methods/makeroom.sh -t "BUSCO" -v "5.0.0" -w "https://busco.ezlab.org/" -l "MIT" -d "Based on evolutionarily-informed expectations of gene content of near-universal single-copy orthologs\, BUSCO metric is complementary to technical metrics like N50." -f""
     ./makeroom_BUSCO_5.0.0.sh
-BUSCO/4.1.4
+    BUSCO/4.1.4
 
-source SOURCEME_BUSCO_5.0.0
+    source /sw/bioinfo/BUSCO/SOURCEME_BUSCO_5.0.0
+    cd $SRCDIR
+    git clone --depth 1 --branch 4.1.4 https://gitlab.com/ezlab/busco.git 
+    cd busco
+
+    module load bioinfo-tools
+    module load biopython/1.78
+
+
 
 
 
