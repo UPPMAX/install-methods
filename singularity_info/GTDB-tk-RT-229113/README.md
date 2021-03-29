@@ -65,7 +65,9 @@ singularity run -B ./gtdbtk_io:/data -B ./release95:/refdata gtdbtk_latest.sif t
 [2021-03-29 11:53:56] INFO: Using GTDB-Tk reference data version r95: /refdata/
 [2021-03-29 11:53:56] INFO: Using a temporary directory as out_dir was not specified.
 [2021-03-29 11:53:56] INFO: Command: gtdbtk classify_wf --genome_dir /scratch/gtdbtk_tmp_roujlwz4/genomes --out_dir /scratch/gtdbtk_tmp_roujlwz4/output --cpus 1
-    <TEST OUTPUT>     [2021-03-29 11:53:57] INFO: gtdbtk classify_wf --genome_dir /scratch/gtdbtk_tmp_roujlwz4/genomes --out_dir /scratch/gtdbtk_tmp_roujlwz4/    <TEST OUTPUT>     [2021-03-29 11:53:57] INFO: Using GTDB-Tk reference data version r95: /refdata/                                                             <TEST OUTPUT>     [2021-03-29 11:53:57] TASK: Running Prodigal V2.6.3 to identify genes.
-...
+1
+    <TEST OUTPUT>     [2021-03-29 11:53:57] INFO: gtdbtk classify_wf --genome_dir /scratch/gtdbtk_tmp_roujlwz4/genomes --out_dir /scratch/gtdbtk_tmp_roujlwz4/
+    <TEST OUTPUT>     [2021-03-29 11:53:57] INFO: Using GTDB-Tk reference data version r95: /refdata/
+[2021-03-29 11:57:05] INFO: Test has successfully finished.
 ```
 
