@@ -25,7 +25,7 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
         -l  license of the \$TOOL (no DEFAULT)
         -L  URL to the license of the \$TOOL (no DEFAULT)
         -d  short description of the \$TOOL (no DEFAULT)
-        -G  name of the group the \$TOOL needs to be installed with.
+        -G  name of the group the \$TOOL needs to be installed with. (DEFAULT is \"sw\")
         -m  name of the module file (DEFAULT is the same as the name of the tool)
         -T  list of tags/keywords to make the \$TOOL easier to find. (DEFAULT is \"\$TOOL\")
         -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
