@@ -7,7 +7,7 @@
 INVOKE_UNFORMATTED="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 INVOKE=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//')
 #echo $INVOKE
-USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d description] [-m MODULENAME] [-T TAGS/KEYWORDS] [-u CLUSTERS] [-x MODE] [-f] --
+USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d DESCRIPTION] [-G GROUP] [-m MODULENAME] [-T TAGS/KEYWORDS] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
 
@@ -25,6 +25,7 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
         -l  license of the \$TOOL (no DEFAULT)
         -L  URL to the license of the \$TOOL (no DEFAULT)
         -d  short description of the \$TOOL (no DEFAULT)
+        -G  name of the group the \$TOOL needs to be installed with.
         -m  name of the module file (DEFAULT is the same as the name of the tool)
         -T  list of tags/keywords to make the \$TOOL easier to find. (DEFAULT is \"\$TOOL\")
         -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
@@ -40,13 +41,14 @@ CATEGORY=bioinfo
 MF_CATEGORY=bioinfo-tools
 MODULENAME=''
 LINKFLAG=-i
+FIXFLAG=''
 CLUSTERS=(rackham irma bianca snowy)
 MODE=INSTALL
 FORCED=0
 
 [[ $# -eq 0 ]] && echo "$USAGE" >&2 && exit 1
 
-while getopts "hi:t:v:s:w:c:m:l:L:d:u:x:f" option
+while getopts "hi:t:v:s:w:c:G:m:l:L:d:u:x:f" option
 do
     case $option in
         h) 
@@ -97,6 +99,9 @@ do
         L) LICENSE_URL="$OPTARG"
             ;;
         d) DESC="$OPTARG"
+            ;;
+        G) FIXFLAG="-G $OPTARG"
+            USERGROUP=$OPTARG
             ;;
         m) MODULENAME="$OPTARG"
             ;;
@@ -344,6 +349,7 @@ NEWS6="$LICENSE"
 ################### If resuming, now we exit #####################
 if [ $MODE == "RESUME" ] ; then
     printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s SRCDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "i$PREFIX" "$COMMONDIR" "$SRCDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+    ## echo for run_makeroom
     echo $TMPFILE
     exit 0
 fi
@@ -419,6 +425,7 @@ RMVTMP
 ##### DRYRUN END ######
     printf "export TOOL='' VERSION='' TOOLDIR='' VERSIONDIR='' PREFIX='' COMMONDIR='' SRCDIR='' NEWS=''" > $TMPFILE
     chmod +x $TMPFILE
+    ## echo for run_makeroom
     printf "%s\n" $TMPFILE
     chmod +x $REMOVEFILE
     exit 0;
@@ -472,8 +479,6 @@ for C in ${CLUSTERS[@]}; do
     fi
 done
 cd -
-fixup /sw/$CATEGORY/${TOOL}/${VERSION}
-fixup $COMMONDIR
 
 ######################## Using the module file template ############################
 
@@ -604,9 +609,10 @@ cat > "$YAMLFILE" <<EOF4
 - CLUSTER:$YAMLLIST
 - LICENSE:$LICENSE
 - LICENSEURL:$LICENSE_URL
+- USERGROUP:$USERGROUP
 - WEBSITE:$WEBSITE
 - LOCAL:$MODULE_FILE
-- COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$MODU/$VERSION
+- COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$MODULENAME/$VERSION
 - DESCRIPTION:$DESC
 EOF4
 
@@ -615,7 +621,10 @@ cat > "$POSTFILE" <<EOF5
 . uppmax_functions.sh
 cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
 all_mflink -f $LINKFLAG $TOOL $VERSION
-fixup $TOOLDIR
+chgrp -h 'sw' $TOOLDIR
+find $TOOLDIR -maxdepth 1 -type f -exec chgrp "sw" {} \;
+fixup $MODULE_DIRECTORY
+fixup ${FIXFLAG} $TOOLDIR/${VERSION}
 echo "News:"
 echo "$NEWS1" 1>&2
 echo "$NEWS2" 1>&2
@@ -652,5 +661,6 @@ TMP
 ################# End of installation makeroom script #########################
 
 printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s SRCDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "$PREFIX" "$COMMONDIR" "$SRCDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+    ## echo for run_makeroom
 echo $TMPFILE
 chmod +x $SCRIPTFILE
