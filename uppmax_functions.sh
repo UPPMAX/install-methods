@@ -246,7 +246,8 @@ function all_mflink()
     local FORCE
     local OPT
     local OPTIND
-    while getopts ":ilacbpdf" opt "$@"; do
+    local CLUSTS="$_CURRENT_CLUSTERS"
+    while getopts ":ilacbpdfu:" opt "$@"; do
         case $opt in
             i)  SUBDIR= ; OPT="-$opt" ;;
             l)  SUBDIR=libraries ; OPT="-$opt" ;;
@@ -256,14 +257,15 @@ function all_mflink()
             p)  SUBDIR=parallel ; OPT="-$opt" ;;
             d)  SUBDIR=data ; OPT="-$opt" ;;
             f)  FORCE=yes ;;
+            u)  CLUSTS=${OPTARG} ;;
             *)  echo "unknown option" ; return ;;
         esac
     done
     shift $((OPTIND-1))
     [[ $# == 2 ]] || { cat <<_usage_
-USAGE:  all_mflink [ -i (default) | -l | -a | -c | -b | -p | -d ] [ -f ] modulename version
+USAGE:  all_mflink [ -i (default) | -l | -a | -c | -b | -p | -d ] [ -u "cluster1 cluster2" ] [ -f ] modulename version
 
-Create all cluster-specific links (/sw/mf/{$_CURRENT_CLUSTERS}/...) to /sw/mf/common/... for an mf file
+Create all cluster-specific links (/sw/mf/{$CLUSTS}/...) to /sw/mf/common/... for an mf file
 
 Subtree options:   -i   bioinfo-tools (default)
                    -l   libraries
@@ -273,6 +275,7 @@ Subtree options:   -i   bioinfo-tools (default)
                    -p   parallel
                    -d   data
 Other options:     -f   force; basically required
+                   -u   string containing clusters to address; overrides \$_CURRENT_CLUSTERS
 _usage_
     return; }
     local M=$1
@@ -280,11 +283,11 @@ _usage_
     local C=
     if [[ $SUBDIR ]] ; then
         if [[ $FORCE ]] ; then
-            for C in $_CURRENT_CLUSTERS ; do
+            for C in $CLUSTS ; do
                 ( cd /sw/mf/$C/$SUBDIR/ && mflink $OPT -f -q $M $V ) || { echo "*** problem with $C/$SUBDIR/$M/$V"; }
             done
         else
-            for C in $_CURRENT_CLUSTERS ; do
+            for C in $CLUSTS ; do
                 ( cd /sw/mf/$C/$SUBDIR/ && mflink $OPT -q $M $V ) || { echo "*** problem with $C/$SUBDIR/$M/$V"; }
             done
         fi
@@ -298,11 +301,11 @@ _usage_
         SUBDIR=${COMMONDIR#/sw/mf/common/bioinfo-tools/}
         SUBDIR=${SUBDIR%/$M}
         if [[ $FORCE ]] ; then
-            for C in $_CURRENT_CLUSTERS ; do
+            for C in $CLUSTS ; do
                 ( cd /sw/mf/$C/bioinfo-tools/$SUBDIR/ && mflink -f -q $M $V ) || { echo "*** problem with $C/bioinfo-tools/$SUBDIR/$M/$V"; }
             done
         else
-            for C in $_CURRENT_CLUSTERS ; do
+            for C in $CLUSTS ; do
                 ( cd /sw/mf/$C/bioinfo-tools/$SUBDIR/ && mflink -q $M $V ) || { echo "*** problem with $C/bioinfo-tools/$SUBDIR/$M/$V"; }
             done
         fi
