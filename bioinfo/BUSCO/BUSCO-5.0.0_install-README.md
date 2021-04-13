@@ -22,15 +22,90 @@ LOG
     cd busco
 
     module load bioinfo-tools
+    module load blast/2.11.0+
+    module load augustus/3.4.0
+    module load prodigal/2.6.3
+    module load metaeuk/4-a0f584d
+    module load hmmer/3.2.1
+    module load sepp/4.3.10
     module load biopython/1.78
+    python3 -m pip install  --ignore-installed --prefix=$PREFIX pandas==1.2.3 jupyter-client==6.1.5 nbformat==5.0.2
+
+    cp $SRCDIR/busco/config/config.ini $PREFIX/config.ini
+Modify the config.ini with the paths further down in this file.
+
+    export PYTHONPATH=${PREFIX}/lib/python3.8/site-packages/:${PYTHONPATH}
+    export BUSCO_CONFIG_FILE=${PREFIX}/config.ini
+    export BUSCO_LINEAGE_SETS=${TOOLDIR}/v5_lineage_sets/lineages
+    python3 setup.py install --prefix=$PREFIX
+
+
+    mv $PREFIX/bin/busco $PREFIX/bin/run_BUSCO.py
+
+
+# Local destination path for downloaded lineage datasets
+download_path = /sw/bioinfo/BUSCO/v5_lineage_sets/
+# Run offline
+offline=True
+# Ortho DB Datasets version
+datasets_version = odb10
+
+[tblastn]
+path = /sw/bioinfo/blast/2.11.0+/rackham/bin/
+command = tblastn
+
+[makeblastdb]
+path = /sw/bioinfo/blast/2.11.0+/rackham/bin/
+command = makeblastdb
+
+[metaeuk]
+path = /sw/bioinfo/metaeuk/4-a0f584d/rackham/bin/
+command = metaeuk
+
+[augustus]
+path = /sw/bioinfo/augustus/3.4.0/rackham/bin/
+command = augustus
+
+[etraining]
+path = /sw/bioinfo/augustus/3.4.0/rackham/bin/
+command = etraining
+
+[gff2gbSmallDNA.pl]
+path = /sw/bioinfo/augustus/3.4.0/rackham/scripts/
+command = gff2gbSmallDNA.pl
+
+[new_species.pl]
+path = /sw/bioinfo/augustus/3.4.0/rackham/scripts/
+command = new_species.pl
+
+[optimize_augustus.pl]
+path = /sw/bioinfo/augustus/3.4.0/rackham/scripts/
+command = optimize_augustus.pl
+
+[hmmsearch]
+path = /sw/bioinfo/hmmer/3.2.1/rackham/bin/
+command = hmmsearch
+
+[sepp]
+path = /sw/bioinfo/sepp/4.3.10/rackham/bin/
+command = run_sepp.py
+
+[prodigal]
+path = /sw/bioinfo/prodigal/2.6.3/rackham/bin/
+command = prodigal
 
 
 
+#Download v5_lineage_sets. The script $TOOLDIR/v5_lineage_sets/BUSCO-update-v5-lineage-sets.sh updates the database.
+    mkdir $TOOLDIR/v5_lineage_sets
+    cd $TOOLDIR/v5_lineage_sets
+    wget -r -np --cut-dirs=2 -nH -R index.html https://busco-data.ezlab.org/v5/data/
 
+    cd $TOOLDIR/v5_lineage_sets/information && find -iname "*.tar.gz" -exec tar xfvz {} \;
+    cd $TOOLDIR/v5_lineage_sets/placement_files && find -iname "*.tar.gz" -exec tar xfvz {} \;
+    cd $TOOLDIR/v5_lineage_sets/lineages && find -iname "*.tar.gz" -exec tar xfvz {} \;
 
-
-
-
+run $TOOLDIR/v5_lineage_sets/BUSCO-update-v5-lineage-sets.sh
 
 
 

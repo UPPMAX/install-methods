@@ -1,8 +1,18 @@
-samtools 1.10
-============
+samtools/1.12
+=============
+
+<https://github.com/samtools/samtools>
+
+Used under license:
+MIT/Expat and modified 3-clause BSD
+
+Structure creating script (makeroom_samtools_1.12.sh) moved to /sw/bioinfo/samtools/makeroom_1.12.sh
+
+LOG
+---
 
     TOOL=samtools
-    VERSION=1.10
+    VERSION=1.12
 
     cd /sw/bioinfo/$TOOL
     makeroom.sh -f -t $TOOL -v $VERSION -s misc -w https://github.com/samtools/${TOOL} -l "MIT/Expat and modified 3-clause BSD" -d "Tools for working with SAM/BAM/variant files"
@@ -25,6 +35,7 @@ Now configure htslib plugins, and a few other things.
     make -j10
     make -j10 test
     make install
+    cd ..
 
 And build samtools, referring to this new htslib.
 

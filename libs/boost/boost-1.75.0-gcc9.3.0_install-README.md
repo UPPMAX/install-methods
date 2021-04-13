@@ -1,0 +1,39 @@
+boost/1.75.0-gcc9.3.0
+========================
+
+<https://www.boost.org/>
+
+Used under license:
+Boost licence
+<http://www.boost.org/users/license.html>
+
+Structure creating script (makeroom_boost_1.75.0-gcc9.3.0.sh) moved to /sw/libs/boost/makeroom_1.75.0-gcc9.3.0.sh
+
+LOG
+---
+
+    TOOL=boost
+    BOOSTVERSION=1.75.0
+    GCCVERSION=9.3.0
+    VERSION=${TOOLVERSION}-gcc${GCCVERSION}
+    makeroom.sh -f -c "libs" -t "$TOOL" -v "$VERSION" -w "https://www.boost.org/" -l "Boost licence" -L "http://www.boost.org/users/license.html" -d "free peer-reviewed portable C++ source libraries"
+    ./makeroom_${TOOL}_${VERSION}.sh
+    source SOURCEME_${TOOL}_${VERSION}
+
+    cd $SRCDIR
+    BOOSTTARBALLVERSION=${BOOSTVERSION//./_}
+    wget https://dl.bintray.com/boostorg/release/${BOOSTVERSION}/source/boost_${BOOSTTARBALLVERSION}.tar.bz2
+    tar xjf boost_${BOOSTTARBALLVERSION}.tar.bz2
+    mv boost_${BOOSTTARBALLVERSION} boost_${BOOSTVERSION}
+    cd boost_${BOOSTVERSION}
+
+    module load gcc/$GCCVERSION
+
+    ./bootstrap.sh --with-toolset=gcc --prefix=$PREFIX
+
+    ./b2
+    ./b2 install --prefix=$PREFIX
+
+    cd ..
+    rm -rf boost_${BOOSTVERSION}
+
