@@ -1,0 +1,110 @@
+# Please email daniil.sarkisyan@igp.uu.se if you found a bug in this build recipe.
+# This is the "volatile" layer to test your build commands before moving them to "stale" layer.
+# It is also useful to keep up with the daily R/Bioconductor updates.
+
+# Read the Singularity01_R_Conda_BioC_Seurat_TFProbability.txt recipe, since
+# two files has to downloaded from Illumina's randomized link after registration!
+
+Bootstrap: localimage
+From: /home/daniil/FAIR/DS01_R_Conda_BioC_MoChA.sif
+
+%files
+  /home/daniil/FAIR/mocha/mocha.GRCh37.zip   /installs  # 13Gb
+  /home/daniil/FAIR/mocha/mocha.GRCh38.zip   /installs  # 17Gb
+
+%environment
+  export PATH=/usr/lib/rstudio-server/bin:${PATH}
+  # export PATH=/opt/AutoConvert20:${PATH} # does not help AutoConvert.exe to find dat.bin
+
+%apprun rserver
+  exec rserver "${@}"
+
+%runscript
+  export XDG_RUNTIME_DIR=/tmp/.run_$(uuidgen)
+  mkdir -p $XDG_RUNTIME_DIR
+  exec rserver "${@}"
+
+%post
+  export DEBIAN_FRONTEND=noninteractive
+  export NCPU=$(grep -c ^processor /proc/cpuinfo)
+
+  cd /installs
+
+  apt-get -qqy update --fix-missing \
+  && apt-get -qqy --fix-missing install util-linux \
+  && apt-get full-upgrade -qqy --fix-missing
+
+  # Continue to follow https://github.com/freeseek/gtc2vcf, see layer 1 (stale) ======
+
+  # To prevent "Failed to load dat.bin  Please make sure the file exists and is in the same directory as the GenTrain executable"
+  # in "mono AutoConvert.exe" call, we "fix" by "cd /opt/AutoConvert20" before calling this command - was working in Ubuntu 20.04
+  # mv '/opt/AutoConvert 2.0' /opt/AutoConvert20
+
+  # https://github.com/freeseek/mocha/tree/master/wdl say:
+  # We recommend to always use GRCh38 with the latter type of manifest files and, whenever GRCh38 manifests
+  # are not available from Illumina, to still use GRCh38 by setting the boolean realign variable to true
+
+  # Reference genomes setup follows https://github.com/freeseek/mocha
+  # ToDo: GRCH37_PANEL_SFX does not end with .bcf while GRCh38_PANEL_SFX does. Fixed...
+
+  if [ -f mocha.GRCh37.zip ]; then
+    mkdir -p /opt/GRCh37
+    unzip mocha.GRCh37.zip -d /opt/GRCh37
+    rm mocha.GRCh37.zip
+    echo "Sys.setenv(GRCH37_REF = '/opt/GRCh37/human_g1k_v37.fasta')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCH37_MHC_REG = '6:27486711-33448264')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCH37_KIR_REG = '19:54574747-55504099')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCH37_MAP = '/opt/GRCh37/genetic_map_hg19_withX.txt.gz')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCH37_PANEL_PFX = '/opt/GRCh37/ALL.chr')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCH37_PANEL_SFX = '.phase3_integrated.20130502.genotypes.bcf')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCH37_RULE = 'GRCh37')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCH37_CNP = '/opt/GRCh37/cnps.bed')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCH37_DUP = '/opt/GRCh37/segdups.bed.gz')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCH37_CYTO = '/opt/GRCh37/cytoBand.txt.gz')" >> /opt/fix-rstudio.R
+  fi
+
+  if [ -f mocha.GRCh38.zip ]; then
+    mkdir -p /opt/GRCh38
+    unzip mocha.GRCh38.zip -d /opt/GRCh38
+    rm mocha.GRCh38.zip
+    echo "Sys.setenv(GRCh38_REF = '/opt/GRCh38/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCh38_MHC_REG = 'chr6:27518932-33480487')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCh38_KIR_REG = 'chr19:54071493-54992731')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCh38_MAP = '/opt/GRCh38/genetic_map_hg38_withX.txt.gz')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCh38_PANEL_PFX = '/opt/GRCh38/CCDG_14151_B01_GRM_WGS_2020-08-05_chr')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCh38_PANEL_SFX = '.filtered.phased.bcf')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCh38_RULE = 'GRCh38')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCh38_CNP = '/opt/GRCh38/cnps.bed')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCh38_DUP = '/opt/GRCh38/segdups.bed.gz')" >> /opt/fix-rstudio.R
+    echo "Sys.setenv(GRCh38_CYTO = '/opt/GRCh38/cytoBand.txt.gz')" >> /opt/fix-rstudio.R
+  fi
+
+
+  # Install extra R packages
+cat <<EOF | R --slave
+
+source("/opt/fix-rstudio.R")
+
+myNcpus <- as.integer(Sys.getenv("NCPU"))
+if(is.na(myNcpus)) myNcpus <- 1
+
+BiocManager::install(ask=FALSE, Ncpus=myNcpus) # update Bioconductor
+
+EOF
+
+
+  # Rstudio server
+  rm -rf /tmp/rstudio-server
+  wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.4.1106-amd64.deb
+  gdebi --n ./rstudio-server-1.4.1106-amd64.deb
+
+
+  # Clean
+  /opt/miniconda/bin/conda clean --all --yes
+  rm -rf *.zip *.gz *.deb *.msi *.exe \
+         0 u0 u1 u2 u3 u4 u5 a0 \
+         nearest_neighbor.c \
+         Illumina \
+         shapeit4-4.2.1 \
+         Eagle \
+         /var/lib/apt/lists/*

@@ -1,0 +1,448 @@
+# Please email daniil.sarkisyan@igp.uu.se if you found a bug in this build recipe
+# 1) Copy this build recipe DS01_R_RStudioServer_Conda_BioC_MoChA.txt to ~/FAIR folder.
+# Download all big files following https://github.com/freeseek/mocha recipe.
+# Build this "stale" layer of Singularity image to hold "long-term downloads" in" /installs and
+# setup packages there which are likely NOT to change frequently:
+#
+#   cd ~/FAIR  # see https://www.go-fair.org/fair-principles/
+#   rm -f build.log && sudo singularity build DS01_R_Conda_BioC_MoChA.sif DS01_R_Conda_BioC_MoChA.txt |& tee build.log
+#
+# 2) Edit build recipe to select GRCh37 (13Gb) and/or GRCh38 (17Gb) to be included in the image.
+# Rebuild the "volatile" layer to keep up with R/Bioconductor updates:
+#
+#   rm -f build.log && sudo singularity build DS02_RStudioServer_and_updates.sif DS02_RStudioServer_and_updates.txt |& tee build.log
+#
+# 3) RStudio Server is available as localhost:8787 after you start the image.
+# Remember to run source("/opt/fix-rstudio.R") as your very first command!
+# Under RStudioYou you can install packages (into ~/R of your localhost), but that will undermine reproducibility on other servers.
+# To avoid this, keep the record of your extra packages installing them via the "volatile" Singularity layer.
+#
+#   cd ~/FAIR && rm -rf var && mkdir -p var && singularity run -B var:/var DS02_RStudioServer_and_updates.sif
+#
+# 4) It is frustrating when multi-Gb build fails due to off-print.
+# You can quickly experiment with adding extra packages like this.
+# Warning: things like {} in bash may work DIFFERENTLY here and inside Singularity build!
+#
+#   sudo singularity build --sandbox myTestEnv/ DS01_R_Conda_BioC_MoChA.sif
+#   sudo singularity shell --writable myTestEnv/
+#   Singularity> cd /installs
+#   Singularity> R
+#   > source("/opt/fix-rstudio.R")
+#   > ...do your experiments...
+# ... and remember to clean /root of your localhost afterwards!
+
+# need CONDA_DEFAULT_ENV="r-reticulate"
+
+# Shapeit4 Illegal instruction (core dumped)  https://github.com/odelaneau/shapeit4/issues/28  not having AVX2 instructions
+
+# bash: /usr/local/bin/iaap-cli: Permission denied
+# ls -al /opt/iaap-cli/iaap-cli
+# -rwxr--r-- 1 900 900 106912 Apr 24  2019 /opt/iaap-cli/iaap-cli
+
+# gtc2vcf_plot.R
+# Error in library(gridExtra) : there is no package called ‘gridExtra’
+
+
+Bootstrap: docker
+From: ubuntu:21.04
+
+%environment
+  export XDG_RUNTIME_DIR=/tmp/.run_$(uuidgen)
+  export LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8"
+  export TZ=UTC
+
+
+%runscript
+  export XDG_RUNTIME_DIR=/tmp/.run_$(uuidgen)
+  mkdir -p $XDG_RUNTIME_DIR
+  export LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8"
+  export TZ=UTC
+  /bin/bash $@
+
+
+%post
+  export DEBIAN_FRONTEND=noninteractive
+  export NCPU=$(grep -c ^processor /proc/cpuinfo)
+  export TZ=UTC
+
+
+  # keep all downloads there, "volatile" layer is responsible for cleaning it
+  mkdir /installs && cd /installs
+
+  mkdir -p /tmp/apt
+  echo "Dir::Cache "/tmp/apt";" > /etc/apt/apt.conf.d/singularity-cache.conf
+
+  apt-get -qqy update --fix-missing && apt-get -qqy install --no-install-recommends \
+      apt-utils locales tzdata
+  locale-gen en_US.UTF-8
+  update-locale LANG=en_US.UTF-8
+  export LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8"
+
+
+  # following https://github.com/freeseek/mocha/tree/master/wdl,
+  # https://github.com/freeseek/gtc2vcf, https://github.com/freeseek/mocha
+  # plus libraries for R/brms/Stan, Seurat and packages therein
+  apt-get -qqy update --fix-missing && apt-get -qqy install --no-install-recommends --fix-missing \
+      wget unzip git \
+      gcc libc6-dev g++ make \
+      libboost-iostreams-dev libboost-program-options-dev \
+      libboost-iostreams1.74.0 libboost-program-options1.74.0 \
+      libgomp1 \
+      libopenblas-dev  libopenblas0 \
+      libmkl-dev libmkl-avx2 \
+      libhts-dev libbz2-dev libssl-dev \
+      zlib1g-dev liblzma-dev libgsl0-dev \
+      msitools cabextract libmono-system-windows-forms4.0-cil icu-devtools \
+      mono-devel libgdiplus \
+      bwa samtools bedtools bcftools bio-eagle shapeit4 \
+      dirmngr gnupg apt-transport-https ca-certificates software-properties-common uuid-runtime \
+      less vim nano mc curl build-essential emacs tmux gdebi-core \
+      libxml2-dev libsqlite3-dev libv8-dev \
+      libmagick++-dev texlive texlive-latex-extra texlive-fonts-extra \
+      texlive-bibtex-extra texlive-science texi2html texinfo \
+      default-jre default-jdk libgsl-dev \
+      libgdal-dev libproj-dev libgeos-dev libudunits2-dev libnode-dev \
+      libcairo2-dev libnetcdf-dev libglu1-mesa-dev freeglut3-dev \
+      mesa-common-dev libharfbuzz-dev libfribidi-dev autoconf \
+      r-base r-base-dev r-cran-tidyverse r-cran-lubridate \
+      r-cran-reticulate r-cran-devtools r-cran-remotes
+
+#     libcurl4-openssl-dev  # cause apt-get to complain: E you have held brocken packages
+
+    wget http://software.broadinstitute.org/software/gtc2vcf/gtc2vcf_1.11-20210315_amd64.deb
+    dpkg -i gtc2vcf_1.11-20210315_amd64.deb
+
+#   wget https://support.illumina.com/content/dam/illumina-support/documents/downloads/software/beeline/autoconvert-software-v2-0-1-installer.zip
+    wget --no-check-certificate https://www.dropbox.com/s/tm02cu6t0ib1us7/autoconvert-software-v2-0-1-installer.zip
+    unzip autoconvert-software-v2-0-1-installer.zip
+    msiextract AutoConvertInstaller.msi
+    wget ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/software/genomestudio/genomestudio-software-v2-0-4-5-installer.zip
+    unzip -j genomestudio-software-v2-0-4-5-installer.zip
+    cabextract GenomeStudioInstaller.exe
+    msiextract a0
+    mv Illumina/GenomeStudio\ 2.0/Heatmap.dll Illumina/AutoConvert\ 2.0
+    wget --no-check-certificate https://raw.githubusercontent.com/freeseek/gtc2vcf/master/nearest_neighbor.c
+    gcc -fPIC -shared -O2 -o Illumina/AutoConvert\ 2.0/libMathRoutines.dll.so nearest_neighbor.c
+    mv Illumina/AutoConvert\ 2.0 /opt/AutoConvert20
+
+    wget http://software.broadinstitute.org/software/mocha/bio-mocha_1.11-20210315_amd64.deb
+    dpkg -i bio-mocha_1.11-20210315_amd64.deb
+
+    wget ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/software/iaap/iaap-cli-linux-x64-1.1.0.tar.gz
+    mkdir /opt/iaap-cli
+    tar xzvf iaap-cli-linux-x64-1.1.0.tar.gz -C /opt iaap-cli-linux-x64-1.1.0/iaap-cli --strip-components=1
+    chmod a+x /opt/iaap-cli/iaap-cli
+    ln -s /opt/iaap-cli/iaap-cli /usr/local/bin/iaap-cli
+
+    wget --no-check-certificate https://downloads.thermofisher.com/APT/2.11.3/apt_2.11.3_linux_64_bit_x86_binaries.zip
+    unzip -ojd /usr/local/bin apt_2.11.3_linux_64_bit_x86_binaries.zip apt_2.11.3_linux_64_bit_x86_binaries/bin/apt-probeset-genotype
+    chmod a+x /usr/local/bin/apt-probeset-genotype
+
+    # shapeit4 errors with Illegal instruction (core dumped), https://github.com/odelaneau/shapeit4/issues/28 explains it is for not having AVX2 instructions
+    wget --no-check-certificate https://github.com/odelaneau/shapeit4/archive/v4.2.1.tar.gz
+    tar xzf v4.2.1.tar.gz
+    cd shapeit4-4.2.1
+      sed -i 's/^HTSLIB_INC=\$(HOME)\/Tools\/htslib-1.11$/HTSLIB_INC=-Ihtslib/' makefile
+      sed -i 's/^HTSLIB_LIB=\$(HOME)\/Tools\/htslib-1.11\/libhts.a$/HTSLIB_LIB=-lhts/' makefile
+      sed -i 's/^BOOST_LIB_IO=\/usr\/lib\/x86_64-linux-gnu\/libboost_iostreams.a$/BOOST_LIB_IO=-lboost_iostreams/' makefile
+      sed -i 's/^BOOST_LIB_PO=\/usr\/lib\/x86_64-linux-gnu\/libboost_program_options.a$/BOOST_LIB_PO=-lboost_program_options/' makefile
+      # Extensions supported by your CPU are in /proc/cpuinfo, check them like this: grep avx /proc/cpuinfo
+      sed -i 's/^CXXFLAG=-O3 -mavx2 -mfma/CXXFLAG=-O3 -mavx/' makefile
+      make
+      mv bin/shapeit4.2 /usr/bin/
+    cd ..
+
+    git config --global http.sslVerify false
+    git clone https://github.com/poruloh/Eagle.git
+    cd Eagle/src
+      sed -i 's/^BLAS_DIR =.*/BLAS_DIR =/' Makefile
+      sed -i 's/^BOOST_INSTALL_DIR =.*/BOOST_INSTALL_DIR =/' Makefile
+      sed -i 's/^HTSLIB_DIR =.*/HTSLIB_DIR =/' Makefile
+      sed -i 's/^ZLIB_STATIC_DIR =.*/ZLIB_STATIC_DIR =/' Makefile
+      sed -i 's/^LIBSTDCXX_STATIC_DIR =.*/LIBSTDCXX_STATIC_DIR =/' Makefile
+      sed -i 's/^GLIBC_STATIC_DIR =.*/GLIBC_STATIC_DIR =/' Makefile
+      sed -i 's/ memcpy.o$//' Makefile
+      make
+      mv eagle /usr/bin
+    cd ../..
+
+    wget -O impute5_v1.1.4.zip --no-check-certificate https://www.dropbox.com/sh/mwnceyhir8yze2j/AAAPJVJv3kI2glXGDdc3sSHga/impute5_v1.1.4.zip?dl=0
+    unzip -jd /usr/bin/ impute5_v1.1.4.zip impute5_v1.1.4/impute5_1.1.4_static impute5_v1.1.4/imp5Converter_1.1.4_static
+    chmod a+x /usr/bin/impute5_1.1.4_static
+    chmod a+x /usr/bin/imp5Converter_1.1.4_static
+    ln -s impute5_1.1.4_static /usr/bin/impute5
+    ln -s imp5Converter_1.1.4_static /usr/bin/imp5Converter
+
+    wget -P /usr/bin/ --no-check-certificate http://faculty.washington.edu/browning/beagle/beagle.18May20.d20.jar
+    wget -P /usr/bin http://faculty.washington.edu/browning/beagle/bref3.18May20.d20.jar
+    # chmod a+x /usr/bin/beagle.18May20.d20.jar
+    # chmod a+x /usr/bin/bref3.18May20.d20.jar
+    ln -s beagle.18May20.d20.jar /usr/bin/beagle.jar
+    ln -s bref3.18May20.d20.jar /usr/bin/bref3.jar
+
+
+  rm /etc/apt/apt.conf.d/singularity-cache.conf
+
+  # Add a default CRAN mirror
+  echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/lib/R/etc/Rprofile.site
+
+  # Add a directory for host R libraries
+  mkdir -p /library
+  echo "R_LIBS_SITE=/library:\${R_LIBS_SITE}" >> /usr/lib/R/etc/Renviron.site
+  echo "RETICULATE_MINICONDA_PATH=/opt/miniconda" >> /usr/lib/R/etc/Renviron.site
+
+  # R uses Rprofile.site fine, but RStudio Server crashes...
+  # The fix is to source("/opt/fix-rstudio.R") as our first command manually.
+  # echo "reticulate::py_config()" >> /usr/lib/R/etc/Rprofile.site
+  echo "Sys.setenv(RETICULATE_MINICONDA_PATH = '/opt/miniconda')" >> /opt/fix-rstudio.R
+  echo "reticulate::py_config()" >> /opt/fix-rstudio.R
+
+
+  # fix Java
+  R CMD javareconf
+
+  # Install lots of R and R/Bioconductor packages
+cat <<EOF | R --slave
+myNcpus <- as.integer(Sys.getenv("NCPU"))
+if(is.na(myNcpus)) myNcpus <- 1
+myNcpus <- max(1, myNcpus - 1)  # leave one CPU free
+
+install.packages("BiocManager", ask=FALSE)
+BiocManager::install(version = "3.12", ask=FALSE, Ncpus=myNcpus)
+
+# Force minicoda to be INSIDE this Singularity container
+# we better have the latest reticulate, since it can not be updated while in use...
+# install.packages(c("devtools", "remotes", "reticulate", "shiny"), ask=FALSE, Ncpus=myNcpus)
+BiocManager::install("rstudio/reticulate", ask=FALSE, Ncpus=myNcpus)
+reticulate::install_miniconda("/opt/miniconda", update = TRUE)
+reticulate::use_condaenv("r-reticulate", required = TRUE)
+reticulate::py_config()
+
+# jupyter and other frequently required pythonic packages
+# - we keep it all in one default environment r-reticulate
+# - if later packages (e.g. tensorflow) are not happy with the latest
+#   pythonic packages, they will downgrade
+reticulate::conda_install(envname = 'r-reticulate', packages = c(
+  "altair",
+  "beautifulsoup4",
+  "cloudpickle",
+  "cython",
+  "dask",
+  "gensim",
+  "ipykernel",
+  "jupyter",
+  "jupyterlab",
+  "leidenalg",
+  "matplotlib",
+  "nltk",
+  "numpy",
+  "opencv",
+  "pandas",
+  "pillow",
+  "pyarrow",
+  "requests",
+  "scipy",
+  "scikit-image",
+  "scikit-learn",
+  "scrapy",
+  "seaborn",
+  "slugify",
+  "spacy",
+  "sqlalchemy",
+  "statsmodels",
+  "xgboost"
+), method="conda")
+
+# FROM docker image vbarrerab/singlecell-base:R.4.0.3-BioC.3.11-ubuntu_20.04
+pkgs_to_install <- c("tibble","RCurl",
+"cowplot","SingleCellExperiment","scater","AnnotationHub",
+"ensembldb", "rio","XLConnect","janitor",
+"pheatmap","DESeq2","reshape")
+
+pkgs_to_install <- union(pkgs_to_install, c(
+  "optparse",
+  "data.table",
+  "png",
+	"abind",
+  "ape",  # for Seurat
+	"BiocStyle",
+	"brms",
+	"broom",
+	"caret",
+	"coda",
+	"cowplot",
+	"dagitty",
+	"DMwR2",  # for Seurat
+	"emmeans",
+  "enrichR",  # for Seurat
+	"flextable",
+	"ggdag",
+	"ggdark",
+	"ggrepel",
+	"ggridges",
+	"ggstance",
+  "glmGamPoi", # for Seurat
+	"gridExtra",
+  "irlba",  # for Seurat
+	"learnr",
+	"lime",
+	"limma",  # for Seurat
+	"loo",
+	"kableExtra",
+	"magick",
+  "MAST",  # for Seurat
+  "metap",  # for Seurat
+  "mixtools",  # for Seurat
+	"modelr",
+	"mvtnorm",
+  "multtest",  # for Seurat
+	"officer",
+	"openxlsx",
+	"pacman",
+	"patchwork",
+	"plyr",
+	"randomForest",
+	"RefManageR",
+  "Rfast2",  # for Seurat
+	"rjson",
+	"rstan",
+  "rsvd",  # for Seurat
+	"rvg",
+	"stringdist",
+	"tidybayes",
+  "tidyjson",
+	"tidyxl",
+	"unpivotr",
+  "vembedr",  # for Seurat
+	"viridis",
+  "mixOmics", # for codes of Bernardes_2020_COVID19 paper from FastGenetics
+  "SingleR",
+  "org.Hs.eg.db",
+  "topGO",
+  "lmerTest",
+  "skimr",
+  "viper",
+  "OmnipathR",
+  "CARNIVAL",
+  "dnet",
+  "EnhancedVolcano",
+  "CINNA",
+  "RnBeads",
+  "LOLA",
+  "UpSetR",
+  "ComplexHeatmap",
+  "coin",
+  "WGCNA",
+  # "tcR", # removed from CRAN, obsolete in favor of immunarch
+  # "immunarch", # removed from CRAN
+  "vegan",
+  "ggfortify",
+  "gdata",
+  "treemapify",
+  "diverse",
+  "packcircles",
+  "ggExtra",
+  "vioplot",
+  "crlmm", # raw Affy/CEL, Illumina/IDAT, too old?
+  "GWASTools", # GWAS and Annotations
+  "gdsfmt",
+  "SNPRelate",
+  "CNVRanger",
+  "GENESIS",
+  "VariantExperiment",
+  "org.Hs.eg.db",
+  "AnnotationHub",
+  "Homo.sapiens",
+  "Organism.dplyr",
+  "BSgenome",
+  "BSgenome.Hsapiens.UCSC.hg18",
+  "BSgenome.Hsapiens.UCSC.hg19",
+  "BSgenome.Hsapiens.UCSC.hg38",
+  # "BSgenome.Hsapiens.UCSC.hg18.masked",
+  # "BSgenome.Hsapiens.UCSC.hg19.masked",
+  # "BSgenome.Hsapiens.UCSC.hg38.masked",
+  "BSgenome.Hsapiens.NCBI.GRCh38",
+  "SNPlocs.Hsapiens.dbSNP144.GRCh37",
+  "SNPlocs.Hsapiens.dbSNP144.GRCh38",
+  "XtraSNPlocs.Hsapiens.dbSNP144.GRCh37",
+  "XtraSNPlocs.Hsapiens.dbSNP144.GRCh38",
+  "TxDb.Hsapiens.UCSC.hg18.knownGene",
+  "TxDb.Hsapiens.UCSC.hg19.knownGene",
+  "TxDb.Hsapiens.UCSC.hg38.knownGene",
+  "liftOver",
+  "gwascat",
+  "DO.db",
+  "GO.db",
+  "reactome.db",
+  "KEGG.db"
+ ))
+
+
+## Start the actual installation:
+# Only install packages from CRAN or Bioconductor.
+# For example, rstudio/reticulate will corrupt the package database if
+# installed here. Let do it separately, one GitHub at a time!
+ok <- BiocManager::install(pkgs_to_install, ask=FALSE, Ncpus=myNcpus)
+
+
+## install Serat to make sure it will upgrade/downgrade pythonics as it needs ##
+
+rio::install_formats()
+
+BiocManager::install("rmcelreath/rethinking", ask=FALSE, Ncpus=myNcpus)
+
+BiocManager::install("immunogenomics/harmony", ask=FALSE, Ncpus=myNcpus)
+
+BiocManager::install("Seurat", ask=FALSE, Ncpus=myNcpus)
+
+BiocManager::install('satijalab/seurat-data', ask=FALSE, Ncpus=myNcpus)
+
+
+# MADloy, https://doi.org/10.1186/s12859-020-03768-z
+BiocManager::install('isglobal-brge/MADloy', ask=FALSE, Ncpus=myNcpus)
+BiocManager::install('isglobal-brge/EDY', ask=FALSE, Ncpus=myNcpus)
+
+
+# for Bernardes_2020_COVID19 paper (see FASTGENOMICS)
+BiocManager::install("YosefLab/ImpulseDE2", ask=FALSE, Ncpus=myNcpus) # deprecated from Bioconductor
+
+
+#BiocManager::install("tesselle/tabula", ask=FALSE, Ncpus=myNcpus) # deprecated from CRAN, fails from GitHub
+BiocManager::install(c("arkhe","ca"), ask=FALSE, Ncpus=myNcpus)
+url <- "https://cran.r-project.org/src/contrib/Archive/tabula/tabula_1.5.1.tar.gz"
+download.file(url, destfile = basename(url), method="curl", extra="-k")
+install.packages("tabula_1.5.1.tar.gz", repos=NULL, type="source")
+
+# removed from CRAN, deprecated from Github in favor of immunomind/immunarch
+url <- "https://cran.r-project.org/src/contrib/Archive/tcR/tcR_2.3.2.tar.gz"
+download.file(url, destfile = basename(url), method="curl", extra="-k")
+install.packages("tcR_2.3.2.tar.gz", repos=NULL, type="source")
+
+#BiocManager::install('immunomind/immunarch', ask=FALSE, Ncpus=myNcpus) # removed from CRAN, fails from Github
+BiocManager::install(c("dtplyr", "fpc", "airr", "ggseqlogo", "ggalluvial"), ask=FALSE, Ncpus=myNcpus) # for immunarch
+url <- "https://cran.r-project.org/src/contrib/Archive/immunarch/immunarch_0.6.5.tar.gz"
+download.file(url, destfile = basename(url), method="curl", extra="-k")
+install.packages("immunarch_0.6.5.tar.gz", repos=NULL, type="source")
+
+
+# 2x speed gain on Intel CPU, but we are loosing compatibility...
+reticulate::py_install( c("intel-tensorflow",
+                          "keras",
+                          "tensorflow-hub",
+                          "tensorflow-datasets",
+                          "tensorflow_probability"),
+                        method = "conda", pip=TRUE)
+install.packages("tfprobability", ask=FALSE) # wants TF v2.4
+install.packages("tfdatasets", ask=FALSE)
+install.packages("tfhub", ask=FALSE)
+BiocManager::install("rstudio/tfds", ask=FALSE)
+
+
+EOF
+
+  # Clean
+  cd /
+  /opt/miniconda/bin/conda clean --all --yes
+  # apt-get -qqy clean
+  rm -rf /var/lib/apt/lists/*
+  # rm -rf /installs # the "volatile" Singularity layer will clean it
