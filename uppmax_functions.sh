@@ -324,26 +324,40 @@ function fixup()
     # NOTE: Gnu xargs assumed, providing --no-run-if-empty
 
     local GROUP=sw
+    local PERM='u+rwX,g+rwX,o+rX-w'
+    local GROUPPERM='u+rwX,g+rX-w,o-rxw'
     local SETGID_DIRS=yes
     local HELP
     local OPTIND
 
-    while getopts "gG:h" o; do
+    while getopts "gG:pP:h" o; do
       case $o in
         g) unset SETGID_DIRS ;;
         G) GROUP=${OPTARG} ;;
+        p) PERM=${GROUPPERM} ;;
+        P) PERM=${OPTARG} ;;
         h) HELP=yes ;;
       esac
     done
     shift $((OPTIND-1))
-    [[ $# == 0 || $HELP ]] && { echo "USAGE: $0 [ -g, to NOT setgid g+s on dirs ] [ -G group, default '$GROUP' ] [ -h, for help ] dir-or-file ..." ; return; }
+    #[[ $# == 0 || $HELP ]] && { echo -e "USAGE: $0 [ -g, to NOT setgid g+s on dirs ] [ -G group, default '$GROUP' ] [ -p, set group-restrictive permissions '$GROUPPERM' ] [ -h, for help ] dir-or-file ..." ; return; }
+    [[ $# == 0 || $HELP ]] && {
+        echo "USAGE: fixup [ -g ] [ -G group ] [ -p ] [ -P permissions ] [ -h ] dir-or-file ..."
+        echo
+        echo "             -g        do NOT setgid g+s on dirs"
+        echo "             -G group  change to group 'group', default '$GROUP'"
+        echo "             -p        set group-restrictive permissions '$GROUPPERM'"
+        echo "             -P perms  set permissions to 'perms', default '$PERM'"
+        echo "             -h        help ]"
+        return;
+    }
 
     set -x
 
     args=("$@")
     for arg in ${args[@]} ; do
         chgrp -hR $GROUP "$arg"
-        chmod -R u+rwX,g+rwX,o+rX-w "$arg"
+        chmod -R "$PERM" "$arg"
         [[ $SETGID_DIRS ]] && find "$arg" -type d -print0 | xargs -0 --no-run-if-empty chmod g+s
     done
 
