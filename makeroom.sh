@@ -7,7 +7,7 @@
 INVOKE_UNFORMATTED="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 INVOKE=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//')
 #echo $INVOKE
-USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d DESCRIPTION] [-G GROUP] [-m MODULENAME] [-T TAGS/KEYWORDS] [-u CLUSTERS] [-x MODE] [-f] --
+USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d DESCRIPTION] [-G GROUP] [-P USERPERMISSIONS] [-m MODULENAME] [-T TAGS/KEYWORDS] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
 
@@ -26,6 +26,7 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
         -L  URL to the license of the \$TOOL (no DEFAULT)
         -d  short description of the \$TOOL (no DEFAULT)
         -G  name of the group the \$TOOL needs to be installed with. (DEFAULT is \"sw\")
+        -P  permissions of the users (in the group if -G given). Note that it might include \"-R\" as it passes it to chmod (DEFAULT is \"-R u+rwX,g+rwX,o+rX-w\")
         -m  name of the module file (DEFAULT is the same as the name of the tool)
         -T  list of tags/keywords to make the \$TOOL easier to find. (DEFAULT is \"\$TOOL\")
         -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
@@ -45,8 +46,22 @@ FIXFLAG=''
 CLUSTERS=(rackham irma bianca snowy)
 MODE=INSTALL
 FORCED=0
+USERGROUP="sw"
+USERPERMISSIONS="-R u+rwX,g+rwX,o+rX-w"
+MAKEROOM_PATH=$(which makeroom.sh)
+UPPMAX_ROOT=${x%%makeroom.sh}
 
 [[ $# -eq 0 ]] && echo "$USAGE" >&2 && exit 1
+
+############## Check if the tools are in the PATH ###################
+if [ -z "$UPPMAX_ROOT" ]
+then
+    printf "No path to this tool found. Make sure you have https://github.com/UPPMAX/install-methods cloned and in your \$PATH\n\n" >&2 && exit 1
+else
+    printf "Found tools at %s\n\n" "$UPPMAX_ROOT"
+fi
+
+############################
 
 while getopts "hi:t:v:s:w:c:G:m:l:L:d:u:x:f" option
 do
@@ -103,9 +118,12 @@ do
         G) FIXFLAG="-G $OPTARG"
             USERGROUP=$OPTARG
             ;;
+        P) USERPERMISSIONS="$OPTARG"
+            ;;
         m) MODULENAME="$OPTARG"
             ;;
         u) CLUSTERS=($OPTARG)
+            LINKFLAG="$LINKFLAG -u $CLUSTERS"
             ;;
         x) MODE="$OPTARG"
             ;;
@@ -610,6 +628,7 @@ cat > "$YAMLFILE" <<EOF4
 - LICENSE:$LICENSE
 - LICENSEURL:$LICENSE_URL
 - USERGROUP:$USERGROUP
+- USERPERMISSIONS:$USERPERMISSIONS
 - WEBSITE:$WEBSITE
 - LOCAL:$MODULE_FILE
 - COMMON:/sw/mf/common/$MF_CATEGORY/$SECTION/$MODULENAME/$VERSION
@@ -618,13 +637,15 @@ EOF4
 
 ################ Create a post-installation file ##########################
 cat > "$POSTFILE" <<EOF5
-. uppmax_functions.sh
-cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
-all_mflink -f $LINKFLAG $TOOL $VERSION
-chgrp -h 'sw' $TOOLDIR
+. $UPPMAX_ROOT/uppmax_functions.sh
 find $TOOLDIR -maxdepth 1 -type f -exec chgrp "sw" {} \;
 fixup $MODULE_DIRECTORY
 fixup ${FIXFLAG} $TOOLDIR/${VERSION}
+chgrp $USERGROUP $TOOLDIR/${VERSION}
+chmod $USERPERMISSIONS $TOOLDIR/${VERSION}
+cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
+all_mflink -f $LINKFLAG $TOOL $VERSION
+chgrp -h 'sw' $TOOLDIR
 echo "News:"
 echo "$NEWS1" 1>&2
 echo "$NEWS2" 1>&2
