@@ -41,15 +41,18 @@ VERSION=''
 CATEGORY=bioinfo
 MF_CATEGORY=bioinfo-tools
 MODULENAME=''
-LINKFLAG=-i
-FIXFLAG=''
+declare -a LINKFLAG=()
+declare -a FIXFLAG=()
 CLUSTERS=(rackham irma bianca snowy)
 MODE=INSTALL
 FORCED=0
 USERGROUP="sw"
 USERPERMISSIONS="-R u+rwX,g+rwX,o+rX-w"
 MAKEROOM_PATH=$(which makeroom.sh)
-UPPMAX_ROOT=${x%%makeroom.sh}
+UPPMAX_ROOT=${MAKEROOM_PATH%%makeroom.sh}
+TOOL_ROOT=${TOOL^^}_ROOT
+################## Formatting TOOL_ROOT ############
+TOOL_ROOT=${TOOL_ROOT//[-.]/_}
 
 [[ $# -eq 0 ]] && echo "$USAGE" >&2 && exit 1
 
@@ -115,7 +118,8 @@ do
             ;;
         d) DESC="$OPTARG"
             ;;
-        G) FIXFLAG="-G $OPTARG"
+        G) FIXFLAG+=(-G)
+            FIXFLAG+=($OPTARG)
             USERGROUP=$OPTARG
             ;;
         P) USERPERMISSIONS="$OPTARG"
@@ -123,7 +127,8 @@ do
         m) MODULENAME="$OPTARG"
             ;;
         u) CLUSTERS=($OPTARG)
-            LINKFLAG="$LINKFLAG -u $CLUSTERS"
+            LINKFLAG+=(-u)
+            LINKFLAG+=("${CLUSTERS[*]}")
             ;;
         x) MODE="$OPTARG"
             ;;
@@ -269,25 +274,25 @@ done
 
 case $CATEGORY in
     bioinfo) MF_CATEGORY=bioinfo-tools
-        LINKFLAG=-i
+        LINKFLAG+=(-i)
         ;;
     apps) MF_CATEGORY=applications
-        LINKFLAG=-a
+        LINKFLAG+=(-a)
         ;;
     comp) MF_CATEGORY=compilers
-        LINKFLAG=-c
+        LINKFLAG+=(-c)
         ;;
     libs) MF_CATEGORY=libraries
-        LINKFLAG=-l
+        LINKFLAG+=(-l)
         ;;
     build) MF_CATEGORY=build-tools
-        LINKFLAG=-b
+        LINKFLAG+=(-b)
         ;;
     data) MF_CATEGORY=data
-        LINKFLAG=-d
+        LINKFLAG+=(-d)
         ;;
     prarallel) MF_CATEGORY=parallel
-        LINKFLAG=-p
+        LINKFLAG+=(-p)
         ;;
     \?) printf "No such category, -%s\n" "$CATEGORY" >&2
         echo "$USAGE" >&2
@@ -568,8 +573,9 @@ prepend-path    PYTHONPATH          \\\$modroot/lib/python2.7/site-packages
 prepend-path    MANPATH             \\\$modroot/share/man
 prepend-path    CPATH               \\\$modroot/include
 prepend-path    CPLUS_INCLUDE_PATH  \\\$modroot/include
-setenv          ${TOOL^^}_ROOT      \\\$modroot
-setenv          HOME                \\\$::env(HOME)
+setenv          $TOOL_ROOT      \\\$modroot
+#### If you need the user's home ###########
+#setenv          HOME                \\\$::env(HOME)
 
 EOF
 else
@@ -638,13 +644,18 @@ EOF4
 ################ Create a post-installation file ##########################
 cat > "$POSTFILE" <<EOF5
 . $UPPMAX_ROOT/uppmax_functions.sh
+chgrp 'sw' $TOOLDIR  
+############### 2775 = g+s,u+rwX,g+rwX,o+rX-w
+chmod 2775 $TOOLDIR
 find $TOOLDIR -maxdepth 1 -type f -exec chgrp "sw" {} \;
 fixup $MODULE_DIRECTORY
-fixup ${FIXFLAG} $TOOLDIR/${VERSION}
-chgrp $USERGROUP $TOOLDIR/${VERSION}
-chmod $USERPERMISSIONS $TOOLDIR/${VERSION}
+$(printf "%q " fixup "${FIXFLAG[@]}" $TOOLDIR/$VERSION)
+#####fixup "${FIXFLAG[@]}" $TOOLDIR/${VERSION}
+##chgrp $USERGROUP $TOOLDIR/${VERSION}
+##chmod $USERPERMISSIONS $TOOLDIR/${VERSION}
 cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
-all_mflink -f $LINKFLAG $TOOL $VERSION
+$(printf "%q " all_mflink -f "${LINKFLAG[@]}" $TOOL $VERSION)
+### all_mflink -f "${LINKFLAG[@]}" $TOOL $VERSION
 chgrp -h 'sw' $TOOLDIR
 echo "News:"
 echo "$NEWS1" 1>&2
