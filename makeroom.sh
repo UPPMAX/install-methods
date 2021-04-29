@@ -33,7 +33,7 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
         -T  string      list of tags/keywords to make the \$TOOL easier to find. (DEFAULT is \"\$TOOL\")
         -u  string      list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
         -x  WORD        flag for mode, i.e. INSTALL, RESUME or REMOVE (DEFAULT is INSTALL, RESUME just sets the variables and exits.)
-        -f              forcing the script to ignore warnings.
+        -f              forcing the script to ignore warnings."
 #        -i  FILE       input file to be sourced; contains all the relevant parameters [[WORK IN PROGRESS]]
 
 WEBSITE=http://
@@ -49,7 +49,7 @@ MODE=INSTALL
 FORCED=0
 USERGROUP="sw"
 USERPERMISSIONS="-R u+rwX,g+rwX,o+rX-w"
-MAKEROOM_PATH=$(which makeroom.sh)
+MAKEROOM_PATH=$BASH_SOURCE
 UPPMAX_ROOT=${MAKEROOM_PATH%%makeroom.sh}
 TOOL_ROOT=${TOOL^^}_ROOT
 ################## Formatting TOOL_ROOT ############
