@@ -7,7 +7,7 @@
 INVOKE_UNFORMATTED="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 INVOKE=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//')
 #echo $INVOKE
-USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d DESCRIPTION] [-G GROUP] [-P USERPERMISSIONS] [-m MODULENAME] [-T TAGS/KEYWORDS] [-u CLUSTERS] [-x MODE] [-f] --
+USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d DESCRIPTION] [-G GROUP] [-P USERPERMISSIONS] [-g] [-p] [-m MODULENAME] [-T TAGS/KEYWORDS] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
 
@@ -17,23 +17,24 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
     Please modify the module file after running this
 
     Parameters:
-        -t  name of the \$TOOL (REQUIRED)
-        -v  version of the \$TOOL (REQUIRED)
-        -s  section of the \$TOOL for use with category bioinfo and new software only.
-        -c  category of the \$TOOL (bioinfo, apps, comp, libs, build, data or parallel) DEFAULT is bioinfo.
-        -w  website of the \$TOOL (no DEFAULT)
-        -l  license of the \$TOOL (no DEFAULT)
-        -L  URL to the license of the \$TOOL (no DEFAULT)
-        -d  short description of the \$TOOL (no DEFAULT)
-        -G  name of the group the \$TOOL needs to be installed with. (DEFAULT is \"sw\")
-        -P  permissions of the users (in the group if -G given). Note that it might include \"-R\" as it passes it to chmod (DEFAULT is \"-R u+rwX,g+rwX,o+rX-w\")
-        -m  name of the module file (DEFAULT is the same as the name of the tool)
-        -T  list of tags/keywords to make the \$TOOL easier to find. (DEFAULT is \"\$TOOL\")
-        -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
-        -x  flag for mode, i.e. INSTALL, RESUME or REMOVE (DEFAULT is INSTALL, RESUME just sets the variables and exits.)
-        -f  forcing the script to ignore warnings."
-
-#        -i  input file to be sourced; contains all the relevant parameters [[WORK IN PROGRESS]]
+        -t  name        name of the \$TOOL (REQUIRED)
+        -v  version     version of the \$TOOL (REQUIRED)
+        -s  section     section of the \$TOOL for use with category bioinfo and new software only.
+        -c  category    category of the \$TOOL (bioinfo, apps, comp, libs, build, data or parallel) DEFAULT is bioinfo.
+        -w  address     website of the \$TOOL (no DEFAULT)
+        -l  license     license of the \$TOOL (no DEFAULT)
+        -L  url         URL to the license of the \$TOOL (no DEFAULT)
+        -d  string      short description of the \$TOOL (no DEFAULT)
+        -g              do NOT setgid g+s on any permission directories fixed with 'fixup' (no DEFAULT)
+        -p              set group-restrictive permissions on the directories fixed with 'fixup' i.e. 'u+rwX,g+rX-w,o-rxw'
+        -G  group       the group used for the \$TOOL installation and fixup (with 'fixup'). (DEFAULT is \"sw\")
+        -P  perms       permissions (of the group if -G given) in the directories fixed with 'fixup'. (DEFAULT is \"u+rwX,g+rwX,o+rX-w\")
+        -m  module      name of the module file (DEFAULT is the same as the name of the tool)
+        -T  string      list of tags/keywords to make the \$TOOL easier to find. (DEFAULT is \"\$TOOL\")
+        -u  string      list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
+        -x  WORD        flag for mode, i.e. INSTALL, RESUME or REMOVE (DEFAULT is INSTALL, RESUME just sets the variables and exits.)
+        -f              forcing the script to ignore warnings.
+#        -i  FILE       input file to be sourced; contains all the relevant parameters [[WORK IN PROGRESS]]
 
 WEBSITE=http://
 TOOL=''
@@ -66,7 +67,7 @@ fi
 
 ############################
 
-while getopts "hi:t:v:s:w:c:G:m:l:L:d:u:x:f" option
+while getopts "hi:t:v:s:w:c:G:P:gpm:l:L:d:u:x:f" option
 do
     case $option in
         h) 
@@ -122,7 +123,13 @@ do
             FIXFLAG+=($OPTARG)
             USERGROUP=$OPTARG
             ;;
-        P) USERPERMISSIONS="$OPTARG"
+        P) FIXFLAG+=(-G)
+            FIXFLAG+=($OPTARG)
+            USERPERMISSIONS="$OPTARG"
+            ;;
+        g) FIXFLAG+=(-g)
+            ;;
+        p) FIXFLAG+=(-p)
             ;;
         m) MODULENAME="$OPTARG"
             ;;
@@ -653,7 +660,7 @@ $(printf "%q " fixup "${FIXFLAG[@]}" $TOOLDIR/$VERSION)
 #####fixup "${FIXFLAG[@]}" $TOOLDIR/${VERSION}
 ##chgrp $USERGROUP $TOOLDIR/${VERSION}
 ##chmod $USERPERMISSIONS $TOOLDIR/${VERSION}
-cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
+cp -av ${MODULE_FILE} $COMMONDIR/$VERSION
 $(printf "%q " all_mflink -f "${LINKFLAG[@]}" $TOOL $VERSION)
 ### all_mflink -f "${LINKFLAG[@]}" $TOOL $VERSION
 chgrp -h 'sw' $TOOLDIR
