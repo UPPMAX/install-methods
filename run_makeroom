@@ -3,7 +3,7 @@
 OUTPUT=`makeroom.sh ${@+"$@"}`
 if echo "$OUTPUT" | tail | grep -q 'TMPFILE'; then
     source $OUTPUT
-    rm -rf $OUTPUT
+    #rm -rf $OUTPUT
     #export `echo "$OUTPUT" | tail`
 else
     echo $OUTPUT

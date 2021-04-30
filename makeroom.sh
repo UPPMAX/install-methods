@@ -703,7 +703,7 @@ umask \$PREUMASK
 mv $PWD/$SCRIPTFILE ${TOOLDIR}/
 printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s SRCDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "/sw/$CATEGORY/$TOOL/$VERSION/\\\$CLUSTER" "$COMMONDIR" "$SRCDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
 printf "Run this to set your variables and go to \$TOOL:\n\n"
-printf "source %s && cd \$TOOLDIR\n" $SOURCEMEFILE
+printf "source %s && cd \\\$TOOLDIR\n" $SOURCEMEFILE
 TMP
 
 ################# End of installation makeroom script #########################
