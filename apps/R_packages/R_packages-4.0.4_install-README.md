@@ -49,21 +49,31 @@ setting up prior to adding new packages to this installation.
     module load R/$VERSION
     module load autoconf/2.69
     module load automake/1.14.1
-    module load cmake/3.13.2    # some packages require a newish cmake
+    module load cmake/3.17.3
     module load m4/1.4.17
     module load MariaDB/10.1.29
     module load PostgreSQL/10.3
     module load UDUNITS/2.2.26  # these further modules were added
     module load GDAL/3.1.0
     module load PROJ/6.3.2
-    module load GEOS/3.5.0
+    module load GEOS/3.9.1-gcc9.3.0
+    module load openbabel/3.1.1-gcc9.3.0
+    module load zlib/1.2.11
+    module load hdf5/1.10.5
+    module load netcdf/4.7.1
+    module load protobuf/3.15.5-gcc9.3.0
+    module load Eigen/3.3.4
+    module load cyrus-sasl/2.1.27
+    module load FFmpeg/4.4
+    module load jq/1.6
+    module load Tcl-Tk/8.6.11
     module load Poppler/0.75.0
     module load JAGS/4.3.0
     module load gsl/2.6
     module load libcurl/7.45.0   # there is a bug in the most recent libcurl preventing the 'curl' package from getting build
     module load libwebp/1.2.0
     module load glpk/4.65
-    module load protobuf/3.15.5-gcc9.3.0
+    module load COIN-OR-OptimizationSuite/1.8.0
     setenv DOWNLOAD_STATIC_LIBV8=1
     echo -e "\nThis should have been set to the appropriate directory in this module, is it?\n\nR_LIBS_USER = $R_LIBS_USER\n"
 
@@ -345,40 +355,46 @@ Then within R, in the /sw/apps/R_packages/external_tarballs directory,
     install.packages('DESeq', repos=NULL)
 
 
-### prada, rTANDEM, PGSEA
+### prada, rTANDEM, PGSEA, FunciSNP.data, Roleswitch, easyRNASeq
 
-Deprecated, but packages still rely on these.  Pull it from the Bioconductor git repository and install it from there.
+Deprecated or temporary build problems, but packages still rely on these.  Pull
+them from the Bioconductor git repository and install from there.
 
     cd /sw/apps/R_packages/external_tarballs
     git clone https://git.bioconductor.org/packages/prada
     git clone https://git.bioconductor.org/packages/PGSEA
     git clone https://git.bioconductor.org/packages/rTANDEM
     git clone https://git.bioconductor.org/packages/FunciSNP.data
+    git clone https://git.bioconductor.org/packages/Roleswitch
+    git clone https://git.bioconductor.org/packages/easyRNASeq
 
 Then within R, in the /sw/apps/R_packages/external_tarballs directory,
 
-    install.packages(c('prada','PGSEA','rTANDEM','FunciSNP.data'), repos=NULL)
+    install.packages(c('prada','PGSEA','rTANDEM','FunciSNP.data','Roleswitch','easyRNASeq'), repos=NULL)
 
-Once prada is installed, then facsDorit can be installed.
+Once these are installed, others can be installed. This list is incomplete, so a full reinstall is warranted.
 
-    BiocManager::install(c('facsDorit'), dependencies=TRUE)
+    BiocManager::install(c('facsDorit','FunciSNP','miRLAB'), dependencies=TRUE)
 
 
-### lme4qtl, harmony, LDna, ampvis2
+### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk
 
-Github-hosted packages.
+Github-hosted packages.  Load hdf5/1.10.5 since loomR uses hdf5r.
 
     devtools::install_github("variani/lme4qtl", ref='master', dependencies=TRUE)
     devtools::install_github("immunogenomics/harmony", ref = 'master')
     devtools::install_github("petrikemppainen/LDna", ref = 'master')
     devtools::install_github("madsalbertsen/ampvis2")
+    devtools::install_github("akdess/CaSpER")
+    devtools::install_github("mojaveazure/loomR", ref = "develop")
+    devtools::install_github("mojaveazure/seurat-disk")
 
 
 ### HDL
 
 A github repository that contains as a subdirectory a CRAN-like repository
 directory.  Create a new `external_repositories` directory within VERSIONDIR
-and clone the HDL repository there.
+and clone the HDL repository there.  **NOTE: there is no need to do this.**
 
     cd $VERSIONDIR
     mkdir -p external_repositories
@@ -387,10 +403,16 @@ and clone the HDL repository there.
     git clone https://github.com/zhenin/HDL
     cd HDL
 
-This repository contains a script `HDL.install.R` that indicates `dplyr` and
-`data.table >= 1.12.1` is required.  We satisfy these requirements within
-R_packages/4.0.0 (data.table is currently 1.12.8).  So, install the HDL
-repository from this subdirectory using standard R procedures.
+**For 4.0.4** since I copied this directory over from 4.0.0, just do a git pull to
+update the repository and install from there.
+
+    cd $VERSIONDIR/external_repositories
+    module load git/2.28.0
+    cd HDL
+    git pull
+
+Then, install the HDL repository from this subdirectory using standard R
+procedures.
 
     R
 

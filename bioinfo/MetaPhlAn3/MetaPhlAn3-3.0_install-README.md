@@ -19,14 +19,15 @@ LOG
     git clone https://github.com/biobakery/MetaPhlAn.git
     cd MetaPhlAn 
     git checkout 3.0
-    ml bioinfo-tools biopython/1.78 python/3.8.7 bowtie2/2.3.5.1 
+    ml bioinfo-tools python/3.8.7 bowtie2/2.3.5.1 
+    PYTHONUSERBASE=$PREFIX pip install --user biopython==1.68
     PYTHONUSERBASE=$PREFIX pip install --user MetaPhlAn
     cd $PREFIX
     makedir metaphlan_databases
 # fill with last version (v3) of .tar and .md5 files and the "mpa_latest" file
-    cd bin
-#    set PYTHONPATH $modroot/lib/python3.8/site-packages
-    ./metaphlan --install --bowtie2db ../metaphlan_databases
+#    set PYTHONPATH $modroot/lib/python3.8/site-packages in mf file
+    ml MetaPhlan3
+    metaphlan --install --bowtie2db metaphlan_databases
 #include biopython/1.78 and bowtie2/2.3.5.1 in mf file
 #test module somewhere else
     metaphlan <fastq file> --input_type fastq -o profiled_outputfile.txt

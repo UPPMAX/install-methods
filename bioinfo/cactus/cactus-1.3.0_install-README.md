@@ -1,3 +1,66 @@
+cactus/1.3.0
+========================
+
+<https://github.com/ComparativeGenomicsToolkit/cactus>
+
+Used under license:
+Copyright
+<>
+
+Structure creating script (makeroom_cactus_1.3.0.sh) moved to /sw/bioinfo/cactus/makeroom_1.3.0.sh
+
+LOG
+---
+
+    /home/bjornv/git/install-methods/makeroom.sh -t "cactus" -v "1.3.0" -s "annotation" -w "https://github.com/ComparativeGenomicsToolkit/cactus" -l "Copyright" -d "Cactus is a reference-free whole-genome multiple alignment program." -f""
+    ./makeroom_cactus_1.3.0.sh
+    TOOL=cactus
+    VERSION=1.3.0
+    cd /sw/bioinfo/$TOOL
+    source SOURCEME_cactus_1.3.0
+
+    module load python/3.8.7
+    module load git/2.28.0
+    module load gcc/4.9.4
+    module load hdf5/1.10.5
+    module load lzo/2.10
+    module load xz/5.2.2
+
+    cd $PREFIX
+    git clone https://github.com/ComparativeGenomicsToolkit/cactus.git --recursive
+    cd $PREFIX/cactus
+    git checkout v${VERSION}
+
+    cd $PREFIX
+    #python3 -m pip install --upgrade --target $PREFIX/virtualenv virtualenv
+    python3 -m virtualenv -p python3.8 cactus_env
+
+    source cactus_env/bin/activate
+    cd $PREFIX/cactus
+    pip install --upgrade setuptools pip
+    pip install --upgrade -r toil-requirement.txt
+    pip install --upgrade .
+
+#Remove CMD 'CMDLDFLAGS =  -static' from kyoto Makefiles due to errors. Ugly but works.
+    unset PREFIX
+    make -j 15
+    sed -i.bak 's/-static//g' submodules/kyoto/kyotocabinet/Makefile
+    make -j 15
+    sed -i.bak 's/-static//g' submodules/kyoto/kyototycoon/Makefile
+    make -j 15
+
+
+    # Download the cactus singularity binary set
+    singularity pull -F $PREFIX/cactus_v1.3.0.sif docker://quay.io/comparative-genomics-toolkit/cactus:v1.3.0 
+
+
+
+
+
+
+
+
+
 cactus/1.2.3
 ========================
 
@@ -27,8 +90,6 @@ LOG
 
     cd $PREFIX
     python3 -m pip install --upgrade --target $PREFIX/virtualenv virtualenv
-    # In case Python does not find the modules please define the python path before the command:
-    # PYTHONPATH=$PREFIX/virtualenv ./virtualenv/bin/virtualenv -p python3.7 cactus_env
     ./virtualenv/bin/virtualenv -p python3.7 cactus_env
     source cactus_env/bin/activate
     pip install --upgrade setuptools pip
@@ -43,7 +104,10 @@ LOG
     singularity pull -F $PREFIX/cactus_v1.2.3.sif docker://quay.io/comparative-genomics-toolkit/cactus:v1.2.3 
 
 
-To run cactus:
+
+
+
+### To run cactus: ###
 
     # set up working directories and/or variables for
     # (1) the mesos controller
@@ -52,7 +116,7 @@ To run cactus:
     # (4) the port you will use for communication between the nodes
     1: /proj/staff/douglas/mesos-controller
     2: /proj/staff/douglas/mesos-agent
-    3: $HOSTNAME after ssh-ing into the node you've chosen for the mesos controller
+    3: $HOSTNAME after ssh-ing into the node you have chosen for the mesos controller
     4: 5050
 
     # Start Mesos
@@ -71,7 +135,7 @@ To run cactus:
     ## Start the mesos agents
     ## SSH into the remaining nodes and run these commands on each of them:
     module load mesos/1.9.0
-    module load bioinfo-tools cactus/1.2.3
+    module load bioinfo-tools cactus/1.3.0
 
     port=5050
 
@@ -101,24 +165,39 @@ To run cactus:
     runwd=$wd/cactus_test
     datawd=$wd/cactus_test_data
     jobdata=jobStore
-    module load bioinfo-tools cactus/1.2.3
+    module load bioinfo-tools cactus/1.3.0
     controller=$HOSTNAME
     port=5050
     export SINGULARITY_BIND='/sw'
 
     mkdir -p $runwd && cd $runwd
+
+    # You can choose if you want to run cactus with local built binaries or to use the binaries from the cactus image. The local binaries might be slightly faster.
+
     toil clean $jobdata && \
     cactus \
         --binariesMode singularity \
         --batchSystem Mesos \
         --mesosMaster $controller:$port \
         --setEnv SINGULARITY_BIND=$SINGULARITY_BIND \
-        --containerImage $CACTUS_SINGULARITY_IMG \
         $jobdata \
         --defaultMemory 7Gi \
         --defaultDisk 10Gi \
         $datawd/genomes/evolverMammalsLocalLarge.txt \
         output_cactus_${RANDOM}.hal
 
+
+    toil clean $jobdata && \
+    cactus \
+        --binariesMode singularity \
+        --containerImage $CACTUS_SINGULARITY_IMG \
+        --batchSystem Mesos \
+        --mesosMaster $controller:$port \
+        --setEnv SINGULARITY_BIND=$SINGULARITY_BIND \
+        $jobdata \
+        --defaultMemory 7Gi \
+        --defaultDisk 10Gi \
+        $datawd/genomes/evolverMammalsLocalLarge.txt \
+        output_cactus_${RANDOM}.hal
 
 
