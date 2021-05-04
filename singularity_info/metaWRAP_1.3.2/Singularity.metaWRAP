@@ -1,0 +1,19 @@
+Bootstrap: docker
+From: continuumio/miniconda3
+
+%environment
+  export LC_ALL=C
+
+%post
+  export LC_ALL=C
+
+  /opt/conda/bin/conda config --add channels defaults
+  /opt/conda/bin/conda config --add channels conda-forge
+  /opt/conda/bin/conda config --add channels bioconda
+  /opt/conda/bin/conda config --add channels ursky
+  /opt/conda/bin/conda create --name metawrap-env --channel ursky metawrap-mg=1.3.2
+
+  conda clean --all --yes
+
+%runscript
+  /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh ; conda activate metawrap-env ; metawrap $@"
