@@ -7,7 +7,7 @@
 INVOKE_UNFORMATTED="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' %q' "$@")"
 INVOKE=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//')
 #echo $INVOKE
-USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d DESCRIPTION] [-G GROUP] [-P USERPERMISSIONS] [-m MODULENAME] [-T TAGS/KEYWORDS] [-u CLUSTERS] [-x MODE] [-f] --
+USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d DESCRIPTION] [-G GROUP] [-P USERPERMISSIONS] [-g] [-p] [-m MODULENAME] [-T TAGS/KEYWORDS] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
 
@@ -17,23 +17,24 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
     Please modify the module file after running this
 
     Parameters:
-        -t  name of the \$TOOL (REQUIRED)
-        -v  version of the \$TOOL (REQUIRED)
-        -s  section of the \$TOOL for use with category bioinfo and new software only.
-        -c  category of the \$TOOL (bioinfo, apps, comp, libs, build, data or parallel) DEFAULT is bioinfo.
-        -w  website of the \$TOOL (no DEFAULT)
-        -l  license of the \$TOOL (no DEFAULT)
-        -L  URL to the license of the \$TOOL (no DEFAULT)
-        -d  short description of the \$TOOL (no DEFAULT)
-        -G  name of the group the \$TOOL needs to be installed with. (DEFAULT is \"sw\")
-        -P  permissions of the users (in the group if -G given). Note that it might include \"-R\" as it passes it to chmod (DEFAULT is \"-R u+rwX,g+rwX,o+rX-w\")
-        -m  name of the module file (DEFAULT is the same as the name of the tool)
-        -T  list of tags/keywords to make the \$TOOL easier to find. (DEFAULT is \"\$TOOL\")
-        -u  list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
-        -x  flag for mode, i.e. INSTALL, RESUME or REMOVE (DEFAULT is INSTALL, RESUME just sets the variables and exits.)
-        -f  forcing the script to ignore warnings."
-
-#        -i  input file to be sourced; contains all the relevant parameters [[WORK IN PROGRESS]]
+        -t  name        name of the \$TOOL (REQUIRED)
+        -v  version     version of the \$TOOL (REQUIRED)
+        -s  section     section of the \$TOOL for use with category bioinfo and new software only.
+        -c  category    category of the \$TOOL (bioinfo, apps, comp, libs, build, data or parallel) DEFAULT is bioinfo.
+        -w  address     website of the \$TOOL (no DEFAULT)
+        -l  license     license of the \$TOOL (no DEFAULT)
+        -L  url         URL to the license of the \$TOOL (no DEFAULT)
+        -d  string      short description of the \$TOOL (no DEFAULT)
+        -g              do NOT setgid g+s on any permission directories fixed with 'fixup' (no DEFAULT)
+        -p              set group-restrictive permissions on the directories fixed with 'fixup' i.e. 'u+rwX,g+rX-w,o-rxw'
+        -G  group       the group used for the \$TOOL installation and fixup (with 'fixup'). (DEFAULT is \"sw\")
+        -P  perms       permissions (of the group if -G given) in the directories fixed with 'fixup'. (DEFAULT is \"u+rwX,g+rwX,o+rX-w\")
+        -m  module      name of the module file (DEFAULT is the same as the name of the tool)
+        -T  string      list of tags/keywords to make the \$TOOL easier to find. (DEFAULT is \"\$TOOL\")
+        -u  string      list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca snowy\")
+        -x  WORD        flag for mode, i.e. INSTALL, RESUME or REMOVE (DEFAULT is INSTALL, RESUME just sets the variables and exits.)
+        -f              forcing the script to ignore warnings."
+#        -i  FILE       input file to be sourced; contains all the relevant parameters [[WORK IN PROGRESS]]
 
 WEBSITE=http://
 TOOL=''
@@ -48,7 +49,7 @@ MODE=INSTALL
 FORCED=0
 USERGROUP="sw"
 USERPERMISSIONS="-R u+rwX,g+rwX,o+rX-w"
-MAKEROOM_PATH=$(which makeroom.sh)
+MAKEROOM_PATH=$BASH_SOURCE
 UPPMAX_ROOT=${MAKEROOM_PATH%%makeroom.sh}
 TOOL_ROOT=${TOOL^^}_ROOT
 ################## Formatting TOOL_ROOT ############
@@ -59,14 +60,14 @@ TOOL_ROOT=${TOOL_ROOT//[-.]/_}
 ############## Check if the tools are in the PATH ###################
 if [ -z "$UPPMAX_ROOT" ]
 then
-    printf "No path to this tool found. Make sure you have https://github.com/UPPMAX/install-methods cloned and in your \$PATH\n\n" >&2 && exit 1
+    printf "No path to this tool found. Make sure you have https://github.com/UPPMAX/install-methods cloned and findable, e.g. in your \$PATH\n\n" >&2 && exit 1
 else
-    printf "Found tools at %s\n\n" "$UPPMAX_ROOT"
+    printf "Found tools at %s\n\n" "$UPPMAX_ROOT" >&2
 fi
 
 ############################
 
-while getopts "hi:t:v:s:w:c:G:m:l:L:d:u:x:f" option
+while getopts "hi:t:v:s:w:c:G:P:gpm:l:L:d:u:x:f" option
 do
     case $option in
         h) 
@@ -122,7 +123,13 @@ do
             FIXFLAG+=($OPTARG)
             USERGROUP=$OPTARG
             ;;
-        P) USERPERMISSIONS="$OPTARG"
+        P) FIXFLAG+=(-P)
+            FIXFLAG+=($OPTARG)
+            USERPERMISSIONS="$OPTARG"
+            ;;
+        g) FIXFLAG+=(-g)
+            ;;
+        p) FIXFLAG+=(-p)
             ;;
         m) MODULENAME="$OPTARG"
             ;;
@@ -371,10 +378,17 @@ NEWS6="$LICENSE"
 
 ################### If resuming, now we exit #####################
 if [ $MODE == "RESUME" ] ; then
-    printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s SRCDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "i$PREFIX" "$COMMONDIR" "$SRCDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+    if [ -f $SOURCEMEFILE ]; then
+        printf "Run this to get your variables:\n" 1>&2
+        printf "source %s\n" "$SOURCEMEFILE" 1>&2
+    else
+        printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s SRCDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "i$PREFIX" "$COMMONDIR" "$SRCDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+        printf "No previous install found, but you can run this to get your variables:\n" 1>&2
+        printf "source %s\n" "$TMPFILE" 1>&2
+    fi
     ## echo for run_makeroom
-    echo $TMPFILE
-    exit 0
+    #echo $TMPFILE
+    #exit 0
 fi
 ####################### REMOVE ############################################
 
@@ -449,7 +463,7 @@ RMVTMP
     printf "export TOOL='' VERSION='' TOOLDIR='' VERSIONDIR='' PREFIX='' COMMONDIR='' SRCDIR='' NEWS=''" > $TMPFILE
     chmod +x $TMPFILE
     ## echo for run_makeroom
-    printf "%s\n" $TMPFILE
+    #printf "%s\n" $TMPFILE
     chmod +x $REMOVEFILE
     exit 0;
 fi
@@ -573,7 +587,7 @@ prepend-path    PYTHONPATH          \\\$modroot/lib/python2.7/site-packages
 prepend-path    MANPATH             \\\$modroot/share/man
 prepend-path    CPATH               \\\$modroot/include
 prepend-path    CPLUS_INCLUDE_PATH  \\\$modroot/include
-setenv          $TOOL_ROOT      \\\$modroot
+setenv          $TOOL_ROOT          \\\$modroot
 #### If you need the user's home ###########
 #setenv          HOME                \\\$::env(HOME)
 
@@ -653,7 +667,7 @@ $(printf "%q " fixup "${FIXFLAG[@]}" $TOOLDIR/$VERSION)
 #####fixup "${FIXFLAG[@]}" $TOOLDIR/${VERSION}
 ##chgrp $USERGROUP $TOOLDIR/${VERSION}
 ##chmod $USERPERMISSIONS $TOOLDIR/${VERSION}
-cp -av ${MODULE_FILE} /sw/mf/common/$MF_CATEGORY/$SECTION/$TOOL/$VERSION
+cp -av ${MODULE_FILE} $COMMONDIR/$VERSION
 $(printf "%q " all_mflink -f "${LINKFLAG[@]}" $TOOL $VERSION)
 ### all_mflink -f "${LINKFLAG[@]}" $TOOL $VERSION
 chgrp -h 'sw' $TOOLDIR
@@ -686,13 +700,17 @@ echo "$NEWS6" 1>&2
 
 umask \$PREUMASK
 
-mv $PWD/$SCRIPTFILE /sw/$CATEGORY/${TOOL}/
+mv $PWD/$SCRIPTFILE ${TOOLDIR}/
 printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s SRCDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "/sw/$CATEGORY/$TOOL/$VERSION/\\\$CLUSTER" "$COMMONDIR" "$SRCDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $SOURCEMEFILE
+printf "Run this to set your variables and go to \$TOOL:\n\n"
+printf "source %s && cd \\\$TOOLDIR\n" $SOURCEMEFILE
 TMP
 
 ################# End of installation makeroom script #########################
 
 printf "export TOOL=%s VERSION=%s TOOLDIR=%s VERSIONDIR=%s PREFIX=%s COMMONDIR=%s SRCDIR=%s \nexport NEWS=\"%s\n%s\n%s\n%s\n%s\n%s\"" "$TOOL" "$VERSION" "$TOOLDIR" "$VERSIONDIR" "$PREFIX" "$COMMONDIR" "$SRCDIR" "${NEWS1}" "${NEWS2}" "${NEWS3}" "${NEWS4}" "${NEWS5}" "${NEWS6}" > $TMPFILE
+printf "No files yet created in the file tree, but you can run this to get your variables set:\n" 1>&2
+printf "source %s\n" "$TMPFILE" 1>&2
     ## echo for run_makeroom
-echo $TMPFILE
+    #echo $TMPFILE
 chmod +x $SCRIPTFILE
