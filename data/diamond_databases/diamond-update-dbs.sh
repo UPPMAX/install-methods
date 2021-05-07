@@ -1,7 +1,8 @@
 #!/bin/bash 
 
 module load bioinfo-tools
-module load diamond/0.9.31
+module load diamond/2.0.9
+module load blast/2.11.0+
 module load gnuparallel/20170122
 
 ROOT=/sw/data/diamond_databases
@@ -9,20 +10,21 @@ THREADS=10
 DateFormat='%Y%m%d-%H%M%S'  # used for databases where the version tag is date-time
 DateSource='now'  # 'now' means use today's date as in TODAY below, otherwise means use date on downloaded md5 checksum file
 TODAY=`date +"$DateFormat"`
-TAXONMAP=/sw/data/ncbi_taxonomy/latest/accession2taxid/download/prot.accession2taxid.gz
+TAXONMAP=/sw/data/ncbi_taxonomy/latest/accession2taxid/prot.accession2taxid.FULL.gz
 TAXONNODES=/sw/data/ncbi_taxonomy/latest/nodes.dmp
+TAXONNAMES=/sw/data/ncbi_taxonomy/latest/names.dmp
 WGET_OPTIONS="--quiet --timestamping"
 
 echo "$0: building databases with $(diamond version)"
 
-#set -x
+set -x
 
 # TODO: for get_db_single(), when checking for previous download, we should compare md5 against previous md5s, if they exist
 # TODO: for uniref90, extract md5 sum from xml and check against it
 
 function error_send_email() {
     MSG="Error within $0: '$1'"
-	mailx -s "$0 error: '$1'" lars.eklund@uppmax.uu.se <<< $MSG
+	mailx -s "$0 error: '$1'" douglas.scofield@uppmax.uu.se <<< $MSG
     exit 1
 }
 
@@ -32,7 +34,7 @@ function make_latest_symlink() {
     { rm -f latest && ln -sf $NEWVERSION latest; } || { echo "$FUNC: could not create 'latest' symlink"; exit 1; }
 }
 
-[[ $(uname -n) = 'rackham5.uppmax.uu.se' ]] || error_send_email "This is a long multi-core process and must be run on rackham5"
+#[[ $(uname -n) = 'rackham5.uppmax.uu.se' ]] || error_send_email "This is a long multi-core process and must be run on rackham5"
 
 set -e
 
@@ -87,12 +89,12 @@ function get_db_single() {
     DB_FILE=$3      # $3  data filename
     DB_MD5_FILE=$4  # $4  md5 checksum filename, md5sum -c with this checks $DB_FILE
     DB_OUTPUT=$5    # $5  name of output file
-    USE_TAX=$6      # $6  true if compiling with taxonomy from files defined in $TAXON_NODES and $TAXON_MAP_
+    USE_TAX=$6      # $6  true if compiling with taxonomy from files defined in \$TAXONNODES \$TAXONNAMES \$TAXONMAP
     FUNC="get_db_single"
 
     
     if [[ $USE_TAX == true ]]; then
-      USE_TAX="--taxonmap $TAXONMAP --taxonnodes $TAXONNODES"
+      USE_TAX="--taxonmap $TAXONMAP --taxonnames $TAXONNAMES --taxonnodes $TAXONNODES"
     else
       USE_TAX=""
     fi
@@ -143,14 +145,69 @@ function get_db_single() {
     cd $ROOT
 }
 
+# get_db_from_blast()
+#
+# Download updates for a database that is a set of blast files each with separate md5
+# checksum file, using wget.
+#
+# Version of the download is dependent on DateSource
+
+function get_db_from_blast() {
+
+    DB_DIR=$1       # $1  name to use for database directory
+    URL_DIR=$2      # $2  base url/directory for wget
+    DB_PREFIX=$3    # $3  blast filename prefix for pattern match
+    DB_OUTPUT=$4    # $5  name of output file
+    FUNC="get_db_from_blast"
+
+    
+    cd $ROOT
+    mkdir -p $DB_DIR
+    cd $DB_DIR
+    TMPDIR=tmp.$$
+    mkdir $TMPDIR || { echo "$FUNC: $DB_DIR temp directory $TMPDIR, error during mkdir"; exit 1; }
+    cd $TMPDIR
+    echo "mget ${DB_PREFIX}*.gz.md5" | lftp $URL_DIR
+    md5=( "${DB_PREFIX}*.gz.md5" )
+    [[ "$DateSource" = 'now' ]] && NEWVERSION="$TODAY" || NEWVERSION=`date --date=@$(stat -c'%Y' "${md5[0]}") +"$DateFormat"`
+    echo "mget ${DB_PREFIX}*.gz" | lftp $URL_DIR
+    for MD5_FILE in ${DB_PREFIX}*gz.md5 ; do
+        md5sum -c $MD5_FILE   ||   { echo "$MD5_FILE mismatch, exiting"; exit 1; }
+    done
+    for F in ${DB_PREFIX}*gz ; do
+        tar xvf $F
+    done
+
+    DB_FILE=${DB_OUTPUT}.faa.gz
+    blastdbcmd -db $DB_PREFIX -entry all | gzip -c > ${DB_FILE}
+
+    create_diamond_db_single  $DB_OUTPUT  $DB_FILE
+
+    mkdir download && mv -vf $DB_FILE ${DB_PREFIX}.??.*.gz.md5 ${DB_PREFIX}.??.*.gz download/ || { echo "could not move files to download/"; exit 1; }
+    rm -f ${DB_PREFIX}.0?.{pin,phr,psq,ppi,ppd,pog} ${DB_PREFIX}.{pal,pdb,pos,pot,ptf,pto} taxdb.{btd,bti}
+
+    cd ..
+    if [[ -d $NEWVERSION ]] ; then  # a previous download created this already
+        rsync -rPt -v $TMPDIR/* $NEWVERSION/
+        rm -rf $TMPDIR
+    else
+        mv -v $TMPDIR $NEWVERSION
+    fi
+    #{ rm -f latest && ln -sf $NEWVERSION latest; } || { echo "$FUNC: could not create 'latest' symlink"; exit 1; }
+    make_latest_symlink  "$FUNC"  "$NEWVERSION"
+    echo "$FUNC: successfully updated $DB_DIR to $ROOT/$DB_DIR/$NEWVERSION"
+    cd $ROOT
+}
+
+
 function update_UniRef90() {
 
     # Download Uniref90 proteins.  These are versioned in the accompanying XML
-    # document, so we load perl_modules/5.18.4 for xml_grep
+    # document, so we load perl_modules/5.26.2 for xml_grep
 
     set +x
-    module load perl/5.18.4
-    module load perl_modules/5.18.4
+    module load perl/5.26.2
+    module load perl_modules/5.26.2
     set -x
 
     cd $ROOT
@@ -191,7 +248,7 @@ function update_UniRef90() {
 
     cd $ROOT
 
-    module unload perl_modules/5.18.4 perl/5.18.4
+    module unload perl_modules perl
 }
 
 
@@ -221,9 +278,8 @@ function update_RefSeq() {
         rm -rf $TMPDIR
         make_latest_symlink  "db $DB"  "$NEWVERSION"
     else
-        lftp ftp://ftp.ncbi.nlm.nih.gov/refseq/release/complete << __REFSEQ__
-            mget -c complete.*.protein.faa.gz
-__REFSEQ__
+        echo 'mget -c complete.*.protein.faa.gz' | lftp ftp://ftp.ncbi.nlm.nih.gov/refseq/release/complete
+        echo 'mget -c complete.*.protein.faa.gz' | lftp ftp://ftp.ncbi.nlm.nih.gov/refseq/release/complete
 
         create_diamond_db_multiple  complete.nonredundant_protein.protein  complete.nonredundant_protein.*.protein.faa.gz
 
@@ -244,11 +300,13 @@ __REFSEQ__
 
 set -x
 
-get_db_single  Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  nr.gz         nr.gz.md5         nr        true
+get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  nr.gz         nr.gz.md5         nr        true
 
-get_db_single  Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  env_nr.gz     env_nr.gz.md5     env_nr
+get_db_from_blast  Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db        env_nr        env_nr
 
-get_db_single  Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  swissprot.gz  swissprot.gz.md5  swissprot
+get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  swissprot.gz  swissprot.gz.md5  swissprot
+
+get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  pdbaa.gz      pdbaa.gz.md5      pdbaa
 
 update_UniRef90
 
@@ -264,5 +322,5 @@ find . -type d -exec chmod g+s {} \;
 unset TMPDIR
 LOG=diamond-$(diamond version | cut -f3 -d' ')-database-compatibility-${TODAY}.log
 find . -name '*.dmnd'| parallel -v --line-buffer -j 1 diamond getseq --db {} '|' head '>/dev/null' > "$LOG" 2>&1
-cat "$LOG" | mailx -s "diamond database version compatibility $TODAY" lars.eklund@uppmax.uu.se
+cat "$LOG" | mailx -s "diamond database version compatibility $TODAY" douglas.scofield@uppmax.uu.se
 

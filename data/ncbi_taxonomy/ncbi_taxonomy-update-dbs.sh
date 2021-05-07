@@ -156,26 +156,31 @@ get_db_SIMPLE  new_taxdump ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump  
 
 # gi_taxid for deprecated GIs
 
-get_db_single  . ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy  gi_taxid_nucl.dmp.gz       gi_taxid_nucl.dmp.gz.md5       zcat
-get_db_single  . ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy  gi_taxid_prot.dmp.gz       gi_taxid_prot.dmp.gz.md5       zcat
+get_db_single  . ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/obsolete  gi_taxid_nucl.dmp.gz       gi_taxid_nucl.dmp.gz.md5       zcat
+get_db_single  . ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/obsolete  gi_taxid_prot.dmp.gz       gi_taxid_prot.dmp.gz.md5       zcat
 #get_db_single  . ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy  gi_taxid_nucl_diff.dmp.gz  gi_taxid_nucl_diff.dmp.gz.md5  zcat # no longer available
 #get_db_single  . ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy  gi_taxid_prot_diff.dmp.gz  gi_taxid_prot_diff.dmp.gz.md5  zcat # no longer available
 
 # accession2taxid for new accession numbers
 
-get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  nucl_gb.accession2taxid.gz    nucl_gb.accession2taxid.gz.md5    zcat
-get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  nucl_wgs.accession2taxid.gz   nucl_wgs.accession2taxid.gz.md5   zcat
-get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  prot.accession2taxid.gz       prot.accession2taxid.gz.md5       zcat
-get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  pdb.accession2taxid.gz        pdb.accession2taxid.gz.md5        zcat
-get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  dead_nucl.accession2taxid.gz  dead_nucl.accession2taxid.gz.md5  zcat
-get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  dead_prot.accession2taxid.gz  dead_prot.accession2taxid.gz.md5  zcat
-get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  dead_wgs.accession2taxid.gz   dead_wgs.accession2taxid.gz.md5   zcat
+get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  nucl_gb.accession2taxid.gz         nucl_gb.accession2taxid.gz.md5      zcat
+get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  nucl_wgs.accession2taxid.gz        nucl_wgs.accession2taxid.gz.md5     zcat
+get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  prot.accession2taxid.gz            prot.accession2taxid.gz.md5         zcat
+get_db_SIMPLE  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  prot.accession2taxid.FULL.gz       .
+get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  pdb.accession2taxid.gz             pdb.accession2taxid.gz.md5          zcat
+get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  dead_nucl.accession2taxid.gz       dead_nucl.accession2taxid.gz.md5    zcat
+get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  dead_prot.accession2taxid.gz       dead_prot.accession2taxid.gz.md5    zcat
+get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  dead_wgs.accession2taxid.gz        dead_wgs.accession2taxid.gz.md5     zcat
 #get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  nucl_est.accession2taxid.gz   nucl_est.accession2taxid.gz.md5   zcat # no longer available
 #get_db_single  accession2taxid  ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid  nucl_gss.accession2taxid.gz   nucl_gss.accession2taxid.gz.md5   zcat # no longer available
 
 # collections information
 
+get_db_SIMPLE  .                ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy                  Ccode_dump.txt
 get_db_SIMPLE  .                ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy                  coll_dump.txt
+get_db_SIMPLE  .                ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy                  Cowner_dump.txt
+get_db_SIMPLE  .                ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy                  Icode_dump.txt
+get_db_SIMPLE  .                ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy                  ncbi_taxonomy_genussp.txt
 get_db_SIMPLE  biocollections   ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections   Collection_codes.txt
 get_db_SIMPLE  biocollections   ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections   Institution_codes.txt
 get_db_SIMPLE  biocollections   ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections   Unique_institution_codes.txt

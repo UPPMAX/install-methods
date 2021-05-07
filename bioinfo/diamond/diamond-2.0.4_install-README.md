@@ -5,7 +5,6 @@ diamond/2.0.4
 
 Used under license:
 GPL v3
-<>
 
 Structure creating script (makeroom_diamond_2.0.4.sh) moved to /sw/bioinfo/diamond/makeroom_2.0.4.sh
 
