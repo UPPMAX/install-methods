@@ -1,0 +1,13 @@
+#!/bin/bash
+params=$@
+
+# Solution for DATA_CONFIG writable by uers
+if [ ! -f ${HOME}/.checkM_DATA_CONFIG ]; then 
+  cp /sw/bioinfo/metaWRAP/1.3.2/rackham/DATA_CONFIG ${HOME}/.checkM_DATA_CONFIG
+fi
+
+singularity exec \
+  --bind ${HOME}/.checkM_DATA_CONFIG:/opt/conda/envs/metawrap-env/lib/python2.7/site-packages/checkm/DATA_CONFIG \
+  --bind /sw/bioinfo/metaWRAP/1.3.2/rackham/config-metawrap:/opt/conda/envs/metawrap-env/bin/config-metawrap \
+  $_ROOT/metawrap.sif \
+  bash -c "source /opt/conda/etc/profile.d/conda.sh ; conda activate metawrap-env ; checkm $params"

@@ -1,0 +1,17 @@
+# Paths to metaWRAP scripts (dont have to modify)
+mw_path=$(which metawrap)
+bin_path=${mw_path%/*}
+SOFT=${bin_path}/metawrap-scripts
+PIPES=${bin_path}/metawrap-modules
+
+# CONFIGURABLE PATHS FOR DATABASES (see 'Databases' section of metaWRAP README for details)
+# path to kraken standard database
+KRAKEN_DB=/sw/data/uppnex/Kraken/latest
+KRAKEN2_DB=/sw/data/uppnex/Kraken2/latest
+
+# path to indexed human (or other host) genome (see metaWRAP website for guide). This includes .bitmask and .srprism files
+BMTAGGER_DB=~/BMTAGGER_DB
+
+# paths to BLAST databases
+BLASTDB=/sw/data/blast_databases
+TAXDUMP=/sw/data/ncbi_taxonomy/latest
