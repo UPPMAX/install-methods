@@ -39,6 +39,7 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
 WEBSITE=http://
 LICENSE=''
 LICENSE_URL=''
+LICENSE_URL_IN_BRACKETS=''
 TOOL=''
 VERSION=''
 CATEGORY=bioinfo
@@ -119,6 +120,7 @@ do
         l) LICENSE="$OPTARG"
             ;;
         L) LICENSE_URL="$OPTARG"
+            LICENSE_URL_IN_BRACKETS=\<$LICENSE_URL\>
             ;;
         d) DESC="$OPTARG"
             ;;
@@ -616,7 +618,7 @@ ${TOOL}/${VERSION}
 
 Used under license:
 $LICENSE
-<$LICENSE_URL>
+$LICENSE_URL_IN_BRACKETS
 
 Structure creating script ($SCRIPTFILE) moved to /sw/$CATEGORY/$TOOL/makeroom_$TOOL_$VERSION.sh
 
