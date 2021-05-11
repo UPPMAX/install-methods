@@ -37,6 +37,8 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
 #        -i  FILE       input file to be sourced; contains all the relevant parameters [[WORK IN PROGRESS]]
 
 WEBSITE=http://
+LICENSE=''
+LICENSE_URL=''
 TOOL=''
 VERSION=''
 CATEGORY=bioinfo
