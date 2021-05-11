@@ -50,7 +50,8 @@ FORCED=0
 USERGROUP="sw"
 USERPERMISSIONS="-R u+rwX,g+rwX,o+rX-w"
 MAKEROOM_PATH=$BASH_SOURCE
-UPPMAX_ROOT=${MAKEROOM_PATH%%makeroom.sh}
+UPPMAX_TOOL_PATH=$(readlink -f $BASH_SOURCE)
+UPPMAX_ROOT=${UPPMAX_TOOL_PATH%%makeroom.sh}
 TOOL_ROOT=${TOOL^^}_ROOT
 ################## Formatting TOOL_ROOT ############
 TOOL_ROOT=${TOOL_ROOT//[-.]/_}
@@ -664,12 +665,8 @@ chmod 2775 $TOOLDIR
 find $TOOLDIR -maxdepth 1 -type f -exec chgrp "sw" {} \;
 fixup $MODULE_DIRECTORY
 $(printf "%q " fixup "${FIXFLAG[@]}" $TOOLDIR/$VERSION)
-#####fixup "${FIXFLAG[@]}" $TOOLDIR/${VERSION}
-##chgrp $USERGROUP $TOOLDIR/${VERSION}
-##chmod $USERPERMISSIONS $TOOLDIR/${VERSION}
 cp -av ${MODULE_FILE} $COMMONDIR/$VERSION
 $(printf "%q " all_mflink -f "${LINKFLAG[@]}" $TOOL $VERSION)
-### all_mflink -f "${LINKFLAG[@]}" $TOOL $VERSION
 chgrp -h 'sw' $TOOLDIR
 echo "News:"
 echo "$NEWS1" 1>&2
