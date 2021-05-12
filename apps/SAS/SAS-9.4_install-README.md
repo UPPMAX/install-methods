@@ -63,6 +63,7 @@ Follow onscreen instructions to install in /sw/apps/SAS/9.4/rackham/
 Pick /sw/apps/SAS/9.4/src/SAS_install/sid_files/SAS94_9BXN77_51302519_LINUX_X86-64.txt
 Use defaults
 !!!!!!!!!! Remember to include rbrowser !!!!!!!!!!!
+Ensure that correct (64-bit) version of rbrowser was selected. 32-bit version fails to find X11 libs.
 
 ########### TO UPDATE LICENSE ###############
     /sw/apps/SAS/9.4/rackham/SASDeploymentManager/9.4/sasdm.sh

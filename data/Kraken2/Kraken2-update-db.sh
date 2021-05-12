@@ -2,6 +2,7 @@
 
 #SBATCH -A staff
 #SBATCH -J Kraken2-update-db.sh
+#SBATCH -M rackham
 #SBATCH -p node
 #SBATCH -n 20
 #  Not necessary to use fat node for Kraken2.  Max on build of standard library was ~40GB
@@ -9,7 +10,7 @@
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL
-#SBATCH -o /sw/data/Kraken2/slurm-%j.out
+#SBATCH -o /sw/data/Kraken2/slurm-rackham-thin-%j.out
 
 set -x
 
@@ -48,7 +49,7 @@ cd $K2_DB_BASE
 # comment kraken-build and uncomment cd;touch to test the script
 # ( cd $VERSION ; touch a1 a2 a3 )
 K2_DB=$K2_DB_BASE/$VERSION
-/usr/bin/time -v kraken2-build --use-ftp --standard --threads $THREADS --db $K2_DB
+kraken2-build --use-ftp --standard --threads $THREADS --db $K2_DB
 rm -f latest
 ln -sf ./$VERSION latest
 chgrp -hR sw ./$VERSION latest
@@ -57,7 +58,7 @@ chmod -R u+rwX,g+rwX,o+rX ./$VERSION
 for DB_TYPE in greengenes rdp silva
 do
     DB=${VERSION}_${DB_TYPE}
-    /usr/bin/time -v kraken2-build --use-ftp --special $DB_TYPE --threads $THREADS --db $K2_DB_BASE/$DB
+    kraken2-build --use-ftp --special $DB_TYPE --threads $THREADS --db $K2_DB_BASE/$DB
     LN=latest_${DB_TYPE}
     rm -f $LN
     ln -sf ./$DB $LN

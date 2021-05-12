@@ -257,7 +257,7 @@ function all_mflink()
             p)  SUBDIR=parallel ; OPT="-$opt" ;;
             d)  SUBDIR=data ; OPT="-$opt" ;;
             f)  FORCE=yes ;;
-            u)  CLUSTS=${OPTARG} ;;
+            u)  CLUSTS="${OPTARG}" ;;
             *)  echo "unknown option" ; return ;;
         esac
     done
@@ -284,11 +284,11 @@ _usage_
     if [[ $SUBDIR ]] ; then
         if [[ $FORCE ]] ; then
             for C in $CLUSTS ; do
-                ( cd /sw/mf/$C/$SUBDIR/ && mflink $OPT -f -q $M $V ) || { echo "*** problem with $C/$SUBDIR/$M/$V"; }
+                ( echo cluster=$C ; cd /sw/mf/$C/$SUBDIR/ && mflink $OPT -f -q $M $V ) || { echo "*** problem with $C/$SUBDIR/$M/$V"; }
             done
         else
             for C in $CLUSTS ; do
-                ( cd /sw/mf/$C/$SUBDIR/ && mflink $OPT -q $M $V ) || { echo "*** problem with $C/$SUBDIR/$M/$V"; }
+                ( echo cluster=$C ;cd /sw/mf/$C/$SUBDIR/ && mflink $OPT -q $M $V ) || { echo "*** problem with $C/$SUBDIR/$M/$V"; }
             done
         fi
         [[ $FORCE ]] && echo -e "\n*** FORCED"
@@ -302,11 +302,11 @@ _usage_
         SUBDIR=${SUBDIR%/$M}
         if [[ $FORCE ]] ; then
             for C in $CLUSTS ; do
-                ( cd /sw/mf/$C/bioinfo-tools/$SUBDIR/ && mflink -f -q $M $V ) || { echo "*** problem with $C/bioinfo-tools/$SUBDIR/$M/$V"; }
+                ( echo cluster=$C ;cd /sw/mf/$C/bioinfo-tools/$SUBDIR/ && mflink -f -q $M $V ) || { echo "*** problem with $C/bioinfo-tools/$SUBDIR/$M/$V"; }
             done
         else
             for C in $CLUSTS ; do
-                ( cd /sw/mf/$C/bioinfo-tools/$SUBDIR/ && mflink -q $M $V ) || { echo "*** problem with $C/bioinfo-tools/$SUBDIR/$M/$V"; }
+                ( echo cluster=$C ;cd /sw/mf/$C/bioinfo-tools/$SUBDIR/ && mflink -q $M $V ) || { echo "*** problem with $C/bioinfo-tools/$SUBDIR/$M/$V"; }
             done
         fi
         [[ $FORCE ]] && echo -e "\n*** FORCED"
