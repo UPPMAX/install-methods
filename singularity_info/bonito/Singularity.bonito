@@ -6,6 +6,7 @@ From: ubuntu:18.04
 
 %environment
   export LC_ALL=C
+  export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 %post
   export DEBIAN_FRONTEND=noninteractive
