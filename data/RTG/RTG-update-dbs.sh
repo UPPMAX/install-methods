@@ -55,7 +55,7 @@ function fetch_reference() {
     fi
     if [[ "$EXPAND" ]] ; then
         echo -n "expanding $SUBDIR ${LOCAL} ... "
-        unzip ${LOCAL}
+        unzip -o ${LOCAL}
         mv -f ${LOCAL} $D/${LOCAL}
     else
         echo -n "touching $D/${LOCAL}_checked ... "

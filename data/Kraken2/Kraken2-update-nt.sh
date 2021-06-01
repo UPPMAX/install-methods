@@ -3,22 +3,21 @@
 #SBATCH -A staff
 #SBATCH -J Kraken2-update-nt.sh
 #SBATCH -p node
-#SBATCH -n 20
-#  Not necessary to use fat node for Kraken2, but yes for nt.  Max on build of standard library was ~40GB
-#SBATCH -C mem256GB
-#SBATCH -t 24:00:00
+#SBATCH -n 16
+#  Now necessary to use mem512GB node for Kraken2 nt
+#SBATCH -M snowy
+#SBATCH -C mem512GB
+#SBATCH -t 10-00:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL
-#SBATCH -o /sw/data/Kraken2/slurm-nt-%j.out
+#SBATCH -o /sw/data/Kraken2_data/slurm-nt-%j.out
 
-# For nt, calculated it needs 124016360592 bytes to build the database, which is 115GiB (1GiB=1024^3 bytes)
-# that will fit on a mem256GB node
 
-K2_DB_BASE=/sw/data/Kraken2
+K2_DB_BASE=/sw/data/Kraken2_data
 K2_DB_TMP=$SNIC_TMP/Kraken2-build.$$
 K2_VERSION=2.1.1
-THREADS=${20:-$SLURM_JOB_CPUS_PER_NODE}
+THREADS=${SLURM_JOB_CPUS_PER_NODE:-16}
 export KRAKEN2_THREAD_COUNT=$THREADS
 #MEMGB=${SLURM_MEM_PER_NODE%???}  # truncated value, remove last 3 chars (128GB node reports 128000)
 #MINGB=200 # This now must run on a 256GB node, it needs just under 200GB to build the standard database
@@ -53,14 +52,15 @@ for DB_TYPE in nt ; do
     cd $K2_DB_TMP
     DBNAME=${VERSION}_${DB_TYPE}
     DB=$PWD/$DBNAME
-    echo "$0 : building $DBNAME into $DB ..."
+    echo "$0 : within $KR_DB_TMP, building $DBNAME into $DB ..."
     /usr/bin/time -v kraken2-build --use-ftp --download-taxonomy --db $DB
     /usr/bin/time -v kraken2-build --use-ftp --download-library $DB_TYPE --db $DB
     /usr/bin/time -v kraken2-build --use-ftp --build --threads $THREADS --db $DB
     mv -v ./$DBNAME $K2_DB_BASE/
     cd $K2_DB_BASE/
     echo "$0 : moved $DBNAME into $K2_DB_BASE"
-    rmdir $K2_DB_TMP
+    rm -rf $K2_DB_TMP
+    echo "$0 : removed $K2_DB_TMP"
     LN=latest_${DB_TYPE}
     rm -f $LN
     ln -sf ./$DBNAME $LN

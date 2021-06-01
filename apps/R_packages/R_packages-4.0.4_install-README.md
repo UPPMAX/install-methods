@@ -338,9 +338,15 @@ External packages
 Several R packages found here are not on CRAN or BioConductor, as a result of either user requests or requirements by other modules.
 
 * For a github-hosted package that is not part of CRAN, see ASCAT, rrbgen or STITCH.  If the instructions of the package recommend using something like `devtools::github_install("repository/packagename")`, then the package is one of these.
+* For a gitlab-hosted package that is not part of CRAN, see ASCAT, rrbgen or STITCH.  If the instructions of the package recommend using something like `devtools::gitlab_install("repository/packagename")`, then the package is one of these.
 * For an "expired" CRAN package that is still in its archive, see igraph0.
 * For a "deprecated" BioConductor package that is still in its github repository, see DESeq.
 * For a "custom" R package that is part of another module, see dnase2tf.  This latter one uses a command within R.
+
+
+### MUVR
+
+    devtools::install_gitlab('CarlBrunius/MUVR', dependencies=TRUE)
 
 
 ### DESeq

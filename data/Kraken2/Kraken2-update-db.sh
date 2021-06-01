@@ -21,7 +21,7 @@ function error_send_email()
     exit 1
 }
 
-K2_DB_BASE=/sw/data/Kraken2
+K2_DB_BASE=/sw/data/Kraken2_data
 
 K2_VERSION=2.1.1
 
@@ -58,7 +58,8 @@ chmod -R u+rwX,g+rwX,o+rX ./$VERSION
 for DB_TYPE in greengenes rdp silva
 do
     DB=${VERSION}_${DB_TYPE}
-    kraken2-build --use-ftp --special $DB_TYPE --threads $THREADS --db $K2_DB_BASE/$DB
+    # if the first attempt fails, sleep 5 minutes and try again; if that fails, sleep 10 minutes and try one last time
+    kraken2-build --use-ftp --special $DB_TYPE --threads $THREADS --db $K2_DB_BASE/$DB || ( sleep 300; kraken2-build --use-ftp --special $DB_TYPE --threads $THREADS --db $K2_DB_BASE/$DB || ( sleep 600; kraken2-build --use-ftp --special $DB_TYPE --threads $THREADS --db $K2_DB_BASE/$DB ) )
     LN=latest_${DB_TYPE}
     rm -f $LN
     ln -sf ./$DB $LN

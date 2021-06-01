@@ -32,7 +32,10 @@ LOG
 
 
 
-
+    cd $SRCDIR
+    wget https://github.com/Ecogenomics/GTDBTk/archive/refs/tags/1.5.0.tar.gz
+    tar xfvz 1.5.0.tar.gz --strip=1 && rm 1.5.0.tar.gz
+    PYTHONUSERBASE=PREFIX python -m pip install --user .
 
 
 

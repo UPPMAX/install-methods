@@ -10,9 +10,9 @@
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL
-#SBATCH -o /sw/data/Kraken/slurm-rackham-mem1TB-%j.out
+#SBATCH -o /sw/data/Kraken_data/slurm-rackham-mem1TB-%j.out
 
-K_DB_BASE=/sw/data/Kraken
+K_DB_BASE=/sw/data/Kraken_data
 K_VERSION=1.1.1
 THREADS=${1:-$SLURM_JOB_CPUS_PER_NODE}
 MEMGB=${SLURM_MEM_PER_NODE%???}  # truncated value, remove last 3 chars (128GB node reports 128000)
