@@ -1,0 +1,461 @@
+Build target 'metawrap.sif' already exists and will be deleted during the build process. Do you want to continue? [N/y]INFO:    Starting build...
+Getting image source signatures
+Copying blob sha256:852e50cd189dfeb54d97680d9fa6bed21a6d7d18cfb56d6abfe2de9d7f173795
+Copying blob sha256:a6236801494d5ca9acfae6569427398c2942c031375b96cac887cafe1de5a09b
+Copying blob sha256:679c171d6942954a759f2d3a1dff911321940f23b0cdbe1d186f36bef0025124
+Copying config sha256:73d41adb17f3e92ccd0a35fa206e035ddcc2a32ac9f576e3de309198e8c434cd
+Writing manifest to image destination
+Storing signatures
+2021/06/08 13:00:29  info unpack layer: sha256:852e50cd189dfeb54d97680d9fa6bed21a6d7d18cfb56d6abfe2de9d7f173795
+2021/06/08 13:00:29  info unpack layer: sha256:a6236801494d5ca9acfae6569427398c2942c031375b96cac887cafe1de5a09b
+2021/06/08 13:00:31  info unpack layer: sha256:679c171d6942954a759f2d3a1dff911321940f23b0cdbe1d186f36bef0025124
+INFO:    Copying ncbi-blast-2.11.0+-x64-linux.tar.gz to /tmp/build-temp-966846401/rootfs/
+INFO:    Running post scriptlet
++ export LC_ALL=C
++ export CONDA_PKGS_DIRS=/tmp/conda_pkgs_dir
++ mkdir -p /tmp/conda_pkgs_dir
++ conda update -n base -c defaults conda
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /opt/conda
+
+  added / updated specs:
+    - conda
+
+
+The following packages will be REMOVED:
+
+  libedit-3.1.20191231-h14c3975_1
+  pip-20.2.4-py38h06a4308_0
+  wheel-0.35.1-pyhd3eb1b0_0
+
+The following packages will be UPDATED:
+
+  ca-certificates                              2020.10.14-0 --> 2021.5.25-h06a4308_1
+  certifi            pkgs/main/noarch::certifi-2020.6.20-p~ --> pkgs/main/linux-64::certifi-2021.5.30-py38h06a4308_0
+  cffi                                1.14.3-py38h261ae71_2 --> 1.14.5-py38h261ae71_0
+  chardet                           3.0.4-py38h06a4308_1003 --> 4.0.0-py38h06a4308_1003
+  conda                                4.9.2-py38h06a4308_0 --> 4.10.1-py38h06a4308_1
+  conda-package-han~                   1.7.2-py38h03888b9_0 --> 1.7.3-py38h27cfd23_1
+  cryptography                         3.2.1-py38h3c74f83_1 --> 3.4.7-py38hd23ed53_0
+  openssl                                 1.1.1h-h7b6447c_0 --> 1.1.1k-h27cfd23_0
+  pyopenssl                             19.1.0-pyhd3eb1b0_1 --> 20.0.1-pyhd3eb1b0_1
+  readline                                   8.0-h7b6447c_0 --> 8.1-h27cfd23_0
+  requests                                      2.24.0-py_0 --> 2.25.1-pyhd3eb1b0_0
+  ruamel_yaml                        0.15.87-py38h7b6447c_1 --> 0.15.100-py38h27cfd23_0
+  setuptools                          50.3.1-py38h06a4308_1 --> 52.0.0-py38h06a4308_0
+  sqlite                                  3.33.0-h62c20be_0 --> 3.35.4-hdfb4753_0
+  tqdm                                  4.51.0-pyhd3eb1b0_0 --> 4.59.0-pyhd3eb1b0_1
+  urllib3                                      1.25.11-py_0 --> 1.26.4-pyhd3eb1b0_0
+
+The following packages will be DOWNGRADED:
+
+  idna                                            2.10-py_0 --> 2.10-pyhd3eb1b0_0
+
+
+Proceed ([y]/n)? 
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
++ conda config --add channels defaults
+Warning: 'defaults' already in 'channels' list, moving to the top
++ conda config --add channels conda-forge
++ conda config --add channels bioconda
++ conda config --add channels ursky
++ conda create --name metawrap-env --channel ursky metawrap-mg=1.3.2 tbb=2020.2
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... failed with repodata from current_repodata.json, will retry with next repodata source.
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /opt/conda/envs/metawrap-env
+
+  added / updated specs:
+    - metawrap-mg=1.3.2
+    - tbb=2020.2
+
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      conda-forge/linux-64::_libgcc_mutex-0.1-conda_forge
+  _openmp_mutex      conda-forge/linux-64::_openmp_mutex-4.5-1_gnu
+  _r-mutex           conda-forge/noarch::_r-mutex-1.0.1-anacondar_1
+  aragorn            bioconda/linux-64::aragorn-1.2.38-h779adbc_4
+  atk                conda-forge/linux-64::atk-2.25.90-hf2eb9ee_1001
+  backports          conda-forge/noarch::backports-1.0-py_2
+  backports.functoo~ conda-forge/noarch::backports.functools_lru_cache-1.6.1-py_0
+  backports_abc      conda-forge/noarch::backports_abc-0.5-py_1
+  barrnap            bioconda/noarch::barrnap-0.9-hdfd78af_4
+  bedtools           bioconda/linux-64::bedtools-2.30.0-h7d7f7ad_1
+  binutils_impl_lin~ conda-forge/linux-64::binutils_impl_linux-64-2.35.1-h193b22a_2
+  binutils_linux-64  conda-forge/linux-64::binutils_linux-64-2.35-h67ddf6f_30
+  biopython          bioconda/linux-64::biopython-1.68-py27_0
+  blas               conda-forge/linux-64::blas-2.5-mkl
+  blast              bioconda/linux-64::blast-2.6.0-boost1.64_2
+  bmfilter           bioconda/linux-64::bmfilter-3.101-hc9558a2_3
+  bmtagger           bioconda/linux-64::bmtagger-3.101-h470a237_4
+  bmtool             bioconda/linux-64::bmtool-3.101-he1b5a44_3
+  boost              conda-forge/linux-64::boost-1.64.0-py27_4
+  boost-cpp          conda-forge/linux-64::boost-cpp-1.64.0-1
+  bowtie2            bioconda/linux-64::bowtie2-2.3.5.1-py27he513fc3_0
+  bwa                bioconda/linux-64::bwa-0.7.17-h5bf99c6_8
+  bwidget            conda-forge/linux-64::bwidget-1.9.14-ha770c72_0
+  bz2file            conda-forge/noarch::bz2file-0.98-py_0
+  bzip2              conda-forge/linux-64::bzip2-1.0.8-h7f98852_4
+  ca-certificates    conda-forge/linux-64::ca-certificates-2021.5.30-ha878542_0
+  cairo              conda-forge/linux-64::cairo-1.14.12-h80bd089_1005
+  certifi            conda-forge/linux-64::certifi-2019.11.28-py27h8c360ce_1
+  checkm-genome      bioconda/linux-64::checkm-genome-1.0.12-py27_0
+  circos             bioconda/noarch::circos-0.69.8-hdfd78af_1
+  concoct            bioconda/linux-64::concoct-1.0.0-py27h88e4a8a_5
+  curl               conda-forge/linux-64::curl-7.64.0-h646f8bb_0
+  cutadapt           bioconda/linux-64::cutadapt-1.18-py27h14c3975_1
+  cycler             conda-forge/noarch::cycler-0.10.0-py_2
+  cython             conda-forge/linux-64::cython-0.29.15-py27haf22ab1_1
+  dbus               conda-forge/linux-64::dbus-1.13.0-h4e0c4b3_1000
+  dendropy           bioconda/noarch::dendropy-4.5.2-pyh3252c3a_0
+  expat              conda-forge/linux-64::expat-2.4.1-h9c3ff4c_0
+  extract_fullseq    bioconda/linux-64::extract_fullseq-3.101-3
+  fastqc             bioconda/noarch::fastqc-0.11.8-2
+  font-ttf-dejavu-s~ conda-forge/noarch::font-ttf-dejavu-sans-mono-2.37-hab24e00_0
+  fontconfig         conda-forge/linux-64::fontconfig-2.13.1-he4413a7_1000
+  fraggenescan       bioconda/linux-64::fraggenescan-1.31-h779adbc_3
+  freetype           conda-forge/linux-64::freetype-2.10.4-h0708190_1
+  functools32        conda-forge/noarch::functools32-3.2.3.2-py_3
+  futures            conda-forge/linux-64::futures-3.3.0-py27h8c360ce_1
+  gcc_impl_linux-64  conda-forge/linux-64::gcc_impl_linux-64-7.5.0-hda68d29_13
+  gcc_linux-64       conda-forge/linux-64::gcc_linux-64-7.5.0-h47867f9_30
+  gdk-pixbuf         bioconda/linux-64::gdk-pixbuf-2.32.2-1
+  gettext            conda-forge/linux-64::gettext-0.19.8.1-hf34092f_1004
+  gfortran_impl_lin~ conda-forge/linux-64::gfortran_impl_linux-64-7.5.0-h56cb351_19
+  gfortran_linux-64  conda-forge/linux-64::gfortran_linux-64-7.5.0-h78c8a43_30
+  giflib             conda-forge/linux-64::giflib-5.2.1-h36c2ea0_2
+  glib               conda-forge/linux-64::glib-2.56.2-had28632_1001
+  glimmerhmm         bioconda/linux-64::glimmerhmm-3.0.4-pl526hf484d3e_3
+  gobject-introspec~ conda-forge/linux-64::gobject-introspection-1.56.1-py27h9e29830_1001
+  graphite2          conda-forge/linux-64::graphite2-1.3.13-h58526e2_1001
+  gsl                conda-forge/linux-64::gsl-2.5-h294904e_1
+  gstreamer          conda-forge/linux-64::gstreamer-1.12.5-h0cc0488_1000
+  gtk2               conda-forge/linux-64::gtk2-2.24.31-h5baeb44_1000
+  gxx_impl_linux-64  conda-forge/linux-64::gxx_impl_linux-64-7.5.0-h64c220c_13
+  gxx_linux-64       conda-forge/linux-64::gxx_linux-64-7.5.0-h555fc39_30
+  harfbuzz           conda-forge/linux-64::harfbuzz-1.9.0-he243708_1001
+  hmmer              bioconda/linux-64::hmmer-3.3.2-h1b792b2_1
+  htslib             bioconda/linux-64::htslib-1.9-ha228f0b_7
+  icu                conda-forge/linux-64::icu-58.2-hf484d3e_1000
+  idba               bioconda/linux-64::idba-1.1.3-1
+  infernal           bioconda/linux-64::infernal-1.1.4-h779adbc_0
+  intel-openmp       pkgs/main/linux-64::intel-openmp-2021.2.0-h06a4308_610
+  jemalloc           conda-forge/linux-64::jemalloc-5.2.1-h9c3ff4c_5
+  joblib             conda-forge/noarch::joblib-0.14.1-pyh9f0ad1d_0
+  jpeg               conda-forge/linux-64::jpeg-9d-h36c2ea0_0
+  k8                 bioconda/linux-64::k8-0.2.5-h9a82719_1
+  kernel-headers_li~ conda-forge/noarch::kernel-headers_linux-64-2.6.32-h77966d4_13
+  kiwisolver         conda-forge/linux-64::kiwisolver-1.1.0-py27h9e3301b_1
+  kmer-jellyfish     bioconda/linux-64::kmer-jellyfish-1.1.12-h7d875b9_1
+  kraken             bioconda/linux-64::kraken-1.1.1-pl5262h7d875b9_5
+  kraken2            bioconda/linux-64::kraken2-2.0.9beta-pl526hc9558a2_0
+  krb5               conda-forge/linux-64::krb5-1.16.3-hc83ff2d_1000
+  krona              bioconda/noarch::krona-2.7.1-pl5262hdfd78af_6
+  ld_impl_linux-64   conda-forge/linux-64::ld_impl_linux-64-2.35.1-hea4e1c9_2
+  libblas            conda-forge/linux-64::libblas-3.8.0-5_mkl
+  libboost           pkgs/main/linux-64::libboost-1.73.0-h3ff78a5_11
+  libcblas           conda-forge/linux-64::libcblas-3.8.0-5_mkl
+  libcurl            conda-forge/linux-64::libcurl-7.64.0-h01ee5af_0
+  libdeflate         bioconda/linux-64::libdeflate-1.0-h14c3975_1
+  libedit            conda-forge/linux-64::libedit-3.1.20191231-h46ee950_2
+  libffi             conda-forge/linux-64::libffi-3.2.1-he1b5a44_1007
+  libgcc             conda-forge/linux-64::libgcc-7.2.0-h69d50b8_2
+  libgcc-ng          conda-forge/linux-64::libgcc-ng-9.3.0-h2828fa1_19
+  libgd              conda-forge/linux-64::libgd-2.2.5-h0d07dcb_1005
+  libgfortran-ng     conda-forge/linux-64::libgfortran-ng-7.5.0-h14aa051_19
+  libgfortran4       conda-forge/linux-64::libgfortran4-7.5.0-h14aa051_19
+  libgomp            conda-forge/linux-64::libgomp-9.3.0-h2828fa1_19
+  libiconv           conda-forge/linux-64::libiconv-1.16-h516909a_0
+  libidn11           conda-forge/linux-64::libidn11-1.34-h1cef754_0
+  liblapack          conda-forge/linux-64::liblapack-3.8.0-5_mkl
+  liblapacke         conda-forge/linux-64::liblapacke-3.8.0-5_mkl
+  libpng             conda-forge/linux-64::libpng-1.6.37-h21135ba_2
+  libssh2            conda-forge/linux-64::libssh2-1.8.0-h1ad7b7a_1003
+  libstdcxx-ng       conda-forge/linux-64::libstdcxx-ng-9.3.0-h6de172a_19
+  libtiff            conda-forge/linux-64::libtiff-4.1.0-hc3755c2_3
+  libuuid            conda-forge/linux-64::libuuid-2.32.1-h7f98852_1000
+  libwebp            conda-forge/linux-64::libwebp-1.0.2-h56121f0_5
+  libxcb             conda-forge/linux-64::libxcb-1.13-h7f98852_1003
+  libxml2            conda-forge/linux-64::libxml2-2.9.9-h13577e0_2
+  llvm-meta          conda-forge/noarch::llvm-meta-7.0.0-0
+  lz4-c              conda-forge/linux-64::lz4-c-1.9.3-h9c3ff4c_0
+  make               conda-forge/linux-64::make-4.3-hd18ef5c_1
+  matplotlib         conda-forge/linux-64::matplotlib-2.2.3-py27h8a2030e_1
+  matplotlib-base    conda-forge/linux-64::matplotlib-base-2.2.3-py27h60b886d_1
+  maxbin2            bioconda/linux-64::maxbin2-2.2.6-h14c3975_0
+  megahit            bioconda/linux-64::megahit-1.1.3-py27_0
+  metabat2           ursky/linux-64::metabat2-2.12.1-0
+  metawrap-mg        ursky/linux-64::metawrap-mg-1.3.2-0
+  minced             bioconda/noarch::minced-0.4.2-hdfd78af_1
+  minimap2           bioconda/linux-64::minimap2-2.20-h5bf99c6_0
+  mkl                pkgs/main/linux-64::mkl-2019.4-243
+  mmtf-python        bioconda/linux-64::mmtf-python-1.0.2-py27_0
+  msgpack-python     conda-forge/linux-64::msgpack-python-1.0.0-py27h9e3301b_1
+  ncurses            conda-forge/linux-64::ncurses-6.1-hf484d3e_1002
+  nose               conda-forge/linux-64::nose-1.3.7-py27h8c360ce_1004
+  numpy              conda-forge/linux-64::numpy-1.16.5-py27h95a1406_0
+  olefile            conda-forge/noarch::olefile-0.46-pyh9f0ad1d_1
+  openjdk            conda-forge/linux-64::openjdk-11.0.1-h516909a_1016
+  openmp             conda-forge/linux-64::openmp-7.0.0-h2d50403_0
+  openssl            conda-forge/linux-64::openssl-1.0.2u-h516909a_0
+  pandas             conda-forge/linux-64::pandas-0.24.2-py27hb3f55d8_0
+  pango              conda-forge/linux-64::pango-1.40.14-hf0c64fd_1003
+  parallel           bioconda/linux-64::parallel-20160622-1
+  patsy              conda-forge/noarch::patsy-0.5.1-py_0
+  pcre               conda-forge/linux-64::pcre-8.44-he1b5a44_0
+  perl               conda-forge/linux-64::perl-5.26.2-h36c2ea0_1008
+  perl-app-cpanminus bioconda/linux-64::perl-app-cpanminus-1.7044-pl526_1
+  perl-autoloader    bioconda/linux-64::perl-autoloader-5.74-pl526_2
+  perl-base          bioconda/linux-64::perl-base-2.23-pl526_1
+  perl-bioperl       bioconda/linux-64::perl-bioperl-1.6.924-4
+  perl-business-isbn bioconda/linux-64::perl-business-isbn-3.004-pl526_0
+  perl-business-isb~ bioconda/linux-64::perl-business-isbn-data-20140910.003-pl526_0
+  perl-carp          bioconda/linux-64::perl-carp-1.38-pl526_3
+  perl-clone         bioconda/linux-64::perl-clone-0.42-pl526h516909a_0
+  perl-compress-raw~ bioconda/linux-64::perl-compress-raw-zlib-2.087-pl526hc9558a2_0
+  perl-config-gener~ bioconda/linux-64::perl-config-general-2.63-pl526_0
+  perl-constant      bioconda/linux-64::perl-constant-1.33-pl526_1
+  perl-data-dumper   bioconda/linux-64::perl-data-dumper-2.173-pl526_0
+  perl-digest-hmac   bioconda/linux-64::perl-digest-hmac-1.03-pl526_3
+  perl-digest-md5    bioconda/linux-64::perl-digest-md5-2.55-pl526_0
+  perl-digest-perl-~ bioconda/linux-64::perl-digest-perl-md5-1.9-pl526_1
+  perl-dynaloader    bioconda/linux-64::perl-dynaloader-1.25-pl526_1
+  perl-encode        bioconda/linux-64::perl-encode-2.88-pl526_1
+  perl-encode-locale bioconda/linux-64::perl-encode-locale-1.05-pl526_6
+  perl-exporter      bioconda/linux-64::perl-exporter-5.72-pl526_1
+  perl-exporter-tiny bioconda/linux-64::perl-exporter-tiny-1.002001-pl526_0
+  perl-extutils-mak~ bioconda/linux-64::perl-extutils-makemaker-7.36-pl526_1
+  perl-file-listing  bioconda/linux-64::perl-file-listing-6.04-pl526_1
+  perl-file-path     bioconda/linux-64::perl-file-path-2.16-pl526_0
+  perl-file-temp     bioconda/linux-64::perl-file-temp-0.2304-pl526_2
+  perl-font-ttf      bioconda/linux-64::perl-font-ttf-1.06-pl526_0
+  perl-gd            bioconda/linux-64::perl-gd-2.71-pl526he860b03_0
+  perl-html-parser   bioconda/linux-64::perl-html-parser-3.72-pl526h6bb024c_5
+  perl-html-tagset   bioconda/linux-64::perl-html-tagset-3.20-pl526_3
+  perl-http-cookies  bioconda/linux-64::perl-http-cookies-6.04-pl526_0
+  perl-http-daemon   bioconda/linux-64::perl-http-daemon-6.01-pl526_1
+  perl-http-date     bioconda/linux-64::perl-http-date-6.02-pl526_3
+  perl-http-message  bioconda/linux-64::perl-http-message-6.18-pl526_0
+  perl-http-negotia~ bioconda/linux-64::perl-http-negotiate-6.01-pl526_3
+  perl-io-html       bioconda/linux-64::perl-io-html-1.001-pl526_2
+  perl-io-socket-ssl bioconda/linux-64::perl-io-socket-ssl-2.066-pl526_0
+  perl-io-string     bioconda/linux-64::perl-io-string-1.08-pl526_3
+  perl-libwww-perl   bioconda/noarch::perl-libwww-perl-6.39-pl526_0
+  perl-list-moreuti~ bioconda/linux-64::perl-list-moreutils-0.428-pl526_1
+  perl-list-moreuti~ bioconda/linux-64::perl-list-moreutils-xs-0.428-pl526_0
+  perl-lwp-mediatyp~ bioconda/linux-64::perl-lwp-mediatypes-6.04-pl526_0
+  perl-lwp-simple    bioconda/linux-64::perl-lwp-simple-6.15-pl526h470a237_4
+  perl-math-bezier   bioconda/linux-64::perl-math-bezier-0.01-pl526_1
+  perl-math-round    bioconda/linux-64::perl-math-round-0.07-pl526_1
+  perl-math-vecstat  bioconda/linux-64::perl-math-vecstat-0.08-pl526_1
+  perl-mime-base64   bioconda/linux-64::perl-mime-base64-3.15-pl526_1
+  perl-module-imple~ bioconda/linux-64::perl-module-implementation-0.09-pl526_2
+  perl-module-runti~ bioconda/linux-64::perl-module-runtime-0.016-pl526_1
+  perl-net-http      bioconda/noarch::perl-net-http-6.19-pl526_0
+  perl-net-ssleay    bioconda/linux-64::perl-net-ssleay-1.85-pl526h9dad42d_0
+  perl-ntlm          bioconda/linux-64::perl-ntlm-1.09-pl526_4
+  perl-number-format bioconda/linux-64::perl-number-format-1.75-pl526_3
+  perl-params-valid~ bioconda/linux-64::perl-params-validate-1.29-pl526h14c3975_1
+  perl-parent        bioconda/linux-64::perl-parent-0.236-pl526_1
+  perl-pathtools     bioconda/linux-64::perl-pathtools-3.75-pl526h14c3975_1
+  perl-readonly      bioconda/linux-64::perl-readonly-2.05-pl526_0
+  perl-regexp-common bioconda/linux-64::perl-regexp-common-2017060201-pl526_0
+  perl-scalar-list-~ bioconda/linux-64::perl-scalar-list-utils-1.52-pl526h516909a_0
+  perl-set-intspan   bioconda/linux-64::perl-set-intspan-1.19-pl526_1
+  perl-statistics-b~ bioconda/linux-64::perl-statistics-basic-1.6611-pl526_2
+  perl-storable      bioconda/linux-64::perl-storable-3.15-pl526h14c3975_0
+  perl-svg           bioconda/linux-64::perl-svg-2.84-pl526_0
+  perl-text-format   bioconda/linux-64::perl-text-format-0.59-pl526_2
+  perl-threaded      bioconda/linux-64::perl-threaded-5.26.0-0
+  perl-time-hires    bioconda/linux-64::perl-time-hires-1.9760-pl526h14c3975_1
+  perl-time-local    bioconda/linux-64::perl-time-local-1.28-pl526_1
+  perl-try-tiny      bioconda/linux-64::perl-try-tiny-0.30-pl526_1
+  perl-uri           bioconda/linux-64::perl-uri-1.76-pl526_0
+  perl-www-robotrul~ bioconda/linux-64::perl-www-robotrules-6.02-pl526_3
+  perl-xml-namespac~ bioconda/linux-64::perl-xml-namespacesupport-1.12-pl526_0
+  perl-xml-parser    bioconda/linux-64::perl-xml-parser-2.44-4
+  perl-xml-sax       bioconda/noarch::perl-xml-sax-1.02-pl526_0
+  perl-xml-sax-base  bioconda/linux-64::perl-xml-sax-base-1.09-pl526_0
+  perl-xml-sax-expat bioconda/linux-64::perl-xml-sax-expat-0.51-pl526_3
+  perl-xml-simple    bioconda/linux-64::perl-xml-simple-2.25-pl526_1
+  perl-xsloader      bioconda/linux-64::perl-xsloader-0.24-pl526_0
+  perl-yaml          bioconda/noarch::perl-yaml-1.29-pl526_0
+  pigz               conda-forge/linux-64::pigz-2.6-h27826a3_0
+  pillow             conda-forge/linux-64::pillow-6.2.1-py27hd70f55b_1
+  pip                conda-forge/noarch::pip-20.1.1-pyh9f0ad1d_0
+  pixman             conda-forge/linux-64::pixman-0.34.0-h14c3975_1003
+  popt               bioconda/linux-64::popt-1.16-1
+  pplacer            bioconda/linux-64::pplacer-1.1.alpha19-h9ee0642_2
+  prodigal           bioconda/linux-64::prodigal-2.6.3-h779adbc_3
+  prokka             bioconda/linux-64::prokka-1.13-0
+  pthread-stubs      conda-forge/linux-64::pthread-stubs-0.4-h36c2ea0_1001
+  pyparsing          conda-forge/noarch::pyparsing-2.4.7-pyh9f0ad1d_0
+  pyqt               conda-forge/linux-64::pyqt-5.6.0-py27h13b7fb3_1008
+  pysam              bioconda/linux-64::pysam-0.15.3-py27hda2845c_1
+  python             conda-forge/linux-64::python-2.7.15-h938d71a_1006
+  python-dateutil    conda-forge/noarch::python-dateutil-2.8.1-py_0
+  python_abi         conda-forge/linux-64::python_abi-2.7-1_cp27mu
+  pytz               conda-forge/noarch::pytz-2020.1-pyh9f0ad1d_0
+  qt                 conda-forge/linux-64::qt-5.6.2-hbe13537_1012
+  quast              bioconda/linux-64::quast-5.0.2-py27pl5262h8c2299e_4
+  r-assertthat       conda-forge/noarch::r-assertthat-0.2.1-r35h6115d3f_1
+  r-backports        conda-forge/linux-64::r-backports-1.1.6-r35hcdcec82_1
+  r-base             conda-forge/linux-64::r-base-3.5.1-he45234b_1005
+  r-bitops           conda-forge/linux-64::r-bitops-1.0_6-r35hcdcec82_1003
+  r-boot             conda-forge/noarch::r-boot-1.3_25-r35h6115d3f_0
+  r-catools          conda-forge/linux-64::r-catools-1.17.1.4-r35h0357c0b_0
+  r-class            conda-forge/linux-64::r-class-7.3_17-r35hcdcec82_0
+  r-cli              conda-forge/noarch::r-cli-2.0.2-r35h6115d3f_0
+  r-cluster          conda-forge/linux-64::r-cluster-2.1.0-r35h9bbef5b_2
+  r-codetools        conda-forge/noarch::r-codetools-0.2_16-r35h6115d3f_1001
+  r-colorspace       conda-forge/linux-64::r-colorspace-1.4_1-r35hcdcec82_1
+  r-crayon           conda-forge/noarch::r-crayon-1.3.4-r35h6115d3f_1002
+  r-digest           conda-forge/linux-64::r-digest-0.6.25-r35h0357c0b_1
+  r-ellipsis         conda-forge/linux-64::r-ellipsis-0.3.0-r35hcdcec82_0
+  r-fansi            conda-forge/linux-64::r-fansi-0.4.1-r35hcdcec82_0
+  r-farver           conda-forge/linux-64::r-farver-2.0.3-r35h0357c0b_0
+  r-foreign          conda-forge/linux-64::r-foreign-0.8_76-r35hcdcec82_0
+  r-gdata            conda-forge/noarch::r-gdata-2.18.0-r35h6115d3f_1002
+  r-ggplot2          conda-forge/noarch::r-ggplot2-3.1.0-r351h6115d3f_1000
+  r-glue             conda-forge/linux-64::r-glue-1.4.0-r35hcdcec82_0
+  r-gplots           conda-forge/noarch::r-gplots-3.0.3-r35h6115d3f_0
+  r-gtable           conda-forge/noarch::r-gtable-0.3.0-r35h6115d3f_2
+  r-gtools           conda-forge/linux-64::r-gtools-3.8.2-r35hcdcec82_0
+  r-kernsmooth       conda-forge/linux-64::r-kernsmooth-2.23_17-r35hfa343cc_0
+  r-labeling         conda-forge/noarch::r-labeling-0.3-r35h6115d3f_1002
+  r-lattice          conda-forge/linux-64::r-lattice-0.20_41-r35hcdcec82_1
+  r-lazyeval         conda-forge/linux-64::r-lazyeval-0.2.2-r35hcdcec82_1
+  r-lifecycle        conda-forge/noarch::r-lifecycle-0.2.0-r35h6115d3f_0
+  r-magrittr         conda-forge/noarch::r-magrittr-1.5-r35h6115d3f_1002
+  r-mass             conda-forge/linux-64::r-mass-7.3_51.6-r35hcdcec82_1
+  r-matrix           conda-forge/linux-64::r-matrix-1.2_18-r35h7fa42b6_2
+  r-mgcv             conda-forge/linux-64::r-mgcv-1.8_31-r35h7fa42b6_0
+  r-munsell          conda-forge/noarch::r-munsell-0.5.0-r35h6115d3f_1002
+  r-nlme             conda-forge/linux-64::r-nlme-3.1_147-r35h9bbef5b_0
+  r-nnet             conda-forge/linux-64::r-nnet-7.3_14-r35hcdcec82_0
+  r-pillar           conda-forge/noarch::r-pillar-1.4.3-r35h6115d3f_0
+  r-pkgconfig        conda-forge/noarch::r-pkgconfig-2.0.3-r35h6115d3f_0
+  r-plyr             conda-forge/linux-64::r-plyr-1.8.6-r35h0357c0b_0
+  r-r6               conda-forge/noarch::r-r6-2.4.1-r35h6115d3f_0
+  r-rcolorbrewer     conda-forge/noarch::r-rcolorbrewer-1.1_2-r35h6115d3f_1002
+  r-rcpp             conda-forge/linux-64::r-rcpp-1.0.4.6-r35h0357c0b_0
+  r-recommended      conda-forge/noarch::r-recommended-3.5.1-r35_1003
+  r-reshape2         conda-forge/linux-64::r-reshape2-1.4.4-r35h0357c0b_0
+  r-rlang            conda-forge/linux-64::r-rlang-0.4.5-r35hcdcec82_2
+  r-rpart            conda-forge/linux-64::r-rpart-4.1_15-r35hcdcec82_1
+  r-scales           conda-forge/noarch::r-scales-1.1.0-r35h6115d3f_0
+  r-spatial          conda-forge/linux-64::r-spatial-7.3_12-r35hcdcec82_0
+  r-stringi          conda-forge/linux-64::r-stringi-1.4.3-r35h0357c0b_2
+  r-stringr          conda-forge/noarch::r-stringr-1.4.0-r35h6115d3f_1
+  r-survival         conda-forge/linux-64::r-survival-3.1_12-r35hcdcec82_0
+  r-tibble           conda-forge/linux-64::r-tibble-3.0.1-r35hcdcec82_0
+  r-utf8             conda-forge/linux-64::r-utf8-1.1.4-r35hcdcec82_1002
+  r-vctrs            conda-forge/linux-64::r-vctrs-0.2.4-r35hcdcec82_0
+  r-viridislite      conda-forge/noarch::r-viridislite-0.3.0-r35h6115d3f_1002
+  r-withr            conda-forge/noarch::r-withr-2.2.0-r35h6115d3f_0
+  r-zeallot          conda-forge/noarch::r-zeallot-0.1.0-r35h6115d3f_1001
+  readline           conda-forge/linux-64::readline-7.0-hf8c457e_1001
+  reportlab          conda-forge/linux-64::reportlab-3.5.42-py27heca39a3_0
+  rsync              conda-forge/linux-64::rsync-3.1.3-h1245774_1003
+  salmon             bioconda/linux-64::salmon-0.13.1-h86b0361_0
+  samtools           bioconda/linux-64::samtools-1.9-h10a08f8_12
+  scikit-learn       conda-forge/linux-64::scikit-learn-0.20.3-py27ha8026db_1
+  scipy              conda-forge/linux-64::scipy-1.2.1-py27h921218d_2
+  seaborn            conda-forge/noarch::seaborn-0.9.0-py_2
+  setuptools         conda-forge/linux-64::setuptools-44.0.0-py27_0
+  simplejson         bioconda/linux-64::simplejson-3.8.1-py27_0
+  singledispatch     conda-forge/noarch::singledispatch-3.6.1-pyh44b312d_0
+  sip                conda-forge/linux-64::sip-4.18.1-py27hf484d3e_1000
+  six                conda-forge/noarch::six-1.16.0-pyh6c4a22f_0
+  spades             bioconda/linux-64::spades-3.13.0-0
+  sqlite             conda-forge/linux-64::sqlite-3.28.0-h8b20d00_0
+  srprism            bioconda/linux-64::srprism-2.4.24-h96824bc_3
+  statsmodels        conda-forge/linux-64::statsmodels-0.10.2-py27hc1659b7_0
+  subprocess32       conda-forge/linux-64::subprocess32-3.5.4-py27h516909a_0
+  sysroot_linux-64   conda-forge/noarch::sysroot_linux-64-2.12-h77966d4_13
+  tar                conda-forge/linux-64::tar-1.34-ha1f6473_0
+  taxator-tk         ursky/linux-64::taxator-tk-1.3.3e-0
+  tbb                conda-forge/linux-64::tbb-2020.2-h4bd325d_4
+  tbl2asn            bioconda/linux-64::tbl2asn-25.7-h9ee0642_1
+  tk                 conda-forge/linux-64::tk-8.6.10-h21135ba_1
+  tktable            conda-forge/linux-64::tktable-2.10-hb7b940f_3
+  tornado            conda-forge/linux-64::tornado-5.1.1-py27h14c3975_1000
+  trim-galore        bioconda/linux-64::trim-galore-0.5.0-0
+  wget               pkgs/main/linux-64::wget-1.19.5-h1ad7b7a_0
+  wheel              conda-forge/noarch::wheel-0.36.2-pyhd3deb0d_0
+  xopen              bioconda/noarch::xopen-0.7.3-py_0
+  xorg-kbproto       conda-forge/linux-64::xorg-kbproto-1.0.7-h7f98852_1002
+  xorg-libice        conda-forge/linux-64::xorg-libice-1.0.10-h7f98852_0
+  xorg-libsm         conda-forge/linux-64::xorg-libsm-1.2.3-hd9c2040_1000
+  xorg-libx11        conda-forge/linux-64::xorg-libx11-1.7.2-h7f98852_0
+  xorg-libxau        conda-forge/linux-64::xorg-libxau-1.0.9-h7f98852_0
+  xorg-libxdmcp      conda-forge/linux-64::xorg-libxdmcp-1.1.3-h7f98852_0
+  xorg-libxext       conda-forge/linux-64::xorg-libxext-1.3.4-h7f98852_1
+  xorg-libxrender    conda-forge/linux-64::xorg-libxrender-0.9.10-h7f98852_1003
+  xorg-libxt         conda-forge/linux-64::xorg-libxt-1.2.1-h7f98852_2
+  xorg-renderproto   conda-forge/linux-64::xorg-renderproto-0.11.1-h7f98852_1002
+  xorg-xextproto     conda-forge/linux-64::xorg-xextproto-7.3.0-h7f98852_1002
+  xorg-xproto        conda-forge/linux-64::xorg-xproto-7.0.31-h7f98852_1007
+  xz                 conda-forge/linux-64::xz-5.2.5-h516909a_1
+  zlib               conda-forge/linux-64::zlib-1.2.11-h516909a_1010
+  zstd               conda-forge/linux-64::zstd-1.4.9-ha95c52a_0
+
+
+Proceed ([y]/n)? 
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... 
+Krona installed.  You still need to manually update the taxonomy
+databases before Krona can generate taxonomic reports.  The update
+script is ktUpdateTaxonomy.sh.  The default location for storing
+taxonomic databases is /opt/conda/envs/metawrap-env/opt/krona/taxonomy
+
+If you would like the taxonomic data stored elsewhere, simply replace
+this directory with a symlink.  For example:
+
+rm -rf /opt/conda/envs/metawrap-env/opt/krona/taxonomy
+mkdir /path/on/big/disk/taxonomy
+ln -s /path/on/big/disk/taxonomy /opt/conda/envs/metawrap-env/opt/krona/taxonomy
+ktUpdateTaxonomy.sh
+
+
+The default QUAST package does not include:
+* GRIDSS (needed for structural variants detection)
+* SILVA 16S rRNA database (needed for reference genome detection in metagenomic datasets)
+* BUSCO tools and databases (needed for searching BUSCO genes) -- works in Linux only!
+
+To be able to use those, please run
+    quast-download-gridss
+    quast-download-silva
+    quast-download-busco
+
+done
+#
+# To activate this environment, use
+#
+#     $ conda activate metawrap-env
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
++ conda env config vars set PERL5LIB=/opt/conda/envs/metawrap-env/lib/perl5/site_perl/5.22.0/ -n metawrap-env
++ cd /
++ tar xf /ncbi-blast-2.11.0+-x64-linux.tar.gz
++ cp -a /ncbi-blast-2.11.0+/bin/blast_formatter /ncbi-blast-2.11.0+/bin/blastdb_aliastool /ncbi-blast-2.11.0+/bin/blastdbcheck /ncbi-blast-2.11.0+/bin/blastdbcmd /ncbi-blast-2.11.0+/bin/blastn /ncbi-blast-2.11.0+/bin/blastp /ncbi-blast-2.11.0+/bin/blastx /ncbi-blast-2.11.0+/bin/cleanup-blastdb-volumes.py /ncbi-blast-2.11.0+/bin/convert2blastmask /ncbi-blast-2.11.0+/bin/deltablast /ncbi-blast-2.11.0+/bin/dustmasker /ncbi-blast-2.11.0+/bin/get_species_taxids.sh /ncbi-blast-2.11.0+/bin/legacy_blast.pl /ncbi-blast-2.11.0+/bin/makeblastdb /ncbi-blast-2.11.0+/bin/makembindex /ncbi-blast-2.11.0+/bin/makeprofiledb /ncbi-blast-2.11.0+/bin/psiblast /ncbi-blast-2.11.0+/bin/rpsblast /ncbi-blast-2.11.0+/bin/rpstblastn /ncbi-blast-2.11.0+/bin/segmasker /ncbi-blast-2.11.0+/bin/tblastn /ncbi-blast-2.11.0+/bin/tblastx /ncbi-blast-2.11.0+/bin/update_blastdb.pl /ncbi-blast-2.11.0+/bin/windowmasker /opt/conda/envs/metawrap-env/bin/
++ rm -r /ncbi-blast-2.11.0+ /ncbi-blast-2.11.0+-x64-linux.tar.gz
+INFO:    Adding environment to container
+INFO:    Adding runscript
+INFO:    Creating SIF file...
+INFO:    Build complete: metawrap.sif
