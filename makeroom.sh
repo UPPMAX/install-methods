@@ -316,6 +316,9 @@ esac
 
 COMMONDIR=(/sw/mf/common/$MF_CATEGORY/$MODULENAME)
 
+
+############## Set SECTION ########################
+
 if [ $CATEGORY == "bioinfo" ] ; then
     COMMONDIR=(/sw/mf/common/$MF_CATEGORY/*/$MODULENAME)
     if [ -z "$SECTION" ] ; then
@@ -330,6 +333,14 @@ if [ $CATEGORY == "bioinfo" ] ; then
         fi
     else
 ############ Check for weird section names here ################
+        if [[ -d $COMMONDIR ]] ; then
+            SUBDIR=${COMMONDIR#/sw/mf/common/$MF_CATEGORY/}
+            SUBDIR=${SUBDIR%/$MODULENAME}
+            if [[ ! $SUBDIR == $SECTION ]] ; then
+                printf "\n%s %s\n%s %s\n" "### $TOOL is alreday installed under the section" "'$SUBDIR'" "You tried to install it under" "'$SECTION'" >&2
+                exit 1
+            fi
+        fi
         dirlist=("$(ls /sw/mf/common/$MF_CATEGORY/)")
         for i in ${dirlist[@]}
         do
@@ -349,7 +360,7 @@ if [ $CATEGORY == "bioinfo" ] ; then
     COMMONDIR=/sw/mf/common/$MF_CATEGORY/$SECTION/$MODULENAME
 fi
 
-MODULE_DIRECTORY="/sw/$CATEGORY/${MODULENAME}/mf"
+MODULE_DIRECTORY="/sw/$CATEGORY/${TOOL}/mf"
 SRCDIR="/sw/$CATEGORY/${TOOL}/${VERSION}/src"
 PREFIX="/sw/$CATEGORY/${TOOL}/${VERSION}/${INSTALLCLUSTER}"
 MODULE_FILE="${MODULE_DIRECTORY}/${VERSION}"
