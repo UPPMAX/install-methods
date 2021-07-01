@@ -681,7 +681,7 @@ find $TOOLDIR -maxdepth 1 -type f -exec chgrp "sw" {} \;
 fixup $MODULE_DIRECTORY
 $(printf "%q " fixup "${FIXFLAG[@]}" $TOOLDIR/$VERSION)
 cp -av ${MODULE_FILE} $COMMONDIR/$VERSION
-$(printf "%q " all_mflink -f "${LINKFLAG[@]}" $TOOL $VERSION)
+$(printf "%q " all_mflink -f "${LINKFLAG[@]}" $MODULENAME $VERSION)
 chgrp -h 'sw' $TOOLDIR
 echo "News:"
 echo "$NEWS1" 1>&2
