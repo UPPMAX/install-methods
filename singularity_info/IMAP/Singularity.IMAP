@@ -3,6 +3,7 @@ From: ubuntu@sha256:e4a134999bea4abb4a27bc437e6118fdddfb172e1b9d683129b74d254af5
 
 %environment
   export LC_ALL=C
+  export PATH=$PATH:/opt/IMAP
 
 %post
   export DEBIAN_FRONTEND=noninteractive
@@ -38,6 +39,9 @@ From: ubuntu@sha256:e4a134999bea4abb4a27bc437e6118fdddfb172e1b9d683129b74d254af5
 
   cd /opt && git clone https://github.com/jkimlab/IMAP.git && \
   cd IMAP && perl build.pl --install
+
+  # some fixes to make the build.pl work with the singularity setup
+  sed -i -e 's/gunzip $Bin\/IMAP_EX\/S288C.fa.gz/gunzip .\/IMAP_EX\/S288C.fa.gz/; s/gunzip $Bin\/IMAP_EX\/Saccharomyces_dairensis.fa.gz/gunzip .\/IMAP_EX\/Saccharomyces_dairensis.fa.gz/; s/$Bin\/scripts\/fastq-dump --split-files --gzip SRR1569791 -O $Bin\/IMAP_EX\//$Bin\/scripts\/fastq-dump --split-files --gzip SRR1569791 -O .\/IMAP_EX\//' /opt/IMAP/build.pl
 
   # clean apt cache
   rm -rf /var/lib/apt/lists/*

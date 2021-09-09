@@ -1,4 +1,4 @@
-INFO:    Starting build...
+Build target 'imap.sif' already exists and will be deleted during the build process. Do you want to continue? [N/y] INFO:    Starting build...
 Getting image source signatures
 Copying blob sha256:7b722c1070cdf5188f1f9e43b8413157f8dfb2b4fe84db3c03cb492379a42fcc
 Copying blob sha256:5fbf74db61f1459176d8647ba8f53f8e6cf933a2e56f73f0e8da81213117b7e9
@@ -7,33 +7,33 @@ Copying blob sha256:7ea47a67709ebea8efed59fbda703dbd00a0d2cae7e2808959744bfa30bf
 Copying config sha256:288b5aca25f70512e5874c289a8a216b60808ecc47f687fa502fd848e5c3f875
 Writing manifest to image destination
 Storing signatures
-2021/09/09 10:24:29  info unpack layer: sha256:7b722c1070cdf5188f1f9e43b8413157f8dfb2b4fe84db3c03cb492379a42fcc
-2021/09/09 10:24:29  info unpack layer: sha256:5fbf74db61f1459176d8647ba8f53f8e6cf933a2e56f73f0e8da81213117b7e9
-2021/09/09 10:24:29  info unpack layer: sha256:ed41cb72e5c918bdbd78e68f02930a3f1cf1d6079402b0a5b19de8508e67b766
-2021/09/09 10:24:29  info unpack layer: sha256:7ea47a67709ebea8efed59fbda703dbd00a0d2cae7e2808959744bfa30bfc0e9
+2021/09/09 11:57:46  info unpack layer: sha256:7b722c1070cdf5188f1f9e43b8413157f8dfb2b4fe84db3c03cb492379a42fcc
+2021/09/09 11:57:47  info unpack layer: sha256:5fbf74db61f1459176d8647ba8f53f8e6cf933a2e56f73f0e8da81213117b7e9
+2021/09/09 11:57:47  info unpack layer: sha256:ed41cb72e5c918bdbd78e68f02930a3f1cf1d6079402b0a5b19de8508e67b766
+2021/09/09 11:57:47  info unpack layer: sha256:7ea47a67709ebea8efed59fbda703dbd00a0d2cae7e2808959744bfa30bfc0e9
 INFO:    Running post scriptlet
 + export DEBIAN_FRONTEND=noninteractive
 + export LC_ALL=C
 + apt-get update
 Get:1 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
-Get:2 http://security.ubuntu.com/ubuntu xenial-security InRelease [109 kB]
-Get:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]
+Get:3 http://security.ubuntu.com/ubuntu xenial-security InRelease [109 kB]
 Get:4 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [107 kB]
 Get:5 http://archive.ubuntu.com/ubuntu xenial/main amd64 Packages [1558 kB]
 Get:6 http://archive.ubuntu.com/ubuntu xenial/restricted amd64 Packages [14.1 kB]
 Get:7 http://archive.ubuntu.com/ubuntu xenial/universe amd64 Packages [9827 kB]
-Get:8 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [2051 kB]
-Get:9 http://archive.ubuntu.com/ubuntu xenial/multiverse amd64 Packages [176 kB]
-Get:10 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [2560 kB]
-Get:11 http://archive.ubuntu.com/ubuntu xenial-updates/restricted amd64 Packages [16.4 kB]
-Get:12 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [1544 kB]
-Get:13 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages [26.2 kB]
-Get:14 http://archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages [10.9 kB]
-Get:15 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [12.7 kB]
+Get:8 http://archive.ubuntu.com/ubuntu xenial/multiverse amd64 Packages [176 kB]
+Get:9 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [2560 kB]
+Get:10 http://archive.ubuntu.com/ubuntu xenial-updates/restricted amd64 Packages [16.4 kB]
+Get:11 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [1544 kB]
+Get:12 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages [26.2 kB]
+Get:13 http://archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages [10.9 kB]
+Get:14 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [12.7 kB]
+Get:15 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [2051 kB]
 Get:16 http://security.ubuntu.com/ubuntu xenial-security/restricted amd64 Packages [15.9 kB]
 Get:17 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [984 kB]
 Get:18 http://security.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages [8820 B]
-Fetched 19.4 MB in 1s (12.6 MB/s)
+Fetched 19.4 MB in 1s (13.0 MB/s)
 Reading package lists...
 + apt-get install -y git g++ build-essential pkg-config libgd-dev libncurses5-dev libghc-bzlib-dev libboost-all-dev python wget perl cpanminus openjdk-8-jdk openjdk-8-jre
 Reading package lists...
@@ -740,7 +740,7 @@ Get:455 http://archive.ubuntu.com/ubuntu xenial/universe amd64 libghc-bzlib-dev 
 Get:456 http://archive.ubuntu.com/ubuntu xenial/main amd64 ocl-icd-libopencl1 amd64 2.2.8-1 [29.7 kB]
 Get:457 http://archive.ubuntu.com/ubuntu xenial/universe amd64 libhwloc-plugins amd64 1.11.2-3 [13.2 kB]
 debconf: delaying package configuration, since apt-utils is not installed
-Fetched 255 MB in 6s (36.7 MB/s)
+Fetched 255 MB in 7s (33.4 MB/s)
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4768 files and directories currently installed.)
 Preparing to unpack .../perl-base_5.22.1-9ubuntu0.9_amd64.deb ...
 Unpacking perl-base (5.22.1-9ubuntu0.9) over (5.22.1-9ubuntu0.6) ...
@@ -2793,7 +2793,12 @@ Processing triggers for sgml-base (1.26+nmu4ubuntu1) ...
 --> Working on YAML
 Fetching http://www.cpan.org/authors/id/T/TI/TINITA/YAML-1.30.tar.gz ... OK
 Configuring YAML-1.30 ... OK
-==> Found dependencies: Test::YAML, Test::Deep
+==> Found dependencies: Test::Deep, Test::YAML
+--> Working on Test::Deep
+Fetching http://www.cpan.org/authors/id/R/RJ/RJBS/Test-Deep-1.130.tar.gz ... OK
+Configuring Test-Deep-1.130 ... OK
+Building and testing Test-Deep-1.130 ... OK
+Successfully installed Test-Deep-1.130
 --> Working on Test::YAML
 Fetching http://www.cpan.org/authors/id/T/TI/TINITA/Test-YAML-1.07.tar.gz ... OK
 Configuring Test-YAML-1.07 ... OK
@@ -2816,11 +2821,6 @@ Building and testing Test-Base-0.89 ... OK
 Successfully installed Test-Base-0.89
 Building and testing Test-YAML-1.07 ... OK
 Successfully installed Test-YAML-1.07
---> Working on Test::Deep
-Fetching http://www.cpan.org/authors/id/R/RJ/RJBS/Test-Deep-1.130.tar.gz ... OK
-Configuring Test-Deep-1.130 ... OK
-Building and testing Test-Deep-1.130 ... OK
-Successfully installed Test-Deep-1.130
 Building and testing YAML-1.30 ... OK
 Successfully installed YAML-1.30
 --> Working on Switch
@@ -2868,58 +2868,29 @@ Configuring XML-Parser-2.46 ... OK
 --> Working on LWP::UserAgent
 Fetching http://www.cpan.org/authors/id/O/OA/OALDERS/libwww-perl-6.56.tar.gz ... OK
 Configuring libwww-perl-6.56 ... OK
-==> Found dependencies: File::Listing, HTTP::Cookies, Net::HTTP, WWW::RobotRules, Test::RequiresInternet, HTTP::Negotiate, HTTP::Daemon, Test::Fatal, Test::Needs
---> Working on File::Listing
-Fetching http://www.cpan.org/authors/id/P/PL/PLICEASE/File-Listing-6.14.tar.gz ... OK
-Configuring File-Listing-6.14 ... OK
-Building and testing File-Listing-6.14 ... OK
-Successfully installed File-Listing-6.14
---> Working on HTTP::Cookies
-Fetching http://www.cpan.org/authors/id/O/OA/OALDERS/HTTP-Cookies-6.10.tar.gz ... OK
-Configuring HTTP-Cookies-6.10 ... OK
-Building and testing HTTP-Cookies-6.10 ... OK
-Successfully installed HTTP-Cookies-6.10
---> Working on Net::HTTP
-Fetching http://www.cpan.org/authors/id/O/OA/OALDERS/Net-HTTP-6.21.tar.gz ... OK
-Configuring Net-HTTP-6.21 ... OK
-Building and testing Net-HTTP-6.21 ... OK
-Successfully installed Net-HTTP-6.21
---> Working on WWW::RobotRules
-Fetching http://www.cpan.org/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz ... OK
-Configuring WWW-RobotRules-6.02 ... OK
-Building and testing WWW-RobotRules-6.02 ... OK
-Successfully installed WWW-RobotRules-6.02
---> Working on Test::RequiresInternet
-Fetching http://www.cpan.org/authors/id/M/MA/MALLEN/Test-RequiresInternet-0.05.tar.gz ... OK
-Configuring Test-RequiresInternet-0.05 ... OK
-Building and testing Test-RequiresInternet-0.05 ... OK
-Successfully installed Test-RequiresInternet-0.05
---> Working on HTTP::Negotiate
-Fetching http://www.cpan.org/authors/id/G/GA/GAAS/HTTP-Negotiate-6.01.tar.gz ... OK
-Configuring HTTP-Negotiate-6.01 ... OK
-Building and testing HTTP-Negotiate-6.01 ... OK
-Successfully installed HTTP-Negotiate-6.01
+==> Found dependencies: HTTP::Daemon, File::Listing, HTTP::Negotiate, Net::HTTP, Test::RequiresInternet, Test::Fatal, Test::Needs, HTTP::Cookies, WWW::RobotRules
 --> Working on HTTP::Daemon
 Fetching http://www.cpan.org/authors/id/O/OA/OALDERS/HTTP-Daemon-6.12.tar.gz ... OK
 ==> Found dependencies: Module::Build::Tiny
 --> Working on Module::Build::Tiny
 Fetching http://www.cpan.org/authors/id/L/LE/LEONT/Module-Build-Tiny-0.039.tar.gz ... OK
-==> Found dependencies: ExtUtils::Helpers, ExtUtils::Config, ExtUtils::InstallPaths
---> Working on ExtUtils::Helpers
-Fetching http://www.cpan.org/authors/id/L/LE/LEONT/ExtUtils-Helpers-0.026.tar.gz ... OK
-Configuring ExtUtils-Helpers-0.026 ... OK
-Building and testing ExtUtils-Helpers-0.026 ... OK
-Successfully installed ExtUtils-Helpers-0.026
+==> Found dependencies: ExtUtils::InstallPaths, ExtUtils::Config, ExtUtils::Helpers
+--> Working on ExtUtils::InstallPaths
+Fetching http://www.cpan.org/authors/id/L/LE/LEONT/ExtUtils-InstallPaths-0.012.tar.gz ... OK
+Configuring ExtUtils-InstallPaths-0.012 ... OK
+==> Found dependencies: ExtUtils::Config
 --> Working on ExtUtils::Config
 Fetching http://www.cpan.org/authors/id/L/LE/LEONT/ExtUtils-Config-0.008.tar.gz ... OK
 Configuring ExtUtils-Config-0.008 ... OK
 Building and testing ExtUtils-Config-0.008 ... OK
 Successfully installed ExtUtils-Config-0.008
---> Working on ExtUtils::InstallPaths
-Fetching http://www.cpan.org/authors/id/L/LE/LEONT/ExtUtils-InstallPaths-0.012.tar.gz ... OK
-Configuring ExtUtils-InstallPaths-0.012 ... OK
 Building and testing ExtUtils-InstallPaths-0.012 ... OK
 Successfully installed ExtUtils-InstallPaths-0.012
+--> Working on ExtUtils::Helpers
+Fetching http://www.cpan.org/authors/id/L/LE/LEONT/ExtUtils-Helpers-0.026.tar.gz ... OK
+Configuring ExtUtils-Helpers-0.026 ... OK
+Building and testing ExtUtils-Helpers-0.026 ... OK
+Successfully installed ExtUtils-Helpers-0.026
 Configuring Module-Build-Tiny-0.039 ... OK
 Building and testing Module-Build-Tiny-0.039 ... OK
 Successfully installed Module-Build-Tiny-0.039
@@ -2932,11 +2903,41 @@ Building and testing Test-Needs-0.002009 ... OK
 Successfully installed Test-Needs-0.002009
 Building and testing HTTP-Daemon-6.12 ... OK
 Successfully installed HTTP-Daemon-6.12
+--> Working on File::Listing
+Fetching http://www.cpan.org/authors/id/P/PL/PLICEASE/File-Listing-6.14.tar.gz ... OK
+Configuring File-Listing-6.14 ... OK
+Building and testing File-Listing-6.14 ... OK
+Successfully installed File-Listing-6.14
+--> Working on HTTP::Negotiate
+Fetching http://www.cpan.org/authors/id/G/GA/GAAS/HTTP-Negotiate-6.01.tar.gz ... OK
+Configuring HTTP-Negotiate-6.01 ... OK
+Building and testing HTTP-Negotiate-6.01 ... OK
+Successfully installed HTTP-Negotiate-6.01
+--> Working on Net::HTTP
+Fetching http://www.cpan.org/authors/id/O/OA/OALDERS/Net-HTTP-6.21.tar.gz ... OK
+Configuring Net-HTTP-6.21 ... OK
+Building and testing Net-HTTP-6.21 ... OK
+Successfully installed Net-HTTP-6.21
+--> Working on Test::RequiresInternet
+Fetching http://www.cpan.org/authors/id/M/MA/MALLEN/Test-RequiresInternet-0.05.tar.gz ... OK
+Configuring Test-RequiresInternet-0.05 ... OK
+Building and testing Test-RequiresInternet-0.05 ... OK
+Successfully installed Test-RequiresInternet-0.05
 --> Working on Test::Fatal
 Fetching http://www.cpan.org/authors/id/R/RJ/RJBS/Test-Fatal-0.016.tar.gz ... OK
 Configuring Test-Fatal-0.016 ... OK
 Building and testing Test-Fatal-0.016 ... OK
 Successfully installed Test-Fatal-0.016
+--> Working on HTTP::Cookies
+Fetching http://www.cpan.org/authors/id/O/OA/OALDERS/HTTP-Cookies-6.10.tar.gz ... OK
+Configuring HTTP-Cookies-6.10 ... OK
+Building and testing HTTP-Cookies-6.10 ... OK
+Successfully installed HTTP-Cookies-6.10
+--> Working on WWW::RobotRules
+Fetching http://www.cpan.org/authors/id/G/GA/GAAS/WWW-RobotRules-6.02.tar.gz ... OK
+Configuring WWW-RobotRules-6.02 ... OK
+Building and testing WWW-RobotRules-6.02 ... OK
+Successfully installed WWW-RobotRules-6.02
 Building and testing libwww-perl-6.56 ... OK
 Successfully installed libwww-perl-6.56
 Building and testing XML-Parser-2.46 ... OK
@@ -2976,195 +2977,30 @@ Successfully installed XML-Twig-3.52
 --> Working on Bio::TreeIO
 Fetching http://www.cpan.org/authors/id/C/CJ/CJFIELDS/BioPerl-1.7.8.tar.gz ... OK
 Configuring BioPerl-1.7.8 ... OK
-==> Found dependencies: XML::SAX, XML::SAX::Base, Test::Weaken, XML::LibXML, Graph::Directed, Data::Stag, IPC::Run, XML::Writer, XML::SAX::Writer, IO::String, Set::Scalar, Test::Memory::Cycle, Test::Most, XML::LibXML::Reader
---> Working on XML::SAX
-Fetching http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-1.02.tar.gz ... OK
-Configuring XML-SAX-1.02 ... OK
-==> Found dependencies: XML::SAX::Base, XML::NamespaceSupport
---> Working on XML::SAX::Base
-Fetching http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-Base-1.09.tar.gz ... OK
-Configuring XML-SAX-Base-1.09 ... OK
-Building and testing XML-SAX-Base-1.09 ... OK
-Successfully installed XML-SAX-Base-1.09
---> Working on XML::NamespaceSupport
-Fetching http://www.cpan.org/authors/id/P/PE/PERIGRIN/XML-NamespaceSupport-1.12.tar.gz ... OK
-Configuring XML-NamespaceSupport-1.12 ... OK
-Building and testing XML-NamespaceSupport-1.12 ... OK
-Successfully installed XML-NamespaceSupport-1.12
-Building and testing XML-SAX-1.02 ... OK
-Successfully installed XML-SAX-1.02
---> Working on Test::Weaken
-Fetching http://www.cpan.org/authors/id/K/KR/KRYDE/Test-Weaken-3.022000.tar.gz ... OK
-Configuring Test-Weaken-3.022000 ... OK
-Building and testing Test-Weaken-3.022000 ... OK
-Successfully installed Test-Weaken-3.022000
---> Working on XML::LibXML
-Fetching http://www.cpan.org/authors/id/S/SH/SHLOMIF/XML-LibXML-2.0207.tar.gz ... OK
-==> Found dependencies: Alien::Base::Wrapper, Alien::Libxml2
---> Working on Alien::Base::Wrapper
-Fetching http://www.cpan.org/authors/id/P/PL/PLICEASE/Alien-Build-2.41.tar.gz ... OK
-==> Found dependencies: File::Which, ExtUtils::ParseXS
---> Working on File::Which
-Fetching http://www.cpan.org/authors/id/P/PL/PLICEASE/File-Which-1.27.tar.gz ... OK
-Configuring File-Which-1.27 ... OK
-Building and testing File-Which-1.27 ... OK
-Successfully installed File-Which-1.27
---> Working on ExtUtils::ParseXS
-Fetching http://www.cpan.org/authors/id/S/SM/SMUELLER/ExtUtils-ParseXS-3.35.tar.gz ... OK
-Configuring ExtUtils-ParseXS-3.35 ... OK
-Building and testing ExtUtils-ParseXS-3.35 ... OK
-Successfully installed ExtUtils-ParseXS-3.35 (upgraded from 3.28)
-Configuring Alien-Build-2.41 ... OK
-==> Found dependencies: Capture::Tiny, Test2::V0, Test2::API, FFI::CheckLib, Path::Tiny, File::chdir
+==> Found dependencies: Test::Most, IPC::Run, XML::Writer, Graph::Directed, IO::String, Data::Stag, Set::Scalar, XML::SAX::Writer, XML::SAX::Base, XML::LibXML, XML::SAX, Test::Weaken, XML::LibXML::Reader, Test::Memory::Cycle
+--> Working on Test::Most
+Fetching http://www.cpan.org/authors/id/O/OV/OVID/Test-Most-0.37.tar.gz ... OK
+Configuring Test-Most-0.37 ... OK
+==> Found dependencies: Test::More, Test::Exception, Test::Differences, Exception::Class
+--> Working on Test::More
+Fetching http://www.cpan.org/authors/id/E/EX/EXODIST/Test-Simple-1.302186.tar.gz ... OK
+Configuring Test-Simple-1.302186 ... OK
+Building and testing Test-Simple-1.302186 ... OK
+Successfully installed Test-Simple-1.302186 (upgraded from 1.001014)
+--> Working on Test::Exception
+Fetching http://www.cpan.org/authors/id/E/EX/EXODIST/Test-Exception-0.43.tar.gz ... OK
+Configuring Test-Exception-0.43 ... OK
+Building and testing Test-Exception-0.43 ... OK
+Successfully installed Test-Exception-0.43
+--> Working on Test::Differences
+Fetching http://www.cpan.org/authors/id/D/DC/DCANTRELL/Test-Differences-0.68.tar.gz ... OK
+Configuring Test-Differences-0.68 ... OK
+==> Found dependencies: Capture::Tiny
 --> Working on Capture::Tiny
 Fetching http://www.cpan.org/authors/id/D/DA/DAGOLDEN/Capture-Tiny-0.48.tar.gz ... OK
 Configuring Capture-Tiny-0.48 ... OK
 Building and testing Capture-Tiny-0.48 ... OK
 Successfully installed Capture-Tiny-0.48
---> Working on Test2::V0
-Fetching http://www.cpan.org/authors/id/E/EX/EXODIST/Test2-Suite-0.000141.tar.gz ... OK
-Configuring Test2-Suite-0.000141 ... OK
-==> Found dependencies: Module::Pluggable, Sub::Info, Importer, Scope::Guard, Test2::API, Term::Table
---> Working on Module::Pluggable
-Fetching http://www.cpan.org/authors/id/S/SI/SIMONW/Module-Pluggable-5.2.tar.gz ... OK
-Configuring Module-Pluggable-5.2 ... OK
-Building and testing Module-Pluggable-5.2 ... OK
-Successfully installed Module-Pluggable-5.2
---> Working on Sub::Info
-Fetching http://www.cpan.org/authors/id/E/EX/EXODIST/Sub-Info-0.002.tar.gz ... OK
-Configuring Sub-Info-0.002 ... OK
-==> Found dependencies: Importer, Test2::Tools::Tiny
---> Working on Importer
-Fetching http://www.cpan.org/authors/id/E/EX/EXODIST/Importer-0.026.tar.gz ... OK
-Configuring Importer-0.026 ... OK
-Building and testing Importer-0.026 ... OK
-Successfully installed Importer-0.026
---> Working on Test2::Tools::Tiny
-Fetching http://www.cpan.org/authors/id/E/EX/EXODIST/Test-Simple-1.302186.tar.gz ... OK
-Configuring Test-Simple-1.302186 ... OK
-Building and testing Test-Simple-1.302186 ... OK
-Successfully installed Test-Simple-1.302186
-Building and testing Sub-Info-0.002 ... OK
-Successfully installed Sub-Info-0.002
---> Working on Scope::Guard
-Fetching http://www.cpan.org/authors/id/C/CH/CHOCOLATE/Scope-Guard-0.21.tar.gz ... OK
-Configuring Scope-Guard-0.21 ... OK
-Building and testing Scope-Guard-0.21 ... OK
-Successfully installed Scope-Guard-0.21
---> Working on Term::Table
-Fetching http://www.cpan.org/authors/id/E/EX/EXODIST/Term-Table-0.015.tar.gz ... OK
-Configuring Term-Table-0.015 ... OK
-Building and testing Term-Table-0.015 ... OK
-Successfully installed Term-Table-0.015
-Building and testing Test2-Suite-0.000141 ... OK
-Successfully installed Test2-Suite-0.000141
---> Working on FFI::CheckLib
-Fetching http://www.cpan.org/authors/id/P/PL/PLICEASE/FFI-CheckLib-0.28.tar.gz ... OK
-Configuring FFI-CheckLib-0.28 ... OK
-Building and testing FFI-CheckLib-0.28 ... OK
-Successfully installed FFI-CheckLib-0.28
---> Working on Path::Tiny
-Fetching http://www.cpan.org/authors/id/D/DA/DAGOLDEN/Path-Tiny-0.118.tar.gz ... OK
-Configuring Path-Tiny-0.118 ... OK
-Building and testing Path-Tiny-0.118 ... OK
-Successfully installed Path-Tiny-0.118 (upgraded from 0.076)
---> Working on File::chdir
-Fetching http://www.cpan.org/authors/id/D/DA/DAGOLDEN/File-chdir-0.1010.tar.gz ... OK
-Configuring File-chdir-0.1010 ... OK
-Building and testing File-chdir-0.1010 ... OK
-Successfully installed File-chdir-0.1010
-Building and testing Alien-Build-2.41 ... OK
-Successfully installed Alien-Build-2.41
---> Working on Alien::Libxml2
-Fetching http://www.cpan.org/authors/id/P/PL/PLICEASE/Alien-Libxml2-0.17.tar.gz ... OK
-Configuring Alien-Libxml2-0.17 ... OK
-==> Found dependencies: Sort::Versions
---> Working on Sort::Versions
-Fetching http://www.cpan.org/authors/id/N/NE/NEILB/Sort-Versions-1.62.tar.gz ... OK
-Configuring Sort-Versions-1.62 ... OK
-Building and testing Sort-Versions-1.62 ... OK
-Successfully installed Sort-Versions-1.62
-Building and testing Alien-Libxml2-0.17 ... OK
-Successfully installed Alien-Libxml2-0.17
-Configuring XML-LibXML-2.0207 ... OK
-Building and testing XML-LibXML-2.0207 ... OK
-Successfully installed XML-LibXML-2.0207
---> Working on Graph::Directed
-Fetching http://www.cpan.org/authors/id/E/ET/ETJ/Graph-0.9723.tar.gz ... OK
-Configuring Graph-0.9723 ... OK
-==> Found dependencies: Heap, List::Util, Set::Object
---> Working on Heap
-Fetching http://www.cpan.org/authors/id/J/JM/JMM/Heap-0.80.tar.gz ... OK
-Configuring Heap-0.80 ... OK
-Building and testing Heap-0.80 ... OK
-Successfully installed Heap-0.80
---> Working on List::Util
-Fetching http://www.cpan.org/authors/id/P/PE/PEVANS/Scalar-List-Utils-1.56.tar.gz ... OK
-Configuring Scalar-List-Utils-1.56 ... OK
-Building and testing Scalar-List-Utils-1.56 ... OK
-Successfully installed Scalar-List-Utils-1.56 (upgraded from 1.41)
---> Working on Set::Object
-Fetching http://www.cpan.org/authors/id/R/RU/RURBAN/Set-Object-1.41.tar.gz ... OK
-Configuring Set-Object-1.41 ... OK
-Building and testing Set-Object-1.41 ... OK
-Successfully installed Set-Object-1.41
-Building and testing Graph-0.9723 ... OK
-Successfully installed Graph-0.9723
---> Working on Data::Stag
-Fetching http://www.cpan.org/authors/id/C/CM/CMUNGALL/Data-Stag-0.14.tar.gz ... OK
-Configuring Data-Stag-0.14 ... OK
-==> Found dependencies: IO::String
---> Working on IO::String
-Fetching http://www.cpan.org/authors/id/G/GA/GAAS/IO-String-1.08.tar.gz ... OK
-Configuring IO-String-1.08 ... OK
-Building and testing IO-String-1.08 ... OK
-Successfully installed IO-String-1.08
-Building and testing Data-Stag-0.14 ... OK
-Successfully installed Data-Stag-0.14
---> Working on IPC::Run
-Fetching http://www.cpan.org/authors/id/T/TO/TODDR/IPC-Run-20200505.0.tar.gz ... OK
-Configuring IPC-Run-20200505.0 ... OK
-Building and testing IPC-Run-20200505.0 ... OK
-Successfully installed IPC-Run-20200505.0
---> Working on XML::Writer
-Fetching http://www.cpan.org/authors/id/J/JO/JOSEPHW/XML-Writer-0.900.tar.gz ... OK
-Configuring XML-Writer-0.900 ... OK
-Building and testing XML-Writer-0.900 ... OK
-Successfully installed XML-Writer-0.900
---> Working on XML::SAX::Writer
-Fetching http://www.cpan.org/authors/id/P/PE/PERIGRIN/XML-SAX-Writer-0.57.tar.gz ... OK
-Configuring XML-SAX-Writer-0.57 ... OK
-==> Found dependencies: XML::Filter::BufferText
---> Working on XML::Filter::BufferText
-Fetching http://www.cpan.org/authors/id/R/RB/RBERJON/XML-Filter-BufferText-1.01.tar.gz ... OK
-Configuring XML-Filter-BufferText-1.01 ... OK
-Building and testing XML-Filter-BufferText-1.01 ... OK
-Successfully installed XML-Filter-BufferText-1.01
-Building and testing XML-SAX-Writer-0.57 ... OK
-Successfully installed XML-SAX-Writer-0.57
---> Working on Set::Scalar
-Fetching http://www.cpan.org/authors/id/D/DA/DAVIDO/Set-Scalar-1.29.tar.gz ... OK
-Configuring Set-Scalar-1.29 ... OK
-Building and testing Set-Scalar-1.29 ... OK
-Successfully installed Set-Scalar-1.29
---> Working on Test::Memory::Cycle
-Fetching http://www.cpan.org/authors/id/P/PE/PETDANCE/Test-Memory-Cycle-1.06.tar.gz ... OK
-Configuring Test-Memory-Cycle-1.06 ... OK
-==> Found dependencies: Devel::Cycle
---> Working on Devel::Cycle
-Fetching http://www.cpan.org/authors/id/L/LD/LDS/Devel-Cycle-1.12.tar.gz ... OK
-Configuring Devel-Cycle-1.12 ... OK
-Building and testing Devel-Cycle-1.12 ... OK
-Successfully installed Devel-Cycle-1.12
-Building and testing Test-Memory-Cycle-1.06 ... OK
-Successfully installed Test-Memory-Cycle-1.06
---> Working on Test::Most
-Fetching http://www.cpan.org/authors/id/O/OV/OVID/Test-Most-0.37.tar.gz ... OK
-Configuring Test-Most-0.37 ... OK
-==> Found dependencies: Test::Differences, Exception::Class, Test::Exception
---> Working on Test::Differences
-Fetching http://www.cpan.org/authors/id/D/DC/DCANTRELL/Test-Differences-0.68.tar.gz ... OK
-Configuring Test-Differences-0.68 ... OK
 Building and testing Test-Differences-0.68 ... OK
 Successfully installed Test-Differences-0.68
 --> Working on Exception::Class
@@ -3183,13 +3019,180 @@ Building and testing Devel-StackTrace-2.04 ... OK
 Successfully installed Devel-StackTrace-2.04
 Building and testing Exception-Class-1.45 ... OK
 Successfully installed Exception-Class-1.45
---> Working on Test::Exception
-Fetching http://www.cpan.org/authors/id/E/EX/EXODIST/Test-Exception-0.43.tar.gz ... OK
-Configuring Test-Exception-0.43 ... OK
-Building and testing Test-Exception-0.43 ... OK
-Successfully installed Test-Exception-0.43
 Building and testing Test-Most-0.37 ... OK
 Successfully installed Test-Most-0.37
+--> Working on IPC::Run
+Fetching http://www.cpan.org/authors/id/T/TO/TODDR/IPC-Run-20200505.0.tar.gz ... OK
+Configuring IPC-Run-20200505.0 ... OK
+Building and testing IPC-Run-20200505.0 ... OK
+Successfully installed IPC-Run-20200505.0
+--> Working on XML::Writer
+Fetching http://www.cpan.org/authors/id/J/JO/JOSEPHW/XML-Writer-0.900.tar.gz ... OK
+Configuring XML-Writer-0.900 ... OK
+Building and testing XML-Writer-0.900 ... OK
+Successfully installed XML-Writer-0.900
+--> Working on Graph::Directed
+Fetching http://www.cpan.org/authors/id/E/ET/ETJ/Graph-0.9723.tar.gz ... OK
+Configuring Graph-0.9723 ... OK
+==> Found dependencies: Set::Object, List::Util, Heap
+--> Working on Set::Object
+Fetching http://www.cpan.org/authors/id/R/RU/RURBAN/Set-Object-1.41.tar.gz ... OK
+Configuring Set-Object-1.41 ... OK
+Building and testing Set-Object-1.41 ... OK
+Successfully installed Set-Object-1.41
+--> Working on List::Util
+Fetching http://www.cpan.org/authors/id/P/PE/PEVANS/Scalar-List-Utils-1.56.tar.gz ... OK
+Configuring Scalar-List-Utils-1.56 ... OK
+Building and testing Scalar-List-Utils-1.56 ... OK
+Successfully installed Scalar-List-Utils-1.56 (upgraded from 1.41)
+--> Working on Heap
+Fetching http://www.cpan.org/authors/id/J/JM/JMM/Heap-0.80.tar.gz ... OK
+Configuring Heap-0.80 ... OK
+Building and testing Heap-0.80 ... OK
+Successfully installed Heap-0.80
+Building and testing Graph-0.9723 ... OK
+Successfully installed Graph-0.9723
+--> Working on IO::String
+Fetching http://www.cpan.org/authors/id/G/GA/GAAS/IO-String-1.08.tar.gz ... OK
+Configuring IO-String-1.08 ... OK
+Building and testing IO-String-1.08 ... OK
+Successfully installed IO-String-1.08
+--> Working on Data::Stag
+Fetching http://www.cpan.org/authors/id/C/CM/CMUNGALL/Data-Stag-0.14.tar.gz ... OK
+Configuring Data-Stag-0.14 ... OK
+Building and testing Data-Stag-0.14 ... OK
+Successfully installed Data-Stag-0.14
+--> Working on Set::Scalar
+Fetching http://www.cpan.org/authors/id/D/DA/DAVIDO/Set-Scalar-1.29.tar.gz ... OK
+Configuring Set-Scalar-1.29 ... OK
+Building and testing Set-Scalar-1.29 ... OK
+Successfully installed Set-Scalar-1.29
+--> Working on XML::SAX::Writer
+Fetching http://www.cpan.org/authors/id/P/PE/PERIGRIN/XML-SAX-Writer-0.57.tar.gz ... OK
+Configuring XML-SAX-Writer-0.57 ... OK
+==> Found dependencies: XML::Filter::BufferText, XML::NamespaceSupport, XML::SAX::Exception
+--> Working on XML::Filter::BufferText
+Fetching http://www.cpan.org/authors/id/R/RB/RBERJON/XML-Filter-BufferText-1.01.tar.gz ... OK
+Configuring XML-Filter-BufferText-1.01 ... OK
+==> Found dependencies: XML::SAX, XML::SAX::Base
+--> Working on XML::SAX
+Fetching http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-1.02.tar.gz ... OK
+Configuring XML-SAX-1.02 ... OK
+==> Found dependencies: XML::SAX::Base, XML::NamespaceSupport
+--> Working on XML::SAX::Base
+Fetching http://www.cpan.org/authors/id/G/GR/GRANTM/XML-SAX-Base-1.09.tar.gz ... OK
+Configuring XML-SAX-Base-1.09 ... OK
+Building and testing XML-SAX-Base-1.09 ... OK
+Successfully installed XML-SAX-Base-1.09
+--> Working on XML::NamespaceSupport
+Fetching http://www.cpan.org/authors/id/P/PE/PERIGRIN/XML-NamespaceSupport-1.12.tar.gz ... OK
+Configuring XML-NamespaceSupport-1.12 ... OK
+Building and testing XML-NamespaceSupport-1.12 ... OK
+Successfully installed XML-NamespaceSupport-1.12
+Building and testing XML-SAX-1.02 ... OK
+Successfully installed XML-SAX-1.02
+Building and testing XML-Filter-BufferText-1.01 ... OK
+Successfully installed XML-Filter-BufferText-1.01
+Building and testing XML-SAX-Writer-0.57 ... OK
+Successfully installed XML-SAX-Writer-0.57
+--> Working on XML::LibXML
+Fetching http://www.cpan.org/authors/id/S/SH/SHLOMIF/XML-LibXML-2.0207.tar.gz ... OK
+==> Found dependencies: Alien::Libxml2, Alien::Base::Wrapper
+--> Working on Alien::Libxml2
+Fetching http://www.cpan.org/authors/id/P/PL/PLICEASE/Alien-Libxml2-0.17.tar.gz ... OK
+==> Found dependencies: Alien::Build::MM, Alien::Build::Plugin::Build::SearchDep, Alien::Build::Plugin::Probe::Vcpkg, Alien::Build, Alien::Build::Plugin::Prefer::BadVersion
+--> Working on Alien::Build::MM
+Fetching http://www.cpan.org/authors/id/P/PL/PLICEASE/Alien-Build-2.41.tar.gz ... OK
+==> Found dependencies: ExtUtils::ParseXS, File::Which
+--> Working on ExtUtils::ParseXS
+Fetching http://www.cpan.org/authors/id/S/SM/SMUELLER/ExtUtils-ParseXS-3.35.tar.gz ... OK
+Configuring ExtUtils-ParseXS-3.35 ... OK
+Building and testing ExtUtils-ParseXS-3.35 ... OK
+Successfully installed ExtUtils-ParseXS-3.35 (upgraded from 3.28)
+--> Working on File::Which
+Fetching http://www.cpan.org/authors/id/P/PL/PLICEASE/File-Which-1.27.tar.gz ... OK
+Configuring File-Which-1.27 ... OK
+Building and testing File-Which-1.27 ... OK
+Successfully installed File-Which-1.27
+Configuring Alien-Build-2.41 ... OK
+==> Found dependencies: Test2::V0, File::chdir, Path::Tiny, FFI::CheckLib
+--> Working on Test2::V0
+Fetching http://www.cpan.org/authors/id/E/EX/EXODIST/Test2-Suite-0.000141.tar.gz ... OK
+Configuring Test2-Suite-0.000141 ... OK
+==> Found dependencies: Term::Table, Module::Pluggable, Scope::Guard, Sub::Info, Importer
+--> Working on Term::Table
+Fetching http://www.cpan.org/authors/id/E/EX/EXODIST/Term-Table-0.015.tar.gz ... OK
+Configuring Term-Table-0.015 ... OK
+==> Found dependencies: Importer
+--> Working on Importer
+Fetching http://www.cpan.org/authors/id/E/EX/EXODIST/Importer-0.026.tar.gz ... OK
+Configuring Importer-0.026 ... OK
+Building and testing Importer-0.026 ... OK
+Successfully installed Importer-0.026
+Building and testing Term-Table-0.015 ... OK
+Successfully installed Term-Table-0.015
+--> Working on Module::Pluggable
+Fetching http://www.cpan.org/authors/id/S/SI/SIMONW/Module-Pluggable-5.2.tar.gz ... OK
+Configuring Module-Pluggable-5.2 ... OK
+Building and testing Module-Pluggable-5.2 ... OK
+Successfully installed Module-Pluggable-5.2
+--> Working on Scope::Guard
+Fetching http://www.cpan.org/authors/id/C/CH/CHOCOLATE/Scope-Guard-0.21.tar.gz ... OK
+Configuring Scope-Guard-0.21 ... OK
+Building and testing Scope-Guard-0.21 ... OK
+Successfully installed Scope-Guard-0.21
+--> Working on Sub::Info
+Fetching http://www.cpan.org/authors/id/E/EX/EXODIST/Sub-Info-0.002.tar.gz ... OK
+Configuring Sub-Info-0.002 ... OK
+Building and testing Sub-Info-0.002 ... OK
+Successfully installed Sub-Info-0.002
+Building and testing Test2-Suite-0.000141 ... OK
+Successfully installed Test2-Suite-0.000141
+--> Working on File::chdir
+Fetching http://www.cpan.org/authors/id/D/DA/DAGOLDEN/File-chdir-0.1010.tar.gz ... OK
+Configuring File-chdir-0.1010 ... OK
+Building and testing File-chdir-0.1010 ... OK
+Successfully installed File-chdir-0.1010
+--> Working on Path::Tiny
+Fetching http://www.cpan.org/authors/id/D/DA/DAGOLDEN/Path-Tiny-0.118.tar.gz ... OK
+Configuring Path-Tiny-0.118 ... OK
+Building and testing Path-Tiny-0.118 ... OK
+Successfully installed Path-Tiny-0.118 (upgraded from 0.076)
+--> Working on FFI::CheckLib
+Fetching http://www.cpan.org/authors/id/P/PL/PLICEASE/FFI-CheckLib-0.28.tar.gz ... OK
+Configuring FFI-CheckLib-0.28 ... OK
+Building and testing FFI-CheckLib-0.28 ... OK
+Successfully installed FFI-CheckLib-0.28
+Building and testing Alien-Build-2.41 ... OK
+Successfully installed Alien-Build-2.41
+Configuring Alien-Libxml2-0.17 ... OK
+==> Found dependencies: Sort::Versions
+--> Working on Sort::Versions
+Fetching http://www.cpan.org/authors/id/N/NE/NEILB/Sort-Versions-1.62.tar.gz ... OK
+Configuring Sort-Versions-1.62 ... OK
+Building and testing Sort-Versions-1.62 ... OK
+Successfully installed Sort-Versions-1.62
+Building and testing Alien-Libxml2-0.17 ... OK
+Successfully installed Alien-Libxml2-0.17
+Configuring XML-LibXML-2.0207 ... OK
+Building and testing XML-LibXML-2.0207 ... OK
+Successfully installed XML-LibXML-2.0207
+--> Working on Test::Weaken
+Fetching http://www.cpan.org/authors/id/K/KR/KRYDE/Test-Weaken-3.022000.tar.gz ... OK
+Configuring Test-Weaken-3.022000 ... OK
+Building and testing Test-Weaken-3.022000 ... OK
+Successfully installed Test-Weaken-3.022000
+--> Working on Test::Memory::Cycle
+Fetching http://www.cpan.org/authors/id/P/PE/PETDANCE/Test-Memory-Cycle-1.06.tar.gz ... OK
+Configuring Test-Memory-Cycle-1.06 ... OK
+==> Found dependencies: Devel::Cycle
+--> Working on Devel::Cycle
+Fetching http://www.cpan.org/authors/id/L/LD/LDS/Devel-Cycle-1.12.tar.gz ... OK
+Configuring Devel-Cycle-1.12 ... OK
+Building and testing Devel-Cycle-1.12 ... OK
+Successfully installed Devel-Cycle-1.12
+Building and testing Test-Memory-Cycle-1.06 ... OK
+Successfully installed Test-Memory-Cycle-1.06
 Building and testing BioPerl-1.7.8 ... OK
 Successfully installed BioPerl-1.7.8
 75 distributions installed
@@ -3207,6 +3210,7 @@ Cloning into 'IMAP'...
 >> Compile lastz... Done
 >> Compile samtools... Done
 >> Compile MaSuRCA... Done
++ sed -i -e s/gunzip $Bin\/IMAP_EX\/S288C.fa.gz/gunzip .\/IMAP_EX\/S288C.fa.gz/; s/gunzip $Bin\/IMAP_EX\/Saccharomyces_dairensis.fa.gz/gunzip .\/IMAP_EX\/Saccharomyces_dairensis.fa.gz/; s/$Bin\/scripts\/fastq-dump --split-files --gzip SRR1569791 -O $Bin\/IMAP_EX\//$Bin\/scripts\/fastq-dump --split-files --gzip SRR1569791 -O .\/IMAP_EX\// /opt/IMAP/build.pl
 + rm -rf /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial-backports_InRelease /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial-backports_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial-backports_universe_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial-updates_InRelease /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial-updates_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial-updates_multiverse_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial-updates_restricted_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial-updates_universe_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial_InRelease /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial_multiverse_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial_restricted_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_xenial_universe_binary-amd64_Packages.lz4 /var/lib/apt/lists/lock /var/lib/apt/lists/partial /var/lib/apt/lists/security.ubuntu.com_ubuntu_dists_xenial-security_InRelease /var/lib/apt/lists/security.ubuntu.com_ubuntu_dists_xenial-security_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/security.ubuntu.com_ubuntu_dists_xenial-security_multiverse_binary-amd64_Packages.lz4 /var/lib/apt/lists/security.ubuntu.com_ubuntu_dists_xenial-security_restricted_binary-amd64_Packages.lz4 /var/lib/apt/lists/security.ubuntu.com_ubuntu_dists_xenial-security_universe_binary-amd64_Packages.lz4
 INFO:    Adding environment to container
 INFO:    Adding runscript
