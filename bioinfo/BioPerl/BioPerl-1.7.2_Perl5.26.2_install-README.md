@@ -41,6 +41,11 @@ above.  For verification purposes, with this install:
     echo $PERL5LIB
     /sw/bioinfo/BioPerl/1.7.2_Perl5.26.2/milou/lib/perl5:/sw/comp/perl_modules/5.26.2/rackham/lib/perl5/x86_64-linux-thread-multi:/sw/comp/perl/5.26.2/rackham/lib
 
+NOTE 2021-09-20
+---------------
+
+Warning from /sw/bioinfo/BioPerl/1.7.2_Perl5.26.2/rackham/lib/perl5/Bio/DB/IndexedBase.pm line 845, changed operator from `or` to `||` following <https://raw.githubusercontent.com/bioperl/bioperl-live/2b53e22cd3f61961ea9ac7707537a01e4bf75a73/lib/Bio/DB/IndexedBase.pm>.
+
 
 BioPerl main collection
 -----------------------
@@ -81,4 +86,5 @@ For `Bio::DB::HTS`:
 
     cpanm Bio::Phylo
     cpanm Bio::Graphics
+
 

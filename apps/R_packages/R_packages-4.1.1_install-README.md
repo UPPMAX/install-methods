@@ -1,5 +1,11 @@
-R_packages/4.0.4
+R_packages/4.1.1
 ================
+
+Used under license:
+Various
+
+
+Structure creating script (makeroom_R_packages_4.1.1.sh) moved to /sw/apps/R_packages/makeroom_4.1.1.sh
 
 Module holding installations of CRAN and BioConductor.  An attempt to be
 comprehensive.  We can't be completely, because we don't have certain
@@ -30,22 +36,19 @@ instructions below.  There are still some that do not.
 LOG
 ---
 
+Set up.
+
+    makeroom.sh -f -c apps -t R_packages -v 4.1.1 -d "Omnibus package containing installations of as many R packages from CRAN, BioConductor and other user-requested sources as can be reasonably installed" -l Various 
+    ./makeroom_R_packages_4.1.1.sh 
+    source /sw/apps/R_packages/SOURCEME_R_packages_4.1.1 && cd $TOOLDIR
+
 Run these commands to start the installation, and also run these commands for
 setting up prior to adding new packages to this installation.
 
-    VERSION=4.0.4
-    CLUSTER=${CLUSTER?:For some reason, CLUSTER is not set}
-    cd /sw/apps
-    mkdir -p R_packages
-    cd R_packages/
-    mkdir -p $VERSION
-    mkdir -p mf
-    cd $VERSION
-    VERSIONDIR=$PWD
-    mkdir $CLUSTER
-    [[ "$CLUSTER" == "rackham" ]] && for CL in irma bianca snowy ; do test -L $CL || ln -s $CLUSTER $CL; done
-    cd $CLUSTER/
-    export R_LIBS_USER=$PWD
+Place these in `$VERSIONDIR/source-for-setup` for future use.
+
+    source /sw/apps/R_packages/SOURCEME_R_packages_4.1.1 && cd $VERSIONDIR
+    export R_LIBS_USER=$PREFIX
     module load R/$VERSION
     module load autoconf/2.69
     module load automake/1.14.1
@@ -74,10 +77,13 @@ setting up prior to adding new packages to this installation.
     module load libwebp/1.2.0
     module load glpk/4.65
     module load COIN-OR-OptimizationSuite/1.8.0
-    setenv DOWNLOAD_STATIC_LIBV8=1
+    module load libSBML/5.19.0
+    module load rust/1.43.1
+    export DOWNLOAD_STATIC_LIBV8=1
     echo -e "\nThis should have been set to the appropriate directory in this module, is it?\n\nR_LIBS_USER = $R_LIBS_USER\n"
 
-Various other packages will be loaded when R/4.0.4 is loaded such as `gcc/9.3.0`, `texinfo/6.6` and `java/sun_jdk1.8.0_151`.
+Various other packages will be loaded when R/4.1.1 is loaded such as
+`gcc/9.3.0`, `texinfo/6.8`, `texlive/2021` and `java/sun_jdk1.8.0_151`.
 
 The build tools modules are required for some more recent configure scripts
 within R packages.  MariaDB (*this 10.1.x version*, not 10.2.x) is required for
@@ -85,19 +91,17 @@ installing the `RMySQL` package, which is needed as a prereq by several
 BioConductor packages.  We also load `PostgreSQL/10.3` for the same reason for
 `RPostgreSQL`.
 
-The installation of `formattable` and `kableExtra` requires
-`ImageMagick/6.9.9-35` with rsvg support.  Compiling against that tool requires
-a lot of other modules that we don't want to have loaded for the general
-installation. See below for this special case.
+Several installations require additional modules to be loaded just for that
+installation.  See below.
 
 Loading R loads a bunch of stuff including gcc that will be used for building
 R packages.  So, like with perl_modules, R_packages is associated with a
-specific R module version.  Make sure you are using R/4.0.0:
+specific R module version.  Make sure you are using R/4.1.1:
 
     which R
 
-and run R, setting it up to use the Sweden repository, and to have a longer
-timeout limit (300 instead of 60 sec):
+and run R, setting it up to use the Umea, Sweden repository, and to have a
+longer timeout limit (300 instead of 60 sec):
 
     R --no-init-file
 
@@ -140,6 +144,14 @@ Make sure that `/sw/apps/R_packages/$VERSION/inst.R` is available, then
     source("../inst.R")
 
 This installs all Bioconductor, then all CRAN packages, iteratively until there is no change.
+After this step, we re-ran this, and after this run, we get
+
+    17696 CRAN packages installed, out of 18120 available
+    3310 BioConductor-specific packages installed, out of 3391 available
+
+Now looking at a few of the standard ones that failed, and why.
+
+1. `destiny`
 
 This was followed by installing the below packages under their particular headings.
 
@@ -155,7 +167,49 @@ Installation which requires additional modules
 A few R packages or their dependencies require some further loads.
 
 
-### baseflow, gifski
+
+### hdf5r
+
+Outside R:
+
+    module load hdf5/1.10.5
+
+Inside R:
+
+    BiocManager::install(c("hdf5r"), dependencies=TRUE)
+
+Outside R:
+
+    module unload hdf5
+
+This hdf5 module version should also be noted in the module help.
+
+
+
+### Rmpi, Rhpc, bigGP, doMPI, metaMix, regRSM
+
+Load the most common openmpi module for the gcc version used by R.  In this case, R/4.1.1 loads gcc/9.3.0.  There is an openmpi/4.0.2 and openmpi/4.0.3, but there is also openmpi/3.1.5, which is a more established major version.  That is what we'll load
+
+This also installs four (and counting) modules that depend on Rmpi.
+
+Outside R:
+
+    module load openmpi/3.1.5
+
+Inside R:
+
+    BiocManager::install(c("Rmpi","Rhpc","bigGP","doMPI","metaMix","regRSM"), dependencies=TRUE)
+
+
+Outside R:
+
+    module unload openmpi
+
+This openmpi module version should also be noted in the module help.
+
+
+
+### baseflow, gifski, string2path
 
 Requires rust/1.43.1.
 
@@ -163,7 +217,7 @@ Requires rust/1.43.1.
 
 Inside R:
 
-    BiocManager::install(c("baseflow","gifski"), dependencies=TRUE)
+    BiocManager::install(c("baseflow","gifski","string2path"), dependencies=TRUE)
 
 Outside R:
 
@@ -187,9 +241,10 @@ Inside R:
 
 Outside R:
 
-    module unload -libsodium
+    module unload libsodium
 
 This libsodium module version should also be noted in the module help.
+
 
 
 ### clustermq, rzmq
@@ -198,7 +253,7 @@ Load the libzmq module.
 
 Outside R:
 
-    module load libzmp/4.3.4
+    module load libzmq/4.3.4
 
 Inside R:
 
@@ -211,91 +266,30 @@ Outside R:
 This libzmq module version should also be noted in the module help.
 
 
-### Rmpi, Rhpc, bigGP, doMPI, metaMix, regRSM
 
-Load the most common openmpi module for the gcc version used by R.  In this case, R/4.0.0 loads gcc/9.3.0.  There is an openmpi/4.0.2 and openmpi/4.0.3, but there is also openmpi/3.1.5, which is a more established major version.  That is what we'll load
+### magick, dyno, dynplot, dynutils
 
-This also installs four (and counting) modules that depend on Rmpi.
-
-Outside R:
-
-    module load openmpi/3.1.5
-
-Inside R:
-
-    BiocManager::install(c("Rmpi","Rhpc","bigGP","doMPI","metaMix","regRSM"), dependencies=TRUE)
-
-
-Outside R:
-
-    module unload openmpi
-
-This openmpi module version should also be noted in the module help.
-
-
-### magick
-
-`formattable`, `kableExtra`, `magick`.  This requires some additional
+This requires some additional
 module loads that were left out of the general compilation.
 
 Outside R, load modules then run R:
 
-    module load ImageMagick/7.0.11-3
-    module load giflib/5.1.4
+    module load ImageMagick/7.0.11-3 giflib/5.1.4
     #  Poppler is already loaded
-
-    R
 
 and within R:
 
     BiocManager::install('magick', dependencies=TRUE)
-    q()
 
 then:
 
     module unload ImageMagick giflib
 
-    R
-
-Install the rest.  The `tesseract` dependency won't be installable unless this OCR system
+and within R, install the rest.  The `tesseract` dependency won't be installable unless this OCR system
 is eventually installed at Uppmax.  Should be no problem to leave it out.
 
     xtra.list = c('formattable','kableExtra')
     BiocManager::install(xtra.list, dependencies=TRUE, Ncpus=8)
-
-
-### xps
-
-The `xps` module requires ROOT, I have installed `ROOT/6.22.08`.
-
-    module load ROOT/6.22.08
-    R
-
-and then inside R:
-
-    BiocManager::install('xps')
-
-There's a note that xps is facing deprecated status at BioConductor.  The 2017
-install instructions also say it wants ROOT 5, but we're not about to install
-that.  Seems to install OK with ROOT 6.
-
-
-### hdf5r
-
-Outside R:
-
-    module load hdf5/1.10.5
-
-Inside R:
-
-    BiocManager::install(c("hdf5r"), dependencies=TRUE)
-
-Outside R:
-
-    module unload hdf5
-
-This hdf5 module version should also be noted in the module help.
-
 
 
 
@@ -332,6 +326,8 @@ packages.  Unless there is a serious bug, we will only update base packages
 along with updating R.
 
 
+
+
 External packages
 -----------------
 
@@ -344,6 +340,7 @@ Several R packages found here are not on CRAN or BioConductor, as a result of ei
 * For a "custom" R package that is part of another module, see dnase2tf.  This latter one uses a command within R.
 
 
+
 ### cmdstanr
 
 Two steps.  This requires installing the cmdstanr package from a custom repository:
@@ -353,7 +350,7 @@ Two steps.  This requires installing the cmdstanr package from a custom reposito
 Then, downloading the latest CmdStan to `$TOOLDIR/external_tarballs`.  As of this writing, this is
 
     cd $TOOLDIR/external_tarballs
-    wget https://github.com/stan-dev/cmdstan/releases/download/v2.27.0/cmdstan-2.27.0.tar.gz
+    [[ -f cmdstan-2.27.0.tar.gz ]] || wget https://github.com/stan-dev/cmdstan/releases/download/v2.27.0/cmdstan-2.27.0.tar.gz
 
 Add wording to module help to use the following:
 
@@ -369,48 +366,100 @@ R:
 
 You can then use the `backend='cmdstanr'` option with brms functions.
 
+
+
 ### MUVR
 
     devtools::install_gitlab('CarlBrunius/MUVR', dependencies=TRUE)
 
+
+
 ### dyno
 
-    module load ImageMagick/7.0.11-3
-    module load giflib/5.1.4
+    module load ImageMagick/7.0.11-3 giflib/5.1.4
+
     devtools::install_github("dynverse/dyno", dependencies=TRUE)
 
-### DESeq
+This build popped up the message
 
-Deprecated, but several packages still rely on this.  Pull it from the Bioconductor git repository and install it from there.
+    >  devtools::install_github("dynverse/dyno", dependencies=TRUE)
+    >  Downloading GitHub repo dynverse/dyno@HEAD
+    >  These packages have more recent versions available.
+    >  It is recommended to update all of them.
+    >  Which would you like to update?
+    >
+    >  1: All
+    >  2: CRAN packages only
+    >  3: None
+    >  4: dynfeature (1.0.0 -> 62981cef5...) [GitHub]
+    >  5: dynplot    (1.1.1 -> 64670d07a...) [GitHub]
+    >  6: dynwrap    (1.2.2 -> 250758bc1...) [GitHub]
+    >
+    >  Enter one or more numbers, or an empty line to skip updates: 1
 
-    cd /sw/apps/R_packages/external_tarballs
+Had to choose '1' a couple times to get all packages updated ... wait... is dynverse now part of CRAN ?
+
+    module unload ImageMagick giflib
+
+
+2021-09-16: Through the installation of these packages, the counts are
+
+    There are a total of 21044 CRAN and BioConductor packages installed, out of 21594 packages available
+    17700 CRAN packages are installed, out of 18203 available
+    3310 BioConductor-specific packages are installed, out of 3391 available
+
+
+
+### DESeq, xps
+
+Deprecated within BioConductor, but several packages still rely on these.  Pull them from the Bioconductor git repository and install from their clones.
+
+    mkdir $VERSIONDIR/external_tarballs
+    cd $VERSIONDIR/external_tarballs
     git clone https://git.bioconductor.org/packages/DESeq
+    git clone https://git.bioconductor.org/packages/xps
 
-Then within R, in the /sw/apps/R_packages/external_tarballs directory,
+xps requires ROOT/6.22.08.
+
+    module load ROOT/6.22.08
+
+Then within R, in the `$VERSIONDIR/external_tarballs/` directory,
 
     install.packages('DESeq', repos=NULL)
+    install.packages('xps', repos=NULL)
+
+Then
+
+    module unload ROOT/6.22.08
 
 
-### prada, rTANDEM, PGSEA, FunciSNP.data, Roleswitch, easyRNASeq
+
+### KEGG.db, prada, rTANDEM, PGSEA, FunciSNP.data, Roleswitch, easyRNASeq
 
 Deprecated or temporary build problems, but packages still rely on these.  Pull
-them from the Bioconductor git repository and install from there.
+them from the Bioconductor git or tarball repository and install from there.
+KEGG.db is superceded by KEGGREST but PGSEA doesn't know that.
 
-    cd /sw/apps/R_packages/external_tarballs
+    cd $VERSIONDIR/external_tarballs
+    wget --timestamping http://bioconductor.org/packages/3.11/data/annotation/src/contrib/KEGG.db_3.2.4.tar.gz
+    R CMD INSTALL KEGG.db_3.2.4.tar.gz
+
     git clone https://git.bioconductor.org/packages/prada
     git clone https://git.bioconductor.org/packages/PGSEA
     git clone https://git.bioconductor.org/packages/rTANDEM
+    git clone https://git.bioconductor.org/packages/FunciSNP
     git clone https://git.bioconductor.org/packages/FunciSNP.data
     git clone https://git.bioconductor.org/packages/Roleswitch
     git clone https://git.bioconductor.org/packages/easyRNASeq
+    git clone https://git.bioconductor.org/packages/facsDorit
 
-Then within R, in the /sw/apps/R_packages/external_tarballs directory,
+Then within R, in the `$VERSIONDIR/external_tarballs` directory,
 
-    install.packages(c('prada','PGSEA','rTANDEM','FunciSNP.data','Roleswitch','easyRNASeq'), repos=NULL)
+    install.packages(c('prada','PGSEA','rTANDEM','FunciSNP.data','Roleswitch','easyRNASeq','facsDorit','FunciSNP'), repos=NULL)
 
 Once these are installed, others can be installed. This list is incomplete, so a full reinstall is warranted.
 
-    BiocManager::install(c('facsDorit','FunciSNP','miRLAB'), dependencies=TRUE)
+    BiocManager::install(c('miRLAB'), dependencies=TRUE)
 
 
 ### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk

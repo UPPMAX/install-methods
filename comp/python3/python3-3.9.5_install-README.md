@@ -1,5 +1,16 @@
-python/3.8.7
+python3/3.9.5
 ============
+
+<https://python.org/>
+
+Used under license:
+PSF License Agreement
+<https://docs.python.org/3/license.html>
+
+
+
+Starting with this version, abandon the ${VERSION}_${CLUSTER} prefix structure for
+the usual $VERSION/$CLUSTER.
 
 Followed this, 
 
@@ -16,26 +27,25 @@ Neither PYTHONHOME nor LD_LIBRARY_PATH should be set:
   the shared library into the binary using the linker's -rpath option
   (see command below).
 
+Also NOTE: There are some customisations below following the makeroom process
+that matches what we have done for the python module.  This is simply legacy
+stuff, that this python module is structured this way.
+
+
 LOG
 ---
 
-    VERSION=3.8.7
-    cd /sw/comp/python
-    CLUSTER=${CLUSTER?:CLUSTER must be set}
-    VERSIONDIR=${VERSION}_${CLUSTER}
-    mkdir -p $VERSIONDIR
-    [[ $CLUSTER == rackham ]] && for CL in snowy irma bianca ; do ln -s $VERSIONDIR ${VERSION}_${CL} ; done
-    PREFIX=$PWD/$VERSIONDIR
-    chmod g+s $PREFIX
-    cd $PREFIX
-    mkdir src
-    cd src
+    makeroom.sh -f -t python3 -v 3.9.5 -c comp -w https://python.org/ -l "PSF License Agreement"  -L https://docs.python.org/3/license.html -d "Python programming language plus a handful of widely used packages; this module does not conflict with python/x.y.z modules"
+    ./makeroom_python3_3.9.5.sh 
+    source /sw/comp/python/SOURCEME_python3_3.9.5 && cd $TOOLDIR
+    cd $SRCDIR
+
     [[ -f Python-${VERSION}.tgz ]] || wget https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tgz
     rm -rf Python-${VERSION}/
     tar xzf Python-${VERSION}.tgz 
     cd Python-${VERSION}/
     module load sqlite/3.34.0
-    module load gcc/8.3.0   #  required to get around a compilation bug
+    module load gcc/9.3.0   #  required to get around a compilation bug
     SQLITE_LIBDIR=$(pkg-config sqlite3 --variable=libdir)
     ./configure --prefix=$PREFIX --enable-shared --enable-loadable-sqlite-extensions --enable-optimizations LDFLAGS="-Wl,-rpath=$PREFIX/lib,-rpath=$SQLITE_LIBDIR,-rpath=/sw/libs/wxWidgets/lib"
     make && make install
@@ -49,12 +59,12 @@ The load of ATLAS is required for numpy.  The install of `gitpython`,
 [EasyBuild](https://easybuild.readthedocs.io/en/latest/Installation.html#optional-python-packages),
 which seems to build with python2.
 
-    VERSION=3.8.7
+    VERSION=3.9.5
 
     module load ATLAS/3.10.3
     echo ${ATLAS:?ATLAS environment variable must be set}
 
-    module load python/$VERSION
+    module load python3/$VERSION
     which python3
     which pip3
 
@@ -92,17 +102,12 @@ which seems to build with python2.
     pip3 install pytest
 
 
+Add a complete list of installed packages to the module help in the file for this version.  This list is produced with
+
+    pip3 list
+
+
 Now lock it down.
 
-    chmod -R -w /sw/comp/python/${VERSION}_${CLUSTER}
+    chmod -R -w $PREFIX
 
-
-## non-3-suffixed names
-
-For any of the python/3.* packages, we need to provide `python` and other names
-that point correctly to the python/3.* python.  Do *not* do this for the
-python3/3.* packages, which are meant to be loadable next to a python/2.*
-packages.
-
-    cd $PREFIX/bin
-    chmod u+w . && for B in python idle pydoc pip ; do ( test -f ${B}3 && ln -sf ${B}3 ${B} ) ; test -f python3-config && ln -sf python3-config python-config; done ; chmod u-w .

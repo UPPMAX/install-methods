@@ -104,6 +104,7 @@ command = prodigal
     cd $TOOLDIR/v5_lineage_sets/information && find -iname "*.tar.gz" -exec tar xfvz {} \;
     cd $TOOLDIR/v5_lineage_sets/placement_files && find -iname "*.tar.gz" -exec tar xfvz {} \;
     cd $TOOLDIR/v5_lineage_sets/lineages && find -iname "*.tar.gz" -exec tar xfvz {} \;
+    cd $TOOLDIR/v5_lineage_sets/lineages && find -iname "refseq*.gz" -exec gzip -dv {} \;
 
 run $TOOLDIR/v5_lineage_sets/BUSCO-update-v5-lineage-sets.sh
 
