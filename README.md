@@ -45,7 +45,7 @@ The directories contain software installations in major subject areas.
 
 General applications.
 
-### apps/bioinfo/
+### bioinfo/
 
 Bioinformatics applications.
 
@@ -63,9 +63,9 @@ Database directories
 
 These directories cover installations of databases updated either manually, or via update scripts.
 
-### data_uppnex/
+### data/
 
-Installation instructions for databases under `/sw/data/uppnex/`.  Database
+Installation instructions for databases under `/sw/data/`.  Database
 directories containing `*-install-README.md` files are updated manually.
 Database directories containing `*-db-README.md` files and scripts (currently,
 `Kraken`, `diamond_databases` and `RTG`) are updated monthly via crontab entries.
