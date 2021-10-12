@@ -5,8 +5,13 @@ import sqlite3
 import re
 import time
 import shlex
+import sys
 
 # Open database connection
+if not os.path.exists('swdb.db'):
+    print('swdb.db not found',file=sys.stderr)
+    exit(1)
+
 db = sqlite3.connect('swdb.db')
 db.text_factory = str
 
@@ -58,7 +63,8 @@ for row in rows:
                         #print path_to_sw
                         if match_row:
                             path_to_sw = "/" + match_row.group(1)
-                            new_yaml = path_to_sw + 'backup_yamls/' + software + '_' + version + '__' + time.strftime("%Y-%m-%d__%H-%M-%S", time.localtime()) + '.yaml'
+                            new_yaml = path_to_sw + software + '_' + version + '.DRAFT.yaml' 
+                            #+ time.strftime("%Y-%m-%d__%H-%M-%S", time.localtime()) + '.yaml'
                             readme = path_to_sw + software + '-' + version + '_install-README.md'
                             if os.path.isfile(readme) and os.access(readme, os.R_OK):
                                 webpage = '<empty>'
@@ -76,7 +82,7 @@ for row in rows:
                                                     keyword[flag] = i
                                                     print(flag + '  ' + keyword[flag])
                                                     del flag
- #Insert dictionary with all labels from YAML and all flags from makeroom
+ #Insert dictionary with all labels from YAML and all flags from db
                                         match_row = re.match("<(.+?)>",line)
                                         if match_row:
                                             webpage = match_row.group(1)
