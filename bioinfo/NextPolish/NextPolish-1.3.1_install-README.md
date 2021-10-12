@@ -32,6 +32,7 @@ LOG
 
     module load python/3.8.7
     pip install --prefix=$PREFIX psutil
+    pip install --prefix=$PREFIX drmaa
     module load slurm-drmaa/1.1.2-slurm19.05.8
     make
 

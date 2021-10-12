@@ -276,7 +276,7 @@ INSTALLCLUSTER=${CLUSTERS[0]}
 
 for i in ${CLUSTERS[@]}
 do 
-    if [ $i == $CLUSTER ] ; then
+    if [[ $i == $CLUSTER ]] ; then
         INSTALLCLUSTER=$CLUSTER
         break
     fi

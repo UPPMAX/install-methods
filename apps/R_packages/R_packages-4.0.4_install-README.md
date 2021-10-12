@@ -344,10 +344,40 @@ Several R packages found here are not on CRAN or BioConductor, as a result of ei
 * For a "custom" R package that is part of another module, see dnase2tf.  This latter one uses a command within R.
 
 
+### cmdstanr
+
+Two steps.  This requires installing the cmdstanr package from a custom repository:
+
+    install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))
+
+Then, downloading the latest CmdStan to `$TOOLDIR/external_tarballs`.  As of this writing, this is
+
+    cd $TOOLDIR/external_tarballs
+    wget https://github.com/stan-dev/cmdstan/releases/download/v2.27.0/cmdstan-2.27.0.tar.gz
+
+Add wording to module help to use the following:
+
+If you see "Floating point exception" when using functions from the 'brms'
+package, it can be more stable when using the option `backend='cmdstanr'`.  The
+'cmdstanr' package is installed in this module, but in order to use it, you
+must also separately install the tool CmdStan into your home directory. This
+can be installed from an UPPMAX-local file using the following commands within
+R:
+
+    library(cmdstanr)
+    install_cmdstan(release_url="file:///sw/apps/R_packages/external_tarballs/cmdstan-2.27.0.tar.gz")
+
+You can then use the `backend='cmdstanr'` option with brms functions.
+
 ### MUVR
 
     devtools::install_gitlab('CarlBrunius/MUVR', dependencies=TRUE)
 
+### dyno
+
+    module load ImageMagick/7.0.11-3
+    module load giflib/5.1.4
+    devtools::install_github("dynverse/dyno", dependencies=TRUE)
 
 ### DESeq
 

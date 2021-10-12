@@ -7,7 +7,7 @@
 #  Now necessary to use mem512GB node for Kraken2 nt
 #SBATCH -M snowy
 #SBATCH -C mem512GB
-#SBATCH -t 10-00:00:00
+#SBATCH -t 4-00:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL
@@ -55,7 +55,8 @@ for DB_TYPE in nt ; do
     echo "$0 : within $KR_DB_TMP, building $DBNAME into $DB ..."
     /usr/bin/time -v kraken2-build --use-ftp --download-taxonomy --db $DB
     /usr/bin/time -v kraken2-build --use-ftp --download-library $DB_TYPE --db $DB
-    /usr/bin/time -v kraken2-build --use-ftp --build --threads $THREADS --db $DB
+    # /usr/bin/time -v kraken2-build --build --threads $THREADS --db $DB  # known issue gets trapped https://github.com/DerrickWood/kraken2/issues/428  temporary workaround --fast-build
+    /usr/bin/time -v kraken2-build --build --fast-build --threads $THREADS --db $DB
     mv -v ./$DBNAME $K2_DB_BASE/
     cd $K2_DB_BASE/
     echo "$0 : moved $DBNAME into $K2_DB_BASE"

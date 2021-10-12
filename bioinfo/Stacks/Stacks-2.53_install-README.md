@@ -56,5 +56,5 @@ load newer perl and MariaDB prior to installing.
     rm -rf stacks-${VERSION}
 
 
-The mf file should load `perl/5.24.1` and `MariaDB/10.1.29`.
+The mf file should load `perl/5.26.2` and `MariaDB/10.1.29`.
 

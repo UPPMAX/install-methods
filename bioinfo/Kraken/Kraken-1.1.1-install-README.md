@@ -28,3 +28,10 @@ LOG
     cd ..
     [[ -d kraken-$VERSION ]] && rm -rf kraken-$VERSION
 
+
+2021-06-03
+----------
+
+Update `rsync_from_ncbi.pl` from pull request.  New file in
+
+    src/pull-request-258fcf8bdae4498dd655526b692d43481e22362c/rsync_from_ncbi.pl

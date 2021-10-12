@@ -19,44 +19,34 @@ LOG
     source /sw/bioinfo/${TOOL}/SOURCEME_${TOOL}_${version}
 
     cd $PREFIX
-    mkdir sortmerna
+    mkdir -p sortmerna/{rRNA_databases,index}
     wget https://github.com/biocore/sortmerna/releases/download/v4.3.3/sortmerna-4.3.3-Linux.tar.gz
     tar xfvz sortmerna-4.3.3-Linux.tar.gz --strip=1 && rm sortmerna-4.3.3-Linux.tar.gz
 
     cd $SRCDIR
     wget https://github.com/biocore/sortmerna/archive/refs/tags/v4.3.3.tar.gz
     tar xfvz v4.3.3.tar.gz --strip=1 && rm v4.3.3.tar.gz
-    mkdir rRNA_databases
     cp -r data/rRNA_databases/ ${PREFIX}/sortmerna/rRNA_databases
     cp -r include $PREFIX
-
-
-Indexing will occur on the fly in 4.3.3. Just in case I will do the indexing. The index files got their names changed and I changed them back by hand. Since the manual is not available I do not know if this is needed any more.
-    PATH=${PREFIX}/bin:${PATH}
-    cd ${PREFIX}/sortmerna/rRNA_databases
-    for F in *.fasta ; do
-        sortmerna --index 1 --workdir run --ref $F 2>&1 | tee $F.indexlog &
-    done
-    cd run/idx/
-    rename -v 2169995244134016533 rfam-5.8s-database-id98 * 
-    rename -v 13019673092862722585 rfam-5s-database-id98
-    rename -v 13019673092862722585 rfam-5s-database-id98 *
-    rename -v 3436099190853847617 silva-arc-16s-id95 *
-    rename -v 3400685301612210653 silva-arc-23s-id98 *
-    rename -v 17299952793705614139 silva-bac-23s-id98 *
-    rename -v 2700646386527218729 silva-euk-18s-id95 *
-    rename -v 1845323523482939374 silva-euk-28s-id98 *
-    rename -v 15734375058464002811 silva-bac-16s-id90 *
-    mkdir /sw/bioinfo/SortMeRNA/4.3.3/rackham/sortmerna/index
-    cp * /sw/bioinfo/SortMeRNA/4.3.3/rackham/sortmerna/index
-
 
 The reference data is in the source. But now there is now a tar file with more data. Since there is no manual I will just add them to the rRna_database
     cd ${PREFIX}/sortmerna/rRNA_databases
     wget https://github.com/biocore/sortmerna/releases/download/v4.3.3/database.tar.gz
     tar xfvz database.tar.gz  && rm database.tar.gz
 
+Create the index files. Sortmerna has this now built in. Each index gets a random nr assigned. Now you only need to specify the index directory (I am guessing since there are no manual available)
+    PATH=${PREFIX}/bin:${PATH}
+    cd ${PREFIX}/sortmerna/rRNA_databases
+    for F in *.fasta ; do
+        sortmerna --index 1 --workdir $F.run --ref $F 2>&1 | tee $F.indexlog &
+    done
+    find -iname "*.dat" -o -iname "*.stats" -exec cp {} ../index/ \;
+    mkdir indexlog
+    mv *.indexlog indexlog/
 
+
+Correlate index to the random number that sortmerna does. Add index.txt to the mf file
+    grep -i "under index name" *.indexlog | sed 's/^.*name //' | sed 's/\/idx\// /' > index.txt
 
 
 

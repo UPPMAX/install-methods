@@ -44,8 +44,9 @@ cd $K_DB_BASE
 
 # comment kraken-build and uncomment cd;touch to test the script
 # ( cd $VERSION ; touch a1 a2 a3 )
-#/usr/bin/time -v kraken-build --use-wget --download-taxonomy --threads $THREADS --db $K_DB
-/usr/bin/time -v kraken-build --use-wget --standard --threads $THREADS --db $K_DB
+# Attempt three restarts of each build
+/usr/bin/time -v kraken-build --use-wget --download-taxonomy --threads $THREADS --db $K_DB || ( sleep 120; /usr/bin/time -v kraken-build --use-wget --download-taxonomy --threads $THREADS --db $K_DB || ( sleep 240; /usr/bin/time -v kraken-build --use-wget --download-taxonomy --threads $THREADS --db $K_DB ) )
+/usr/bin/time -v kraken-build --use-wget --standard --threads $THREADS --db $K_DB || ( sleep 120; /usr/bin/time -v kraken-build --use-wget --standard --threads $THREADS --db $K_DB || ( sleep 240; /usr/bin/time -v kraken-build --use-wget --standard --threads $THREADS --db $K_DB ) )
 
 rm -f latest
 ln -sf ./$VERSION latest

@@ -89,6 +89,7 @@ which seems to build with python2.
     pip3 install graphviz
     pip3 install cget
     pip3 install pyqt5
+    pip3 install pytest
 
 
 Now lock it down.
