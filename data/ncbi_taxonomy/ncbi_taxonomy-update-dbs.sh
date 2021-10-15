@@ -194,7 +194,7 @@ mv $TMPDIR $NEWVERSION
 make_latest_symlink  "$NEWVERSION"
 
 chgrp -hR sw .
-chmod -R u+rwX,g+rwX,o+rX .
+chmod -R u+rwX,g+rwX,o+rX-w .
 find . -type d -exec chmod g+s {} \;
 echo "Done."
 
