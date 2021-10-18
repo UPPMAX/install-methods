@@ -1,0 +1,2 @@
+# Update nf-core pipelines every Sunday at 00.00 (niharika)
+ 0 0 * * SUN /sw/bioinfo/nf-core-pipelines/latest/src/run_update_cronjob.sh
