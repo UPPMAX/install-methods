@@ -23,6 +23,14 @@ LOG
     ./makeroom_metaeuk_4-a0f584d.sh
 
 
+For Rackham
     cd $SRCDIR
+    wget https://github.com/soedinglab/metaeuk/releases/download/5-34c21f2/metaeuk-linux-avx2.tar.gz
     tar xfvz metaeuk-linux-avx2.tar.gz --strip 1 -C $PREFIX
+
+For Snowy, Irma and Bianca
+    cd $SRCDIR
+    wget https://github.com/soedinglab/metaeuk/releases/download/5-34c21f2/metaeuk-linux-sse41.tar.gz
+    tar xfvz metaeuk-linux-sse41.tar.gz --strip 1 -C $TOOLDIR/4-a0f584d/snowy/
+
 

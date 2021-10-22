@@ -58,8 +58,10 @@ command = tblastn
 path = /sw/bioinfo/blast/2.11.0+/rackham/bin/
 command = makeblastdb
 
+# Two versions of metaeuk on Rackham and snowy. 
 [metaeuk]
 path = /sw/bioinfo/metaeuk/4-a0f584d/rackham/bin/
+path = /sw/bioinfo/metaeuk/4-a0f584d/snowy/bin/
 command = metaeuk
 
 [augustus]
@@ -93,6 +95,24 @@ command = run_sepp.py
 [prodigal]
 path = /sw/bioinfo/prodigal/2.6.3/rackham/bin/
 command = prodigal
+
+# 2021-10-21
+# On snowy you need a modified config.ini. Metaeuk has two compiled versions one with AVX2 (Rackham) and SSE4 (Snowy)
+    unlink irma
+    unlink bianca
+    unlink snowy
+    mkdir  snowy
+    cd snowy/
+    ln -s ../rackham/{lib,bin} .
+    cp ../rackham/config.ini .
+# Add the metaeuk snowy path to the config.ini file.
+# path = /sw/bioinfo/metaeuk/4-a0f584d/snowy/bin/
+
+
+
+
+
+
 
 
 

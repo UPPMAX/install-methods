@@ -159,12 +159,32 @@ Then, a single run of the steps in inst.R to get another listing of packages
 that could not be installed. This output is `sink()`d to 20210409.out and will
 be consulted after the round of installations.
 
+Further runs give
+
+    18173 CRAN packages are installed, out of 18262 available
+    3382 BioConductor-specific packages are installed, out of 3391 available
+
+
+  dependencies �genoset�, �bigmemoryExtras�, �RSVGTipsDevice�, �heatmap.plus�, �synapter� are not available
+  2: In .inet_warning(msg) : installation of one or more packages failed,
+    probably �affyPara�, �archive�, �clpAPI�, �cplexAPI�, �gpg�, �gpuMagic�, �HierO�, �HilbertVisGUI�, �image.textlinedetector�, �kmcudaR�, �methyAnalysis�, �odbc�, �OpenCL�, �opencv�, �permGPU�, �rawrr�, �Rcplex�, �RcppMeCab�, �redland�, �redux�, �rGEDI�, �RmecabKo�, �RmiR�, �RODBC�, �ROracle�, �RQuantLib�, �rrd�, �RVowpalWabbit�, �ssh�, �string2path�, �SwimR�, �synapterdata�, �tesseract�, �Travel�, �basifoR�, �bcputility�, �datapack�, �datrProfile�, �dbparser�, �doRedis�, �dplyr.teradata�, �drfit�, �explore�, �gde�, �htsr�, �ibmdbR�, �ImportExport�, �memapp�, �mixsep�, �MSSQL�, �mssqlR�, �neo4jshell�, �openSkies�, �ora�, �plumberDeploy�, �podr�, �qsub�, �rdflib�, �RODBCDBI�, �RODM�, �ROI.plugin.clp�,  [... truncated]
+
+
+rgl
+---
+
+For whatever reason, `rgl` cannot be loaded when built with a viewer.  So, install with OpenGL disabled.
+
+
+    BiocManager::install('rgl', configure.args='--with-x --disable-opengl')
+
+
 
 
 Installation which requires additional modules
 ----------------------------------------------
 
-A few R packages or their dependencies require some further loads.
+A number of R packages or their dependencies require some further loads.
 
 
 
@@ -224,6 +244,26 @@ Outside R:
     module unload rust
 
 This rust module version should also be noted in the module help where we mention baseflow.
+
+
+
+### BRugs
+
+Load the OpenBUGS module.
+
+Outside R:
+
+    module load OpenBUGS/3.2.3
+
+Inside R:
+
+    BiocManager::install(c("BRugs"), dependencies=TRUE)
+
+Outside R:
+
+    module unload OpenBUGS
+
+This OpenBUGS module version should also be noted in the module help.
 
 
 
@@ -440,6 +480,7 @@ Deprecated or temporary build problems, but packages still rely on these.  Pull
 them from the Bioconductor git or tarball repository and install from there.
 KEGG.db is superceded by KEGGREST but PGSEA doesn't know that.
 
+    mkdir -p $VERSIONDIR/external_tarballs
     cd $VERSIONDIR/external_tarballs
     wget --timestamping http://bioconductor.org/packages/3.11/data/annotation/src/contrib/KEGG.db_3.2.4.tar.gz
     R CMD INSTALL KEGG.db_3.2.4.tar.gz
@@ -452,14 +493,16 @@ KEGG.db is superceded by KEGGREST but PGSEA doesn't know that.
     git clone https://git.bioconductor.org/packages/Roleswitch
     git clone https://git.bioconductor.org/packages/easyRNASeq
     git clone https://git.bioconductor.org/packages/facsDorit
+    git clone https://git.bioconductor.org/packages/destiny
+    git clone https://git.bioconductor.org/packages/metagenomeFeatures
+    git clone https://git.bioconductor.org/packages/RDAVIDWebService
 
-Then within R, in the `$VERSIONDIR/external_tarballs` directory,
+Then within R, in the same `$VERSIONDIR/external_tarballs` directory,
 
-    install.packages(c('prada','PGSEA','rTANDEM','FunciSNP.data','Roleswitch','easyRNASeq','facsDorit','FunciSNP'), repos=NULL)
+    install.packages(c('prada','PGSEA','rTANDEM','FunciSNP.data','Roleswitch','easyRNASeq','facsDorit','FunciSNP','destiny','metagenomeFeatures','RDAVIDWebService'), repos=NULL)
 
-Once these are installed, others can be installed. This list is incomplete, so a full reinstall is warranted.
+Once these are installed, many others can be installed.  A full rerun of the installation script is warranted.
 
-    BiocManager::install(c('miRLAB'), dependencies=TRUE)
 
 
 ### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk

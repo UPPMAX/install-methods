@@ -49,21 +49,24 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
 
     cd /sw/data
 
+    ###  Commented-out databases should be brought in as well
+    # find Atmosphere          ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find BioBakery_data     ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find Chromium           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find Centrifuge-indices ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find ExAC               ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find Pfam               ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find SGDP               ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find annovar_data       ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find cdd                ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find dbCAN              ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find annovar            ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find panther            ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find eggNOG             ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find eggNOG_data        ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find gnomad_data        ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find igenomes           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find krakenuniqDB       ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find panther            ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find silva              ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    ###  The following should eventually get brought in as well
     # find dbSNP ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find SGDP ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find blast_databases ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find chembl ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find piper_references ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find pph2-db ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
@@ -87,15 +90,17 @@ function data_update() {
 }
 
 # These databases are in /sw/data and update via crontab with an update
-# script.  Update the repository copy of their READMEs, scripts and other
+# script, OR these are additional scripts harvested from databases examined above.
+# Update the repository copy of their READMEs if necessary, scripts and other
 # files.
 
 cd $DATA_REPOSITORY
 
-data_update  /sw/data/Kraken             Kraken-db-README.md    Kraken-update-db.sh    
-data_update  /sw/data/Kraken2            Kraken2-db-README.md   Kraken2-update-db.sh    Kraken2-update-nt.sh
-data_update  /sw/data/diamond_databases  diamond-db-README.md   diamond-update-dbs.sh   diamond-check-dbs.sh
+data_update  /sw/data/SGDP               check_md5s.pl   # additional script, README harvested above
+data_update  /sw/data/Kraken_data        Kraken-db-README.md    Kraken-update-db.sh    
+data_update  /sw/data/Kraken2_data       Kraken2-db-README.md   Kraken2-update-db.sh    Kraken2-update-nt.sh
 data_update  /sw/data/RTG                RTG-db-README.md       RTG-update-dbs.sh      
+data_update  /sw/data/diamond_databases  diamond-db-README.md   diamond-update-dbs.sh   diamond-check-dbs.sh
 
 data_update  /sw/data/blast_scripts      README.md README-uniprot.md update_blastdb.sh update_blastdb-uniprot.sh uniprot.mk install_blastdb.sh remove_old_blastdb.sh cron-wrapper.sh crontab.txt test/test_blastdb.sh test/prots.fa test/nucls.fa test/*.out webpage.mk webpage.md webpage.html
 
@@ -118,5 +123,5 @@ DATA_OTHER_REPOSITORY="$REPOSITORY/data_other"
 
 cd $DATA_OTHER_REPOSITORY
 
-data_update  /sw/bioinfo/BUSCO  BUSCO-db-README.md v1_lineage_sets/BUSCO-update-v1-lineage-sets.sh v2_lineage_sets/BUSCO-update-v2-lineage-sets.sh 
+data_update  /sw/bioinfo/BUSCO  BUSCO-db-README.md v1_lineage_sets/BUSCO-update-v1-lineage-sets.sh v2_lineage_sets/BUSCO-update-v2-lineage-sets.sh v4_lineage_sets/BUSCO-update-v4-lineage-sets.sh v5_lineage_sets/BUSCO-update-v5-lineage-sets.sh 
 

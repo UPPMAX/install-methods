@@ -100,6 +100,7 @@ which seems to build with python2.
     pip3 install cget
     pip3 install pyqt5
     pip3 install pytest
+    pip3 install natsort
 
 
 Add a complete list of installed packages to the module help in the file for this version.  This list is produced with
