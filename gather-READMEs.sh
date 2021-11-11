@@ -52,13 +52,13 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
     cd /sw/data
 
     ###  Commented-out databases should be brought in as well
-    # find Atmosphere          ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find BioBakery_data     ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find Chromium           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find Centrifuge-indices ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find ExAC               ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find Pfam               ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find SGDP               ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find WPS-geog           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find annovar_data       ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find cdd                ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find dbCAN              ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY

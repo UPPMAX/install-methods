@@ -165,8 +165,8 @@ Further runs give
     3382 BioConductor-specific packages are installed, out of 3391 available
 
 
-  dependencies �genoset�, �bigmemoryExtras�, �RSVGTipsDevice�, �heatmap.plus�, �synapter� are not available
-  2: In .inet_warning(msg) : installation of one or more packages failed,
+    dependencies �genoset�, �bigmemoryExtras�, �RSVGTipsDevice�, �heatmap.plus�, �synapter� are not available
+    2: In .inet_warning(msg) : installation of one or more packages failed,
     probably �affyPara�, �archive�, �clpAPI�, �cplexAPI�, �gpg�, �gpuMagic�, �HierO�, �HilbertVisGUI�, �image.textlinedetector�, �kmcudaR�, �methyAnalysis�, �odbc�, �OpenCL�, �opencv�, �permGPU�, �rawrr�, �Rcplex�, �RcppMeCab�, �redland�, �redux�, �rGEDI�, �RmecabKo�, �RmiR�, �RODBC�, �ROracle�, �RQuantLib�, �rrd�, �RVowpalWabbit�, �ssh�, �string2path�, �SwimR�, �synapterdata�, �tesseract�, �Travel�, �basifoR�, �bcputility�, �datapack�, �datrProfile�, �dbparser�, �doRedis�, �dplyr.teradata�, �drfit�, �explore�, �gde�, �htsr�, �ibmdbR�, �ImportExport�, �memapp�, �mixsep�, �MSSQL�, �mssqlR�, �neo4jshell�, �openSkies�, �ora�, �plumberDeploy�, �podr�, �qsub�, �rdflib�, �RODBCDBI�, �RODM�, �ROI.plugin.clp�,  [... truncated]
 
 
@@ -387,9 +387,9 @@ Two steps.  This requires installing the cmdstanr package from a custom reposito
 
     install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))
 
-Then, downloading the latest CmdStan to `$TOOLDIR/external_tarballs`.  As of this writing, this is
+Then, downloading the latest CmdStan to `$TOOLDIR/external`.  As of this writing, this is
 
-    cd $TOOLDIR/external_tarballs
+    cd $TOOLDIR/external
     [[ -f cmdstan-2.27.0.tar.gz ]] || wget https://github.com/stan-dev/cmdstan/releases/download/v2.27.0/cmdstan-2.27.0.tar.gz
 
 Add wording to module help to use the following:
@@ -402,7 +402,7 @@ can be installed from an UPPMAX-local file using the following commands within
 R:
 
     library(cmdstanr)
-    install_cmdstan(release_url="file:///sw/apps/R_packages/external_tarballs/cmdstan-2.27.0.tar.gz")
+    install_cmdstan(release_url="file:///sw/apps/R_packages/external/cmdstan-2.27.0.tar.gz")
 
 You can then use the `backend='cmdstanr'` option with brms functions.
 
@@ -454,8 +454,8 @@ Had to choose '1' a couple times to get all packages updated ... wait... is dynv
 
 Deprecated within BioConductor, but several packages still rely on these.  Pull them from the Bioconductor git repository and install from their clones.
 
-    mkdir $VERSIONDIR/external_tarballs
-    cd $VERSIONDIR/external_tarballs
+    mkdir $VERSIONDIR/external
+    cd $VERSIONDIR/external
     git clone https://git.bioconductor.org/packages/DESeq
     git clone https://git.bioconductor.org/packages/xps
 
@@ -463,7 +463,7 @@ xps requires ROOT/6.22.08.
 
     module load ROOT/6.22.08
 
-Then within R, in the `$VERSIONDIR/external_tarballs/` directory,
+Then within R, in the `$VERSIONDIR/external/` directory,
 
     install.packages('DESeq', repos=NULL)
     install.packages('xps', repos=NULL)
@@ -480,8 +480,8 @@ Deprecated or temporary build problems, but packages still rely on these.  Pull
 them from the Bioconductor git or tarball repository and install from there.
 KEGG.db is superceded by KEGGREST but PGSEA doesn't know that.
 
-    mkdir -p $VERSIONDIR/external_tarballs
-    cd $VERSIONDIR/external_tarballs
+    mkdir -p $VERSIONDIR/external
+    cd $VERSIONDIR/external
     wget --timestamping http://bioconductor.org/packages/3.11/data/annotation/src/contrib/KEGG.db_3.2.4.tar.gz
     R CMD INSTALL KEGG.db_3.2.4.tar.gz
 
@@ -497,7 +497,7 @@ KEGG.db is superceded by KEGGREST but PGSEA doesn't know that.
     git clone https://git.bioconductor.org/packages/metagenomeFeatures
     git clone https://git.bioconductor.org/packages/RDAVIDWebService
 
-Then within R, in the same `$VERSIONDIR/external_tarballs` directory,
+Then within R, in the same `$VERSIONDIR/external` directory,
 
     install.packages(c('prada','PGSEA','rTANDEM','FunciSNP.data','Roleswitch','easyRNASeq','facsDorit','FunciSNP','destiny','metagenomeFeatures','RDAVIDWebService'), repos=NULL)
 
@@ -505,7 +505,7 @@ Once these are installed, many others can be installed.  A full rerun of the ins
 
 
 
-### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk
+### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk, SeuratWrappers
 
 Github-hosted packages.  Load hdf5/1.10.5 since loomR uses hdf5r.
 
@@ -516,28 +516,21 @@ Github-hosted packages.  Load hdf5/1.10.5 since loomR uses hdf5r.
     devtools::install_github("akdess/CaSpER")
     devtools::install_github("mojaveazure/loomR", ref = "develop")
     devtools::install_github("mojaveazure/seurat-disk")
+    remotes::install_github("satijalab/seurat-wrappers")
 
 
 ### HDL
 
 A github repository that contains as a subdirectory a CRAN-like repository
-directory.  Create a new `external_repositories` directory within VERSIONDIR
+directory.  Create a new `external` directory within VERSIONDIR
 and clone the HDL repository there.  **NOTE: there is no need to do this.**
 
     cd $VERSIONDIR
-    mkdir -p external_repositories
-    cd external_repositories
+    mkdir -p external
+    cd external
     module load git/2.28.0
     git clone https://github.com/zhenin/HDL
     cd HDL
-
-**For 4.0.4** since I copied this directory over from 4.0.0, just do a git pull to
-update the repository and install from there.
-
-    cd $VERSIONDIR/external_repositories
-    module load git/2.28.0
-    cd HDL
-    git pull
 
 Then, install the HDL repository from this subdirectory using standard R
 procedures.
@@ -554,17 +547,16 @@ Make sure this loads correctly:
 
 The repository also contains some scripts and datasets that the users may wish
 to use.  Added a note to the module help, and defined the new mf file variable
-`reposroot` to point to `$VERSIONDIR/external_repositories`.
+`reposroot` to point to `$VERSIONDIR/external`.
 
 
 ### velocyto.R
 
-No change to the source here since R_packages/4.0.0.  Build with the newer
-toolchain though for /4.0.4.
-
-This needed `hdf5r` installed, see above.  It also expects boost to be in a
-system location, so we must load a boost module and install velocyto.R from my
-own fork so that it recognises `BOOST_ROOT`.
+I forked the https://github.com/velocyto-team/velocyto.R repository to
+https://github.com/douglasgscofield/velocyto.R to enable building off
+`BOOST_ROOT` and there have been no further changes to the original repository
+at least since R_packages/4.0.0. Build with newer toolchain here.  This needs
+`hdf5r` installed, see above.
 
 Outside R, load the boost module compatible with the version of gcc used to build R:
 
@@ -577,12 +569,14 @@ Then inside R:
 And verify outside R:
 
     module unload boost
-    ldd /sw/apps/R_packages/4.0.4/rackham/velocyto.R/libs/velocyto.R.so
+    ldd /sw/apps/R_packages/4.1.1/rackham/velocyto.R/libs/velocyto.R.so
 
 
 ### ASCAT
 
-Install a non-CRAN package ASCAT, hosted on github.  Download the latest release here (https://github.com/Crick-CancerGenomics/ascat/releases).
+Install a non-CRAN package ASCAT, hosted on github.  Download the latest
+release here (https://github.com/Crick-CancerGenomics/ascat/releases).  No more
+recent release since 2.5.2 we already have.
   
     mkdir -p /sw/apps/R_packages/external_tarballs
     cd /sw/apps/R_packages/external_tarballs
@@ -616,16 +610,16 @@ A deprecated package at CRAN.
 ### dnase2tf
 
 Added the module dnase2tf from the source under source tree directory for
-calcDFT/1.0.1.
+calcDFT/1.0.1.  No update since 1.0.1.
 
 Inside R:
 
-    install.packages('/sw/bioinfo/calcDFT/1.0.1/src/dnase2tf', repos = NULL, type="source")
+    install.packages('/sw/bioinfo/calcDFT/1.0.1/src/dnase2tf', repos=NULL, type="source")
 
 
 ### rrbgen
 
-Install rrbgen for reading BGEN files, hosted on github.
+Install rrbgen for reading BGEN files, hosted on github. No update since 0.0.6.
 
     mkdir -p /sw/apps/R_packages/external_tarballs
     cd /sw/apps/R_packages/external_tarballs
@@ -674,7 +668,7 @@ and then within R
 
     mkdir -p /sw/apps/R_packages/external_tarballs
     cd /sw/apps/R_packages/external_tarballs
-    EASYQC_VERSION=9.2
+    EASYQC_VERSION=23.8
     [[ -f EasyQC_${EASYQC_VERSION}.tar.gz ]] || wget --timestamping https://homepages.uni-regensburg.de/~wit59712/easyqc/EasyQC_${EASYQC_VERSION}.tar.gz
     R CMD INSTALL EasyQC_${EASYQC_VERSION}.tar.gz
 
@@ -684,9 +678,9 @@ and then within R
 Adding a new package
 ---------------
 
-Do everything above between lines 16 and 33, from `VERSION=` through `echo -e`.
-Load R, then for both CRAN and BioConductor packages, we use
-`BiocManager::install()` which ultimately uses R's own `install.packages()`.
+Soruce `$VERSIONDIR/source-for-setup`.  Load R, then for both CRAN and
+BioConductor packages, we use `BiocManager::install()` which ultimately uses
+R's own `install.packages()`.
 
 
     new.packages = c('package_a')
@@ -703,20 +697,16 @@ After adding new packages
 Within R, get a list of installed packages and their versions.  This
 modification produces a case-insensitive sorted list.
 
-    cd /sw/apps/R_packages/$VERSION 
+    cd $VERSIONDIR
     ./installed.R -c | tee counts.txt
     ./installed.R -t > table.txt
     ../create_html_table.pl table.txt > table.html
 
 Add this to the appropriate section of <http://www.uppmax.uu.se/support/user-guides/r_packages-module-guide/>
 
-Set the cluster directory contents to be write-protected.  We do this (like for
-perl_modules) so that members of the `sw` group can't inadvertently overwrite
-module contents when installing packages for themselves.
-
-    chmod -R -w .
-
-Repeat for rackham.  Don't forget to write-protect!
+We do not need to write-protect this module any longer, as its contents are
+provided through `R_LIBS_SITE`, which is not used as a possible location for
+user installations.
 
 
 Note about the mf file
