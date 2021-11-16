@@ -6,6 +6,8 @@ import re
 import sys
 import shlex
 import shutil
+import time
+import chardet
 
 # Open database connection
 if not os.path.exists('swdb.db'):
@@ -38,6 +40,7 @@ version = {}
 license = {}
 licenseURL = {}
 section = {}
+listcluster = {}
 #('cellranger-ATAC_1.2.0', 'https://support.10xgenomics.com/single-cell-atac/software/pipelines/latest/what-is-cell-ranger-atac', 'Cell Ranger ATAC', 'cellranger-ATAC', 'Rackham, Irma, Bianca, Snowy', '1.2.0', 'Misc non-commercial', '', 'Bioinformatics Misc')
 #(key, web, name, module, clusters, version, lic, licURL, section))
 
@@ -47,7 +50,6 @@ sql = """CREATE TABLE clusters (key  CHAR(120) NOT NULL, cluster  CHAR(40) NOT N
 cursor.execute(sql)
 sql = "INSERT INTO clusters (key, cluster) VALUES (?, ?)"
 for entry in webpagerows:
-#    print(entry)
     key = entry[0]
     webpage[key] = entry[1]
     software[key] = entry[2]
@@ -57,15 +59,7 @@ for entry in webpagerows:
     license[key] = entry[6]
     licenseURL[key] = entry[7]
     section[key] = entry[8]
-#    print('Webpage:   ' + license[key] + '      ' + key)
-    listcluster = clusters[key].split(", ")
-#    for cluster in listcluster:
-#        try:
-#            cursor.execute(sql, (key, cluster))
-#            db.commit()
-#        except:
-#            print("ERROR SW!\n")
-#            db.rollback()
+    listcluster[key] = clusters[key].split(", ")
 
 # Create table as per requirement
 cursor.execute("DROP TABLE IF EXISTS modfiles")
@@ -79,83 +73,128 @@ except:
     print("ERROR SW!\n")
     db.rollback()
 
-sql = """SELECT * FROM mftree WHERE module IN modfiles"""
+################## I think this just selects stuff not in both
+#sql = """SELECT * FROM mftree WHERE module IN modfiles"""
+################## so instead ##########################
+sql = """SELECT * FROM mftree"""
 
 cursor.execute(sql)
-rows = cursor.fetchall()
-for row in rows:
+rows_from_mftree = cursor.fetchall()
+
+##################### Set output and other stuff for logging #####################
+original_stdout = sys.stdout
+logfile = 'YAML_LOG' + time.strftime("%Y-%m-%d__%H-%M", time.localtime()) + '.log'
+log = open(logfile, 'w')
+
+################### Silly print ####################
+#for key in software:
+#    print(key)
+#for row in software:
+#    print(row)
+#with open('webpagerows','w')as web:
+#    for entry in webpagerows:
+#        print(entry, file=web)
+#with open('mftreerows','w')as mff:
+#    for row in rows_from_mftree:
+#        print(row, file=mff)
+
+nr=0
+for row in rows_from_mftree:
+#    nr = nr + 1
+#    print(nr)
+#    print(row)
 #    ('spaceranger-data_1.0.0', 'spaceranger-data', 'snowy', '1.0.0', '/sw/mf/snowy/data/spaceranger-data')
     mftree_dir = row[-1]
-    key = row[0]
-    mftree_software = row[1]
+    mftree_key = row[0]
+    mftree_tool = row[1]
     mftree_server = row[2]
     mftree_version = row[3]
+#    print(mftree_key)
+    #### Kolla om mftree_key finns i website dictsen ovan. Om inte, kolla om det finns en yaml redan. Om inte det heller, skapa en från README-filen
+    if mftree_key not in version:
+        print("Key: " + mftree_key + " from mftree not in website version", file=log)
+    else:
+        mf_with_path = os.path.join(mftree_dir, version[mftree_key])
+        ############### Check the actual files inside the path we got from the mftree ###########################
+        if os.path.isdir(mftree_dir):
+            for ver_loop in os.listdir(mftree_dir):
+                mf_with_path = os.path.join(mftree_dir, ver_loop)
+                if os.path.isfile(mf_with_path) and not os.access(mf_with_path, os.R_OK):
+                    print('ERROR: ' + mf_with_path + ' is not readable', file=log)
+                #################### Scan the mf file for the path in the software tree ###########################
+                if os.path.isfile(mf_with_path) and os.access(mf_with_path, os.R_OK):
+                    string = os.popen('file -bi ' + os.path.realpath(mf_with_path)).read()
+                    if (('us-ascii' not in string) and ('utf-8' not in string)):
+                        print('WARNING: ' + os.path.realpath(mf_with_path) + ' is not ascii or utf-8, but ' + string, file=log)
+                    with open(mf_with_path, encoding="latin-1", errors="surrogateescape") as mffile:
+                        for line in mffile:
+                            match_row = re.match("set\W+modroot\W+(.+?)\$",line)
+                            if match_row:
+                                path_to_sw = "/" + match_row.group(1)
+                                new_yaml = path_to_sw + mftree_tool + '_' + ver_loop + '.DRAFT.yaml' 
+                                readme = path_to_sw + mftree_tool + '-' + ver_loop + '_install-README.md'
+                                ######### If we want to search the README for info from running makeroom ##############
+                                #if os.path.isfile(readme) and os.access(readme, os.R_OK):
+                                #    webpage = '<empty>'
+                                #    with open(readme) as readmefile:
+                                #        for line in readmefile:
+                                #            match = re.search('/makeroom.sh',line)
+                                #            if match:
+                                #                linesplit = line.replace('-f"', '-f')
+                                #                linesplit = shlex.split(linesplit)
+                                #                keyword = {}
+                                #                for i in linesplit:
+                                #                    if re.match("^-\w$",i):
+                                #                        flag = i
+                                #                    elif 'flag' in locals():
+                                #                        keyword[flag] = i
+                                #                        #print(flag + '  ' + keyword[flag])
+                                #                        del flag
+                                #            match_row = re.match("<(.+?)>",line)
+                                #            if match_row:
+                                #                webpage = match_row.group(1)
+                                ######## Here the README analysis ends #####################
+                                postinstall = path_to_sw + mftree_tool + '-' + ver_loop + '_post-install.sh'
+                                if not os.path.isfile(readme) or not os.access(readme, os.R_OK):
+                                    readme = ''
+                                if not os.path.isfile(postinstall) or not os.access(postinstall, os.R_OK):
+                                    postinstall = ''
+                                local = path_to_sw + "/mf" + ver_loop
+                                if not os.path.isfile(local) or not os.access(local, os.R_OK):
+                                    local = ''
+                                yaml = path_to_sw + mftree_tool + '-' + ver_loop + '.yaml'
 
-#### Kolla om key finns i website dictsen ovan. Om inte, kolla om det finns en yaml redan. Om inte det heller, skapa en från README-filen
-
-#    if key not in mftree_version:
-#        print(key + " not in version from mftree")
-#    else:
-#        print(version[key])
-#        print('MF:    ' + key  + '     ' + version[key])
-#        mf_with_path = os.path.join(mftree_dir, version[key])
-
-############### Check the actual files inside the path we got from the mftree ###########################
-
-    if os.path.isdir(mftree_dir):
-        for ver_loop in os.listdir(mftree_dir):
-            mf_with_path = os.path.join(mftree_dir, ver_loop)
-#            print("Directory: " + mftree_dir + " Version: " + ver_loop + " Full: " + mf_with_path)
-            if os.path.isfile(mf_with_path) and not os.access(mf_with_path, os.R_OK):
-                print('ERROR: ' + mf_with_path + ' is not readable')
-
-#################### Scan the mf file for the path in the software tree #################################
-
-            if os.path.isfile(mf_with_path) and os.access(mf_with_path, os.R_OK):
-                with open(mf_with_path) as mffile:
-                    for line in mffile:
-                        match_row = re.match("set\W+modroot\W+(.+?)\$",line)
-                        if match_row:
-                            path_to_sw = "/" + match_row.group(1)
-                            new_yaml = path_to_sw + mftree_software + '_' + ver_loop + '.DRAFT.yaml' 
-                            #+ time.strftime("%Y-%m-%d__%H-%M-%S", time.localtime()) + '.yaml'
-                            readme = path_to_sw + mftree_software + '-' + ver_loop + '_install-README.md'
-                            if os.path.isfile(readme) and os.access(readme, os.R_OK):
-                                webpage = '<empty>'
-                                with open(readme) as readmefile:
-                                    for line in readmefile:
-                                        match = re.search('/makeroom.sh',line)
-                                        if match:
-                                            linesplit = line.replace('-f"', '-f')
-                                            linesplit = shlex.split(linesplit)
-                                            keyword = {}
-                                            for i in linesplit:
-                                                if re.match("^-\w$",i):
-                                                    flag = i
-                                                elif 'flag' in locals():
-                                                    keyword[flag] = i
-                                                    print(flag + '  ' + keyword[flag])
-                                                    del flag
- #Insert dictionary with all labels from YAML and all flags from db
-                                        match_row = re.match("<(.+?)>",line)
-                                        if match_row:
-                                            webpage = match_row.group(1)
-#                                            print('Readme at ' + readme + ' with webpage as ' + webpage)
-                            postinstall = path_to_sw + mftree_software + '-' + ver_loop + '_post-install.sh'
-#                            if os.path.isfile(postinstall) and os.access(postinstall, os.R_OK):
-#                                print('Postinstall at ' + postinstall)
-#                            yaml = path_to_sw + mftree_software + '-' + ver_loop + '.yaml'
-
-###################### Make all the files #################################
-                            if os.path.isdir(path_to_sw) and os.access(path_to_sw, os.W_OK):
-                                with open(new_yaml, 'w') as the_file:
-                                    the_file.write('Hello\n')
-                            else:
-                                print(path_to_sw + " does not exist\n")
+    ###################### Make all the files #################################
+                                if os.path.isdir(path_to_sw) and os.access(path_to_sw, os.W_OK):
+                                    with open(new_yaml, 'w') as the_file:
+                                        the_file.write(' - TOOL:' + mftree_tool + "\n")
+                                        the_file.write(' - VERSION:' + version[mftree_key] + "\n")
+                                        the_file.write(' - MODULE:' + module[mftree_key] + "\n")
+                                        the_file.write(' - CLUSTER:' + "\n")
+                                        for clu in listcluster[mftree_key]:
+                                            regexp = "(\S+)" + re.escape(clu) + "(\S+)"
+                                            match_cluster = re.match(regexp, mftree_dir, re.IGNORECASE)
+                                            if match_cluster:
+                                                common = match_cluster.group(1) + "common" + match_cluster.group(2)
+                                            the_file.write('    - ' + clu + "\n")
+                                        the_file.write(' - LICENSE:' + license[mftree_key] + "\n")
+                                        the_file.write(' - LICENSEURL:' + licenseURL[mftree_key] + "\n")
+                                        the_file.write(' - USERGROUP:sw' + "\n")
+                                        the_file.write(' - USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w' + "\n")
+                                        the_file.write(' - WEBSITE:' + webpage[mftree_key] + "\n")
+                                        the_file.write(' - LOCAL:' + local + "\n")
+                                        the_file.write(' - SECTION:' + section[mftree_key] + "\n")
+                                        the_file.write(' - POSTINSTALL:' + postinstall + "\n")
+                                        the_file.write(' - README:' + readme + "\n")
+                                        if os.path.isfile(common) and os.access(common, os.R_OK):
+                                            the_file.write(' - COMMON:' + common + "\n")
+                                        the_file.write(' - DESCRIPTION:' + software[mftree_key] + "\n")
+                                else:
+                                    print(path_to_sw + " does not exist", file=log)
 
 ###################### Save all the files #################################
 #                            if os.path.isdir(path_to_sw) and os.access(path_to_sw, os.W_OK):
-#                                snap = path_to_sw + '.snapshot/hourly.2021-11-11_1405/' + mftree_software + '-' + ver_loop + '.yaml'
+#                                snap = path_to_sw + '.snapshot/hourly.2021-11-11_1405/' + mftree_tool + '-' + ver_loop + '.yaml'
 #                                if os.path.isfile(yaml):
 #                                    if len(open(yaml).readlines(  ))==1:
 #                                        os.remove(yaml)
@@ -173,8 +212,21 @@ for row in rows:
 #                                print('Yaml at ' + yaml)
 #                            else: 
 #                                print('New yaml at ' + new_yaml)
-#                            print(key + ' ' + mftree_software + ' ' + server + ' ' + ver_loop + ' ' + mftree_dir + ' ' + section[key] + ' ' + license[key])
-                                        
+#                            print(key + ' ' + mftree_tool + ' ' + server + ' ' + ver_loop + ' ' + mftree_dir + ' ' + section[key] + ' ' + license[key])
+                
+log.close()
+
+
+
+
+
+
+
+
+
+
+
+
 #Insert dictionary with all labels from YAML and all flags from db
 #     key            TOOL_ver_loop
 #     software       TOOL
