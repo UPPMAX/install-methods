@@ -55,7 +55,7 @@ for root, dirs, files in os.walk("/sw/mf/", topdown=True):
         for f in files:
             fullpath = root + "/" + f
             module = m.group(3)
-            version = f
+            version = f.removesuffix('.lua')
             cluster = m.group(1)
             key = module + "_" + version
             readable = None
@@ -109,7 +109,7 @@ for root, dirs, files in os.walk("/sw/mf/", topdown=True):
                 continue
 
             if not link is None:
-                with open(fullpath) as search:
+                with open(fullpath, encoding="latin-1", errors="surrogateescape") as search:
                     for line in search:
                         line = line.rstrip()
                         try:
@@ -117,6 +117,13 @@ for root, dirs, files in os.walk("/sw/mf/", topdown=True):
                         except:
                             continue
                         if ("set" in st and "modroot" in mr): 
+                            modroot = mod
+                            break
+                        try:
+                            loc, mr, eq, mod = line.split()
+                        except:
+                            continue
+                        if ("local" in loc and "modroot" in mr): 
                             modroot = mod
                             break
             # print(key, module, cluster, version, fullpath, modroot, link, readable)
