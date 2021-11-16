@@ -119,7 +119,7 @@ for row in rows_from_mftree:
                     match_row = match_row_tcl
                 if match_row:
                     path_to_sw = "/" + match_row.group(1) + "/"
-                    new_yaml = path_to_sw + mftree_tool + '_' + mftree_version + '.DRAFT.yaml' 
+                    new_yaml = path_to_sw + mftree_tool + '-' + mftree_version + '.DRAFT.yaml' 
                     readme = path_to_sw + mftree_tool + '-' + mftree_version + '_install-README.md'
                     postinstall = path_to_sw + mftree_tool + '-' + mftree_version + '_post-install.sh'
                     if not os.path.isfile(readme) or not os.access(readme, os.R_OK):
@@ -149,28 +149,29 @@ for row in rows_from_mftree:
                         desc = software[mftree_key]
                     if os.path.isdir(path_to_sw) and os.access(path_to_sw, os.W_OK):
                         with open(new_yaml, 'w') as the_file:
-                            the_file.write(' - TOOL:' + mftree_tool + "\n")
-                            the_file.write(' - VERSION:' + mftree_version + "\n")
-                            the_file.write(' - MODULE:' + modu + "\n")
-                            the_file.write(' - CLUSTER:' + "\n")
+                            the_file.write('- TOOL:' + mftree_tool + "\n")
+                            the_file.write('- VERSION:' + mftree_version + "\n")
+                            the_file.write('- MODULE:' + modu + "\n")
+                            the_file.write('- CLUSTER:' + "\n")
                             for clu in mftree_clusters[mftree_key]:
                                 regexp = "(\S+)" + re.escape(clu) + "(\S+)"
                                 match_cluster = re.match(regexp, mftree_file, re.IGNORECASE)
                                 if match_cluster:
                                     common = match_cluster.group(1) + "common" + match_cluster.group(2)
-                                the_file.write('    - ' + clu + "\n")
-                            the_file.write(' - LICENSE:' + lice + "\n")
-                            the_file.write(' - LICENSEURL:' + lURL + "\n")
-                            the_file.write(' - USERGROUP:sw' + "\n")
-                            the_file.write(' - USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w' + "\n")
-                            the_file.write(' - WEBSITE:' + webs + "\n")
-                            the_file.write(' - LOCAL:' + local + "\n")
-                            the_file.write(' - SECTION:' + sect + "\n")
-                            the_file.write(' - POSTINSTALL:' + postinstall + "\n")
-                            the_file.write(' - README:' + readme + "\n")
+                                if clu != "common":
+                                    the_file.write('   - ' + clu + "\n")
+                            the_file.write('- LICENSE:' + lice + "\n")
+                            the_file.write('- LICENSEURL:' + lURL + "\n")
+                            the_file.write('- USERGROUP:sw' + "\n")
+                            the_file.write('- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w' + "\n")
+                            the_file.write('- WEBSITE:' + webs + "\n")
+                            the_file.write('- LOCAL:' + local + "\n")
+                            the_file.write('- SECTION:' + sect + "\n")
+                            the_file.write('- POSTINSTALL:' + postinstall + "\n")
+                            the_file.write('- README:' + readme + "\n")
                             if os.path.isfile(common) and os.access(common, os.R_OK):
-                                the_file.write(' - COMMON:' + common + "\n")
-                            the_file.write(' - DESCRIPTION:' + desc + "\n")
+                                the_file.write('- COMMON:' + common + "\n")
+                            the_file.write('- DESCRIPTION:' + desc + "\n")
                     else:
                         if not os.path.isdir(path_to_sw):
                             print(path_to_sw + " from the mf does not exist", file=log)
