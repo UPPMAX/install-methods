@@ -102,6 +102,7 @@ for row in rows_from_mftree:
     mftree_tool = row[1]
     mftree_version = row[3]
     mftree_file = row[4]
+    print(mftree_file, file=log)
     if os.path.isfile(mftree_file) and not os.access(mftree_file, os.R_OK):
         print('ERROR: ' + mftree_file + ' is not readable', file=log)
     #################### Scan the mf file for the path in the software tree ###########################
@@ -111,6 +112,8 @@ for row in rows_from_mftree:
             print('WARNING: ' + os.path.realpath(mftree_file) + ' is not ascii or utf-8, but ' + string, file=log)
         with open(mftree_file, encoding="latin-1", errors="surrogateescape") as mffile:
             for line in mffile:
+                if re.match("^\W*(#|--)", line):        #Checking for commented lines
+                    continue
                 match_row_tcl = re.match("set\W+modroot\W+(\S+?)\/\$", line)
                 match_row_lua = re.match("local\W+tooldir\W+=\W+\"\/(\S+?)\"", line)
                 if match_row_lua:
