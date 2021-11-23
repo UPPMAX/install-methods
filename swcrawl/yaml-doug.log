@@ -1,0 +1,420 @@
+/sw/mf/common/bioinfo-tools/alignment/mosaik-aligner/1.0.1388
+/sw/mf/common/bioinfo-tools/alignment/mosaik-aligner/.mosaik-aligner
+   WARNING: mosaik-aligner_.mosaik-aligner from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/mosaik-aligner/1.1.0021
+/sw/mf/common/bioinfo-tools/alignment/mosaik-aligner/2.2.3
+/sw/mf/common/bioinfo-tools/alignment/mpiblast/1.6.0
+/sw/mf/common/bioinfo-tools/alignment/mpiblast/.mpiblast
+   WARNING: mpiblast_.mpiblast from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/mrFAST/2.6.1.0
+   WARNING: mrFAST_2.6.1.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/muscle/.muscle.tcl
+   WARNING: muscle_.muscle.tcl from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/optima/.optima
+   WARNING: optima_.optima from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/pblat/1.6
+   WARNING: pblat_1.6 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/splitseek/1.3.2
+/sw/mf/common/bioinfo-tools/alignment/splitseek/1.3.3
+/sw/mf/common/bioinfo-tools/alignment/splitseek/1.3.4
+/sw/mf/common/bioinfo-tools/alignment/splitseek/.splitseek
+   WARNING: splitseek_.splitseek from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/tRNAscan-SE/.trnascan
+   WARNING: tRNAscan-SE_.trnascan from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/wise2/.wise2
+   WARNING: wise2_.wise2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/wise2/.wise2-old
+   WARNING: wise2_.wise2-old from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/bowtie/0.12.6
+   WARNING: bowtie_0.12.6 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/bowtie/0.12.7
+   WARNING: bowtie_0.12.7 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/bowtie/0.12.8
+   WARNING: bowtie_0.12.8 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/bowtie/1.0.0
+   WARNING: bowtie_1.0.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/bowtie/1.1.0
+   WARNING: bowtie_1.1.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/bowtie/.bowtie
+   WARNING: bowtie_.bowtie from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/bowtie/1.0.1
+   WARNING: bowtie_1.0.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/bowtie2/2.0.0-beta6
+   WARNING: bowtie2_2.0.0-beta6 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/bowtie2/2.0.2
+   WARNING: bowtie2_2.0.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/bowtie2/2.2.3
+   WARNING: bowtie2_2.2.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/bowtie2/2.2.6
+   WARNING: bowtie2_2.2.6 from mftree not in website version
+/sw/mf/common/bioinfo-tools/alignment/bowtie2/2.0.0-beta5
+   WARNING: bowtie2_2.0.0-beta5 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/AAT/.AAT
+/sw/mf/common/bioinfo-tools/annotation/GEMINI/.gemini_0.18.3
+   WARNING: GEMINI_.gemini_0.18.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/GEMINI/0.16.3
+   WARNING: GEMINI_0.16.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/HaMStR/13.2.3
+/sw/mf/common/bioinfo-tools/annotation/HaMStR/.HaMStR
+   WARNING: HaMStR_.HaMStR from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/HaMStR/.HaMStR-old
+   WARNING: HaMStR_.HaMStR-old from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/InterProScan/5.10-50.0
+   WARNING: InterProScan_5.10-50.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/InterProScan/5.11-51.0
+   WARNING: InterProScan_5.11-51.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/InterProScan/5.13-52.0
+   WARNING: InterProScan_5.13-52.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/InterProScan/5.15-54.0
+   WARNING: InterProScan_5.15-54.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/InterProScan/5.20-59.0
+   WARNING: InterProScan_5.20-59.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/InterProScan/.interproscan
+   WARNING: InterProScan_.interproscan from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/InterProScan/.interproscan-j8
+   WARNING: InterProScan_.interproscan-j8 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/InterProScan/.z
+   WARNING: InterProScan_.z from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/Platypus/0.8.1
+   WARNING: Platypus_0.8.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/Platypus/.platypus
+   WARNING: Platypus_.platypus from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/TransDecoder/2.0.1
+   WARNING: TransDecoder_2.0.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/augustus/3.0.1
+   WARNING: augustus_3.0.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/augustus/3.2.1
+   WARNING: augustus_3.2.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/augustus/2.7
+   WARNING: augustus_2.7 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/birdsuite/1.5.5
+   WARNING: birdsuite_1.5.5 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/birdsuite/.birdsuite
+   WARNING: birdsuite_.birdsuite from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/cegma/2.4.010312
+   WARNING: cegma_2.4.010312 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/cegma/.cegma
+   WARNING: cegma_.cegma from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/delly/0.0.11
+WARNING: /sw/mf/common/bioinfo-tools/annotation/delly/.delly-old is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: delly_0.0.11 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/delly/0.3.3
+   WARNING: delly_0.3.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/delly/0.6.3
+   WARNING: delly_0.6.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/delly/.delly
+   WARNING: delly_.delly from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/delly/.delly-old
+WARNING: /sw/mf/common/bioinfo-tools/annotation/delly/.delly-old is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: delly_.delly-old from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/delly/0.7.2
+   WARNING: delly_0.7.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/maker/2.28
+   WARNING: maker_2.28 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/maker/2.28-mpi
+   WARNING: maker_2.28-mpi from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/maker/2.31
+   WARNING: maker_2.31 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/maker/2.31.6
+   WARNING: maker_2.31.6 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/maker/2.31.8
+   WARNING: maker_2.31.8 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/prokka/1.11
+   WARNING: prokka_1.11 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/snpEff/2.0.5
+   WARNING: snpEff_2.0.5 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/snpEff/3.4
+   WARNING: snpEff_3.4 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/snpEff/3.6
+   WARNING: snpEff_3.6 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/snpEff/4.0
+   WARNING: snpEff_4.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/snpEff/2.0.3
+   WARNING: snpEff_2.0.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/RepeatMasker/4.0.1
+   WARNING: RepeatMasker_4.0.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/RepeatMasker/3.3.0
+   WARNING: RepeatMasker_3.3.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/annovar/2011.05.06
+   WARNING: annovar_2011.05.06 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/annovar/2012.02.23
+   WARNING: annovar_2012.02.23 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/annovar/2012.05.25
+   WARNING: annovar_2012.05.25 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/annovar/2013.09.12
+   WARNING: annovar_2013.09.12 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/annovar/2014.07.14
+   WARNING: annovar_2014.07.14 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/annovar/2011.02.20
+   WARNING: annovar_2011.02.20 from mftree not in website version
+/sw/mf/common/bioinfo-tools/annotation/snap/2013-02-16
+/sw/mf/common/bioinfo-tools/assembly/A5-miseq/20140113
+/sw/mf/common/bioinfo-tools/assembly/A5-miseq/20140604
+/sw/mf/common/bioinfo-tools/assembly/A5-miseq/20160825
+/sw/mf/common/bioinfo-tools/assembly/A5-miseq/.A5-miseq
+   WARNING: A5-miseq_.A5-miseq from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/AMOS/.AMOS
+WARNING: /sw/mf/common/bioinfo-tools/assembly/AMOS/.AMOS is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: AMOS_.AMOS from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/ARC_assembler/1.1.3
+/sw/mf/common/bioinfo-tools/assembly/BESST/1.0.4.3
+WARNING: /sw/mf/common/bioinfo-tools/assembly/BESST/.besst is not ascii or utf-8, but text/plain; charset=iso-8859-1
+/sw/mf/common/bioinfo-tools/assembly/BESST/.besst
+WARNING: /sw/mf/common/bioinfo-tools/assembly/BESST/.besst is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: BESST_.besst from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/BESST/1.0.4.4
+WARNING: /sw/mf/common/bioinfo-tools/assembly/BESST/1.0.4.4 is not ascii or utf-8, but text/plain; charset=iso-8859-1
+/sw/mf/common/bioinfo-tools/assembly/CAP3/CAP3
+   WARNING: CAP3_CAP3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/CAP3/.CAP3
+   WARNING: CAP3_.CAP3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/DBG2OLD/20151208
+   WARNING: DBG2OLD_20151208 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/DISCOVARdenovo/51885
+/sw/mf/common/bioinfo-tools/assembly/FALCON-integrate/.20161112-didntwork
+   WARNING: FALCON-integrate_.20161112-didntwork from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/GARM/0.7
+   WARNING: GARM_0.7 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/IDBA/1.1.1
+/sw/mf/common/bioinfo-tools/assembly/IDBA/1.1.1-384
+/sw/mf/common/bioinfo-tools/assembly/IDBA/1.1.1-384_tintin
+   WARNING: IDBA_1.1.1-384_tintin from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/IDBA/1.1.1_tintin
+   WARNING: IDBA_1.1.1_tintin from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/MHAP/1.6
+/sw/mf/common/bioinfo-tools/assembly/MaSuRCA/2.1.0
+WARNING: /sw/mf/common/bioinfo-tools/assembly/MaSuRCA/2.1.0 is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: MaSuRCA_2.1.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/MaSuRCA/2.0.3.1
+WARNING: /sw/mf/common/bioinfo-tools/assembly/MaSuRCA/2.0.3.1 is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: MaSuRCA_2.0.3.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/MaSuRCA/2.2.1
+WARNING: /sw/mf/common/bioinfo-tools/assembly/MaSuRCA/2.2.1 is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: MaSuRCA_2.2.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/MaSuRCA/2.3.2
+   WARNING: MaSuRCA_2.3.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/MaSuRCA/3.1.3
+   WARNING: MaSuRCA_3.1.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/MaSuRCA/3.2.1
+   WARNING: MaSuRCA_3.2.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/Metassembler/1.5
+/sw/mf/common/bioinfo-tools/assembly/PCAP/PCAP
+   WARNING: PCAP_PCAP from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/RACA/0.9.1.1
+/sw/mf/common/bioinfo-tools/assembly/REAPR/1.0.17
+/sw/mf/common/bioinfo-tools/assembly/Ray/0.0.4
+/sw/mf/common/bioinfo-tools/assembly/Ray/0.0.7
+/sw/mf/common/bioinfo-tools/assembly/Ray/.Ray
+   WARNING: Ray_.Ray from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/Ray/1.6.1
+/sw/mf/common/bioinfo-tools/assembly/Ray/2.3.0
+WARNING: /sw/mf/common/bioinfo-tools/assembly/Ray/2.3.0 is not ascii or utf-8, but text/plain; charset=iso-8859-1
+/sw/mf/common/bioinfo-tools/assembly/abyss/1.3.5-max-irma
+   WARNING: abyss_1.3.5-max-irma from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/abyss/1.3.7-k128
+/sw/mf/common/bioinfo-tools/assembly/abyss/1.3.7-max
+/sw/mf/common/bioinfo-tools/assembly/abyss/1.9.0-k128
+/sw/mf/common/bioinfo-tools/assembly/abyss/1.3.5-irma
+   WARNING: abyss_1.3.5-irma from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/abyss/1.3.7
+/sw/mf/common/bioinfo-tools/assembly/abyss/1.5.2
+/sw/mf/common/bioinfo-tools/assembly/abyss/1.9.0
+/sw/mf/common/bioinfo-tools/assembly/abyss/intelabyss
+   WARNING: abyss_intelabyss from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/allpathslg/47300
+/sw/mf/common/bioinfo-tools/assembly/allpathslg/49618
+/sw/mf/common/bioinfo-tools/assembly/allpathslg/.allpathslg
+   WARNING: allpathslg_.allpathslg from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/allpathslg/.allpathslg-irma
+   WARNING: allpathslg_.allpathslg-irma from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/bridger/2014-12-01
+   WARNING: bridger_2014-12-01 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/bridger/.bridger
+   WARNING: bridger_.bridger from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/cabog/.cabog
+   WARNING: cabog_.cabog from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/canu/1.3
+   WARNING: canu_1.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/canu/1.0
+   WARNING: canu_1.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/canu/1.1
+   WARNING: canu_1.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/fermi/.fermi
+   WARNING: fermi_.fermi from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/megahit/1.0.3
+/sw/mf/common/bioinfo-tools/assembly/miniasm/20160128
+/sw/mf/common/bioinfo-tools/assembly/mira/3.0.0
+/sw/mf/common/bioinfo-tools/assembly/mira/3.2.0
+/sw/mf/common/bioinfo-tools/assembly/mira/3.4.0.1
+/sw/mf/common/bioinfo-tools/assembly/mira/4.0.0rc4
+/sw/mf/common/bioinfo-tools/assembly/mira/4.0.2
+/sw/mf/common/bioinfo-tools/assembly/mira/4.0rc4
+   WARNING: mira_4.0rc4 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/mira/.mira
+   WARNING: mira_.mira from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/oases/0.2.08
+/sw/mf/common/bioinfo-tools/assembly/oases/.oases
+   WARNING: oases_.oases from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/soapdenovo/1.05
+/sw/mf/common/bioinfo-tools/assembly/soapdenovo/.soapdenovo
+   WARNING: soapdenovo_.soapdenovo from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/spades/3.0.0
+   WARNING: spades_3.0.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/spades/3.1.1
+   WARNING: spades_3.1.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/spades/3.5.0
+   WARNING: spades_3.5.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/spades/3.6.1
+   WARNING: spades_3.6.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/spades/3.7.0
+   WARNING: spades_3.7.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/spades/3.7.1
+   WARNING: spades_3.7.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/spades/2.5.1
+   WARNING: spades_2.5.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/transabyss/1.5.3
+/sw/mf/common/bioinfo-tools/assembly/trinity/.trinity
+   WARNING: trinity_.trinity from mftree not in website version
+/sw/mf/common/bioinfo-tools/assembly/trinity/version
+/sw/mf/common/bioinfo-tools/assembly/velvet/1.0.03
+/sw/mf/common/bioinfo-tools/assembly/velvet/1.1.04
+/sw/mf/common/bioinfo-tools/assembly/velvet/1.1.04_K101
+/sw/mf/common/bioinfo-tools/assembly/velvet/1.1.07
+/sw/mf/common/bioinfo-tools/assembly/velvet/.velvet
+   WARNING: velvet_.velvet from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/ANGSD/0.700
+   WARNING: ANGSD_0.700 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/ANGSD/0.902
+   WARNING: ANGSD_0.902 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/ANGSD/0.915
+   WARNING: ANGSD_0.915 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BAM-matcher/20160611
+   WARNING: BAM-matcher_20160611 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BAM-matcher/.bammatcher
+   WARNING: BAM-matcher_.bammatcher from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BAM-matcher/.bammatcher~
+   WARNING: BAM-matcher_.bammatcher~ from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BEETL/1.0.2
+/sw/mf/common/bioinfo-tools/misc/BUSCO/1.1b1
+/toolroot/ from the mf does not exist
+/toolroot/ is not writable
+/sw/mf/common/bioinfo-tools/misc/BUSCO/1.2
+/toolroot/ from the mf does not exist
+/toolroot/ is not writable
+/sw/mf/common/bioinfo-tools/misc/Bandage/0.8.0
+   WARNING: Bandage_0.8.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BioPerl/1.6.1
+   WARNING: BioPerl_1.6.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BioPerl/1.6.1_PERL5.10.1
+   WARNING: BioPerl_1.6.1_PERL5.10.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BioPerl/1.6.1_PERL5.12.3
+   WARNING: BioPerl_1.6.1_PERL5.12.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BioPerl/1.6.922
+   WARNING: BioPerl_1.6.922 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BioPerl/.BioPerl
+   WARNING: BioPerl_.BioPerl from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BioPerl/1.6.923_Perl5.18.4
+   WARNING: BioPerl_1.6.923_Perl5.18.4 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BisSNP/0.82.2
+   WARNING: BisSNP_0.82.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BisSNP/.bissnp
+   WARNING: BisSNP_.bissnp from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/BisSNP/.bissnp~
+   WARNING: BisSNP_.bissnp~ from mftree not in website version
+/sw/apps/bioinfo/rpd-classifier/ from the mf does not exist
+/sw/apps/bioinfo/rpd-classifier/ is not writable
+/sw/mf/common/bioinfo-tools/misc/CNV-seq/20140812
+/sw/mf/common/bioinfo-tools/misc/CNVnator/0.3.2
+/sw/mf/common/bioinfo-tools/misc/CONCOCT/0.4.0
+   WARNING: CONCOCT_0.4.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/CONCOCT/0.4.0~
+   WARNING: CONCOCT_0.4.0~ from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/CRISPResso/1.0.7
+   WARNING: CRISPResso_1.0.7 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/CrossMap/0.1.2.lua
+/sw/mf/common/bioinfo-tools/misc/CrossMap/.CrossMap.lua
+/sw/mf/common/bioinfo-tools/misc/EPACTS/3.2.6_milou
+   WARNING: EPACTS_3.2.6_milou from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/EnsEMBL-API/87
+   WARNING: EnsEMBL-API_87 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/FLASH/.FLASH
+   WARNING: FLASH_.FLASH from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/Fastx/0.0.13
+   WARNING: Fastx_0.0.13 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/Fastx/0.0.13.2
+   WARNING: Fastx_0.0.13.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/Fastx/.Fastx
+   WARNING: Fastx_.Fastx from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/FusionCatcher/0.99.3e
+   WARNING: FusionCatcher_0.99.3e from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/FusionCatcher/0.99.5a
+   WARNING: FusionCatcher_0.99.5a from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/GTOOL/0.7.5
+/sw/mf/common/bioinfo-tools/misc/GenomeTools/1.5.8
+   WARNING: GenomeTools_1.5.8 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/IGVtools/2.3.40
+/sw/mf/common/bioinfo-tools/misc/IGVtools/2.2.1
+/sw/apps/nytt-program/ from the mf does not exist
+/sw/apps/nytt-program/ is not writable
+/sw/mf/common/bioinfo-tools/misc/IGVtools/2.3.17
+/sw/mf/common/bioinfo-tools/misc/IMa2p/2015-08-09
+/sw/mf/common/bioinfo-tools/misc/ITSx/1.0.9
+/sw/mf/common/bioinfo-tools/misc/ITSx/.itsx
+   WARNING: ITSx_.itsx from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/KAT/2.0.6
+/sw/mf/common/bioinfo-tools/misc/KAT/2.0.8
+/sw/mf/common/bioinfo-tools/misc/KAT/2.0.4
+/sw/mf/common/bioinfo-tools/misc/KAT/2.1.1
+/sw/mf/common/bioinfo-tools/misc/KmerGenie/.kmergenie
+   WARNING: KmerGenie_.kmergenie from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/LUMPY/0.2.13
+   WARNING: LUMPY_0.2.13 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/LUMPY/0.2.12
+   WARNING: LUMPY_0.2.12 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/LatentStrainAnalysis/20160322
+/sw/mf/common/bioinfo-tools/misc/LoFreq/2.1.2
+   WARNING: LoFreq_2.1.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/LoFreq/.lofreq
+   WARNING: LoFreq_.lofreq from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/MACE/1.2
+/sw/mf/common/bioinfo-tools/misc/MACS/1.4.1
+   WARNING: MACS_1.4.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/MACS/1.4.2
+   WARNING: MACS_1.4.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/Meerkat/0.189
+/sw/mf/common/bioinfo-tools/misc/Mothur/1.30.1
+WARNING: /sw/mf/common/bioinfo-tools/misc/Mothur/.Mothur is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: Mothur_1.30.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/Mothur/1.33.3
+WARNING: /sw/mf/common/bioinfo-tools/misc/Mothur/.Mothur-mpi is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: Mothur_1.33.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/Mothur/1.25.1
+WARNING: /sw/mf/common/bioinfo-tools/misc/Mothur/.Mothur is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: Mothur_1.25.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/Mothur/.Mothur
+WARNING: /sw/mf/common/bioinfo-tools/misc/Mothur/.Mothur is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: Mothur_.Mothur from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/Mothur/.Mothur-mpi
+WARNING: /sw/mf/common/bioinfo-tools/misc/Mothur/.Mothur-mpi is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: Mothur_.Mothur-mpi from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/Mothur/1.36.1
+   WARNING: Mothur_1.36.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/Mothur/1.38.1
+   WARNING: Mothur_1.38.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/MultiQC/0.3.1
+   WARNING: MultiQC_0.3.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/MultiQC/0.3.1-py3
+   WARNING: MultiQC_0.3.1-py3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/MultiQC/0.4
+   WARNING: MultiQC_0.4 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/MultiQC/.multiqc
+   WARNING: MultiQC_.multiqc from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/MultiQC/.multiqc-py3
+   WARNING: MultiQC_.multiqc-py3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/MultiQC/0.5
+   WARNING: MultiQC_0.5 from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/OpenMS/2.0.0
+/sw/mf/common/bioinfo-tools/misc/OpenMS/.openms
+   WARNING: OpenMS_.openms from mftree not in website version
+/sw/mf/common/bioinfo-tools/misc/PennCNV/20151014
+/sw/mf/common/bioinfo-tools/misc/PileOMeth/0.1.13

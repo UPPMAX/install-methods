@@ -1,0 +1,420 @@
+   WARNING: raxml_8.2.0-gcc-mpi from mftree not in website version
+/sw/mf/common/bioinfo-tools/phylogeny/raxml/8.2.0-icc
+   WARNING: raxml_8.2.0-icc from mftree not in website version
+/sw/mf/common/bioinfo-tools/phylogeny/raxml/8.2.0-icc-mpi
+   WARNING: raxml_8.2.0-icc-mpi from mftree not in website version
+/sw/mf/common/bioinfo-tools/phylogeny/raxml/8.2.0_gcc
+   WARNING: raxml_8.2.0_gcc from mftree not in website version
+/sw/mf/common/bioinfo-tools/phylogeny/raxml/8.2.0_icc
+   WARNING: raxml_8.2.0_icc from mftree not in website version
+/sw/mf/common/bioinfo-tools/phylogeny/raxml/8.2.4-gcc
+   WARNING: raxml_8.2.4-gcc from mftree not in website version
+/sw/mf/common/bioinfo-tools/phylogeny/raxml/8.2.4-gcc-mpi
+   WARNING: raxml_8.2.4-gcc-mpi from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/Qiime/1.4.0
+/sw/mf/common/bioinfo-tools/pipelines/Qiime/.qiime
+   WARNING: Qiime_.qiime from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/Qiime/1.5.0
+/sw/mf/common/bioinfo-tools/pipelines/Qiime/1.6.0
+/sw/mf/common/bioinfo-tools/pipelines/Qiime/1.8.0
+/sw/mf/common/bioinfo-tools/pipelines/Qiime/1.9.1
+/sw/mf/common/bioinfo-tools/pipelines/Qiime/1.9.1-pip
+   WARNING: Qiime_1.9.1-pip from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/SMRT/2.2.0
+/sw/mf/common/bioinfo-tools/pipelines/ab_wtp/1.1
+   WARNING: ab_wtp_1.1 from mftree not in website version
+/sw/apps/ab_wtp/ is not writable
+/sw/mf/common/bioinfo-tools/pipelines/ab_wtp/.ab_wtp
+   WARNING: ab_wtp_.ab_wtp from mftree not in website version
+/sw/apps/ab_wtp/ is not writable
+/sw/mf/common/bioinfo-tools/pipelines/bcbio/20150205.lua
+/sw/mf/common/bioinfo-tools/pipelines/bcbio/.bcbio.lua
+/sw/mf/common/bioinfo-tools/pipelines/clusterflow/0.3
+/sw/mf/common/bioinfo-tools/pipelines/clusterflow/.clusterflow
+   WARNING: clusterflow_.clusterflow from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/clusterflow/0.4-old
+   WARNING: clusterflow_0.4-old from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/0.8.3
+   WARNING: cufflinks_0.8.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/0.9.1
+   WARNING: cufflinks_0.9.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/0.9.2
+   WARNING: cufflinks_0.9.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/0.9.3
+   WARNING: cufflinks_0.9.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/1.0.3
+   WARNING: cufflinks_1.0.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/1.1.0
+   WARNING: cufflinks_1.1.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/1.2.1
+   WARNING: cufflinks_1.2.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/1.3.0
+   WARNING: cufflinks_1.3.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/2.0.0
+   WARNING: cufflinks_2.0.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/2.0.2
+   WARNING: cufflinks_2.0.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/.cufflinks
+   WARNING: cufflinks_.cufflinks from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/1.0.0
+   WARNING: cufflinks_1.0.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cufflinks/1.0.1
+   WARNING: cufflinks_1.0.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cutadapt/1.5.0
+WARNING: /sw/mf/common/bioinfo-tools/pipelines/cutadapt/1.4.2 is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: cutadapt_1.5.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cutadapt/1.3
+WARNING: /sw/mf/common/bioinfo-tools/pipelines/cutadapt/1.2.1 is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: cutadapt_1.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cutadapt/1.2.1-irma
+WARNING: /sw/mf/common/bioinfo-tools/pipelines/cutadapt/1.2.1-irma is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: cutadapt_1.2.1-irma from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cutadapt/1.4.2
+WARNING: /sw/mf/common/bioinfo-tools/pipelines/cutadapt/1.4.2 is not ascii or utf-8, but text/plain; charset=iso-8859-1
+   WARNING: cutadapt_1.4.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/cutadapt/1.8.0
+   WARNING: cutadapt_1.8.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/epiPALEOMIX/2016-10-07
+   WARNING: epiPALEOMIX_2016-10-07 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/epiPALEOMIX/.epipaleomix
+   WARNING: epiPALEOMIX_.epipaleomix from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/piper/1.4.0
+   WARNING: piper_1.4.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/piper/1.5.0
+   WARNING: piper_1.5.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/piper/1.5.1
+   WARNING: piper_1.5.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/piper/1.1.2.397
+   WARNING: piper_1.1.2.397 from mftree not in website version
+/sw/mf/common/bioinfo-tools/pipelines/tophat/1.1.0
+/sw/mf/common/bioinfo-tools/pipelines/tophat/1.1.3
+/sw/mf/common/bioinfo-tools/pipelines/tophat/1.2.0
+/sw/mf/common/bioinfo-tools/pipelines/tophat/1.3.3
+/sw/mf/common/bioinfo-tools/pipelines/tophat/1.4.0
+/sw/mf/common/bioinfo-tools/pipelines/tophat/2.0.11
+/sw/mf/common/bioinfo-tools/pipelines/tophat/2.0.0
+/sw/mf/common/bioinfo-tools/pipelines/tophat/2.0.4
+/sw/mf/common/bioinfo-tools/pipelines/tophat/1.0.14
+/sw/mf/common/bioinfo-tools/pipelines/tophat/2.0.3
+/sw/mf/common/bioinfo-tools/pipelines/tophat/2.0.8b
+/sw/mf/common/bioinfo-tools/sw_collections/454-dataanalysis/.454-dataanalysis
+   WARNING: 454-dataanalysis_.454-dataanalysis from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/454-dataprocessing/.454-dataprocessing
+   WARNING: 454-dataprocessing_.454-dataprocessing from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/BEDTools/2.20.1
+   WARNING: BEDTools_2.20.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK-Queue/3.2.2
+   WARNING: GATK-Queue_3.2.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK-Queue/.queue
+   WARNING: GATK-Queue_.queue from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/1.0.4105
+   WARNING: GATK_1.0.4105 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/1.0.5365
+   WARNING: GATK_1.0.5365 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/1.0.5909
+   WARNING: GATK_1.0.5909 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/1.2.12
+   WARNING: GATK_1.2.12 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/1.4.21
+   WARNING: GATK_1.4.21 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/1.4.5
+   WARNING: GATK_1.4.5 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/1.5.11
+   WARNING: GATK_1.5.11 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/1.5.21
+   WARNING: GATK_1.5.21 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/2.1.13
+   WARNING: GATK_2.1.13 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/2.3.6
+   WARNING: GATK_2.3.6 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/2.5.2
+   WARNING: GATK_2.5.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/2.7.2
+   WARNING: GATK_2.7.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/2.8.1
+   WARNING: GATK_2.8.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/3.1.1
+   WARNING: GATK_3.1.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/3.2.0
+   WARNING: GATK_3.2.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/3.2.2
+   WARNING: GATK_3.2.2 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/3.3.0
+   WARNING: GATK_3.3.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/3.4-46
+   WARNING: GATK_3.4-46 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/3.4.0
+   WARNING: GATK_3.4.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/3.4.46
+   WARNING: GATK_3.4.46 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/.GATK
+   WARNING: GATK_.GATK from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/.GATK-old
+   WARNING: GATK_.GATK-old from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/.build
+   WARNING: GATK_.build from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GATK/4.0.8.0
+   WARNING: GATK_4.0.8.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/GenomeSTRiP/2.00.1685
+/sw/mf/common/bioinfo-tools/sw_collections/GenomeSTRiP/2.00.1650
+/sw/mf/common/bioinfo-tools/sw_collections/MEMEsuite/4.11.1
+   WARNING: MEMEsuite_4.11.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/MEMEsuite/4.11.2_1
+   WARNING: MEMEsuite_4.11.2_1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/SpeedSeq/0.1.0-20151121
+   WARNING: SpeedSeq_0.1.0-20151121 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/bcl2fastq/1.8.3
+   WARNING: bcl2fastq_1.8.3 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/emboss/6.4.0
+   WARNING: emboss_6.4.0 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/emboss/6.5.7
+   WARNING: emboss_6.5.7 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/emboss/6.3.1
+   WARNING: emboss_6.3.1 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/vcftools/0.1.11
+   WARNING: vcftools_0.1.11 from mftree not in website version
+/sw/mf/common/bioinfo-tools/sw_collections/vcftools/0.1.8a
+   WARNING: vcftools_0.1.8a from mftree not in website version
+/sw/mf/common/build-tools/SCons/.scons
+   WARNING: SCons_.scons from mftree not in website version
+/sw/mf/common/build-tools/autoconf/2.68
+   WARNING: autoconf_2.68 from mftree not in website version
+/sw/mf/common/compilers/CodeAnalyst/3.3
+/sw/mf/common/compilers/CodeAnalyst/amd.old
+/sw/mf/common/compilers/advisor/16.1
+/sw/mf/common/compilers/advisor/16.1.3
+/sw/mf/common/compilers/advisor/16.1.4
+/sw/mf/common/compilers/advisor/17.1.0
+/sw/mf/common/compilers/advisor/17.1.1
+/sw/mf/common/compilers/advisor/17.1.2
+/sw/mf/common/compilers/advisor/17.1.3
+/sw/mf/common/compilers/advisor/18.1.0
+/sw/mf/common/compilers/advisor/18.1.1
+/sw/mf/common/compilers/advisor/18.2.0
+/sw/mf/common/compilers/advisor/18.3.0
+/sw/mf/common/compilers/advisor/advisor.tcl
+/sw/mf/common/compilers/advisor/19.4.0
+/sw/mf/common/compilers/advisor/advisor.tcl~
+/sw/mf/common/compilers/advisor/19.5.0
+/sw/mf/common/compilers/advisor/20.0.0
+/sw/mf/common/compilers/amplifier/16.1
+/sw/mf/common/compilers/amplifier/16.2
+/sw/mf/common/compilers/amplifier/16.3
+/sw/mf/common/compilers/amplifier/17.0
+/sw/mf/common/compilers/amplifier/17.1
+/sw/mf/common/compilers/amplifier/17.2
+/sw/mf/common/compilers/amplifier/17.3
+/sw/mf/common/compilers/amplifier/18.0
+/sw/mf/common/compilers/amplifier/18.1
+/sw/mf/common/compilers/amplifier/18.2
+/sw/mf/common/compilers/amplifier/18.3
+/sw/mf/common/compilers/amplifier/amplifier.tcl
+/sw/mf/common/compilers/amplifier/19.4
+/sw/mf/common/compilers/amplifier/amplifier.tcl~
+/sw/mf/common/compilers/amplifier/19.6
+/sw/mf/common/compilers/amplifier/20.0
+/sw/mf/common/compilers/binutils/2.26
+/sw/mf/common/compilers/cuda/3.2
+   WARNING: cuda_3.2 from mftree not in website version
+/sw/comp/cuda/ is not writable
+/sw/mf/common/compilers/cuda/4.1.28
+   WARNING: cuda_4.1.28 from mftree not in website version
+/sw/comp/cuda/ is not writable
+/sw/mf/common/compilers/cuda/5.0
+   WARNING: cuda_5.0 from mftree not in website version
+/sw/comp/cuda/ is not writable
+/sw/mf/common/compilers/cuda/5.5
+   WARNING: cuda_5.5 from mftree not in website version
+/sw/comp/cuda/ is not writable
+/sw/mf/common/compilers/cuda/6.0
+   WARNING: cuda_6.0 from mftree not in website version
+/sw/comp/cuda/ is not writable
+/sw/mf/common/compilers/cuda/6.5
+   WARNING: cuda_6.5 from mftree not in website version
+/sw/comp/cuda/ is not writable
+/sw/mf/common/compilers/cuda/7.0
+   WARNING: cuda_7.0 from mftree not in website version
+/sw/comp/cuda/ is not writable
+/sw/mf/common/compilers/cuda/7.5
+   WARNING: cuda_7.5 from mftree not in website version
+/sw/comp/cuda/ is not writable
+/sw/mf/common/compilers/cuda/.cuda
+   WARNING: cuda_.cuda from mftree not in website version
+/sw/comp/cuda/ is not writable
+/sw/mf/common/compilers/ddt/3.2.1
+   WARNING: ddt_3.2.1 from mftree not in website version
+/sw/mf/common/compilers/ddt/5.0.1
+   WARNING: ddt_5.0.1 from mftree not in website version
+/sw/mf/common/compilers/ddt/6.0
+   WARNING: ddt_6.0 from mftree not in website version
+/sw/mf/common/compilers/ddt/6.1
+   WARNING: ddt_6.1 from mftree not in website version
+/sw/mf/common/compilers/ddt/ddt~
+   WARNING: ddt_ddt~ from mftree not in website version
+/sw/mf/common/compilers/ddt/ddt
+   WARNING: ddt_ddt from mftree not in website version
+/sw/mf/common/compilers/ddt-perf/7.0
+   WARNING: ddt-perf_7.0 from mftree not in website version
+/sw/mf/common/compilers/ddt-perf/ddt-perf
+   WARNING: ddt-perf_ddt-perf from mftree not in website version
+/sw/mf/common/compilers/ddt-perf/ddt-perf~
+   WARNING: ddt-perf_ddt-perf~ from mftree not in website version
+/sw/mf/common/compilers/gcc/4.2.3
+   WARNING: gcc_4.2.3 from mftree not in website version
+/sw/mf/common/compilers/gcc/4.3.0
+   WARNING: gcc_4.3.0 from mftree not in website version
+/sw/mf/common/compilers/gcc/4.3.2
+   WARNING: gcc_4.3.2 from mftree not in website version
+/sw/mf/common/compilers/gcc/4.3.6
+/sw/mf/common/compilers/gcc/4.4
+   WARNING: gcc_4.4 from mftree not in website version
+/sw/mf/common/compilers/gcc/4.4.2
+   WARNING: gcc_4.4.2 from mftree not in website version
+/sw/mf/common/compilers/gcc/4.4.3
+   WARNING: gcc_4.4.3 from mftree not in website version
+/sw/mf/common/compilers/gcc/4.4.4
+   WARNING: gcc_4.4.4 from mftree not in website version
+/sw/mf/common/compilers/gcc/4.5
+/sw/mf/common/compilers/gcc/4.5.0
+   WARNING: gcc_4.5.0 from mftree not in website version
+/sw/mf/common/compilers/gcc/4.5.3
+/sw/mf/common/compilers/gcc/4.6
+/sw/mf/common/compilers/gcc/4.6.2
+   WARNING: gcc_4.6.2 from mftree not in website version
+/sw/mf/common/compilers/gcc/4.6.3
+/sw/mf/common/compilers/gcc/4.6.4
+/sw/mf/common/compilers/gcc/4.7
+/sw/mf/common/compilers/gcc/4.7.0
+/sw/mf/common/compilers/gcc/4.7.2
+/sw/mf/common/compilers/gcc/4.7.3
+/sw/mf/common/compilers/gcc/4.7.4
+/sw/mf/common/compilers/gcc/4.8
+/sw/mf/common/compilers/gcc/4.8.0
+/sw/mf/common/compilers/gcc/4.8.1
+/sw/mf/common/compilers/gcc/4.8.2
+/sw/mf/common/compilers/gcc/4.9
+/sw/mf/common/compilers/gcc/4.9.1
+/sw/mf/common/compilers/gcc/5.1.0
+/sw/mf/common/compilers/gcc/5.2.0
+/sw/mf/common/compilers/gcc/5.5.0
+/sw/mf/common/compilers/gcc/4.3.2-test
+   WARNING: gcc_4.3.2-test from mftree not in website version
+/sw/mf/common/compilers/gcc/4.3.2t
+   WARNING: gcc_4.3.2t from mftree not in website version
+/sw/mf/common/compilers/gcc/gcc
+   WARNING: gcc_gcc from mftree not in website version
+/sw/mf/common/compilers/gcc/gcc.tcl
+/sw/mf/common/compilers/gcc/gcc4.3
+   WARNING: gcc_gcc4.3 from mftree not in website version
+/sw/mf/common/compilers/gcc/gcc4.4
+   WARNING: gcc_gcc4.4 from mftree not in website version
+/sw/mf/common/compilers/gcc/gcc4.5
+   WARNING: gcc_gcc4.5 from mftree not in website version
+/sw/mf/common/compilers/gcc/gcc4.6.tcl
+   WARNING: gcc_gcc4.6.tcl from mftree not in website version
+/sw/mf/common/compilers/gcc/tmp
+/sw/mf/common/compilers/gcc/11.2.0
+/sw/mf/common/compilers/gcc/9.1.0
+/sw/mf/common/compilers/gcc/8.4.0
+/sw/mf/common/compilers/gdc/2.064.2_4.8
+   WARNING: gdc_2.064.2_4.8 from mftree not in website version
+/sw/mf/common/compilers/gdc/.gdc
+   WARNING: gdc_.gdc from mftree not in website version
+/sw/mf/common/compilers/gdc/.gdc~
+/sw/mf/common/compilers/inspector/16.1
+/sw/mf/common/compilers/inspector/16.1.2
+/sw/mf/common/compilers/inspector/16.1.3
+/sw/mf/common/compilers/inspector/17.1.0
+/sw/mf/common/compilers/inspector/17.1.1
+/sw/mf/common/compilers/inspector/17.1.2
+/sw/mf/common/compilers/inspector/17.1.3
+/sw/mf/common/compilers/inspector/18.1.0
+/sw/mf/common/compilers/inspector/18.1.1
+/sw/mf/common/compilers/inspector/18.2.0
+/sw/mf/common/compilers/inspector/18.3.0
+/sw/mf/common/compilers/inspector/inspector.tcl
+/sw/mf/common/compilers/inspector/19.4.0
+/sw/mf/common/compilers/inspector/inspector.tcl~
+/sw/mf/common/compilers/inspector/19.5.0
+/sw/mf/common/compilers/inspector/20.0.0
+/sw/mf/common/compilers/intel/11.0
+/sw/mf/common/compilers/intel/11.1
+/sw/mf/common/compilers/intel/12.0
+/sw/mf/common/compilers/intel/12.1
+/sw/mf/common/compilers/intel/13.0
+/sw/mf/common/compilers/intel/13.1
+/sw/mf/common/compilers/intel/14.0
+/sw/mf/common/compilers/intel/15.0
+/sw/mf/common/compilers/intel/17.1
+/sw/mf/common/compilers/intel/18.0
+/sw/mf/common/compilers/intel/18.1
+/sw/mf/common/compilers/intel/18.2
+/sw/mf/common/compilers/intel/10.1
+/sw/mf/common/compilers/intel/intel.inc
+/sw/mf/common/compilers/intel/intel11.inc
+/sw/mf/common/compilers/intel/intel12.inc
+/sw/mf/common/compilers/intel/intel14.inc
+/sw/mf/common/compilers/intel/intel15.inc
+/sw/mf/common/compilers/intel/intel16.inc
+/sw/mf/common/compilers/intel/intel15.inc~
+/sw/mf/common/compilers/intel/intel17.inc
+/sw/mf/common/compilers/intel/intel16.inc~
+/sw/mf/common/compilers/intel/intel18.inc
+/sw/mf/common/compilers/intel/intel17.inc~
+/sw/mf/common/compilers/intel/intel19.inc
+/sw/mf/common/compilers/intel/intel18.inc~
+/sw/mf/common/compilers/intel/intel20.inc
+/sw/mf/common/compilers/intel/20.0
+/sw/mf/common/compilers/intel/20.2
+/sw/mf/common/compilers/intel/20.4
+/sw/mf/common/compilers/itac/17.0
+/sw/mf/common/compilers/itac/17.1
+/sw/mf/common/compilers/itac/17.2
+/sw/mf/common/compilers/itac/17.3
+/sw/mf/common/compilers/itac/18.0
+/sw/mf/common/compilers/itac/18.1
+/sw/mf/common/compilers/itac/18.2
+/sw/mf/common/compilers/itac/9.1
+/sw/mf/common/compilers/itac/18.3
+/sw/mf/common/compilers/itac/itac.tcl
+/sw/mf/common/compilers/itac/19.4
+/sw/mf/common/compilers/itac/itac.tcl~
+/sw/mf/common/compilers/itac/19.5
+/sw/mf/common/compilers/itac/20.0
+/sw/mf/common/compilers/java/sun_jdk1.6.0_45
+   WARNING: java_sun_jdk1.6.0_45 from mftree not in website version
+/sw/mf/common/compilers/java/jdk
+   WARNING: java_jdk from mftree not in website version
+/sw/mf/common/compilers/java/OpenJDK
+   WARNING: java_OpenJDK from mftree not in website version
+/sw/mf/common/compilers/java/OracleJDK
+   WARNING: java_OracleJDK from mftree not in website version
+/sw/mf/common/compilers/julia/0.3.0-prerelease+3043
+   WARNING: julia_0.3.0-prerelease+3043 from mftree not in website version
+/sw/mf/common/compilers/julia/0.3.11
+   WARNING: julia_0.3.11 from mftree not in website version
+/sw/mf/common/compilers/julia/0.4.6
+   WARNING: julia_0.4.6 from mftree not in website version
+/sw/mf/common/compilers/llvm/latest
+/sw/mf/common/compilers/llvm/llvm.tcl
+/sw/mf/common/compilers/open64/5.0
+/sw/mf/common/compilers/open64/amd-4.5.1.1
+/sw/mf/common/compilers/open64/amd-4.5.2.1
+/sw/mf/common/compilers/open64/amd-4.2.5.2
+WARNING: /sw/mf/common/compilers/open64/amd-4.2.5.2 is not ascii or utf-8, but inode/x-empty; charset=binary
+/sw/mf/common/compilers/open64/open64.tcl
+/sw/mf/common/compilers/perl/5.12.3
+   WARNING: perl_5.12.3 from mftree not in website version
+/sw/mf/common/compilers/perl/.perl
+   WARNING: perl_.perl from mftree not in website version
+/sw/mf/common/compilers/perl/perl.tcl
+   WARNING: perl_perl.tcl from mftree not in website version
+/sw/mf/common/compilers/pgi/10.0
+/sw/mf/common/compilers/pgi/10.1
+/sw/mf/common/compilers/pgi/10.2
+/sw/mf/common/compilers/pgi/10.3
+/sw/mf/common/compilers/pgi/10.4
+/sw/mf/common/compilers/pgi/10.5
+/sw/mf/common/compilers/pgi/10.6
+/sw/mf/common/compilers/pgi/10.8
+/sw/mf/common/compilers/pgi/10.9

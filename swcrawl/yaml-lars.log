@@ -1,0 +1,420 @@
+/sw/mf/common/compilers/open64/amd-4.5.2.1
+/sw/mf/common/compilers/open64/amd-4.2.5.2
+WARNING: /sw/mf/common/compilers/open64/amd-4.2.5.2 is not ascii or utf-8, but inode/x-empty; charset=binary
+/sw/mf/common/compilers/open64/open64.tcl
+/sw/mf/common/compilers/perl/5.12.3
+   WARNING: perl_5.12.3 from mftree not in website version
+/sw/mf/common/compilers/perl/.perl
+   WARNING: perl_.perl from mftree not in website version
+/sw/mf/common/compilers/perl/perl.tcl
+   WARNING: perl_perl.tcl from mftree not in website version
+/sw/mf/common/compilers/pgi/10.0
+/sw/mf/common/compilers/pgi/10.1
+/sw/mf/common/compilers/pgi/10.2
+/sw/mf/common/compilers/pgi/10.3
+/sw/mf/common/compilers/pgi/10.4
+/sw/mf/common/compilers/pgi/10.5
+/sw/mf/common/compilers/pgi/10.6
+/sw/mf/common/compilers/pgi/10.8
+/sw/mf/common/compilers/pgi/10.9
+/sw/mf/common/compilers/pgi/11.1
+/sw/mf/common/compilers/pgi/11.10
+/sw/mf/common/compilers/pgi/11.2
+/sw/mf/common/compilers/pgi/11.4
+/sw/mf/common/compilers/pgi/12.1
+/sw/mf/common/compilers/pgi/12.10
+/sw/mf/common/compilers/pgi/12.2
+/sw/mf/common/compilers/pgi/12.3
+/sw/mf/common/compilers/pgi/12.4
+/sw/mf/common/compilers/pgi/12.5
+/sw/mf/common/compilers/pgi/12.8
+/sw/mf/common/compilers/pgi/13.10
+/sw/mf/common/compilers/pgi/13.2
+/sw/mf/common/compilers/pgi/13.4
+/sw/mf/common/compilers/pgi/13.5
+/sw/mf/common/compilers/pgi/13.8
+/sw/mf/common/compilers/pgi/13.9
+/sw/mf/common/compilers/pgi/14.1
+/sw/mf/common/compilers/pgi/14.2
+/sw/mf/common/compilers/pgi/14.3
+/sw/mf/common/compilers/pgi/14.7
+/sw/mf/common/compilers/pgi/15.10
+/sw/mf/common/compilers/pgi/15.4
+/sw/mf/common/compilers/pgi/15.7
+/sw/mf/common/compilers/pgi/16.10
+/sw/mf/common/compilers/pgi/16.3
+/sw/mf/common/compilers/pgi/16.4
+/sw/mf/common/compilers/pgi/16.5
+/sw/mf/common/compilers/pgi/16.9
+/sw/mf/common/compilers/pgi/17.10
+/sw/mf/common/compilers/pgi/17.4
+/sw/mf/common/compilers/pgi/17.7
+/sw/mf/common/compilers/pgi/18.1
+/sw/mf/common/compilers/pgi/18.3
+/sw/mf/common/compilers/pgi/2010
+/sw/mf/common/compilers/pgi/2011
+/sw/mf/common/compilers/pgi/2012
+/sw/mf/common/compilers/pgi/2013
+/sw/mf/common/compilers/pgi/2014
+/sw/mf/common/compilers/pgi/2015
+/sw/mf/common/compilers/pgi/2016
+/sw/mf/common/compilers/pgi/2017
+/sw/mf/common/compilers/pgi/2018
+/sw/mf/common/compilers/pgi/7.1-6
+/sw/mf/common/compilers/pgi/7.2
+/sw/mf/common/compilers/pgi/7.2-4
+/sw/mf/common/compilers/pgi/7.2-5
+/sw/mf/common/compilers/pgi/8.0
+/sw/mf/common/compilers/pgi/8.0-1
+/sw/mf/common/compilers/pgi/8.0-3
+/sw/mf/common/compilers/pgi/8.0-4
+/sw/mf/common/compilers/pgi/8.0-5
+/sw/mf/common/compilers/pgi/8.0-6
+/sw/mf/common/compilers/pgi/9.0
+/sw/mf/common/compilers/pgi/9.0-1
+/sw/mf/common/compilers/pgi/9.0-4
+/sw/mf/common/compilers/pgi/#.pgi#
+/sw/mf/common/compilers/pgi/.base
+/sw/mf/common/compilers/pgi/pgi
+/sw/mf/common/compilers/pgi/6.2
+/sw/mf/common/compilers/pgi/7.1
+/sw/mf/common/compilers/python/2.5
+   WARNING: python_2.5 from mftree not in website version
+/sw/mf/common/compilers/python/2.6
+   WARNING: python_2.6 from mftree not in website version
+/sw/mf/common/compilers/python/2.6.1
+   WARNING: python_2.6.1 from mftree not in website version
+/sw/mf/common/compilers/python/2.6.5
+   WARNING: python_2.6.5 from mftree not in website version
+/sw/mf/common/compilers/python/2.6.6
+   WARNING: python_2.6.6 from mftree not in website version
+/sw/mf/common/compilers/python/2.7
+   WARNING: python_2.7 from mftree not in website version
+/sw/mf/common/compilers/python/2.7.1
+   WARNING: python_2.7.1 from mftree not in website version
+/sw/mf/common/compilers/python/2.7.2
+   WARNING: python_2.7.2 from mftree not in website version
+/sw/mf/common/compilers/python/2.7.4
+   WARNING: python_2.7.4 from mftree not in website version
+/sw/mf/common/compilers/python/2.7i
+   WARNING: python_2.7i from mftree not in website version
+/sw/mf/common/compilers/python/3.1
+   WARNING: python_3.1 from mftree not in website version
+/sw/mf/common/compilers/python/3.1.2
+   WARNING: python_3.1.2 from mftree not in website version
+/sw/mf/common/compilers/python/3.1.3
+   WARNING: python_3.1.3 from mftree not in website version
+/sw/mf/common/compilers/python/3.2
+   WARNING: python_3.2 from mftree not in website version
+/sw/mf/common/compilers/python/3.2.4
+   WARNING: python_3.2.4 from mftree not in website version
+/sw/mf/common/compilers/python/.version-old
+/sw/mf/common/compilers/python/python-rpath.tcl
+   WARNING: python_python-rpath.tcl from mftree not in website version
+/sw/mf/common/compilers/python/python-set-LD_LIBRARY_PATH.tcl
+   WARNING: python_python-set-LD_LIBRARY_PATH.tcl from mftree not in website version
+/sw/mf/common/compilers/python/python-set-LD_LIBRARY_PATH_new.tcl
+   WARNING: python_python-set-LD_LIBRARY_PATH_new.tcl from mftree not in website version
+/sw/mf/common/compilers/python3/python3-rpath.tcl
+   WARNING: python3_python3-rpath.tcl from mftree not in website version
+/sw/mf/common/compilers/sbcl/1.0.12
+   WARNING: sbcl_1.0.12 from mftree not in website version
+/sw/mf/common/compilers/sbcl/.sbcl
+   WARNING: sbcl_.sbcl from mftree not in website version
+/sw/mf/common/compilers/sunstudio/12.1
+   WARNING: sunstudio_12.1 from mftree not in website version
+/sw/mf/common/compilers/sunstudio/12.1u1
+   WARNING: sunstudio_12.1u1 from mftree not in website version
+/sw/mf/common/compilers/sunstudio/.sunstudio
+   WARNING: sunstudio_.sunstudio from mftree not in website version
+/sw/mf/common/compilers/totalview/8.10.0-1
+   WARNING: totalview_8.10.0-1 from mftree not in website version
+/sw/mf/common/compilers/totalview/8.15.0-15
+   WARNING: totalview_8.15.0-15 from mftree not in website version
+/sw/mf/common/compilers/totalview/8.8.0-2
+   WARNING: totalview_8.8.0-2 from mftree not in website version
+/sw/mf/common/compilers/totalview/8.9.2-2
+   WARNING: totalview_8.9.2-2 from mftree not in website version
+/sw/mf/common/compilers/totalview/8.9.2-0
+   WARNING: totalview_8.9.2-0 from mftree not in website version
+/sw/mf/common/compilers/totalview/totalview
+   WARNING: totalview_totalview from mftree not in website version
+/sw/mf/common/compilers/upc/berkeley_2.18
+/sw/mf/common/compilers/upc/gcc_4.8
+/sw/mf/common/compilers/upc/upc.tcl
+/sw/mf/common/environment/arc/0.6
+/sw/mf/common/environment/arc/0.8
+/sw/mf/common/environment/sge/grad
+/sw/mf/common/environment/sge/isis
+/sw/mf/common/environment/sge/isis61
+/sw/mf/common/environment/sge/kalkyl
+/sw/mf/common/environment/sge/os
+/sw/mf/common/environment/sge/set
+/sw/mf/common/environment/sge/sge.tcl
+/sw/mf/common/fysast/general/hdf5/system
+/sw/mf/common/fysast/general/hdf5/hdf5.tcl
+/sw/mf/common/libraries/Poppler/0.43.0
+   WARNING: Poppler_0.43.0 from mftree not in website version
+/sw/mf/common/libraries/freetype/2.6
+/sw/mf/common/libraries/gstreamer/0.10.31
+   WARNING: gstreamer_0.10.31 from mftree not in website version
+/sw/mf/common/libraries/hdf5/1.8.16_gcc4.9.2
+   WARNING: hdf5_1.8.16_gcc4.9.2 from mftree not in website version
+/sw/mf/common/libraries/hdf5/1.8.16_gcc5.3.0
+   WARNING: hdf5_1.8.16_gcc5.3.0 from mftree not in website version
+/sw/mf/common/libraries/liblzma/5.2.2
+   WARNING: liblzma_5.2.2 from mftree not in website version
+/sw/mf/common/libraries/pcre/8.38
+   WARNING: pcre_8.38 from mftree not in website version
+/sw/mf/common/libraries/petsc/2.3.2-p9-hypre-nodebug-openmpi
+/sw/mf/common/libraries/petsc/2.3.2-p8
+/sw/mf/common/libraries/petsc/2.3.2-p9-hypre
+/sw/mf/common/libraries/petsc/2.3.2-p9-hypre-nodebug
+/sw/mf/common/libraries/petsc/2.3.2-p9-hypre-openmpi
+/sw/mf/common/libraries/petsc/2.3.3-p15
+/sw/mf/common/libraries/petsc/3.0.0-p10
+   WARNING: petsc_3.0.0-p10 from mftree not in website version
+/sw/libs/petsc/ from the mf does not exist
+/sw/libs/petsc/ is not writable
+/sw/mf/common/libraries/scalapack/1.8.0-kalkyl-openmpi-1.4.2-intel-mkl
+/sw/mf/common/libraries/scalapack/1.8.0-kalkyl-openmpi-1.4.2-pgi-acml
+/sw/mf/common/libraries/scalapack/2.0.2
+/sw/mf/common/libraries/szip/2.1_gcc5.3.0
+   WARNING: szip_2.1_gcc5.3.0 from mftree not in website version
+/sw/mf/common/libraries/tbb/4.4u1_gcc4.9.2
+/sw/mf/common/libraries/tbb/4.4u1_intel15.3
+/sw/mf/common/libraries/zlib/.zlib
+   WARNING: zlib_.zlib from mftree not in website version
+/sw/mf/common/libraries/zlib/.zlib-old
+   WARNING: zlib_.zlib-old from mftree not in website version
+/sw/mf/common/libraries/libc/2.14
+   WARNING: libc_2.14 from mftree not in website version
+/sw/libs/libc/ from the mf does not exist
+/sw/libs/libc/ is not writable
+/sw/mf/common/libraries/boost/1.45.0
+   WARNING: boost_1.45.0 from mftree not in website version
+/sw/mf/common/libraries/boost/1.55.0
+   WARNING: boost_1.55.0 from mftree not in website version
+/sw/mf/common/libraries/boost/1.59.0_intel15.3
+   WARNING: boost_1.59.0_intel15.3 from mftree not in website version
+/sw/mf/common/libraries/boost/1.44.0
+   WARNING: boost_1.44.0 from mftree not in website version
+/sw/mf/common/libraries/slurm-drmaa/1.0.7.lua
+/sw/mf/common/libraries/slurm-drmaa/1.0.7~
+   WARNING: slurm-drmaa_1.0.7~ from mftree not in website version
+/sw/comp/ant/ from the mf does not exist
+/sw/comp/ant/ is not writable
+/sw/mf/common/libraries/slurm-drmaa/slurm-drmaa.lua
+/sw/mf/common/parallel/gnuparallel/20140222
+   WARNING: gnuparallel_20140222 from mftree not in website version
+/sw/mf/common/parallel/gnuparallel/.gnuparallel
+   WARNING: gnuparallel_.gnuparallel from mftree not in website version
+/sw/mf/common/parallel/gnuparallel/20150522
+   WARNING: gnuparallel_20150522 from mftree not in website version
+/sw/mf/common/parallel/intelmpi/17.0
+/sw/mf/common/parallel/intelmpi/17.1
+/sw/mf/common/parallel/intelmpi/17.2
+/sw/mf/common/parallel/intelmpi/17.4
+/sw/mf/common/parallel/intelmpi/18.0
+/sw/mf/common/parallel/intelmpi/18.1
+/sw/mf/common/parallel/intelmpi/18.2
+/sw/mf/common/parallel/intelmpi/4.1
+/sw/mf/common/parallel/intelmpi/5.0
+/sw/mf/common/parallel/intelmpi/5.0.3
+/sw/mf/common/parallel/intelmpi/5.1.2
+/sw/mf/common/parallel/intelmpi/5.1.3
+/sw/mf/common/parallel/intelmpi/18.3
+/sw/mf/common/parallel/intelmpi/impi.tcl
+/sw/mf/common/parallel/intelmpi/19.4
+/sw/mf/common/parallel/intelmpi/impi.tcl~
+/sw/mf/common/parallel/intelmpi/19.5
+/sw/mf/common/parallel/intelmpi/20.0
+/sw/mf/common/parallel/intelmpi/impi-new.tcl
+/sw/mf/common/parallel/intelmpi/20.2
+/sw/mf/common/parallel/intelmpi/20.4
+/sw/mf/common/parallel/mpjexpress/v0.38
+   WARNING: mpjexpress_v0.38 from mftree not in website version
+/sw/mf/common/parallel/mpjexpress/.mpjexpress
+   WARNING: mpjexpress_.mpjexpress from mftree not in website version
+/sw/mf/common/parallel/openmpi/1.10.0
+/sw/mf/common/parallel/openmpi/1.10.1
+/sw/mf/common/parallel/openmpi/1.10.2
+/sw/mf/common/parallel/openmpi/1.10.4
+/sw/mf/common/parallel/openmpi/1.10.5
+/sw/mf/common/parallel/openmpi/1.2.6
+/sw/mf/common/parallel/openmpi/1.2.7
+/sw/mf/common/parallel/openmpi/1.2.7_gcc4.3
+/sw/mf/common/parallel/openmpi/1.2.7_intel10.1
+/sw/mf/common/parallel/openmpi/1.2.7_pgi7.2
+/sw/mf/common/parallel/openmpi/1.2.8
+/sw/mf/common/parallel/openmpi/1.2.8_gcc4.3
+/sw/mf/common/parallel/openmpi/1.2.8_intel10.1
+/sw/mf/common/parallel/openmpi/1.2.8_pgi7.1
+/sw/mf/common/parallel/openmpi/1.2.8_pgi7.2
+/sw/mf/common/parallel/openmpi/1.2.9
+/sw/mf/common/parallel/openmpi/1.2.9_gcc4.3
+/sw/mf/common/parallel/openmpi/1.2.9_intel11.0
+/sw/mf/common/parallel/openmpi/1.2.9_pgi8.0
+/sw/mf/common/parallel/openmpi/1.3
+/sw/mf/common/parallel/openmpi/1.3.1
+/sw/mf/common/parallel/openmpi/1.3.2
+/sw/mf/common/parallel/openmpi/1.3.3
+/sw/mf/common/parallel/openmpi/1.3.4
+/sw/mf/common/parallel/openmpi/1.3_pgi8.0
+/sw/mf/common/parallel/openmpi/1.4.0
+/sw/mf/common/parallel/openmpi/1.4.1
+/sw/mf/common/parallel/openmpi/1.4.1_gcc4.1
+/sw/mf/common/parallel/openmpi/1.4.1_gcc4.4
+/sw/mf/common/parallel/openmpi/1.4.1_xl11.1
+/sw/mf/common/parallel/openmpi/1.4.2
+/sw/mf/common/parallel/openmpi/1.4.3
+/sw/mf/common/parallel/openmpi/1.4.3_intel
+/sw/mf/common/parallel/openmpi/1.4.4
+/sw/mf/common/parallel/openmpi/1.4.5
+/sw/mf/common/parallel/openmpi/1.5.0
+/sw/mf/common/parallel/openmpi/1.5.4
+/sw/mf/common/parallel/openmpi/1.5.5
+/sw/mf/common/parallel/openmpi/1.6.3
+/sw/mf/common/parallel/openmpi/1.6.4
+/sw/mf/common/parallel/openmpi/1.6.5
+/sw/mf/common/parallel/openmpi/1.7.0
+/sw/mf/common/parallel/openmpi/1.7.1
+/sw/mf/common/parallel/openmpi/1.7.2
+/sw/mf/common/parallel/openmpi/1.7.3
+/sw/mf/common/parallel/openmpi/1.7.4
+/sw/mf/common/parallel/openmpi/1.7.5
+/sw/mf/common/parallel/openmpi/1.8.1
+/sw/mf/common/parallel/openmpi/1.8.4
+/sw/mf/common/parallel/openmpi/1.8.5
+/sw/mf/common/parallel/openmpi/1.8.8
+/sw/mf/common/parallel/openmpi/2.0.0
+/sw/mf/common/parallel/openmpi/2.0.1
+/sw/mf/common/parallel/openmpi/2.0.2
+/sw/mf/common/parallel/openmpi/2.1.1
+/sw/mf/common/parallel/openmpi/2.1.3.lua
+/sw/mf/common/parallel/openmpi/3.0.1.lua
+/sw/mf/common/parallel/openmpi/3.1.0.lua
+/sw/mf/common/parallel/openmpi/3.1.1.lua
+/sw/mf/common/parallel/openmpi/1.2.6gcc4.3
+/sw/mf/common/parallel/openmpi/1.2.6intel10.1
+/sw/mf/common/parallel/openmpi/1.2.6pgi7.1
+/sw/mf/common/parallel/openmpi/1.2.7gcc4.3
+/sw/mf/common/parallel/openmpi/1.2.7intel10.1
+/sw/mf/common/parallel/openmpi/1.2.7pgi7.2
+/sw/mf/common/parallel/openmpi/1.4
+/sw/mf/common/parallel/openmpi/1.5
+/sw/mf/common/parallel/openmpi/1.6
+/sw/mf/common/parallel/openmpi/1.7
+/sw/mf/common/parallel/openmpi/1.8
+/sw/mf/common/parallel/openmpi/ompi.tcl
+/sw/mf/common/parallel/openmpi/openmpi.lua
+/sw/mf/common/parallel/openmpi/openmpi.tcl
+/sw/mf/common/parallel/openmpi/openmpi.lua~
+/sw/mf/common/parallel/openmpi/openmpi.tcl2
+/sw/mf/common/parallel/openmpi/openmpi.tcl3
+/sw/mf/common/parallel/openmpi/3.0.2.lua
+/sw/mf/common/parallel/openmpi/openmpi.tcl3~
+/sw/mf/common/parallel/openmpi/3.1.2.lua
+/sw/mf/common/parallel/openmpi/openmpi.lua.safe
+/sw/mf/common/parallel/openmpi/4.0.2.lua
+/sw/mf/common/parallel/openmpi/3.1.5.lua
+/sw/mf/common/parallel/openmpi/4.0.3-no-ib-verbs.lua
+/sw/mf/common/parallel/openmpi/4.0.3.lua
+/sw/mf/common/parallel/openmpi/4.0.4.lua
+/sw/mf/common/parallel/openmpi/4.0.5.lua
+/sw/mf/common/parallel/openmpi/4.1.1.lua
+/sw/mf/common/parallel/openmpi/old/openmpi.tcl
+/sw/mf/common/parallel/openmpi_gcc4.3/1.2.5
+/sw/mf/common/parallel/openmpi_gcc4.3/1.2.6
+/sw/mf/common/parallel/openmpi_gcc4.3/1.2.7
+/sw/mf/common/parallel/openmpi_gcc4.3/1.2.8
+/sw/mf/common/parallel/openmpi_intel10.1/1.2.6
+/sw/mf/common/parallel/openmpi_intel10.1/1.2.7
+/sw/mf/common/parallel/openmpi_intel10.1/1.2.8
+/sw/mf/common/parallel/openmpi_pgi7.1/1.2.5
+/sw/mf/common/parallel/openmpi_pgi7.1/1.2.6
+/sw/mf/common/parallel/openmpi_pgi7.1/1.2.7
+/sw/mf/common/parallel/openmpi_pgi7.1/1.2.8
+/sw/mf/common/data/WPS-geog/4
+   WARNING: WPS-geog_4 from mftree not in website version
+/sw/mf/irma/applications/mover/1.0.0
+   WARNING: mover_1.0.0 from mftree not in website version
+/usr/local/mover/ from the mf does not exist
+/usr/local/mover/ is not writable
+/sw/mf/milou/applications/awscli/1.9.6
+/sw/mf/milou/applications/circos/0.66
+/sw/mf/milou/applications/irods/swestore_legacy
+/sw/mf/milou/applications/irods/test
+/sw/mf/milou/applications/vim/7.4-1941
+/sw/mf/milou/bioinfo-tools/alignment/progressiveCactus/2015-02-06
+/sw/mf/milou/bioinfo-tools/alignment/progressiveCactus/2015-12-18
+/sw/mf/milou/bioinfo-tools/alignment/progressiveCactus/2016-11-30
+/sw/mf/milou/bioinfo-tools/annotation/trinotate/2.0.1
+/sw/mf/milou/bioinfo-tools/annotation/trinotate/2013-08-26
+/sw/mf/milou/bioinfo-tools/annotation/trinotate/2013-11-10
+/sw/mf/milou/bioinfo-tools/assembly/DBG2OLC/20151208
+/sw/mf/milou/bioinfo-tools/assembly/abyss/1.2.3
+/sw/mf/milou/bioinfo-tools/assembly/abyss/1.2.4
+/sw/mf/milou/bioinfo-tools/assembly/abyss/1.2.5
+/sw/mf/milou/bioinfo-tools/assembly/abyss/1.2.7
+/sw/mf/milou/bioinfo-tools/assembly/abyss/1.2.7-maxk96
+/sw/mf/milou/bioinfo-tools/assembly/abyss/1.3.0
+/sw/mf/milou/bioinfo-tools/assembly/abyss/1.3.2
+/sw/mf/milou/bioinfo-tools/assembly/abyss/1.3.3
+/sw/mf/milou/bioinfo-tools/assembly/abyss/1.3.3-k96
+/sw/mf/milou/bioinfo-tools/assembly/abyss/1.3.4
+/sw/mf/milou/bioinfo-tools/assembly/trinity/2.0.2
+/sw/mf/milou/bioinfo-tools/assembly/trinity/2.0.6
+/sw/mf/milou/bioinfo-tools/assembly/trinity/2.1.0
+/sw/mf/milou/bioinfo-tools/assembly/trinity/2.3.2
+/sw/mf/milou/bioinfo-tools/assembly/trinity/2011-05-13
+/sw/mf/milou/bioinfo-tools/assembly/trinity/2011-10-29
+/sw/mf/milou/bioinfo-tools/assembly/trinity/2011-11-26
+/sw/mf/milou/bioinfo-tools/assembly/trinity/2012-04-27
+/sw/mf/milou/bioinfo-tools/assembly/trinity/2012-06-08
+/sw/mf/milou/bioinfo-tools/assembly/trinity/2013-08-14
+/sw/mf/milou/bioinfo-tools/assembly/trinity/2014-04-13
+/sw/mf/milou/bioinfo-tools/misc/CNVnator/0.3
+/sw/mf/milou/bioinfo-tools/misc/EPACTS/3.2.6
+/sw/mf/milou/bioinfo-tools/misc/GenomeTools/1.3.5
+/sw/mf/milou/bioinfo-tools/misc/msmc/2014-09-29
+/sw/mf/milou/bioinfo-tools/misc/picard/1.114
+/sw/mf/milou/bioinfo-tools/misc/picard/1.119
+/sw/mf/milou/bioinfo-tools/misc/picard/1.127
+/sw/mf/milou/bioinfo-tools/misc/picard/1.40
+/sw/mf/milou/bioinfo-tools/misc/picard/1.41
+/sw/mf/milou/bioinfo-tools/misc/picard/1.59
+/sw/mf/milou/bioinfo-tools/misc/picard/1.64
+/sw/mf/milou/bioinfo-tools/misc/picard/1.69
+/sw/mf/milou/bioinfo-tools/misc/picard/1.85
+/sw/mf/milou/bioinfo-tools/misc/psortb/3.0
+/sw/mf/milou/bioinfo-tools/phylogeny/phylobayesmpi/1.3b
+/sw/mf/milou/bioinfo-tools/phylogeny/phylobayesmpi/1.4f
+/sw/mf/milou/bioinfo-tools/phylogeny/phylobayesmpi/1.5a
+/sw/mf/milou/bioinfo-tools/phylogeny/phylobayesmpi/1.7a
+/sw/mf/milou/compilers/ruby/2.0.0_p353.lua
+/sw/mf/milou/libraries/scalapack/1.8.0-openmpi-1.4.2-intel-mkl
+/sw/mf/milou/libraries/scalapack/1.8.0-openmpi-1.4.2-pgi-acml
+/sw/mf/milou/parallel/openmpi/1.10.3.lua
+/sw/mf/milou/parallel/openmpi/1.5.3.lua
+/sw/mf/milou/parallel/openmpi/default.lua
+/sw/mf/rackham/applications/gromacs/2021.1.th
+   WARNING: gromacs_2021.1.th from mftree not in website version
+/sw/mf/rackham/applications/lammps/31Mar2017_gcc_openmpi
+   WARNING: lammps_31Mar2017_gcc_openmpi from mftree not in website version
+/sw/mf/rackham/applications/lammps/log.lammps
+WARNING: /sw/mf/rackham/applications/lammps/log.lammps is not ascii or utf-8, but inode/x-empty; charset=binary
+/sw/mf/rackham/applications/molden/5.1
+/sw/mf/rackham/applications/cp2k/6.1-gcc
+/sw/mf/rackham/applications/cp2k/4.1-gcc
+/sw/mf/rackham/applications/gaussview/core.1201
+ERROR: /sw/mf/rackham/applications/gaussview/core.1201 is not readable
+/sw/mf/rackham/compilers/intelamplifier/17.2
+/sw/mf/rackham/compilers/intelamplifier/17.3
+/sw/mf/rackham/compilers/intelamplifier/18.0
+/sw/mf/rackham/compilers/intelamplifier/18.1
+/sw/mf/rackham/compilers/intelamplifier/18.2
+/sw/mf/rackham/compilers/intelamplifier/18.3
+/sw/mf/rackham/compilers/intelamplifier/19.4
+/sw/mf/rackham/compilers/intelamplifier/19.6
+/sw/mf/rackham/compilers/intelamplifier/20.0
