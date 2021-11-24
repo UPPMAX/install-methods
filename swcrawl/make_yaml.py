@@ -8,6 +8,7 @@ import shlex
 import shutil
 import time
 import chardet
+import grp
 
 # Open database connection
 if not os.path.exists('swdb.db'):
@@ -175,6 +176,8 @@ for row in rows_from_mftree:
                             if os.path.isfile(common) and os.access(common, os.R_OK):
                                 the_file.write('- COMMON:' + common + "\n")
                             the_file.write('- DESCRIPTION:' + desc + "\n")
+                        gid = grp.getgrnam("sw").gr_gid
+                        os.chown(new_yaml, -1, gid)
                     else:
                         if not os.path.isdir(path_to_sw):
                             print(path_to_sw + " from the mf does not exist", file=log)
