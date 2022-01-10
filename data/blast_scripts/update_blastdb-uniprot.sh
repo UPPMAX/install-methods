@@ -3,11 +3,11 @@
 # See README-uniprot.md
 
 module load bioinfo-tools
-module load blast/2.6.0+
-module load perl_modules/5.24.1
+module load blast/2.11.0+
+module load perl_modules/5.26.2
 
-staging_dir='/sw/data/uppnex/blast_tmp'
-script_dir='/sw/data/uppnex/blast_scripts'
+staging_dir='/sw/data/blast_tmp'
+script_dir='/sw/data/blast_scripts'
 
 uniprot_url='ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/'
 

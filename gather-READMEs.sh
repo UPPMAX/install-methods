@@ -64,7 +64,7 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
     find dbCAN              ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find eggNOG_data        ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find gnomad_data        ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find igenomes           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find iGenomes           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find krakenuniqDB       ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find panther            ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find silva              ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
@@ -98,13 +98,14 @@ function data_update() {
 
 cd $DATA_REPOSITORY
 
+data_update  /sw/data/iGenomes           aws-iGenomes-download-all.sh  build-iGenomes-additions.sh  iGenomes-STAR-2.7.x-index.sh  iGenomes-genes.bed.sh # additional files, README harvested above
 data_update  /sw/data/SGDP               check_md5s.pl   # additional script, README harvested above
 data_update  /sw/data/Kraken_data        Kraken-db-README.md    Kraken-update-db.sh    
 data_update  /sw/data/Kraken2_data       Kraken2-db-README.md   Kraken2-update-db.sh    Kraken2-update-nt.sh
 data_update  /sw/data/RTG                RTG-db-README.md       RTG-update-dbs.sh      
 data_update  /sw/data/diamond_databases  diamond-db-README.md   diamond-update-dbs.sh   diamond-check-dbs.sh
 
-data_update  /sw/data/blast_scripts      README.md README-uniprot.md update_blastdb.sh update_blastdb-uniprot.sh uniprot.mk install_blastdb.sh remove_old_blastdb.sh cron-wrapper.sh crontab.txt test/test_blastdb.sh test/prots.fa test/nucls.fa test/*.out webpage.mk webpage.md webpage.html
+data_update  /sw/data/blast_scripts      README.md README-uniprot.md update_blastdb.sh update_blastdb-uniprot.sh uniprot.mk install_and_check_blastdb.sh remove_old_blastdb.sh cron-wrapper.sh crontab.txt test/test_blastdb.sh test/prots.fa test/nucls.fa test/*.out webpage.mk webpage.md webpage.html
 
 data_update  /sw/data/ncbi_taxonomy      ncbi_taxonomy-db-README.md ncbi_taxonomy-update-dbs.sh crontab.txt webpage.html webpage.md webpage.mk
 

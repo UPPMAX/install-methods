@@ -1,3 +1,118 @@
+BUSCO/5.2.2
+========================
+
+<https://busco.ezlab.org/>
+
+Used under license:
+MIT
+
+
+Structure creating script (makeroom_BUSCO_5.2.2.sh) moved to /sw/bioinfo/BUSCO/makeroom_5.2.2.sh
+
+LOG
+---
+
+    /home/bjornv/git/install-methods/makeroom.sh -t "BUSCO" -v "5.2.2" -w "https://busco.ezlab.org/" -l "MIT" -d "Based on evolutionarily-informed expectations of gene content of near-universal single-copy orthologs\\, BUSCO metric is complementary to technical metrics like N50." -f
+    ./makeroom_BUSCO_5.2.2.sh
+    TOOL=BUSCO
+    VERSION=5.2.2
+    source /sw/bioinfo/${TOOL}/SOURCEME_${TOOL}_${VERSION}
+    cd $SRCDIR
+    git clone --depth 1 --branch ${VERSION} https://gitlab.com/ezlab/busco.git 
+    cd busco
+
+    module load bioinfo-tools
+    module load blast/2.12.0+
+    module load augustus/3.4.0
+    module load prodigal/2.6.3
+    module load metaeuk/4-a0f584d
+    module load hmmer/3.2.1
+    module load sepp/4.3.10
+    module load biopython/1.78
+    python3 -m pip install  --ignore-installed --prefix=$PREFIX attrs==19.2.0 nbclient==0.5.1 pandas==1.2.3 jupyter-client==6.1.5 nbformat==5.0.2
+
+Modify the config.ini with the paths further down in this file.
+
+    export PYTHONPATH=${PREFIX}/lib/python3.8/site-packages/:${PYTHONPATH}
+    export BUSCO_CONFIG_FILE=${PREFIX}/config.ini
+    export BUSCO_LINEAGE_SETS=${TOOLDIR}/v5_lineage_sets/lineages
+    python3 setup.py install --prefix=$PREFIX
+
+
+    mv $PREFIX/bin/busco $PREFIX/bin/run_BUSCO.py
+
+# Local destination path for downloaded lineage datasets
+download_path = /sw/bioinfo/BUSCO/v5_lineage_sets/
+# Run offline
+offline=True
+# Ortho DB Datasets version
+datasets_version = odb10
+
+[tblastn]
+path = /sw/bioinfo/blast/2.12.0+/rackham/bin/
+command = tblastn
+
+[makeblastdb]
+path = /sw/bioinfo/blast/2.12.0+/rackham/bin/
+command = makeblastdb
+
+# Two versions of metaeuk on Rackham and snowy. 
+[metaeuk]
+path = /sw/bioinfo/metaeuk/4-a0f584d/rackham/bin/
+path = /sw/bioinfo/metaeuk/4-a0f584d/snowy/bin/
+command = metaeuk
+
+[augustus]
+path = /sw/bioinfo/augustus/3.4.0/rackham/bin/
+command = augustus
+
+[etraining]
+path = /sw/bioinfo/augustus/3.4.0/rackham/bin/
+command = etraining
+
+[gff2gbSmallDNA.pl]
+path = /sw/bioinfo/augustus/3.4.0/rackham/scripts/
+command = gff2gbSmallDNA.pl
+
+[new_species.pl]
+path = /sw/bioinfo/augustus/3.4.0/rackham/scripts/
+command = new_species.pl
+
+[optimize_augustus.pl]
+path = /sw/bioinfo/augustus/3.4.0/rackham/scripts/
+command = optimize_augustus.pl
+
+[hmmsearch]
+path = /sw/bioinfo/hmmer/3.2.1/rackham/bin/
+command = hmmsearch
+
+[sepp]
+path = /sw/bioinfo/sepp/4.3.10/rackham/bin/
+command = run_sepp.py
+
+[prodigal]
+path = /sw/bioinfo/prodigal/2.6.3/rackham/bin/
+command = prodigal
+
+
+# 2021-10-21
+# On snowy you need a modified config.ini. Metaeuk has two compiled versions one with AVX2 (Rackham) and SSE4 (Snowy)
+    cd $TOOLDIR/$VERSION
+    unlink irma
+    unlink bianca
+    unlink snowy
+    mkdir  snowy
+    ln -s snowy/ bianca
+    ln -s snowy/ irma
+    cd snowy/
+    ln -s ../rackham/{lib,bin} .
+    cp ../rackham/config.ini .
+# Add the metaeuk snowy path to the config.ini file.
+# path = /sw/bioinfo/metaeuk/4-a0f584d/snowy/bin/
+
+
+
+
 BUSCO/5.0.0
 ========================
 
@@ -18,7 +133,7 @@ LOG
 
     source /sw/bioinfo/BUSCO/SOURCEME_BUSCO_5.0.0
     cd $SRCDIR
-    git clone --depth 1 --branch 5.0.0 https://gitlab.com/ezlab/busco.git 
+    git clone --depth 1 --branch 4.1.4 https://gitlab.com/ezlab/busco.git 
     cd busco
 
     module load bioinfo-tools
@@ -98,6 +213,7 @@ command = prodigal
 
 # 2021-10-21
 # On snowy you need a modified config.ini. Metaeuk has two compiled versions one with AVX2 (Rackham) and SSE4 (Snowy)
+    cd $TOOLDIR/$VERSION
     unlink irma
     unlink bianca
     unlink snowy

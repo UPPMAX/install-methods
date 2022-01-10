@@ -79,6 +79,7 @@ Place these in `$VERSIONDIR/source-for-setup` for future use.
     module load COIN-OR-OptimizationSuite/1.8.0
     module load libSBML/5.19.0
     module load rust/1.43.1
+    module load git/2.28.0
     export DOWNLOAD_STATIC_LIBV8=1
     echo -e "\nThis should have been set to the appropriate directory in this module, is it?\n\nR_LIBS_USER = $R_LIBS_USER\n"
 
@@ -186,6 +187,23 @@ Installation which requires additional modules
 
 A number of R packages or their dependencies require some further loads.
 
+
+## Parallel OpenBUGS operation: pbugs and RMultiBUGS
+
+pbugs on github has a bug in its DESCRIPTION.
+
+    cd $TOOLDIR/external
+    git clone https://github.com/fisabio/pbugs
+    cd pbugs
+    vi DESCRIPTION
+
+Remove the line beginning with RoxygenNote.
+
+    cd ..
+
+Then within R started in this directory:
+
+    install.packages('pbugs', repos=NULL)
 
 
 ### hdf5r

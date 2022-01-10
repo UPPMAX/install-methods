@@ -3,11 +3,13 @@ optima/f-1.3
 
 OPTIMA: <http://www.davideverzotto.it/research/OPTIMA/>
 
+<https://github.com/verznet/OPTIMA>
+
 LOG
 ---
 
     VER=f-1.3
-    TOP=/sw/apps/bioinfo/optima/$VER
+    TOP=/sw/bioinfo/optima/$VER
 
     mkdir -p $TOP
     cd $TOP

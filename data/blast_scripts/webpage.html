@@ -1,23 +1,38 @@
-<p>Many pipelines involving annotation/assembly comparison involve Blast (<a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi" class="uri">http://blast.ncbi.nlm.nih.gov/Blast.cgi</a>). Several Blast versions are available as modules, for example:</p>
+<p>Many pipelines involving annotation/assembly comparison involve Blast (<a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi" class="uri">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a>). Several Blast versions are available as modules, for example:</p>
 <ul>
-<li><strong>blast/2.7.1+</strong>, etc. : the Blast+ suites (<code>blastp</code>, <code>tblastn</code>, etc.), <strong>recommended</strong></li>
+<li><strong>blast/2.12.0+</strong>, etc. : the Blast+ suites (<code>blastp</code>, <code>tblastn</code>, etc.), <strong>recommended</strong></li>
 <li><strong>blast/2.2.26</strong>, etc. : 'legacy' Blast (<code>blastall</code>, <code>megablast</code>, etc)</li>
 </ul>
 <p>Use <code>module spider blast</code> to see available versions. As for all bioinformatics tools at Uppmax, <code>module load bioinfo-tools</code> is required before the blast modules are available.</p>
-<p>Uppmax maintains local copies of many Blast databases, including those available at NCBI (<a href="ftp://ftp.ncbi.nih.gov/blast/db/README" class="uri">ftp://ftp.ncbi.nih.gov/blast/db/README</a>) as well as several UniProt databases (<a href="http://www.uniprot.org/" class="uri">http://www.uniprot.org/</a>). Note that:</p>
+<p>Uppmax maintains local copies of many Blast databases, including many available at NCBI:</p>
 <ul>
-<li>The local copies are found at <code>/sw/data/uppnex/blast_databases</code></li>
+<li><a href="ftp://ftp.ncbi.nih.gov/blast/db/README" class="uri">ftp://ftp.ncbi.nih.gov/blast/db/README</a></li>
+<li><a href="ftp://ftp.ncbi.nlm.nih.gov/blast/documents/blastdb.html" class="uri">ftp://ftp.ncbi.nlm.nih.gov/blast/documents/blastdb.html</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/books/NBK62345/" class="uri">https://www.ncbi.nlm.nih.gov/books/NBK62345/</a></li>
+<li><a href="https://ncbiinsights.ncbi.nlm.nih.gov/2020/02/21/rrna-databases/" class="uri">https://ncbiinsights.ncbi.nlm.nih.gov/2020/02/21/rrna-databases/</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/sars-cov-2/" class="uri">https://www.ncbi.nlm.nih.gov/sars-cov-2/</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/refseq/refseq_select/" class="uri">https://www.ncbi.nlm.nih.gov/refseq/refseq_select/</a></li>
+<li><a href="https://blast.ncbi.nlm.nih.gov/smartblast/smartBlast.cgi?CMD=Web&amp;PAGE_TYPE=BlastDocs#searchSets" class="uri">https://blast.ncbi.nlm.nih.gov/smartblast/smartBlast.cgi?CMD=Web&amp;PAGE_TYPE=BlastDocs#searchSets</a></li>
+</ul>
+<p>as well as several UniProt databases (<a href="http://www.uniprot.org/" class="uri">http://www.uniprot.org/</a>).</p>
+<p>Note that:</p>
+<ul>
+<li>The local UPPMAX copies are found at <code>/sw/data/blast_databases</code></li>
+<li>Doing <code>module load blast_databases</code> sets the environment variable <code>BLASTDB</code> to this directory; this is loaded as a prerequisite when loading any blast modules</li>
 <li>New versions are installed <strong>the first day of each month at 00.01</strong> from local copies updated <strong>the 28th of the previous month beginning at 00.01</strong></li>
 <li>When new versions are installed, the directory containing the previous versions is renamed to <code>blast_databases_old</code></li>
 <li><code>blast_databases_old</code> is deleted the second data of each month at 00.01</li>
 </ul>
-<p>The databases available are:</p>
+<p>These databases use the "v5" format, which includes rich taxonomic infromation with sequences, and will only work with the Blast tools from the module blast/2.8.0+ and later. Earlier module versions can still be used, but you will need to provide/build your own databases. NCBI no longer updates databases with the older "v4" databases as of February 2020, and they have been deleted from UPPMAX. The final updates of these databases (again, as of this writing nearly two years old) are available from NCBI over FTP at <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/db/v4" class="uri">ftp://ftp.ncbi.nlm.nih.gov/blast/db/v4</a>.</p>
+<p>Each NCBI-hosted database also includes a JSON file containing additional medatadata for that particular database. These are found in <code>/sw/data/blast_databases/</code> and are named <em>databasename</em>*.json. The exact name varies based on the format of the database. For example, the contents of the JSON file for the <code>nr</code> database can be see by running</p>
+<pre><code>cat /sw/data/blast_databases/nr*.json</code></pre>
+<p>The Blast databases available at UPPMAX are:</p>
 <table>
 <colgroup>
 <col style="width: 20%" />
+<col style="width: 20%" />
 <col style="width: 24%" />
-<col style="width: 32%" />
-<col style="width: 24%" />
+<col style="width: 36%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -28,6 +43,30 @@
 </tr>
 </thead>
 <tbody>
+<tr class="odd">
+<td><strong>16S_ribosomal_RNA</strong></td>
+<td>nucleotide</td>
+<td><a href="https://ncbiinsights.ncbi.nlm.nih.gov/2020/02/21/rrna-databases/">NCBI</a></td>
+<td>16S ribosomal RNA (Bacteria and Archaea type strains)</td>
+</tr>
+<tr class="even">
+<td><strong>18S_fungal_sequences</strong></td>
+<td>nucleotide</td>
+<td><a href="https://ncbiinsights.ncbi.nlm.nih.gov/2020/02/21/rrna-databases/">NCBI</a></td>
+<td>18S ribosomal RNA sequences (SSU) from Fungi type and reference material (BioProject PRJNA39195)</td>
+</tr>
+<tr class="odd">
+<td><strong>28S_fungal_sequences</strong></td>
+<td>nucleotide</td>
+<td><a href="https://ncbiinsights.ncbi.nlm.nih.gov/2020/02/21/rrna-databases/">NCBI</a></td>
+<td>28S ribosomal RNA sequences (LSU) from Fungi type and reference material (BioProject PRJNA51803)</td>
+</tr>
+<tr class="even">
+<td><strong>Betacoronavirus</strong></td>
+<td>nucleotide</td>
+<td><a href="https://www.ncbi.nlm.nih.gov/sars-cov-2/">NCBI</a></td>
+<td>Betacoronavirus nucleotide sequences</td>
+</tr>
 <tr class="odd">
 <td><strong>cdd_delta</strong></td>
 <td>protein</td>
@@ -47,76 +86,160 @@
 <td>Nucleotide sequences for metagenomes</td>
 </tr>
 <tr class="even">
-<td><strong>human_genomic</strong></td>
+<td><strong>human_genome</strong></td>
 <td>nucleotide</td>
-<td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
-<td>Human RefSeq chromosome records</td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/blast/documents/blastdb.html">NCBI</a></td>
+<td>Current RefSeq human genome assembly with various database masking</td>
 </tr>
 <tr class="odd">
+<td><strong>ITS_eukaryote_sequences</strong></td>
+<td>nucleotide</td>
+<td><a href="https://ncbiinsights.ncbi.nlm.nih.gov/2020/02/21/rrna-databases/">NCBI</a></td>
+<td>Internal transcribed spacer region (ITS) for eukaryotic sequences</td>
+</tr>
+<tr class="even">
+<td><strong>ITS_RefSeq_Fungi</strong></td>
+<td>nucleotide</td>
+<td><a href="https://ncbiinsights.ncbi.nlm.nih.gov/2020/02/21/rrna-databases/">NCBI</a></td>
+<td>Internal transcribed spacer region (ITS) from Fungi type and reference material (BioProject PRJNA177353)</td>
+</tr>
+<tr class="odd">
+<td><strong>landmark</strong></td>
+<td>protein</td>
+<td><a href="https://blast.ncbi.nlm.nih.gov/smartblast/smartBlast.cgi?CMD=Web&amp;PAGE_TYPE=BlastDocs#searchSets">NCBI</a></td>
+<td>Proteomes of 27 model organisms. The landmark database includes complete proteomes from a few selected representative genomes spanning a wide taxonomic range, the main database used by the SmartBLAST services.</td>
+</tr>
+<tr class="even">
+<td><strong>LSU_eukaryote_rRNA</strong></td>
+<td>nucleotide</td>
+<td><a href="https://ncbiinsights.ncbi.nlm.nih.gov/2020/02/21/rrna-databases/">NCBI</a></td>
+<td>Large subunit ribosomal RNA sequences for eukaryotic sequences</td>
+</tr>
+<tr class="odd">
+<td><strong>LSU_prokaryote_rRNA</strong></td>
+<td>nucleotide</td>
+<td><a href="https://ncbiinsights.ncbi.nlm.nih.gov/2020/02/21/rrna-databases/">NCBI</a></td>
+<td>Large subunit ribosomal RNA sequences for prokaryotic sequences</td>
+</tr>
+<tr class="even">
+<td><strong>mito</strong></td>
+<td>nucleotide</td>
+<td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
+<td>NCBI Genomic Mitochondrial Reference Sequences</td>
+</tr>
+<tr class="odd">
+<td><strong>mouse_genome</strong></td>
+<td>nucleotide</td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/blast/documents/blastdb.html">NCBI</a></td>
+<td>Current RefSeq mouse genome assembly with various database masking</td>
+</tr>
+<tr class="even">
 <td><strong>nr</strong></td>
 <td>protein</td>
 <td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
-<td>Non-redundant protein sequences</td>
+<td>Non-redundant protein sequences from GenPept, Swissprot, PIR, PDF, PDB, and NCBI RefSe</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>nt</strong></td>
 <td>nucleotide</td>
 <td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
-<td>Partially non-redundant nucleotide sequences</td>
-</tr>
-<tr class="odd">
-<td><strong>other_genomic</strong></td>
-<td>nucleotide</td>
-<td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
-<td>RefSeq chromosome records for non-human organisms</td>
+<td>Partially non-redundant nucleotide sequences from all traditional divisions of GenBank, EMBL, and DDBJ</td>
 </tr>
 <tr class="even">
 <td><strong>pataa</strong></td>
 <td>protein</td>
 <td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
-<td>Sequences for protein structures from patents (EXCLUDED from nr)</td>
+<td>Patent protein sequences</td>
 </tr>
 <tr class="odd">
 <td><strong>patnt</strong></td>
 <td>nucleotide</td>
 <td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
-<td>Nucleotide sequences for pataa protein structures from patents</td>
+<td>Patent nucleotide sequences. Both patent databases are directly from the USPTO, or from the EPO/JPO via EMBL/DDBJ</td>
 </tr>
 <tr class="even">
 <td><strong>pdbaa</strong></td>
 <td>protein</td>
 <td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
-<td>Sequences for protein structures from Protein Data Bank</td>
+<td>Sequences for the protein structure from the Protein Data Bank</td>
 </tr>
 <tr class="odd">
 <td><strong>pdbnt</strong></td>
 <td>nucleitide</td>
 <td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
-<td>Nucleotide sequences for pdbaa protein structures from Protein Data Bank</td>
+<td>Sequences for the nucleotide structure from the Protein Data Bank. They are NOT the protein coding sequences for the corresponding pdbaa entries.</td>
 </tr>
 <tr class="even">
-<td><strong>refseq_genomic</strong></td>
+<td><strong>ref_euk_rep_genomes</strong></td>
 <td>nucleotide</td>
-<td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
-<td>NCBI genomic reference sequences</td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/blast/documents/blastdb.html">NCBI</a></td>
+<td>Refseq Representative Eukaryotic genomes (1000+ organisms)</td>
 </tr>
 <tr class="odd">
+<td><strong>ref_prok_rep_genomes</strong></td>
+<td>nucleotide</td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/blast/documents/blastdb.html">NCBI</a></td>
+<td>Refseq Representative Prokaryotic genomes (5700+ organisms)</td>
+</tr>
+<tr class="even">
+<td><strong>ref_viroid_rep_genomes</strong></td>
+<td>nucleotide</td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/blast/documents/blastdb.html">NCBI</a></td>
+<td>Refseq Representative Viroid genomes (46 organisms)</td>
+</tr>
+<tr class="odd">
+<td><strong>ref_viruses_rep_genomes</strong></td>
+<td>nucleotide</td>
+<td><a href="ftp://ftp.ncbi.nlm.nih.gov/blast/documents/blastdb.html">NCBI</a></td>
+<td>Refseq Representative Virus genomes (9000+ organisms)</td>
+</tr>
+<tr class="even">
 <td><strong>refseq_protein</strong></td>
 <td>protein</td>
 <td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
 <td>NCBI protein reference sequences</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>refseq_rna</strong></td>
 <td>nucleotide</td>
 <td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
 <td>NCBI Transcript reference sequences</td>
 </tr>
+<tr class="even">
+<td><strong>refseq_select_prot</strong></td>
+<td>protein</td>
+<td><a href="https://www.ncbi.nlm.nih.gov/refseq/refseq_select/">NCBI</a></td>
+<td>NCBI RefSeq protein sequences from human, mouse, and prokaryotes, restricted to the RefSeq Select set of proteins. RefSeq Select includes one representative protein per protein-coding gene for human and mouse, and RefSeq proteins annotated on reference and representative genomes for prokaryotes</td>
+</tr>
+<tr class="odd">
+<td><strong>refseq_select_rna</strong></td>
+<td>nucleotide</td>
+<td><a href="https://www.ncbi.nlm.nih.gov/refseq/refseq_select/">NCBI</a></td>
+<td>NCBI RefSeq transcript sequences from human and mouse, restricted to the RefSeq Select set with one representative transcript per protein-coding gene</td>
+</tr>
+<tr class="even">
+<td><strong>SSU_eukaryote_rRNA</strong></td>
+<td>nucleotide</td>
+<td><a href="https://ncbiinsights.ncbi.nlm.nih.gov/2020/02/21/rrna-databases/">NCBI</a></td>
+<td>Small subunit ribosomal RNA sequences for eukaryotic sequences</td>
+</tr>
 <tr class="odd">
 <td><strong>swissprot</strong></td>
 <td>protein</td>
 <td><a href="ftp://ftp.ncbi.nih.gov/blast/db/README">NCBI</a></td>
-<td>Swiss-Prot sequence database</td>
+<td>Swiss-Prot sequence database (last major update)</td>
+</tr>
+<tr class="even">
+<td><strong>tsa_nr</strong></td>
+<td>protein</td>
+<td><a href="https://www.ncbi.nlm.nih.gov/genbank/tsa/">NCBI</a></td>
+<td>Protein sequences from the Trascriptome Shotgun Assembly. Its entries are EXCLUDED from the nr database.</td>
+</tr>
+<tr class="odd">
+<td><strong>tsa_nt</strong></td>
+<td>nucleotide</td>
+<td><a href="https://www.ncbi.nlm.nih.gov/genbank/tsa/">NCBI</a></td>
+<td>A database with earlier non-project based Transcriptome Shotgun Assembly (TSA) entries. Project-based TSA entries are NOT included. Entries are EXCLUDED from the nt database.</td>
 </tr>
 <tr class="even">
 <td><strong>uniprot_sprot</strong></td>
@@ -199,6 +322,7 @@ blastp -db uniprot_sprot ...
 blastp -db uniprot_uniref90 ...
 blastn -db nt ...
 blastn -db refseq_genomic ...</code></pre>
-<h2 id="wgs-tsa-and-sra-sequence-databases-are-not-included">WGS, TSA and SRA sequence databases are not included</h2>
-<p>The NCBI <a href="https://www.ncbi.nlm.nih.gov/genbank/wgs/">Whole-Genome Shotgun</a> is no longer downloaded locally. NCBI provides special versions of Blast and other tools that can be used to search the remote versions of <a href="https://www.ncbi.nlm.nih.gov/genbank/wgs/">WGS</a>, the <a href="https://www.ncbi.nlm.nih.gov/genbank/tsa/">Transcriptome Shotgun Assembly</a>, and the <a href="https://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive</a>.</p>
-<p>These special blast versions and other tools are part of NCBI's <a href="https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc">SRA Tools</a>, which is available at Uppmax as the <strong>sratools</strong> module. We have also include <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/WGS_TOOLS/README_BLASTWGS.txt">auxiliary NCBI scripts</a> in the <strong>sratools</strong> module to convert taxonomic IDs to WGS and TSA identifiers.</p>
+<h2 id="wgs-and-sra-sequence-databases-are-not-included">WGS and SRA sequence databases are not included</h2>
+<p>The NCBI <a href="https://www.ncbi.nlm.nih.gov/genbank/wgs/">Whole-Genome Shotgun</a> is not available locally. NCBI provides special versions of Blast and other tools that can be used to search the remote versions of <a href="https://www.ncbi.nlm.nih.gov/genbank/wgs/">WGS</a> and the <a href="https://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive</a>.</p>
+<p>These special blast versions and other tools are part of NCBI's <a href="https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc">SRA Tools</a>, which is available at Uppmax as the <strong>sratools</strong> module. We have also include <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/WGS_TOOLS/README_BLASTWGS.txt">auxiliary NCBI scripts</a> in the <strong>sratools</strong> module to convert taxonomic IDs to WGS and SRA identifiers.</p>
+<p>Note that NCBI's TSA database is available at UPPMAX, just use the database name <code>tsa_nr</code> or <code>tsa_nt</code>.</p>

@@ -28,3 +28,14 @@ LOG
     make
     cd ..
     cp -avr nanopolish/* ../rackham/
+
+Install VBZ plugin from Oxford Nanopore.
+
+    cd $SRCDIR
+    wget https://github.com/nanoporetech/vbz_compression/releases/download/v1.0.1/ont-vbz-hdf-plugin-1.0.1-Linux-x86_64.tar.gz
+    tar xf ont-vbz-hdf-plugin-1.0.1-Linux-x86_64.tar.gz 
+    cd ont-vbz-hdf-plugin-1.0.1-Linux/usr/local
+    cp -av hdf5 $PREFIX
+
+Now set `HDF5_PLUGIN_PATH` to `$modroot/hdf5/lib/plugin` in the mf file.
+

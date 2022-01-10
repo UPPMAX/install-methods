@@ -11,7 +11,7 @@ Structure creating script (makeroom_TSEBRA_1.0.2-20210716-1f167ad.sh) moved to /
 
 A rename script has been added since 1.0.2 was released a couple weeks ago, so clone the repository rather than use the release.
 
-Use python/3.7.2 as that's what is used by the most recent braker/2.1.6.
+Use python/3.7.2 as that's what is used by braker/2.1.5.
 
 
 LOG

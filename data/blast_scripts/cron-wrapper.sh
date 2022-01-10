@@ -1,6 +1,11 @@
 #!/bin/sh
 
-cd /sw/data/uppnex/blast_scripts || exit 1
+cd /sw/data/blast_scripts || exit 1
+
+#EMAIL="lars.eklund@uppmax.uu.se"
+#EMAIL2="lars.eklund@nbis.se"
+EMAIL="douglas.scofield@uppmax.uu.se"
+EMAIL2="douglas.scofield@uppmax.uu.se"
 
 now=$(date +%FT%T)
 ncbi_log="logs/ncbi-blastdb-$now.log"
@@ -18,10 +23,10 @@ gzip -f --best "$uniprot_log"
 
 printf '%s attached.\n' "$ncbi_log.gz" |
 mailx -s 'BlastDB (NCBI) update report' \
-    -r lars.eklund@uppmax.uu.se \
-    -a "$ncbi_log.gz" lars.eklund@nbis.se
+    -r "$EMAIL" \
+    -a "$ncbi_log.gz" "$EMAIL2"
 
 printf '%s attached.\n' "$uniprot_log.gz" |
 mailx -s 'BlastDB (UniProt) update report' \
-    -r lars.eklund@uppmax.uu.se \
-    -a "$uniprot_log.gz" lars.eklund@nbis.se
+    -r "$EMAIL" \
+    -a "$uniprot_log.gz" "$EMAIL2"

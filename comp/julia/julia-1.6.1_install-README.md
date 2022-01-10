@@ -22,32 +22,36 @@ LOG
    
 
 # to install central packages
+#inspired by: https://discourse.julialang.org/t/how-does-one-set-up-a-centralized-julia-installation/13922/22
     mkdir $PREFIX/lib/glob_pkg
 #    start julia session
-    
     empty!(DEPOT_PATH)
     push!(DEPOT_PATH,"/sw/comp/julia/1.6.1/rackham/lib/glob_pkg") 
+    Pkg.activate(DEPOT_PATH[1]*"/environments/v1.6");
     using Pkg
     ]		#to get into Pkg mode
     add <package name>
-    <backspace>  # to get into Julia mode
-    using <package name>    #Precompiles. Do this. Otherwise users may get problems with permission.
 #    control installed packages
-    keys(Pkg.project().dependencies)
+    status
+    <backspace>  # to get into Julia mode
+    #Precompilation
+    using CSV, IJulia, Plots, PyPlot, PlotlyJS, Gadfly, DataFrames, DistributedArrays, BenchmarkTools, MPI
+    Pkg.build("....") # may be required for some
 
     exit()
 
 #LIST OF INSTALLED PACKAGES
+  "BenchmarkTools"
   "CSV"
   "CUDA"
-  "MPI"
+  "MPI"			#requires ml gcc/9.3.0 openmpi/3.1.5
   "Distributed"
   "IJulia"
   "Plots"
-  "PyPlot"
+  "PyPlot"	#requires build with PyCall 
   "Gadfly"
   "DataFrames"
   "DistributedArrays"
-  "PlotlyJS"
+  "PlotlyJS"	
 
 
