@@ -6,7 +6,7 @@ _EXPORT_UPPMAX_INSTALL_FUNCTIONS=yes
 
 # currently active clusters
 
-_CURRENT_CLUSTERS="bianca irma rackham snowy"
+_CURRENT_CLUSTERS="bianca irma rackham snowy miarka"
 
 
 # "module avail" loading subgroupings before running
@@ -314,6 +314,25 @@ _usage_
         echo -e "\n*** mfshow $OPT $M\n"
         mfshow $OPT $M
     fi
+}
+
+# Create miarka-specific mf symlinks for a given module. Does 'all_mflink -u miarka ...'
+function miarka_mflink()
+{
+    [[ $# -lt 2 ]] && { cat <<_usage_
+USAGE:  miarka_mflink [ -i (default) | -l | -a | -c | -b | -p | -d ] [ -f ] modulename version
+
+Create all miarka-specific links (/sw/mf/miarka/...) to /sw/mf/common/... for an mf file
+
+This is equivalent to
+
+    all_mflink -u miarka ...
+
+so it accepts the same arguments as all_mflink. This does not check if you also gave the -u option, which you shouldn't, so don't
+
+_usage_
+    return; }
+    all_mflink -u miarka "$@"
 }
 
 # Fix up the permissions and group ownership of installation directories.  Sets
