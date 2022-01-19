@@ -143,14 +143,19 @@ create_symlinks () {
         release_name=$(tar tf "$files_dir"/db/${db}.00.tar.gz | grep '\.[np]al$')
         release_name=${release_name%.?al}
         echo "create_symlinks: basename for $db identified as $release_name"
+        echo "create_symlinks: creating symlinks from release files to $db"
         for F in ${release_name}* ; do
+            echo "create_symlinks: release_name: $F ..."
+            [[ "$F" = "$release_name.timestamp" || "$F" = "${release_name}*.json" ]] && { rm -fv "$F"; continue; }
             symlink_name=${F/$release_name/$db}
             ln -sfv $F $symlink_name
         done
         for F in ${db}*json ; do
+            echo "create_symlinks: json: $F ..."
             symlink_name=${F/$db/$release_name}
             ln -sfv $F $symlink_name
         done
+        echo "create_symlinks: timestamp: ..."
         ln -sfv $db.timestamp $release_name.timestamp
     done
 }

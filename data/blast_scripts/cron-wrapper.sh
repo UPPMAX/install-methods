@@ -7,7 +7,7 @@ cd /sw/data/blast_scripts || exit 1
 EMAIL="douglas.scofield@uppmax.uu.se"
 EMAIL2="douglas.scofield@uppmax.uu.se"
 
-now=$(date +%FT%T)
+now=$(date +'%Y%m%d-%H%M%S')
 ncbi_log="logs/ncbi-blastdb-$now.log"
 uniprot_log="logs/uniprot-blastdb-$now.log"
 

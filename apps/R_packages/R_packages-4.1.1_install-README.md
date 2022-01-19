@@ -523,7 +523,7 @@ Once these are installed, many others can be installed.  A full rerun of the ins
 
 
 
-### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk, SeuratWrappers
+### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk, SeuratWrappers, kBET
 
 Github-hosted packages.  Load hdf5/1.10.5 since loomR uses hdf5r.
 
@@ -535,6 +535,7 @@ Github-hosted packages.  Load hdf5/1.10.5 since loomR uses hdf5r.
     devtools::install_github("mojaveazure/loomR", ref = "develop")
     devtools::install_github("mojaveazure/seurat-disk")
     remotes::install_github("satijalab/seurat-wrappers")
+    devtools::install_github('theislab/kBET')
 
 
 ### HDL

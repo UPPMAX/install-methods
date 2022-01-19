@@ -413,7 +413,7 @@ Once these are installed, others can be installed. This list is incomplete, so a
     BiocManager::install(c('facsDorit','FunciSNP','miRLAB'), dependencies=TRUE)
 
 
-### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk
+### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk, kBET
 
 Github-hosted packages.  Load hdf5/1.10.5 since loomR uses hdf5r.
 
@@ -424,6 +424,7 @@ Github-hosted packages.  Load hdf5/1.10.5 since loomR uses hdf5r.
     devtools::install_github("akdess/CaSpER")
     devtools::install_github("mojaveazure/loomR", ref = "develop")
     devtools::install_github("mojaveazure/seurat-disk")
+    devtools::install_github('theislab/kBET')
 
 
 ### HDL

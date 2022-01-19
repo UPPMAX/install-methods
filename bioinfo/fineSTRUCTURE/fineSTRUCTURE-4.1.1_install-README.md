@@ -5,33 +5,13 @@ fineSTRUCTURE/4.1.1
 
 Used under license:
 Free for noncommercial use
-<>
 
 Structure creating script (makeroom_fineSTRUCTURE_4.1.1.sh) moved to /sw/bioinfo/fineSTRUCTURE/makeroom_4.1.1.sh
 
 LOG
 ---
 
-    TOOL=fineSTRUCTURE
     VERSION=4.1.1
-    CLUSTER=rackham
-    TOOLDIR=/sw/bioinfo/$TOOL
-    VERSIONDIR=/sw/bioinfo/$TOOL/$VERSION
-    PREFIX=/sw/bioinfo/$TOOL/$VERSION/$CLUSTER
-    SRCDIR=/sw/bioinfo/fineSTRUCTURE/4.1.1/src
-    /home/douglas/bin/makeroom.sh -f" -t "fineSTRUCTURE" -v "4.1.1" -w "https://people.maths.bris.ac.uk/~madjl/finestructure/finestructure.html" -d "perform population assignment using large numbers of densely sampled genomes\, including both SNP chips and sequence data" -l "Free for noncommercial use"
-    ./makeroom_fineSTRUCTURE_4.1.1.sh
-fineSTRUCTURE/4.0.1
-===================
-
-
-<https://people.maths.bris.ac.uk/~madjl/finestructure/finestructure.html>
-
-
-LOG
----
-
-    VERSION=4.0.1
     cd /sw/bioinfo/
     mkdir fineSTRUCTURE
     cd fineSTRUCTURE/
@@ -57,3 +37,40 @@ people to use it to access example directories and manual.
 Also, load perl_modules/5.26.2 for the fineSTRUCTURE/Chromopainter perl
 scripts, and note the need to load an R_packages module to load the
 fineSTRUCTURE R library-ish file.
+
+
+
+fineSTRUCTUREgui
+----------------
+
+
+Attempted to compile with several different versions of gcc, and with gsl/2.6 and wxWidgets/3.1.3-gtk2 loaded.
+Always the below error compilining about a #define. Odd, but it's deprecated anyway.
+
+
+    /sw/comp/gcc/9.3.0_rackham/include/c++/9.3.0/backward/binders.h:108:11: note: declared here
+      108 |     class binder1st
+          |           ^~~~~~~~~
+    In file included from ../inf1.h:6,
+                     from inputdata.h:22,
+                     from reorderall.h:11,
+                     from reorderall.cpp:6:
+    /sw/comp/gcc/9.3.0_rackham/include/c++/9.3.0/bits/locale_facets_nonio.tcc: In member function '_InIter std::__cxx11::time_get<_CharT, _InIter>::_M_extract_name(std::__cxx11::time_get<_CharT, _InIter>::iter_type, std::__cxx11::time_get<_CharT, _InIter>::iter_type, int&, const _CharT**, std::size_t, std::ios_base&, std::ios_base::iostate&) const':
+    ../rng.h:12:18: error: expected unqualified-id before '(' token
+       12 | #define min(a,b) ((a) <= (b) ? (a) : (b))
+          |                  ^
+    /sw/comp/gcc/9.3.0_rackham/include/c++/9.3.0/bits/locale_conv.h: In member function 'bool std::wbuffer_convert<_Codecvt, _Elem, _Tr>::_M_conv_get()':
+    ../rng.h:12:18: error: expected unqualified-id before '(' token
+       12 | #define min(a,b) ((a) <= (b) ? (a) : (b))
+          |                  ^
+    ../rng.h:12:18: error: expected unqualified-id before '(' token
+       12 | #define min(a,b) ((a) <= (b) ? (a) : (b))
+          |                  ^
+    In file included from ../eigen/Eigen/Core:124,
+                     from ../eigen/Eigen/QR:4,
+                     from ../pcadata.h:9,
+                     from ../state.h:6,
+                     from ../inf1.h:5,
+                     from inputdata.h:22,
+                     from reorderall.h:11,
+                     from reorderall.cpp:6:

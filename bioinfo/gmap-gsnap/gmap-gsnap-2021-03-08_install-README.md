@@ -8,13 +8,6 @@ Custom As IS
 
 Structure creating script (makeroom_gmap-gsnap_2021-03-08.sh) moved to /sw/bioinfo/gmap-gsnap/makeroom_2021-03-08.sh
 
-LOG
----
-
-    makeroom.sh -f" -t "gmap-gsnap" -v "2021-03-08" -s "alignment" -w "http://research-pub.gene.com/gmap/" -d "Genomic Mapping and Alignment Program for mRNA and EST Sequences" -l "Custom As IS"
-    ./makeroom_gmap-gsnap_2021-03-08.sh
-gmap-gsnap/2018-07-04
-=====================
 
 GMAP and GSNAP alignment tools
 
@@ -23,9 +16,6 @@ for mRNA and EST sequences. Bioinformatics 21:1859-1875.
 
 Wu TD and Serban N. 2010. Fast and SNP-tolerant detection of complex 
 variants and splicing in short reads.  Bioinformatics 26:873-881.
-
-<http://research-pub.gene.com/gmap/>
-
 
 The `MAX_READLENGTH` change from the previous version applies.  See there
 for more.

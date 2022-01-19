@@ -26,7 +26,7 @@ set -e
 
 shopt -s nullglob  # this will make STAGED_DBS_TIMESTAMPS and STAGED_DBS_JSON be empty if the globs match nothing
 
-now=$(date +%FT%T)
+now=$(date +'%Y%m%d-%H%M%S')
 
 #EMAIL="lars.eklund@uppmax.uu.se"
 EMAIL="douglas.scofield@uppmax.uu.se"
