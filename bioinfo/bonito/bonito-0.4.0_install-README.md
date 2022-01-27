@@ -1,10 +1,11 @@
 bonito/0.4.0
-========================
+============
 
 <https://github.com/nanoporetech/bonito>
 
 Used under license:
 Oxford Nanopore Public License 1.0
+
 <https://github.com/nanoporetech/bonito/blob/master/LICENCE.txt>
 
 Structure creating script (makeroom_bonito_0.4.0.sh) moved to /sw/bioinfo/bonito/makeroom_0.4.0.sh
@@ -12,23 +13,29 @@ Structure creating script (makeroom_bonito_0.4.0.sh) moved to /sw/bioinfo/bonito
 LOG
 ---
 
-    /home/douglas/bin/makeroom.sh -f" -c "bioinfo" -s "misc" -t "bonito" -v "0.4.0" -w "https://github.com/nanoporetech/bonito" -d "a PyTorch Basecaller for Oxford Nanopore Reads" -l "Oxford Nanopore Public License 1.0" -L "https://github.com/nanoporetech/bonito/blob/master/LICENCE.txt"
+Install the Easybuild/4.5.1 module Bonito/0.4.0-fosscuda-2020b and make this an alias module.
+
+This will not build with --rpath set.
+
+    makeroom.sh -f -c "bioinfo" -s "misc" -t "bonito" -v "0.4.0" -w "https://github.com/nanoporetech/bonito" -d "a PyTorch Basecaller for Oxford Nanopore Reads" -l "Oxford Nanopore Public License 1.0" -L "https://github.com/nanoporetech/bonito/blob/master/LICENCE.txt"
     ./makeroom_bonito_0.4.0.sh
-bonito/0.3.7-cpu
-========================
 
-<https://github.com/nanoporetech/bonito/issues/70>
+Now the EasyBuild build.
 
-Used under license:
+Get a job as part of the staff_cpu reservation. 
 
+    interactive -M snowy -N 1 -n 16 --gres=gpu:1 --gpus-per-node=1 --reservation=staff_gpu -t 24:00:00 -A staff
 
+Within that job, build Bonito.
 
-Structure creating script (makeroom_bonito_0.3.7-cpu.sh) moved to /sw/bioinfo/bonito/makeroom_0.3.7-cpu.sh
+    cd /sw/EasyBuild
+    source source-me-for-EasyBuild-4.5.1-snowy-gpu 
+    eb Bonito-0.4.0-fosscuda-2020b.eb 
 
-LOG
----
+Install data.
 
-    /home/pmitev/GIT/install-methods/makeroom.sh -t "bonito" -v "0.3.7-cpu" -w "https://github.com/nanoporetech/bonito/issues/70"
-    ./makeroom_bonito_0.3.7-cpu.sh
+    module load Bonito/0.4.0-fosscuda-2020b
+    bonito download --all
 
-   # copy the .sif image and make the bin file in bin 
+See the mf for bonito/0.4.0 for the setup.
+

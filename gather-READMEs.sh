@@ -2,9 +2,9 @@
 
 if [[ "$1" == "-h" ]] ; then
     cat << _usage_
-Make some variables nonempty on the command line to skip the long finds within the module and database trees, for example
+Make some variables nonempty on the command line to skip the finds within the module and database trees, for example
     SKIP_FIND=yes ./gather-READMEs.sh
-to skip both long find commands, or
+to skip both find commands, or
     SKIP_FIND_MODULES=yes ./gather-READMEs.sh
     SKIP_FIND_DATABASES=yes ./gather-READMEs.sh
 to skip a specific one
