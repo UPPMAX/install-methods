@@ -180,9 +180,9 @@ for row in rows_from_mftree:
                         os.chown(new_yaml, -1, gid)
                     else:
                         if not os.path.isdir(path_to_sw):
-                            print(path_to_sw + " from the mf does not exist", file=log)
+                            print("WARNING: " + path_to_sw + " from the mf does not exist", file=log)
                         if not os.access(path_to_sw, os.W_OK):
-                            print(path_to_sw + " is not writable", file=log)
+                            print("WARNING: " + path_to_sw + " is not writable", file=log)
     done[mftree_key] = True
 log.close()
 
