@@ -26,5 +26,15 @@ Log
     cd ..
     mv snptest_v${VERSION}_linux_x86_64_dynamic ../$CLUSTER
 
+Use the gcc and c++ library from gcc/5.4.0.
+
+    cd ../$CLUSTER
+    ml gcc/5.4.0 patchelf
+    ldd snptest
+    echo $LD_LIBRARY_PATH
+    patchelf --set-rpath $LD_LIBRARY_PATH snptest_v2.5.5
+    ml -gcc
+    ldd snptest
+
 Use the mf file from 2.5.2.
 

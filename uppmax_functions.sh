@@ -83,7 +83,11 @@ function ownlinks()
 
 # Helpers for gathering info about SLURM jobs, no special privileges required
 
-function jiu() { jobinfo -u ${1:-$USER} ; }
+function jiu() {
+    local U=${1:-$USER}
+    [[ "$1" ]] && shift
+    jobinfo -u ${U} "$@"
+}
 function scs() { scontrol show jobid=${1:-1} ; }
 function scsv() { scontrol show --details --details jobid=${1:-1} ; }
 function scu() { scontrol update jobid=${1:-1} ${2} ; }
