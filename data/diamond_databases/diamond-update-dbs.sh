@@ -1,18 +1,25 @@
 #!/bin/bash 
 
 module load bioinfo-tools
-module load diamond/2.0.9
-module load blast/2.11.0+
-module load gnuparallel/20170122
+module load diamond/2.0.14
+module load blast/2.12.0+
+module load gnuparallel/20180822
+module load perl/5.26.2
+module load perl_modules/5.26.2
+module load ncbi_taxonomy/latest
+
 
 ROOT=/sw/data/diamond_databases
 THREADS=10
 DateFormat='%Y%m%d-%H%M%S'  # used for databases where the version tag is date-time
 DateSource='now'  # 'now' means use today's date as in TODAY below, otherwise means use date on downloaded md5 checksum file
 TODAY=`date +"$DateFormat"`
-TAXONMAP=/sw/data/ncbi_taxonomy/latest/accession2taxid/prot.accession2taxid.FULL.gz
-TAXONNODES=/sw/data/ncbi_taxonomy/latest/nodes.dmp
-TAXONNAMES=/sw/data/ncbi_taxonomy/latest/names.dmp
+#TAXONMAP=/sw/data/ncbi_taxonomy/latest/accession2taxid/prot.accession2taxid.FULL.gz
+#TAXONNODES=/sw/data/ncbi_taxonomy/latest/nodes.dmp
+#TAXONNAMES=/sw/data/ncbi_taxonomy/latest/names.dmp
+TAXONMAP=$NCBI_TAXONOMY_ROOT/accession2taxid/prot.accession2taxid.FULL.gz
+TAXONNODES=$NCBI_TAXONOMY_ROOT/nodes.dmp
+TAXONNAMES=$NCBI_TAXONOMY_ROOT/names.dmp
 WGET_OPTIONS="--quiet --timestamping"
 
 echo "$0: building databases with $(diamond version)"
@@ -39,10 +46,26 @@ function make_latest_symlink() {
 set -e
 
 
+# create diamond DB from a single file, but most simply
+function create_diamond_db_simple() {
+    DB_OUTPUT=$1
+    DB_INPUT=$2
+    shift;shift
+    EXTRA_ARGS="$@" #This allows for passing any new or future options when creating the db if no args given none are set.
+    FUNC="create_diamond_db_simple"
+    cmd="/usr/bin/time -v diamond makedb  -d $DB_OUTPUT  --in $DB_INPUT  --threads $THREADS  $EXTRA_ARGS"
+    echo
+    echo "$FUNC: creating diamond DB in directory $PWD with command:"
+    echo "$FUNC:     $cmd"
+    echo
+    eval $cmd
+}
+
 # create diamond DB from a single file
 function create_diamond_db_single() {
     DB_OUTPUT=$1
     DB_INPUT=$2
+    cd $ROOT
     shift;shift
     EXTRA_ARGS="$@" #This allows for passing any new or future ofoptins when creating the db if no args given none are set.
     FUNC="create_diamond_db_single"
@@ -200,15 +223,72 @@ function get_db_from_blast() {
 }
 
 
+function update_UniProt_reference_proteomes() {
+
+    # Download UniProt reference proteomes.  These are versioned in the accompanying XML
+    # document, so we load perl_modules/5.26.2 for xml_grep
+
+    cd $ROOT
+    DB=reference_proteomes
+    DownloadDir=ftp://ftp.expasy.org/databases/uniprot/current_release/knowledgebase/$DB
+    mkdir -p $DB
+    cd $DB
+    TMPDIR=tmp.$$
+    mkdir $TMPDIR
+    cd $TMPDIR
+    wget $WGET_OPTIONS $DownloadDir/RELEASE.metalink
+    NEWVERSION=$(xml_grep --text_only version RELEASE.metalink)
+    if [[ -d ../$NEWVERSION ]] && diff ../$NEWVERSION/download/RELEASE.metalink RELEASE.metalink ; then
+        set +x
+        echo
+        echo
+        echo "$0: $DB release $NEWVERSION already exists at $ROOT/$DB/$NEWVERSION and the RELEASE.metalink files are identical"
+        echo "$0: Not continuing with $DB download but we will refresh the 'latest' symlink"
+        echo
+        echo
+        set -x
+        cd ..
+        rm -rf $TMPDIR
+        make_latest_symlink  "db $DB"  "$NEWVERSION"
+    else
+        # complicated process based on what Blobtoolkit does
+
+        wget $WGET_OPTIONS $DownloadDir/Reference_Proteomes_${NEWVERSION}.tar.gz
+
+        tar xf Reference_Proteomes_${NEWVERSION}.tar.gz
+
+        touch reference_proteomes.fasta.gz
+        find . -mindepth 2 | grep "fasta.gz" | grep -v 'DNA' | grep -v 'additional' | xargs cat >> reference_proteomes.fasta.gz
+
+        printf "accession\taccession.version\ttaxid\tgi\n" > reference_proteomes.taxid_map
+        zcat */*/*.idmapping.gz | grep "NCBI_TaxID" | awk '{print $1 "\t" $1 "\t" $3 "\t" 0}' >> reference_proteomes.taxid_map
+
+        USE_TAX="--taxonmap reference_proteomes.taxid_map --taxonnames $TAXONNAMES --taxonnodes $TAXONNODES"
+
+        create_diamond_db_simple  reference_proteomes.dmnd  reference_proteomes.fasta.gz  $USE_TAX
+
+        mkdir download && mv -vf RELEASE.metalink README Reference_Proteomes_${NEWVERSION}.tar.gz reference_proteomes.fasta.gz reference_proteomes.taxid_map  download/    || { echo "could not move RELEASE.metalink and reference_proteomes.* to download/"; exit 1; }
+
+        rm -rf Archaea Bacteria Eukaryota Viruses
+
+        cd ..
+        mv -v $TMPDIR $NEWVERSION
+        make_latest_symlink  "db $DB"  "$NEWVERSION"
+        echo "db $DB: successfully updated $DB to $ROOT/$DB/$NEWVERSION"
+    fi
+
+    cd $ROOT
+
+    set +x
+    module unload perl_modules perl
+    set -x
+}
+
+
 function update_UniRef90() {
 
     # Download Uniref90 proteins.  These are versioned in the accompanying XML
     # document, so we load perl_modules/5.26.2 for xml_grep
-
-    set +x
-    module load perl/5.26.2
-    module load perl_modules/5.26.2
-    set -x
 
     cd $ROOT
     DB=UniRef90
@@ -300,27 +380,29 @@ function update_RefSeq() {
 
 set -x
 
-get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  nr.gz         nr.gz.md5         nr        true
+#get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  nr.gz         nr.gz.md5         nr        true
+#
+#get_db_from_blast  Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db        env_nr        env_nr
+#
+#get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  swissprot.gz  swissprot.gz.md5  swissprot
+#
+#get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  pdbaa.gz      pdbaa.gz.md5      pdbaa
+#
+#update_UniRef90
 
-get_db_from_blast  Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db        env_nr        env_nr
+update_UniProt_reference_proteomes
 
-get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  swissprot.gz  swissprot.gz.md5  swissprot
-
-get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  pdbaa.gz      pdbaa.gz.md5      pdbaa
-
-update_UniRef90
-
-update_RefSeq
-
-
-cd $ROOT
-
-chgrp -hR sw .
-chmod -R u+rwX,g+rwX,o+rX .
-find . -type d -exec chmod g+s {} \;
-
-unset TMPDIR
-LOG=diamond-$(diamond version | cut -f3 -d' ')-database-compatibility-${TODAY}.log
-find . -name '*.dmnd'| parallel -v --line-buffer -j 1 diamond getseq --db {} '|' head '>/dev/null' > "$LOG" 2>&1
-cat "$LOG" | mailx -s "diamond database version compatibility $TODAY" douglas.scofield@uppmax.uu.se
+#update_RefSeq
+#
+#
+#cd $ROOT
+#
+#chgrp -hR sw .
+#chmod -R u+rwX,g+rwX,o+rX .
+#find . -type d -exec chmod g+s {} \;
+#
+#unset TMPDIR
+#LOG=diamond-$(diamond version | cut -f3 -d' ')-database-compatibility-${TODAY}.log
+#find . -name '*.dmnd'| parallel -v --line-buffer -j 1 diamond getseq --db {} '|' head '>/dev/null' > "$LOG" 2>&1
+#cat "$LOG" | mailx -s "diamond database version compatibility $TODAY" douglas.scofield@uppmax.uu.se
 

@@ -10,7 +10,7 @@
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL
-#SBATCH -o /sw/data/Kraken2/slurm-rackham-thin-%j.out
+#SBATCH -o /sw/data/Kraken2_data/slurm-rackham-thin-%j.out
 
 set -x
 
@@ -23,7 +23,7 @@ function error_send_email()
 
 K2_DB_BASE=/sw/data/Kraken2_data
 
-K2_VERSION=2.1.1
+K2_VERSION=2.1.2-20211210-4f648f5
 
 THREADS=${SLURM_JOB_CPUS_PER_NODE:-20}
 [[ -z "$THREADS" ]] && error_send_email "Threads count misconfigured: THREADS=$THREADS"

@@ -694,6 +694,28 @@ and then within R
     wget --timestamping https://homepages.uni-regensburg.de/~wit59712/easyqc/EasyQC_9.0_Commands_140918_2.pdf
 
 
+
+### arrow
+
+Building arrow with LZ4 and ZSTD and other features. Do this on snowy.
+
+    cd $VERSIONROOT/external
+    wget https://cran.r-project.org/src/contrib/arrow_6.0.1.tar.gz
+    export LIBARROW_MINIMAL=false
+    ARROW_WITH_ZLIB=ON ARROW_WITH_ZSTD=ON ARROW_WITH_LZ4=ON ARROW_WITH_BZ2=ON ARROW_R_DEV=true R CMD INSTALL arrow_6.0.1.tar.gz
+
+Verify in R.
+
+    > library(arrow)
+    > packageVersion('arrow')
+    > [1] '6.0.1'
+    > > codec_is_available('lz4')
+    > [1] TRUE
+    > > codec_is_available('zstd')
+    > [1] TRUE
+
+
+
 Adding a new package
 ---------------
 

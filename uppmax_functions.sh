@@ -350,32 +350,35 @@ function fixup()
     local PERM='u+rwX,g+rwX,o+rX-w'
     local GROUPPERM='u+rwX,g+rX-w,o-rxw'
     local SETGID_DIRS=yes
+    local SETX
     local HELP
     local OPTIND
 
-    while getopts "gG:pP:h" o; do
+    while getopts "gG:pP:xh" o; do
       case $o in
         g) unset SETGID_DIRS ;;
         G) GROUP=${OPTARG} ;;
         p) PERM=${GROUPPERM} ;;
         P) PERM=${OPTARG} ;;
+        x) SETX=yes ;;
         h) HELP=yes ;;
       esac
     done
     shift $((OPTIND-1))
-    #[[ $# == 0 || $HELP ]] && { echo -e "USAGE: $0 [ -g, to NOT setgid g+s on dirs ] [ -G group, default '$GROUP' ] [ -p, set group-restrictive permissions '$GROUPPERM' ] [ -h, for help ] dir-or-file ..." ; return; }
+    #[[ $# == 0 || $HELP ]] && { echo -e "USAGE: $0 [ -g, to NOT setgid g+s on dirs ] [ -G group, default '$GROUP' ] [ -p, set group-restrictive permissions '$GROUPPERM' ] [ -x, show commands as they are executed ] [ -h, for help ] dir-or-file ..." ; return; }
     [[ $# == 0 || $HELP ]] && {
-        echo "USAGE: fixup [ -g ] [ -G group ] [ -p ] [ -P permissions ] [ -h ] dir-or-file ..."
+        echo "USAGE: fixup [ -g ] [ -G group ] [ -p ] [ -P permissions ] [ -x ] [ -h ] dir-or-file ..."
         echo
         echo "             -g        do NOT setgid g+s on dirs"
         echo "             -G group  change to group 'group', default '$GROUP'"
         echo "             -p        set group-restrictive permissions '$GROUPPERM'"
         echo "             -P perms  set permissions to 'perms', default '$PERM'"
-        echo "             -h        help ]"
+        echo "             -x        show commands as they are executed, via shell 'set -x'"
+        echo "             -h        help"
         return;
     }
 
-    set -x
+    [[ $SETX ]] && set -x
 
     args=("$@")
     for arg in ${args[@]} ; do
@@ -384,7 +387,7 @@ function fixup()
         [[ $SETGID_DIRS ]] && find "$arg" -type d -print0 | xargs -0 --no-run-if-empty chmod g+s
     done
 
-    set +x
+    [[ $SETX ]] && set +x
 }
 
 

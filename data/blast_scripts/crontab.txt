@@ -1,11 +1,22 @@
+####
+#### BLAST DATABASE UPDATES
+####
 # crontab entry for blast database updates (andrek)
+
+
 # Run blast database update script at 0:01 on the 28th of every month
 # 2018-02-28: Also on the 7th, 14th and 21st so that the job on the 28th
 #             does not have to get such an extraordinary amount of data.
-1 0 7,14,21,28 * *      /sw/data/uppnex/blast_scripts/cron-wrapper.sh
+ 1  0  7,14,21,28 * *      /sw/data/blast_scripts/cron-wrapper.sh
 
-# Install blast database updates every 1st of the month at 00.01 (douglas)
-# This is a simple mv of updates that have previously been staged by Andreas K every 28th of the month
- 1 0 1 * * /sw/data/uppnex/blast_scripts/install_blastdb.sh
+
+# Install blast database updates every 1st of the month at 00.01
+
+# This is mv of updates that have previously been staged every 28th of the month,
+# a blastdbcheck for each installed database, and a 'diamond prepdb' for each 
+# protein database (those with *.pal summary files)
+ 1  0  1 * * /sw/data/blast_scripts/install_check_prepdb_blastdb.sh
+
+
 # Remove old blast databases every 2nd of the month at 00.01 (douglas)
- 1 0 2 * * /sw/data/uppnex/blast_scripts/remove_old_blastdb.sh
+ 1  0  2 * * /sw/data/blast_scripts/remove_old_blastdb.sh

@@ -16,7 +16,9 @@
 
 K2_DB_BASE=/sw/data/Kraken2_data
 K2_DB_TMP=$SNIC_TMP/Kraken2-build.$$
-K2_VERSION=2.1.1
+
+K2_VERSION=2.1.2-20211210-4f648f5
+
 THREADS=${SLURM_JOB_CPUS_PER_NODE:-16}
 export KRAKEN2_THREAD_COUNT=$THREADS
 #MEMGB=${SLURM_MEM_PER_NODE%???}  # truncated value, remove last 3 chars (128GB node reports 128000)
