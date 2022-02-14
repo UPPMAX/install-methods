@@ -380,27 +380,28 @@ function update_RefSeq() {
 
 set -x
 
-#get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  nr.gz         nr.gz.md5         nr        true
-#
-#get_db_from_blast  Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db        env_nr        env_nr
-#
-#get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  swissprot.gz  swissprot.gz.md5  swissprot
-#
-#get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  pdbaa.gz      pdbaa.gz.md5      pdbaa
-#
-#update_UniRef90
+get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  nr.gz         nr.gz.md5         nr        true
+
+get_db_from_blast  Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db        env_nr        env_nr
+
+get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  swissprot.gz  swissprot.gz.md5  swissprot
+
+get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  pdbaa.gz      pdbaa.gz.md5      pdbaa
+
+update_UniRef90
 
 update_UniProt_reference_proteomes
 
-#update_RefSeq
-#
-#
-#cd $ROOT
-#
-#chgrp -hR sw .
-#chmod -R u+rwX,g+rwX,o+rX .
-#find . -type d -exec chmod g+s {} \;
-#
+update_RefSeq
+
+
+cd $ROOT
+
+chgrp -hR sw .
+chmod -R u+rwX,g+rwX,o+rX .
+chmod g+s .
+parallel --verbose -j 2 fixup ::: *
+
 #unset TMPDIR
 #LOG=diamond-$(diamond version | cut -f3 -d' ')-database-compatibility-${TODAY}.log
 #find . -name '*.dmnd'| parallel -v --line-buffer -j 1 diamond getseq --db {} '|' head '>/dev/null' > "$LOG" 2>&1
