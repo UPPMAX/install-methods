@@ -1,0 +1,12 @@
+name: vespa27           
+channels:               
+  - defaults            
+dependencies:           
+  - conda-forge::python=2.7                                                                                                               
+  - conda-forge::numba                                                                                                              
+  - conda-forge::h5py
+  - bioconda::blast=2.2.31  
+  - bioconda::dendropy=4.2.0
+  - bioconda::muscle=3.8.31
+  - bioconda::paml
+
