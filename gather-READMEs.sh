@@ -68,6 +68,7 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
     find krakenuniqDB       ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find panther            ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find silva              ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find KGP                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find dbSNP ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find chembl ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find piper_references ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
