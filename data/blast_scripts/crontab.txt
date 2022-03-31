@@ -14,7 +14,7 @@
 
 # This is mv of updates that have previously been staged every 28th of the month,
 # a blastdbcheck for each installed database, and a 'diamond prepdb' for each 
-# protein database (those with *.pal summary files)
+# protein database
  1  0  1 * * /sw/data/blast_scripts/install_check_prepdb_blastdb.sh
 
 

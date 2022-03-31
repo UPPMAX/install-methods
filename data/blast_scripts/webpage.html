@@ -1,6 +1,7 @@
 <p>Many pipelines involving annotation/assembly comparison involve Blast (<a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi" class="uri">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a>). Several Blast versions are available as modules, for example:</p>
 <ul>
 <li><strong>blast/2.12.0+</strong>, etc. : the Blast+ suites (<code>blastp</code>, <code>tblastn</code>, etc.), <strong>recommended</strong></li>
+<li><strong>diamond/2.0.14</strong> : the <a href="https://github.com/bbuchfink/diamond">DIAMOND</a> protein aligner, <strong>recommended for protein databases</strong>. See UPPMAX's DIAMOND database webpage for more information.</li>
 <li><strong>blast/2.2.26</strong>, etc. : 'legacy' Blast (<code>blastall</code>, <code>megablast</code>, etc)</li>
 </ul>
 <p>Use <code>module spider blast</code> to see available versions. As for all bioinformatics tools at Uppmax, <code>module load bioinfo-tools</code> is required before the blast modules are available.</p>
@@ -30,9 +31,9 @@
 <table>
 <colgroup>
 <col style="width: 20%" />
-<col style="width: 20%" />
 <col style="width: 24%" />
-<col style="width: 36%" />
+<col style="width: 32%" />
+<col style="width: 24%" />
 </colgroup>
 <thead>
 <tr class="header">

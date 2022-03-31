@@ -133,7 +133,7 @@ Install BioPerl dependencies and a bunch of others.
 
     cpanm Algorithm::Munkres Array::Compare Clone Convert::Binary::C HTML::TableExtract List::MoreUtils PostScript::TextBlock SOAP::Lite SVG SVG::Graph
 
-    cpanm Set::Scalar Sort::Naturally Excel::Writer::XLSX Spreadsheet::ParseExcel XML::SAX::Writer XML::Writer YAML XML::LibXML XML::DOM::XPath XML::DOM DBD::SQLite Math::Random
+    cpanm Set::Scalar Sort::Naturally Sort::Rank Excel::Writer::XLSX Spreadsheet::ParseExcel XML::SAX::Writer XML::Writer YAML XML::LibXML XML::DOM::XPath XML::DOM DBD::SQLite Math::Random
 
     cpanm PEDERST/rename-1.9.tar.gz
 

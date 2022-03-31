@@ -86,5 +86,6 @@ For `Bio::DB::HTS`:
 
     cpanm Bio::Phylo
     cpanm Bio::Graphics
-
-
+    cpanm Bio::ASN1::EntrezGene
+    cpanm Bio::DB::EUtilities
+    cpanm Bio::FeatureIO

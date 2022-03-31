@@ -22,3 +22,9 @@ Choose 'R' to return to the main menu
 Ensure that the installation scheme is 'full'
 Choose 'I' to install.
 
+
+After installation, change the buf_size preset to be larger so some tools can use it.
+
+    vi ./texmf-dist/web2c/texmf.cnf
+
+Search for `buf_size` and replace `200000` with `1000000`.

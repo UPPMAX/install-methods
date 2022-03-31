@@ -25,7 +25,7 @@ LOG
     [[ -f lapack-3.8.0.tar.gz ]] || wget http://www.netlib.org/lapack/lapack-3.8.0.tar.gz
     NETLIB_LAPACK=$PWD/lapack-3.8.0.tar.gz
     [[ -f atlas${VERSION}.tar.bz2 ]] || wget http://downloads.sourceforge.net/project/math-atlas/Stable/${VERSION}/atlas${VERSION}.tar.bz2
-    tar xjf atlas${VERSION}.tar.bz2 
+    tar xf atlas${VERSION}.tar.bz2 
     cd ATLAS/
     mkdir build
     cd build
@@ -42,4 +42,3 @@ Ensure 64-bit compilation.
     file ATL_dgelq2.o
     rm ATL_dgelq2.o 
 
-In the mf file, set 

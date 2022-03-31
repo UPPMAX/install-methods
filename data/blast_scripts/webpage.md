@@ -3,6 +3,7 @@ Many pipelines involving annotation/assembly comparison involve Blast
 as modules, for example:
 
   * **blast/2.12.0+**, etc. : the Blast+ suites (`blastp`, `tblastn`, etc.), **recommended**
+  * **diamond/2.0.14** : the [DIAMOND][diamond] protein aligner, **recommended for protein databases**. See UPPMAX's DIAMOND database webpage for more information.
   * **blast/2.2.26**, etc. : 'legacy' Blast (`blastall`, `megablast`, etc)
 
 Use `module spider blast` to see available versions.  As for all bioinformatics
@@ -162,5 +163,6 @@ module to convert taxonomic IDs to WGS and SRA identifiers.
 [SRA]: https://www.ncbi.nlm.nih.gov/sra
 [SRA_Tools]: https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc
 [aux_scripts]: ftp://ftp.ncbi.nlm.nih.gov/blast/WGS_TOOLS/README_BLASTWGS.txt
+[diamond]: https://github.com/bbuchfink/diamond
 
 Note that NCBI's TSA database is available at UPPMAX, just use the database name `tsa_nr` or `tsa_nt`.

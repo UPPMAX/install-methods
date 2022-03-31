@@ -149,7 +149,8 @@ fi
 if [[ $prepdbs ]] ; then
     # Now to 'diamond prepdb' each protein databases
     LOG="install_diamond_prepdb_${now}.log"
-    parallel -j 10 --verbose diamond prepdb -d {.} ::: *.pal > "$LOG" 2>&1
+    parallel -j 10 --verbose diamond prepdb --db {.} ::: *.pal > "$LOG" 2>&1
+    parallel -j 10 --verbose diamond prepdb --db {}  ::: cdd_delta landmark pataa pdbaa swissprot uniprot_sprot uniprot_sprot_varsplic >> "$LOG" 2>&1
     gzip -f --best "$LOG"
 fi
 

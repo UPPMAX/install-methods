@@ -55,19 +55,19 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
     find BioBakery_data     ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find Chromium           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find Centrifuge-indices ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find ExAC               ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find Pfam               ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find SGDP               ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find WPS-geog           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find annovar_data       ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find cdd                ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find dbCAN              ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find eggNOG_data        ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find gnomad_data        ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find iGenomes           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find krakenuniqDB       ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find panther            ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find silva              ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find ExAC                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find Pfam                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find SGDP                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find WPS-geog            -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find annovar_data        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find cdd                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find dbCAN               -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find eggNOG_data         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find gnomad_data         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find iGenomes            -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find krakenuniqDB        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find panther             -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find silva               -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find KGP                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find dbSNP ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find chembl ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY

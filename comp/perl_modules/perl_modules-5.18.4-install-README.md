@@ -71,7 +71,7 @@ For now GD is installed in the BioPerl trees, but I should install it here as we
 A few other modules.
 
     cpanm re::engine::RE2 List::Util List::MoreUtils common::sense YAML::XS Test::FailWarnings Test::Warnings Term::Size Curses Socket::GetAddrInfo 
-    cpanm Log::Log4perl HPC::Runner::Slurm HTML::Perlinfo
+    cpanm Log::Log4perl HPC::Runner::Slurm HTML::Perlinfo Sort::Rank
 
 Force-install to get around a test failure.
 

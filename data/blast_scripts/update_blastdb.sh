@@ -134,6 +134,7 @@ create_symlinks () {
     # general name they are downloaded wtih.  this determines what that root
     # name is, adds symlinks for each file, and creates a reverse symlink for
     # the json file and the timestamp
+    set -x
     symlink_dbs=(
         human_genome
         mouse_genome
@@ -143,21 +144,25 @@ create_symlinks () {
         release_name=$(tar tf "$files_dir"/db/${db}.00.tar.gz | grep '\.[np]al$')
         release_name=${release_name%.?al}
         echo "create_symlinks: basename for $db identified as $release_name"
-        echo "create_symlinks: creating symlinks from release files to $db"
-        for F in ${release_name}* ; do
-            echo "create_symlinks: release_name: $F ..."
-            [[ "$F" = "$release_name.timestamp" || "$F" = "${release_name}*.json" ]] && { rm -fv "$F"; continue; }
-            symlink_name=${F/$release_name/$db}
-            ln -sfv $F $symlink_name
+        echo "create_symlinks: creating symlinks from $db to release files"
+        for F in ${release_name}.timestamp ${release_name}-nucl-metadata.json ; do
+            echo "create_symlinks: $release_name: removing existing link $F"
+            ls -l "$F"
+            rm -fv "$F"
+            #[[ "$F" = "$release_name.timestamp" || "$F" = "${release_name}*.json" ]] && { rm -fv "$F"; continue; }
+            source_name=${F/$release_name/$db}
+            echo "create_symlinks: $release_name: $source_name -> $F"
+            ln -sfv $source_name $F
         done
-        for F in ${db}*json ; do
-            echo "create_symlinks: json: $F ..."
-            symlink_name=${F/$db/$release_name}
-            ln -sfv $F $symlink_name
-        done
-        echo "create_symlinks: timestamp: ..."
-        ln -sfv $db.timestamp $release_name.timestamp
+        #for F in ${db}*json ; do
+        #    echo "create_symlinks: json: $F ..."
+        #    source_name=${F/$release_name/$db}
+        #    ln -sfv $source_name $F
+        #done
+        #echo "create_symlinks: timestamp: ..."
+        #ln -sfv $db.timestamp $release_name.timestamp
     done
+    set +x
 }
 
 printf 'Started: %s\n' "$(date)" | tee "$staging_dir/timestamp"

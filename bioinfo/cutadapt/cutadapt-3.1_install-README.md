@@ -26,6 +26,8 @@ Following Marcel Martin's advice for installing on a cluster with a robust virtu
     virtualenv $PREFIX/venv
     $PREFIX/venv/bin/pip install cutadapt==$VERSION
     mkdir bin
+    cd bin
+    ln -s $PREFIX/venv/bin/cutadapt cutadapt
 
 Make sure the virtualenv's python can find the python .so.
 

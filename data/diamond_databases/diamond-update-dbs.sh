@@ -1,15 +1,18 @@
 #!/bin/bash 
 
+ROOT=/sw/data/diamond_databases
+
+cd $ROOT
+
 module load bioinfo-tools
 module load diamond/2.0.14
 module load blast/2.12.0+
 module load gnuparallel/20180822
 module load perl/5.26.2
-module load perl_modules/5.26.2
+module load perl_modules/5.26.2  # provides xml_grep
 module load ncbi_taxonomy/latest
 
 
-ROOT=/sw/data/diamond_databases
 THREADS=10
 DateFormat='%Y%m%d-%H%M%S'  # used for databases where the version tag is date-time
 DateSource='now'  # 'now' means use today's date as in TODAY below, otherwise means use date on downloaded md5 checksum file
@@ -48,12 +51,12 @@ set -e
 
 # create diamond DB from a single file, but most simply
 function create_diamond_db_simple() {
+    FUNC="create_diamond_db_simple"
     DB_OUTPUT=$1
     DB_INPUT=$2
     shift;shift
     EXTRA_ARGS="$@" #This allows for passing any new or future options when creating the db if no args given none are set.
-    FUNC="create_diamond_db_simple"
-    cmd="/usr/bin/time -v diamond makedb  -d $DB_OUTPUT  --in $DB_INPUT  --threads $THREADS  $EXTRA_ARGS"
+    cmd="/usr/bin/time -v diamond makedb  --db $DB_OUTPUT  --in $DB_INPUT  --threads $THREADS  $EXTRA_ARGS"
     echo
     echo "$FUNC: creating diamond DB in directory $PWD with command:"
     echo "$FUNC:     $cmd"
@@ -63,15 +66,16 @@ function create_diamond_db_simple() {
 
 # create diamond DB from a single file
 function create_diamond_db_single() {
+    FUNC="create_diamond_db_single"
     DB_OUTPUT=$1
     DB_INPUT=$2
     cd $ROOT
     shift;shift
-    EXTRA_ARGS="$@" #This allows for passing any new or future ofoptins when creating the db if no args given none are set.
+    EXTRA_ARGS="$@" #This allows for passing any new or future options when creating the db if no args given none are set.
     FUNC="create_diamond_db_single"
     FAA_FILE=${DB_OUTPUT}.faa
     zcat $DB_INPUT > $FAA_FILE
-    cmd="/usr/bin/time -v diamond makedb --in $FAA_FILE --threads $THREADS -d $DB_OUTPUT $EXTRA_ARGS"
+    cmd="/usr/bin/time -v diamond makedb --in $FAA_FILE --threads $THREADS --db $DB_OUTPUT $EXTRA_ARGS"
     echo
     echo "$FUNC: creating diamond DB in directory $PWD with command:"
     echo "$FUNC:     $cmd"
@@ -86,15 +90,15 @@ function create_diamond_db_multiple() {
     shift
     DB_INPUTS=$*
     FUNC="create_diamond_db_multiple"
-    FAA_FILE=${DB_OUTPUT}.faa
-    zcat $DB_INPUTS > $FAA_FILE
-    cmd="/usr/bin/time -v diamond makedb --in $FAA_FILE --threads $THREADS -d $DB_OUTPUT"
+    FAAGZ_FILE=${DB_OUTPUT}.faa.gz
+    cat $DB_INPUTS > $FAAGZ_FILE  # you can cat gzipped files together into a single gzipped file
+    cmd="/usr/bin/time -v diamond makedb --in $FAAGZ_FILE --threads $THREADS --db $DB_OUTPUT"
     echo
     echo "$FUNC: creating diamond DB in directory $PWD with command:"
     echo "$FUNC:     $cmd"
     echo
     eval $cmd
-    rm -f $FAA_FILE
+    rm -f $FAAGZ_FILE
 }
 
 
@@ -145,7 +149,7 @@ function get_db_single() {
         if md5sum -c $DB_MD5_FILE ; then  # it looks good, update to this version
             echo "$FUNC: successfully downloaded update for $DB_DIR to $ROOT/$DB_DIR/$NEWVERSION"
 
-            create_diamond_db_single  $DB_OUTPUT  $DB_FILE $USE_TAX
+            create_diamond_db_simple  $DB_OUTPUT  $DB_FILE  $USE_TAX    # no need to use _single as diamond can handle gzipped files directly
 
             # database is created in current directory, need to stash downloaded files into download/
             mkdir download && mv -vf $DB_FILE $DB_MD5_FILE download/ || { echo "could not move files to download/"; exit 1; }
@@ -204,7 +208,7 @@ function get_db_from_blast() {
     DB_FILE=${DB_OUTPUT}.faa.gz
     blastdbcmd -db $DB_PREFIX -entry all | gzip -c > ${DB_FILE}
 
-    create_diamond_db_single  $DB_OUTPUT  $DB_FILE
+    create_diamond_db_simple  $DB_OUTPUT  $DB_FILE
 
     mkdir download && mv -vf $DB_FILE ${DB_PREFIX}.??.*.gz.md5 ${DB_PREFIX}.??.*.gz download/ || { echo "could not move files to download/"; exit 1; }
     rm -f ${DB_PREFIX}.0?.{pin,phr,psq,ppi,ppd,pog} ${DB_PREFIX}.{pal,pdb,pos,pot,ptf,pto} taxdb.{btd,bti}
@@ -276,12 +280,7 @@ function update_UniProt_reference_proteomes() {
         make_latest_symlink  "db $DB"  "$NEWVERSION"
         echo "db $DB: successfully updated $DB to $ROOT/$DB/$NEWVERSION"
     fi
-
     cd $ROOT
-
-    set +x
-    module unload perl_modules perl
-    set -x
 }
 
 
@@ -316,7 +315,7 @@ function update_UniRef90() {
     else
         wget $WGET_OPTIONS $DownloadDir/uniref90.fasta.gz
 
-        create_diamond_db_single  uniref90  uniref90.fasta.gz
+        create_diamond_db_simple  uniref90  uniref90.fasta.gz
 
         mkdir download && mv -vf RELEASE.metalink uniref90.fasta.gz  download/    || { echo "could not move RELEASE.metalink and uniref90.fasta.gz to download/"; exit 1; }
 
@@ -325,10 +324,6 @@ function update_UniRef90() {
         make_latest_symlink  "db $DB"  "$NEWVERSION"
         echo "db $DB: successfully updated $DB to $ROOT/$DB/$NEWVERSION"
     fi
-
-    cd $ROOT
-
-    module unload perl_modules perl
 }
 
 
@@ -376,10 +371,12 @@ function update_RefSeq() {
         make_latest_symlink  "db $DB"  "$NEWVERSION"
         echo "db $DB: successfully updated $DB to $ROOT/$DB/$NEWVERSION"
     fi
+    cd $ROOT
 }
 
 set -x
 
+# the final 'true' is to add taxonomy metadata using the most recently downloaded NCBI taxonomy database
 get_db_single      Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA  nr.gz         nr.gz.md5         nr        true
 
 get_db_from_blast  Blast  ftp://ftp.ncbi.nlm.nih.gov/blast/db        env_nr        env_nr
@@ -397,10 +394,10 @@ update_RefSeq
 
 cd $ROOT
 
-chgrp -hR sw .
-chmod -R u+rwX,g+rwX,o+rX .
+chgrp sw .
+chmod u+rwX,g+rwX,o+rX .
 chmod g+s .
-parallel --verbose -j 2 fixup ::: *
+parallel --verbose -j 2 $ROOT/fixup ::: *
 
 #unset TMPDIR
 #LOG=diamond-$(diamond version | cut -f3 -d' ')-database-compatibility-${TODAY}.log
