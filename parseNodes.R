@@ -20,6 +20,9 @@
 #
 # Nonsensical results may be expected if formats are mixed or contents don't
 # match either of the above formats
+#
+# Adapted from the similarly named Perl function in my jobstats script which
+# can be found at # https://github.com/UPPMAX/jobstats
 
 parseNodes = function(nds=Sys.getenv("SLURM_NODELIST")) {
     if (length(nds) != 1 || nchar(nds) == 0) # nds contents incorrect somehow
