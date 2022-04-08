@@ -48,6 +48,7 @@ MODULENAME=''
 declare -a LINKFLAG=()
 declare -a FIXFLAG=()
 CLUSTERS=(rackham irma bianca miarka snowy)
+declare -a TAGS=()
 MODE=INSTALL
 FORCED=0
 USERGROUP="sw"
@@ -141,6 +142,8 @@ do
         u) CLUSTERS=($OPTARG)
             LINKFLAG+=(-u)
             LINKFLAG+=("${CLUSTERS[*]}")
+            ;;
+        T) TAGS=($OPTARG)
             ;;
         x) MODE="$OPTARG"
             ;;
@@ -240,6 +243,8 @@ if [ $MODE != "RESUME" ] ; then
     fi
     ##################### Make a cluster list in YAML format ####################
     YAMLLIST=$(echo " "${CLUSTERS[@]} | sed "s/ /\n    - /g")
+    ##################### Make a keyword/tag list in YAML format ####################
+    TAGLIST=$(echo " "${TAGS[@]} | sed "s/ /\n    - /g")
     ######## Check input #################
     if [ -z "${TOOL}" ]
     then printf "%s\n\nEmply value for -t\n" "$USAGE" >&2; exit 1
@@ -669,6 +674,12 @@ cat > "$YAMLFILE" <<EOF4
 - LOCAL: $MODULE_FILE
 - COMMON: /sw/mf/common/$MF_CATEGORY/$SECTION/$MODULENAME/$VERSION
 - DESCRIPTION: $DESC
+- TAGS: $TAGLIST
+- MODULE: $MODULENAME
+- SECTION: $SECTION
+- POSTINSTALL: $POSTFILE
+- README: $README_FILE
+- SQLKEY: $MODULENAME_$VERSION
 EOF4
 
 ################ Create a post-installation file ##########################

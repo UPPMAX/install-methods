@@ -153,10 +153,10 @@ for row in rows_from_mftree:
                         desc = software[mftree_key]
                     if os.path.isdir(path_to_sw) and os.access(path_to_sw, os.W_OK):
                         with open(new_yaml, 'w') as the_file:
-                            the_file.write('- TOOL:' + mftree_tool + "\n")
-                            the_file.write('- VERSION:' + mftree_version + "\n")
-                            the_file.write('- MODULE:' + modu + "\n")
-                            the_file.write('- CLUSTER:' + "\n")
+                            the_file.write('- TOOL: ' + mftree_tool + "\n")
+                            the_file.write('- VERSION: ' + mftree_version + "\n")
+                            the_file.write('- MODULE: ' + modu + "\n")
+                            the_file.write('- CLUSTER: ' + "\n")
                             for clu in mftree_clusters[mftree_key]:
                                 regexp = "(\S+)" + re.escape(clu) + "(\S+)"
                                 match_cluster = re.match(regexp, mftree_file, re.IGNORECASE)
@@ -164,18 +164,19 @@ for row in rows_from_mftree:
                                     common = match_cluster.group(1) + "common" + match_cluster.group(2)
                                 if clu != "common":
                                     the_file.write('   - ' + clu + "\n")
-                            the_file.write('- LICENSE:' + lice + "\n")
-                            the_file.write('- LICENSEURL:' + lURL + "\n")
-                            the_file.write('- USERGROUP:sw' + "\n")
-                            the_file.write('- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w' + "\n")
-                            the_file.write('- WEBSITE:' + webs + "\n")
-                            the_file.write('- LOCAL:' + local + "\n")
-                            the_file.write('- SECTION:' + sect + "\n")
-                            the_file.write('- POSTINSTALL:' + postinstall + "\n")
-                            the_file.write('- README:' + readme + "\n")
-                            if os.path.isfile(common) and os.access(common, os.R_OK):
-                                the_file.write('- COMMON:' + common + "\n")
-                            the_file.write('- DESCRIPTION:' + desc + "\n")
+                            the_file.write('- LICENSE: ' + lice + "\n")
+                            the_file.write('- LICENSEURL: ' + lURL + "\n")
+                            the_file.write('- USERGROUP: sw' + "\n")
+                            the_file.write('- USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w' + "\n")
+                            the_file.write('- WEBSITE: ' + webs + "\n")
+                            the_file.write('- LOCAL: ' + local + "\n")
+                            the_file.write('- SECTION: ' + sect + "\n")
+                            the_file.write('- POSTINSTALL: ' + postinstall + "\n")
+                            the_file.write('- README: ' + readme + "\n")
+                            if os.path.isfile(common) and os.access(common, os.R_OK): 
+                                the_file.write('- COMMON: ' + common + "\n")
+                            the_file.write('- DESCRIPTION: ' + desc + "\n")
+                            the_file.write('- SQLKEY: ' + mftree_key + "\n")
                         gid = grp.getgrnam("sw").gr_gid
                         os.chown(new_yaml, -1, gid)
                     else:
