@@ -5,7 +5,7 @@ import sqlite3
 import re
 import yaml
 import pwd
-
+import hashlib
 
 def walklevel(path, depth = 1):
     """It works just like os.walk, but you can pass it a level parameter
@@ -43,38 +43,42 @@ cursor.execute("DROP TABLE IF EXISTS yamlfiles")
 # Create table as per requirement
 sql = """CREATE TABLE yamlfiles (
    key  CHAR(120),
-   yamlfilename  CHAR(30) NOT NULL,
    path CHAR(320),
-   creator  CHAR(30) NOT NULL)"""
+   creator  CHAR(30) NOT NULL,
+   md5  CHAR(120) NOT NULL)"""
 
 cursor.execute(sql)
 
 for root, dirs, files in walklevel("/sw/", 3):
     if re.search('/sw/.+/src/', root):
         continue
+    if re.search('/sw/\.snapshot', root):
+        continue
     # Standard path is /sw/<category>/<sw_name>/<yamlfile> Thus the matching below.
     for file in files:
         m = re.search('(.*DRAFT.yaml)', file)
         if m:
             if (m.group(1)):
-                path = root
-                yamlfile = root + '/' + m.group(1)
-                creator = pwd.getpwuid(os.stat(yamlfile).st_uid).pw_name
-                if os.path.isfile(yamlfile) and os.access(yamlfile, os.R_OK):
-                    with open(yamlfile, 'r') as yamlstream:
+                path = root + '/' + m.group(1)
+                creator = pwd.getpwuid(os.stat(path).st_uid).pw_name
+                if os.path.isfile(path) and os.access(path, os.R_OK):
+                    md5_hash = hashlib.md5()
+                    with open(path, 'rb') as a_file:
+                        content = a_file.read()
+                        md5_hash.update(content)
+                        md5 = md5_hash.hexdigest()
+                    with open(path, 'r') as yamlstream:
                         try:
                             parsed_yaml=yaml.safe_load(yamlstream)
+                            key = parsed_yaml['SQLKEY']
                         except yaml.YAMLError as exc:
                             print(exc)
-                    for key, value in parsed_yaml.iteritems():
-                        print( key, value)
-                    print(parsed_yaml)
-                    print(parsed_yaml['VERSION'])
             # New insert  into chksum table to keep track of yaml files
-            sql = "INSERT INTO yamlfiles (key, yamlfilename, path, creator) VALUES (?, ?, ?, ?)"
+            sql = "INSERT INTO yamlfiles (key, path, creator, md5) VALUES (?, ?, ?, ?)"
+            print(key, path, creator, md5)
             try:
                 # Execute the SQL command
-               cursor.execute(sql, (key, yamlfilename, path, creator))
+               cursor.execute(sql, (key, path, creator, md5))
                # Commit your changes in the database
                db.commit()
             except:
