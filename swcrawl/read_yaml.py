@@ -54,22 +54,22 @@ for root, dirs, files in walklevel("/sw/", 3):
         continue
     # Standard path is /sw/<category>/<sw_name>/<yamlfile> Thus the matching below.
     for file in files:
-        m = re.search('(.*yaml)', file)
+        m = re.search('(.*DRAFT.yaml)', file)
         if m:
             if (m.group(1)):
                 path = root
                 yamlfile = root + '/' + m.group(1)
                 creator = pwd.getpwuid(os.stat(yamlfile).st_uid).pw_name
-                print(creator)
                 if os.path.isfile(yamlfile) and os.access(yamlfile, os.R_OK):
                     with open(yamlfile, 'r') as yamlstream:
                         try:
                             parsed_yaml=yaml.safe_load(yamlstream)
-                            for y in parsed_yaml:
-                                print(y)
-                            print(parsed_yaml)
                         except yaml.YAMLError as exc:
                             print(exc)
+                    for key, value in parsed_yaml.iteritems():
+                        print( key, value)
+                    print(parsed_yaml)
+                    print(parsed_yaml['VERSION'])
             # New insert  into chksum table to keep track of yaml files
             sql = "INSERT INTO yamlfiles (key, yamlfilename, path, creator) VALUES (?, ?, ?, ?)"
             try:
