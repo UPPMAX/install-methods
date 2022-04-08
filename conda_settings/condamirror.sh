@@ -8,6 +8,8 @@ echo "UPDATING CONDA-BUILD" >> $LOGFILE
 conda update conda-build -y -c defaults --override-channels -v 2>&1 | tee -a $LOGFILE
 echo "UPDATING MAMBA" >> $LOGFILE
 mamba update mamba -y -c defaults --override-channels -v 2>&1 | tee -a $LOGFILE
+echo "UPDATING CONDA-PACK" >> $LOGFILE
+conda update conda-pack -y -c defaults --override-channels -v 2>&1 | tee -a $LOGFILE
 echo "SYNCHING REPOS" >> $LOGFILE
 conda-mirror --upstream-channel conda-forge --target-directory /sw/apps/conda/latest/rackham/local_repo/conda-forge --platform linux-64 -v 2>&1 | tee -a $LOGFILE
 conda-mirror --upstream-channel scilifelab-lts --target-directory /sw/apps/conda/latest/rackham/local_repo/scilifelab-lts --platform linux-64 -v 2>&1 | tee -a $LOGFILE
