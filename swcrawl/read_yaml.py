@@ -38,16 +38,16 @@ db.text_factory = str
 cursor = db.cursor()
 
 # Drop table if it already exist. Remove this later.
-cursor.execute("DROP TABLE IF EXISTS yamlfiles")
+#cursor.execute("DROP TABLE IF EXISTS yamlfiles")
 
 # Create table as per requirement
-sql = """CREATE TABLE yamlfiles (
-   key  CHAR(120),
-   path CHAR(320),
-   creator  CHAR(30) NOT NULL,
-   md5  CHAR(120) NOT NULL)"""
-
-cursor.execute(sql)
+#sql = """CREATE TABLE yamlfiles (
+#   key  CHAR(120),
+#   path CHAR(320),
+#   creator  CHAR(30) NOT NULL,
+#   md5  CHAR(120) NOT NULL)"""
+#
+# cursor.execute(sql)
 
 for root, dirs, files in walklevel("/sw/", 3):
     if re.search('/sw/.+/src/', root):
@@ -73,18 +73,28 @@ for root, dirs, files in walklevel("/sw/", 3):
                             key = parsed_yaml['SQLKEY']
                         except yaml.YAMLError as exc:
                             print(exc)
-            # New insert  into chksum table to keep track of yaml files
-            sql = "INSERT INTO yamlfiles (key, path, creator, md5) VALUES (?, ?, ?, ?)"
-            print(key, path, creator, md5)
+            # Get the md5 from the SQL DB and check if the file is changed
+            sql = 'SELECT yamlfiles.md5 FROM yamlfiles WHERE yamlfiles.path IS "' + path + '";'
             try:
-                # Execute the SQL command
-               cursor.execute(sql, (key, path, creator, md5))
-               # Commit your changes in the database
-               db.commit()
+                for i in cursor.execute(sql).fetchall():
+                    oldmd5 = i[0]
             except:
-                # Rollback in case there is any error
-               print("ERROR SW!\n")
-               db.rollback()
+                print("ERROR!\n")
+            # New insert  into chksum table to keep track of yaml files
+            if oldmd5 == md5:
+                print("No change to " + path)
+            else:
+                sql = "INSERT INTO yamlfiles (key, path, creator, md5) VALUES (?, ?, ?, ?)"
+                print(key, path, creator, md5, oldmd5)
+                try:
+                    # Execute the SQL command
+                    cursor.execute(sql, (key, path, creator, md5))
+                    # Commit your changes in the database
+                    db.commit()
+                except:
+                    # Rollback in case there is any error
+                    print("ERROR SW!\n")
+                    db.rollback()
 
 # disconnect from server
 db.close()
