@@ -84,6 +84,12 @@ for root, dirs, files in walklevel("/sw/", 3):
             if oldmd5 == md5:
                 print("No change to " + path)
             else:
+		sql = 'SELECT persons.email FROM persons WHERE persons.person IS "' + creator +'";'
+		try:
+		    for i in cursor.execute(sql).fetchall():
+			email = i[0]
+		except:
+                    print("No e-mail registered!\n")
                 sql = "INSERT INTO yamlfiles (key, path, creator, md5) VALUES (?, ?, ?, ?)"
                 print(key, path, creator, md5, oldmd5)
                 try:
