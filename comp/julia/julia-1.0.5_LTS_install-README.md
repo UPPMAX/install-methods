@@ -27,8 +27,8 @@ LOG
 
     empty!(DEPOT_PATH)
     push!(DEPOT_PATH,"/sw/comp/julia/1.0.5_LTS/rackham/lib/glob_pkg") 
-    Pkg.activate(DEPOT_PATH[1]*"/environments/v1.0");
     using Pkg
+    Pkg.activate(DEPOT_PATH[1]*"/environments/v1.0");
     ]           #to get into Pkg mode
     add <package name>
 #    control installed packages

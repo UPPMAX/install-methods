@@ -12,47 +12,30 @@ Structure creating script (makeroom_PsN_5.3.0.sh) moved to /sw/apps/PsN/makeroom
 LOG
 ---
 
-    /home/niharika/install-methods/makeroom.sh "-t" "PsN" "-v" "5.3.0" "-w" "https://uupharmacometrics.github.io/PsN/" "-c" "apps" "-l" "GPL 2+" "-d" "Perl-speaks-NONMEM \(PsN\) is a collection of Perl modules and programs aiding in the development of non-linear mixed effect models using NONMEM" "-f"
-    ./makeroom_PsN_5.3.0.sh
-PsN/5.2.6
-========================
+      TOOL=PsN
+    VERSION=5.3.0
+    cd /sw/apps/$TOOL    
+makeroom.sh -t $TOOL -v $VERSION -w "https://uupharmacometrics.github.io/PsN/" -c "apps" -l "GPL 2+" -d "Perl-speaks-NONMEM \(PsN\) is a collection of Perl modules and programs aiding in the development of non-linear mixed effect models using NONMEM" -f
 
-<https://uupharmacometrics.github.io/PsN/>
+    ./makeroom_${TOOL}_${VERSION}.sh
+    source SOURCEME_${TOOL}_${VERSION}
 
-Used under license:
-GPL 2+
-
-
-Structure creating script (makeroom_PsN_5.2.6.sh) moved to /sw/apps/PsN/makeroom_5.2.6.sh
-
-LOG
----
-
-    /home/douglas/bin/makeroom.sh -f" -c "apps" -t "PsN" -v "5.2.6" -l "GPL 2+" -w "https://uupharmacometrics.github.io/PsN/" -d "Perl-speaks-NONMEM \(PsN\) is a collection of Perl modules and programs aiding in the development of non-linear mixed effect models using NONMEM"
-    ./makeroom_PsN_5.2.6.sh
-
-
-    TOOL=PsN
-    VERSION=5.0.0
-    makeroom.sh -t "PsN" -v "5.0.0" -w "https://uupharmacometrics.github.io/PsN/" -c "apps" -l "GPL 2+" -d "Perl-speaks-NONMEM \(PsN\) is a collection of Perl modules and programs aiding in the development of non-linear mixed effect models using NONMEM" -f"
-    ./makeroom_PsN_5.2.6.sh
-    cd /sw/apps/$TOOL
-    source SOURCEME_PsN_5.2.6
     cd $SRCDIR
-    [[ -e PsN-5.2.6.tar.gz ]] || wget https://github.com/UUPharmacometrics/PsN/releases/download/5.2.6/PsN-5.2.6.tar.gz
+    [[ -e ${TOOL}-${VERSION}.tar.gz ]] || wget https://github.com/UUPharmacometrics/PsN/releases/download/v${VERSION}/${TOOL}-${VERSION}.tar.gz
     [[ -e PsN-Source ]] && rm -rf PsN-Source
-    tar xzf PsN-5.2.6.tar.gz
+    tar xzf ${TOOL}-${VERSION}.tar.gz
 
     cd PsN-Source
 
     module load perl/5.26.2
     module load perl_modules/5.26.2
-    module load R_packages/4.0.4
+    module load R_packages/4.1.1
     module load python/3.8.7
-    module load MariaDB/10.1.29
-    module load pandoc/2.10.1
+    module load MariaDB/10.2.11
+    module load pandoc/2.17.1.1
     module load nonmem/7.5.0
     module load SymEngine/0.7.0
+    module load gcc/9.3.0
 
     PERLSITE=$PREFIX/lib/site_perl/5.26.2
 
@@ -64,13 +47,16 @@ Now do
     echo PERLSITE=$PERLSITE
     perl setup.pl
 
+PREFIX=/sw/apps/PsN/5.3.0/rackham
+PERLSITE=/sw/apps/PsN/5.3.0/rackham/lib/site_perl/5.26.2
+
 Place PREFIX where it asks for
 
     PsN Utilities installation directory [/usr/local/bin]:
 
 When it asks for this, leave it at the default:
 
-    Path to perl binary used to run Utilities [/sw/comp/perl/5.26.2/rackham/bin/perl]:
+Path to perl binary used to run Utilities [/sw/comp/perl/5.26.2/rackham/bin/perl]:
 
 When it asks for this, place the value of PERLSITE:
 
@@ -99,7 +85,7 @@ Make 7_5_0 be the default.
 Now add comments on the versions of NONMEM that we support, indicating that
 7_3_0, 7_4_3, 7_4_4 and 7_5_0 are set up to use gcc/8.3.0.
 
-    vi /sw/apps/PsN/5.2.6/rackham/lib/site_perl/5.26.2/PsN_5_2_6/psn.conf
+    vi /sw/apps/PsN/${VERSION}/rackham/lib/site_perl/5.26.2/PsN_5_3_0/psn.conf
 
 Also, add an additional `module_dir_name=1` option under '[default_execute_options]':
 
@@ -107,7 +93,11 @@ Also, add an additional `module_dir_name=1` option under '[default_execute_optio
     display_iterations=1
     model_dir_name=1
 
-Test 
-    cd rackham/lib/site_perl/5.26.2/PsN_test_5_2_6/
+Test
+    cd $PREFIX/lib/site_perl/5.26.2/PsN_test_5_3_0/
     prove unit
     prove system
+
+
+
+

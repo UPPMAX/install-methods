@@ -46,3 +46,63 @@ Check the executables, that RPATH is saved.
 
 Now to update how Kraken2 databases are built.
 
+
+2022-04-21
+----------
+
+Further adjustments to correct for download errors.  The error is
+
+    + kraken2-build --use-ftp --standard --threads 20 --db /sw/data/Kraken2_data/20220404-131350
+    Downloading nucleotide gb accession to taxon map... done.
+    Downloading nucleotide wgs accession to taxon map... done.
+    Downloaded accession to taxon map(s)
+    Downloading taxonomy tree data... done.
+    Uncompressing taxonomy data... done.
+    Untarring taxonomy tree data... done.
+    Step 1/2: Performing ftp file transfer of requested files
+    Step 2/2: Assigning taxonomic IDs to sequences
+    All files processed, cleaning up extra sequence files... done, library complete.
+    Masking low-complexity regions of downloaded library... done.
+    Step 1/2: Performing ftp file transfer of requested files
+    Step 2/2: Assigning taxonomic IDs to sequences
+    All files processed, cleaning up extra sequence files... done, library complete.
+    Masking low-complexity regions of downloaded library... done.
+    Step 1/2: Performing ftp file transfer of requested files
+    Step 2/2: Assigning taxonomic IDs to sequences
+    All files processed, cleaning up extra sequence files... done, library complete.
+    Masking low-complexity regions of downloaded library... done.
+    Downloading plasmid files from FTP...awk: fatal: cannot open file `.listing' for reading (No such file or directory)
+
+Found solution, editing `download_genomic_library.sh` following
+
+https://github.com/DerrickWood/kraken2/issues/543#issuecomment-1049987176
+
+    cd /sw/bioinfo/Kraken2/2.1.2-20211210-4f648f5/rackham
+
+Get the patch contents from 
+
+https://github.com/DerrickWood/kraken2/issues/412#issuecomment-790593080
+
+and create plasmid_fix.patch.  Then create backup:
+
+    cp -av download_genomic_library.sh download_genomic_library.sh.orig
+
+and apply patch:
+
+    patch download_genomic_library.sh plasmid_fix.patch
+
+Verify:
+
+    diff download_genomic_library.sh.orig download_genomic_library.sh
+
+shows
+
+    65c65,70
+    <     wget -q --no-remove-listing --spider $FTP_SERVER/genomes/refseq/plasmid/
+    ---
+    >     ## WR: fixing the broken wget
+    >     # wget -q --no-remove-listing --spider $FTP_SERVER/genomes/refseq/plasmid/
+    >     curl -s $FTP_SERVER/genomes/refseq/plasmid/ \
+    >         | perl -nle 'print  "$1"  while (/<a\s+href\s*=\s*"([^"]+.gz)"/g)' \
+    >         | sort -u \
+    >         > .listing

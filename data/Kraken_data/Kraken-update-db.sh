@@ -12,8 +12,10 @@
 #SBATCH --mail-type=ALL
 #SBATCH -o /sw/data/Kraken_data/slurm-rackham-mem1TB-%j.out
 
+[[ $1 == "-f" ]] && { shift; FORCE=yes; } || FORCE=
+
 K_DB_BASE=/sw/data/Kraken_data
-K_VERSION=1.1.1
+K_VERSION=1.1.1-20210927-375654f
 THREADS=${1:-$SLURM_JOB_CPUS_PER_NODE}
 MEMGB=${SLURM_MEM_PER_NODE%???}  # truncated value, remove last 3 chars (128GB node reports 128000)
 MINGB=500 # This now must run on a 512 node, it needs just under 300GB to build the standard database
@@ -25,7 +27,9 @@ function error_send_email()
     exit 1
 }
 
-(( MEMGB >= MINGB )) || error_send_email "This node has $MEMGB GB but needs at least $MINGB GB"
+if [[ ! $FORCE ]] ; then
+    (( MEMGB >= MINGB )) || error_send_email "This node has $MEMGB GB but needs at least $MINGB GB"
+fi
 
 echo "$0: working with $THREADS threads on a node with at least $MEMGB GB.  On rackham 12h wasn't enough on 20180302 so running for 24h"
 

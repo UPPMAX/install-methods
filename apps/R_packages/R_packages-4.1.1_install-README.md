@@ -33,6 +33,17 @@ A lot of packages are installed by the automated install, following the
 instructions below.  There are still some that do not.
 
 
+To install new packages
+-----------------------
+
+First, do
+
+    source $VERSIONDIR/source-for-setup
+
+Then do the installation, however it's needed.  See 'Adding a new package' below.
+
+
+
 LOG
 ---
 
@@ -523,7 +534,7 @@ Once these are installed, many others can be installed.  A full rerun of the ins
 
 
 
-### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk, SeuratWrappers, kBET
+### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk, SeuratWrappers, kBET, presto, ArchR
 
 Github-hosted packages.  Load hdf5/1.10.5 since loomR uses hdf5r.
 
@@ -536,6 +547,8 @@ Github-hosted packages.  Load hdf5/1.10.5 since loomR uses hdf5r.
     devtools::install_github("mojaveazure/seurat-disk")
     remotes::install_github("satijalab/seurat-wrappers")
     devtools::install_github('theislab/kBET')
+    devtools::install_github('immunogenomics/presto')
+    devtools::install_github("GreenleafLab/ArchR", ref="master")
 
 
 ### HDL
@@ -715,11 +728,55 @@ Verify in R.
     > [1] TRUE
 
 
+contamMix 1.0-10
+----------------
+
+Couldn't find the tarball except as part of a pipeline, so fetched from there.
+
+Installed similarly into 4.1.1, 4.0.4, 4.0.0.
+
+    cd /sw/apps/R_packages/external_tarballs
+
+    wget https://github.com/alexhbnr/mitoBench-ancientMT/blob/master/resources/contamMix_1.0-10.tar.gz?raw=true
+    mv contamMix_1.0-10.tar.gz\?raw\=true contamMix_1.0-10.tar.gz
+
+    R CMD INSTALL /sw/apps/R_packages/external_tarballs/contamMix_1.0-10.tar.gz
+
+
+CrIMMix
+-------
+
+2022-04-04
+
+Install LRAcluster 1.0, at http://lifeome.net/software/lracluster/
+
+    cd /sw/apps/R_packages/external_packages
+    wget http://lifeome.net/software/lracluster/LRAcluster_1.0.tgz
+    R CMD INSTALL LRAcluster_1.0.tgz
+
+And then within R:
+
+    devtools::install_github("danro9685/CIMLR", ref="R")
+    devtools::install_github("CNRGH/crimmix")
+
+After this installation, when trying to generate new counts and table below, got the message
+
+    Loading required namespace: BiocManager
+    Failed with error:  'package 'BiocManager' was installed before R 4.0.0: please re-install it'
+
+So, reinstalled BiocManager and did the install() method, do not update any other packages.
+
+    if (! requireNamespace("BiocManager"))
+        install.packages("BiocManager")
+    BiocManger::install()
+
+When it asks, update 'n' **None**.
+
 
 Adding a new package
----------------
+--------------------
 
-Soruce `$VERSIONDIR/source-for-setup`.  Load R, then for both CRAN and
+Srouce `$VERSIONDIR/source-for-setup`.  Load R, then for both CRAN and
 BioConductor packages, we use `BiocManager::install()` which ultimately uses
 R's own `install.packages()`.
 
@@ -757,4 +814,5 @@ Though this build procedure sets `R_LIBS_USER` to ease installing R packages,
 the mf file for the module sets `R_LIBS_SITE`, not `R_LIBS_USER`.  This is so
 users can freely use `R_LIBS_USER` to refer to their own or project-specific R
 package trees without fearing conflicting with this module.
+
 

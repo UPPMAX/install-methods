@@ -1,5 +1,5 @@
 Tombo/1.5.1
-========================
+===========
 
 <https://github.com/nanoporetech/tombo>
 

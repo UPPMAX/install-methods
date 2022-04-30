@@ -12,52 +12,32 @@ Structure creating script (makeroom_python_ML_packages_3.9.5-gpu.sh) moved to /s
 LOG
 ---
 
-    /home/niharika/install-methods/makeroom.sh "-t" "python_ML_packages" "-v" "3.9.5-gpu" "-c" "apps" "-l" "Various" "-d" "Python package installation" "-f"
-    ./makeroom_python_ML_packages_3.9.5-gpu.sh
-python_ML_packages/3.9.5-cpu
-========================
+  TOOL=python_ML_packages
+  VERSION=3.9.5-gpu
 
-<http://>
+  makeroom.sh -t $TOOL -v $VERSION  -c "apps" -l Various -d "Python package installation"  -f
 
-Used under license:
-Various
+  ./makeroom_${TOOL}_${VERSION}.sh
+  source SOURCEME_${TOOL}_${VERSION}
+    
 
+  module load python/3.9.5
+  module load gcc/9.3.0
+  module use /sw/EasyBuild/snowy-gpu/modules/all
+  module load fosscuda/2020b
+  module load cuDNN/8.0.4.30-CUDA-11.1.1
 
-Structure creating script (makeroom_python_ML_packages_3.9.5-cpu.sh) moved to /sw/apps/python_ML_packages/makeroom_3.9.5-cpu.sh
+  cd $PREFIX
 
-LOG
----
+  PYTHONUSERBASE=$PREFIX pip install scikit-learn seaborn theano
+  PYTHONUSERBASE=$PREFIX pip install -f torch torchvision
+  PYTHONUSERBASE=$PREFIX pip install tensorflow-gpu
+  PYTHONUSERBASE=$PREFIX pip install keras
+  PYTHONUSERBASE=$PREFIX pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
 
-    /home/niharika/install-methods/makeroom.sh "-t" "python_ML_packages" "-v" "3.9.5-cpu" "-c" "apps" "-l" "Various" "-d" "Python package installation" "-f"
-    ./makeroom_python_ML_packages_3.9.5-cpu.sh
-python_ML_packages/3.9.5
-========================
-
-<http://>
-
-Used under license:
-Various
-
-
-Structure creating script (makeroom_python_ML_packages_3.9.5.sh) moved to /sw/apps/python_ML_packages/makeroom_3.9.5.sh
-
-LOG
----
-
-    TOOL=python_ML_packages
-    VERSION=3.9.5
-    mkdir $TOOL
-    cd $TOOL
-    makeroom.sh -t $TOOL -v $VERSION  -c "apps" -l Various -d "Python package installation"  -f
-
-   .makeroom_python_ML_packages_3.9.5.sh
-
-    sourceSOURCEME_python_ML_packages_3.9.5
-
-    module load python/3.9.5
-    module load gcc/9.3.0
-
-    cd $PREFIX
-
-    PYTHONUSERBASE=$PREFIX pip install scikit-learn seaborn theano TensorFlow Keras torch nlp  
-
+# Temporary conda env to support qt on Bianca
+  conda create -n qt_env python=3.9
+  source activate qt_env
+  conda install -y qt
+  conda install -y pyqt
+  conda install -y matplotlib
