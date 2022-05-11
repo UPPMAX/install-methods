@@ -6,7 +6,7 @@ _EXPORT_UPPMAX_INSTALL_FUNCTIONS=yes
 
 # currently active clusters
 
-_CURRENT_CLUSTERS="bianca irma rackham snowy miarka"
+_CURRENT_CLUSTERS="bianca rackham snowy miarka"
 
 
 # "module avail" loading subgroupings before running
