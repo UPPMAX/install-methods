@@ -75,8 +75,8 @@ echo "Updating groups and permissions ..."
 # lineages/ and everything in it, which takes a long time
 chmod u+rwX,g+rwX,o+rX-w .
 chmod g+s .
-parallel --verbose $DRY_RUN -j 4 fixup ::: *
+parallel --verbose $DRY_RUN -j 4 /sw/data/blast_scripts/fixup ::: *
 # everything else
 cd $BLS_BASE
-parallel --verbose $DRY_RUN -j 4 fixup ::: *.sh *.tsv information lineages_list* placement_files
+parallel --verbose $DRY_RUN -j 4 /sw/data/blast_scripts/fixup ::: *.sh *.tsv information lineages_list* placement_files
 echo "Done."

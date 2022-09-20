@@ -47,7 +47,7 @@ LOG
   "Distributed"
   "IJulia"
   "Plots"
-  "PyPlot"	#requires build with PyCall 
+#  "PyPlot"	#requires build with PyCall 
   "Gadfly"
   "DataFrames"
   "DistributedArrays"

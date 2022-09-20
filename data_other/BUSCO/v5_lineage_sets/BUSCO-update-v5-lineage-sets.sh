@@ -78,9 +78,9 @@ cd $BLS_BASE/lineages/
 # lineages/ and everything in it, which takes a long time
 chmod u+rwX,g+rwX,o+rX-w .
 chmod g+s .
-parallel --verbose -j 4 fixup {}'*' ::: $LINELIST
+parallel --verbose -j 4 /sw/data/blast_scripts/fixup {}'*' ::: $LINELIST
 
 # everything else
 cd $BLS_BASE
-parallel --verbose -j 4 fixup ::: *.sh *.tsv information lineages_list.* placement_files virus_datasets.*
+parallel --verbose -j 4 /sw/data/blast_scripts/fixup ::: *.sh *.tsv information lineages_list.* placement_files virus_datasets.*
 echo "Done."

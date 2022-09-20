@@ -12,25 +12,12 @@ Structure creating script (makeroom_slurm-drmaa_1.1.3-slurm21.08.2.sh) moved to 
 LOG
 ---
 
-    /home/douglas/bin/makeroom.sh "-u" "miarka" "-f" "-c" "libs" "-t" "slurm-drmaa" "-v" "1.1.3-slurm21.08.2" "-w" "https://github.com/natefoo/slurm-drmaa" "-d" "DRMAA for Slurm Workload Manager (Slurm) is an implementation of Open Grid Forum Distributed Resource Management Application API (DRMAA) version 1 for submission and control of jobs to Slurm. Using DRMAA, grid applications builders, portal developers and ISVs can use the same high-level API to link their software with different cluster/resource management systems. Built against SLURM 21.08.2" "-l" "GPL-3.0"
+    makeroom.sh "-u" "miarka" "-f" "-c" "libs" "-t" "slurm-drmaa" "-v" "1.1.3-slurm21.08.2" "-w" "https://github.com/natefoo/slurm-drmaa" "-d" "DRMAA for Slurm Workload Manager (Slurm) is an implementation of Open Grid Forum Distributed Resource Management Application API (DRMAA) version 1 for submission and control of jobs to Slurm. Using DRMAA, grid applications builders, portal developers and ISVs can use the same high-level API to link their software with different cluster/resource management systems. Built against SLURM 21.08.2" "-l" "GPL-3.0"
     ./makeroom_slurm-drmaa_1.1.3-slurm21.08.2.sh
-slurm-drmaa/1.1.3-slurm19.05.8
-========================
 
-<https://github.com/natefoo/slurm-drmaa>
+    source /sw/libs/slurm-drmaa/SOURCEME_slurm-drmaa_1.1.3-slurm21.08.2 && cd $SRCDIR
 
-Used under license:
-GPL-3.0
-
-
-Structure creating script (makeroom_slurm-drmaa_1.1.3-slurm19.05.8.sh) moved to /sw/libs/slurm-drmaa/makeroom_1.1.3-slurm19.05.8.sh
-
-LOG
----
-
-    /home/douglas/bin/makeroom.sh "-f" "-c" "libs" "-t" "slurm-drmaa" "-v" "1.1.3-slurm19.05.8" "-w" "https://github.com/natefoo/slurm-drmaa" "-d" "DRMAA for Slurm Workload Manager (Slurm) is an implementation of Open Grid Forum Distributed Resource Management Application API (DRMAA) version 1 for submission and control of jobs to Slurm. Using DRMAA, grid applications builders, portal developers and ISVs can use the same high-level API to link their software with different cluster/resource management systems. Built against SLURM 19.05.8" "-l" "GPL-3.0"
-    ./makeroom_slurm-drmaa_1.1.3-slurm19.05.8.sh
-
+Use source form existing installation.
 
     wget https://github.com/natefoo/slurm-drmaa/releases/download/1.1.3/slurm-drmaa-1.1.3.tar.gz
     tar xf slurm-drmaa-1.1.3.tar.gz 
