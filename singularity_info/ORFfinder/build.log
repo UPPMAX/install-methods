@@ -1,0 +1,952 @@
+Build target 'ORFfinder' already exists and will be deleted during the build process. Do you want to continue? [N/y] INFO:    Starting build...
+Getting image source signatures
+Copying blob sha256:72a2451028f11c6927678e5f1bb8f35b4e723d3b342ec1a6980d7b5591cf81d6
+Copying config sha256:58ee975912bc41687583a67d58ae700d00983544530755e2e28501e6753fbfc2
+Writing manifest to image destination
+Storing signatures
+2022/06/14 09:47:58  info unpack layer: sha256:72a2451028f11c6927678e5f1bb8f35b4e723d3b342ec1a6980d7b5591cf81d6
+INFO:    Running setup scriptlet
+INFO:    Running post scriptlet
++ export LC_ALL=C
++ LC_ALL=C
++ yum update -y
+Rocky Linux 8 - AppStream                        21 MB/s | 8.4 MB     00:00    
+Rocky Linux 8 - BaseOS                          7.5 MB/s | 2.6 MB     00:00    
+Rocky Linux 8 - Extras                           42 kB/s |  11 kB     00:00    
+Dependencies resolved.
+================================================================================
+ Package                     Arch   Version                     Repo       Size
+================================================================================
+Upgrading:
+ audit-libs                  x86_64 3.0.7-2.el8.2               baseos    122 k
+ bash                        x86_64 4.4.20-3.el8                baseos    1.5 M
+ binutils                    x86_64 2.30-113.el8                baseos    5.8 M
+ crypto-policies             noarch 20211116-1.gitae470d6.el8   baseos     63 k
+ cryptsetup-libs             x86_64 2.3.7-2.el8                 baseos    487 k
+ cyrus-sasl-lib              x86_64 2.1.27-6.el8_5              baseos    122 k
+ dbus                        x86_64 1:1.12.8-18.el8             baseos     40 k
+ dbus-common                 noarch 1:1.12.8-18.el8             baseos     45 k
+ dbus-daemon                 x86_64 1:1.12.8-18.el8             baseos    239 k
+ dbus-libs                   x86_64 1:1.12.8-18.el8             baseos    183 k
+ dbus-tools                  x86_64 1:1.12.8-18.el8             baseos     84 k
+ device-mapper               x86_64 8:1.02.181-3.el8            baseos    376 k
+ device-mapper-libs          x86_64 8:1.02.181-3.el8            baseos    408 k
+ dnf                         noarch 4.7.0-8.el8                 baseos    540 k
+ dnf-data                    noarch 4.7.0-8.el8                 baseos    154 k
+ elfutils-default-yama-scope noarch 0.186-1.el8                 baseos     49 k
+ elfutils-libelf             x86_64 0.186-1.el8                 baseos    228 k
+ elfutils-libs               x86_64 0.186-1.el8                 baseos    294 k
+ expat                       x86_64 2.2.5-8.el8                 baseos    112 k
+ gawk                        x86_64 4.2.1-4.el8                 baseos    1.1 M
+ glib2                       x86_64 2.56.4-158.el8              baseos    2.5 M
+ glibc                       x86_64 2.28-189.1.el8              baseos    2.2 M
+ glibc-common                x86_64 2.28-189.1.el8              baseos    1.3 M
+ glibc-minimal-langpack      x86_64 2.28-189.1.el8              baseos     60 k
+ gpgme                       x86_64 1.13.1-11.el8               baseos    335 k
+ gzip                        x86_64 1.9-13.el8_5                baseos    166 k
+ info                        x86_64 6.5-7.el8                   baseos    197 k
+ iputils                     x86_64 20180629-9.el8              baseos    147 k
+ json-c                      x86_64 0.13.1-3.el8                baseos     40 k
+ kmod-libs                   x86_64 25-19.el8                   baseos     67 k
+ libarchive                  x86_64 3.3.3-3.el8_5               baseos    359 k
+ libblkid                    x86_64 2.32.1-35.el8               baseos    217 k
+ libcap                      x86_64 2.48-2.el8                  baseos     73 k
+ libcom_err                  x86_64 1.45.6-4.el8                baseos     48 k
+ libcomps                    x86_64 0.1.18-1.el8                baseos     81 k
+ libdnf                      x86_64 0.63.0-8.el8                baseos    704 k
+ libfdisk                    x86_64 2.32.1-35.el8               baseos    251 k
+ libffi                      x86_64 3.1-23.el8                  baseos     36 k
+ libgcc                      x86_64 8.5.0-10.el8                baseos     79 k
+ libmount                    x86_64 2.32.1-35.el8               baseos    234 k
+ librepo                     x86_64 1.14.2-1.el8                baseos     92 k
+ libreport-filesystem        x86_64 2.9.5-15.el8.rocky.6.3      baseos     20 k
+ libseccomp                  x86_64 2.5.2-1.el8                 baseos     70 k
+ libsemanage                 x86_64 2.9-8.el8                   baseos    167 k
+ libsmartcols                x86_64 2.32.1-35.el8               baseos    177 k
+ libsolv                     x86_64 0.7.20-1.el8                baseos    374 k
+ libstdc++                   x86_64 8.5.0-10.el8                baseos    452 k
+ libtirpc                    x86_64 1.1.4-6.el8                 baseos    111 k
+ libuuid                     x86_64 2.32.1-35.el8               baseos     96 k
+ libxml2                     x86_64 2.9.7-13.el8                baseos    695 k
+ openssl-libs                x86_64 1:1.1.1k-6.el8_5            baseos    1.5 M
+ pam                         x86_64 1.3.1-16.el8                baseos    738 k
+ platform-python             x86_64 3.6.8-45.el8.rocky.0        baseos     85 k
+ python3-dnf                 noarch 4.7.0-8.el8                 baseos    544 k
+ python3-gpg                 x86_64 1.13.1-11.el8               baseos    243 k
+ python3-hawkey              x86_64 0.63.0-8.el8                baseos    115 k
+ python3-libcomps            x86_64 0.1.18-1.el8                baseos     51 k
+ python3-libdnf              x86_64 0.63.0-8.el8                baseos    777 k
+ python3-libs                x86_64 3.6.8-45.el8.rocky.0        baseos    7.8 M
+ python3-pip-wheel           noarch 9.0.3-22.el8.rocky.0        baseos    894 k
+ python3-rpm                 x86_64 4.14.3-23.el8               baseos    154 k
+ rocky-gpg-keys              noarch 8.6-3.el8                   baseos     12 k
+ rocky-release               noarch 8.6-3.el8                   baseos     21 k
+ rocky-repos                 noarch 8.6-3.el8                   baseos     14 k
+ rpm                         x86_64 4.14.3-23.el8               baseos    542 k
+ rpm-build-libs              x86_64 4.14.3-23.el8               baseos    156 k
+ rpm-libs                    x86_64 4.14.3-23.el8               baseos    344 k
+ sed                         x86_64 4.5-5.el8                   baseos    297 k
+ shadow-utils                x86_64 2:4.6-16.el8                baseos    1.2 M
+ systemd                     x86_64 239-58.el8                  baseos    3.6 M
+ systemd-libs                x86_64 239-58.el8                  baseos    1.1 M
+ systemd-pam                 x86_64 239-58.el8                  baseos    482 k
+ tzdata                      noarch 2022a-1.el8                 baseos    473 k
+ util-linux                  x86_64 2.32.1-35.el8               baseos    2.5 M
+ vim-minimal                 x86_64 2:8.0.1763-16.el8_5.13      baseos    574 k
+ yum                         noarch 4.7.0-8.el8                 baseos    205 k
+ zlib                        x86_64 1.2.11-18.el8_5             baseos    101 k
+Installing dependencies:
+ cpio                        x86_64 2.12-11.el8                 baseos    265 k
+ dracut                      x86_64 049-201.git20220131.el8     baseos    375 k
+ file                        x86_64 5.33-20.el8                 baseos     76 k
+ findutils                   x86_64 1:4.6.0-20.el8              baseos    526 k
+ gettext                     x86_64 0.19.8.1-17.el8             baseos    1.1 M
+ gettext-libs                x86_64 0.19.8.1-17.el8             baseos    309 k
+ grub2-common                noarch 1:2.02-123.el8              baseos    892 k
+ grub2-tools                 x86_64 1:2.02-123.el8              baseos    2.0 M
+ grub2-tools-minimal         x86_64 1:2.02-123.el8              baseos    210 k
+ kbd-legacy                  noarch 2.0.4-10.el8                baseos    480 k
+ kbd-misc                    noarch 2.0.4-10.el8                baseos    1.5 M
+ kmod                        x86_64 25-19.el8                   baseos    125 k
+ libcroco                    x86_64 0.6.12-4.el8_2.1            baseos    112 k
+ libevent                    x86_64 2.1.8-5.el8                 baseos    252 k
+ libgomp                     x86_64 8.5.0-10.el8                baseos    205 k
+ libkcapi                    x86_64 1.2.0-2.el8                 baseos     47 k
+ libkcapi-hmaccalc           x86_64 1.2.0-2.el8                 baseos     30 k
+ openssl                     x86_64 1:1.1.1k-6.el8_5            baseos    708 k
+ os-prober                   x86_64 1.74-9.el8                  baseos     50 k
+ procps-ng                   x86_64 3.3.15-6.el8                baseos    328 k
+ systemd-udev                x86_64 239-58.el8                  baseos    1.6 M
+ unbound-libs                x86_64 1.7.3-17.el8                appstream 502 k
+ which                       x86_64 2.21-17.el8                 baseos     48 k
+ xkeyboard-config            noarch 2.28-1.el8                  appstream 781 k
+ xz                          x86_64 5.2.4-3.el8.1               baseos    152 k
+Installing weak dependencies:
+ crypto-policies-scripts     noarch 20211116-1.gitae470d6.el8   baseos     82 k
+ diffutils                   x86_64 3.6-6.el8                   baseos    358 k
+ elfutils-debuginfod-client  x86_64 0.186-1.el8                 baseos     70 k
+ glibc-gconv-extra           x86_64 2.28-189.1.el8              appstream 1.5 M
+ grubby                      x86_64 8.40-42.el8                 baseos     48 k
+ hardlink                    x86_64 1:1.3-6.el8                 baseos     28 k
+ kbd                         x86_64 2.0.4-10.el8                baseos    389 k
+ kpartx                      x86_64 0.8.4-22.el8                baseos    113 k
+ libxkbcommon                x86_64 0.9.1-1.el8                 appstream 115 k
+ memstrack                   x86_64 0.1.11-1.el8                baseos     46 k
+ openssl-pkcs11              x86_64 0.4.10-2.el8                baseos     65 k
+ pigz                        x86_64 2.4-4.el8                   baseos     78 k
+ platform-python-pip         noarch 9.0.3-22.el8.rocky.0        baseos    1.6 M
+ python3-unbound             x86_64 1.7.3-17.el8                appstream 118 k
+ rpm-plugin-systemd-inhibit  x86_64 4.14.3-23.el8               baseos     78 k
+ shared-mime-info            x86_64 1.9-3.el8                   baseos    328 k
+
+Transaction Summary
+================================================================================
+Install  41 Packages
+Upgrade  77 Packages
+
+Total download size: 65 M
+Downloading Packages:
+(1/118): python3-unbound-1.7.3-17.el8.x86_64.rp 1.2 MB/s | 118 kB     00:00    
+(2/118): glibc-gconv-extra-2.28-189.1.el8.x86_6 9.4 MB/s | 1.5 MB     00:00    
+(3/118): unbound-libs-1.7.3-17.el8.x86_64.rpm   6.2 MB/s | 502 kB     00:00    
+(4/118): xkeyboard-config-2.28-1.el8.noarch.rpm  26 MB/s | 781 kB     00:00    
+(5/118): cpio-2.12-11.el8.x86_64.rpm            4.5 MB/s | 265 kB     00:00    
+(6/118): crypto-policies-scripts-20211116-1.git 1.9 MB/s |  82 kB     00:00    
+(7/118): diffutils-3.6-6.el8.x86_64.rpm          14 MB/s | 358 kB     00:00    
+(8/118): dracut-049-201.git20220131.el8.x86_64.  10 MB/s | 375 kB     00:00    
+(9/118): elfutils-debuginfod-client-0.186-1.el8 3.5 MB/s |  70 kB     00:00    
+(10/118): file-5.33-20.el8.x86_64.rpm           5.0 MB/s |  76 kB     00:00    
+(11/118): libxkbcommon-0.9.1-1.el8.x86_64.rpm   392 kB/s | 115 kB     00:00    
+(12/118): findutils-4.6.0-20.el8.x86_64.rpm      10 MB/s | 526 kB     00:00    
+(13/118): gettext-0.19.8.1-17.el8.x86_64.rpm     22 MB/s | 1.1 MB     00:00    
+(14/118): grub2-common-2.02-123.el8.noarch.rpm   17 MB/s | 892 kB     00:00    
+(15/118): grub2-tools-2.02-123.el8.x86_64.rpm    38 MB/s | 2.0 MB     00:00    
+(16/118): gettext-libs-0.19.8.1-17.el8.x86_64.r 2.8 MB/s | 309 kB     00:00    
+(17/118): grubby-8.40-42.el8.x86_64.rpm         3.4 MB/s |  48 kB     00:00    
+(18/118): hardlink-1.3-6.el8.x86_64.rpm         1.3 MB/s |  28 kB     00:00    
+(19/118): kbd-2.0.4-10.el8.x86_64.rpm           7.1 MB/s | 389 kB     00:00    
+(20/118): kbd-legacy-2.0.4-10.el8.noarch.rpm     12 MB/s | 480 kB     00:00    
+(21/118): kmod-25-19.el8.x86_64.rpm             7.4 MB/s | 125 kB     00:00    
+(22/118): grub2-tools-minimal-2.02-123.el8.x86_ 2.0 MB/s | 210 kB     00:00    
+(23/118): kbd-misc-2.0.4-10.el8.noarch.rpm       42 MB/s | 1.5 MB     00:00    
+(24/118): kpartx-0.8.4-22.el8.x86_64.rpm        6.4 MB/s | 113 kB     00:00    
+(25/118): libevent-2.1.8-5.el8.x86_64.rpm        15 MB/s | 252 kB     00:00    
+(26/118): libcroco-0.6.12-4.el8_2.1.x86_64.rpm  3.6 MB/s | 112 kB     00:00    
+(27/118): libgomp-8.5.0-10.el8.x86_64.rpm       8.5 MB/s | 205 kB     00:00    
+(28/118): libkcapi-1.2.0-2.el8.x86_64.rpm       3.2 MB/s |  47 kB     00:00    
+(29/118): libkcapi-hmaccalc-1.2.0-2.el8.x86_64. 1.7 MB/s |  30 kB     00:00    
+(30/118): memstrack-0.1.11-1.el8.x86_64.rpm     3.3 MB/s |  46 kB     00:00    
+(31/118): openssl-1.1.1k-6.el8_5.x86_64.rpm      35 MB/s | 708 kB     00:00    
+(32/118): os-prober-1.74-9.el8.x86_64.rpm       3.4 MB/s |  50 kB     00:00    
+(33/118): openssl-pkcs11-0.4.10-2.el8.x86_64.rp 2.9 MB/s |  65 kB     00:00    
+(34/118): pigz-2.4-4.el8.x86_64.rpm             5.4 MB/s |  78 kB     00:00    
+(35/118): platform-python-pip-9.0.3-22.el8.rock  43 MB/s | 1.6 MB     00:00    
+(36/118): rpm-plugin-systemd-inhibit-4.14.3-23. 1.8 MB/s |  78 kB     00:00    
+(37/118): shared-mime-info-1.9-3.el8.x86_64.rpm  13 MB/s | 328 kB     00:00    
+(38/118): which-2.21-17.el8.x86_64.rpm          3.0 MB/s |  48 kB     00:00    
+(39/118): systemd-udev-239-58.el8.x86_64.rpm     39 MB/s | 1.6 MB     00:00    
+(40/118): xz-5.2.4-3.el8.1.x86_64.rpm           9.0 MB/s | 152 kB     00:00    
+(41/118): audit-libs-3.0.7-2.el8.2.x86_64.rpm   7.9 MB/s | 122 kB     00:00    
+(42/118): bash-4.4.20-3.el8.x86_64.rpm           47 MB/s | 1.5 MB     00:00    
+(43/118): procps-ng-3.3.15-6.el8.x86_64.rpm     2.1 MB/s | 328 kB     00:00    
+(44/118): crypto-policies-20211116-1.gitae470d6 1.9 MB/s |  63 kB     00:00    
+(45/118): cyrus-sasl-lib-2.1.27-6.el8_5.x86_64. 8.2 MB/s | 122 kB     00:00    
+(46/118): dbus-1.12.8-18.el8.x86_64.rpm         2.9 MB/s |  40 kB     00:00    
+(47/118): cryptsetup-libs-2.3.7-2.el8.x86_64.rp  11 MB/s | 487 kB     00:00    
+(48/118): dbus-common-1.12.8-18.el8.noarch.rpm  3.2 MB/s |  45 kB     00:00    
+(49/118): dbus-daemon-1.12.8-18.el8.x86_64.rpm  5.0 MB/s | 239 kB     00:00    
+(50/118): dbus-tools-1.12.8-18.el8.x86_64.rpm   5.6 MB/s |  84 kB     00:00    
+(51/118): binutils-2.30-113.el8.x86_64.rpm       33 MB/s | 5.8 MB     00:00    
+(52/118): dbus-libs-1.12.8-18.el8.x86_64.rpm    2.1 MB/s | 183 kB     00:00    
+(53/118): dnf-4.7.0-8.el8.noarch.rpm             25 MB/s | 540 kB     00:00    
+(54/118): device-mapper-1.02.181-3.el8.x86_64.r 6.3 MB/s | 376 kB     00:00    
+(55/118): dnf-data-4.7.0-8.el8.noarch.rpm       7.9 MB/s | 154 kB     00:00    
+(56/118): elfutils-libelf-0.186-1.el8.x86_64.rp 9.9 MB/s | 228 kB     00:00    
+(57/118): elfutils-default-yama-scope-0.186-1.e 1.4 MB/s |  49 kB     00:00    
+(58/118): elfutils-libs-0.186-1.el8.x86_64.rpm   16 MB/s | 294 kB     00:00    
+(59/118): gawk-4.2.1-4.el8.x86_64.rpm            42 MB/s | 1.1 MB     00:00    
+(60/118): expat-2.2.5-8.el8.x86_64.rpm          2.4 MB/s | 112 kB     00:00    
+(61/118): device-mapper-libs-1.02.181-3.el8.x86 2.6 MB/s | 408 kB     00:00    
+(62/118): glib2-2.56.4-158.el8.x86_64.rpm        43 MB/s | 2.5 MB     00:00    
+(63/118): glibc-minimal-langpack-2.28-189.1.el8 4.5 MB/s |  60 kB     00:00    
+(64/118): gpgme-1.13.1-11.el8.x86_64.rpm        7.1 MB/s | 335 kB     00:00    
+(65/118): gzip-1.9-13.el8_5.x86_64.rpm           12 MB/s | 166 kB     00:00    
+(66/118): info-6.5-7.el8.x86_64.rpm              12 MB/s | 197 kB     00:00    
+(67/118): iputils-20180629-9.el8.x86_64.rpm     9.7 MB/s | 147 kB     00:00    
+(68/118): json-c-0.13.1-3.el8.x86_64.rpm        3.0 MB/s |  40 kB     00:00    
+(69/118): kmod-libs-25-19.el8.x86_64.rpm        4.7 MB/s |  67 kB     00:00    
+(70/118): libarchive-3.3.3-3.el8_5.x86_64.rpm    20 MB/s | 359 kB     00:00    
+(71/118): libblkid-2.32.1-35.el8.x86_64.rpm     4.1 MB/s | 217 kB     00:00    
+(72/118): libcap-2.48-2.el8.x86_64.rpm          2.6 MB/s |  73 kB     00:00    
+(73/118): glibc-2.28-189.1.el8.x86_64.rpm       7.3 MB/s | 2.2 MB     00:00    
+(74/118): libcom_err-1.45.6-4.el8.x86_64.rpm    2.1 MB/s |  48 kB     00:00    
+(75/118): libcomps-0.1.18-1.el8.x86_64.rpm      4.7 MB/s |  81 kB     00:00    
+(76/118): libfdisk-2.32.1-35.el8.x86_64.rpm     8.8 MB/s | 251 kB     00:00    
+(77/118): libffi-3.1-23.el8.x86_64.rpm          2.6 MB/s |  36 kB     00:00    
+(78/118): glibc-common-2.28-189.1.el8.x86_64.rp 3.9 MB/s | 1.3 MB     00:00    
+(79/118): libgcc-8.5.0-10.el8.x86_64.rpm        4.7 MB/s |  79 kB     00:00    
+(80/118): librepo-1.14.2-1.el8.x86_64.rpm       5.1 MB/s |  92 kB     00:00    
+(81/118): libreport-filesystem-2.9.5-15.el8.roc 1.7 MB/s |  20 kB     00:00    
+(82/118): libdnf-0.63.0-8.el8.x86_64.rpm        6.3 MB/s | 704 kB     00:00    
+(83/118): libseccomp-2.5.2-1.el8.x86_64.rpm     3.9 MB/s |  70 kB     00:00    
+(84/118): libsemanage-2.9-8.el8.x86_64.rpm      5.0 MB/s | 167 kB     00:00    
+(85/118): libsmartcols-2.32.1-35.el8.x86_64.rpm 7.5 MB/s | 177 kB     00:00    
+(86/118): libmount-2.32.1-35.el8.x86_64.rpm     2.2 MB/s | 234 kB     00:00    
+(87/118): libstdc++-8.5.0-10.el8.x86_64.rpm      12 MB/s | 452 kB     00:00    
+(88/118): libtirpc-1.1.4-6.el8.x86_64.rpm       4.3 MB/s | 111 kB     00:00    
+(89/118): libsolv-0.7.20-1.el8.x86_64.rpm       6.4 MB/s | 374 kB     00:00    
+(90/118): libuuid-2.32.1-35.el8.x86_64.rpm      4.7 MB/s |  96 kB     00:00    
+(91/118): pam-1.3.1-16.el8.x86_64.rpm            15 MB/s | 738 kB     00:00    
+(92/118): platform-python-3.6.8-45.el8.rocky.0. 5.3 MB/s |  85 kB     00:00    
+(93/118): libxml2-2.9.7-13.el8.x86_64.rpm       8.3 MB/s | 695 kB     00:00    
+(94/118): python3-dnf-4.7.0-8.el8.noarch.rpm     15 MB/s | 544 kB     00:00    
+(95/118): openssl-libs-1.1.1k-6.el8_5.x86_64.rp  13 MB/s | 1.5 MB     00:00    
+(96/118): python3-gpg-1.13.1-11.el8.x86_64.rpm  5.7 MB/s | 243 kB     00:00    
+(97/118): python3-hawkey-0.63.0-8.el8.x86_64.rp 5.6 MB/s | 115 kB     00:00    
+(98/118): python3-libcomps-0.1.18-1.el8.x86_64. 3.1 MB/s |  51 kB     00:00    
+(99/118): python3-pip-wheel-9.0.3-22.el8.rocky.  16 MB/s | 894 kB     00:00    
+(100/118): python3-rpm-4.14.3-23.el8.x86_64.rpm 7.8 MB/s | 154 kB     00:00    
+(101/118): rocky-gpg-keys-8.6-3.el8.noarch.rpm  852 kB/s |  12 kB     00:00    
+(102/118): python3-libdnf-0.63.0-8.el8.x86_64.r 6.0 MB/s | 777 kB     00:00    
+(103/118): rocky-repos-8.6-3.el8.noarch.rpm     1.0 MB/s |  14 kB     00:00    
+(104/118): rocky-release-8.6-3.el8.noarch.rpm   355 kB/s |  21 kB     00:00    
+(105/118): rpm-build-libs-4.14.3-23.el8.x86_64. 6.3 MB/s | 156 kB     00:00    
+(106/118): python3-libs-3.6.8-45.el8.rocky.0.x8  40 MB/s | 7.8 MB     00:00    
+(107/118): rpm-4.14.3-23.el8.x86_64.rpm         8.4 MB/s | 542 kB     00:00    
+(108/118): rpm-libs-4.14.3-23.el8.x86_64.rpm     11 MB/s | 344 kB     00:00    
+(109/118): sed-4.5-5.el8.x86_64.rpm             7.7 MB/s | 297 kB     00:00    
+(110/118): shadow-utils-4.6-16.el8.x86_64.rpm    22 MB/s | 1.2 MB     00:00    
+(111/118): systemd-pam-239-58.el8.x86_64.rpm     17 MB/s | 482 kB     00:00    
+(112/118): tzdata-2022a-1.el8.noarch.rpm         17 MB/s | 473 kB     00:00    
+(113/118): systemd-libs-239-58.el8.x86_64.rpm    12 MB/s | 1.1 MB     00:00    
+(114/118): systemd-239-58.el8.x86_64.rpm         25 MB/s | 3.6 MB     00:00    
+(115/118): yum-4.7.0-8.el8.noarch.rpm            10 MB/s | 205 kB     00:00    
+(116/118): zlib-1.2.11-18.el8_5.x86_64.rpm      6.4 MB/s | 101 kB     00:00    
+(117/118): util-linux-2.32.1-35.el8.x86_64.rpm   29 MB/s | 2.5 MB     00:00    
+(118/118): vim-minimal-8.0.1763-16.el8_5.13.x86 7.3 MB/s | 574 kB     00:00    
+--------------------------------------------------------------------------------
+Total                                            28 MB/s |  65 MB     00:02     
+Rocky Linux 8 - AppStream                       1.6 MB/s | 1.6 kB     00:00    
+Importing GPG key 0x6D745A60:
+ Userid     : "Release Engineering <infrastructure@rockylinux.org>"
+ Fingerprint: 7051 C470 A929 F454 CEBE 37B7 15AF 5DAC 6D74 5A60
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-rockyofficial
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Running scriptlet: libgcc-8.5.0-10.el8.x86_64                             1/1 
+  Upgrading        : libgcc-8.5.0-10.el8.x86_64                           1/195 
+  Running scriptlet: libgcc-8.5.0-10.el8.x86_64                           1/195 
+  Upgrading        : python3-pip-wheel-9.0.3-22.el8.rocky.0.noarch        2/195 
+  Upgrading        : tzdata-2022a-1.el8.noarch                            3/195 
+  Upgrading        : bash-4.4.20-3.el8.x86_64                             4/195 
+  Running scriptlet: bash-4.4.20-3.el8.x86_64                             4/195 
+  Upgrading        : glibc-common-2.28-189.1.el8.x86_64                   5/195 
+  Upgrading        : glibc-minimal-langpack-2.28-189.1.el8.x86_64         6/195 
+  Running scriptlet: glibc-2.28-189.1.el8.x86_64                          7/195 
+  Upgrading        : glibc-2.28-189.1.el8.x86_64                          7/195 
+  Running scriptlet: glibc-2.28-189.1.el8.x86_64                          7/195 
+  Installing       : glibc-gconv-extra-2.28-189.1.el8.x86_64              8/195 
+  Running scriptlet: glibc-gconv-extra-2.28-189.1.el8.x86_64              8/195 
+  Upgrading        : zlib-1.2.11-18.el8_5.x86_64                          9/195 
+  Upgrading        : audit-libs-3.0.7-2.el8.2.x86_64                     10/195 
+  Upgrading        : libxml2-2.9.7-13.el8.x86_64                         11/195 
+  Upgrading        : libcap-2.48-2.el8.x86_64                            12/195 
+  Upgrading        : elfutils-libelf-0.186-1.el8.x86_64                  13/195 
+  Upgrading        : info-6.5-7.el8.x86_64                               14/195 
+  Upgrading        : expat-2.2.5-8.el8.x86_64                            15/195 
+  Upgrading        : gpgme-1.13.1-11.el8.x86_64                          16/195 
+  Upgrading        : libstdc++-8.5.0-10.el8.x86_64                       17/195 
+  Running scriptlet: libstdc++-8.5.0-10.el8.x86_64                       17/195 
+  Upgrading        : libuuid-2.32.1-35.el8.x86_64                        18/195 
+  Running scriptlet: libuuid-2.32.1-35.el8.x86_64                        18/195 
+  Upgrading        : libblkid-2.32.1-35.el8.x86_64                       19/195 
+  Running scriptlet: libblkid-2.32.1-35.el8.x86_64                       19/195 
+  Upgrading        : libmount-2.32.1-35.el8.x86_64                       20/195 
+  Running scriptlet: libmount-2.32.1-35.el8.x86_64                       20/195 
+  Upgrading        : sed-4.5-5.el8.x86_64                                21/195 
+  Running scriptlet: sed-4.5-5.el8.x86_64                                21/195 
+  Upgrading        : systemd-libs-239-58.el8.x86_64                      22/195 
+  Running scriptlet: systemd-libs-239-58.el8.x86_64                      22/195 
+  Upgrading        : json-c-0.13.1-3.el8.x86_64                          23/195 
+  Upgrading        : libsmartcols-2.32.1-35.el8.x86_64                   24/195 
+  Running scriptlet: libsmartcols-2.32.1-35.el8.x86_64                   24/195 
+  Upgrading        : dbus-libs-1:1.12.8-18.el8.x86_64                    25/195 
+  Running scriptlet: dbus-libs-1:1.12.8-18.el8.x86_64                    25/195 
+  Installing       : findutils-1:4.6.0-20.el8.x86_64                     26/195 
+  Running scriptlet: findutils-1:4.6.0-20.el8.x86_64                     26/195 
+  Installing       : libgomp-8.5.0-10.el8.x86_64                         27/195 
+  Running scriptlet: libgomp-8.5.0-10.el8.x86_64                         27/195 
+  Upgrading        : libcom_err-1.45.6-4.el8.x86_64                      28/195 
+  Running scriptlet: libcom_err-1.45.6-4.el8.x86_64                      28/195 
+  Upgrading        : libtirpc-1.1.4-6.el8.x86_64                         29/195 
+  Running scriptlet: libtirpc-1.1.4-6.el8.x86_64                         29/195 
+  Upgrading        : pam-1.3.1-16.el8.x86_64                             30/195 
+  Running scriptlet: pam-1.3.1-16.el8.x86_64                             30/195 
+  Upgrading        : libffi-3.1-23.el8.x86_64                            31/195 
+  Upgrading        : glib2-2.56.4-158.el8.x86_64                         32/195 
+  Installing       : shared-mime-info-1.9-3.el8.x86_64                   33/195 
+  Running scriptlet: shared-mime-info-1.9-3.el8.x86_64                   33/195 
+  Installing       : libcroco-0.6.12-4.el8_2.1.x86_64                    34/195 
+  Running scriptlet: libcroco-0.6.12-4.el8_2.1.x86_64                    34/195 
+  Installing       : grub2-common-1:2.02-123.el8.noarch                  35/195 
+  Installing       : gettext-libs-0.19.8.1-17.el8.x86_64                 36/195 
+  Installing       : gettext-0.19.8.1-17.el8.x86_64                      37/195 
+  Running scriptlet: gettext-0.19.8.1-17.el8.x86_64                      37/195 
+  Upgrading        : dbus-tools-1:1.12.8-18.el8.x86_64                   38/195 
+  Installing       : procps-ng-3.3.15-6.el8.x86_64                       39/195 
+  Upgrading        : libfdisk-2.32.1-35.el8.x86_64                       40/195 
+  Running scriptlet: libfdisk-2.32.1-35.el8.x86_64                       40/195 
+  Upgrading        : util-linux-2.32.1-35.el8.x86_64                     41/195 
+  Running scriptlet: util-linux-2.32.1-35.el8.x86_64                     41/195 
+  Upgrading        : libcomps-0.1.18-1.el8.x86_64                        42/195 
+  Installing       : diffutils-3.6-6.el8.x86_64                          43/195 
+  Running scriptlet: diffutils-3.6-6.el8.x86_64                          43/195 
+  Upgrading        : gzip-1.9-13.el8_5.x86_64                            44/195 
+  Running scriptlet: gzip-1.9-13.el8_5.x86_64                            44/195 
+  Upgrading        : libsemanage-2.9-8.el8.x86_64                        45/195 
+  Upgrading        : shadow-utils-2:4.6-16.el8.x86_64                    46/195 
+  Installing       : file-5.33-20.el8.x86_64                             47/195 
+  Installing       : pigz-2.4-4.el8.x86_64                               48/195 
+  Installing       : cpio-2.12-11.el8.x86_64                             49/195 
+  Installing       : hardlink-1:1.3-6.el8.x86_64                         50/195 
+  Installing       : memstrack-0.1.11-1.el8.x86_64                       51/195 
+  Installing       : which-2.21-17.el8.x86_64                            52/195 
+  Installing       : xz-5.2.4-3.el8.1.x86_64                             53/195 
+  Upgrading        : libseccomp-2.5.2-1.el8.x86_64                       54/195 
+  Running scriptlet: libseccomp-2.5.2-1.el8.x86_64                       54/195 
+  Upgrading        : rocky-gpg-keys-8.6-3.el8.noarch                     55/195 
+  Upgrading        : rocky-release-8.6-3.el8.noarch                      56/195 
+  Upgrading        : rocky-repos-8.6-3.el8.noarch                        57/195 
+  Upgrading        : libreport-filesystem-2.9.5-15.el8.rocky.6.3.x86_    58/195 
+  Upgrading        : dnf-data-4.7.0-8.el8.noarch                         59/195 
+  Installing       : kbd-misc-2.0.4-10.el8.noarch                        60/195 
+  Installing       : kbd-legacy-2.0.4-10.el8.noarch                      61/195 
+  Installing       : kbd-2.0.4-10.el8.x86_64                             62/195 
+  Installing       : xkeyboard-config-2.28-1.el8.noarch                  63/195 
+  Installing       : libxkbcommon-0.9.1-1.el8.x86_64                     64/195 
+  Installing       : grub2-tools-minimal-1:2.02-123.el8.x86_64           65/195 
+  Installing       : platform-python-pip-9.0.3-22.el8.rocky.0.noarch     66/195 
+  Upgrading        : python3-libs-3.6.8-45.el8.rocky.0.x86_64            67/195 
+  Upgrading        : platform-python-3.6.8-45.el8.rocky.0.x86_64         68/195 
+  Running scriptlet: platform-python-3.6.8-45.el8.rocky.0.x86_64         68/195 
+  Installing       : grubby-8.40-42.el8.x86_64                           69/195 
+  Installing       : libkcapi-1.2.0-2.el8.x86_64                         70/195 
+  Installing       : libkcapi-hmaccalc-1.2.0-2.el8.x86_64                71/195 
+  Installing       : openssl-1:1.1.1k-6.el8_5.x86_64                     72/195 
+  Upgrading        : libarchive-3.3.3-3.el8_5.x86_64                     73/195 
+  Installing       : crypto-policies-scripts-20211116-1.gitae470d6.el    74/195 
+  Upgrading        : crypto-policies-20211116-1.gitae470d6.el8.noarch    75/195 
+  Running scriptlet: crypto-policies-20211116-1.gitae470d6.el8.noarch    75/195 
+  Upgrading        : dbus-common-1:1.12.8-18.el8.noarch                  76/195 
+  Running scriptlet: dbus-daemon-1:1.12.8-18.el8.x86_64                  77/195 
+  Upgrading        : dbus-daemon-1:1.12.8-18.el8.x86_64                  77/195 
+  Running scriptlet: dbus-daemon-1:1.12.8-18.el8.x86_64                  77/195 
+  Installing       : kpartx-0.8.4-22.el8.x86_64                          78/195 
+  Installing       : openssl-pkcs11-0.4.10-2.el8.x86_64                  79/195 
+  Upgrading        : openssl-libs-1:1.1.1k-6.el8_5.x86_64                80/195 
+  Running scriptlet: openssl-libs-1:1.1.1k-6.el8_5.x86_64                80/195 
+  Installing       : kmod-25-19.el8.x86_64                               81/195 
+  Upgrading        : kmod-libs-25-19.el8.x86_64                          82/195 
+  Running scriptlet: kmod-libs-25-19.el8.x86_64                          82/195 
+  Upgrading        : rpm-4.14.3-23.el8.x86_64                            83/195 
+  Upgrading        : rpm-libs-4.14.3-23.el8.x86_64                       84/195 
+  Running scriptlet: rpm-libs-4.14.3-23.el8.x86_64                       84/195 
+  Upgrading        : device-mapper-8:1.02.181-3.el8.x86_64               85/195 
+  Upgrading        : device-mapper-libs-8:1.02.181-3.el8.x86_64          86/195 
+  Upgrading        : cryptsetup-libs-2.3.7-2.el8.x86_64                  87/195 
+  Running scriptlet: cryptsetup-libs-2.3.7-2.el8.x86_64                  87/195 
+  Installing       : elfutils-debuginfod-client-0.186-1.el8.x86_64       88/195 
+  Upgrading        : elfutils-default-yama-scope-0.186-1.el8.noarch      89/195 
+  Running scriptlet: elfutils-default-yama-scope-0.186-1.el8.noarch      89/195 
+  Upgrading        : elfutils-libs-0.186-1.el8.x86_64                    90/195 
+  Installing       : dracut-049-201.git20220131.el8.x86_64               91/195 
+  Installing       : os-prober-1.74-9.el8.x86_64                         92/195 
+  Running scriptlet: grub2-tools-1:2.02-123.el8.x86_64                   93/195 
+  Installing       : grub2-tools-1:2.02-123.el8.x86_64                   93/195 
+  Running scriptlet: grub2-tools-1:2.02-123.el8.x86_64                   93/195 
+  Upgrading        : systemd-pam-239-58.el8.x86_64                       94/195 
+  Upgrading        : dbus-1:1.12.8-18.el8.x86_64                         95/195 
+  Running scriptlet: systemd-239-58.el8.x86_64                           96/195 
+  Upgrading        : systemd-239-58.el8.x86_64                           96/195 
+  Running scriptlet: systemd-239-58.el8.x86_64                           96/195 
+  Installing       : systemd-udev-239-58.el8.x86_64                      97/195 
+  Running scriptlet: systemd-udev-239-58.el8.x86_64                      97/195 
+  Upgrading        : libsolv-0.7.20-1.el8.x86_64                         98/195 
+  Upgrading        : librepo-1.14.2-1.el8.x86_64                         99/195 
+  Upgrading        : libdnf-0.63.0-8.el8.x86_64                         100/195 
+  Upgrading        : python3-libdnf-0.63.0-8.el8.x86_64                 101/195 
+  Installing       : libevent-2.1.8-5.el8.x86_64                        102/195 
+  Running scriptlet: unbound-libs-1.7.3-17.el8.x86_64                   103/195 
+  Installing       : unbound-libs-1.7.3-17.el8.x86_64                   103/195 
+  Running scriptlet: unbound-libs-1.7.3-17.el8.x86_64                   103/195 
+  Installing       : python3-unbound-1.7.3-17.el8.x86_64                104/195 
+  Upgrading        : python3-hawkey-0.63.0-8.el8.x86_64                 105/195 
+  Upgrading        : rpm-build-libs-4.14.3-23.el8.x86_64                106/195 
+  Running scriptlet: rpm-build-libs-4.14.3-23.el8.x86_64                106/195 
+  Upgrading        : python3-rpm-4.14.3-23.el8.x86_64                   107/195 
+  Installing       : rpm-plugin-systemd-inhibit-4.14.3-23.el8.x86_64    108/195 
+  Upgrading        : python3-gpg-1.13.1-11.el8.x86_64                   109/195 
+  Upgrading        : python3-libcomps-0.1.18-1.el8.x86_64               110/195 
+  Upgrading        : python3-dnf-4.7.0-8.el8.noarch                     111/195 
+  Upgrading        : dnf-4.7.0-8.el8.noarch                             112/195 
+  Running scriptlet: dnf-4.7.0-8.el8.noarch                             112/195 
+  Upgrading        : yum-4.7.0-8.el8.noarch                             113/195 
+  Upgrading        : iputils-20180629-9.el8.x86_64                      114/195 
+  Running scriptlet: iputils-20180629-9.el8.x86_64                      114/195 
+  Upgrading        : cyrus-sasl-lib-2.1.27-6.el8_5.x86_64               115/195 
+  Running scriptlet: cyrus-sasl-lib-2.1.27-6.el8_5.x86_64               115/195 
+  Upgrading        : binutils-2.30-113.el8.x86_64                       116/195 
+  Running scriptlet: binutils-2.30-113.el8.x86_64                       116/195 
+  Upgrading        : gawk-4.2.1-4.el8.x86_64                            117/195 
+  Upgrading        : vim-minimal-2:8.0.1763-16.el8_5.13.x86_64          118/195 
+  Running scriptlet: binutils-2.30-108.el8.x86_64                       119/195 
+  Cleanup          : binutils-2.30-108.el8.x86_64                       119/195 
+  Running scriptlet: binutils-2.30-108.el8.x86_64                       119/195 
+  Cleanup          : device-mapper-8:1.02.177-10.el8.x86_64             120/195 
+  Running scriptlet: iputils-20180629-7.el8.x86_64                      121/195 
+  Cleanup          : iputils-20180629-7.el8.x86_64                      121/195 
+  Running scriptlet: iputils-20180629-7.el8.x86_64                      121/195 
+  Cleanup          : cyrus-sasl-lib-2.1.27-5.el8.x86_64                 122/195 
+  Running scriptlet: cyrus-sasl-lib-2.1.27-5.el8.x86_64                 122/195 
+  Running scriptlet: gzip-1.9-12.el8.x86_64                             123/195 
+  Cleanup          : gzip-1.9-12.el8.x86_64                             123/195 
+  Cleanup          : gawk-4.2.1-2.el8.x86_64                            124/195 
+  Cleanup          : yum-4.7.0-4.el8.noarch                             125/195 
+  Running scriptlet: dnf-4.7.0-4.el8.noarch                             126/195 
+  Cleanup          : dnf-4.7.0-4.el8.noarch                             126/195 
+  Running scriptlet: dnf-4.7.0-4.el8.noarch                             126/195 
+  Cleanup          : python3-dnf-4.7.0-4.el8.noarch                     127/195 
+  Cleanup          : dnf-data-4.7.0-4.el8.noarch                        128/195 
+  Cleanup          : rocky-release-8.5-1.el8.noarch                     129/195 
+  Cleanup          : python3-hawkey-0.63.0-3.el8.x86_64                 130/195 
+  Cleanup          : python3-libdnf-0.63.0-3.el8.x86_64                 131/195 
+  Cleanup          : libdnf-0.63.0-3.el8.x86_64                         132/195 
+  Cleanup          : python3-rpm-4.14.3-19.el8.x86_64                   133/195 
+  Cleanup          : rpm-build-libs-4.14.3-19.el8.x86_64                134/195 
+  Running scriptlet: rpm-build-libs-4.14.3-19.el8.x86_64                134/195 
+  Cleanup          : elfutils-libs-0.185-1.el8.x86_64                   135/195 
+  Cleanup          : elfutils-default-yama-scope-0.185-1.el8.noarch     136/195 
+  Cleanup          : dbus-1:1.12.8-14.el8.x86_64                        137/195 
+  Running scriptlet: systemd-239-51.el8.x86_64                          138/195 
+  Cleanup          : systemd-239-51.el8.x86_64                          138/195 
+  Cleanup          : util-linux-2.32.1-28.el8.x86_64                    139/195 
+  Cleanup          : systemd-pam-239-51.el8.x86_64                      140/195 
+  Cleanup          : cryptsetup-libs-2.3.3-4.el8.x86_64                 141/195 
+  Running scriptlet: cryptsetup-libs-2.3.3-4.el8.x86_64                 141/195 
+  Cleanup          : pam-1.3.1-15.el8.x86_64                            142/195 
+  Running scriptlet: pam-1.3.1-15.el8.x86_64                            142/195 
+  Running scriptlet: dbus-daemon-1:1.12.8-14.el8.x86_64                 143/195 
+  Cleanup          : dbus-daemon-1:1.12.8-14.el8.x86_64                 143/195 
+  Running scriptlet: dbus-daemon-1:1.12.8-14.el8.x86_64                 143/195 
+  Cleanup          : libfdisk-2.32.1-28.el8.x86_64                      144/195 
+  Running scriptlet: libfdisk-2.32.1-28.el8.x86_64                      144/195 
+  Cleanup          : libstdc++-8.5.0-3.el8.x86_64                       145/195 
+  Running scriptlet: libstdc++-8.5.0-3.el8.x86_64                       145/195 
+  Cleanup          : librepo-1.14.0-2.el8.x86_64                        146/195 
+  Cleanup          : glib2-2.56.4-156.el8.x86_64                        147/195 
+  Cleanup          : libsolv-0.7.19-1.el8.x86_64                        148/195 
+  Cleanup          : rpm-4.14.3-19.el8.x86_64                           149/195 
+  Cleanup          : rpm-libs-4.14.3-19.el8.x86_64                      150/195 
+  Running scriptlet: rpm-libs-4.14.3-19.el8.x86_64                      150/195 
+  Cleanup          : libarchive-3.3.3-1.el8.x86_64                      151/195 
+  Cleanup          : kmod-libs-25-18.el8.x86_64                         152/195 
+  Running scriptlet: kmod-libs-25-18.el8.x86_64                         152/195 
+  Cleanup          : device-mapper-libs-8:1.02.177-10.el8.x86_64        153/195 
+  Cleanup          : libsmartcols-2.32.1-28.el8.x86_64                  154/195 
+  Running scriptlet: libsmartcols-2.32.1-28.el8.x86_64                  154/195 
+  Cleanup          : dbus-tools-1:1.12.8-14.el8.x86_64                  155/195 
+  Cleanup          : dbus-libs-1:1.12.8-14.el8.x86_64                   156/195 
+  Running scriptlet: dbus-libs-1:1.12.8-14.el8.x86_64                   156/195 
+  Cleanup          : systemd-libs-239-51.el8.x86_64                     157/195 
+  Cleanup          : libmount-2.32.1-28.el8.x86_64                      158/195 
+  Running scriptlet: libmount-2.32.1-28.el8.x86_64                      158/195 
+  Cleanup          : libblkid-2.32.1-28.el8.x86_64                      159/195 
+  Running scriptlet: libblkid-2.32.1-28.el8.x86_64                      159/195 
+  Cleanup          : python3-gpg-1.13.1-9.el8.x86_64                    160/195 
+  Cleanup          : python3-libcomps-0.1.16-2.el8.x86_64               161/195 
+  Cleanup          : python3-libs-3.6.8-41.el8.rocky.0.x86_64           162/195 
+  Cleanup          : platform-python-3.6.8-41.el8.rocky.0.x86_64        163/195 
+  Running scriptlet: platform-python-3.6.8-41.el8.rocky.0.x86_64        163/195 
+  Cleanup          : openssl-libs-1:1.1.1k-4.el8.x86_64                 164/195 
+  Running scriptlet: openssl-libs-1:1.1.1k-4.el8.x86_64                 164/195 
+  Cleanup          : libcomps-0.1.16-2.el8.x86_64                       165/195 
+  Cleanup          : libxml2-2.9.7-11.el8.x86_64                        166/195 
+  Cleanup          : libtirpc-1.1.4-5.el8.x86_64                        167/195 
+  Running scriptlet: libtirpc-1.1.4-5.el8.x86_64                        167/195 
+  Cleanup          : libuuid-2.32.1-28.el8.x86_64                       168/195 
+  Running scriptlet: libuuid-2.32.1-28.el8.x86_64                       168/195 
+  Cleanup          : shadow-utils-2:4.6-14.el8.x86_64                   169/195 
+  Cleanup          : libcom_err-1.45.6-2.el8.x86_64                     170/195 
+  Running scriptlet: libcom_err-1.45.6-2.el8.x86_64                     170/195 
+  Cleanup          : gpgme-1.13.1-9.el8.x86_64                          171/195 
+  Running scriptlet: sed-4.5-2.el8.x86_64                               172/195 
+  Cleanup          : sed-4.5-2.el8.x86_64                               172/195 
+  Cleanup          : info-6.5-6.el8.x86_64                              173/195 
+  Cleanup          : libsemanage-2.9-6.el8.x86_64                       174/195 
+  Cleanup          : audit-libs-3.0-0.17.20191104git1c2f876.el8.1.x86   175/195 
+  Cleanup          : json-c-0.13.1-2.el8.x86_64                         176/195 
+  Cleanup          : vim-minimal-2:8.0.1763-16.el8.x86_64               177/195 
+  Cleanup          : rocky-repos-8.5-1.el8.noarch                       178/195 
+  Cleanup          : rocky-gpg-keys-8.5-1.el8.noarch                    179/195 
+  Cleanup          : crypto-policies-20210617-1.gitc776d3e.el8.noarch   180/195 
+  Cleanup          : python3-pip-wheel-9.0.3-20.el8.rocky.0.noarch      181/195 
+  Cleanup          : dbus-common-1:1.12.8-14.el8.noarch                 182/195 
+  Cleanup          : libreport-filesystem-2.9.5-15.el8.rocky.2.x86_64   183/195 
+  Cleanup          : libcap-2.26-5.el8.x86_64                           184/195 
+  Cleanup          : elfutils-libelf-0.185-1.el8.x86_64                 185/195 
+  Cleanup          : expat-2.2.5-4.el8.x86_64                           186/195 
+  Cleanup          : libseccomp-2.5.1-1.el8.x86_64                      187/195 
+  Running scriptlet: libseccomp-2.5.1-1.el8.x86_64                      187/195 
+  Cleanup          : zlib-1.2.11-17.el8.x86_64                          188/195 
+  Cleanup          : libffi-3.1-22.el8.x86_64                           189/195 
+  Cleanup          : bash-4.4.20-2.el8.x86_64                           190/195 
+  Running scriptlet: bash-4.4.20-2.el8.x86_64                           190/195 
+  Cleanup          : glibc-2.28-164.el8.x86_64                          191/195 
+  Cleanup          : glibc-minimal-langpack-2.28-164.el8.x86_64         192/195 
+  Cleanup          : glibc-common-2.28-164.el8.x86_64                   193/195 
+  Cleanup          : tzdata-2021e-1.el8.noarch                          194/195 
+  Cleanup          : libgcc-8.5.0-3.el8.x86_64                          195/195 
+  Running scriptlet: libgcc-8.5.0-3.el8.x86_64                          195/195 
+  Running scriptlet: crypto-policies-scripts-20211116-1.gitae470d6.el   195/195 
+  Running scriptlet: libgcc-8.5.0-3.el8.x86_64                          195/195 
+  Running scriptlet: glibc-common-2.28-189.1.el8.x86_64                 195/195 
+  Running scriptlet: info-6.5-7.el8.x86_64                              195/195 
+  Running scriptlet: glib2-2.56.4-158.el8.x86_64                        195/195 
+  Running scriptlet: shared-mime-info-1.9-3.el8.x86_64                  195/195 
+  Running scriptlet: systemd-239-58.el8.x86_64                          195/195 
+  Running scriptlet: systemd-udev-239-58.el8.x86_64                     195/195 
+  Verifying        : glibc-gconv-extra-2.28-189.1.el8.x86_64              1/195 
+  Verifying        : libxkbcommon-0.9.1-1.el8.x86_64                      2/195 
+  Verifying        : python3-unbound-1.7.3-17.el8.x86_64                  3/195 
+  Verifying        : unbound-libs-1.7.3-17.el8.x86_64                     4/195 
+  Verifying        : xkeyboard-config-2.28-1.el8.noarch                   5/195 
+  Verifying        : cpio-2.12-11.el8.x86_64                              6/195 
+  Verifying        : crypto-policies-scripts-20211116-1.gitae470d6.el     7/195 
+  Verifying        : diffutils-3.6-6.el8.x86_64                           8/195 
+  Verifying        : dracut-049-201.git20220131.el8.x86_64                9/195 
+  Verifying        : elfutils-debuginfod-client-0.186-1.el8.x86_64       10/195 
+  Verifying        : file-5.33-20.el8.x86_64                             11/195 
+  Verifying        : findutils-1:4.6.0-20.el8.x86_64                     12/195 
+  Verifying        : gettext-0.19.8.1-17.el8.x86_64                      13/195 
+  Verifying        : gettext-libs-0.19.8.1-17.el8.x86_64                 14/195 
+  Verifying        : grub2-common-1:2.02-123.el8.noarch                  15/195 
+  Verifying        : grub2-tools-1:2.02-123.el8.x86_64                   16/195 
+  Verifying        : grub2-tools-minimal-1:2.02-123.el8.x86_64           17/195 
+  Verifying        : grubby-8.40-42.el8.x86_64                           18/195 
+  Verifying        : hardlink-1:1.3-6.el8.x86_64                         19/195 
+  Verifying        : kbd-2.0.4-10.el8.x86_64                             20/195 
+  Verifying        : kbd-legacy-2.0.4-10.el8.noarch                      21/195 
+  Verifying        : kbd-misc-2.0.4-10.el8.noarch                        22/195 
+  Verifying        : kmod-25-19.el8.x86_64                               23/195 
+  Verifying        : kpartx-0.8.4-22.el8.x86_64                          24/195 
+  Verifying        : libcroco-0.6.12-4.el8_2.1.x86_64                    25/195 
+  Verifying        : libevent-2.1.8-5.el8.x86_64                         26/195 
+  Verifying        : libgomp-8.5.0-10.el8.x86_64                         27/195 
+  Verifying        : libkcapi-1.2.0-2.el8.x86_64                         28/195 
+  Verifying        : libkcapi-hmaccalc-1.2.0-2.el8.x86_64                29/195 
+  Verifying        : memstrack-0.1.11-1.el8.x86_64                       30/195 
+  Verifying        : openssl-1:1.1.1k-6.el8_5.x86_64                     31/195 
+  Verifying        : openssl-pkcs11-0.4.10-2.el8.x86_64                  32/195 
+  Verifying        : os-prober-1.74-9.el8.x86_64                         33/195 
+  Verifying        : pigz-2.4-4.el8.x86_64                               34/195 
+  Verifying        : platform-python-pip-9.0.3-22.el8.rocky.0.noarch     35/195 
+  Verifying        : procps-ng-3.3.15-6.el8.x86_64                       36/195 
+  Verifying        : rpm-plugin-systemd-inhibit-4.14.3-23.el8.x86_64     37/195 
+  Verifying        : shared-mime-info-1.9-3.el8.x86_64                   38/195 
+  Verifying        : systemd-udev-239-58.el8.x86_64                      39/195 
+  Verifying        : which-2.21-17.el8.x86_64                            40/195 
+  Verifying        : xz-5.2.4-3.el8.1.x86_64                             41/195 
+  Verifying        : audit-libs-3.0.7-2.el8.2.x86_64                     42/195 
+  Verifying        : audit-libs-3.0-0.17.20191104git1c2f876.el8.1.x86    43/195 
+  Verifying        : bash-4.4.20-3.el8.x86_64                            44/195 
+  Verifying        : bash-4.4.20-2.el8.x86_64                            45/195 
+  Verifying        : binutils-2.30-113.el8.x86_64                        46/195 
+  Verifying        : binutils-2.30-108.el8.x86_64                        47/195 
+  Verifying        : crypto-policies-20211116-1.gitae470d6.el8.noarch    48/195 
+  Verifying        : crypto-policies-20210617-1.gitc776d3e.el8.noarch    49/195 
+  Verifying        : cryptsetup-libs-2.3.7-2.el8.x86_64                  50/195 
+  Verifying        : cryptsetup-libs-2.3.3-4.el8.x86_64                  51/195 
+  Verifying        : cyrus-sasl-lib-2.1.27-6.el8_5.x86_64                52/195 
+  Verifying        : cyrus-sasl-lib-2.1.27-5.el8.x86_64                  53/195 
+  Verifying        : dbus-1:1.12.8-18.el8.x86_64                         54/195 
+  Verifying        : dbus-1:1.12.8-14.el8.x86_64                         55/195 
+  Verifying        : dbus-common-1:1.12.8-18.el8.noarch                  56/195 
+  Verifying        : dbus-common-1:1.12.8-14.el8.noarch                  57/195 
+  Verifying        : dbus-daemon-1:1.12.8-18.el8.x86_64                  58/195 
+  Verifying        : dbus-daemon-1:1.12.8-14.el8.x86_64                  59/195 
+  Verifying        : dbus-libs-1:1.12.8-18.el8.x86_64                    60/195 
+  Verifying        : dbus-libs-1:1.12.8-14.el8.x86_64                    61/195 
+  Verifying        : dbus-tools-1:1.12.8-18.el8.x86_64                   62/195 
+  Verifying        : dbus-tools-1:1.12.8-14.el8.x86_64                   63/195 
+  Verifying        : device-mapper-8:1.02.181-3.el8.x86_64               64/195 
+  Verifying        : device-mapper-8:1.02.177-10.el8.x86_64              65/195 
+  Verifying        : device-mapper-libs-8:1.02.181-3.el8.x86_64          66/195 
+  Verifying        : device-mapper-libs-8:1.02.177-10.el8.x86_64         67/195 
+  Verifying        : dnf-4.7.0-8.el8.noarch                              68/195 
+  Verifying        : dnf-4.7.0-4.el8.noarch                              69/195 
+  Verifying        : dnf-data-4.7.0-8.el8.noarch                         70/195 
+  Verifying        : dnf-data-4.7.0-4.el8.noarch                         71/195 
+  Verifying        : elfutils-default-yama-scope-0.186-1.el8.noarch      72/195 
+  Verifying        : elfutils-default-yama-scope-0.185-1.el8.noarch      73/195 
+  Verifying        : elfutils-libelf-0.186-1.el8.x86_64                  74/195 
+  Verifying        : elfutils-libelf-0.185-1.el8.x86_64                  75/195 
+  Verifying        : elfutils-libs-0.186-1.el8.x86_64                    76/195 
+  Verifying        : elfutils-libs-0.185-1.el8.x86_64                    77/195 
+  Verifying        : expat-2.2.5-8.el8.x86_64                            78/195 
+  Verifying        : expat-2.2.5-4.el8.x86_64                            79/195 
+  Verifying        : gawk-4.2.1-4.el8.x86_64                             80/195 
+  Verifying        : gawk-4.2.1-2.el8.x86_64                             81/195 
+  Verifying        : glib2-2.56.4-158.el8.x86_64                         82/195 
+  Verifying        : glib2-2.56.4-156.el8.x86_64                         83/195 
+  Verifying        : glibc-2.28-189.1.el8.x86_64                         84/195 
+  Verifying        : glibc-2.28-164.el8.x86_64                           85/195 
+  Verifying        : glibc-common-2.28-189.1.el8.x86_64                  86/195 
+  Verifying        : glibc-common-2.28-164.el8.x86_64                    87/195 
+  Verifying        : glibc-minimal-langpack-2.28-189.1.el8.x86_64        88/195 
+  Verifying        : glibc-minimal-langpack-2.28-164.el8.x86_64          89/195 
+  Verifying        : gpgme-1.13.1-11.el8.x86_64                          90/195 
+  Verifying        : gpgme-1.13.1-9.el8.x86_64                           91/195 
+  Verifying        : gzip-1.9-13.el8_5.x86_64                            92/195 
+  Verifying        : gzip-1.9-12.el8.x86_64                              93/195 
+  Verifying        : info-6.5-7.el8.x86_64                               94/195 
+  Verifying        : info-6.5-6.el8.x86_64                               95/195 
+  Verifying        : iputils-20180629-9.el8.x86_64                       96/195 
+  Verifying        : iputils-20180629-7.el8.x86_64                       97/195 
+  Verifying        : json-c-0.13.1-3.el8.x86_64                          98/195 
+  Verifying        : json-c-0.13.1-2.el8.x86_64                          99/195 
+  Verifying        : kmod-libs-25-19.el8.x86_64                         100/195 
+  Verifying        : kmod-libs-25-18.el8.x86_64                         101/195 
+  Verifying        : libarchive-3.3.3-3.el8_5.x86_64                    102/195 
+  Verifying        : libarchive-3.3.3-1.el8.x86_64                      103/195 
+  Verifying        : libblkid-2.32.1-35.el8.x86_64                      104/195 
+  Verifying        : libblkid-2.32.1-28.el8.x86_64                      105/195 
+  Verifying        : libcap-2.48-2.el8.x86_64                           106/195 
+  Verifying        : libcap-2.26-5.el8.x86_64                           107/195 
+  Verifying        : libcom_err-1.45.6-4.el8.x86_64                     108/195 
+  Verifying        : libcom_err-1.45.6-2.el8.x86_64                     109/195 
+  Verifying        : libcomps-0.1.18-1.el8.x86_64                       110/195 
+  Verifying        : libcomps-0.1.16-2.el8.x86_64                       111/195 
+  Verifying        : libdnf-0.63.0-8.el8.x86_64                         112/195 
+  Verifying        : libdnf-0.63.0-3.el8.x86_64                         113/195 
+  Verifying        : libfdisk-2.32.1-35.el8.x86_64                      114/195 
+  Verifying        : libfdisk-2.32.1-28.el8.x86_64                      115/195 
+  Verifying        : libffi-3.1-23.el8.x86_64                           116/195 
+  Verifying        : libffi-3.1-22.el8.x86_64                           117/195 
+  Verifying        : libgcc-8.5.0-10.el8.x86_64                         118/195 
+  Verifying        : libgcc-8.5.0-3.el8.x86_64                          119/195 
+  Verifying        : libmount-2.32.1-35.el8.x86_64                      120/195 
+  Verifying        : libmount-2.32.1-28.el8.x86_64                      121/195 
+  Verifying        : librepo-1.14.2-1.el8.x86_64                        122/195 
+  Verifying        : librepo-1.14.0-2.el8.x86_64                        123/195 
+  Verifying        : libreport-filesystem-2.9.5-15.el8.rocky.6.3.x86_   124/195 
+  Verifying        : libreport-filesystem-2.9.5-15.el8.rocky.2.x86_64   125/195 
+  Verifying        : libseccomp-2.5.2-1.el8.x86_64                      126/195 
+  Verifying        : libseccomp-2.5.1-1.el8.x86_64                      127/195 
+  Verifying        : libsemanage-2.9-8.el8.x86_64                       128/195 
+  Verifying        : libsemanage-2.9-6.el8.x86_64                       129/195 
+  Verifying        : libsmartcols-2.32.1-35.el8.x86_64                  130/195 
+  Verifying        : libsmartcols-2.32.1-28.el8.x86_64                  131/195 
+  Verifying        : libsolv-0.7.20-1.el8.x86_64                        132/195 
+  Verifying        : libsolv-0.7.19-1.el8.x86_64                        133/195 
+  Verifying        : libstdc++-8.5.0-10.el8.x86_64                      134/195 
+  Verifying        : libstdc++-8.5.0-3.el8.x86_64                       135/195 
+  Verifying        : libtirpc-1.1.4-6.el8.x86_64                        136/195 
+  Verifying        : libtirpc-1.1.4-5.el8.x86_64                        137/195 
+  Verifying        : libuuid-2.32.1-35.el8.x86_64                       138/195 
+  Verifying        : libuuid-2.32.1-28.el8.x86_64                       139/195 
+  Verifying        : libxml2-2.9.7-13.el8.x86_64                        140/195 
+  Verifying        : libxml2-2.9.7-11.el8.x86_64                        141/195 
+  Verifying        : openssl-libs-1:1.1.1k-6.el8_5.x86_64               142/195 
+  Verifying        : openssl-libs-1:1.1.1k-4.el8.x86_64                 143/195 
+  Verifying        : pam-1.3.1-16.el8.x86_64                            144/195 
+  Verifying        : pam-1.3.1-15.el8.x86_64                            145/195 
+  Verifying        : platform-python-3.6.8-45.el8.rocky.0.x86_64        146/195 
+  Verifying        : platform-python-3.6.8-41.el8.rocky.0.x86_64        147/195 
+  Verifying        : python3-dnf-4.7.0-8.el8.noarch                     148/195 
+  Verifying        : python3-dnf-4.7.0-4.el8.noarch                     149/195 
+  Verifying        : python3-gpg-1.13.1-11.el8.x86_64                   150/195 
+  Verifying        : python3-gpg-1.13.1-9.el8.x86_64                    151/195 
+  Verifying        : python3-hawkey-0.63.0-8.el8.x86_64                 152/195 
+  Verifying        : python3-hawkey-0.63.0-3.el8.x86_64                 153/195 
+  Verifying        : python3-libcomps-0.1.18-1.el8.x86_64               154/195 
+  Verifying        : python3-libcomps-0.1.16-2.el8.x86_64               155/195 
+  Verifying        : python3-libdnf-0.63.0-8.el8.x86_64                 156/195 
+  Verifying        : python3-libdnf-0.63.0-3.el8.x86_64                 157/195 
+  Verifying        : python3-libs-3.6.8-45.el8.rocky.0.x86_64           158/195 
+  Verifying        : python3-libs-3.6.8-41.el8.rocky.0.x86_64           159/195 
+  Verifying        : python3-pip-wheel-9.0.3-22.el8.rocky.0.noarch      160/195 
+  Verifying        : python3-pip-wheel-9.0.3-20.el8.rocky.0.noarch      161/195 
+  Verifying        : python3-rpm-4.14.3-23.el8.x86_64                   162/195 
+  Verifying        : python3-rpm-4.14.3-19.el8.x86_64                   163/195 
+  Verifying        : rocky-gpg-keys-8.6-3.el8.noarch                    164/195 
+  Verifying        : rocky-gpg-keys-8.5-1.el8.noarch                    165/195 
+  Verifying        : rocky-release-8.6-3.el8.noarch                     166/195 
+  Verifying        : rocky-release-8.5-1.el8.noarch                     167/195 
+  Verifying        : rocky-repos-8.6-3.el8.noarch                       168/195 
+  Verifying        : rocky-repos-8.5-1.el8.noarch                       169/195 
+  Verifying        : rpm-4.14.3-23.el8.x86_64                           170/195 
+  Verifying        : rpm-4.14.3-19.el8.x86_64                           171/195 
+  Verifying        : rpm-build-libs-4.14.3-23.el8.x86_64                172/195 
+  Verifying        : rpm-build-libs-4.14.3-19.el8.x86_64                173/195 
+  Verifying        : rpm-libs-4.14.3-23.el8.x86_64                      174/195 
+  Verifying        : rpm-libs-4.14.3-19.el8.x86_64                      175/195 
+  Verifying        : sed-4.5-5.el8.x86_64                               176/195 
+  Verifying        : sed-4.5-2.el8.x86_64                               177/195 
+  Verifying        : shadow-utils-2:4.6-16.el8.x86_64                   178/195 
+  Verifying        : shadow-utils-2:4.6-14.el8.x86_64                   179/195 
+  Verifying        : systemd-239-58.el8.x86_64                          180/195 
+  Verifying        : systemd-239-51.el8.x86_64                          181/195 
+  Verifying        : systemd-libs-239-58.el8.x86_64                     182/195 
+  Verifying        : systemd-libs-239-51.el8.x86_64                     183/195 
+  Verifying        : systemd-pam-239-58.el8.x86_64                      184/195 
+  Verifying        : systemd-pam-239-51.el8.x86_64                      185/195 
+  Verifying        : tzdata-2022a-1.el8.noarch                          186/195 
+  Verifying        : tzdata-2021e-1.el8.noarch                          187/195 
+  Verifying        : util-linux-2.32.1-35.el8.x86_64                    188/195 
+  Verifying        : util-linux-2.32.1-28.el8.x86_64                    189/195 
+  Verifying        : vim-minimal-2:8.0.1763-16.el8_5.13.x86_64          190/195 
+  Verifying        : vim-minimal-2:8.0.1763-16.el8.x86_64               191/195 
+  Verifying        : yum-4.7.0-8.el8.noarch                             192/195 
+  Verifying        : yum-4.7.0-4.el8.noarch                             193/195 
+  Verifying        : zlib-1.2.11-18.el8_5.x86_64                        194/195 
+  Verifying        : zlib-1.2.11-17.el8.x86_64                          195/195 
+
+Upgraded:
+  audit-libs-3.0.7-2.el8.2.x86_64                                               
+  bash-4.4.20-3.el8.x86_64                                                      
+  binutils-2.30-113.el8.x86_64                                                  
+  crypto-policies-20211116-1.gitae470d6.el8.noarch                              
+  cryptsetup-libs-2.3.7-2.el8.x86_64                                            
+  cyrus-sasl-lib-2.1.27-6.el8_5.x86_64                                          
+  dbus-1:1.12.8-18.el8.x86_64                                                   
+  dbus-common-1:1.12.8-18.el8.noarch                                            
+  dbus-daemon-1:1.12.8-18.el8.x86_64                                            
+  dbus-libs-1:1.12.8-18.el8.x86_64                                              
+  dbus-tools-1:1.12.8-18.el8.x86_64                                             
+  device-mapper-8:1.02.181-3.el8.x86_64                                         
+  device-mapper-libs-8:1.02.181-3.el8.x86_64                                    
+  dnf-4.7.0-8.el8.noarch                                                        
+  dnf-data-4.7.0-8.el8.noarch                                                   
+  elfutils-default-yama-scope-0.186-1.el8.noarch                                
+  elfutils-libelf-0.186-1.el8.x86_64                                            
+  elfutils-libs-0.186-1.el8.x86_64                                              
+  expat-2.2.5-8.el8.x86_64                                                      
+  gawk-4.2.1-4.el8.x86_64                                                       
+  glib2-2.56.4-158.el8.x86_64                                                   
+  glibc-2.28-189.1.el8.x86_64                                                   
+  glibc-common-2.28-189.1.el8.x86_64                                            
+  glibc-minimal-langpack-2.28-189.1.el8.x86_64                                  
+  gpgme-1.13.1-11.el8.x86_64                                                    
+  gzip-1.9-13.el8_5.x86_64                                                      
+  info-6.5-7.el8.x86_64                                                         
+  iputils-20180629-9.el8.x86_64                                                 
+  json-c-0.13.1-3.el8.x86_64                                                    
+  kmod-libs-25-19.el8.x86_64                                                    
+  libarchive-3.3.3-3.el8_5.x86_64                                               
+  libblkid-2.32.1-35.el8.x86_64                                                 
+  libcap-2.48-2.el8.x86_64                                                      
+  libcom_err-1.45.6-4.el8.x86_64                                                
+  libcomps-0.1.18-1.el8.x86_64                                                  
+  libdnf-0.63.0-8.el8.x86_64                                                    
+  libfdisk-2.32.1-35.el8.x86_64                                                 
+  libffi-3.1-23.el8.x86_64                                                      
+  libgcc-8.5.0-10.el8.x86_64                                                    
+  libmount-2.32.1-35.el8.x86_64                                                 
+  librepo-1.14.2-1.el8.x86_64                                                   
+  libreport-filesystem-2.9.5-15.el8.rocky.6.3.x86_64                            
+  libseccomp-2.5.2-1.el8.x86_64                                                 
+  libsemanage-2.9-8.el8.x86_64                                                  
+  libsmartcols-2.32.1-35.el8.x86_64                                             
+  libsolv-0.7.20-1.el8.x86_64                                                   
+  libstdc++-8.5.0-10.el8.x86_64                                                 
+  libtirpc-1.1.4-6.el8.x86_64                                                   
+  libuuid-2.32.1-35.el8.x86_64                                                  
+  libxml2-2.9.7-13.el8.x86_64                                                   
+  openssl-libs-1:1.1.1k-6.el8_5.x86_64                                          
+  pam-1.3.1-16.el8.x86_64                                                       
+  platform-python-3.6.8-45.el8.rocky.0.x86_64                                   
+  python3-dnf-4.7.0-8.el8.noarch                                                
+  python3-gpg-1.13.1-11.el8.x86_64                                              
+  python3-hawkey-0.63.0-8.el8.x86_64                                            
+  python3-libcomps-0.1.18-1.el8.x86_64                                          
+  python3-libdnf-0.63.0-8.el8.x86_64                                            
+  python3-libs-3.6.8-45.el8.rocky.0.x86_64                                      
+  python3-pip-wheel-9.0.3-22.el8.rocky.0.noarch                                 
+  python3-rpm-4.14.3-23.el8.x86_64                                              
+  rocky-gpg-keys-8.6-3.el8.noarch                                               
+  rocky-release-8.6-3.el8.noarch                                                
+  rocky-repos-8.6-3.el8.noarch                                                  
+  rpm-4.14.3-23.el8.x86_64                                                      
+  rpm-build-libs-4.14.3-23.el8.x86_64                                           
+  rpm-libs-4.14.3-23.el8.x86_64                                                 
+  sed-4.5-5.el8.x86_64                                                          
+  shadow-utils-2:4.6-16.el8.x86_64                                              
+  systemd-239-58.el8.x86_64                                                     
+  systemd-libs-239-58.el8.x86_64                                                
+  systemd-pam-239-58.el8.x86_64                                                 
+  tzdata-2022a-1.el8.noarch                                                     
+  util-linux-2.32.1-35.el8.x86_64                                               
+  vim-minimal-2:8.0.1763-16.el8_5.13.x86_64                                     
+  yum-4.7.0-8.el8.noarch                                                        
+  zlib-1.2.11-18.el8_5.x86_64                                                   
+Installed:
+  cpio-2.12-11.el8.x86_64                                                       
+  crypto-policies-scripts-20211116-1.gitae470d6.el8.noarch                      
+  diffutils-3.6-6.el8.x86_64                                                    
+  dracut-049-201.git20220131.el8.x86_64                                         
+  elfutils-debuginfod-client-0.186-1.el8.x86_64                                 
+  file-5.33-20.el8.x86_64                                                       
+  findutils-1:4.6.0-20.el8.x86_64                                               
+  gettext-0.19.8.1-17.el8.x86_64                                                
+  gettext-libs-0.19.8.1-17.el8.x86_64                                           
+  glibc-gconv-extra-2.28-189.1.el8.x86_64                                       
+  grub2-common-1:2.02-123.el8.noarch                                            
+  grub2-tools-1:2.02-123.el8.x86_64                                             
+  grub2-tools-minimal-1:2.02-123.el8.x86_64                                     
+  grubby-8.40-42.el8.x86_64                                                     
+  hardlink-1:1.3-6.el8.x86_64                                                   
+  kbd-2.0.4-10.el8.x86_64                                                       
+  kbd-legacy-2.0.4-10.el8.noarch                                                
+  kbd-misc-2.0.4-10.el8.noarch                                                  
+  kmod-25-19.el8.x86_64                                                         
+  kpartx-0.8.4-22.el8.x86_64                                                    
+  libcroco-0.6.12-4.el8_2.1.x86_64                                              
+  libevent-2.1.8-5.el8.x86_64                                                   
+  libgomp-8.5.0-10.el8.x86_64                                                   
+  libkcapi-1.2.0-2.el8.x86_64                                                   
+  libkcapi-hmaccalc-1.2.0-2.el8.x86_64                                          
+  libxkbcommon-0.9.1-1.el8.x86_64                                               
+  memstrack-0.1.11-1.el8.x86_64                                                 
+  openssl-1:1.1.1k-6.el8_5.x86_64                                               
+  openssl-pkcs11-0.4.10-2.el8.x86_64                                            
+  os-prober-1.74-9.el8.x86_64                                                   
+  pigz-2.4-4.el8.x86_64                                                         
+  platform-python-pip-9.0.3-22.el8.rocky.0.noarch                               
+  procps-ng-3.3.15-6.el8.x86_64                                                 
+  python3-unbound-1.7.3-17.el8.x86_64                                           
+  rpm-plugin-systemd-inhibit-4.14.3-23.el8.x86_64                               
+  shared-mime-info-1.9-3.el8.x86_64                                             
+  systemd-udev-239-58.el8.x86_64                                                
+  unbound-libs-1.7.3-17.el8.x86_64                                              
+  which-2.21-17.el8.x86_64                                                      
+  xkeyboard-config-2.28-1.el8.noarch                                            
+  xz-5.2.4-3.el8.1.x86_64                                                       
+
+Complete!
++ yum install -y libuv wget gzip libnghttp2
+Last metadata expiration check: 0:00:20 ago on Tue Jun 14 07:48:02 2022.
+Package gzip-1.9-13.el8_5.x86_64 is already installed.
+Package libnghttp2-1.33.0-3.el8_3.1.x86_64 is already installed.
+Dependencies resolved.
+================================================================================
+ Package                    Arch      Version                Repository    Size
+================================================================================
+Installing:
+ libuv                      x86_64    1:1.41.1-1.el8_4       appstream    155 k
+ wget                       x86_64    1.19.5-10.el8          appstream    733 k
+Installing dependencies:
+ libmetalink                x86_64    0.1.3-7.el8            baseos        31 k
+ libpsl                     x86_64    0.20.2-6.el8           baseos        60 k
+ publicsuffix-list-dafsa    noarch    20180723-1.el8         baseos        55 k
+
+Transaction Summary
+================================================================================
+Install  5 Packages
+
+Total download size: 1.0 M
+Installed size: 3.3 M
+Downloading Packages:
+(1/5): libmetalink-0.1.3-7.el8.x86_64.rpm       430 kB/s |  31 kB     00:00    
+(2/5): libuv-1.41.1-1.el8_4.x86_64.rpm          2.0 MB/s | 155 kB     00:00    
+(3/5): libpsl-0.20.2-6.el8.x86_64.rpm           4.4 MB/s |  60 kB     00:00    
+(4/5): publicsuffix-list-dafsa-20180723-1.el8.n 4.1 MB/s |  55 kB     00:00    
+(5/5): wget-1.19.5-10.el8.x86_64.rpm            7.6 MB/s | 733 kB     00:00    
+--------------------------------------------------------------------------------
+Total                                           2.6 MB/s | 1.0 MB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Installing       : publicsuffix-list-dafsa-20180723-1.el8.noarch          1/5 
+  Installing       : libpsl-0.20.2-6.el8.x86_64                             2/5 
+  Installing       : libmetalink-0.1.3-7.el8.x86_64                         3/5 
+  Installing       : wget-1.19.5-10.el8.x86_64                              4/5 
+  Running scriptlet: wget-1.19.5-10.el8.x86_64                              4/5 
+  Installing       : libuv-1:1.41.1-1.el8_4.x86_64                          5/5 
+  Running scriptlet: libuv-1:1.41.1-1.el8_4.x86_64                          5/5 
+  Verifying        : libuv-1:1.41.1-1.el8_4.x86_64                          1/5 
+  Verifying        : wget-1.19.5-10.el8.x86_64                              2/5 
+  Verifying        : libmetalink-0.1.3-7.el8.x86_64                         3/5 
+  Verifying        : libpsl-0.20.2-6.el8.x86_64                             4/5 
+  Verifying        : publicsuffix-list-dafsa-20180723-1.el8.noarch          5/5 
+
+Installed:
+  libmetalink-0.1.3-7.el8.x86_64  libpsl-0.20.2-6.el8.x86_64                    
+  libuv-1:1.41.1-1.el8_4.x86_64   publicsuffix-list-dafsa-20180723-1.el8.noarch 
+  wget-1.19.5-10.el8.x86_64      
+
+Complete!
++ yum clean all
+27 files removed
++ wget -P /tmp -c https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/ORFfinder/linux-i64/ORFfinder.gz
+--2022-06-14 07:48:23--  https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/ORFfinder/linux-i64/ORFfinder.gz
+Resolving ftp.ncbi.nlm.nih.gov (ftp.ncbi.nlm.nih.gov)... 165.112.9.229, 165.112.9.228, 2607:f220:41e:250::7, ...
+Connecting to ftp.ncbi.nlm.nih.gov (ftp.ncbi.nlm.nih.gov)|165.112.9.229|:443... connected.
+HTTP request sent, awaiting response... 416 Requested Range Not Satisfiable
+
+    The file is already fully retrieved; nothing to do.
+
++ gunzip -k -f /tmp/ORFfinder.gz
++ cp /tmp/ORFfinder /usr/bin/
++ chmod +x /usr/bin/ORFfinder
+INFO:    Adding environment to container
+INFO:    Adding runscript
+INFO:    Creating SIF file...
+INFO:    Build complete: ORFfinder
