@@ -6,6 +6,7 @@ import re
 import yaml
 import pwd
 import hashlib
+import subprocess
 
 def walklevel(path, depth = 1):
     """It works just like os.walk, but you can pass it a level parameter
@@ -15,14 +16,14 @@ def walklevel(path, depth = 1):
        If depth is -1 (or less than 0), the full depth is walked.
     """
     if depth < 0:
-        for root, dirs, files in os.walk(path):
+        for root, dirs, files in os.walk(path, followlinks=True):
             yield root, dirs[:], files
         return
     elif depth == 0:
         return
 
     base_depth = path.rstrip(os.path.sep).count(os.path.sep)
-    for root, dirs, files in os.walk(path):
+    for root, dirs, files in os.walk(path, followlinks=True):
         #From 2nd iter, yield gives the generator for the objects root, dirs and files, not the objects
         yield root, dirs[:], files
         cur_depth = root.count(os.path.sep)
@@ -89,6 +90,25 @@ def maketable_persons(cursor):
         print("ERROR INSERTING PERSONS INTO SWDB!\n")
         db.rollback()
 
+def open_yaml_fixed(yaml_file):
+    with open(yaml_file, 'r', encoding='utf-8', errors='ignore') as yamlstream:
+        try:
+            lines = yamlstream.readlines()
+        except:
+            print(yaml_file)
+        output = ''
+        for line in lines:
+            line_after = re.sub("^- ", "  ", line)
+            line_after = re.sub("\'", "\"", line_after)
+            line_after = re.sub("^    - LOCAL", "  LOCAL", line_after)
+            line_after = re.sub("^    - COMMON", "  COMMON", line_after)
+            line_after = re.sub(":", ": ", line_after, 1)
+            line_after = re.sub(":  ", ": ", line_after, 1)
+            line_after = re.sub("(^.+?): (.+\s+.+)", r"\1: '\2'", line_after, 1)
+            output = output + line_after
+        #print(output)
+        return output
+
 # Open database connection
 db = sqlite3.connect('swdb.db')
 db.text_factory = str
@@ -102,11 +122,13 @@ DBcursor = db.cursor()
 for root, dirs, files in walklevel("/sw/", 3):
     if re.search('/sw/.+/src/', root):
         continue
+    if re.search('/sw/links/', root):
+        continue
     if re.search('/sw/\.snapshot', root):
         continue
     # Standard path is /sw/<category>/<sw_name>/<yamlfile> Thus the matching below.
     for file in files:
-        m = re.search('(.*DRAFT.yaml)', file)
+        m = re.search('(.*\.yaml)', file)
         if m:
             if (m.group(1)):
                 path = root + '/' + m.group(1)
@@ -117,12 +139,21 @@ for root, dirs, files in walklevel("/sw/", 3):
                         content = a_file.read()
                         md5_hash.update(content)
                         md5 = md5_hash.hexdigest()
-                    with open(path, 'r') as yamlstream:
+                    yamlstream = open_yaml_fixed(path)
+                    #with open(path, 'r') as yamlstream:
+                    try:
+                        parsed_yaml=yaml.safe_load(yamlstream)
                         try:
-                            parsed_yaml=yaml.safe_load(yamlstream)
                             key = parsed_yaml['SQLKEY']
-                        except yaml.YAMLError as exc:
-                            print(exc)
+                        except:
+                            try:
+                                key = parsed_yaml['TOOL'] + "_" + str(parsed_yaml['VERSION'])
+                            except:
+                                print("This looks like something else: ")
+                                print(parsed_yaml)
+                                print(yamlstream)
+                    except yaml.YAMLError as exc:
+                        print(exc)
             # Get the md5 from the SQL DB and check if the file is changed
             sql = 'SELECT yamlfiles.md5 FROM yamlfiles WHERE yamlfiles.path IS "' + path + '";'
             try:
@@ -138,7 +169,12 @@ for root, dirs, files in walklevel("/sw/", 3):
                 try:
                     for i in DBcursor.execute(sql).fetchall():
                         email = i[0]
-                    print("\nmailing: " + email + "\n\n")
+                    mail = "mailx -r \"NOREPLY\" -s " + "\"New YAML-file\" " + email
+                    body = "Hi!\n\nThe YAML file at\n" + path + "\nseems to have changed.\n\nThe System"
+                    cmd = "echo \"" + body + "\" | " +  mail
+                    #result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+                    #output, errors = result.communicate()
+                    print("\nmailing: " + mail + "\n\n")
                 except:
                     print("No e-mail registered!\n")
                 sql = "INSERT INTO yamlfiles (key, path, creator, md5) VALUES (?, ?, ?, ?)"

@@ -3,13 +3,15 @@ DATE=`date '+%Y-%m-%d_%H.%M.%S'`
 LOGFILE=/home/jonass/conda_logs/condamirror_$DATE.log
 module load conda/latest 2>>$LOGFILE
 echo "UPDATING CONDA" >> $LOGFILE
-conda update conda -y -c defaults --override-channels -vv 2>&1 | tee -a $LOGFILE
+conda update conda -y -vv 2>&1 | tee -a $LOGFILE
 echo "UPDATING CONDA-BUILD" >> $LOGFILE
-conda update conda-build -y -c defaults --override-channels -v 2>&1 | tee -a $LOGFILE
+conda update conda-build -y -v 2>&1 | tee -a $LOGFILE
 echo "UPDATING MAMBA" >> $LOGFILE
-mamba update mamba -y -c defaults --override-channels -v 2>&1 | tee -a $LOGFILE
+conda update mamba -y -v 2>&1 | tee -a $LOGFILE
 echo "UPDATING CONDA-PACK" >> $LOGFILE
-conda update conda-pack -y -c defaults --override-channels -v 2>&1 | tee -a $LOGFILE
+conda update conda-pack -y -v 2>&1 | tee -a $LOGFILE
+echo "UPDATE libarchive FOR MAMBA" >> $LOGFILE
+conda update libarchive -y -v
 echo "SYNCHING REPOS" >> $LOGFILE
 conda-mirror --upstream-channel conda-forge --target-directory /sw/apps/conda/latest/rackham/local_repo/conda-forge --platform linux-64 -v 2>&1 | tee -a $LOGFILE
 conda-mirror --upstream-channel scilifelab-lts --target-directory /sw/apps/conda/latest/rackham/local_repo/scilifelab-lts --platform linux-64 -v 2>&1 | tee -a $LOGFILE

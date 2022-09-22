@@ -617,7 +617,7 @@ else
     cd $MODULE_DIRECTORY
     printf "\n%s\n" "Copying \$LATEST as the module file $MODULE_FILE" 1>&2
 ## Not linking, but copying now
-    cp -av \$LATEST $MODULE_FILE
+    cp -Rv --preserve=all \$LATEST $MODULE_FILE
 fi
 
 ###################### README creation/addition #########################
