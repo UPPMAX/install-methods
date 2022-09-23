@@ -1,4 +1,4 @@
-boost/1.70.0_gcc9.3.0
+boost/1.80.0_gcc10.3.0
 ========================
 
 <https://www.boost.org/>
@@ -7,31 +7,40 @@ Used under license:
 Boost licence
 <http://www.boost.org/users/license.html>
 
-Structure creating script (makeroom_boost_1.70.0_gcc9.3.0.sh) moved to /sw/libs/boost/makeroom_1.70.0_gcc9.3.0.sh
+Structure creating script (makeroom_boost_1.80.0_gcc10.3.0.sh) moved to /sw/libs/boost/makeroom_1.80.0_gcc10.3.0.sh
 
 LOG
 ---
 
     TOOL=boost
-    BOOSTVERSION=1.70.0
-    GCCVERSION=9.3.0
+    BOOSTVERSION=1.80.0
+    GCCVERSION=10.3.0
+    PYTHONVERSION=3.9.5
     VERSION=${BOOSTVERSION}_gcc${GCCVERSION}
+
     makeroom.sh -f -c "libs" -t "$TOOL" -v "$VERSION" -w "https://www.boost.org/" -l "Boost licence" -L "http://www.boost.org/users/license.html" -d "free peer-reviewed portable C++ source libraries"
     ./makeroom_${TOOL}_${VERSION}.sh
     source SOURCEME_${TOOL}_${VERSION}
 
     cd $SRCDIR
+
     BOOSTTARBALLVERSION=${BOOSTVERSION//./_}
-    wget  https://boostorg.jfrog.io/artifactory/main/release/1.70.0/source/boost_1_70_0.tar.bz2
-    tar xjf boost_${BOOSTTARBALLVERSION}.tar.bz2
+    BOOSTTARBALL=boost_${BOOSTTARBALLVERSION}.tar.bz2
+    [[ -f $BOOSTTARBALL ]] || wget  https://boostorg.jfrog.io/artifactory/main/release/$BOOSTVERSION/source/$BOOSTTARBALL
+    [[ -d boost_${BOOSTVERSION} ]] && rm -rf boost_${BOOSTVERSION}
+
+    tar xjf $BOOSTTARBALL
     mv boost_${BOOSTTARBALLVERSION} boost_${BOOSTVERSION}
     cd boost_${BOOSTVERSION}
 
     module load gcc/$GCCVERSION
 
+    module load python/$PYTHONVERSION
+
     ./bootstrap.sh --with-toolset=gcc --prefix=$PREFIX
 
     ./b2
+    ./b2 headers
     ./b2 install --prefix=$PREFIX
 
     cd ..

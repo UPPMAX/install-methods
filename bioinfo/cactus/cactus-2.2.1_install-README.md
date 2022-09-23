@@ -21,10 +21,11 @@ LOG
 
     module load python/3.9.5
     module load git/2.34.1
-    module load gcc/4.9.4
+    module load gcc/9.3.0
     module load hdf5/1.10.5
     module load lzo/2.10
     module load xz/5.2.2
+    module load binutils/2.38
 
     cd $PREFIX
     git clone https://github.com/ComparativeGenomicsToolkit/cactus.git --recursive

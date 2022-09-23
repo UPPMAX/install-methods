@@ -55,7 +55,7 @@ LOG
 
 # Test with
     cd $SRCDIR/ensembl-vep
-    vep -i examples/homo_sapiens_GRCh38.vcf --cache --dir $CACHEDIR --force_overwrite  --assembly GRCh38
+    vep -i examples/homo_sapiens_GRCh38.vcf --cache --dir $VEP_CACHE --force_overwrite  --assembly GRCh38
 
 
 
