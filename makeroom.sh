@@ -31,7 +31,7 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
         -P  perms       permissions (of the group if -G given) in the directories fixed with 'fixup'. (DEFAULT is \"u+rwX,g+rwX,o+rX-w\")
         -m  module      name of the module file (DEFAULT is the same as the name of the tool)
         -T  string      list of tags/keywords to make the \$TOOL easier to find. (DEFAULT is \"\$TOOL\")
-        -u  string      list of clusters to install to. Start with the main target. (DEFAULT is \"rackham irma bianca miarka snowy\")
+        -u  string      list of clusters to install to. Start with the main target. (DEFAULT is \"rackham bianca miarka snowy\")
         -x  WORD        flag for mode, i.e. INSTALL, RESUME or REMOVE (DEFAULT is INSTALL, RESUME just sets the variables and exits.)
         -f              forcing the script to ignore warnings."
 #        -i  FILE       input file to be sourced; contains all the relevant parameters [[WORK IN PROGRESS]]
@@ -47,7 +47,7 @@ MF_CATEGORY=bioinfo-tools
 MODULENAME=''
 declare -a LINKFLAG=()
 declare -a FIXFLAG=()
-CLUSTERS=(rackham irma bianca miarka snowy)
+CLUSTERS=(rackham bianca miarka snowy)
 declare -a TAGS=()
 MODE=INSTALL
 FORCED=0
@@ -266,7 +266,7 @@ fi
 redo=0
 for clu in "${CLUSTERS[@]}"
 do
-    if ! [[ $clu =~ ^(rackham|irma|bianca|miarka|snowy)$ ]] && [[ $FORCED == 0 ]]; then
+    if ! [[ $clu =~ ^(rackham|bianca|miarka|snowy)$ ]] && [[ $FORCED == 0 ]]; then
         printf "Are you sure about the cluster '%s'?\n" "$clu" >&2
         printf "It might cause problems in the file tree.\n" >&2
         printf "If you are sure you want to install there, use -f to force it.\n" >&2
