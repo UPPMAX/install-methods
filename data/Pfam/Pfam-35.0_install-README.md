@@ -3,6 +3,11 @@ Pfam/35.0
 
 <http://pfam.xfam.org/>
 
+
+Note that the Pfam website is in sunset, and will soon redirect to the InterPro website https://www.ebi.ac.uk/interpro
+
+Releases are still available at the ftp site listed below.
+
 Used under license:
 CC0
 <https://creativecommons.org/publicdomain/zero/1.0/>

@@ -15,59 +15,62 @@ LOG
     /home/bjornc/UPPMAX-tools/install-methods/makeroom.sh "-t" "cactus" "-v" "2.2.1" "-w" "https://github.com/ComparativeGenomicsToolkit/cactus" "-x" "INSTALL" "-l" "AS IS" "-f"
     ./makeroom_cactus_2.2.1.sh
 
-
+    source /sw/bioinfo/cactus/SOURCEME_cactus_2.2.1
     TOOL=cactus
     VERSION=2.2.1
 
-    module load python/3.9.5
+    module load python/3.8.7
     module load git/2.34.1
-    module load gcc/9.3.0
-    module load hdf5/1.10.5
+    module load gcc/8.4.0
+    module load hdf5/1.10.1
     module load lzo/2.10
     module load xz/5.2.2
     module load binutils/2.38
 
+# Download and checkout
     cd $PREFIX
     git clone https://github.com/ComparativeGenomicsToolkit/cactus.git --recursive
     cd $PREFIX/cactus
     git checkout v${VERSION}
 
+# Create virtualenv
     cd $PREFIX
-    python3 -m virtualenv -p python3.9 cactus_env
+    python3 -m virtualenv -p python3.8 cactus_env
 
+# Update python packages
     source cactus_env/bin/activate
     cd $PREFIX/cactus
     pip install --upgrade setuptools pip
-    # pip install --upgrade toil[aws,mesos,google,encryption,cwl]
-    # pip install --upgrade .
     python3 -m pip install -U -r ./toil-requirement.txt
     python3 -m pip install -U .
 
-#Remove CMD 'CMDLDFLAGS =  -static' from kyoto Makefiles due to errors. Ugly but works.
+# Compile
     unset PREFIX
     make -j 15
 
-    # Download the cactus singularity binary set
-    source /sw/bioinfo/cactus/SOURCEME_cactus_2.0.5
+# Download the cactus singularity binary set
+    source /sw/bioinfo/cactus/SOURCEME_cactus_${VERSION}
+    cd $PREFIX
     singularity pull -F $PREFIX/cactus_v${VERSION}.sif docker://quay.io/comparative-genomics-toolkit/cactus:v${VERSION} 
 
 
 
 # Test with both the local binaries and the singularity ones
 
-    module load bioinfo-tools cactus/2.0.5
+    VERSION=2.2.1
+    module load bioinfo-tools cactus/${VERSION}
     cactus \\
         jobStore${RANDOM} \\
-        /sw/bioinfo/cactus/2.0.5/rackham/cactus/examples/evolverMammals.txt \\
-        /sw/bioinfo/cactus/2.0.5/rackham/cactus/examples/evolverMammals.hal \\
+        /sw/bioinfo/cactus/${VERSION}/rackham/cactus/examples/evolverMammals.txt \\
+        /sw/bioinfo/cactus/${VERSION}/rackham/cactus/examples/evolverMammals.hal \\
         --root mr
 
     cactus \\
         --binariesMode singularity \\
         --containerImage $CACTUS_SINGULARITY_IMG \\
         jobStore${RANDOM} \\
-        /sw/bioinfo/cactus/2.0.5/rackham/cactus/examples/evolverMammals.txt \\
-        /sw/bioinfo/cactus/2.0.5/rackham/cactus/examples/evolverMammals.hal \\
+        /sw/bioinfo/cactus/${VERSION}/rackham/cactus/examples/evolverMammals.txt \\
+        /sw/bioinfo/cactus/${VERSION}/rackham/cactus/examples/evolverMammals.hal \\
         --root mr
 
 

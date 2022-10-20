@@ -22,7 +22,7 @@ LOG
     ml gcc/9.3.0
     ml zlib/1.2.11
     ml bioinfo-tools
-    mv jellyfish/1.1.12
+    ml jellyfish/1.1.12
 
     ./install_krakenuniq.sh $PREFIX
 
