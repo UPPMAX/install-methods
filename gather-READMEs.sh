@@ -118,8 +118,7 @@ cd $DATA_REPOSITORY
 data_update  /sw/data/CTAT_RESOURCE_LIB  CTAT_RESOURCE_LIB-db-README.md  CTAT_RESOURCE_LIB-download-db.sh
 
 # this might get moved to crontab later. The prebuilt databases are updated on a haphazard basis
-data_update  /sw/data/KrakenUniq_data    KrakenUniq_data-latest_install-README.md       KrakenUniq_data-update-db.sh
-
+data_update  /sw/data/KrakenUniq_data    KrakenUniq_data-latest_install-README.md   KrakenUniq_data-update-custom-db.sh   KrakenUniq_data-update-standard-db.sh
 
 # Databases in other locations
 

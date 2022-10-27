@@ -28,7 +28,7 @@ LOG
     python3 setup.py build
     PYTHONUSERBASE=$PREFIX python3 setup.py install --user
 
-# Replace #!/sw/comp/python/3.7.2_rackham/bin/python3 in /bin/flye
+# Replace #!/sw/comp/python/3.7.2_rackham/bin/python3 in bin/flye
     cd $PREFIX/bin
     sed -i  "1s/.*/\#\!\/usr\/bin\/env python/" flye
 
