@@ -19,7 +19,14 @@ LOG
     source SOURCEME_${TOOL}_${VERSION}
 
     module load python/3.7.2
-    PYTHONUSERBASE=$PREFIX pip install --user HTSeq==$VERSION
+    virtualenv $PREFIX/venv
+    $PREFIX/venv/bin/pip install htseq==$VERSION
+    mkdir $PREFIX/bin
+    cd $PREFIX/bin
+    ln -s $PREFIX/venv/bin/htseq* .
+
+    module purge
+    ldd $(head -1 * | grep '^#!' | cut -c3-)
 
 
     ./${TOOL}-${VERSION}_post-install.sh
@@ -27,7 +34,5 @@ LOG
 Make sure it is htseq 0.12.4 being installed.  This will also install `pysam`
 and a couple other things.
 
-For the mf file, add `$PREFIX/bin` to `PATH` and
-`$PREFIX/lib/python3.7/site-packages` to `PYTHONPATH`.
+For the mf file, add `$PREFIX/bin` to `PATH`. This should be all that is required.
 
-For rackham, install fresh, and make links for irma and bianca.

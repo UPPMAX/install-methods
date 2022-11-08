@@ -12,6 +12,10 @@
 #SBATCH --mail-type=ALL
 #SBATCH -o /sw/data/KrakenUniq_data/slurm-rackham-mem1TB-%j.out
 
+echo
+echo "Script running: $0"
+echo
+
 [[ $1 == "-f" ]] && { shift; FORCE=yes; } || FORCE=
 
 K_DB_BASE=/sw/data/KrakenUniq_data

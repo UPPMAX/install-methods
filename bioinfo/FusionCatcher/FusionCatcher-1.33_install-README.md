@@ -35,8 +35,11 @@ LOG
     module load biopython/1.73
 
     python bootstrap.py --prefix=$PREFIX --download -y
-    
-# fusioncatcher is missing when downloading from sf.net. Add symbolic link to fusioncatcher.py
+
+
+Susioncatcher is missing when downloading from sf.net. Add symbolic link to fusioncatcher.py
+
+
     cd $PREFIX/fusioncatcher/bin
     ln -s fusioncatcher.py fusioncatcher
 

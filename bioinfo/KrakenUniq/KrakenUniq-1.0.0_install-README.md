@@ -20,10 +20,8 @@ LOG
     tar xf v1.0.0.tar.gz 
     cd krakenuniq-1.0.0/
     ml gcc/10.3.0
-    ml bioinfo-tools
-    ml jellyfish/1.1.12
 
-    ./install_krakenuniq.sh $PREFIX
+    ./install_krakenuniq.sh -j $PREFIX
 
 In /sw/data, download the prebuilt databases at https://benlangmead.github.io/aws-indexes/k2
 
