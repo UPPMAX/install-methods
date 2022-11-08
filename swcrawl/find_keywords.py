@@ -123,13 +123,13 @@ if args.newcorpusfiltered:
                             print(line.split(":",1)[1], file = outfile)
                         except:
                             continue
-    #Construct a token list and remove stop words and punctuations.
-    with open(concat_rawdatafiles, 'r', encoding='utf-8', errors='ignore') as datafile:
-        tokens = [token for token in nltk.word_tokenize(datafile.read()) if token not in stoplist]
-    #Then use a corpus reader that is not plain text but the base one to get to a new corpus.
-    newcorpus = PlaintextCorpusReader(corpusdir, concat_rawdatafiles)
-    for word in [word for word in newcorpus.words(concat_rawdatafiles) if word not in stoplist]:
-        print(word)
+#Construct a token list and remove stop words and punctuations.
+with open(concat_rawdatafiles, 'r', encoding='utf-8', errors='ignore') as datafile:
+    tokens = [token for token in nltk.word_tokenize(datafile.read()) if token not in stoplist]
+#Then use a corpus reader that is not plain text but the base one to get to a new corpus.
+newcorpus = PlaintextCorpusReader(corpusdir, concat_rawdatafiles)
+#for word in [word for word in newcorpus.words(concat_rawdatafiles) if word not in stoplist]:
+#    print(word)
 
 print('Make the analysis')
 
@@ -148,9 +148,9 @@ finder3.apply_freq_filter(3)
 finder4.apply_freq_filter(3)
 
 # return the 10 n-grams with the highest PMI
-print(finder2.nbest(bigram_measures.pmi,100))
-print(finder3.nbest(bigram_measures.pmi,100))
-print(finder4.nbest(bigram_measures.pmi,100))
+print(finder2.nbest(bigram_measures.pmi,10))
+print(finder3.nbest(bigram_measures.pmi,10))
+print(finder4.nbest(bigram_measures.pmi,10))
 
 #compute frequency distribution for all the bigrams in the text
 # take the second element for sort
@@ -163,18 +163,22 @@ data_analysis = nltk.FreqDist(newcorpus_words)
   
 # Let's take the specific words only if their frequency is greater than 3.
 filter_words = dict([(m, n) for m, n in sorted(data_analysis.items(), key=take_second) if len(m) > 3])
-   
-for key in filter_words:
-    print("%s: %s" % (key, filter_words[key]))
-data_analysis = nltk.FreqDist(filter_words)
-data_analysis.plot(55, cumulative=False)
 
+print("\n#################### pairs ####################")
 for k,v in sorted(finder2.ngram_fd.items(), key=take_second):
     print(v,k)
+print("\n#################### triplets ####################")
 for k,v in sorted(finder3.ngram_fd.items(), key=take_second):
     print(v,k)
+print("\n#################### quads ####################")
 for k,v in sorted(finder4.ngram_fd.items(), key=take_second):
     print(v,k)
+
+for key in filter_words:
+    if filter_words[key] < 4:
+        print("%s: %s" % (key, filter_words[key]))
+data_analysis = nltk.FreqDist(filter_words)
+data_analysis.plot(55, cumulative=False)
 
 # disconnect from server
 db.close()

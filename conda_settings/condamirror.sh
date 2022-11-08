@@ -1,6 +1,8 @@
 #!/usr/bin/bash -l
 DATE=`date '+%Y-%m-%d_%H.%M.%S'`
 LOGFILE=/home/jonass/conda_logs/condamirror_$DATE.log
+export CONDA_NUMBER_CHANNEL_NOTICES=0
+echo "export CONDA_NUMBER_CHANNEL_NOTICES=0" >> $LOGFILE
 module load conda/latest 2>>$LOGFILE
 echo "UPDATING CONDA" >> $LOGFILE
 conda update conda -y -vv 2>&1 | tee -a $LOGFILE
