@@ -7,7 +7,7 @@
 INVOKE="$(printf %q "$BASH_SOURCE")$((($#)) && printf ' "%s"' "$@")"
 #INVOKE=$(echo $INVOKE_UNFORMATTED'"' | sed 's/\ /\ \"/g' | sed 's/\"-/-/g' | sed 's/\ /\"\ /g' | sed 's/\"\ \"/\ \"/g' | sed 's/\\\ \"/\ /g' | sed 's/"//')
 #printf "UNFORMATTED says: %s\n\n" "$INVOKE_UNFORMATTED" >&2
-USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d DESCRIPTION] [-G GROUP] [-P USERPERMISSIONS] [-g] [-p] [-m MODULENAME] [-T TAGS/KEYWORDS] [-u CLUSTERS] [-x MODE] [-f] --
+USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w WEBSITE] [-l LICENSE] [-L LICENSE URL] [-d DESCRIPTION] [-G GROUP] [-P USERPERMISSIONS] [-g] [-p] [-m MODULENAME] [-k KEYWORDS] [-u CLUSTERS] [-x MODE] [-f] --
 
     Makes some directories at places
 
@@ -30,7 +30,7 @@ USAGE="$(basename "$0") [-h] -t TOOL -v VERSION [-s SECTION] [-c CATEGORY] [-w W
         -G  group       the group used for the \$TOOL installation and fixup (with 'fixup'). (DEFAULT is \"sw\")
         -P  perms       permissions (of the group if -G given) in the directories fixed with 'fixup'. (DEFAULT is \"u+rwX,g+rwX,o+rX-w\")
         -m  module      name of the module file (DEFAULT is the same as the name of the tool)
-        -T  string      list of tags/keywords to make the \$TOOL easier to find. (DEFAULT is \"\$TOOL\")
+        -k  string      list of tags/keywords to make the \$TOOL easier to find. (DEFAULT is \"\$TOOL\")
         -u  string      list of clusters to install to. Start with the main target. (DEFAULT is \"rackham bianca miarka snowy\")
         -x  WORD        flag for mode, i.e. INSTALL, RESUME or REMOVE (DEFAULT is INSTALL, RESUME just sets the variables and exits.)
         -f              forcing the script to ignore warnings."
@@ -48,7 +48,7 @@ MODULENAME=''
 declare -a LINKFLAG=()
 declare -a FIXFLAG=()
 CLUSTERS=(rackham bianca miarka snowy)
-declare -a TAGS=()
+declare -a KEYWORDS=()
 MODE=INSTALL
 FORCED=0
 USERGROUP="sw"
@@ -72,7 +72,7 @@ fi
 
 ############################
 
-while getopts "hi:t:v:s:w:c:G:P:gpm:l:L:d:u:x:f" option
+while getopts "hi:t:v:s:w:c:G:P:gpm:l:L:d:k:u:x:f" option
 do
     case $option in
         h) 
@@ -143,7 +143,7 @@ do
             LINKFLAG+=(-u)
             LINKFLAG+=("${CLUSTERS[*]}")
             ;;
-        T) TAGS=($OPTARG)
+        k) KEYWORDS=($OPTARG)
             ;;
         x) MODE="$OPTARG"
             ;;
@@ -242,9 +242,9 @@ if [ $MODE != "RESUME" ] ; then
         fi
     fi
     ##################### Make a cluster list in YAML format ####################
-    YAMLLIST=$(echo " "${CLUSTERS[@]} | sed "s/ /\n    - /g")
+    CLUSTERLIST=$(echo " "${CLUSTERS[@]} | sed "s/ /\n    - /g")
     ##################### Make a keyword/tag list in YAML format ####################
-    TAGLIST=$(echo " "${TAGS[@]} | sed "s/ /\n    - /g")
+    KEYWORDLIST=$(echo " "${KEYWORDS[@]} | sed "s/ /\n    - /g")
     ######## Check input #################
     if [ -z "${TOOL}" ]
     then printf "%s\n\nEmply value for -t\n" "$USAGE" >&2; exit 1
@@ -665,7 +665,7 @@ fi
 cat > "$YAMLFILE" <<EOF4
   TOOL: $TOOL
   VERSION: $VERSION
-  CLUSTER: $YAMLLIST
+  CLUSTER: $CLUSTERLIST
   LICENSE: $LICENSE
   LICENSEURL: $LICENSE_URL
   USERGROUP: $USERGROUP
@@ -674,7 +674,7 @@ cat > "$YAMLFILE" <<EOF4
   LOCAL: $MODULE_FILE
   COMMON: /sw/mf/common/$MF_CATEGORY/$SECTION/$MODULENAME/$VERSION
   DESCRIPTION: $DESC
-  TAGS: $TAGLIST
+  KEYWORDS: $KEYWORDLIST
   MODULE: $MODULENAME
   SECTION: $SECTION
   POSTINSTALL: $POSTFILE
