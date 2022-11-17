@@ -31,22 +31,11 @@ def walklevel(path, depth = 1):
         if base_depth + depth <= cur_depth:
             del dirs[:]
 
-def maketable_yamlfiles(cursor):
-    # Drop table if it already exist.
-    cursor.execute("DROP TABLE IF EXISTS yamlfiles")
-    # Create table as per requirement
-    sql = """CREATE TABLE yamlfiles (
-        key  CHAR(120),
-       path CHAR(320),
-       creator  CHAR(30) NOT NULL,
-       md5  CHAR(120) NOT NULL)"""
-    cursor.execute(sql)
-
 def open_yaml_fixed(yaml_file):
     with open(yaml_file, 'r', encoding='utf-8', errors='ignore') as yamlstream:
         try:
             lines = yamlstream.readlines()
-        except:
+        except Exception:
             print(yaml_file)
         output = ''
         for line in lines:
@@ -61,12 +50,36 @@ def open_yaml_fixed(yaml_file):
         #print(output)
         return output
 
+def maketable_keywords(cursor):
+    # Drop table if it already exist.
+    cursor.execute("DROP TABLE IF EXISTS keywords")
+    # Create table as per requirement
+    sql = """CREATE TABLE keywords (
+    key  CHAR(120) NOT NULL,
+    keyword CHAR(120))"""
+    cursor.execute(sql)
+
+def get_list(list_file_name):
+    with open(list_file_name, 'r', encoding='utf-8', errors='ignore') as lf:
+        keywords = lf.read().splitlines()
+    return keywords
+
+
+
+############### Start #################
+
 # Open database connection
 db = sqlite3.connect('swdb.db')
 db.text_factory = str
 
+#Make a new table and delete the old
+maketable_keywords(db)
+
 # prepare a cursor object using cursor() method
 DBcursor = db.cursor()
+
+# Get the keywords
+keywords = get_list('all_curated_keywords')
 
 for root, dirs, files in walklevel("/sw/", 3):
     if re.search('/sw/.+/src/', root):
@@ -87,42 +100,54 @@ for root, dirs, files in walklevel("/sw/", 3):
                         parsed_yaml=yaml.safe_load(yamlstream)
                         try:
                             key = parsed_yaml['SQLKEY']
-                        except:
+                        except Exception:
                             try:
                                 key = parsed_yaml['TOOL'] + "_" + str(parsed_yaml['VERSION'])
-                            except:
+                            except Exception:
                                 print("This looks like something else: ")
                                 print(parsed_yaml)
                                 print(yamlstream)
+                        try:
+                            text_to_check = str(parsed_yaml['DESCRIPTION']) + " "
+                        except Exception:
+                            text_to_check = ''
+                        try:
+                            text_to_check = text_to_check + str(parsed_yaml['SECTION']) + " "
+                        except Exception:
+                                pass
+                        try:
+                            text_to_check = text_to_check + str(parsed_yaml['COMMON']) + " "
+                        except Exception:
+                                pass
+                        if text_to_check == '':
+                            print("\n\nThis sw has no keywords")
+                            print(parsed_yaml)
+                            print("____________")
+                            print(parsed_yaml['DESCRIPTION'])
+                            print(parsed_yaml['SECTION'])
+                            print(parsed_yaml['COMMON'])
+                            continue
+                        pairs = []
+                        for kw in keywords:
+                            if text_to_check != None and kw in text_to_check:
+                                pairs.append([key, kw])
                     except yaml.YAMLError as exc:
                         print(exc)
-        #Now we have SQL_KEY
-        
-
-
-
-            with open(filename, 'r', encoding='utf-8', errors='ignore') as rawdatafile:
-                for line in rawdatafile:
-                    if "DESCRIPTION" in line or "SECTION" in line or "COMMON" in line:
+#Merge here or not???
+                    for pair in pairs:
+                        key = pair[0]
+                        keyword = pair[1]
+                        sql = "INSERT INTO keywords (key, keyword) VALUES (?, ?)"
+                        print("SQLkey: ", key, "  KEYWORD: ", keyword)
                         try:
-                            print(line.split(":",1)[1], file = outfile)
-                        except:
-                            continue
-
-
-
-                sql = "INSERT INTO keywords (key, word) VALUES (?, ?)"
-                print(key, word)
-                try:
-                    # Execute the SQL command
-                    DBcursor.execute(sql, (key, word))
-                    # Commit your changes in the database
-                    db.commit()
-                except:
-                    # Rollback in case there is any error
-                    print("ERROR SW!\n")
-                    db.rollback()
-
+                            # Execute the SQL command
+                            DBcursor.execute(sql, (key, keyword))
+                            # Commit your changes in the database
+                            db.commit()
+                        except Exception:
+                            # Rollback in case there is any error
+                            print("ERROR SW!\n")
+                            db.rollback()
 # disconnect from server
 db.close()
 
