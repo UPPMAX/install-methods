@@ -3,6 +3,8 @@ R_packages/4.2.1
 
 
 * add leidenbase https://github.com/cole-trapnell-lab/leidenbase
+* ggnet devtools::install_github("briatte/ggnet")
+* ampvis2 remotes::install_github("kasperskytte/ampvis2")
 
 
 Used under license:

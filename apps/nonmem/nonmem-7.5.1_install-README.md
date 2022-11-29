@@ -1,5 +1,5 @@
 nonmem/7.5.1
-========================
+============
 
 <https://www.iconplc.com/innovation/nonmem/>
 
@@ -12,24 +12,10 @@ Structure creating script (makeroom_nonmem_7.5.1.sh) moved to /sw/apps/nonmem/ma
 LOG
 ---
 
-    /home/iusan/UPPMAX-tools/install-methods/makeroom.sh "-f" "-t" "nonmem" "-v" "7.5.1" "-c" "apps" "-w" "https://www.iconplc.com/innovation/nonmem/" "-l" "Commercial" "-d" "ICON's nonlinear mixed effects modelling tool for population pharmacokinetic and pharmacokinetic-pharmacodynamic analysis"
-    ./makeroom_nonmem_7.5.1.sh
-nonmem/7.4.4
-============
-
-<https://www.iconplc.com/innovation/nonmem/>
-
-Used under license:
-Commercial
-
-
-LOG
---
-
 *ZEROTH*, for a new installation, do this:
 
     TOOL=nonmem
-    TOOLVERSION=7.4.4
+    TOOLVERSION=7.5.1
     VERSION=${TOOLVERSION}
     SQUASHEDVERSION=${TOOLVERSION//./}
     SQUASHEDMMVERSION=${SQUASHEDVERSION%?}
@@ -41,7 +27,7 @@ LOG
 For a reinstallation, start here instead:
 
     TOOL=nonmem
-    TOOLVERSION=7.4.4
+    TOOLVERSION=7.5.1
     VERSION=${TOOLVERSION}
     SQUASHEDVERSION=${TOOLVERSION//./}
     SQUASHEDMMVERSION=${SQUASHEDVERSION%?}
@@ -81,7 +67,7 @@ the `$TOOLDIR/licences/` directory, and then continue the installation.
 *FINALLY* install the module and test it.  Install the mf file etc so the
 module can be loaded.  Testing in a new shell:
 
-    VERSION=7.4.4
+    VERSION=7.5.1
     module load nonmem/$VERSION
     cd /sw/apps/nonmem
     source SOURCEME_nonmem_${VERSION}
@@ -91,13 +77,13 @@ module can be loaded.  Testing in a new shell:
     cd testit
     cp $NONMEM_ROOT/examples/{foce_parallel.ctl,example1b.csv} .
     cp $NONMEM_ROOT/run/{mpilinux8.pnm,psexec.exe} .
-    nmfe74 foce_parallel.ctl foce_parallel.res -parafile=mpilinux8.pnm [nodes]=4
+    nmfe75 foce_parallel.ctl foce_parallel.res -parafile=mpilinux8.pnm [nodes]=4
 
 To run a single-threaded version of the test above:
 
-    nmfe74 foce_parallel.ctl foce_parallel.res-single
+    nmfe75 foce_parallel.ctl foce_parallel.res-single
 
 Compare the runs.
 
-        diff -W $COLUMNS -y foce_parallel.res-single foce_parallel.res
+    diff -W $COLUMNS -y foce_parallel.res-single foce_parallel.res
 

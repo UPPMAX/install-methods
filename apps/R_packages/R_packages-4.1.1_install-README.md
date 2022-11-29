@@ -550,6 +550,7 @@ Github-hosted packages.  Load hdf5/1.10.5 since loomR uses hdf5r.
     devtools::install_github('immunogenomics/presto')
     devtools::install_github("GreenleafLab/ArchR", ref="master")
     devtools::install_github(repo="krumsieklab/sgi", subdir="sgi")
+    devtools::install_github("TillBirkner/metadeconfoundR")
 
 ### HDL
 
