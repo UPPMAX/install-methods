@@ -26,12 +26,16 @@ DEBUG = args.debug
 debug(args)
 userid= args.user
 
+console = Console(record=True)
+
 # Read projects info ======================================================
-API="api.uppmax.uu.se:5000/api/v1"
-FILTER="Allocations.Type=storage"
-FIELDS="Allocations,Projectname,Directory_Name,Status,Uppmax_Members"
-with request.urlopen("http://"+API+"/projects?fields="+FIELDS+"&machineparser=1") as url:
-  projects = json.load(url)
+with console.status("Working..."):
+  API="api.uppmax.uu.se:5000/api/v1"
+  FILTER="Allocations.Type=storage"
+  FIELDS="Allocations,Projectname,Directory_Name,Status,Uppmax_Members"
+  with request.urlopen("http://"+API+"/projects?fields="+FIELDS+"&machineparser=1") as url:
+    projects = json.load(url)
+		
 
 # Active project 
 user_projects= [key for key, item in projects.items() if userid in [uid["Username"] for uid in item["Uppmax_Members"]] and item["Status"]=="Active" ]
@@ -78,5 +82,5 @@ for ip in proj_loop:
   
     table.add_section()
 
-console = Console()
 console.print(table)
+#console.save_svg("table.svg", title="")
