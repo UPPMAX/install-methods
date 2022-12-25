@@ -83,8 +83,8 @@ fi
 # args are files to gather; subdirectory structure is preserved
 
 function data_update() {
-    REMOTEDIR=${1}; LOCALDIR=${1##*/}; shift
-    CURDIR=${PWD}
+    local REMOTEDIR=${1}; local LOCALDIR=${1##*/}; shift
+    local CURDIR=${PWD}
     mkdir -p ${LOCALDIR}; cd ${LOCALDIR}; LOCALDIR=${PWD}
     cd ${REMOTEDIR}
     files=("$@")
@@ -131,3 +131,4 @@ cd $DATA_OTHER_REPOSITORY
 
 data_update  /sw/bioinfo/BUSCO  BUSCO-db-README.md v1_lineage_sets/BUSCO-update-v1-lineage-sets.sh v2_lineage_sets/BUSCO-update-v2-lineage-sets.sh v4_lineage_sets/BUSCO-update-v4-lineage-sets.sh v5_lineage_sets/BUSCO-update-v5-lineage-sets.sh 
 
+data_update  /sw/bioinfo/snpEff snpEff_custom_database_install-README.md

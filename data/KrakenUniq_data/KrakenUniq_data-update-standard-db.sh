@@ -6,7 +6,7 @@
 #SBATCH -p node
 #SBATCH -n 20
 #SBATCH -C mem1TB
-#SBATCH -t 72:00:00
+#SBATCH -t 5-00:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL

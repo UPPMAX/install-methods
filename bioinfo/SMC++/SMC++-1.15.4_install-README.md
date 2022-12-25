@@ -72,4 +72,14 @@ Finally symlink the exectuable to bin
    mkdir $PREFIX/bin && cd $PREFIX/bin
    ln -s $PREFIX/venv/bin/smc++ .
 
+and fixup rpath of exectuables by linking to gcc and gsl:
 
+   cd /sw/bioinfo/SMC++/1.15.4/rackham/venv/lib/python3.10/site-packages/smcpp
+
+   patchelf --set-rpath \
+   '/sw/comp/gcc/12.2.0_rackham/lib64:/sw/comp/gcc/12.2.0_rackham/lib:/sw/libs/gsl/2.7/rackham/lib' \
+   _estimation_tools.cpython-310-x86_64-linux-gnu.so
+
+   patchelf --set-rpath \
+   '/sw/comp/gcc/12.2.0_rackham/lib64:/sw/comp/gcc/12.2.0_rackham/lib:/sw/libs/gsl/2.7/rackham/lib' \
+   _smcpp.cpython-310-x86_64-linux-gnu.so
