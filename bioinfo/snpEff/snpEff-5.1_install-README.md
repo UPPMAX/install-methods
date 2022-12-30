@@ -50,6 +50,7 @@ Install these first!
     # Ficedula albicollis genome ENSEMBLE 73 release, Ellegren lab in-house
     fAlb15.e73.genome : Ficedula_albicollis
 
+Created `$PREFIX/data/databases_list.custom` from these descriptions.
 
 Databases
 ---------
@@ -68,3 +69,16 @@ Get database download names, removing the local names.
 This required many redownloads, creating a smaller downloads_list.continue each time.
 
     for G in $(cat downloads_list.continue) ; do java -jar $SNPEFF_ROOT/snpEff.jar download -v "$G" ; done 2>&1 | tee -a downloads_list.log
+
+After all are installed, generate the new list with
+
+    java -jar $SNPEFF_ROOT/snpEff.jar databases > database_list
+
+Note that some of these now have OK for status, showing they are installed.
+
+Generate the list of installed databases with
+
+    cd $SNPEFF_ROOT/data
+    cat databases_list.custom databases_list > databases_list.installed
+
+This file is referred to in the mf file.
