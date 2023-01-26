@@ -311,7 +311,7 @@ case $CATEGORY in
     prarallel) MF_CATEGORY=parallel
         LINKFLAG+=(-p)
         ;;
-    \?) printf "No such category, -%s\n" "$CATEGORY" >&2
+    *) printf "No such category, -%s\n" "$CATEGORY" >&2
         echo "$USAGE" >&2
         exit 1
         ;;

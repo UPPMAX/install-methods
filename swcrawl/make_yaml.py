@@ -7,8 +7,41 @@ import sys
 import shlex
 import shutil
 import time
-import chardet
 import grp
+import ruamel.yaml
+yml = ruamel.yaml.YAML()
+yml.preserve_quotes = True
+yml.explicit_start = True
+#from ruamel.yaml.scalarstring import PreservedScalarString as pss
+#import yaml as yml
+
+def open_yaml_fixed(yaml_file):
+    try:
+        with open(yaml_file, 'r', encoding='utf-8', errors='ignore') as yamlstream:
+            try:
+                lines = yamlstream.readlines()
+            except:
+                print(yaml_file)
+            output = ''
+            for line in lines:
+                line_after = re.sub("^- ", "  ", line)
+                line_after = re.sub("\'", "\"", line_after)
+                line_after = re.sub("^    - LOCAL", "  LOCAL", line_after)
+                line_after = re.sub("^    - COMMON", "  COMMON", line_after)
+                line_after = re.sub(":", ": ", line_after, 1)
+                line_after = re.sub(":  ", ": ", line_after, 1)
+                line_after = re.sub("(^.+?): (.+\s+.+)", r"\1: '\2'", line_after, 1)
+                if not re.search(":", line_after):
+                    line_after = re.sub("^  ", "  - ", line_after)
+                output = output + line_after
+            return output
+    except Exception:
+        return ''
+
+
+def removeDuplicates(lst):
+    return list(set([i for i in lst]))
+
 
 # Open database connection
 if not os.path.exists('swdb.db'):
@@ -35,6 +68,7 @@ cursor.execute(sql)
 webpagerows = cursor.fetchall()
 webpage = {}
 software = {}
+keywords = {}
 module = {}
 clusters = {}
 version = {}
@@ -88,6 +122,12 @@ logfile = 'YAML_LOG' + time.strftime("%Y-%m-%d__%H-%M", time.localtime()) + '.lo
 log = open(logfile, 'w')
 
 #('alphafold_dataset_2.1.1', 'alphafold_dataset', 'snowy', '2.1.1', '/sw/mf/snowy/data/alphafold_dataset/2.1.1', '/sw/data/alphafold_dataset/$version', 1, 1)
+
+#Read the keywords from the database
+sql = "SELECT * FROM keywords"
+cursor.execute(sql)
+keywords = removeDuplicates(cursor.fetchall())
+
 mftree_clusters = {}
 for row in rows_from_mftree:
     mftree_key = row[0]
@@ -124,16 +164,18 @@ for row in rows_from_mftree:
                 if match_row:
                     path_to_sw = "/" + match_row.group(1) + "/"
                     new_yaml = path_to_sw + mftree_tool + '-' + mftree_version + '.DRAFT.yaml' 
+                    yaml = path_to_sw + mftree_tool + '-' + mftree_version + '.yaml'
                     readme = path_to_sw + mftree_tool + '-' + mftree_version + '_install-README.md'
                     postinstall = path_to_sw + mftree_tool + '-' + mftree_version + '_post-install.sh'
                     if not os.path.isfile(readme) or not os.access(readme, os.R_OK):
-                        readme = ''
+                        readme = path_to_sw + mftree_tool + '-' + mftree_version + '-install-README.md'
+                        if not os.path.isfile(readme) or not os.access(readme, os.R_OK):
+                            readme = ''
                     if not os.path.isfile(postinstall) or not os.access(postinstall, os.R_OK):
                         postinstall = ''
                     local = path_to_sw + "/mf" + mftree_version
                     if not os.path.isfile(local) or not os.access(local, os.R_OK):
                         local = ''
-                    yaml = path_to_sw + mftree_tool + '-' + mftree_version + '.yaml'
 
 ###################### Make all the files #################################
                     if mftree_key not in version:
@@ -152,33 +194,102 @@ for row in rows_from_mftree:
                         sect = section[mftree_key]
                         desc = software[mftree_key]
                     if os.path.isdir(path_to_sw) and os.access(path_to_sw, os.W_OK):
-                        with open(new_yaml, 'w') as the_file:
-                            the_file.write('  TOOL: ' + mftree_tool + "\n")
-                            the_file.write('  VERSION: ' + mftree_version + "\n")
-                            the_file.write('  MODULE: ' + modu + "\n")
-                            the_file.write('  CLUSTER: ' + "\n")
-                            for clu in mftree_clusters[mftree_key]:
-                                regexp = "(\S+)" + re.escape(clu) + "(\S+)"
-                                match_cluster = re.match(regexp, mftree_file, re.IGNORECASE)
-                                if match_cluster:
-                                    common = match_cluster.group(1) + "common" + match_cluster.group(2)
-                                if clu != "common":
-                                    the_file.write('   - ' + clu + "\n")
-                            the_file.write('  LICENSE: ' + lice + "\n")
-                            the_file.write('  LICENSEURL: ' + lURL + "\n")
-                            the_file.write('  USERGROUP: sw' + "\n")
-                            the_file.write('  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w' + "\n")
-                            the_file.write('  WEBSITE: ' + webs + "\n")
-                            the_file.write('  LOCAL: ' + local + "\n")
-                            the_file.write('  SECTION: ' + sect + "\n")
-                            the_file.write('  POSTINSTALL: ' + postinstall + "\n")
-                            the_file.write('  README: ' + readme + "\n")
-                            if os.path.isfile(common) and os.access(common, os.R_OK): 
-                                the_file.write('  COMMON: ' + common + "\n")
-                            the_file.write('  DESCRIPTION: ' + desc + "\n")
-                            the_file.write('  SQLKEY: ' + mftree_key + "\n")
+                        parsed_old_yaml = ''
+                        old_file = open_yaml_fixed(yaml)
+                        if old_file:
+                            try:
+                                parsed_old_yaml = yml.load(old_file)
+                            except Exception as exc:
+                                print(exc)
+                        the_file = {}
+                        the_file['TOOL'] = mftree_tool
+                        the_file['VERSION'] = mftree_version
+                        the_file['MODULE'] = modu
+                        keywordsstring = []
+                        for pair in keywords:
+                            if pair[0] == mftree_key:
+                                keywordsstring.append(pair[1])
+                        the_file['KEYWORDS'] = keywordsstring
+                        clusterstring = []
+                        for clu in mftree_clusters[mftree_key]:
+                            regexp = "(\S+)" + re.escape(clu) + "(\S+)"
+                            match_cluster = re.match(regexp, mftree_file, re.IGNORECASE)
+                            if match_cluster:
+                                common = match_cluster.group(1) + "common" + match_cluster.group(2)
+                            if clu != "common":
+                                clusterstring.append(clu)
+                        the_file['CLUSTER'] = clusterstring
+                        the_file['LICENSE'] = lice
+                        the_file['LICENSEURL'] = lURL
+                        the_file['USERGROUP'] = 'sw'
+                        the_file['USERPERMISSIONS'] = '-R u+rwX,g+rwX,o+rX-w'
+                        the_file['WEBSITE'] = webs
+                        the_file['LOCAL'] = local
+                        the_file['SECTION'] = sect
+                        the_file['POSTINSTALL'] = postinstall
+                        the_file['README'] = readme
+                        if os.path.isfile(common) and os.access(common, os.R_OK): 
+                            the_file['COMMON'] = common
+                        else:
+                            the_file['COMMON'] = ''
+                        the_file['DESCRIPTION'] = desc
+                        the_file['SQLKEY'] = mftree_key
+                        with open(new_yaml, 'w') as output:
+                            yml.dump(the_file, output)
+#                        with open(new_yaml, 'w') as the_file:
+#                            the_file.write('  TOOL: ' + mftree_tool + "\n")
+#                            the_file.write('  VERSION: ' + mftree_version + "\n")
+#                            the_file.write('  MODULE: ' + modu + "\n")
+#                            the_file.write('  KEYWORDS: ' + "\n")
+#                            for pair in keywords:
+#                                if pair[0] == mftree_key:
+#                                    the_file.write('   - ' + pair[1] + "\n")
+#                            the_file.write('  CLUSTER: ' + "\n")
+#                            for clu in mftree_clusters[mftree_key]:
+#                                regexp = "(\S+)" + re.escape(clu) + "(\S+)"
+#                                match_cluster = re.match(regexp, mftree_file, re.IGNORECASE)
+#                                if match_cluster:
+#                                    common = match_cluster.group(1) + "common" + match_cluster.group(2)
+#                                if clu != "common":
+#                                    the_file.write('   - ' + clu + "\n")
+#                            the_file.write('  LICENSE: ' + lice + "\n")
+#                            #if lice.__eq__('"As is" open source'):
+#                            #    print(new_yaml)
+#                            the_file.write('  LICENSEURL: ' + lURL + "\n")
+#                            the_file.write('  USERGROUP: sw' + "\n")
+#                            the_file.write('  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w' + "\n")
+#                            the_file.write('  WEBSITE: ' + webs + "\n")
+#                            the_file.write('  LOCAL: ' + local + "\n")
+#                            the_file.write('  SECTION: ' + sect + "\n")
+#                            the_file.write('  POSTINSTALL: ' + postinstall + "\n")
+#                            the_file.write('  README: ' + readme + "\n")
+#                            if os.path.isfile(common) and os.access(common, os.R_OK): 
+#                                the_file.write('  COMMON: ' + common + "\n")
+#                            else:
+#                                the_file.write('  COMMON: ' + "\n")
+#                            the_file.write('  DESCRIPTION: ' + "'" + desc + "'" + "\n")
+#                            the_file.write('  SQLKEY: ' + mftree_key + "\n")
                         gid = grp.getgrnam("sw").gr_gid
                         os.chown(new_yaml, -1, gid)
+                        if parsed_old_yaml:
+                            new_file = open_yaml_fixed(new_yaml)
+                            try:
+                                with open(new_yaml, 'r') as new_file:
+                                    parsed_new_yaml=yml.load(new_file)
+                            except Exception as e:
+                                print(type(e).__str__)
+                                print(e)
+                                print(new_yaml, " is not correct")
+                                print(new_file)
+                                print(parsed_old_yaml)
+                                continue
+                            #print(parsed_old_yaml)
+                            #print(parsed_new_yaml)
+                            parsed_old_yaml.update(parsed_new_yaml)
+                            #print(parsed_old_yaml)
+                            #print(parsed_new_yaml)
+                            with open(new_yaml, 'w') as output:
+                                yml.dump(parsed_old_yaml, output)
                     else:
                         if not os.path.isdir(path_to_sw):
                             print("WARNING: " + path_to_sw + " from the mf does not exist", file=log)

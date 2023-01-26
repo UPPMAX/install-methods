@@ -32,23 +32,27 @@ def walklevel(path, depth = 1):
             del dirs[:]
 
 def open_yaml_fixed(yaml_file):
-    with open(yaml_file, 'r', encoding='utf-8', errors='ignore') as yamlstream:
-        try:
-            lines = yamlstream.readlines()
-        except Exception:
-            print(yaml_file)
-        output = ''
-        for line in lines:
-            line_after = re.sub("^- ", "  ", line)
-            line_after = re.sub("\'", "\"", line_after)
-            line_after = re.sub("^    - LOCAL", "  LOCAL", line_after)
-            line_after = re.sub("^    - COMMON", "  COMMON", line_after)
-            line_after = re.sub(":", ": ", line_after, 1)
-            line_after = re.sub(":  ", ": ", line_after, 1)
-            line_after = re.sub("(^.+?): (.+\s+.+)", r"\1: '\2'", line_after, 1)
-            output = output + line_after
-        #print(output)
-        return output
+    try:
+        with open(yaml_file, 'r', encoding='utf-8', errors='ignore') as yamlstream:
+            try:
+                lines = yamlstream.readlines()
+            except:
+                print(yaml_file)
+            output = ''
+            for line in lines:
+                line_after = re.sub("^- ", "  ", line)
+                line_after = re.sub("\'", "\"", line_after)
+                line_after = re.sub("^    - LOCAL", "  LOCAL", line_after)
+                line_after = re.sub("^    - COMMON", "  COMMON", line_after)
+                line_after = re.sub(":", ": ", line_after, 1)
+                line_after = re.sub(":  ", ": ", line_after, 1)
+                line_after = re.sub("(^.+?): (.+\s+.+)", r"\1: '\2'", line_after, 1)
+                if not re.search(":", line_after):
+                    line_after = re.sub("^  ", "  - ", line_after)
+                output = output + line_after
+            return output
+    except Exception:
+        return ''
 
 def maketable_keywords(cursor):
     # Drop table if it already exist.
@@ -80,6 +84,7 @@ DBcursor = db.cursor()
 
 # Get the keywords
 keywords = get_list('all_curated_keywords')
+pairs = []
 
 for root, dirs, files in walklevel("/sw/", 3):
     if re.search('/sw/.+/src/', root):
@@ -123,31 +128,29 @@ for root, dirs, files in walklevel("/sw/", 3):
                             print("\n\nThis sw has no keywords")
                             print(parsed_yaml)
                             print("____________")
-                            print(parsed_yaml['DESCRIPTION'])
-                            print(parsed_yaml['SECTION'])
-                            print(parsed_yaml['COMMON'])
                             continue
-                        pairs = []
                         for kw in keywords:
-                            if text_to_check != None and kw in text_to_check:
+                            if text_to_check != None and (kw in text_to_check.casefold() or kw.replace('-',' ') in text_to_check.casefold()):
                                 pairs.append([key, kw])
+                                continue
                     except yaml.YAMLError as exc:
+                        print("Error reading" + yamlstream)
                         print(exc)
-#Merge here or not???
-                    for pair in pairs:
-                        key = pair[0]
-                        keyword = pair[1]
-                        sql = "INSERT INTO keywords (key, keyword) VALUES (?, ?)"
-                        print("SQLkey: ", key, "  KEYWORD: ", keyword)
-                        try:
-                            # Execute the SQL command
-                            DBcursor.execute(sql, (key, keyword))
-                            # Commit your changes in the database
-                            db.commit()
-                        except Exception:
-                            # Rollback in case there is any error
-                            print("ERROR SW!\n")
-                            db.rollback()
+#It is currently looking in both live and DRAFT files so some keywords are doubled.
+for pair in pairs:
+    key = pair[0]
+    keyword = pair[1]
+    sql = "INSERT INTO keywords (key, keyword) VALUES (?, ?)"
+    print("SQLkey: ", key, "  KEYWORD: ", keyword)
+    try:
+        # Execute the SQL command
+        DBcursor.execute(sql, (key, keyword))
+        # Commit your changes in the database
+        db.commit()
+    except Exception:
+        # Rollback in case there is any error
+        print("ERROR SW!\n")
+        db.rollback()
 # disconnect from server
 db.close()
 
