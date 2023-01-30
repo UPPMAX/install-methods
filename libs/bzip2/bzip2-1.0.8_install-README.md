@@ -12,6 +12,10 @@ Structure creating script (makeroom_bzip2_1.0.8.sh) moved to /sw/libs/bzip2/make
 LOG
 ---
 
+
+This makes the static and shared libraries.  We also need to make two additional symlinks to the shared library.
+
+
     makeroom.sh "-f" "-t" "bzip2" "-v" "1.0.8" "-c" "libs" "-w" "https://sourceware.org/bzip2" "-l" "Custom open-source 'AS IS'" "-L" "https://sourceware.org/git/?p=bzip2.git;a=blob;f=LICENSE"
     ./makeroom_bzip2_1.0.8.sh
 
@@ -27,13 +31,11 @@ LOG
     make check PREFIX=$PREFIX
     make install PREFIX=$PREFIX
 
-This makes the static library, now make the shared library.
 
     make clean
     make -f Makefile-libbz2_so
     mv libbz2.so.1.0* $PREFIX/lib/
 
-We also need to make two additional symlinks to the library.
 
     cd $PREFIX/lib
     VVERSION=${VERSION%.*}
@@ -41,4 +43,4 @@ We also need to make two additional symlinks to the library.
     VVVERSION=${VVERSION%.*}
     [[ -e libbz2.so.${VVVERSION} ]] || ln -s libbz2.so.${VERSION} libbz2.so.${VVVERSION}
 
-The mf from 1.0.6 should work here.
+And dummy up a pkgconfig file bz2.pc based on zlib.pc

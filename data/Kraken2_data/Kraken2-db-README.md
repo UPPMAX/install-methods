@@ -1,10 +1,96 @@
 Kraken2 database updates
 ========================
 
+Prebuilt databases
+------------------
+
+Downloading Kraken2/Bracken Refseq indexes from https://benlangmead.github.io/aws-indexes/k2
+
+Note that these are versioned as a collection by date rows in the table at that website. Individual databases have dates, but the collection date **9/26/2022** will be used for all the downloaded indices, and as these are updated, we will use a new version for that as well.
+
+    cd /sw/data/Kraken2_data
+    source SOURCEME_Kraken2_data
+    PREBUILT_BASE=$PWD/prebuilt
+    test -d $PREBUILT_BASE || mkdir $PREBUILT_BASE
+    cd $PREBUILT_BASE
+    DEST=$PWD
+    mkdir -p src
+    cd src
+    BASEURL=https://genome-idx.s3.amazonaws.com/kraken
+    DATABASES=( k2_viral_20220908.tar.gz
+                k2_minusb_20220926.tar.gz
+                k2_standard_20220926.tar.gz
+                k2_standard_08gb_20220926.tar.gz
+                k2_standard_16gb_20220926.tar.gz
+                k2_pluspf_20220908.tar.gz
+                k2_pluspf_08gb_20220908.tar.gz
+                k2_pluspf_16gb_20220908.tar.gz
+                k2_pluspfp_20220908.tar.gz
+                k2_pluspfp_08gb_20220908.tar.gz
+                k2_pluspfp_16gb_20220908.tar.gz
+                k2_viral_20221209.tar.gz
+                k2_minusb_20221209.tar.gz
+                k2_standard_20221209.tar.gz
+                k2_standard_08gb_20221209.tar.gz
+                k2_standard_16gb_20221209.tar.gz
+                k2_pluspf_20221209.tar.gz
+                k2_pluspf_08gb_20221209.tar.gz
+                k2_pluspf_16gb_20221209.tar.gz
+                k2_pluspfp_20221209.tar.gz
+                k2_pluspfp_08gb_20221209.tar.gz
+                k2_pluspfp_16gb_20221209.tar.gz
+                k2_eupathdb48_20201113.tar.gz )
+
+    for P in "${DATABASES[@]}"
+    do
+        B=${P%.tar.gz} # this results in B=k2_viral_20220908
+        [[ -f $P ]] && echo "$P already exists in src/ directory" || wget $BASEURL/$P
+        [[ -f $DEST/$B/inspect.txt ]] && echo "$P already unpacked to $DEST/$B" || { mkdir -p $DEST/$B ; tar xf $P --directory $DEST/$B ; }
+    done
+    cd $PREBUILT_BASE
+
+Text for the mf file:
+
+    Prebuilt Kraken 2 / Bracken refseq indices, from https://benlangmead.github.io/aws-indexes/k2 in collection dated "9/26/2022".
+
+    Local name                                         Collection    Contains                                                Date        Archive size (GB)  Index sixe (GB) 
+
+    \$KRAKEN2_DB_PREBUILT/k2_viral_20221209            Viral         viral                                                   2022-12-09          0.4               0.5
+    \$KRAKEN2_DB_PREBUILT/k2_minusb_20221209           MinusB        archaea, viral, plasmid, human1, UniVec_Core            2022-12-09          6.1               8.7
+    \$KRAKEN2_DB_PREBUILT/k2_standard_20221209         Standard      archaea, bacteria, viral, plasmid, human1, UniVec_Core  2022-12-09         48                62
+    \$KRAKEN2_DB_PREBUILT/k2_standard_08gb_20221209    Standard-8    Standard with DB capped at 8 GB                         2022-12-09          5.5               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_standard_16gb_20221209    Standard-16   Standard with DB capped at 16 GB                        2022-12-09         11                15
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_20221209           PlusPF        Standard plus protozoa & fungi                          2022-12-09         51                66
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_08gb_20221209      PlusPF-8      PlusPF with DB capped at 8 GB                           2022-12-09          5.5               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_16gb_20221209      PlusPF-16     PlusPF with DB capped at 16 GB                          2022-12-09         11                15
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_20221209          PlusPFP       Standard plus protozoa, fungi & plant                   2022-12-09        104               142
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_08gb_20221209     PlusPFP-8     PlusPFP with DB capped at 8 GB                          2022-12-09          5.1               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_16gb_20221209     PlusPFP-16    PlusPFP with DB capped at 16 GB                         2022-12-09         11                15
+
+    \$KRAKEN2_DB_PREBUILT/k2_eupathdb48_20201113       EuPathDB462   Eukaryotic pathogen genomes with contaminants removed   2020-11-13         26.4              34.1
+
+    \$KRAKEN2_DB_PREBUILT/k2_viral_20220908            Viral         viral                                                   2022-09-08          0.4               0.5
+    \$KRAKEN2_DB_PREBUILT/k2_minusb_20220926           MinusB3       archaea, viral, plasmid, human1, UniVec_Core            2022-09-26          5.9               8.5
+    \$KRAKEN2_DB_PREBUILT/k2_standard_20220926         Standard3     archaea, bacteria, viral, plasmid, human1, UniVec_Core  2022-09-26         46                60
+    \$KRAKEN2_DB_PREBUILT/k2_standard_08gb_20220926    Standard-83   Standard with DB capped at 8 GB                         2022-09-26          5.5               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_standard_16gb_20220926    Standard-163  Standard with DB capped at 16 GB                        2022-09-26         11                15
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_20220908           PlusPF        Standard plus protozoa & fungi                          2022-09-08         49                64
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_08gb_20220908      PlusPF-8      PlusPF with DB capped at 8 GB                           2022-09-08          5.5               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_16gb_20220908      PlusPF-16     PlusPF with DB capped at 16 GB                          2022-09-08         11                15
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_20220908          PlusPFP       Standard plus protozoa, fungi & plant                   2022-09-08         99               129
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_08gb_20220908     PlusPFP-8     PlusPFP with DB capped at 8 GB                          2022-09-08          5.1               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_16gb_20220908     PlusPFP-16    PlusPFP with DB capped at 16 GB                         2022-09-08         11                15
+
+
+
+Locally built databases
+-----------------------
+
 We run two update scripts monthly via crontab on rackham5
 
 * `Kraken2-update-db.sh`, to update the standard, greengenes, rdp and silva databases.
 * `Kraken2-update-nt.sh`, to update a database built from NCBI's nt.  Requires a 256GB node.
+
 
 The comments below apply equally to `Kraken2-update-db.sh` and `Kraken2-update-nt.sh`.
 The build of `Kraken2-update-nt.sh` requires 
@@ -97,4 +183,5 @@ It builds the default database using `kraken2-build --standard`.
 
     echo -e "In $K2_DB_BASE: prepared databases latest, greengenes, rdp, silva\n" \
         | mailx -s "Kraken2 DB build successful in $K2_DB_BASE" douglas.scofield@ebc.uu.se
+
 

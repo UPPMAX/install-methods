@@ -14,6 +14,7 @@
 
 echo
 echo "Script running: $0"
+echo "           AKA: KrakenUniq_data-update-standard-db.sh"
 echo
 
 [[ $1 == "-f" ]] && { shift; FORCE=yes; } || FORCE=

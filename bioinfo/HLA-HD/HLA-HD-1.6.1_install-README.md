@@ -1,3 +1,19 @@
+HLA-HD/1.6.1
+========================
+
+<https://www.genome.med.kyoto-u.ac.jp/HLA-HD/>
+
+Used under license:
+free for academic use
+
+
+Structure creating script (makeroom_HLA-HD_1.6.1.sh) moved to /sw/bioinfo/HLA-HD/makeroom_1.6.1.sh
+
+LOG
+---
+
+    /home/iusan/UPPMAX-tools/install-methods/makeroom.sh "-t" "HLA-HD" "-v" "1.6.1" "-s" "annotation" "-c" "bioinfo" "-w" "https://www.genome.med.kyoto-u.ac.jp/HLA-HD/" "-l" "free for academic use" "-d" "HLA-HD (HLA typing from High-quality Dictionary) can accurately determine HLA alleles with 6-digit precision from NGS data (fastq format). RNA-Seq data can also be applied." "-f"
+    ./makeroom_HLA-HD_1.6.1.sh
 HLA-HD/1.4.0
 ========================
 

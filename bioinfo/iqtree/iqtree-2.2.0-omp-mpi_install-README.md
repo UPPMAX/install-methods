@@ -1,21 +1,5 @@
 iqtree/2.2.0-omp-mpi
-========================
-
-<http://www.iqtree.org>
-
-Used under license:
-GPL v2
-
-
-Structure creating script (makeroom_iqtree_2.2.0-omp-mpi.sh) moved to /sw/bioinfo/iqtree/makeroom_2.2.0-omp-mpi.sh
-
-LOG
----
-
-    /home/niharika/install-methods/makeroom.sh "-t" "iqtree" "-v" "2.2.0-omp-mpi" "-f" "-w" "http://www.iqtree.org" "-c" "bioinfo" "-s" "phylogeny" "-w" "http://www.iqtree.org" "-d" "efficient software for phylogenomic inference" "-l" "GPL v2"
-    ./makeroom_iqtree_2.2.0-omp-mpi.sh
-iqtree/2.0-rc2-omp-mpi
-========================
+====================
 
 IQ-TREE, providing OMP, single-core and MPI versions
 
@@ -32,7 +16,12 @@ Structure creating script (makeroom_iqtree_2.0-rc2-omp-mpi.sh) made with makeroo
 
 makeroom.sh invoked with:
 
-    makeroom.sh -f -t "iqtree" -v "2.0-rc2-omp-mpi" -s "phylogeny" -w "http://www.iqtree.org" -d "efficient software for phylogenomic inference" -l "GPL v2"
+
+Used under license:
+GPL v2
+
+
+Structure creating script (makeroom_iqtree_2.2.0-omp-mpi.sh) moved to /sw/bioinfo/iqtree/makeroom_2.2.0-omp-mpi.sh
 
 LOG
 ---
@@ -45,12 +34,12 @@ annoying, but we have the user load the correct gcc and openmpi modules if
 using them, which would be required anyway, so do nothing about them.
 
     TOOL=iqtree
-    TOOLVERSION=2.0-rc2
+    TOOLVERSION=2.2.0
     VERSION=${TOOLVERSION}-omp-mpi
 
     cd /sw/bioinfo/iqtree
 
-    makeroom.sh -f -t "$TOOL" -v "$VERSION" -s "phylogeny" -w "http://www.iqtree.org" -d "efficient software for phylogenomic inference" -l "GPL v2"
+    makeroom.sh "-t" "iqtree" "-v" "2.2.0-omp-mpi" "-f" "-w" "http://www.iqtree.org" "-c" "bioinfo" "-s" "phylogeny" "-w" "http://www.iqtree.org" "-d" "efficient software for phylogenomic inference" "-l" "GPL v2"
     ./makeroom_${TOOL}_${VERSION}.sh
     source SOURCEME_${TOOL}_${VERSION}
 

@@ -3,11 +3,11 @@
 #SBATCH -A staff
 #SBATCH -J Kraken2-update-nt.sh
 #SBATCH -p node
-#SBATCH -n 16
+#SBATCH -n 20
 #  Now necessary to use mem512GB node for Kraken2 nt
-#SBATCH -M snowy
-#SBATCH -C mem512GB
-#SBATCH -t 10-00:00:00
+#SBATCH -M rackham
+#SBATCH -C mem1TB
+#SBATCH -t 5-00:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL
@@ -15,11 +15,11 @@
 
 
 K2_DB_BASE=/sw/data/Kraken2_data
-K2_DB_TMP=$SNIC_TMP/Kraken2-build.$$
+K2_DB_TMP=$K2_DB_BASE/_tmp_Kraken2-build.$$
 
 K2_VERSION=2.1.2-20211210-4f648f5
 
-THREADS=${SLURM_JOB_CPUS_PER_NODE:-16}
+THREADS=${SLURM_JOB_CPUS_PER_NODE:-20}
 export KRAKEN2_THREAD_COUNT=$THREADS
 #MEMGB=${SLURM_MEM_PER_NODE%???}  # truncated value, remove last 3 chars (128GB node reports 128000)
 #MINGB=200 # This now must run on a 256GB node, it needs just under 200GB to build the standard database

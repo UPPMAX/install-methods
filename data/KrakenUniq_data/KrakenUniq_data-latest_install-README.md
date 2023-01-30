@@ -40,3 +40,7 @@ Install pre-built databases from <https://benlangmead.github.io/aws-indexes/k2>.
     cd ..
 
 Also update mf file to reflect the presence of the prebuilt databases.
+
+
+**2023-01-23:** No updates to pre-built databases
+

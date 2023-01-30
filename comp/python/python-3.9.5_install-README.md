@@ -82,6 +82,7 @@ which seems to build with python2.
     pip3 install networkx
     pip3 install pyyaml
     pip3 install pandas
+    pip3 install openpyxl
     pip3 install reportlab
     pip3 install h5py
     pip3 install pysqlite3
