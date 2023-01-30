@@ -154,7 +154,7 @@ do
             echo "$USAGE" >&2
             exit 1
             ;;
-        \?) printf "illegal option -%s\n" "$OPTARG" >&2
+        *) printf "illegal option -%s\n" "$OPTARG" >&2
             echo "$USAGE" >&2
             exit 1
             ;;
