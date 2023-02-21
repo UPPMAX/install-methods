@@ -40,7 +40,7 @@ function fixup()
         return;
     }
 
-    [[ $SETX]] && set -x
+    [[ $SETX ]] && set -x
 
     args=("$@")
     for arg in ${args[@]} ; do
@@ -55,7 +55,7 @@ function fixup()
         fi
     done
 
-    [[ $SETX]] && set +x
+    [[ $SETX ]] && set +x
 }
 
 fixup "$@"
