@@ -44,7 +44,7 @@ function fixup()
 
     args=("$@")
     for arg in ${args[@]} ; do
-        echo "Working on '$arg' ..."
+        echo "fixup: '$arg'"
         echo "    Changing group to $GROUP ..."
         chgrp -hR $GROUP "$arg"
         echo "    Changing permissions to $PERM ..."
