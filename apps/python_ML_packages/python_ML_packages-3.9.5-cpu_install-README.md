@@ -26,10 +26,19 @@ LOG
 
     cd $PREFIX
 
-    PYTHONUSERBASE=$PREFIX pip install scikit-learn seaborn theano TensorFlow Keras torch nlp  
-    PYTHONUSERBASE=$PREFIX pip install --upgrade /proj/staff/niharika/TensorFlow_lite/tensorflow/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3/dist/tflite_runtime-2.10.0-cp39-cp39-linux_x86_64.whl
+    PYTHONUSERBASE=$PREFIX pip install --user scikit-learn seaborn theano TensorFlow Keras torch nlp  
+    PYTHONUSERBASE=$PREFIX pip install --user --upgrade /proj/staff/niharika/TensorFlow_lite/tensorflow/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3/dist/tflite_runtime-2.10.0-cp39-cp39-linux_x86_64.whl
+
+    PYTHONUSERBASE=$PREFIX pip install --user protobuf==3.19.4 tensorflow_probability==0.13.0 tensorflow_datasets==3.2.1
 
 ## Diana's comments for future versions:
 ## We should install tensorflow-cpu instead, possibly using the wheel file below
 ## PYTHONUSERBASE=$PREFIX pip install --upgrade tensorflow-cpu /proj/staff/diana/TensorFlow/TensorFlow-2-via-pip/lib/python3.9/site-packages/wheels/tensorflow_cpu-2.10.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 ## Is tflite really needed? Seems to be relevant for mobile devices.
+
+
+You can produce the list of packages installed only within this module with
+
+    PYTHONUSERBASE=$PREFIX pip list --user
+
+Include this in the module help.

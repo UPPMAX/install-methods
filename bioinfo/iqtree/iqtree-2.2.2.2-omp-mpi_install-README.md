@@ -1,4 +1,4 @@
-iqtree/2.2.0-omp-mpi
+iqtree/2.2.2.2-omp-mpi
 ====================
 
 IQ-TREE, providing OMP, single-core and MPI versions
@@ -7,13 +7,19 @@ IQ-TREE, providing OMP, single-core and MPI versions
 
 <http://www.iqtree.org/doc/Compilation-Guide/>
 
-For the MPI versions, `gcc/9.3.0` and `openmpi/4.0.3` must be loaded.
+For the MPI executable, `gcc/9.3.0` and `openmpi/3.1.5` must be loaded.
 
 Used under license:
 GPL v2
 
+They have included OpenMP in every executable, so there is no longer a real
+single-thread or pure-MPI executable. We make symlinks.
+
+
 LOG
 ---
+
+We have to pull the git repository and checkout to the appropriate tag, since it uses submodules.
 
 The tree includes a copy of the zlib 1.2.7 tree.  We will instead load the zlib/1.2.12 module and use that.
 We will also use boost/1.70.0_gcc9.3.0 and boost/1.70.0_gcc9.3.0_mpi3.1.5.
@@ -24,12 +30,12 @@ We need to change a cmake default policy CMP0047 so that it uses `_ROOT` environ
 The tool has one version, the module has a different one with an `-omp-mpi`
 suffix, hence `TOOLVERSION` and `VERSION`.
 
-The `-mpi` executables don't record where to get the C++ libraries.  That is
+The `-mpi` executables don't record where to get the C++ and MPI libraries.  That is
 annoying, but we have the user load the correct gcc and openmpi modules if
 using them, which would be required anyway, so do nothing about them.
 
     TOOL=iqtree
-    TOOLVERSION=2.2.0
+    TOOLVERSION=2.2.2.2
     GCCVERSION=9.3.0
     MPIVERSION=3.1.5
     BOOSTVERSION=1.70.0_gcc${GCCVERSION}
@@ -45,17 +51,23 @@ using them, which would be required anyway, so do nothing about them.
 
     module purge
     module load uppmax
+    module load git/2.34.1
 
-    cd ${VERSIONDIR}
     mkdir -p $PREFIX/bin
 
     cd $SRCDIR
-    #     [[ -f v${TOOLVERSION}.tar.gz ]] || wget https://github.com/Cibiv/IQ-TREE/archive/v${TOOLVERSION}.tar.gz   # older version
-    [[ -f v${TOOLVERSION}.tar.gz ]] || wget https://github.com/iqtree/iqtree2/archive/refs/tags/v${TOOLVERSION}.tar.gz
 
-    rm -rf iqtree2-${TOOLVERSION}
-    tar xvf v${TOOLVERSION}.tar.gz 
-    cd iqtree2-${TOOLVERSION}
+    ### # Do not use tarball, instead git clone --recursive
+    ### #    [[ -f v${TOOLVERSION}.tar.gz ]] || wget https://github.com/Cibiv/IQ-TREE/archive/v${TOOLVERSION}.tar.gz   # older version
+    ### [[ -f v${TOOLVERSION}.tar.gz ]] || wget https://github.com/iqtree/iqtree2/archive/refs/tags/v${TOOLVERSION}.tar.gz
+    ### tar xf v${TOOLVERSION}.tar.gz 
+    ### cd iqtree2-${TOOLVERSION}
+
+    rm -rf iqtree2
+    git clone --recursive https://github.com/iqtree/iqtree2
+    cd iqtree2
+    git checkout v2.2.2.2
+
     module load cmake/3.22.2
     module load gcc/$GCCVERSION
     module load boost/$BOOSTVERSION
@@ -64,14 +76,12 @@ using them, which would be required anyway, so do nothing about them.
     module load patchelf
 
 
-    #
-    # Now, build from source, first the OMP version.  Executable is called iqtree2
-    #
+Now, build from source, first the OMP version.  Executable is called iqtree2
 
     mkdir build_omp
     cd build_omp/
     cmake -DCMAKE_POLICY_DEFAULT_CMP0074=NEW -DBoost_NO_BOOST_CMAKE=ON -DEIGEN3_INCLUDE_DIR=$EIGEN_ROOT/include -DIQTREE_FLAGS=omp ..
-    make
+    make -j 10
     patchelf --set-rpath "$ZLIB_ROOT/lib:/sw/comp/gcc/${GCCVERSION}_rackham/lib64" iqtree2
     cp -av iqtree2 $PREFIX/bin/iqtree2-omp
     cd ..
@@ -94,8 +104,8 @@ This is fixed in the 2.2.2.2 source tree by surrounding it with an ifdef gate <h
     cd build_mpi
     module load openmpi/$MPIVERSION
     module load boost/$BOOSTMPIVERSION
-    cmake -DCMAKE_POLICY_DEFAULT_CMP0074=NEW -DBoost_NO_BOOST_CMAKE=ON -DEIGEN3_INCLUDE_DIR=$EIGEN_ROOT/include -DIQTREE_FLAGS=mpi -DCMAKE_CXX_COMPILER:FILEPATH=$(which mpic++) -DCMAKE_CXX_FLAGS=-I$MPI_ROOT/include -DCMAKE_C_COMPILER:FILEPATH=$(which mpicc) -DCMAKE_C_FLAGS=-I$MPI_ROOT/include ..
-    make
+    cmake -DCMAKE_POLICY_DEFAULT_CMP0074=NEW -DBoost_NO_BOOST_CMAKE=ON -DEIGEN3_INCLUDE_DIR=$EIGEN_ROOT/include -DIQTREE_FLAGS=mpi -DCMAKE_CXX_COMPILER:FILEPATH=mpic++ -DCMAKE_C_COMPILER:FILEPATH=mpicc ..
+    make -j 10
     module load patchelf
     patchelf --set-rpath "$ZLIB_ROOT/lib:/sw/comp/gcc/${GCCVERSION}_rackham/lib64" iqtree2-mpi
     # this does not cover everything, since we still need commands from the openmpi module
@@ -110,5 +120,8 @@ Now, the OpenMPI-MPI hybrid version.  This is now the same as the mpi version, s
     popd
 
 
-The mf file from 2.0-rc2-omp-mpi is fine, with updates to the gcc and openmpi versions.
+Make sure that libraries can be found, *except for* the MPI library which is found for the MPI executable by loading the MPI module, which is required.
 
+    module purge
+    cd $PREFIX/bin
+    ldd *

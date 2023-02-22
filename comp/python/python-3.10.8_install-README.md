@@ -28,7 +28,7 @@ Neither PYTHONHOME nor LD_LIBRARY_PATH should be set:
   (see command below).
 
 * For `python` >= 3.10, OpenSSL 1.1 must be used during compilation.
-  You can pass our EB installation to `--with-openssl`` (se below).
+  You can pass our EB installation to `--with-openssl` (se below).
 
 Also NOTE: There are some customisations below following the makeroom process
 that matches what we have done for the python module.  This is simply legacy
@@ -37,7 +37,7 @@ stuff, that this python module is structured this way.
 
 LOG
 ---
-``` bash
+
     makeroom.sh -f -t python -v 3.10.8 -c comp -w https://python.org/ -l "PSF License Agreement"  -L https://docs.python.org/3/license.html -d "Python programming language plus a handful of widely used packages"
     ./makeroom_python_3.10.8.sh 
     source /sw/comp/python/SOURCEME_python_3.10.8 && cd $TOOLDIR
@@ -51,16 +51,16 @@ LOG
     module load gcc/12.2.0   
     SQLITE_LIBDIR=$(pkg-config sqlite3 --variable=libdir)
     ./configure --prefix=$PREFIX --enable-shared --enable-loadable-sqlite-extensions --enable-optimizations LDFLAGS="-Wl,-rpath=$PREFIX/lib,-rpath=$SQLITE_LIBDIR,-rpath=/sw/libs/wxWidgets/lib"
-   ./configure -C \
-     --prefix=$PREFIX \
-     --enable-shared \
-     --enable-loadable-sqlite-extensions \
-     --enable-optimizations LDFLAGS="-Wl,-rpath=$PREFIX/lib,-rpath=$SQLITE_LIBDIR,-rpath=/sw/libs/wxWidgets/lib" \
-     --with-openssl=/sw/EasyBuild/rackham/software/OpenSSL/1.1 \
-     --with-openssl-rpath=auto
+    ./configure -C \
+    --prefix=$PREFIX \
+    --enable-shared \
+    --enable-loadable-sqlite-extensions \
+    --enable-optimizations LDFLAGS="-Wl,-rpath=$PREFIX/lib,-rpath=$SQLITE_LIBDIR,-rpath=/sw/libs/wxWidgets/lib" \
+    --with-openssl=/sw/EasyBuild/rackham/software/OpenSSL/1.1 \
+    --with-openssl-rpath=auto
 
     make && make install
-```
+
 
 PREINSTALLED PACKAGES
 ---------------------
@@ -69,7 +69,8 @@ The load of ATLAS is required for numpy.  The install of `gitpython`,
 `python-graph-dot` and `graphviz` is for
 [EasyBuild](https://easybuild.readthedocs.io/en/latest/Installation.html#optional-python-packages),
 which seems to build with python2.
-``` bash
+
+
     VERSION=3.10.8
 
     module load ATLAS/3.10.3
@@ -112,22 +113,38 @@ which seems to build with python2.
     pip3 install cget
     pip3 install pyqt5
     pip3 install pytest
+    pip3 install lmfit
     pip3 install natsort
     pip3 install jupyterlab
     pip3 install sympy
     pip3 install poetry
     pip3 install black flake8 mypy
-```
+    pip3 install pyarrow
+    pip3 install fastparquet
+    pip3 install anndata
+
 
 
 Add a complete list of installed packages to the module help in the file for
 this version.  This list is produced with the script `piplist` located under
-`$TOOLDIR/mf`. Next, lock it down.
+`$TOOLDIR/mf`. 
+
+    cd $TOOLDIR/mf
+    piplist $VERSION
+
+Incorporate this list into the mf file for `$VERSION`.  Copy to the /sw/mf/common tree.
+
+Next, lock it down.
 
     chmod -R -w $PREFIX
 
+or better
 
-## non-3-suffixed names
+    fixup -P 555 $PREFIX
+
+
+Non-3-suffixed names
+--------------------
 
 For any of the python/3.* packages, we need to provide `python` and other names
 that point correctly to the python/3.* python.  Do *not* do this for the

@@ -1,4 +1,4 @@
-diamond/2.0.9
+diamond/2.1.0
 =============
 
 <https://github.com/bbuchfink/diamond>
@@ -6,13 +6,13 @@ diamond/2.0.9
 Used under license:
 GPL v3
 
-Structure creating script (makeroom_diamond_2.0.9.sh) moved to /sw/bioinfo/diamond/makeroom_2.0.9.sh
+Structure creating script (makeroom_diamond_2.1.0.sh) moved to /sw/bioinfo/diamond/makeroom_2.1.0.sh
 
 LOG
 ---
 
     TOOL=diamond
-    VERSION=2.0.9
+    VERSION=2.1.0
     cd /sw/bioinfo/$TOOL
     makeroom.sh -f -t "$TOOL" -v "$VERSION" -s "alignment" -w "https://github.com/bbuchfink/diamond" -l "GPL v3" -d "sequence aligner for protein and translated DNA searches\\, designed for high performance analysis of big sequence data"
     ./makeroom_diamond_${VERSION}.sh
@@ -27,8 +27,5 @@ Use precompiled 64-bit binaries, which already include blast database support.
     mkdir $PREFIX/bin
     cp -av diamond $PREFIX/bin
 
-Get local copy of the manual.
-
-    cd $PREFIX/..
-    wget https://github.com/bbuchfink/diamond/raw/master/diamond_manual.pdf
+The manual is the github wiki, now, at <https://github.com/bbuchfink/diamond/wiki>
 

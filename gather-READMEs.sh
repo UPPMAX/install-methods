@@ -69,6 +69,8 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
     find panther             -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find silva               -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find KGP                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find MMseqs2_data        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find alphafold_dataset   -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find dbSNP ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find chembl ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find piper_references ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY

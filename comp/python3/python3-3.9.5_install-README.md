@@ -101,6 +101,19 @@ which seems to build with python2.
     pip3 install cget
     pip3 install pyqt5
     pip3 install pytest
+    pip3 install lmfit
+    pip3 install natsort
+    pip3 install pyarrow
+    pip3 install fastparquet
+    pip3 install anndata
+    pip3 install jupyterlab
+    pip3 install sympy
+    pip3 install poetry
+    pip3 install black
+    pip3 install flake8
+    pip3 install mypy
+
+
 
 
 Add a complete list of installed packages to the module help in the file for this version.  This list is produced with
@@ -111,4 +124,10 @@ Add a complete list of installed packages to the module help in the file for thi
 Now lock it down.
 
     chmod -R -w $PREFIX
+
+or better
+
+    fixup -P 555 $PREFIX
+
+
 

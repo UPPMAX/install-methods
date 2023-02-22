@@ -37,7 +37,7 @@ stuff, that this python module is structured this way.
 
 LOG
 ---
-``` bash
+
     makeroom.sh -f -t python3 -v 3.10.8 -c comp -w https://python.org/ -l "PSF License Agreement"  -L https://docs.python.org/3/license.html -d "Python programming language plus a handful of widely used packages ; this module does not conflict with python/x.y.z modules"
     ./makeroom_python3_3.10.8.sh 
     source /sw/comp/python/SOURCEME_python3_3.10.8 && cd $TOOLDIR
@@ -51,16 +51,16 @@ LOG
     module load gcc/12.2.0   
     SQLITE_LIBDIR=$(pkg-config sqlite3 --variable=libdir)
     ./configure --prefix=$PREFIX --enable-shared --enable-loadable-sqlite-extensions --enable-optimizations LDFLAGS="-Wl,-rpath=$PREFIX/lib,-rpath=$SQLITE_LIBDIR,-rpath=/sw/libs/wxWidgets/lib"
-   ./configure -C \
-     --prefix=$PREFIX \
-     --enable-shared \
-     --enable-loadable-sqlite-extensions \
-     --enable-optimizations LDFLAGS="-Wl,-rpath=$PREFIX/lib,-rpath=$SQLITE_LIBDIR,-rpath=/sw/libs/wxWidgets/lib" \
-     --with-openssl=/sw/EasyBuild/rackham/software/OpenSSL/1.1 \
-     --with-openssl-rpath=auto
+    ./configure -C \
+    --prefix=$PREFIX \
+    --enable-shared \
+    --enable-loadable-sqlite-extensions \
+    --enable-optimizations LDFLAGS="-Wl,-rpath=$PREFIX/lib,-rpath=$SQLITE_LIBDIR,-rpath=/sw/libs/wxWidgets/lib" \
+    --with-openssl=/sw/EasyBuild/rackham/software/OpenSSL/1.1 \
+    --with-openssl-rpath=auto
 
     make && make install
-```
+
 
 PREINSTALLED PACKAGES
 ---------------------
@@ -69,7 +69,7 @@ The load of ATLAS is required for numpy.  The install of `gitpython`,
 `python-graph-dot` and `graphviz` is for
 [EasyBuild](https://easybuild.readthedocs.io/en/latest/Installation.html#optional-python-packages),
 which seems to build with python2.
-``` bash
+
     VERSION=3.10.8
 
     module load ATLAS/3.10.3
@@ -112,12 +112,17 @@ which seems to build with python2.
     pip3 install cget
     pip3 install pyqt5
     pip3 install pytest
+    pip3 install lmfit
     pip3 install natsort
     pip3 install jupyterlab
     pip3 install sympy
     pip3 install poetry
-    pip3 install black flake8 mypy
-```
+    pip3 install black
+    pip3 install flake8
+    pip3 install mypy
+    pip3 install pyarrow
+    pip3 install fastparquet
+    pip3 install anndata
 
 
 The `pip` must be removed from from `$PREFIX/bin/` or it will override `pip`

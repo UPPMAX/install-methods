@@ -42,10 +42,10 @@ checkdbs=yes
 # summary files. This creates a .acc file for each chunk of each .pal database
 prepdbs=yes
 
-module load gnuparallel
+module load gnuparallel/20180822
 module load bioinfo-tools
 module load blast/2.12.0+
-module load diamond/2.0.14
+module load diamond/2.1.0
 
 # the databases fetched from NCBI's mirror, must match that in update_blastdb.sh
 # these are individually checked by blastdbcheck after installation

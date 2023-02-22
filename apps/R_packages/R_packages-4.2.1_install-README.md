@@ -1,10 +1,12 @@
 R_packages/4.2.1
 ================
 
+To be added:
 
-* add leidenbase https://github.com/cole-trapnell-lab/leidenbase
+* leidenbase https://github.com/cole-trapnell-lab/leidenbase
 * ggnet devtools::install_github("briatte/ggnet")
 * ampvis2 remotes::install_github("kasperskytte/ampvis2")
+* STAAR devtools::install_github("xihaoli/STAAR")
 
 
 Used under license:
@@ -31,6 +33,20 @@ break the numbers out into CRAN and BioConductor-specific with no CRAN overlap.
 
 See the note in the install for R_packages/3.5.0 for `R_MAX_NUM_DLLS`.
 
+The packages loaded for R/4.2.1 are
+
+    gcc/10.3.0
+    java/OpenJDK_11.0.2  <- this is a switch from earlier, testing to see if it is ok
+    cairo/1.17.4
+    texinfo/6.8
+    texlive/2022-09-18
+    libcurl/7.85.0
+    readline/6.2-11
+    libicu/5.2-4
+    xz/5.2.6
+    bzip2/1.0.8
+    zlib/1.2.12
+
 
 Packages not picked up in the automated install
 -----------------------------------------------
@@ -51,28 +67,29 @@ Then do the installation, however it's needed.  See 'Adding a new package' below
 
 Updates for other packages to use gcc/10.3.0 or other updates. check each
 
-- GEOS/3.9.1-gcc9.3.0
-- openbabel/3.1.1-gcc9.3.0
+x zlib/1.2.12
+x GEOS/3.11.0-gcc10.3.0
+x openbabel/3.1.1-gcc10.3.0
+x hdf9/1.10.9
+x protobuf/21.12-gcc10.3.0
+x Eigen/3.3.4
+x Tcl-Tk/8.6.11
+x gsl/2.7
+x Poppler/0.75.0
+x rust/1.67.0
+x git/2.34.1
+x cyrus-sasl/2.1.28
+x libwebp/1.3.0
+x FFmpeg/5.1.2
+x jq/1.6
 
-- zlib/1.2.12
-- hdf5/1.10.5
+
 - netcdf/4.7.1
-- protobuf/3.15.5-gcc9.3.0
-- Eigen/3.3.4
-- cyrus-sasl/2.1.27
-- FFmpeg/4.4
-- jq/1.6
-- Tcl-Tk/8.6.11
-- Poppler/0.75.0
+
 - JAGS/4.3.0
-- gsl/2.6
-x libcurl/7.48.0
-- libwebp/1.2.0
 - glpk/4.65
 - COIN-OR-OptimizationSuite/1.8.0
 - libSBML/5.19.0
-- rust/1.43.1
-- git/2.28.0
 
 
 
@@ -102,46 +119,64 @@ Place these in `$VERSIONDIR/source-for-setup` for future use.
     module load GEOS/3.11.0-gcc10.3.0
     module load UDUNITS/2.2.26
     module load gsl/2.7
-    module load openbabel/3.1.1-gcc9.3.0   # I'm sure version for slightly older gcc is still OK
+    module load openbabel/3.1.1-gcc10.3.0
+    module load protobuf/21.12-gcc10.3.0
+    module load jq/1.6
+    module load FFmpeg/5.1.2
+    module load Tcl-Tk/8.6.11
+    module load cyrus-sasl/2.1.28
+    module load libwebp/1.3.0
+    module load rust/1.67.1
+    module load git/2.34.1
+    module load hdf5/1.10.9
+    module load Eigen/3.3.4
+    module load Poppler/0.75.0
 
 
 Working on this currently
+x zlib/1.2.12
+x GEOS/3.11.0-gcc10.3.0
+x openbabel/3.1.1-gcc10.3.0
+x hdf9/1.10.9
+x protobuf/21.12-gcc10.3.0
+x Eigen/3.3.4
+x Tcl-Tk/8.6.11
+x gsl/2.7
+x Poppler/0.75.0
+x rust/1.67.0
+x git/2.34.1
+x cyrus-sasl/2.1.28
+x libwebp/1.3.0
+x FFmpeg/5.1.2
+x jq/1.6
+x hdf9/1.10.5
+x PROJ/9.1.1
 
-    module load protobuf/3.15.5-gcc9.3.0
+
+
 
     module load GDAL/3.1.0
-    module load PROJ/6.3.2
-    module load hdf5/1.10.5
     module load netcdf/4.7.1
-    module load Eigen/3.3.4
-    module load cyrus-sasl/2.1.27
-    module load FFmpeg/4.4
-    module load jq/1.6
-    module load Tcl-Tk/8.6.11
-    module load Poppler/0.75.0
     module load JAGS/4.3.0
-    module load libwebp/1.2.0
     module load glpk/4.65
     module load COIN-OR-OptimizationSuite/1.8.0
     module load libSBML/5.19.0
-    module load rust/1.43.1
-    module load git/2.28.0
     export DOWNLOAD_STATIC_LIBV8=1
     echo -e "\nThis should have been set to the appropriate directory in this module, is it?\n\nR_LIBS_USER = $R_LIBS_USER\n"
 
 Several other modules will also be loaded when R/4.2.1 is loaded:
 
     gcc/10.3.0
-    java/sun_jdk1.8.0_151
+    java/OpenJDK_11.0.2
+    xz/5.2.6
+    bzip2/1.0.8
+    zlib/1.2.12
     cairo/1.17.4
     texinfo/6.8
     texlive/2022-09-18
     libcurl/7.85.0
     readline/6.2-11
     libicu/5.2-4
-    xz/5.2.6
-    bzip2/1.0.8
-    zlib/1.2.12
 
 The build tools modules are required for some more recent configure scripts
 within R packages.  MariaDB (*this 10.1.x version*, not 10.2.x) is required for
@@ -638,7 +673,7 @@ at least since R_packages/4.0.0. Build with newer toolchain here.  This needs
 
 Outside R, load the boost module compatible with the version of gcc used to build R:
 
-    module load boost/1.80.0-gcc10.3.0
+    module load boost/1.81.0-gcc10.3.0
 
 Then inside R:
 
