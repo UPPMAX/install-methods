@@ -137,6 +137,13 @@ for root, dirs, files in walklevel("/sw/", 3):
                         print("Error reading" + yamlstream)
                         print(exc)
 #It is currently looking in both live and DRAFT files so some keywords are doubled.
+
+#Look through the keywords from Lmod and see if they are already in 'pairs'
+#
+#
+#
+
+
 for pair in pairs:
     key = pair[0]
     keyword = pair[1]

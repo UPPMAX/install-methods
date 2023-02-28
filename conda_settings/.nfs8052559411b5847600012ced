@@ -37,8 +37,6 @@ conda-mirror --upstream-channel qiime2 --target-directory /sw/apps/conda/latest/
 conda-mirror --upstream-channel biocore --target-directory /sw/apps/conda/latest/rackham/local_repo/biocore --platform noarch -v 2>&1 | tee -a $LOGFILE
 conda-mirror --upstream-channel dranew --target-directory /sw/apps/conda/latest/rackham/local_repo/dranew --platform noarch -v 2>&1 | tee -a $LOGFILE
 conda-mirror --upstream-channel r2018.11 --target-directory /sw/apps/conda/latest/rackham/local_repo/r2018.11 --platform noarch -v 2>&1 | tee -a $LOGFILE
-conda-mirror --upstream-channel nvidia --target-directory /sw/apps/conda/latest/rackham/local_repo/nvidia --platform noarch -v 2>&1 | tee -a $LOGFILE
-conda-mirror --upstream-channel pytorch --target-directory /sw/apps/conda/latest/rackham/local_repo/pytorch --platform noarch -v 2>&1 | tee -a $LOGFILE
 echo "INDEXING CONDA" >> $LOGFILE
 cd /sw/apps/conda/latest/rackham/local_repo
 conda-index --channel-name CONDA_UPPMAX --verbose */ 2>&1 | tee -a $LOGFILE
