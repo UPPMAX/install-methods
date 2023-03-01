@@ -56,9 +56,6 @@ USERPERMISSIONS="-R u+rwX,g+rwX,o+rX-w"
 MAKEROOM_PATH=$BASH_SOURCE
 UPPMAX_TOOL_PATH=$(readlink -f $BASH_SOURCE)
 UPPMAX_ROOT=${UPPMAX_TOOL_PATH%%makeroom.sh}
-TOOL_ROOT=${TOOL^^}_ROOT
-################## Formatting TOOL_ROOT ############
-TOOL_ROOT=${TOOL_ROOT//[-.]/_}
 
 [[ $# -eq 0 ]] && echo "$USAGE" >&2 && exit 1
 
@@ -161,6 +158,10 @@ do
     esac
 done
 shift $((OPTIND-1))
+
+TOOL_ROOT=${TOOL^^}_ROOT
+################## Formatting TOOL_ROOT ############
+TOOL_ROOT=${TOOL_ROOT//[-.]/_}
 
 ############### Module file name set #####################
 if [ -z "$MODULENAME" ] ; then
