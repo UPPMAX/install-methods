@@ -7,6 +7,7 @@ To be added:
 * ggnet devtools::install_github("briatte/ggnet")
 * ampvis2 remotes::install_github("kasperskytte/ampvis2")
 * STAAR devtools::install_github("xihaoli/STAAR")
+* SCOPfunctions  devtools::install_github("RoseString/SCOPfunctions")   https://support.naiss.se/Ticket/Display.html?id=271596
 
 
 Used under license:
