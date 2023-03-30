@@ -42,7 +42,8 @@ conda-mirror --upstream-channel pytorch --target-directory /sw/apps/conda/latest
 echo "INDEXING CONDA" >> $LOGFILE
 cd /sw/apps/conda/latest/rackham/local_repo
 conda-index --channel-name CONDA_UPPMAX --verbose */ 2>&1 | tee -a $LOGFILE
-conda clean -a -y
+conda clean -a -c -y
 
 module unload conda
+find /scratch/ -user jonass -exec rm -fr {} \;
 echo "FINISHED" >> $LOGFILE
