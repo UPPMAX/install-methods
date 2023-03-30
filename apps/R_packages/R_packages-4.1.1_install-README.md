@@ -774,8 +774,23 @@ So, reinstalled BiocManager and did the install() method, do not update any othe
 When it asks, update 'n' **None**.
 
 
-Adding a new package
---------------------
+cytoMerge
+---------
+
+2023-03-06
+
+A github package.
+
+    devtools::install_github("ebecht/cytoMerge", ref='master', dependencies=TRUE)
+
+
+
+
+
+
+
+Adding a new package available on CRAN or BioConductor
+------------------------------------------------------
 
 Srouce `$VERSIONDIR/source-for-setup`.  Load R, then for both CRAN and
 BioConductor packages, we use `BiocManager::install()` which ultimately uses

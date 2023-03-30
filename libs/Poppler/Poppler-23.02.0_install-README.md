@@ -21,6 +21,14 @@ semicolons replacing colons, this is how cmake needs the directories to be
 specified.
 
 
+Preserve the source directory and cmake build/ directory!!
+-------------------------------
+
+We need to keep the src/ tree unpacked, as the mf file adds paths to internal Poppler header files. This is needed for building GDAL/3.6.2 and perhaps others.
+We also need to keep the cmake build/ directory, as internal files refer to files there.
+The mf file lays out the specific directory references required.
+
+
 LOG
 ---
 

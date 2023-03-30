@@ -57,6 +57,7 @@ LOG
 
     DOWNLOAD_DIR=/sw/data/alphafold_dataset/20210922_132333
     
-    scripts/download_all_data.sh DOWNLOAD_DIR 
+    scripts/download_all_data.sh $DOWNLOAD_DIR 
+    scripts/download_small_bfd.sh $DOWNLOAD_DIR
 
-    ln -s /sw/data/alphafold_dataset/20210922_132333 $PREFIX
+    #ln -s /sw/data/alphafold_dataset/20210922_132333 $PREFIX

@@ -38,7 +38,7 @@ LOG
 # Install and answer yes to the questions. Also accept the local database install.
     perl INSTALL.pl -d $PREFIX -t -c $CACHEDIR
 
-# Many questions is asked during the install. Say yes to all. 
+# Many questions are asked during the install. Say yes to all. 
 # After downloading the local cache files the error "ERROR: For technical reasons this installer is unable to install GRCh37 caches alongside others; please install them separate" appears. 
 # The installer downloads the 3 homo_sapiens GRCh37 and it seems OK. I will continue. 
 
@@ -56,6 +56,9 @@ LOG
 # Test with
     cd $SRCDIR/ensembl-vep
     vep -i examples/homo_sapiens_GRCh38.vcf --cache --dir $VEP_CACHE --force_overwrite  --assembly GRCh38
+
+
+
 
 
 

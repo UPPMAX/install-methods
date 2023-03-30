@@ -5,8 +5,8 @@ ROOT=/sw/data/diamond_databases
 cd $ROOT
 
 module load bioinfo-tools
-module load diamond/2.1.0
-module load blast/2.12.0+
+module load diamond/2.1.1
+module load blast/2.13.0+
 module load gnuparallel/20180822
 module load perl/5.26.2
 module load perl_modules/5.26.2  # provides xml_grep

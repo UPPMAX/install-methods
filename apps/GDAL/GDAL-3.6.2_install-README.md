@@ -36,7 +36,7 @@ They only support cmake for builds, since 3.6.0.
     module load zlib/1.2.12
     module load libcurl/7.85.0
     module load PROJ/9.1.1
-    module load Poppler/0.75.0
+    module load Poppler/23.02.0
     module load FYBA/4.1.1
     module load sqlite/3.34.0
     module load JasPer/4.0.0
@@ -70,6 +70,21 @@ This cannot build with shapelib support: I tried  `-DGDAL_USE_SHAPELIB=ON -DShap
       Objects of target "shapelib" referenced but no such target exists.
 
 I tried renaming the target in that file to libshp, shp, and so on. Don't know cmake well enough to fix it.
+
+Another problem is that it needs Poppler-internal header files, found only within the Poppler source tree at /sw/libs/Poppler/23.02.0/src/poppler-23.02.0/poppler/. Files like Object.h, Stream.h and so on.
+How to specify this and not short-circuit the automatic detection? Does it need the installed header files or only these source-tree header files?
+I suppose I could include these directories in CPATH and CPLUS_INCLUDE_PATH of the Poppler module?
+
+    prepend-path   CPATH                  $modroot/../src/poppler-$version/build/poppler
+    prepend-path   CPATH                  $modroot/../src/poppler-$version/build
+    prepend-path   CPATH                  $modroot/../src/poppler-$version/poppler
+    prepend-path   CPATH                  $modroot/../src/poppler-$version
+    prepend-path   CPLUS_INCLUDE_PATH     $modroot/../src/poppler-$version/build/poppler
+    prepend-path   CPLUS_INCLUDE_PATH     $modroot/../src/poppler-$version/build
+    prepend-path   CPLUS_INCLUDE_PATH     $modroot/../src/poppler-$version/poppler
+    prepend-path   CPLUS_INCLUDE_PATH     $modroot/../src/poppler-$version
+
+That seems simplest.
 
 
     make -j 8
