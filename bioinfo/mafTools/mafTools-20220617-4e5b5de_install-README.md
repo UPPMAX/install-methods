@@ -27,12 +27,15 @@ package installed for the system python2.7.
     git clone https://github.com/benedictpaten/sonLib/
     git clone https://github.com/dentearl/mafTools/
     cd sonLib/
+    git reset --hard 5cbc1583797e567900b53ccd50f0b8e72b973d44
     make && make test
     cd ..
     cd pinchesAndCacti/
+    git reset --hard 85b67f3795d55b5e0f812a9a4d0c82a49243c607
     make && make test
     cd ..
     cd mafTools/
+    git reset --hard 4e5b5de
     make 
     make 
 
