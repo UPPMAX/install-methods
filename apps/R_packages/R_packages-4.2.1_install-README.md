@@ -8,6 +8,10 @@ To be added:
 * ampvis2 remotes::install_github("kasperskytte/ampvis2")
 * STAAR devtools::install_github("xihaoli/STAAR")
 * SCOPfunctions  devtools::install_github("RoseString/SCOPfunctions")   https://support.naiss.se/Ticket/Display.html?id=271596
+* be sure OlinkAnalyze (now in CRAN) is in the module
+* adjustedCurves  same
+* TcellExTRECT devtools::install_github("McGranahanLab/TcellExTRECT")  #273088
+* devtools::install_github("ducciorocchini/cblindplot")
 
 
 Used under license:
@@ -34,20 +38,6 @@ break the numbers out into CRAN and BioConductor-specific with no CRAN overlap.
 
 See the note in the install for R_packages/3.5.0 for `R_MAX_NUM_DLLS`.
 
-The packages loaded for R/4.2.1 are
-
-    gcc/10.3.0
-    java/OpenJDK_11.0.2  <- this is a switch from earlier, testing to see if it is ok
-    cairo/1.17.4
-    texinfo/6.8
-    texlive/2022-09-18
-    libcurl/7.85.0
-    readline/6.2-11
-    libicu/5.2-4
-    xz/5.2.6
-    bzip2/1.0.8
-    zlib/1.2.12
-
 
 Packages not picked up in the automated install
 -----------------------------------------------
@@ -65,32 +55,6 @@ First, do
 
 Then do the installation, however it's needed.  See 'Adding a new package' below.
 
-
-Updates for other packages to use gcc/10.3.0 or other updates. check each
-
-x zlib/1.2.12
-x GEOS/3.11.0-gcc10.3.0
-x openbabel/3.1.1-gcc10.3.0
-x hdf9/1.10.9
-x protobuf/21.12-gcc10.3.0
-x Eigen/3.3.4
-x Tcl-Tk/8.6.11
-x gsl/2.7
-x Poppler/0.75.0
-x rust/1.67.0
-x git/2.34.1
-x cyrus-sasl/2.1.28
-x libwebp/1.3.0
-x FFmpeg/5.1.2
-x jq/1.6
-
-
-- netcdf/4.7.1
-
-- JAGS/4.3.0
-- glpk/4.65
-- COIN-OR-OptimizationSuite/1.8.0
-- libSBML/5.19.0
 
 
 
@@ -110,62 +74,14 @@ Place these in `$VERSIONDIR/source-for-setup` for future use.
 
     source /sw/apps/R_packages/SOURCEME_R_packages_4.2.1 && cd $VERSIONDIR
     export R_LIBS_USER=$PREFIX
+
     module load R/$VERSION
-    module load autoconf/2.69
-    module load automake/1.16.1
-    module load cmake/3.22.2
-    module load m4/1.4.17
-    module load MariaDB/10.1.29
-    module load PostgreSQL/10.3
-    module load GEOS/3.11.0-gcc10.3.0
-    module load UDUNITS/2.2.26
-    module load gsl/2.7
-    module load openbabel/3.1.1-gcc10.3.0
-    module load protobuf/21.12-gcc10.3.0
-    module load jq/1.6
-    module load FFmpeg/5.1.2
-    module load Tcl-Tk/8.6.11
-    module load cyrus-sasl/2.1.28
-    module load libwebp/1.3.0
-    module load rust/1.67.1
-    module load git/2.34.1
-    module load hdf5/1.10.9
-    module load Eigen/3.3.4
-    module load Poppler/0.75.0
 
-
-Working on this currently
-x zlib/1.2.12
-x GEOS/3.11.0-gcc10.3.0
-x openbabel/3.1.1-gcc10.3.0
-x hdf9/1.10.9
-x protobuf/21.12-gcc10.3.0
-x Eigen/3.3.4
-x Tcl-Tk/8.6.11
-x gsl/2.7
-x Poppler/0.75.0
-x rust/1.67.0
-x git/2.34.1
-x cyrus-sasl/2.1.28
-x libwebp/1.3.0
-x FFmpeg/5.1.2
-x jq/1.6
-x hdf9/1.10.5
-x PROJ/9.1.1
-
-
-
-
-    module load GDAL/3.1.0
-    module load netcdf/4.7.1
-    module load JAGS/4.3.0
-    module load glpk/4.65
-    module load COIN-OR-OptimizationSuite/1.8.0
-    module load libSBML/5.19.0
-    export DOWNLOAD_STATIC_LIBV8=1
-    echo -e "\nThis should have been set to the appropriate directory in this module, is it?\n\nR_LIBS_USER = $R_LIBS_USER\n"
-
-Several other modules will also be loaded when R/4.2.1 is loaded:
+Several modules will be loaded as prereqs when R/4.2.1 is loaded.  Do **NOT**
+load these with the modules below, let them come in when loading R/4.2.1. Pay
+attention if there are any version incompatibilities when loading the additional
+modules liated after the build (autoconf, automake, cmake, m4) modules and
+correct them.
 
     gcc/10.3.0
     java/OpenJDK_11.0.2
@@ -178,6 +94,48 @@ Several other modules will also be loaded when R/4.2.1 is loaded:
     libcurl/7.85.0
     readline/6.2-11
     libicu/5.2-4
+
+Load build systems.
+
+    module load autoconf/2.69
+    module load automake/1.16.1
+    module load cmake/3.22.2
+    module load m4/1.4.17
+
+Load other prereqs for building the package tree.
+
+    module load COIN-OR-OptimizationSuite/1.8.0
+    module load cyrus-sasl/2.1.28
+    module load Eigen/3.3.4
+    module load FFmpeg/5.1.2
+    module load GDAL/3.6.2
+    module load GEOS/3.11.0-gcc10.3.0
+    module load git/2.34.1
+    module load glpk/5.0
+    module load gsl/2.7
+    module load hdf5/1.14.0
+    module load JAGS/4.3.1
+    module load jq/1.6
+    module load libSBML/5.20.0
+    module load libwebp/1.3.0
+    module load MariaDB/10.1.29
+    module load netcdf/4.9.2
+    module load openbabel/3.1.1-gcc10.3.0
+    module load Poppler/23.02.0
+    module load PostgreSQL/10.3
+    module load PROJ/9.1.1
+    module load protobuf/21.12-gcc10.3.0
+    module load rust/1.67.0
+    module load SHAPELIB/1.5.0-20220210-8edf888
+    module load Tcl-Tk/8.6.11
+    module load UDUNITS/2.2.26
+
+
+Final setup.
+
+    export DOWNLOAD_STATIC_LIBV8=1
+    echo -e "\nThis should have been set to the appropriate directory in this module, is it?\n\nR_LIBS_USER = $R_LIBS_USER\n"
+
 
 The build tools modules are required for some more recent configure scripts
 within R packages.  MariaDB (*this 10.1.x version*, not 10.2.x) is required for

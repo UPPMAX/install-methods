@@ -74,7 +74,7 @@ conda install -c bioconda \
     git clone https://gitlab.liu.se/xuagu37/berzelius-alphafold-guide.git
     cd berzelius-alphafold-guide
 
-    cp $SRCDIR/berzelius-alphafold-guide/run_alphafold.sh $PREFIX/alphafold-2.3.1/
+    ln -s $SRCDIR/berzelius-alphafold-guide/run_alphafold.sh $PREFIX/alphafold-2.3.1/
     chmod 775 run_alphafold.sh
 
 

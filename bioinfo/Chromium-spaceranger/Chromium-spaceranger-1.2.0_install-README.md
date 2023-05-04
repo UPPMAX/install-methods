@@ -1,5 +1,5 @@
 Chromium-spaceranger/1.2.0
-========================
+==========================
 
 <https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/what-is-space-ranger>
 
@@ -55,26 +55,3 @@ Rename module and and install mf files
     all_mflink -f $MODULENAME ${VERSION}
 
 
-Chromium-spaceranger/1.2.0
-========================
-
-<https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/what-is-space-ranger>
-
-Used under license:
-
-<>
-
-Structure creating script (makeroom_Chromium-spaceranger_1.2.0.sh) moved to /sw/bioinfo/Chromium-spaceranger/makeroom_1.2.0.sh
-
-LOG
----
-
-    TOOL=Chromium-spaceranger
-    VERSION=1.2.0
-    CLUSTER=rackham
-    TOOLDIR=/sw/bioinfo/$TOOL
-    VERSIONDIR=/sw/bioinfo/$TOOL/$VERSION
-    PREFIX=/sw/bioinfo/$TOOL/$VERSION/$CLUSTER
-    SRCDIR=/sw/bioinfo/Chromium-spaceranger/1.2.0/src
-    /home/douglas/bin/makeroom.sh -f" -t "Chromium-spaceranger" -m "spaceranger" -v "1.2.0" -w "https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/what-is-space-ranger" -c "bioinfo" -s "misc" -d "set of analysis pipelines that process Visium spatial RNA-seq output and brightfield microscope images in order to detect tissue\, align reads\, generate feature-spot matrices\, perform clustering and gene expression analysis\, and place spots in spatial context on the slide image"
-    ./makeroom_Chromium-spaceranger_1.2.0.sh

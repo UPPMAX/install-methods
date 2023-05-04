@@ -28,36 +28,43 @@ They only support cmake for builds, since 3.6.0.
 
     module load cmake/3.22.2
     module load gcc/10.3.0
-    module load python/3.9.5
-    module load hdf5/1.10.9
-    module load swig/3.0.12
     module load java/OpenJDK_11.0.2
+    module load python/3.9.5
+    module load swig/3.0.12
+
+    module load sqlite/3.34.0
+    module load hdf5/1.14.0
+    module load netcdf/4.9.2
+
     module load xz/5.2.6
     module load zlib/1.2.12
+    module load zstd/1.5.2
     module load libcurl/7.85.0
+
+    module load Armadillo/9.700.2
     module load PROJ/9.1.1
     module load Poppler/23.02.0
     module load FYBA/4.1.1
-    module load sqlite/3.34.0
-    module load JasPer/4.0.0
     module load OpenJPEG/2.5.0
     module load libtiff/4.5.0
     module load libgeotiff/1.7.1
+    module load libwebp/1.3.0
     module load giflib/5.1.4
     module load PROJ/9.1.1
     module load GEOS/3.11.0-gcc10.3.0
     module load Qhull/2020.2
-    module load libwebp/1.3.0
-    module load zstd/1.5.2
     module load cairo/1.17.4
     module load giflib/5.1.4
+    module load freetype/2.12.1
 
 Continuing:
 
     mkdir build
     cd build
 
-    cmake ..  -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_POLICY_DEFAULT_CMP0074=NEW -DTIFF_INCLUDE_DIR=$LIBTIFF_ROOT/include -DTIFF_LIBRARY_RELEASE:FILEPATH=$LIBTIFF_ROOT/lib/libtiff.so
+SQLite3 needs help, as it finds include files from the system but the library from the module.  Tried definining SQLITE3_ROOT, we'll see if that helps.
+
+    cmake ..  -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_POLICY_DEFAULT_CMP0074=NEW -DTIFF_INCLUDE_DIR=$LIBTIFF_ROOT/include -DTIFF_LIBRARY_RELEASE:FILEPATH=$LIBTIFF_ROOT/lib/libtiff.so -DWEBP_INCLUDE_DIR:PATH=$LIBWEBP_ROOT/include -DWEBP_LIBRARY:FILEPATH=$LIBWEBP_ROOT/lib/libwebp.so -DSQLite3_INCLUDE_DIR:PATH=$SQLITE_ROOT/include -DSQLITE3EXT_INCLUDE_DIR:PATH=$SQLITE_ROOT/include -DSQLite3_LIBRARY:FILEPATH=$SQLITE_ROOT/lib/libsqlite3.so -DLIBLZMA_INCLUDE_DIR:PATH=$LIBLZMA_ROOT/include -DLIBLZMA_LIBRARY_RELEASE:FILEPATH=$LIBLZMA_ROOT/lib/liblzma.so -DGEOTIFF_INCLUDE_DIR:PATH=$LIBGEOTIFF_ROOT/include -DGEOTIFF_LIBRARY:FILEPATH=$LIBGEOTIFF_ROOT/lib/libgeotiff.so -DARMADILLO_INCLUDE_DIR:PATH=$ARMADILLO_ROOT/include -DARMADILLO_LIBRARY:FILEPATH=$ARMADILLO_ROOT/lib/libarmadillo.so -DOPENJPEG_INCLUDE_DIR:PATH=$OPENJPEG_ROOT/include -DOPENJPEG_INCLUDE_DIR:FILEPATH=$OPENJPEG_ROOT/lib/libopenjp2.so
 
 This cannot build with shapelib support: I tried  `-DGDAL_USE_SHAPELIB=ON -DShapelib_INCLUDE_DIR=$SHAPELIB_ROOT/include -DShapelib_LIBRARY:FILEPATH=$SHAPELIB_ROOT/lib/libshp.so` and ended up with
 
@@ -87,12 +94,32 @@ I suppose I could include these directories in CPATH and CPLUS_INCLUDE_PATH of t
 That seems simplest.
 
 
-    make -j 8
+    make
+    make test
     make install
 
+### Combine lib and lib64 directories
 
+Combine `$PREFIX/lib`, which contains `python3.9/`, and `$PREFIX/lib64`.
 
+    cd $PREFIX
+    mv lib/python3.9 lib64/
+    rmdir lib
+    ln -s lib64 lib
 
+There is no RPATH set for the library, so set it.  Use the current value of `LD_RUN_PATH`.
+
+    cd $PREFIX/lib/
+    [[ -e libgdal.so ]] || { echo 'lib directories not combined!!!'; exit 1; }
+    ml patchelf/0.10
+    patchelf --set-rpath $LD_RUN_PATH libgdal.so
+
+Check RPATH for the executables.
+
+    cd $PREFIX/bin
+    for F in $(file * | grep 'ELF 64-bit LSB executable' | cut -f1 -d:) ; do echo $F; patchelf --print-rpath $F; done
+
+No RPATH set. What do they load?
 
 
 I can see it tests for avx2, so need to build separate on snowy?
