@@ -1,5 +1,5 @@
 Pfam/35.0
-========================
+=========
 
 <http://pfam.xfam.org/>
 
@@ -54,19 +54,3 @@ Update groups and permissions.
     cd ..
     fixup $VERSION
 
-Pfam/35.0
-========================
-
-<http://pfam.xfam.org/>
-
-Used under license:
-CC0
-<https://creativecommons.org/publicdomain/zero/1.0/>
-
-Structure creating script (makeroom_Pfam_35.0.sh) moved to /sw/data/Pfam/makeroom_35.0.sh
-
-LOG
----
-
-    /home/douglas/bin/makeroom.sh "-t" "Pfam" "-v" "35.0" "-c" "data" "-w" "http://pfam.xfam.org/" "-l" "CC0" "-L" "https://creativecommons.org/publicdomain/zero/1.0/" "-d" "a large collection of protein families, each represented by multiple sequence alignments and hidden Markov models (HMMs)"
-    ./makeroom_Pfam_35.0.sh

@@ -1,28 +1,28 @@
 #!/bin/bash
 
-##SBATCH -A staff
-##SBATCH -J KrakenUniq_data-update-custom-db.sh
-##SBATCH -M snowy
-##SBATCH -p node
-##SBATCH -n 80
-##SBATCH -C veryfat
-##SBATCH -t 10-00:00:00
-###SBATCH --qos=uppmax_staff_4nodes
-##SBATCH --mail-user douglas.scofield@uppmax.uu.se
-##SBATCH --mail-type=ALL
-##SBATCH -o /sw/data/KrakenUniq_data/slurm-snowy-veryfat-%j.out
-
 #SBATCH -A staff
-#SBATCH -J KrakenUniq_data-update-custom-db.sh
-#SBATCH -M rackham
-#SBATCH -p node
-#SBATCH -n 20
-#SBATCH -C mem1TB
+#SBATCH -J KrakenUniq_data-update-custom-db_veryfat.sh
+#SBATCH -M snowy
+#SBATCH -p veryfat
+#SBATCH -n 80
+#SBATCH -C veryfat
 #SBATCH -t 10-00:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL
-#SBATCH -o /sw/data/KrakenUniq_data/slurm-rackham-mem1TB-%j.out
+#SBATCH -o /sw/data/KrakenUniq_data/slurm-snowy-veryfat-%j.out
+
+##SBATCH -A staff
+##SBATCH -J KrakenUniq_data-update-custom-db.sh
+##SBATCH -M rackham
+##SBATCH -p node
+##SBATCH -n 20
+##SBATCH -C mem1TB
+##SBATCH -t 10-00:00:00
+###SBATCH --qos=uppmax_staff_4nodes
+##SBATCH --mail-user douglas.scofield@uppmax.uu.se
+##SBATCH --mail-type=ALL
+##SBATCH -o /sw/data/KrakenUniq_data/slurm-rackham-mem1TB-%j.out
 
 echo
 echo "Script running: $0"

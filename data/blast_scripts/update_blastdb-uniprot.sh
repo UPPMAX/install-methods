@@ -3,7 +3,7 @@
 # See README-uniprot.md
 
 module load bioinfo-tools
-module load blast/2.11.0+
+module load blast/2.13.0+
 module load perl_modules/5.26.2
 
 staging_dir='/sw/data/blast_tmp'

@@ -95,6 +95,7 @@ correct them.
     readline/6.2-11
     libicu/5.2-4
 
+
 Load build systems.
 
     module load autoconf/2.69
@@ -129,6 +130,8 @@ Load other prereqs for building the package tree.
     module load SHAPELIB/1.5.0-20220210-8edf888
     module load Tcl-Tk/8.6.11
     module load UDUNITS/2.2.26
+    module load giflib/5.1.4
+    module load ImageMagick/7.0.11-3
 
 
 Final setup.
@@ -171,8 +174,8 @@ within this R_packages tree:
 
     if (!requireNamespace("BiocManager"))
         install.packages("BiocManager")
-    BiocManager::install()
-    BiocManager::install('getopt', dependencies=TRUE, Ncpus=8)
+    BiocManager::install(update=FALSE)
+    BiocManager::install('getopt', update=FALSE, dependencies=TRUE, Ncpus=8)
 
 In another shell outside R (substituting `VERSION` and `CLUSTER`):
 
@@ -183,11 +186,18 @@ In another shell outside R (substituting `VERSION` and `CLUSTER`):
 Installing all packages
 -----------------------
 
-Later packages in BioConductor require `rbamtools`, which requires `refGenome`, both of which are orphaned and not in CRAN, so do
+Later packages in BioConductor require `rbamtools`, which requires `refGenome`,
+both of which are orphaned and not in CRAN.  Also, my two now-archived
+packages, and build `rgl` without OpenGL support.
 
-    BiocManager::install(c('doBy','RSQLite','DBI'), dependencies=TRUE, Ncpus=20)
+    BiocManager::install(c('doBy','RSQLite','DBI'), update=FALSE, dependencies=TRUE, Ncpus=20)
     install.packages('https://cran.r-project.org/src/contrib/Archive/refGenome/refGenome_1.7.7.tar.gz', dependencies=TRUE, Ncpus=20)
     install.packages('https://cran.r-project.org/src/contrib/Archive/rbamtools/rbamtools_2.16.17.tar.gz', dependencies=TRUE, Ncpus=20)
+    install.packages('https://cran.r-project.org/src/contrib/Archive/nestedRanksTest/nestedRanksTest_0.2.tar.gz', dependencies=TRUE, Ncpus=20)
+    install.packages('rgl', configure.args='--disable-opengl')
+    BiocManager::install(c('pegas'), update=FALSE, dependencies=TRUE, Ncpus=20)
+    install.packages('https://cran.r-project.org/src/contrib/Archive/readGenalex/readGenalex_1.0.tar.gz', dependencies=TRUE, Ncpus=20)
+
 
 to get it installed.
 
@@ -195,13 +205,39 @@ Make sure that `/sw/apps/R_packages/$VERSION/inst.R` is available, then
 
     source("../inst.R")
 
+if you are in `$PREFIX`, or whatever is appropriate for the location you are in.
+
+When this started after the above, it printed
+
+    There are a total of 23068 packages available
+    260 CRAN packages installed, out of 19542 available
+    4 BioConductor-specific packages installed, out of 3526 available
+
 This installs all Bioconductor, then all CRAN packages, iteratively until there is no change.
+
+
+2023-05-25 -- we are here
+
+Don't gather log until the interative update with inst.R finishes, *then* run and collect the log. That will give more specific info for why packages will not install.
+
+
+
+
 After this step, we re-ran this, and after this run, we get
 
-    17696 CRAN packages installed, out of 18120 available
-    3310 BioConductor-specific packages installed, out of 3391 available
+    There are a total of xxxx packages available
+    xxxx CRAN packages installed, out of xxxx available
+    xxxx BioConductor-specific packages installed, out of xxxx available
 
 Now looking at a few of the standard ones that failed, and why.
+
+
+
+
+
+
+
+
 
 1. `destiny`
 
@@ -228,7 +264,7 @@ rgl
 For whatever reason, `rgl` cannot be loaded when built with a viewer.  So, install with OpenGL disabled.
 
 
-    BiocManager::install('rgl', configure.args='--with-x --disable-opengl')
+    BiocManager::install('rgl', update=FALSE, configure.args='--with-x --disable-opengl')
 
 
 
@@ -265,7 +301,7 @@ Outside R:
 
 Inside R:
 
-    BiocManager::install(c("hdf5r"), dependencies=TRUE)
+    BiocManager::install(c("hdf5r"), update=FALSE, dependencies=TRUE)
 
 Outside R:
 
@@ -287,7 +323,7 @@ Outside R:
 
 Inside R:
 
-    BiocManager::install(c("Rmpi","Rhpc","bigGP","doMPI","metaMix","regRSM"), dependencies=TRUE)
+    BiocManager::install(c("Rmpi","Rhpc","bigGP","doMPI","metaMix","regRSM"), update=FALSE, dependencies=TRUE)
 
 
 Outside R:
@@ -306,7 +342,7 @@ Requires rust/1.43.1.
 
 Inside R:
 
-    BiocManager::install(c("baseflow","gifski","string2path"), dependencies=TRUE)
+    BiocManager::install(c("baseflow","gifski","string2path"), update=FALSE, dependencies=TRUE)
 
 Outside R:
 
@@ -326,7 +362,7 @@ Outside R:
 
 Inside R:
 
-    BiocManager::install(c("BRugs"), dependencies=TRUE)
+    BiocManager::install(c("BRugs"), update=FALSE, dependencies=TRUE)
 
 Outside R:
 
@@ -346,7 +382,7 @@ Outside R:
 
 Inside R:
 
-    BiocManager::install(c("sodium"), dependencies=TRUE)
+    BiocManager::install(c("sodium"), update=FALSE, dependencies=TRUE)
 
 Outside R:
 
@@ -366,7 +402,7 @@ Outside R:
 
 Inside R:
 
-    BiocManager::install(c("clustermq","rzmq"), dependencies=TRUE)
+    BiocManager::install(c("clustermq","rzmq"), update=FALSE, dependencies=TRUE)
 
 Outside R:
 
@@ -388,7 +424,7 @@ Outside R, load modules then run R:
 
 and within R:
 
-    BiocManager::install('magick', dependencies=TRUE)
+    BiocManager::install('magick', update=FALSE, dependencies=TRUE)
 
 then:
 
@@ -398,14 +434,14 @@ and within R, install the rest.  The `tesseract` dependency won't be installable
 is eventually installed at Uppmax.  Should be no problem to leave it out.
 
     xtra.list = c('formattable','kableExtra')
-    BiocManager::install(xtra.list, dependencies=TRUE, Ncpus=8)
+    BiocManager::install(xtra.list, update=FALSE, dependencies=TRUE, Ncpus=8)
 
 
 
 Interim updates
 ---------------
 
-If updating an R package from CRAN or BioConductor, simply use `BiocManager::install(...)` within R.
+If updating an R package from CRAN or BioConductor, simply use `BiocManager::install(..., update=FALSE)` within R.
 
 
 Updating existing packages in this module
@@ -479,7 +515,7 @@ You can then use the `backend='cmdstanr'` option with brms functions.
 
 ### MUVR
 
-    devtools::install_gitlab('CarlBrunius/MUVR', dependencies=TRUE)
+    devtools::install_gitlab('CarlBrunius/MUVR', update=FALSE, dependencies=TRUE)
 
 
 
@@ -487,7 +523,7 @@ You can then use the `backend='cmdstanr'` option with brms functions.
 
     module load ImageMagick/7.0.11-3 giflib/5.1.4
 
-    devtools::install_github("dynverse/dyno", dependencies=TRUE)
+    devtools::install_github("dynverse/dyno", update=FALSE, dependencies=TRUE)
 
 This build popped up the message
 
@@ -808,7 +844,7 @@ So, reinstalled BiocManager and did the install() method, do not update any othe
 
     if (! requireNamespace("BiocManager"))
         install.packages("BiocManager")
-    BiocManger::install()
+    BiocManger::install(update=FALSE)
 
 When it asks, update 'n' **None**.
 
@@ -817,15 +853,15 @@ Adding a new package
 --------------------
 
 Srouce `$VERSIONDIR/source-for-setup`.  Load R, then for both CRAN and
-BioConductor packages, we use `BiocManager::install()` which ultimately uses
+BioConductor packages, we use `BiocManager::install(update=FALSE)` which ultimately uses
 R's own `install.packages()`.
 
 
     new.packages = c('package_a')
     if (! requireNamespace("BiocManager"))
         install.packages("BiocManager")
-    BiocManager::install(new.packages, dependencies=TRUE, Ncpus=10)
-    BiocManager::install(new.packages, Ncpus=10)
+    BiocManager::install(new.packages, update=FALSE, dependencies=TRUE, Ncpus=10)
+    BiocManager::install(new.packages, update=FALSE, Ncpus=10)
 
 
 

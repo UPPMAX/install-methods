@@ -29,16 +29,18 @@ LOG
 
 
     # Pip install
-    PYTHONUSERBASE=$PREFIX pip install pysam==0.21.0 numpy==1.24.3 click==8.1.3 cython pyyaml scipy pandas
+    PYTHONUSERBASE=$PREFIX pip install pysam==0.21.0 numpy==1.21.6 click==8.1.3 cython pyyaml scipy pandas
     export PYTHONPATH=$PREFIX/lib/python3.10/site-packages/:$PYTHONPATH
+    #export PYTHONPATH=$SRCDIR:$PYTHONPATH
     export PATH=$PREFIX/bin:$PATH
     PYTHONUSERBASE=$PREFIX pip install .
 
     # Change shebang to usr/bin/env python
     cd $PREFIX/bin
-    sed -i.bak '1c \#!\/usr\/bin\/env python' f2py  f2py3  f2py3.10  pairtools
+    sed -i '1c \#!\/usr\/bin\/env python' f2py  f2py3  f2py3.10  pairtools
 
     # Test
+    mkdir $SRCDIR/test-pairtools 
     cd  $SRCDIR/test-pairtools
     wget https://github.com/open2c/distiller-test-data/raw/master/bam/MATalpha_R1.bam
     wget https://raw.githubusercontent.com/open2c/distiller-test-data/master/genome/sacCer3.reduced.chrom.sizes
