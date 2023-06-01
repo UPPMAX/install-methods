@@ -12,33 +12,10 @@ Structure creating script (makeroom_HyPhy_2.5.40.sh) moved to /sw/bioinfo/HyPhy/
 LOG
 ---
 
-    /home/niharika/install-methods/makeroom.sh "-t" "HyPhy" "-v" "2.5.40" "-w" "http://www.hyphy.org" "-s" "phylogeny" "-l" "Custom open-source 'as is'" "-d" "Open-source software package for the analysis of genetic sequences using techniques in phylogenetics, molecular evolution, and machine learning." "-f"
+    methods/makeroom.sh "-t" "HyPhy" "-v" "2.5.40" "-w" "http://www.hyphy.org" "-s" "phylogeny" "-l" "Custom open-source 'as is'" "-d" "Open-source software package for the analysis of genetic sequences using techniques in phylogenetics, molecular evolution, and machine learning." "-f"
     ./makeroom_HyPhy_2.5.40.sh
-HyPhy/2.5.0-mpi
-===============
 
-<http://www.hyphy.org>
-
-Used under license:
-Custom open-source 'as is'
-
-A modified copy of the HyPhy/2.5.0 installation procedure, see that install-README for more info.
-**Version 2.5.0 must be built before this version is built so we have its SOURCEME file.**  We
-don't use makeroom for this version.
-
-This tool tests for some instructions and uses `-march=native` during
-compilation.  It requires separate rackham and snowy/bianca/irma executables.
-
-The LIBPATH value (see `hyphy -h`) should already be set correctly by the
-installation procedure.
-
-LOG
----
-
-    cd /sw/bioinfo/HyPhy
-    source SOURCEME_HyPhy_2.5.0 
-    SRCVERSION=$VERSION
-    VERSION=${VERSION}-mpi
+    source SOURCEME_HyPhy_2.5.40 
     [[ -d $VERSION ]] || mkdir $VERSION
     cd $VERSION
     rm -f snowy irma bianca

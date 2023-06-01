@@ -24,8 +24,31 @@ LOG
 
     ml python/3.10.8
     ml gcc/12.2.0
-    ml GEOS/3.11.0-gcc10.3.0
-    wget http://
-    tar xvf 
-    make
+    ml GEOS/3.11.2-gcc12.2.0
+
+
+    PYTHONUSERBASE=$PREFIX pip install --user \
+ contextily==1.2.0\
+ folium==0.14.0\
+ geojson==2.5.0\
+ geopandas==0.12.2\
+ geoplot==0.5.1\
+ geopy==2.3.0\
+ mplleaflet==0.0.5\
+ openpyxl==3.1.0\
+ osmnx==1.3.0\
+ owslib==0.27.2\
+ pygeos==0.14\
+ pykrige==1.7.0\
+ pyrosm==0.6.1\
+ pysal==23.1\
+ rasterio==1.3.4\
+ rasterstats==0.17.0\
+ scipy==1.10.0\
+ seaborn==0.12.2\
+ xarray==2023.1.0\
+ xarray_leaflet==0.2.3\
+ xarray-spatial==0.3.5\
+ shapely\
+ sqlalchemy
 

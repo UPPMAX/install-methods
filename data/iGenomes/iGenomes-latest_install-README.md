@@ -45,3 +45,6 @@ These features are added by running
     cd /sw/data/iGenomes
     ./build-iGenomes-additions.sh
 
+Lock down everything. Write-protect even against me, since I already overwrote something I symlink'd to.
+
+    chmod -R -w .

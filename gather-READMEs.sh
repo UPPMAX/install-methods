@@ -71,6 +71,7 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
     find KGP                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find MMseqs2_data        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find alphafold_dataset   -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find FAVOR_data          -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find dbSNP ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find chembl ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find piper_references ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
@@ -107,6 +108,7 @@ data_update  /sw/data/Kraken_data        Kraken-db-README.md    Kraken-update-db
 data_update  /sw/data/Kraken2_data       Kraken2-db-README.md   Kraken2-update-db.sh    Kraken2-update-nt.sh
 data_update  /sw/data/RTG                RTG-db-README.md       RTG-update-dbs.sh      
 data_update  /sw/data/diamond_databases  diamond-db-README.md   diamond-update-dbs.sh   diamond-check-dbs.sh
+data_update  /sw/data/FAVOR_data         FAVOR_fetch.py         FAVOR_api_token.py
 
 data_update  /sw/data/blast_scripts      README.md README-uniprot.md update_blastdb.sh update_blastdb-uniprot.sh uniprot.mk install_check_prepdb_blastdb.sh remove_old_blastdb.sh cron-wrapper.sh crontab.txt test/test_blastdb.sh test/prots.fa test/nucls.fa test/*.out webpage.mk webpage.md webpage.html fixup
 

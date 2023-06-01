@@ -31,25 +31,29 @@ LOG
 
     cd proj-${VERSION}
 
-    module load cmake/3.22.2
+    module load cmake/3.26.3
     module load gcc/10.3.0
     module load libtiff/4.5.0
     module load sqlite/3.34.0
     module load libcurl/7.85.0
     module load python/3.9.5
 
-    mkdir build
-    cd build
+    mkdir build_shared build_static
 
-    cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DSQLITE3_INCLUDE_DIR=$SQLITE_ROOT/include -DSQLITE3_LIBRARY=$SQLITE_ROOT/lib/libsqlite3.so -DTIFF_INCLUDE_DIR:PATH=$LIBTIFF_ROOT/include -DTIFF_LIBRARY_RELEASE:FILEPATH=$LIBTIFF_ROOT/lib/libtiff.so
+Build both static and shared libraries.
 
-    make
-
-    make test
-
-One sign test fails because of a nearly-0 value not being 0.
-
+    cd build_static
+    cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_BUILD_TYPE=Release -DSQLITE3_INCLUDE_DIR=$SQLITE_ROOT/include -DSQLITE3_LIBRARY=$SQLITE_ROOT/lib/libsqlite3.so -DTIFF_INCLUDE_DIR:PATH=$LIBTIFF_ROOT/include -DTIFF_LIBRARY_RELEASE:FILEPATH=$LIBTIFF_ROOT/lib/libtiff.so
+    make -j 10
     make install
+    cd ..
+
+    cd build_shared
+    cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_SHARED_LIBS:BOOL=ON -DCMAKE_BUILD_TYPE=Release -DSQLITE3_INCLUDE_DIR=$SQLITE_ROOT/include -DSQLITE3_LIBRARY=$SQLITE_ROOT/lib/libsqlite3.so -DTIFF_INCLUDE_DIR:PATH=$LIBTIFF_ROOT/include -DTIFF_LIBRARY_RELEASE:FILEPATH=$LIBTIFF_ROOT/lib/libtiff.so
+    make -j 10
+    make install
+    cd ..
+
 
 
 Add `$modroot/lib64/cmake/proj` to CMAKE_MODULE_PATH

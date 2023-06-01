@@ -15,7 +15,7 @@ LOG
 
     VERSION=0.22.3
     TOOL=bismark
-    makeroom.sh -f -t $TOOL -v $VERSION -s assembly -w https://github.com/FelixKrueger/Bismark -l 'GPL v3' -d 'Bismark is a program to map bisulfite treated sequencing reads to a genome of interest and perform methylation calls in a single step.'
+    makeroom.sh -f -t $TOOL -v $VERSION -c bioinfo -s misc -w https://github.com/FelixKrueger/Bismark -l 'GPL v3' -d 'Bismark is a program to map bisulfite treated sequencing reads to a genome of interest and perform methylation calls in a single step.'
     ./makeroom_bismark_${VERSION}.sh
 
     source SOURCEME_bismark_${VERSION}

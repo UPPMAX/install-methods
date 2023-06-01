@@ -19,12 +19,12 @@ LOG
 
     echo "mget -d *" | lftp https://bcb.unl.edu/dbCAN2/download/Databases/V11/
 
-It did not take take that long, 213 sec for 4.0.  No further unpacking necessary.
+It did not take take long.  No further unpacking necessary.
 
 Prepare the HMM file for use with hmmer.
 
     module load bioinfo-tools 
-    module load hmmer/3.1b2
+    module load hmmer/3.2.1
 
     hmmpress dbCAN-fam-HMMs.txt
 

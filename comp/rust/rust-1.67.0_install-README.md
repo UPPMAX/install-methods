@@ -44,3 +44,10 @@ You should see installation options:
 Choose 1 to Proceed with installation.
 
 That's it!  Define `RUSTUP_HOME` and `CARGO_HOME` to `$modroot` in the mf file.
+
+Once this module is set up, load it and do
+
+    cargo install xsv
+
+`xsv` is a fast tool for handling CSV files. This is used by the annotation
+tool using the FAVOR_data/1.0 databases.
