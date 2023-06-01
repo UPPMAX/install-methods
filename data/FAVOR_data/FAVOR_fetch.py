@@ -13,8 +13,7 @@ if FAVOR_api_token.is_expired():
     print("*** Harvard Dataverse API token expired", file=sys.stderr())
     exit(1)
 
-#API_TOKEN = FAVOR_api_token.get_token()
-API_TOKEN = '$API_TOKEN'
+API_TOKEN = '$API_TOKEN'  # we fetch this directly within the .fetch.sh script now
 print('\nusing API token securely\n', file=sys.stderr)
 SERVER_URL = 'https://dataverse.harvard.edu'
 
@@ -33,6 +32,7 @@ md5_FILE   = os.path.splitext(json_FILE)[0] + '.md5'
 fetch_FILE = os.path.splitext(json_FILE)[0] + '.fetch.sh'
 
 def check_file_md5(file, md5):
+    # Boris Verkhovskiy's answer at https://stackoverflow.com/questions/3431825/generating-an-md5-checksum-of-a-file
     with open(file, "rb") as f:
         file_hash = hashlib.md5()
         while chunk := f.read(8192):
@@ -54,12 +54,14 @@ with open(json_FILE, "r") as json_file:
     topd = json.load(json_file)
 
 md5_file   = open(md5_FILE, "w")
+# .fetch.sh file has a header
 fetch_file = open(fetch_FILE, "w")
-fetch_file.write('#!/bin/bash\n\n')
+fetch_file.write('#!/usr/bin/env bash\n\n')
 fetch_file.write('API_TOKEN=' + FAVOR_api_token.get_token_bash() + '\n\n')
 
 d = topd['datasetVersion']
 
+# title lines to terminal and in the .fetch.sh script
 data_title = json_FILE
 if d['metadataBlocks']['citation']['fields'][0]['typeName'] == "title":
     data_title = d['metadataBlocks']['citation']['fields'][0]['value']
@@ -69,6 +71,7 @@ data_info = 'source = {publisher}  date = {publicationDate}'.format(**topd) + ' 
 print(data_title + '\n' + data_info + '\n', file=sys.stderr)
 fetch_file.write('# ' + data_title + '\n' + '# ' + data_info + '\n#\n')
 
+# for all CSV files
 for f in d['files']:
     if f['directoryLabel'] != 'CSV':
         continue
