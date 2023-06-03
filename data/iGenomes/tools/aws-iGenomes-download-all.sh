@@ -155,11 +155,11 @@ DEST=$(pwd)
 for B in ${BUILD_OPTS[@]} ; do  # elements of array
     B=${B%%::*}
     BUILDS+=($B)
-    echo "syncing $B ..."
+    echo -e "\nsyncing $B ..."
     aws s3 --no-sign-request --region eu-west-1 sync s3://ngi-igenomes/igenomes/$B $DEST/$B
 done
 
 echo -e "\n\nsync'd to $DEST\n\n"
-echo -e "${BUILDS[@]}"
+echo -e "${BUILDS[@]}" | tr ' ' '\n'
 echo
 

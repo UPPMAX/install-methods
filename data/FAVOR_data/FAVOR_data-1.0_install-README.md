@@ -61,31 +61,32 @@ The basic format of file fetch with the API is
 
     curl -L -o SAVE-NAME -H "X-Dataverse-key:API-TOKEN" https://dataverse.harvard.edu/api/access/datafile/FILE-ID
 
-I wrote a python script `fetch.py` under `$SRCDIR` to form these queries as
-well as .md5 files for checking downloads. It required python/3.10.8. It takes
-an argument, the JSON of database file metadata.
+I wrote a python script `FAVOR_fetch.py` under `$TOOLDIR` to form these queries
+as well as .md5 files for checking downloads. It required python/3.10.8. It
+takes an argument, the JSON of database file metadata.
 
     module load python/3.10.8
 
-    fetch.py -j/--json metadata.json
+    FAVOR_fetch.py -j/--json metadata.json
 
-This first uses the little `api_token` package (in `api_token.py`) to check
-whether the API token is expired, and then fetches it from its secure location.
-The method `api_token.get_token_bash()` produces a bash command substitution
-which fetches its value from its secure location, to be used within the
-`.fetch.sh` file (see below) so that the API is never exposed. It is kept
-within `$HOME/.ssh/` so that only the owner (me, or whoever has placed their
-own token there) can fetch it.  See `api_token.py` for what to name the token
-file.
+This first uses the little `FAVOR_api_token` package (in `FAVOR_api_token.py`)
+to check whether the API token is expired, and then fetches it from its secure
+location.  The method `FAVOR_api_token.get_token_bash()` produces a bash
+command substitution which fetches its value from its secure location, to be
+used within the `.fetch.sh` file (see below) so that the API is never exposed.
+It is kept within `$HOME/.ssh/` so that only the owner (me, or whoever has
+placed their own token there) can fetch it.  See `FAVOR_api_token.py` for what
+to name the token file.
 
-`fetch.sh` then scans the JSON. It pulls some basic info about the dataset.
-Then, for each CSV file, it pulls SAVE-NAME, FILE-ID, and MD5.  `fetch.py`
-creates a file named after the JSON file, `metadata.md5`, that is a correctly
-formatted `.md5` file for use with `md5sum -c metadata.md5`. This contains
-filenames and associated MD5 checksums.  `fetch.py` also creates a
-`metadata.fetch.sh` file that contains API commands for downloading files.
+`FAVOR_fetch.py` then scans the JSON. It pulls some basic info about the
+dataset.  Then, for each CSV file, it pulls SAVE-NAME, FILE-ID, and MD5.
+`FAVOR_fetch.py` creates a file named after the JSON file, `metadata.md5`, that
+is a correctly formatted `.md5` file for use with `md5sum -c metadata.md5`.
+This contains filenames and associated MD5 checksums.  `FAVOR_fetch.py` also
+creates a `metadata.fetch.sh` file that contains API commands for downloading
+files.
 
-`fetch.py` tries to be helpful.  If a file with SAVE-NAME is found in the
+`FAVOR_fetch.py` tries to be helpful.  If a file with SAVE-NAME is found in the
 current directory, it checks its MD5 against the one the metadata has for that
 SAVE-NAME. If it matches, we avoid downloading that file in the `.fetch.sh`
 script, printing a message about skipping it.  If the MD5 does not match, then
@@ -96,6 +97,23 @@ Decompress each file into $PREFIX. Maybe Essential and Full into separate
 directories? That will take digging into the Full tarballs and reading some
 more FAVOR docs.
 
+The Essential database files have the form
+
+    chr2.tar.gz
+
+### Unpacking Essential data
+
+Each database file is a compressed tarball with unnecessary path components
+prior to the split CSV information for that chromosome.  Subdirectory will be
+`FAVOR_Essential`, which we will move to `$PREFIX` after it's been filled.
+
+    cd $SRCDIR
+    mkdir $PREFIX/FAVOR_Essential
+    for C in $(seq 1 22) ; do
+        tar xvf chr${C}.tar.gz --strip-components 7 -C $PREFIX/FAVOR_Essential
+    done
+
+This one already had .idx files built for each .csv.
 
 ### FAVOR Full database
 
@@ -118,7 +136,28 @@ The files for the full database have the form
 
     FAVOR.FullDB.Chr5.tar.gz
 
-To get these, I'll modify `fetch.py` to use this JSON, and key off the file
+To get these, I'll modify `FAVOR_fetch.py` to use this JSON, and key off the file
 name or some other piece of metadata to know that it is fetching essential or
 full files.
+
+### Unpacking Full database data
+
+Each database file is a compressed tarball with no unnecessary path components
+prior to the split CSV information for that chromosome.  Subdirectory will be
+`FAVOR_FullDB`, which we will move to `$PREFIX` after it's been filled.
+
+    cd $SRCDIR
+    mkdir $PREFIX/FAVOR_FullDB
+    for C in $(seq 1 22) ; do 
+        tar xvf FAVOR.FullDB.Chr${C}.tar.gz -C $PREFIX/FAVOR_FullDB
+    done
+
+Use `xsv`, installed within `rust/1.67.0`, to create .idx files for each .csv.
+
+    cd $PREFIX/FAVOR_FullDB/
+
+    module load rust/1.67.0
+    module load gnuparallel/20230422
+
+    parallel -j 4 xsv index ::: *.csv
 

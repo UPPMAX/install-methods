@@ -102,7 +102,8 @@ function data_update() {
 
 cd $DATA_REPOSITORY
 
-data_update  /sw/data/iGenomes           aws-iGenomes-download-all.sh  build-iGenomes-additions.sh  iGenomes-STAR-2.7.x-index.sh  iGenomes-genes.bed.sh # additional files, README harvested above
+data_update  /sw/data/iGenomes           tools/aws-iGenomes-download-all.sh  tools/build-iGenomes-additions.sh  tools/iGenomes-STAR-2.7.x-index.sh  tools/iGenomes-genes.bed.sh  tools/gtf2bed.pl  # additional files, README harvested above
+
 data_update  /sw/data/SGDP               check_md5s.pl   # additional script, README harvested above
 data_update  /sw/data/Kraken_data        Kraken-db-README.md    Kraken-update-db.sh    
 data_update  /sw/data/Kraken2_data       Kraken2-db-README.md   Kraken2-update-db.sh    Kraken2-update-nt.sh
