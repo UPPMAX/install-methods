@@ -167,6 +167,8 @@ TOOL_ROOT=${TOOL_ROOT//[-.]/_}
 if [ -z "$MODULENAME" ] ; then
     MODULENAME=$TOOL
 fi
+############### Setting the SQL key ###################
+SQLKEY=$MODULENAME"_"$VERSION
 
 ################### If resuming, skip constructing and just set the variables #####################
 if [ $MODE != "RESUME" ] ; then
@@ -680,7 +682,7 @@ cat > "$YAMLFILE" <<EOF4
   SECTION: $SECTION
   POSTINSTALL: $POSTFILE
   README: $README_FILE
-  SQLKEY: $MODULENAME_$VERSION
+  SQLKEY: $SQLKEY
 EOF4
 
 ################ Create a post-installation file ##########################
