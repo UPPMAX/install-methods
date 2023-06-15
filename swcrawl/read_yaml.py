@@ -81,7 +81,8 @@ def maketable_persons(cursor):
             ("Anders Hast","andersh","anders.hast@it.uu.se"),
             ("Jessica Nettelblad","jtn","jessica.nettelblad@uppmax.uu.se"),
             ("Matias Piqueras","matpiq","matias.piqueras@uppmax.uu.se"),
-            ("Rebecca Södergren","rebec","rebecca.sodergren@it.uu.se")
+            ("Rebecca Södergren","rebec","rebecca.sodergren@it.uu.se"),
+            ("Richel Bilderbeek","richel","richel.bilderbeek@icm.uu.se")
         ]
     try:
         cursor.executemany(sql, val)
@@ -117,7 +118,8 @@ db.text_factory = str
 DBcursor = db.cursor()
 
 # Only run once
-#maketable_persons(DBcursor)
+maketable_persons(DBcursor)
+maketable_yamlfiles(DBcursor)
 
 for root, dirs, files in walklevel("/sw/", 3):
     if re.search('/sw/.+/src/', root):
@@ -157,10 +159,13 @@ for root, dirs, files in walklevel("/sw/", 3):
             # Get the md5 from the SQL DB and check if the file is changed
             sql = 'SELECT yamlfiles.md5 FROM yamlfiles WHERE yamlfiles.path IS "' + path + '";'
             try:
+                print(md5, oldmd5)
                 for i in DBcursor.execute(sql).fetchall():
                     oldmd5 = i[0]
+                print(md5, oldmd5)
             except:
-                print("ERROR!\n")
+                oldmd5 = 'NULL'
+                print("ERROR! No old md5\n")
             # New insert  into chksum table to keep track of yaml files
             if oldmd5 == md5:
                 print("No change to " + path)
@@ -178,14 +183,15 @@ for root, dirs, files in walklevel("/sw/", 3):
                 except:
                     print("No e-mail registered!\n")
                 sql = "INSERT INTO yamlfiles (key, path, creator, md5) VALUES (?, ?, ?, ?)"
-                print(key, path, creator, md5, oldmd5)
                 try:
                     # Execute the SQL command
                     DBcursor.execute(sql, (key, path, creator, md5))
                     # Commit your changes in the database
                     db.commit()
-                except:
+                except Exception as exc:
+                    print(key, path, creator, md5, oldmd5)
                     # Rollback in case there is any error
+                    print(exc)
                     print("ERROR SW!\n")
                     db.rollback()
 
