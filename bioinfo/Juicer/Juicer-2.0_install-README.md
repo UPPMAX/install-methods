@@ -43,7 +43,7 @@ LOG
 
 # One has to modify the scripts/juicer.sh file.
 # make a copy of the original file
-    cp juicer.sh huicer-orig.sh
+    cp juicer.sh juicer-orig.sh
 
 # edit juicer.sh by looking at the previous modified versions
 # perhaps spot differences with `diff` in the previous versions?

@@ -7,7 +7,7 @@
 #  Now necessary to use mem512GB node for Kraken2 nt
 #SBATCH -M rackham
 #SBATCH -C mem1TB
-#SBATCH -t 5-00:00:00
+#SBATCH -t 10-00:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL

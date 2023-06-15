@@ -646,6 +646,7 @@ Once these are installed, many others can be installed.  A full rerun of the ins
 
 Github-hosted packages.  Make sure hdf5/1.14.0 is loaded, loomR uses it.
 
+    devtools::install_github("stefpeschel/NetCoMi", dependencies=TRUE)
     devtools::install_github("variani/lme4qtl", ref='master')
     devtools::install_github("immunogenomics/harmony", ref = 'master')
     devtools::install_github("petrikemppainen/LDna", ref = 'master')
@@ -720,6 +721,30 @@ Unload the olderl hdf5 module and make sure the BPCells.so library can find it:
 If so it worked correctly, so load the newer one:
 
     module load hdf5/1.14.0
+
+
+### MVMR
+
+This one didn't want to build its vignettes using its command.  So,
+
+    cd $VERSIONDIR/external
+    git clone https://github.com/WSpiller/MVMR
+    cd MVMR
+    R
+
+and within R,
+
+    tools::buildVignettes(dir = '.', tangle = TRUE)
+    devtools::build('.')
+
+This builds the now-vignette-containing `MVMR_0.4.tar.gz` in the parent directory.
+Then, exit R, cd to the parent directory, which is `$VERSIONDIR/external`, and
+install from the tarball.
+
+    cd ..
+    R CMD INSTALL MVMR_0.4.tar.gz
+
+This installation will contain the vignette.
 
 
 ### HDL

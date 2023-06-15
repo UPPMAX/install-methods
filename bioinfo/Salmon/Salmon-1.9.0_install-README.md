@@ -18,7 +18,7 @@ LOG
     source /sw/bioinfo/Salmon/SOURCEME_Salmon_1.9.0 && cd $SRCDIR
     wget https://github.com/COMBINE-lab/salmon/releases/download/v1.9.0/salmon-1.9.0_linux_x86_64.tar.gz
     tar xf salmon-1.9.0_linux_x86_64.tar.gz
-    cd salmon-1.6.0_linux_x86_64/
+    cd salmon-1.9.0_linux_x86_64/
     mv * $PREFIX/
     cd ..
     rmdir salmon-1.9.0_linux_x86_64/

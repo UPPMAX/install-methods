@@ -89,8 +89,8 @@ conda install -c bioconda \
     cd berzelius-alphafold-guide
 
     export data_dir=/sw/data/alphafold_dataset/2.3.1/rackham/
-    mkdir $SRCDIR/berzelius-alphafold-guide/output
-    export output=$SRCDIR/berzelius-alphafold-guide/output
+    #mkdir $SRCDIR/berzelius-alphafold-guide/output
+    export output=$SRCDIR/berzelius-alphafold-guide/output_rackham
     export fasta=$SRCDIR/berzelius-alphafold-guide/T1050.fasta
 
     bash run_alphafold.sh \

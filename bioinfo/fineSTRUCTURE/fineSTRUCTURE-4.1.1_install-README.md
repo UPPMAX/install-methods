@@ -1,5 +1,5 @@
 fineSTRUCTURE/4.1.1
-========================
+===================
 
 <https://people.maths.bris.ac.uk/~madjl/finestructure/finestructure.html>
 
@@ -74,3 +74,49 @@ Always the below error compilining about a #define. Odd, but it's deprecated any
                      from inputdata.h:22,
                      from reorderall.h:11,
                      from reorderall.cpp:6:
+
+
+Adding additional features
+--------------------------
+
+A user was working through examples that referenced scripts not included in the release package. Turns out the main website and the developer's Github repository are out of sync in some ways; I am sticking with the main site for the tool release, but providing additional scripts from the repository. Also, providing the rather old R examples from the main site as well. See the mf file for an explanation.
+
+
+### R library
+
+    cd $SRCDIR
+    mkdir R
+    cd R
+    wget https://people.maths.bris.ac.uk/~madjl/finestructure/FinestructureRcode.zip
+    wget https://people.maths.bris.ac.uk/~madjl/finestructure/FinestructureRexampledata.zip
+    wget https://people.maths.bris.ac.uk/~madjl/finestructure/ChromoPainterExampleHGDPdata.zip
+    wget https://people.maths.bris.ac.uk/~madjl/finestructure/FinestructureRexampleresults.zip
+    wget https://people.maths.bris.ac.uk/~madjl/finestructure/ContinentAndLabelRscripts.zip
+    wget https://people.maths.bris.ac.uk/~madjl/finestructure/HGDPcontinentsExample.zip
+    mkdir R_library
+    cd R_library
+    for Z in ../*.zip ; do unzip -q $Z; done
+    cd ..
+    mv R_library $PREFIX/
+
+
+### Repository scripts
+
+    cd $SRCDIR
+    ml git/2.34.1
+    git clone --recursive https://github.com/danjlawson/finestructure4
+    cd finestructure4/
+    cd scripts/
+    head -n 1 *
+
+As for the main scripts, I have straightened up usage for these scripts to reflect that they have their own `#!` lines and are within `PATH`.
+
+Need to make some changes to the `#!` lines after copying over to their `PREFIX` subdirectory
+
+    mkdir $PREFIX/reposcripts
+    cp -av * $PREFIX/reposcripts
+    sed -i 's,^#!/usr/bin/perl.*$,#!/usr/bin/env perl,' *.pl
+    sed -i 's,^#!/bin/\(bash\|sh\)$,#!/bin/bash,' *.sh
+
+Prepend `$modroot/reposcripts` to `PATH` before `$modroot` to keep priority. Explain this all in the mf.
+

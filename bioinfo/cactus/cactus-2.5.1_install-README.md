@@ -107,7 +107,7 @@ mesos-master --port=$port --work_dir=$wd_controller/${HOSTNAME}-$port --registry
 VERSION=2.5.1
 module load bioinfo-tools mesos cactus/$VERSION
 wd_agent=/proj/staff/bjornv/mesos-slave/
-controller=s202.uppmax.uu.se
+controller=s89
 port=5050
 #export PATH=/sw/bioinfo/cactus/$VERSION/snowy/cactus-bin-v$VERSION/bin/:$PATH
 #export PYTHONPATH=/sw/bioinfo/cactus/$VERSION/snowy/cactus-bin-v$VERSION/lib/:$PYTHONPATH
@@ -115,17 +115,18 @@ mesos-agent --master=$controller:$port --work_dir=$wd_agent/${HOSTNAME}-$port --
 
 
 VERSION=2.5.1
-controller=s202.uppmax.uu.se
+controller=s89
 port=5050
 module load bioinfo-tools mesos/1.9.0 cactus/$VERSION
-export VERSION=$VERSION
-export SINGULARITY_BIND='/sw'
-export PATH=/sw/bioinfo/cactus/$VERSION/snowy/cactus-bin-v${VERSION}/bin/:$PATH
-export PYTHONPATH=/sw/bioinfo/cactus/$VERSION/snowy/cactus-bin-v${VERSION}/lib/:$PYTHONPATH
+#export VERSION=$VERSION
+#export SINGULARITY_BIND='/sw'
+#export PATH=/sw/bioinfo/cactus/$VERSION/snowy/cactus-bin-v${VERSION}/bin/:$PATH
+#export PYTHONPATH=/sw/bioinfo/cactus/$VERSION/snowy/cactus-bin-v${VERSION}/lib/:$PYTHONPATH
 cactus \
            --batchSystem mesos \
            --mesosEndpoint $controller:$port \
            --consCores 16 \
+           --binariesMode singularity \ 
            /proj/staff/bjornv/cactus_test/jobStore_${RANDOM} \
            /sw/bioinfo/cactus/${VERSION}/rackham/cactus/examples/evolverMammals.txt \
            output_cactus_${RANDOM}.hal

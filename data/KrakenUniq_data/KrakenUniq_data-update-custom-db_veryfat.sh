@@ -9,24 +9,13 @@
 #SBATCH -t 10-00:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
-#SBATCH --mail-type=ALL
-#SBATCH -o /sw/data/KrakenUniq_data/slurm-snowy-veryfat-%j.out
+#SBATCH --mail-type=ALL,TIME_LIMiT_50,TIME_LIMIT_80,TIME_LIMIT_90
+#SBATCH -o /sw/data/KrakenUniq_data/slurm-snowy-custom-veryfat-%j.out
 
-##SBATCH -A staff
-##SBATCH -J KrakenUniq_data-update-custom-db.sh
-##SBATCH -M rackham
-##SBATCH -p node
-##SBATCH -n 20
-##SBATCH -C mem1TB
-##SBATCH -t 10-00:00:00
-###SBATCH --qos=uppmax_staff_4nodes
-##SBATCH --mail-user douglas.scofield@uppmax.uu.se
-##SBATCH --mail-type=ALL
-##SBATCH -o /sw/data/KrakenUniq_data/slurm-rackham-mem1TB-%j.out
 
 echo
 echo "Script running: $0"
-echo "           AKA: KrakenUniq_data-update-custom-db.sh"
+echo "           AKA: KrakenUniq_data-update-custom-db_veryfat.sh"
 echo
 
 
@@ -34,7 +23,7 @@ echo
 
 K_DB_BASE=/sw/data/KrakenUniq_data
 K_VERSION=1.0.1
-THREADS=${20:-$SLURM_JOB_CPUS_PER_NODE}
+THREADS=${80:-$SLURM_JOB_CPUS_PER_NODE}
 #MEMGB=${SLURM_MEM_PER_NODE%???}  # truncated value, remove last 3 chars (128GB node reports 128000)
 #MINGB=1000 # This now must run on a 512 node, it needs just under 300GB to build the standard database
 

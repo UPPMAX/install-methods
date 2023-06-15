@@ -125,7 +125,7 @@ First modules
 
 Install BioPerl dependencies and a bunch of others.
 
-    cpanm GD Net::HTTP LWP::UserAgent XML::Parser XML::XPath IPC::Run XML::Twig LWP::Simple File::Which Test::Pod Parse::RecDescent Parallel::ForkManager
+    cpanm GD Net::HTTP LWP::UserAgent XML::Parser XML::XPath IPC::Run XML::Twig LWP::Simple File::Type File::Which Test::Pod Parse::RecDescent Parallel::ForkManager
 
     cpanm Test::Expect DBI Error Graph GraphViz HTML::Entities HTML::HeadParser XML::Parser::PerlSAX XML::SAX XML::Simple Data::Stag IO::String Test::Most
 
@@ -134,6 +134,8 @@ Install BioPerl dependencies and a bunch of others.
     cpanm Algorithm::Munkres Array::Compare Clone Convert::Binary::C HTML::TableExtract List::MoreUtils PostScript::TextBlock SOAP::Lite SVG SVG::Graph
 
     cpanm Set::Scalar Sort::Naturally Sort::Rank Excel::Writer::XLSX Spreadsheet::ParseExcel XML::SAX::Writer XML::Writer YAML XML::LibXML XML::DOM::XPath XML::DOM DBD::SQLite Math::Random
+
+    cpanm VCF
 
     cpanm PEDERST/rename-1.9.tar.gz
 
