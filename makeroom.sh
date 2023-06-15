@@ -311,7 +311,7 @@ case $CATEGORY in
     data) MF_CATEGORY=data
         LINKFLAG+=(-d)
         ;;
-    prarallel) MF_CATEGORY=parallel
+    parallel) MF_CATEGORY=parallel
         LINKFLAG+=(-p)
         ;;
     *) printf "No such category, %s\n" "$CATEGORY" >&2

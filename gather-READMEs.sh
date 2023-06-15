@@ -71,6 +71,7 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
     find KGP                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find MMseqs2_data        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find alphafold_dataset   -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find FAVOR_data          -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find dbSNP ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find chembl ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     # find piper_references ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
@@ -101,12 +102,14 @@ function data_update() {
 
 cd $DATA_REPOSITORY
 
-data_update  /sw/data/iGenomes           aws-iGenomes-download-all.sh  build-iGenomes-additions.sh  iGenomes-STAR-2.7.x-index.sh  iGenomes-genes.bed.sh # additional files, README harvested above
+data_update  /sw/data/iGenomes           tools/aws-iGenomes-download-all.sh  tools/build-iGenomes-additions.sh  tools/iGenomes-STAR-2.7.x-index.sh  tools/iGenomes-genes.bed.sh  tools/gtf2bed.pl  # additional files, README harvested above
+
 data_update  /sw/data/SGDP               check_md5s.pl   # additional script, README harvested above
 data_update  /sw/data/Kraken_data        Kraken-db-README.md    Kraken-update-db.sh    
 data_update  /sw/data/Kraken2_data       Kraken2-db-README.md   Kraken2-update-db.sh    Kraken2-update-nt.sh
 data_update  /sw/data/RTG                RTG-db-README.md       RTG-update-dbs.sh      
 data_update  /sw/data/diamond_databases  diamond-db-README.md   diamond-update-dbs.sh   diamond-check-dbs.sh
+data_update  /sw/data/FAVOR_data         FAVOR_fetch.py         FAVOR_api_token.py
 
 data_update  /sw/data/blast_scripts      README.md README-uniprot.md update_blastdb.sh update_blastdb-uniprot.sh uniprot.mk install_check_prepdb_blastdb.sh remove_old_blastdb.sh cron-wrapper.sh crontab.txt test/test_blastdb.sh test/prots.fa test/nucls.fa test/*.out webpage.mk webpage.md webpage.html fixup
 
@@ -120,7 +123,7 @@ cd $DATA_REPOSITORY
 data_update  /sw/data/CTAT_RESOURCE_LIB  CTAT_RESOURCE_LIB-db-README.md  CTAT_RESOURCE_LIB-download-db.sh
 
 # this might get moved to crontab later. The prebuilt databases are updated on a haphazard basis
-data_update  /sw/data/KrakenUniq_data    KrakenUniq_data-latest_install-README.md   KrakenUniq_data-update-custom-db.sh   KrakenUniq_data-update-standard-db.sh
+data_update  /sw/data/KrakenUniq_data    KrakenUniq_data-latest_install-README.md   KrakenUniq_data-update-custom-db.sh  KrakenUniq_data-update-custom-db_veryfat.sh  KrakenUniq_data-update-standard-db.sh
 
 # Databases in other locations
 

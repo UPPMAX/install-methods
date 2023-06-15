@@ -35,5 +35,5 @@ singularity run /sw/bioinfo/vg/1.29.0/rackham/bin/vg_v.1.29.sif vg $@
 
 
 
-#    /home/bjornv/git/install-methods/makeroom.sh -t "vg" -v "1.29.0" -w "https://github.com/vgteam/vg" -l "MIT" -d "Variation graphs provide a succinct encoding of the sequences of many genomes." -s "annotation"
+#    /home/bjornv/git/install-methods/makeroom.sh -t "vg" -v "1.29.0" -w "https://github.com/vgteam/vg" -l "MIT" -d "Variation graphs provide a succinct encoding of the sequences of many genomes." -s "assembly"
 #    ./makeroom_vg_1.29.0.sh

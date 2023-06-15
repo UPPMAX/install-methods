@@ -22,7 +22,7 @@
 # job which runs 24 hours after this one.
 
 #set -x
-set -e
+#set -e  # do not do this, failures during checkdbs will mean that prepdbs will not get done
 
 shopt -s nullglob  # this will make STAGED_DBS_TIMESTAMPS and STAGED_DBS_JSON be empty if the globs match nothing
 
@@ -42,10 +42,10 @@ checkdbs=yes
 # summary files. This creates a .acc file for each chunk of each .pal database
 prepdbs=yes
 
-module load gnuparallel/20180822
+module load gnuparallel/20230422
 module load bioinfo-tools
-module load blast/2.12.0+
-module load diamond/2.1.0
+module load blast/2.13.0+
+module load diamond/2.1.6
 
 # the databases fetched from NCBI's mirror, must match that in update_blastdb.sh
 # these are individually checked by blastdbcheck after installation

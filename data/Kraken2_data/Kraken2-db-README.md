@@ -39,7 +39,23 @@ Note that these are versioned as a collection by date rows in the table at that 
                 k2_pluspfp_20221209.tar.gz
                 k2_pluspfp_08gb_20221209.tar.gz
                 k2_pluspfp_16gb_20221209.tar.gz
-                k2_eupathdb48_20201113.tar.gz )
+                k2_eupathdb48_20201113.tar.gz
+                k2_viral_20230314.tar.gz
+                k2_minusb_20230314.tar.gz
+                k2_standard_20230314.tar.gz
+                k2_standard_08gb_20230314.tar.gz
+                k2_standard_16gb_20230314.tar.gz
+                k2_pluspf_20230314.tar.gz
+                k2_pluspf_08gb_20230314.tar.gz
+                k2_pluspf_16gb_20230314.tar.gz
+                k2_pluspfp_20230314.tar.gz
+                k2_pluspfp_08gb_20230314.tar.gz
+                k2_pluspfp_16gb_20230314.tar.gz
+                k2_nt_20230502.tar.gz
+                k2_eupathdb48_20230407.tar.gz )
+
+
+
 
     for P in "${DATABASES[@]}"
     do
@@ -53,33 +69,49 @@ Text for the mf file:
 
     Prebuilt Kraken 2 / Bracken refseq indices, from https://benlangmead.github.io/aws-indexes/k2 in collection dated "9/26/2022".
 
-    Local name                                         Collection    Contains                                                Date        Archive size (GB)  Index sixe (GB) 
+    Local name                                         Collection    Contains                                                          Date        Archive size (GB)  Index sixe (GB) 
 
-    \$KRAKEN2_DB_PREBUILT/k2_viral_20221209            Viral         viral                                                   2022-12-09          0.4               0.5
-    \$KRAKEN2_DB_PREBUILT/k2_minusb_20221209           MinusB        archaea, viral, plasmid, human1, UniVec_Core            2022-12-09          6.1               8.7
-    \$KRAKEN2_DB_PREBUILT/k2_standard_20221209         Standard      archaea, bacteria, viral, plasmid, human1, UniVec_Core  2022-12-09         48                62
-    \$KRAKEN2_DB_PREBUILT/k2_standard_08gb_20221209    Standard-8    Standard with DB capped at 8 GB                         2022-12-09          5.5               7.5
-    \$KRAKEN2_DB_PREBUILT/k2_standard_16gb_20221209    Standard-16   Standard with DB capped at 16 GB                        2022-12-09         11                15
-    \$KRAKEN2_DB_PREBUILT/k2_pluspf_20221209           PlusPF        Standard plus protozoa & fungi                          2022-12-09         51                66
-    \$KRAKEN2_DB_PREBUILT/k2_pluspf_08gb_20221209      PlusPF-8      PlusPF with DB capped at 8 GB                           2022-12-09          5.5               7.5
-    \$KRAKEN2_DB_PREBUILT/k2_pluspf_16gb_20221209      PlusPF-16     PlusPF with DB capped at 16 GB                          2022-12-09         11                15
-    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_20221209          PlusPFP       Standard plus protozoa, fungi & plant                   2022-12-09        104               142
-    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_08gb_20221209     PlusPFP-8     PlusPFP with DB capped at 8 GB                          2022-12-09          5.1               7.5
-    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_16gb_20221209     PlusPFP-16    PlusPFP with DB capped at 16 GB                         2022-12-09         11                15
+    \$KRAKEN2_DB_PREBUILT/k2_viral_20230314            Viral         Refeq viral                                                       3/14/2023           0.4               0.5
+    \$KRAKEN2_DB_PREBUILT/k2_minusb_20230314           MinusB        Refeq archaea, viral, plasmid, human1, UniVec_Core                3/14/2023           6.4               9.0*
+    \$KRAKEN2_DB_PREBUILT/k2_standard_20230314         Standard      Refeq archaea, bacteria, viral, plasmid, human1, UniVec_Core      3/14/2023          49                64
+    \$KRAKEN2_DB_PREBUILT/k2_standard_08gb_20230314    Standard-8    Standard with DB capped at 8 GB                                   3/14/2023           5.5               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_standard_16gb_20230314    Standard-16   Standard with DB capped at 16 GB                                  3/14/2023          11                15
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_20230314           PlusPF        Standard plus Refeq protozoa & fungi                              3/14/2023          53                69
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_08gb_20230314      PlusPF-8      PlusPF with DB capped at 8 GB                                     3/14/2023           5.5               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_16gb_20230314      PlusPF-16     PlusPF with DB capped at 16 GB                                    3/14/2023          11                15
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_20230314          PlusPFP       Standard plus Refeq protozoa, fungi & plant                       3/14/2023         106               144
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_08gb_20230314     PlusPFP-8     PlusPFP with DB capped at 8 GB                                    3/14/2023           5.1               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_16gb_20230314     PlusPFP-16    PlusPFP with DB capped at 16 GB                                   3/14/2023          11                15
 
-    \$KRAKEN2_DB_PREBUILT/k2_eupathdb48_20201113       EuPathDB462   Eukaryotic pathogen genomes with contaminants removed   2020-11-13         26.4              34.1
+    \$KRAKEN2_DB_PREBUILT/k2_nt_20230502               nt Database   Very large collection, inclusive of GenBank, RefSeq, TPA and PDB  5/2/2023          360               480
 
-    \$KRAKEN2_DB_PREBUILT/k2_viral_20220908            Viral         viral                                                   2022-09-08          0.4               0.5
-    \$KRAKEN2_DB_PREBUILT/k2_minusb_20220926           MinusB3       archaea, viral, plasmid, human1, UniVec_Core            2022-09-26          5.9               8.5
-    \$KRAKEN2_DB_PREBUILT/k2_standard_20220926         Standard3     archaea, bacteria, viral, plasmid, human1, UniVec_Core  2022-09-26         46                60
-    \$KRAKEN2_DB_PREBUILT/k2_standard_08gb_20220926    Standard-83   Standard with DB capped at 8 GB                         2022-09-26          5.5               7.5
-    \$KRAKEN2_DB_PREBUILT/k2_standard_16gb_20220926    Standard-163  Standard with DB capped at 16 GB                        2022-09-26         11                15
-    \$KRAKEN2_DB_PREBUILT/k2_pluspf_20220908           PlusPF        Standard plus protozoa & fungi                          2022-09-08         49                64
-    \$KRAKEN2_DB_PREBUILT/k2_pluspf_08gb_20220908      PlusPF-8      PlusPF with DB capped at 8 GB                           2022-09-08          5.5               7.5
-    \$KRAKEN2_DB_PREBUILT/k2_pluspf_16gb_20220908      PlusPF-16     PlusPF with DB capped at 16 GB                          2022-09-08         11                15
-    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_20220908          PlusPFP       Standard plus protozoa, fungi & plant                   2022-09-08         99               129
-    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_08gb_20220908     PlusPFP-8     PlusPFP with DB capped at 8 GB                          2022-09-08          5.1               7.5
-    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_16gb_20220908     PlusPFP-16    PlusPFP with DB capped at 16 GB                         2022-09-08         11                15
+    \$KRAKEN2_DB_PREBUILT/k2_eupathdb48_20230407       EuPathDB462   Eukaryotic pathogen genomes with contaminants removed             4/18/2023           8.4              11
+
+    \$KRAKEN2_DB_PREBUILT/k2_viral_20221209            Viral         viral                                                             2022-12-09          0.4               0.5
+    \$KRAKEN2_DB_PREBUILT/k2_minusb_20221209           MinusB        archaea, viral, plasmid, human1, UniVec_Core                      2022-12-09          6.1               8.7
+    \$KRAKEN2_DB_PREBUILT/k2_standard_20221209         Standard      archaea, bacteria, viral, plasmid, human1, UniVec_Core            2022-12-09         48                62
+    \$KRAKEN2_DB_PREBUILT/k2_standard_08gb_20221209    Standard-8    Standard with DB capped at 8 GB                                   2022-12-09          5.5               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_standard_16gb_20221209    Standard-16   Standard with DB capped at 16 GB                                  2022-12-09         11                15
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_20221209           PlusPF        Standard plus protozoa & fungi                                    2022-12-09         51                66
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_08gb_20221209      PlusPF-8      PlusPF with DB capped at 8 GB                                     2022-12-09          5.5               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_16gb_20221209      PlusPF-16     PlusPF with DB capped at 16 GB                                    2022-12-09         11                15
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_20221209          PlusPFP       Standard plus protozoa, fungi & plant                             2022-12-09        104               142
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_08gb_20221209     PlusPFP-8     PlusPFP with DB capped at 8 GB                                    2022-12-09          5.1               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_16gb_20221209     PlusPFP-16    PlusPFP with DB capped at 16 GB                                   2022-12-09         11                15
+
+    \$KRAKEN2_DB_PREBUILT/k2_eupathdb48_20201113       EuPathDB462   Eukaryotic pathogen genomes with contaminants removed             2020-11-13         26.4              34.1
+
+    \$KRAKEN2_DB_PREBUILT/k2_viral_20220908            Viral         viral                                                             2022-09-08          0.4               0.5
+    \$KRAKEN2_DB_PREBUILT/k2_minusb_20220926           MinusB3       archaea, viral, plasmid, human1, UniVec_Core                      2022-09-26          5.9               8.5
+    \$KRAKEN2_DB_PREBUILT/k2_standard_20220926         Standard3     archaea, bacteria, viral, plasmid, human1, UniVec_Core            2022-09-26         46                60
+    \$KRAKEN2_DB_PREBUILT/k2_standard_08gb_20220926    Standard-83   Standard with DB capped at 8 GB                                   2022-09-26          5.5               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_standard_16gb_20220926    Standard-163  Standard with DB capped at 16 GB                                  2022-09-26         11                15
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_20220908           PlusPF        Standard plus protozoa & fungi                                    2022-09-08         49                64
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_08gb_20220908      PlusPF-8      PlusPF with DB capped at 8 GB                                     2022-09-08          5.5               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_16gb_20220908      PlusPF-16     PlusPF with DB capped at 16 GB                                    2022-09-08         11                15
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_20220908          PlusPFP       Standard plus protozoa, fungi & plant                             2022-09-08         99               129
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_08gb_20220908     PlusPFP-8     PlusPFP with DB capped at 8 GB                                    2022-09-08          5.1               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_16gb_20220908     PlusPFP-16    PlusPFP with DB capped at 16 GB                                   2022-09-08         11                15
 
 
 

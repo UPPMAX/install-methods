@@ -1,17 +1,13 @@
 R_packages/4.2.1
 ================
 
-To be added:
 
-* leidenbase https://github.com/cole-trapnell-lab/leidenbase
-* ggnet devtools::install_github("briatte/ggnet")
-* ampvis2 remotes::install_github("kasperskytte/ampvis2")
-* STAAR devtools::install_github("xihaoli/STAAR")
-* SCOPfunctions  devtools::install_github("RoseString/SCOPfunctions")   https://support.naiss.se/Ticket/Display.html?id=271596
-* be sure OlinkAnalyze (now in CRAN) is in the module
-* adjustedCurves  same
-* TcellExTRECT devtools::install_github("McGranahanLab/TcellExTRECT")  #273088
-* devtools::install_github("ducciorocchini/cblindplot")
+Double-check that there are no non-base packages installed within R/4.2.1. That
+must be chmod -R -w, but I'd forgotten and other AEs had installed packages
+there. Big mistake.
+
+Also, the new timeout of 500 seconds (see below) was too short to install e.g.,
+stringi. So, extend to 30 mins = 1800 seconds.
 
 
 Used under license:
@@ -84,7 +80,7 @@ modules liated after the build (autoconf, automake, cmake, m4) modules and
 correct them.
 
     gcc/10.3.0
-    java/OpenJDK_11.0.2
+    java/sun_jdk1.8.0_151
     xz/5.2.6
     bzip2/1.0.8
     zlib/1.2.12
@@ -94,6 +90,7 @@ correct them.
     libcurl/7.85.0
     readline/6.2-11
     libicu/5.2-4
+
 
 Load build systems.
 
@@ -129,11 +126,21 @@ Load other prereqs for building the package tree.
     module load SHAPELIB/1.5.0-20220210-8edf888
     module load Tcl-Tk/8.6.11
     module load UDUNITS/2.2.26
+    module load giflib/5.1.4
+    module load ImageMagick/7.0.11-3
+    module load sqlite/3.34.0
+    module load GMP/6.2.1
+    module load MPFR/4.1.0
+    module load libsodium/1.0.18-stable
+    module load lz4/1.9.2
+    module load libb2/0.98.1
+    module load OpenBUGS/3.2.3
 
 
 Final setup.
 
     export DOWNLOAD_STATIC_LIBV8=1
+    export _R_INSTALL_PACKAGES_ELAPSED_TIMEOUT_=1800
     echo -e "\nThis should have been set to the appropriate directory in this module, is it?\n\nR_LIBS_USER = $R_LIBS_USER\n"
 
 
@@ -171,8 +178,8 @@ within this R_packages tree:
 
     if (!requireNamespace("BiocManager"))
         install.packages("BiocManager")
-    BiocManager::install()
-    BiocManager::install('getopt', dependencies=TRUE, Ncpus=8)
+    BiocManager::install(update=FALSE)
+    BiocManager::install('getopt', update=FALSE, Ncpus=8)
 
 In another shell outside R (substituting `VERSION` and `CLUSTER`):
 
@@ -183,11 +190,18 @@ In another shell outside R (substituting `VERSION` and `CLUSTER`):
 Installing all packages
 -----------------------
 
-Later packages in BioConductor require `rbamtools`, which requires `refGenome`, both of which are orphaned and not in CRAN, so do
+Later packages in BioConductor require `rbamtools`, which requires `refGenome`,
+both of which are orphaned and not in CRAN.  Also, my two now-archived
+packages, and build `rgl` without OpenGL support.
 
-    BiocManager::install(c('doBy','RSQLite','DBI'), dependencies=TRUE, Ncpus=20)
-    install.packages('https://cran.r-project.org/src/contrib/Archive/refGenome/refGenome_1.7.7.tar.gz', dependencies=TRUE, Ncpus=20)
-    install.packages('https://cran.r-project.org/src/contrib/Archive/rbamtools/rbamtools_2.16.17.tar.gz', dependencies=TRUE, Ncpus=20)
+    BiocManager::install(c('doBy','RSQLite','DBI'), update=FALSE, Ncpus=20)
+    install.packages('https://cran.r-project.org/src/contrib/Archive/refGenome/refGenome_1.7.7.tar.gz', Ncpus=20)
+    install.packages('https://cran.r-project.org/src/contrib/Archive/rbamtools/rbamtools_2.16.17.tar.gz', Ncpus=20)
+    install.packages('https://cran.r-project.org/src/contrib/Archive/nestedRanksTest/nestedRanksTest_0.2.tar.gz', Ncpus=20)
+    install.packages('rgl', configure.args='--disable-opengl')
+    BiocManager::install(c('pegas'), update=FALSE, Ncpus=20)
+    install.packages('https://cran.r-project.org/src/contrib/Archive/readGenalex/readGenalex_1.0.tar.gz', Ncpus=20)
+
 
 to get it installed.
 
@@ -195,217 +209,276 @@ Make sure that `/sw/apps/R_packages/$VERSION/inst.R` is available, then
 
     source("../inst.R")
 
-This installs all Bioconductor, then all CRAN packages, iteratively until there is no change.
-After this step, we re-ran this, and after this run, we get
+if you are in `$PREFIX`, or whatever is appropriate for the location you are in.
 
-    17696 CRAN packages installed, out of 18120 available
-    3310 BioConductor-specific packages installed, out of 3391 available
+When this started after the above, it printed
+
+    There are a total of 23068 packages available
+    260 CRAN packages installed, out of 19542 available
+    4 BioConductor-specific packages installed, out of 3526 available
+
+This installs all Bioconductor, then all CRAN packages, iteratively until there is no change.
+
+
+2023-05-25 -- we are here
+
+Don't gather log until the interative update with inst.R finishes, *then* run and collect the log. That will give more specific info for why packages will not install.
+
+Several packages have stalled with downloading.
+
+    -- biplotbootGUI_1.2.tar.gz
+    -- cncaGUI_1.1.tar.gz
+    -- multibiplotGUI_1.1.tar.gz
+    -- RcmdrPlugin.PcaRobust_1.1.4.tar.gz
+    -- RclusTool_0.91.5.tar.gz
+
+Turns out, these need access to X during installation, so must be installed outside a screen.
+
+    https://www.mail-archive.com/r-help@r-project.org/msg263560.html
+
+We should also add this so this doesn't hold us up in the future.
+
+    export _R_INSTALL_PACKAGES_ELAPSED_TIMEOUT_=500
+
+Remove the lock files:
+
+    rm -rf $PREFIX/00LOG00*
+
+and, outside any screen, make sure X works:
+
+    xeyes
+
+and then start an R that installs these:
+
+    cd $VERSIONDIR
+    source source-for-setup
+    R
+
+    BiocManager::install(c('RclusTool','RcmdrPlugin.PcaRobust','biplotbootGUI','cncaGUI','multibiplotGUI'), update=FALSE, Ncpus=4)
+
+Restart installations within the screen.
+
+    source("inst.R")
+
+At this point we are at
+
+    There are a total of 23081 packages available
+    18224 CRAN packages installed, out of 19555 available
+    3449 BioConductor-specific packages installed, out of 3526 available
+
+When this restart ends, we got just a handful of packages not installed.
+
+    No change in number of packages not installed: 1377 so quitting
+    After iteration 4 :
+    18253 CRAN packages installed, out of 19555 available
+    3451 BioConductor-specific packages installed, out of 3526 available
 
 Now looking at a few of the standard ones that failed, and why.
 
-1. `destiny`
+Now create a single-run version of the installation script and save the output.
+
+    cp inst.R inst1.R
+    vi inst1.R
+
+Edit the line
+
+    while (iter <= 10) { 
+
+to
+
+    while (iter <= 1) { 
+
+Yes I could generalise the script but this takes 5 seconds. Besides, it's a
+script to be `source()`'d within R, which makes generalising a bit different.
 
-This was followed by installing the below packages under their particular headings.
+Run this and save the output. Modified from the help for `sink()`.
+
+     zz <- file("inst1.Rout", open = "wt")
+     sink(zz)
+     sink(zz, type = "message")
+
+     source("inst1.R")
+
+     sink(type = "message")
+     sink()
+
+Looks like this is not capturing all of the build output, just the "well behaved" output from R.
 
-Then, a single run of the steps in inst.R to get another listing of packages
-that could not be installed. This output is `sink()`d to 20210409.out and will
-be consulted after the round of installations.
+Grepping for 'available' shows that several are not available, including several default packages grDevices, methods, graphics, stats, utils. Of the other packages, these are moved to the archive.
 
-Further runs give
+- clusterCrit
+- ReorderCluster
+- mGSZ
+- spp
+- propr
+- EntropyExplorer
+- SPARQL
+- mppa
+- sampSurf
+- GenKern
+- vbsr
+- kmlShape
 
-    18173 CRAN packages are installed, out of 18262 available
-    3382 BioConductor-specific packages are installed, out of 3391 available
+So, install directly.  Break out of R with Ctrl-z then
 
+    cd ../external_tarballs/
 
-    dependencies �genoset�, �bigmemoryExtras�, �RSVGTipsDevice�, �heatmap.plus�, �synapter� are not available
-    2: In .inet_warning(msg) : installation of one or more packages failed,
-    probably �affyPara�, �archive�, �clpAPI�, �cplexAPI�, �gpg�, �gpuMagic�, �HierO�, �HilbertVisGUI�, �image.textlinedetector�, �kmcudaR�, �methyAnalysis�, �odbc�, �OpenCL�, �opencv�, �permGPU�, �rawrr�, �Rcplex�, �RcppMeCab�, �redland�, �redux�, �rGEDI�, �RmecabKo�, �RmiR�, �RODBC�, �ROracle�, �RQuantLib�, �rrd�, �RVowpalWabbit�, �ssh�, �string2path�, �SwimR�, �synapterdata�, �tesseract�, �Travel�, �basifoR�, �bcputility�, �datapack�, �datrProfile�, �dbparser�, �doRedis�, �dplyr.teradata�, �drfit�, �explore�, �gde�, �htsr�, �ibmdbR�, �ImportExport�, �memapp�, �mixsep�, �MSSQL�, �mssqlR�, �neo4jshell�, �openSkies�, �ora�, �plumberDeploy�, �podr�, �qsub�, �rdflib�, �RODBCDBI�, �RODM�, �ROI.plugin.clp�,  [... truncated]
+    wget https://cran.r-project.org/src/contrib/Archive/clusterCrit/clusterCrit_1.2.8.tar.gz
+    R CMD INSTALL clusterCrit_1.2.8.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/ReorderCluster/ReorderCluster_2.0.tar.gz
+    R CMD INSTALL ReorderCluster_2.0.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/mGSZ/mGSZ_1.0.tar.gz
+    R CMD INSTALL mGSZ_1.0.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/spp/spp_1.16.0.tar.gz
+    R CMD INSTALL spp_1.16.0.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/propr/propr_4.2.6.tar.gz
+    R CMD INSTALL propr_4.2.6.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/EntropyExplorer/EntropyExplorer_1.1.tar.gz
+    R CMD INSTALL EntropyExplorer_1.1.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/SPARQL/SPARQL_1.16.tar.gz
+    R CMD INSTALL SPARQL_1.16.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/mppa/mppa_1.0.tar.gz
+    R CMD INSTALL mppa_1.0.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/sampSurf/sampSurf_0.7-6.tar.gz
+    R CMD INSTALL sampSurf_0.7-6.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/GenKern/GenKern_1.2-60.tar.gz
+    R CMD INSTALL GenKern_1.2-60.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/vbsr/vbsr_0.0.5.tar.gz
+    R CMD INSTALL vbsr_0.0.5.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/kmlShape/kmlShape_0.9.5.tar.gz
+    R CMD INSTALL kmlShape_0.9.5.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/spatstat.core/spatstat.core_2.4-4.tar.gz
+    R CMD INSTALL spatstat.core_2.4-4.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/baseflow/baseflow_0.13.2.tar.gz
+    R CMD INSTALL baseflow_0.13.2.tar.gz
 
+This is available in CRAN but the latest version is not for this version of R.
 
-rgl
----
+- markovchain   # latest 0.9.3 only available for R 4.3.0, so I will back down to 0.9.1 (0.9.2 not available in carchive)
 
-For whatever reason, `rgl` cannot be loaded when built with a viewer.  So, install with OpenGL disabled.
+    wget https://cran.r-project.org/src/contrib/Archive/markovchain/markovchain_0.9.1.tar.gz
+    R CMD INSTALL markovchain_0.9.1.tar.gz
 
 
-    BiocManager::install('rgl', configure.args='--with-x --disable-opengl')
+1. `a` packages
 
+Next round, try installing all packages listed as being installed within inst1.Rout beginning with `a`, identify the issues.
 
+    r <- getOption("repos"); r["CRAN"] <- "https://ftp.acc.umu.se/mirror/CRAN/"; options(repos = r)
+    BiocManager::install(c('abmR', 'abstr', 'acdcR', 'Achilles', 'adespatial', 'adw', 'affinity', 'AFM', 'ag5Tools', 'AGPRIS', 'agriwater', 'AgroTech', 'AHMbook', 'AHPWR', 'aihuman', 'AirMonitor', 'AlphaHull3D', 'altdoc', 'ambhasGW', 'amplican', 'amt', 'AneuFinder', 'angstroms', 'animalEKF', 'animaltracker', 'anipaths', 'AntAngioCOOL', 'antaresViz', 'aopdata', 'APfun', 'appeears', 'AQEval', 'AquaBEHER', 'ArchaeoChron', 'ArchaeoPhases', 'archeoViz', 'archive', 'arcpullr', 'areal', 'arenar', 'Arothron', 'ARPALData', 'ArrayExpressHTS', 'arulesNBMiner', 'ascotraceR', 'ASIP', 'aslib', 'ASpediaFI', 'assignR', 'atakrig', 'atom4R', 'atpolR', 'automap', 'AWR', 'AWR.Kinesis', 'AWR.KMS'), update=FALSE, Ncpus=4)
 
 
-Installation which requires additional modules
-----------------------------------------------
+  - Failures installing 'rJava' revealed that I was not loging in the R/4.2.1 mf file the java that I built with, java/sun_jdk1.8.0_151. I will switch to OpenJDK with the 4.3 versions.
+  - Failure building AlphaHull3D were because GMP and MPFR were not available, loaded GMP/6.2.1 and MPFR/4.1.0
+  - sodium needed libsodium/1.0.18-stable loaded
+  - archive needs libarchive, so creating libarchive/3.6.2 module. Also adding load of lz4/1.9.2
+  - FINALLY BUILT. terra won't build, there may be a misconfiguration between PROJ.4 expectations and PROJ/9.1.1
+    One issue is that we need to specify all options that the terra build requires.
+    This involved unpacking the archive and doing `./configure --help` to identify
+    the options.  The second was recognising, through this process in a separate
+    window, that libtiff and libcurl were not loaded for specific modules. They
+    were loaded here, but needed to be reloaded so that they were in the last
+    position in the module list. This makes no sense, but there it is.
 
-A number of R packages or their dependencies require some further loads.
+      cd $VERSIONDIR/external/
+      wget https://cran.r-project.org/src/contrib/terra_1.7-29.tar.gz
+      tar xf terra_1.7-29.tar.gz
+      ml libtiff/4.5.0
+      ml libcurl/7.85.0
+      R CMD INSTALL --configure-args="--with-gdal-config=$GDAL_ROOT/bin/gdal-config --with-proj-data=$PROJ_DATA --with-sqlite3-lib=$SQLITE3_ROOT/lib --with-proj-include=$PROJ_ROOT/include --with-proj-lib=$PROJ_ROOT/lib --with-proj-share=$PROJ_DATA --with-geos-config=$GEOS_ROOT/bin/geos-config" terra
 
 
-## Parallel OpenBUGS operation: pbugs and RMultiBUGS
+  - gdalraster fails like terra, so we need to build it like terra
 
-pbugs on github has a bug in its DESCRIPTION.
+      cd $VERSIONDIR/external/
+      wget https://cran.r-project.org/src/contrib/gdalraster_1.2.0.tar.gz
+      tar xf gdalraster_1.2.0.tar.gz
+      ml libtiff/4.5.0
+      ml libcurl/7.85.0
+      R CMD INSTALL --configure-args="--with-gdal-config=$GDAL_ROOT/bin/gdal-config --with-proj-data=$PROJ_DATA --with-sqlite3-lib=$SQLITE3_ROOT/lib --with-proj-include=$PROJ_ROOT/include --with-proj-lib=$PROJ_ROOT/lib --with-proj-share=$PROJ_DATA --with-geos-config=$GEOS_ROOT/bin/geos-config" gdalraster
 
-    cd $TOOLDIR/external
-    git clone https://github.com/fisabio/pbugs
-    cd pbugs
-    vi DESCRIPTION
+  - OpenBUGS/3.2.3 required for R2OpenBUGS, BRugs, pbugs
 
-Remove the line beginning with RoxygenNote.
+      cd $VERSIONDIR/external
+      git clone https://github.com/fisabio/pbugs
 
-    cd ..
+      install.packages('pbugs', repos=NULL)
 
-Then within R started in this directory:
+  - R2MultiBUGS for MultiBUGS/2.0-gcc10.3.0
 
-    install.packages('pbugs', repos=NULL)
+      ml MultiBUGS/2.0-gcc10.3.0
 
+      devtools::install_github("MultiBUGS/R2MultiBUGS")
 
-### hdf5r
+      ml -MultiBUGS
 
-Outside R:
+  - Rmpi, Rhpc
 
-    module load hdf5/1.10.5
+      cd $TOOLDIR/external_tarballs
+      wget https://cran.r-project.org/src/contrib/Archive/Rhpc/Rhpc_0.21-247.tar.gz
+      R CMD INSTALL Rhpc_0.21-247.tar.gz
+      wget https://cran.r-project.org/src/contrib/Archive/metaMix/metaMix_0.3.tar.gz
+      R CMD INSTALL metaMix_0.3.tar.gz
+      cd $VERSIONDIR
 
-Inside R:
+      ml openmpi/3.1.6
 
-    BiocManager::install(c("hdf5r"), dependencies=TRUE)
+      install.packages(c("Rmpi","bigGP","doMPI","metaMix","regRSM"))
 
-Outside R:
+      ml -openmpi
 
-    module unload hdf5
+  - clustermq, rzmq
 
-This hdf5 module version should also be noted in the module help.
+      ml libzmq/4.3.4
 
+      BiocManager::install(c("clustermq","rzmq"), update=FALSE)
 
+      ml -libzmq
 
-### Rmpi, Rhpc, bigGP, doMPI, metaMix, regRSM
 
-Load the most common openmpi module for the gcc version used by R.  In this case, R/4.1.1 loads gcc/9.3.0.  There is an openmpi/4.0.2 and openmpi/4.0.3, but there is also openmpi/3.1.5, which is a more established major version.  That is what we'll load
 
-This also installs four (and counting) modules that depend on Rmpi.
+Rerun of inst.R
+----------------
 
-Outside R:
 
-    module load openmpi/3.1.5
+After several installs including solving terra, reran `inst.R` and it showed
 
-Inside R:
+    After iteration 2 :
+    19483 CRAN packages installed, out of 19558 available
+    3510 BioConductor-specific packages installed, out of 3526 available
 
-    BiocManager::install(c("Rmpi","Rhpc","bigGP","doMPI","metaMix","regRSM"), dependencies=TRUE)
+Some of the problem cases:
 
+  -  loon.ggplot iplots  -- installed straightaway
+  -  rsbml  -- I'm just going to give up on this one
+  -  dfpk
+  -  GLMMselect
+  -  BiGGR
+  -  beanz
+  -  ssh -- needs libssh, we only have libssh2
+  -  ArrayExpressHTS -- this still doesn't seem to work. I figure it should be
+     getting its htslib from Rhtslib, not from an external module. How to make
+     that happen... I tried various hacks and couldn't get it to work, if I made
+     include/htslib/sam.h available, then this error appeared. I think we skip
+     this one for R_packages/4.2.1
 
-Outside R:
+         fltbam.c:223:47: error: request for member 'header' in something not a structure or union
 
-    module unload openmpi
 
-This openmpi module version should also be noted in the module help.
+Running `./installed.R -c` produces
 
-
-
-### baseflow, gifski, string2path
-
-Requires rust/1.43.1.
-
-    module load rust/1.43.1
-
-Inside R:
-
-    BiocManager::install(c("baseflow","gifski","string2path"), dependencies=TRUE)
-
-Outside R:
-
-    module unload rust
-
-This rust module version should also be noted in the module help where we mention baseflow.
-
-
-
-### BRugs
-
-Load the OpenBUGS module.
-
-Outside R:
-
-    module load OpenBUGS/3.2.3
-
-Inside R:
-
-    BiocManager::install(c("BRugs"), dependencies=TRUE)
-
-Outside R:
-
-    module unload OpenBUGS
-
-This OpenBUGS module version should also be noted in the module help.
-
-
-
-### sodium
-
-Load the libsodium module.
-
-Outside R:
-
-    module load libsodium/1.0.18-stable
-
-Inside R:
-
-    BiocManager::install(c("sodium"), dependencies=TRUE)
-
-Outside R:
-
-    module unload libsodium
-
-This libsodium module version should also be noted in the module help.
-
-
-
-### clustermq, rzmq
-
-Load the libzmq module.
-
-Outside R:
-
-    module load libzmq/4.3.4
-
-Inside R:
-
-    BiocManager::install(c("clustermq","rzmq"), dependencies=TRUE)
-
-Outside R:
-
-    module unload -libzmq
-
-This libzmq module version should also be noted in the module help.
-
-
-
-### magick, dyno, dynplot, dynutils
-
-This requires some additional
-module loads that were left out of the general compilation.
-
-Outside R, load modules then run R:
-
-    module load ImageMagick/7.0.11-3 giflib/5.1.4
-    #  Poppler is already loaded
-
-and within R:
-
-    BiocManager::install('magick', dependencies=TRUE)
-
-then:
-
-    module unload ImageMagick giflib
-
-and within R, install the rest.  The `tesseract` dependency won't be installable unless this OCR system
-is eventually installed at Uppmax.  Should be no problem to leave it out.
-
-    xtra.list = c('formattable','kableExtra')
-    BiocManager::install(xtra.list, dependencies=TRUE, Ncpus=8)
+    A total of 23037 R packages are installed
+    A total of 23084 packages are available in CRAN and BioConductor
+    19484 CRAN packages are installed, out of 19558 available
+    3510 BioConductor-specific packages are installed, out of 3526 available
+    43 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere
 
 
 
 Interim updates
 ---------------
 
-If updating an R package from CRAN or BioConductor, simply use `BiocManager::install(...)` within R.
+If updating an R package from CRAN or BioConductor, simply use `BiocManager::install(..., update=FALSE)` within R.
 
 
 Updating existing packages in this module
@@ -459,7 +532,7 @@ Two steps.  This requires installing the cmdstanr package from a custom reposito
 Then, downloading the latest CmdStan to `$TOOLDIR/external`.  As of this writing, this is
 
     cd $TOOLDIR/external
-    [[ -f cmdstan-2.27.0.tar.gz ]] || wget https://github.com/stan-dev/cmdstan/releases/download/v2.27.0/cmdstan-2.27.0.tar.gz
+    [[ -f cmdstan-2.32.2.tar.gz ]] || wget https://github.com/stan-dev/cmdstan/releases/download/v2.32.2/cmdstan-2.32.2.tar.gz
 
 Add wording to module help to use the following:
 
@@ -471,27 +544,30 @@ can be installed from an UPPMAX-local file using the following commands within
 R:
 
     library(cmdstanr)
-    install_cmdstan(release_url="file:///sw/apps/R_packages/external/cmdstan-2.27.0.tar.gz")
+    install_cmdstan(release_url="file:///sw/apps/R_packages/external/cmdstan-2.32.2.tar.gz")
 
 You can then use the `backend='cmdstanr'` option with brms functions.
 
 
 
-### MUVR
+### Other packages
 
-    devtools::install_gitlab('CarlBrunius/MUVR', dependencies=TRUE)
+    devtools::install_gitlab('CarlBrunius/MUVR')
 
 
 
 ### dyno
 
+Make sure ImageMagick and giflib are loaded.
+
     module load ImageMagick/7.0.11-3 giflib/5.1.4
 
-    devtools::install_github("dynverse/dyno", dependencies=TRUE)
+    devtools::install_github("dynverse/dyno")
 
 This build popped up the message
 
-    >  devtools::install_github("dynverse/dyno", dependencies=TRUE)
+    >  devtools::install_github("dynverse/dyno")
+    >  Using github PAT from envvar GITHUB_PAT
     >  Downloading GitHub repo dynverse/dyno@HEAD
     >  These packages have more recent versions available.
     >  It is recommended to update all of them.
@@ -500,50 +576,43 @@ This build popped up the message
     >  1: All
     >  2: CRAN packages only
     >  3: None
-    >  4: dynfeature (1.0.0 -> 62981cef5...) [GitHub]
-    >  5: dynplot    (1.1.1 -> 64670d07a...) [GitHub]
-    >  6: dynwrap    (1.2.2 -> 250758bc1...) [GitHub]
+    >  4: dynfeature (1.0.1 -> b6fa729b1...) [GitHub]
+    >  5: dynplot    (1.1.2 -> d64b25cd5...) [GitHub]
+    >  6: dynwrap    (1.2.3 -> d7233776f...) [GitHub]
     >
     >  Enter one or more numbers, or an empty line to skip updates: 1
 
+
 Had to choose '1' a couple times to get all packages updated ... wait... is dynverse now part of CRAN ?
 
-    module unload ImageMagick giflib
-
-
-2021-09-16: Through the installation of these packages, the counts are
-
-    There are a total of 21044 CRAN and BioConductor packages installed, out of 21594 packages available
-    17700 CRAN packages are installed, out of 18203 available
-    3310 BioConductor-specific packages are installed, out of 3391 available
+    module unload ImageMagick giflib  # or not
 
 
 
-### DESeq, xps
+### xps  needs ROOT/6.22.08
 
-Deprecated within BioConductor, but several packages still rely on these.  Pull them from the Bioconductor git repository and install from their clones.
+Pull from Bioconductor git repository and install from their clones.  ROOT/6.26.10 is too recent.  We have to do a little gcc module finesse to use the older ROOT.
 
     mkdir $VERSIONDIR/external
     cd $VERSIONDIR/external
-    git clone https://git.bioconductor.org/packages/DESeq
     git clone https://git.bioconductor.org/packages/xps
 
-xps requires ROOT/6.22.08.
 
     module load ROOT/6.22.08
+    module load gcc/10.3.0
 
 Then within R, in the `$VERSIONDIR/external/` directory,
 
-    install.packages('DESeq', repos=NULL)
     install.packages('xps', repos=NULL)
 
 Then
 
-    module unload ROOT/6.22.08
+    module unload ROOT
+    module load gcc/10.3.0
 
 
 
-### KEGG.db, prada, rTANDEM, PGSEA, FunciSNP.data, Roleswitch, easyRNASeq
+### Archived BioConductor packages
 
 Deprecated or temporary build problems, but packages still rely on these.  Pull
 them from the Bioconductor git or tarball repository and install from there.
@@ -554,31 +623,30 @@ KEGG.db is superceded by KEGGREST but PGSEA doesn't know that.
     wget --timestamping http://bioconductor.org/packages/3.11/data/annotation/src/contrib/KEGG.db_3.2.4.tar.gz
     R CMD INSTALL KEGG.db_3.2.4.tar.gz
 
+    git clone https://git.bioconductor.org/packages/DESeq
     git clone https://git.bioconductor.org/packages/prada
     git clone https://git.bioconductor.org/packages/PGSEA
     git clone https://git.bioconductor.org/packages/rTANDEM
     git clone https://git.bioconductor.org/packages/FunciSNP
     git clone https://git.bioconductor.org/packages/FunciSNP.data
     git clone https://git.bioconductor.org/packages/Roleswitch
-    git clone https://git.bioconductor.org/packages/easyRNASeq
     git clone https://git.bioconductor.org/packages/facsDorit
-    git clone https://git.bioconductor.org/packages/destiny
     git clone https://git.bioconductor.org/packages/metagenomeFeatures
     git clone https://git.bioconductor.org/packages/RDAVIDWebService
 
 Then within R, in the same `$VERSIONDIR/external` directory,
 
-    install.packages(c('prada','PGSEA','rTANDEM','FunciSNP.data','Roleswitch','easyRNASeq','facsDorit','FunciSNP','destiny','metagenomeFeatures','RDAVIDWebService'), repos=NULL)
+    install.packages(c('DESeq','prada','PGSEA','rTANDEM','FunciSNP.data','Roleswitch','facsDorit','FunciSNP','metagenomeFeatures','RDAVIDWebService'), repos=NULL)
 
 Once these are installed, many others can be installed.  A full rerun of the installation script is warranted.
 
 
 
-### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk, SeuratWrappers, kBET, presto, ArchR
+### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk, SeuratWrappers, kBET, presto, ArchR, sgi, ASCAT, ggnet, STAAR, cblindplot
 
-Github-hosted packages.  Load hdf5/1.10.5 since loomR uses hdf5r.
+Github-hosted packages.  Make sure hdf5/1.14.0 is loaded, loomR uses it.
 
-    devtools::install_github("variani/lme4qtl", ref='master', dependencies=TRUE)
+    devtools::install_github("variani/lme4qtl", ref='master')
     devtools::install_github("immunogenomics/harmony", ref = 'master')
     devtools::install_github("petrikemppainen/LDna", ref = 'master')
     devtools::install_github("madsalbertsen/ampvis2")
@@ -590,36 +658,76 @@ Github-hosted packages.  Load hdf5/1.10.5 since loomR uses hdf5r.
     devtools::install_github('immunogenomics/presto')
     devtools::install_github("GreenleafLab/ArchR", ref="master")
     devtools::install_github(repo="krumsieklab/sgi", subdir="sgi")
+    devtools::install_github('VanLoo-lab/ascat/ASCAT')
+    devtools::install_github("briatte/ggnet")
+    devtools::install_github("ducciorocchini/cblindplot")
+    devtools::install_github("RoseString/SCOPfunctions")
+    devtools::install_github("McGranahanLab/TcellExTRECT")
+    remotes::install_github('satijalab/azimuth', ref = 'master')
+
+STAAR and its tutorials work with several other packages not provided with CRAN or BioConductor.
+
+    devtools::install_github("xihaoli/STAAR")
+    devtools::install_github("zilinli1988/SCANG")
+    devtools::install_github("xihaoli/STAARpipeline",ref="main")
+    devtools::install_github("xihaoli/STAARpipelineSummary",ref="main")
+
+HDL installs from a subdirectory of its repository.
+
+    devtools::install_github(repo="zhenin/HDL", subdir="HDL")
+
+### BPCells
+
+This requires an older hdf5, hdf5/1.10.9.
+
+Download:
+
+    cd $VERSIONDIR/external
+    wget https://github.com/bnprks/BPCells/archive/refs/tags/v0.1.0.tar.gz
+    tar xf v0.1.0.tar.gz
+
+Edit its configure to pull from HDF5_LIB and HDF5_INCLUDE, and to remove the
+use of `-march=native` which will, when built on rackham, fail on snowy.
+
+    vim BPCells-0.1.0/configure
+
+A diff of the old and new configure is:
+
+  Old                                    New
+
+24  HDF5_CFLAGS=""                       HDF5_CFLAGS="-I${HDF5_INCLUDE}"
+25  HDF5_LIBS="-lhdf5"                   HDF5_LIBS="-L${HDF5_LIB} -lhdf5"
+
+75  echo "ARCH_FLAG='$ARCH_FLAG'"        echo "ARCH_FLAG='$ARCH_FLAG'"
+76                                       ARCH_FLAG=''
+77                                       echo "ARCH_FLAG='$ARCH_FLAG'"
+
+
+Temporarily load the older hdf5 and install:
+
+    module load hdf5/1.10.9
+
+Now within R:
+
+    install.packages('BPCells-0.1.0', repos=NULL)
+    q()
+
+Unload the olderl hdf5 module and make sure the BPCells.so library can find it:
+
+    module unload hdf5
+    ldd /sw/apps/R_packages/4.2.1/rackham/BPCells/libs/BPCells.so
+
+If so it worked correctly, so load the newer one:
+
+    module load hdf5/1.14.0
+
 
 ### HDL
 
-A github repository that contains as a subdirectory a CRAN-like repository
-directory.  Create a new `external` directory within VERSIONDIR
-and clone the HDL repository there.  **NOTE: there is no need to do this.**
-
-    cd $VERSIONDIR
-    mkdir -p external
-    cd external
-    module load git/2.28.0
-    git clone https://github.com/zhenin/HDL
-    cd HDL
-
-Then, install the HDL repository from this subdirectory using standard R
-procedures.
-
-    R
-
-Within R:
-
-    install.packages("HDL", repos=NULL)
-
-Make sure this loads correctly:
-
-    library(HDL)
-
-The repository also contains some scripts and datasets that the users may wish
-to use.  Added a note to the module help, and defined the new mf file variable
-`reposroot` to point to `$VERSIONDIR/external`.
+We install this from its subdirectory above.  The repository also contains some
+scripts and datasets that the users may wish to use.  Added a note to the
+module help, and defined the new mf file variable `reposroot` to point to
+`$VERSIONDIR/external`.
 
 
 ### velocyto.R
@@ -644,19 +752,6 @@ And verify outside R:
     ldd /sw/apps/R_packages/4.2.1/rackham/velocyto.R/libs/velocyto.R.so
 
 
-### ASCAT
-
-Install a non-CRAN package ASCAT, hosted on github.  Download the latest
-release here (https://github.com/Crick-CancerGenomics/ascat/releases).  No more
-recent release since 2.5.2 we already have.
-  
-    mkdir -p /sw/apps/R_packages/external_tarballs
-    cd /sw/apps/R_packages/external_tarballs
-    ASCAT_VERSION=2.5.2
-    [[ -f ASCAT_${ASCAT_VERSION}.tar.gz ]] || wget --timestamping https://github.com/Crick-CancerGenomics/ascat/releases/download/v${ASCAT_VERSION}/ASCAT_${ASCAT_VERSION}.tar.gz
-    R CMD INSTALL ASCAT_${ASCAT_VERSION}.tar.gz
-
-
 ### igraph0
 
 Also, install an outdated package `igraph0`, which has been superseded by
@@ -674,7 +769,7 @@ A deprecated package at CRAN.
 
     cd /sw/apps/R_packages/external_tarballs
     COXBOOST_VERSION=1.4
-    [[ -f igraph0_${COXBOOST_VERSION}.tar.gz ]] || wget --timestamping https://cran.r-project.org/src/contrib/Archive/CoxBoost/CoxBoost_${COXBOOST_VERSION}.tar.gz
+    [[ -f CoxBoost_${COXBOOST_VERSION}.tar.gz ]] || wget --timestamping https://cran.r-project.org/src/contrib/Archive/CoxBoost/CoxBoost_${COXBOOST_VERSION}.tar.gz
     R CMD INSTALL CoxBoost_${COXBOOST_VERSION}.tar.gz
 
 
@@ -705,11 +800,11 @@ Install rrbgen for reading BGEN files, hosted on github. No update since 0.0.6.
 Install STITCH for haplotype imputation, hosted on github.  I was worried about
 its requirement for htslib but it has incorporated that into its own source
 tree.  This module also requires both `bgzip` and `tabix`, which are provided
-by `htslib/1.8`.
+by `htslib/1.8`, and says it needs `bcftools/1.8` and `samtools/1.8`.
 
     mkdir -p /sw/apps/R_packages/external_tarballs
     cd /sw/apps/R_packages/external_tarballs
-    STITCH_VERSION=1.6.5
+    STITCH_VERSION=1.6.8
     [[ -f STITCH_${STITCH_VERSION}.tar.gz ]] || wget --timestamping https://github.com/rwdavies/STITCH/releases/download/${STITCH_VERSION}/STITCH_${STITCH_VERSION}.tar.gz
     R CMD INSTALL STITCH_${STITCH_VERSION}.tar.gz
 
@@ -728,15 +823,15 @@ have regular releases, and they also require another github-hosted package
 called TwoSampleMR.  So, we do the above to set up our R environment and do all
 this inside R:
   
-    R --no-init-file
 
-and then within R
-
-    devtools::install_github(c("MRCIEU/TwoSampleMR","MRCIEU/MRInstruments"))
+    devtools::install_github("MRCIEU/TwoSampleMR")
+    devtools::install_github("MRCIEU/MRInstruments")
     devtools::install_github("WSpiller/MRPracticals",build_opts = c("--no-resave-data", "--no-manual"),build_vignettes = TRUE)
 
+MRPracticals vignettes did not install.
 
-### EasyQC
+
+### EasyQC, EasyQC2
 
     mkdir -p /sw/apps/R_packages/external_tarballs
     cd /sw/apps/R_packages/external_tarballs
@@ -744,28 +839,33 @@ and then within R
     [[ -f EasyQC_${EASYQC_VERSION}.tar.gz ]] || wget --timestamping https://homepages.uni-regensburg.de/~wit59712/easyqc/EasyQC_${EASYQC_VERSION}.tar.gz
     R CMD INSTALL EasyQC_${EASYQC_VERSION}.tar.gz
 
-    wget --timestamping https://homepages.uni-regensburg.de/~wit59712/easyqc/EasyQC_9.0_Commands_140918_2.pdf
+    [[ -f EasyQC_9.0_Commands_140918_2.pdf ]] || wget --timestamping https://homepages.uni-regensburg.de/~wit59712/easyqc/EasyQC_9.0_Commands_140918_2.pdf
 
+    EASYQC2_VERSION=1.1.1
+    [[ -f EasyQC2_${EASYQC2_VERSION}.tar.gz ]] || wget --timestamping https://homepages.uni-regensburg.de/~wit59712/easyqc2/EasyQC2_${EASYQC2_VERSION}.tar.gz
+    R CMD INSTALL EasyQC2_${EASYQC2_VERSION}.tar.gz
 
 
 ### arrow
 
-Building arrow with LZ4 and ZSTD and other features. Do this on snowy.
+arrow is installed as a normal R package. Do the following check within R
+
+    library(arrow)
+    packageVersion('arrow')
+    codec_is_available('lz4')
+    codec_is_available('zstd')
+
+If either of the codec statements is FALSE (both were TRUE this time), then
+reinstall using the following to build arrow with LZ4 and ZSTD and other
+features.  What is filled in for ARROWVERSION is what is printed by the
+packageVersion() command within R.
 
     cd $VERSIONROOT/external
-    wget https://cran.r-project.org/src/contrib/arrow_6.0.1.tar.gz
+    ARROWVERSION=12.0.0
+    wget https://cran.r-project.org/src/contrib/arrow_${ARROWVERSION}.tar.gz
     export LIBARROW_MINIMAL=false
-    ARROW_WITH_ZLIB=ON ARROW_WITH_ZSTD=ON ARROW_WITH_LZ4=ON ARROW_WITH_BZ2=ON ARROW_R_DEV=true R CMD INSTALL arrow_6.0.1.tar.gz
+    ARROW_WITH_ZLIB=ON ARROW_WITH_ZSTD=ON ARROW_WITH_LZ4=ON ARROW_WITH_BZ2=ON ARROW_R_DEV=true R CMD INSTALL arrow_${ARROWVERSION}.tar.gz
 
-Verify in R.
-
-    > library(arrow)
-    > packageVersion('arrow')
-    > [1] '6.0.1'
-    > > codec_is_available('lz4')
-    > [1] TRUE
-    > > codec_is_available('zstd')
-    > [1] TRUE
 
 
 contamMix 1.0-10
@@ -775,57 +875,57 @@ Couldn't find the tarball except as part of a pipeline, so fetched from there.
 
 Installed similarly into 4.1.1, 4.0.4, 4.0.0.
 
-    cd /sw/apps/R_packages/external_tarballs
+    mkdir -p $TOOLDIR/external_tarballs
+    cd $TOOLDIR/external_tarballs
 
-    wget https://github.com/alexhbnr/mitoBench-ancientMT/blob/master/resources/contamMix_1.0-10.tar.gz?raw=true
-    mv contamMix_1.0-10.tar.gz\?raw\=true contamMix_1.0-10.tar.gz
+    if [[ ! -f contamMix_1.0-10.tar.gz ]]  ; then
+        wget https://github.com/alexhbnr/mitoBench-ancientMT/blob/master/resources/contamMix_1.0-10.tar.gz?raw=true
+        mv contamMix_1.0-10.tar.gz\?raw\=true contamMix_1.0-10.tar.gz
+    fi
 
-    R CMD INSTALL /sw/apps/R_packages/external_tarballs/contamMix_1.0-10.tar.gz
+    R CMD INSTALL contamMix_1.0-10.tar.gz
 
 
-CrIMMix
--------
+LRAcluster, CIMLR, CrIMMix
+-----------------
 
-2022-04-04
+Could not install CrIMMix (see below). Still, we install LRAcluster 1.0, at http://lifeome.net/software/lracluster/
 
-Install LRAcluster 1.0, at http://lifeome.net/software/lracluster/
+    mkdir -p $TOOLDIR/external_tarballs
+    cd $TOOLDIR/external_tarballs
 
-    cd /sw/apps/R_packages/external_packages
-    wget http://lifeome.net/software/lracluster/LRAcluster_1.0.tgz
+    [[ -f LRAcluster_1.0.tgz ]] || wget http://lifeome.net/software/lracluster/LRAcluster_1.0.tgz
     R CMD INSTALL LRAcluster_1.0.tgz
 
-And then within R:
+and CIMLR:
 
     devtools::install_github("danro9685/CIMLR", ref="R")
+
+CrIMMix cannot be installed for 4.2.1.
+
     devtools::install_github("CNRGH/crimmix")
 
-After this installation, when trying to generate new counts and table below, got the message
+    Error: object 'sgcca' is not exported by 'namespace:RGCCA'
+    Execution halted
+    ERROR: lazy loading failed for package 'CrIMMix'
+    * removing '/sw/apps/R_packages/4.2.1/rackham/CrIMMix'
 
-    Loading required namespace: BiocManager
-    Failed with error:  'package 'BiocManager' was installed before R 4.0.0: please re-install it'
-
-So, reinstalled BiocManager and did the install() method, do not update any other packages.
-
-    if (! requireNamespace("BiocManager"))
-        install.packages("BiocManager")
-    BiocManger::install()
-
-When it asks, update 'n' **None**.
+We put a message in the mf to load R_packages/4.1.1 instead.
 
 
 Adding a new package
 --------------------
 
 Srouce `$VERSIONDIR/source-for-setup`.  Load R, then for both CRAN and
-BioConductor packages, we use `BiocManager::install()` which ultimately uses
+BioConductor packages, we use `BiocManager::install(update=FALSE)` which ultimately uses
 R's own `install.packages()`.
 
 
     new.packages = c('package_a')
     if (! requireNamespace("BiocManager"))
         install.packages("BiocManager")
-    BiocManager::install(new.packages, dependencies=TRUE, Ncpus=10)
-    BiocManager::install(new.packages, Ncpus=10)
+    BiocManager::install(new.packages, update=FALSE, Ncpus=10)
+    BiocManager::install(new.packages, update=FALSE, Ncpus=10)
 
 
 

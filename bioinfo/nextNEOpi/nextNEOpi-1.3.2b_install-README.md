@@ -20,8 +20,6 @@ LOG
     
     mkdir SINGULARITY_LIBRARYDIR
     
-    cd nextNEOpi/conf && cp -a profiles.config profiles.config.orig
-    # Edit profiles.config to point to the local Singularity containers
 
     
 
