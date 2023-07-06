@@ -1,10 +1,10 @@
 hmmer/3.3.2
 ========================
 
-<http://hmmer.org>
+<http://>
 
 Used under license:
-GPL
+
 
 
 Structure creating script (makeroom_hmmer_3.3.2.sh) moved to /sw/bioinfo/hmmer/makeroom_3.3.2.sh
@@ -12,8 +12,33 @@ Structure creating script (makeroom_hmmer_3.3.2.sh) moved to /sw/bioinfo/hmmer/m
 LOG
 ---
 
-    /home/douglas/bin/makeroom.sh -f" -t "hmmer" -v "3.3.2" -w "http://hmmer.org" -l "GPL" -d "HMMER is used for searching sequence databases for sequence homologs\, and for making sequence alignments. It implements methods using probabilistic models called profile hidden Markov models \(profile HMMs\)."
+    /home/bjornv/git/install-methods/makeroom.sh "-t" "hmmer" "-v" "3.3.2" "-f"
     ./makeroom_hmmer_3.3.2.sh
+    
+    # Load modules
+    module load gcc/12.3.0
+
+    # Download
+    cd $SRCDIR
+    wget http://eddylab.org/software/hmmer/hmmer-${VERSION}.tar.gz
+    tar xfvz hmmer-${VERSION}.tar.gz --strip-components=1
+
+    # Install
+    ./configure --prefix=$PREFIX 
+    make -j 10
+    make check
+    make install
+
+    # Test
+    #I did the tutorial in http://eddylab.org/software/hmmer/Userguide.pdf. No problems on snowy either.
+    cd $SRCDIR/tutorial
+
+
+
+
+
+
+
 
     VERSION=3.2.1
     CLUSTER=${CLUSTER:?CLUSTER must be set}

@@ -11,7 +11,7 @@
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL
-#SBATCH -o /sw/data/Kraken2_data/slurm-rackham-thin-%j.out
+#SBATCH -o /sw/data/Kraken2_data/${0%.sh}-slurm-rackham-thin-%j.out
 
 set -x
 
@@ -56,7 +56,7 @@ ln -sf ./$VERSION latest
 chgrp -hR sw ./$VERSION latest
 chmod -R u+rwX,g+rwX,o+rX ./$VERSION
 [[ -L latest ]] || error_send_email "In $K2_DB_BASE, did not create symbolic link 'latest', quitting..."
-for DB_TYPE in greengenes rdp silva
+for DB_TYPE in greengenes silva
 do
     DB=${VERSION}_${DB_TYPE}
     # if the first attempt fails, sleep 5 minutes and try again; if that fails, sleep 10 minutes and try one last time
@@ -76,6 +76,6 @@ done
 #    | cat - $MF_K \
 #    | mailx -s "Kraken2 DB build successful: '$K2_DB'" douglas.scofield@uppmax.uu.se
 
-echo -e "In $K2_DB_BASE: prepared databases latest, greengenes, rdp, silva\n" \
+echo -e "In $K2_DB_BASE: prepared databases latest, greengenes, silva\n" \
     | mailx -s "Kraken2 DB build successful in $K2_DB_BASE" douglas.scofield@uppmax.uu.se
 

@@ -45,10 +45,10 @@ function fixup()
     args=("$@")
     for arg in ${args[@]} ; do
         echo "fixup: '$arg'"
-        echo "    Changing group to $GROUP ..."
-        chgrp -hR $GROUP "$arg"
         echo "    Changing permissions to $PERM ..."
         chmod -R "$PERM" "$arg"
+        echo "    Changing group to $GROUP ..."
+        chgrp -hR $GROUP "$arg"
         if [[ $SETGID_DIRS ]] ; then
             echo "    Adding g+s to directory permissions ..."
             find "$arg" -type d -print0 | xargs -0 --no-run-if-empty chmod g+s

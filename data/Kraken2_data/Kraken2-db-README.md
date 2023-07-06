@@ -1,6 +1,11 @@
 Kraken2 database updates
 ========================
 
+### Update 2023-07-03: RDP database no longer available, website is shut down
+
+So stop including this database in the Kraken2-update-db.sh script.
+
+
 Prebuilt databases
 ------------------
 

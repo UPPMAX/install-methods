@@ -32,9 +32,28 @@ No prebuilt binaries here. Build from source.
     ml jemalloc/5.0.1  # cmake finds correctly
     ml libcurl/7.85.0  # cmake finds correctly
 
-We have a staden module but it is very old.
+We have a staden module but it is very old, so let it build and download its own.
 
-Give cmake hints for modules it can't find easily.
+Give cmake hints for modules it can't find easily.  Also, because of compilation errors, turn off interprocedural optimisations with `-DNO_IPO=TRUE` following <https://github.com/COMBINE-lab/salmon/issues/455>.
 
-    cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DBOOST_ROOT=$BOOST_ROOT -DBZIP2_INCLUDE_DIR:PATH=$BZIP2_ROOT/include -DBZIP2_LIBRARY_RELEASE:FILEPATH=$BZIP2_ROOT/lib/libbz2.so -DZLIB_INCLUDE_DIR:PATH=$ZLIB_ROOT/include -DZLIB_LIBRARY_RELEASE:FILEPATH=$ZLIB_ROOT/lib/libz.so -DLIBLZMA_INCLUDE_DIR:PATH=$LIBLZMA_ROOT/include -DLIBLZMA_LIBRARY_RELEASE:FILEPATH=$LIBLZMA_ROOT/lib/liblzma.so
+    cmake .. -DNO_IPO=TRUE -DCMAKE_INSTALL_PREFIX=$PREFIX -DBOOST_ROOT=$BOOST_ROOT -DBZIP2_INCLUDE_DIR:PATH=$BZIP2_ROOT/include -DBZIP2_LIBRARY_RELEASE:FILEPATH=$BZIP2_ROOT/lib/libbz2.so -DZLIB_INCLUDE_DIR:PATH=$ZLIB_ROOT/include -DZLIB_LIBRARY_RELEASE:FILEPATH=$ZLIB_ROOT/lib/libz.so -DLIBLZMA_INCLUDE_DIR:PATH=$LIBLZMA_ROOT/include -DLIBLZMA_LIBRARY_RELEASE:FILEPATH=$LIBLZMA_ROOT/lib/liblzma.so
+
+    make
+    make install
+
+    LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH make test
+
+These should all pass.
+
+Now set RPATH in the salmon executable.
+
+    ml patchelf/0.10
+
+    cd $PREFIX/bin
+
+    patchelf --set-rpath "$PREFIX/lib:$LD_LIBRARY_PATH" salmon
+
+    module purge
+
+    ldd salmon
 

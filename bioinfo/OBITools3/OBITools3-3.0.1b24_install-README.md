@@ -30,10 +30,20 @@ LOG
 
     # Modify prefix in setup.py to replace the path from python to \$PREFIX
     sed -ri "s#(:STRING=).*#\1$PREFIX\"#" setup.py
+    #"
 
     # Pip
     export LIBRARY_PATH=/sw/bioinfo/OBITools3/3.0.1b24/rackham:$LIBRARY_PATH
-    PYTHONUSERBASE=$PREFIX python setup.py  install --prefix=$PREFIX
+    PYTHONUSERBASE=$PREFIX python setup.py install --prefix=$PREFIX
+
+    # Change shebang in $PREFIX/bin/obi
+    sed -ri "s@(\#\!).*@\1/usr/bin/env python@" $PREFIX/bin/obi
+
+
+    # Test
+    export PYTHONPATH=$PREFIX/lib/python3.8/site-packages/:$PYTHONPATH
+    export LD_LIBRARY_PATH=/sw/bioinfo/OBITools3/3.0.1b24/rackham:$LD_LIBRARY_PATH
+    $PREFIX/bin/obi test
 
 
 
