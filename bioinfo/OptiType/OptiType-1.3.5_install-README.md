@@ -72,3 +72,5 @@ and add to PATH:
 
 It works as is, but config.ini changes are necessary.
 
+Add path to razers3, make threads=20, and add message about the file to mf file.
+

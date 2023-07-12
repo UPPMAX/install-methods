@@ -1,5 +1,5 @@
 augustus/3.4.0
-========================
+===============
 
 <http://bioinf.uni-greifswald.de/augustus>
 

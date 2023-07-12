@@ -35,13 +35,16 @@ LOG
     cd boost_${BOOSTVERSION}
 
     module load gcc/$GCCVERSION
+    module load zlib/1.2.12
+    module load bzip2/1.0.8
+    module load xz/5.2.6
 
     module load python/$PYTHONVERSION
 
     ./bootstrap.sh --with-toolset=gcc --prefix=$PREFIX
 
-    ./b2
-    ./b2 headers
+    ./b2 -j 10
+    ./b2 -j 10 headers
     ./b2 install --prefix=$PREFIX
 
     cd ..

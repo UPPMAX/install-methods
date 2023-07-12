@@ -106,7 +106,7 @@ data_update  /sw/data/iGenomes           tools/aws-iGenomes-download-all.sh  too
 
 data_update  /sw/data/SGDP               check_md5s.pl   # additional script, README harvested above
 data_update  /sw/data/Kraken_data        Kraken-db-README.md    Kraken-update-db.sh    
-data_update  /sw/data/Kraken2_data       Kraken2-db-README.md   Kraken2-update-db.sh    Kraken2-update-nt.sh
+data_update  /sw/data/Kraken2_data       Kraken2-db-README.md   Kraken2-update-db.sh    Kraken2-update-nt.sh    Kraken2-update-prebuilt.sh
 data_update  /sw/data/RTG                RTG-db-README.md       RTG-update-dbs.sh      
 data_update  /sw/data/diamond_databases  diamond-db-README.md   diamond-update-dbs.sh   diamond-check-dbs.sh
 data_update  /sw/data/FAVOR_data         FAVOR_fetch.py         FAVOR_api_token.py

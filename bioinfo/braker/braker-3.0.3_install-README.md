@@ -1,27 +1,27 @@
-braker/2.1.6
+braker/3.0.3
 ============
 
 <https://github.com/Gaius-Augustus/BRAKER>
 
 Used under license:
-Artistic
+Artistic 1.0
+<https://raw.githubusercontent.com/Gaius-Augustus/BRAKER/master/LICENSE.TXT>
 
-
-Structure creating script (makeroom_braker_2.1.6.sh) moved to /sw/bioinfo/braker/makeroom_2.1.6.sh
+Structure creating script (makeroom_braker_3.0.3.sh) moved to /sw/bioinfo/braker/makeroom_3.0.3.sh
 
 LOG
 ---
 
-    /home/douglas/bin/makeroom.sh -f" -s "annotation" -t "braker" -v "2.1.6" -w "https://github.com/Gaius-Augustus/BRAKER" -l "Artistic" -d "pipeline for fully automated prediction of protein coding gene structures with GeneMark-ES/ET and AUGUSTUS in novel eukaryotic genomes"
-    ./makeroom_braker_2.1.6.sh
+    /home/douglas/bin/makeroom.sh "-f" "-s" "annotation" "-t" "braker" "-v" "3.0.3" "-w" "https://github.com/Gaius-Augustus/BRAKER" "-l" "Artistic 1.0" "-L" "https://raw.githubusercontent.com/Gaius-Augustus/BRAKER/master/LICENSE.TXT" "-d" "pipeline for fully automated prediction of protein coding gene structures with GeneMark-ES/ET and AUGUSTUS in novel eukaryotic genomes"
+    ./makeroom_braker_3.0.3.sh
 
-    source /sw/bioinfo/braker/SOURCEME_braker_2.1.6 && cd $TOOLDIR
+    source /sw/bioinfo/braker/SOURCEME_braker_3.0.3 && cd $TOOLDIR
 
     cd $SRCDIR
 
-    wget https://github.com/Gaius-Augustus/BRAKER/archive/refs/tags/v2.1.6.tar.gz
-    tar xf v2.1.6.tar.gz 
-    rmdir $PREFIX && mv BRAKER-2.1.6 $PREFIX
+    wget https://github.com/Gaius-Augustus/BRAKER/archive/refs/tags/v3.0.3.tar.gz
+    tar xf v3.0.3.tar.gz 
+    rmdir $PREFIX && mv BRAKER-3.0.3 $PREFIX
     cd $PREFIX
     cd scripts/
     sed -i 's,^#!/usr/bin/perl.*$,#!/usr/bin/env perl,' *.pl
