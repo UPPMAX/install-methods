@@ -1,4 +1,4 @@
 commonmark==0.9.1
 numpy==1.23.4
-Pygments==2.13.0
+Pygments==2.15.0
 rich==12.6.0
