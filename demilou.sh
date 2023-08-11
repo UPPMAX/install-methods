@@ -27,7 +27,7 @@ runit() {
   [[ -d milou ]] || { echo "Within $VERSION, 'milou' is not a directory"; exit 1; }
   rm -f rackham bianca irma snowy
   mv milou rackham
-  for C in bianca irma snowy ; do
+  for C in bianca miarka snowy ; do
     ln -sf rackham $C
   done
 )

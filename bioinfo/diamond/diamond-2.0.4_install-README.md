@@ -44,8 +44,4 @@ Make sure RPATH info is correct.
     cd $PREFIX/bin
     ldd diamond
 
-Get local copy of the manual.
-
-    cd $PREFIX/..
-    wget https://github.com/bbuchfink/diamond/raw/master/diamond_manual.pdf
-
+Point to online docs in mf file.
