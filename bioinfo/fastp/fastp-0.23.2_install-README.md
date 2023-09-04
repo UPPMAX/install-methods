@@ -41,7 +41,7 @@ We need libisal and libdeflate.  We need to have yasm and nasm assemblers loaded
 
     wget https://github.com/OpenGene/fastp/archive/v${VERSION}.tar.gz
     tar xf v${VERSION}.tar.gz
-    cd fastp-0.23.1/
+    cd fastp-$VERSION/
     export LD_RUN_PATH=$PREFIX/lib:$LD_RUN_PATH
     export LIBRARY_PATH=$PREFIX/lib
     export CPLUS_INCLUDE_PATH=$PREFIX/include

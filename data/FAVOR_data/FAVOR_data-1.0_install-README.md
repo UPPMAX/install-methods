@@ -1,5 +1,5 @@
 FAVOR_data/1.0
-========================
+==============
 
 <https://dataverse.harvard.edu/dataverse/favor>
 
@@ -75,8 +75,8 @@ location.  The method `FAVOR_api_token.get_token_bash()` produces a bash
 command substitution which fetches its value from its secure location, to be
 used within the `.fetch.sh` file (see below) so that the API is never exposed.
 It is kept within `$HOME/.ssh/` so that only the owner (me, or whoever has
-placed their own token there) can fetch it.  See `FAVOR_api_token.py` for what
-to name the token file.
+placed their own token in their own `$HOME/.ssh/` directory) can fetch it.  See
+`FAVOR_api_token.py` for what to name the token file.
 
 `FAVOR_fetch.py` then scans the JSON. It pulls some basic info about the
 dataset.  Then, for each CSV file, it pulls SAVE-NAME, FILE-ID, and MD5.
@@ -160,4 +160,11 @@ Use `xsv`, installed within `rust/1.67.0`, to create .idx files for each .csv.
     module load gnuparallel/20230422
 
     parallel -j 4 xsv index ::: *.csv
+
+
+### Using with external software
+
+This is to be used with FAVORannotator R package, currently part of R_packages/4.2.1.
+
+This uses the **CSV** version of the databases, not SQL and not Cloud.
 

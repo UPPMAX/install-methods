@@ -1,27 +1,32 @@
-texlive/2022-09-18
+texlive/2023-08-14
 ========================
 
 <https://www.tug.org/texlive/>
 
-Changing name to reflect date of texlive download.
+
+Note: the date on the `install-tl-xxxxx` directory un the unpacked
+install-tl-unx.tar.gz is very close to today's date, reflecting no doubt
+rolling updates.  So versioning should follow from the date within the unpacked
+installation.
+
 
 Used under license:
 
 
 
-Structure creating script (makeroom_texlive_2022-09-18.sh) moved to /sw/apps/texlive/makeroom_2022-09-18.sh
+Structure creating script (makeroom_texlive_2023-08-14.sh) moved to /sw/apps/texlive/makeroom_2023-08-14.sh
 
 LOG
 ---
 
-    /home/douglas/bin/makeroom.sh "-f" "-t" "texlive" "-v" "2022-09-18" "-c" "apps" "-w" "https://www.tug.org/texlive/" "-d" "a straightforward way to get up and running with the TeX document production system"
-    ./makeroom_texlive_2022-09-18.sh
+    makeroom.sh "-f" "-t" "texlive" "-v" "2023-08-14" "-c" "apps" "-w" "https://www.tug.org/texlive/" "-d" "a straightforward way to get up and running with the TeX document production system"
+    ./makeroom_texlive_2023-08-14.sh
 
-    source /sw/apps/texlive/SOURCEME_texlive_2022-09-18 && cd $SRCDIR
+    source /sw/apps/texlive/SOURCEME_texlive_2023-08-14 && cd $SRCDIR
 
     wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
     tar xf install-tl-unx.tar.gz 
-    cd install-tl-20220918
+    cd install-tl-20230814
     ./install-tl
 
 Choose 'D' then '1' and use $PREFIX for the main directory

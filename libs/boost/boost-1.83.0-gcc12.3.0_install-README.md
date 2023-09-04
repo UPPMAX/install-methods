@@ -1,0 +1,52 @@
+boost/1.83.0-gcc12.3.0
+======================
+
+<https://www.boost.org/>
+
+Used under license:
+Boost licence
+<http://www.boost.org/users/license.html>
+
+Structure creating script (makeroom_boost_1.83.0-gcc12.3.0.sh) moved to /sw/libs/boost/makeroom_1.83.0-gcc12.3.0.sh
+
+LOG
+---
+
+    TOOL=boost
+    BOOSTVERSION=1.83.0
+    GCCVERSION=12.3.0
+    PYTHONVERSION=3.10.8
+    VERSION=${BOOSTVERSION}-gcc${GCCVERSION}
+
+    makeroom.sh -f -c "libs" -t "$TOOL" -v "$VERSION" -w "https://www.boost.org/" -l "Boost licence" -L "http://www.boost.org/users/license.html" -d "free peer-reviewed portable C++ source libraries"
+    ./makeroom_${TOOL}_${VERSION}.sh
+
+    source SOURCEME_${TOOL}_${VERSION}
+
+    cd $SRCDIR
+
+    BOOSTTARBALLVERSION=${BOOSTVERSION//./_}
+    BOOSTTARBALL=boost_${BOOSTTARBALLVERSION}.tar.bz2
+    [[ -f $BOOSTTARBALL ]] || wget  https://boostorg.jfrog.io/artifactory/main/release/$BOOSTVERSION/source/$BOOSTTARBALL
+    [[ -d boost_${BOOSTVERSION} ]] && rm -rf boost_${BOOSTVERSION}
+
+    tar xf $BOOSTTARBALL
+    mv boost_${BOOSTTARBALLVERSION} boost_${BOOSTVERSION}
+    cd boost_${BOOSTVERSION}
+
+    module load gcc/$GCCVERSION
+    module load zlib/1.2.12
+    module load bzip2/1.0.8
+    module load xz/5.2.6
+
+    module load python/$PYTHONVERSION
+
+    ./bootstrap.sh --with-toolset=gcc --prefix=$PREFIX
+
+    ./b2 -j 10
+    ./b2 -j 10 headers
+    ./b2 install --prefix=$PREFIX
+
+    cd ..
+    rm -rf boost_${BOOSTVERSION}
+
