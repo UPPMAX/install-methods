@@ -38,6 +38,7 @@ left out by the developers.
     ml zstd/1.5.2
     ml bioinfo-tools
     ml htslib/1.17
+    mkdir $PREFIX/bin
     make CFLAGS="-Wall -O2 -pthread" HTSDIR="$HTSLIB_ROOT/../src/htslib-1.17" LDLIBS="-lm -lz -llzma -lbz2 -lzstd -lpthread -ldl -lcurl" PREFIX=$PREFIX install
 
 Now provide and adjust the scripts.
