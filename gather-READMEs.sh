@@ -122,8 +122,19 @@ cd $DATA_REPOSITORY
 
 data_update  /sw/data/CTAT_RESOURCE_LIB  CTAT_RESOURCE_LIB-db-README.md  CTAT_RESOURCE_LIB-download-db.sh
 
-# this might get moved to crontab later. The prebuilt databases are updated on a haphazard basis
+# This might get moved to crontab later. The prebuilt databases are updated on
+# a haphazard basis
+
 data_update  /sw/data/KrakenUniq_data    KrakenUniq_data-latest_install-README.md   KrakenUniq_data-update-custom-db.sh  KrakenUniq_data-update-custom-db_veryfat.sh  KrakenUniq_data-update-standard-db.sh
+
+# additional resources for the KGP data, in particular: lftp scripts and MD5
+# checksum files. The *install-README.md files are gathered already above.
+
+data_update  /sw/data/KGP                1000G_2504_high_coverage.lftp    1000G_2504_high_coverage.md5
+data_update  /sw/data/KGP                1000_genomes_project.lftp        1000_genomes_project.md5
+data_update  /sw/data/KGP                                                 central.md5
+data_update  /sw/data/KGP                                                 impute_haplotypes.md5
+data_update  /sw/data/KGP                                                 regional.md5
 
 # Databases in other locations
 

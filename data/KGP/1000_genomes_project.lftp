@@ -1,0 +1,9 @@
+open http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/
+
+set net:timeout 5;
+set net:max-retries 3;
+set net:reconnect-interval-multiplier 1;
+set net:reconnect-interval-base 5;
+
+mirror --verbose --continue 1000_genomes_project
+

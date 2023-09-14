@@ -1,5 +1,5 @@
 SMC++/1.15.4
-========================
+============
 
 <https://github.com/popgenmethods/smcpp>
 
@@ -8,21 +8,6 @@ GPL v3
 
 
 Structure creating script (makeroom_SMC++_1.15.4.sh) moved to /sw/bioinfo/SMC++/makeroom_1.15.4.sh
-
-LOG
----
-
-    /home/matpiq/install-methods/makeroom.sh "-f" "-s" "misc" "-t" "SMC++" "-v" "1.15.4" "-w" "https://github.com/popgenmethods/smcpp" "-d" "infers population history from whole-genome sequence data" "-l" "GPL v3"
-    ./makeroom_SMC++_1.15.4.sh
-SMC++/1.15.2
-============
-
-<https://github.com/popgenmethods/smcpp>
-
-Used under license:
-GPL v3
-
-Structure creating script (makeroom_SMC++_1.15.2.sh) moved to /sw/bioinfo/SMC++/makeroom_1.15.2.sh
 
 
 LOG
@@ -38,48 +23,55 @@ Build with system gcc, mpfr, gsl, gmp, and python/3.8.7.
     ./makeroom_SMC++_1.15.4.sh 
     cd SMC++/
     source SOURCEME_SMC++_1.15.4 
-    
 
-First create a virtual env where smcpp is installed
+    ml python/3.8.7
+
+First create a virtual env where smcpp is installed and activate it.
 
     cd $PREFIX
-    ml python/3.10.8
-    python -m virtualenv --sytem-site-packages venv
+    virtualenv venv
     source venv/bin/activate
 
-Get source tarball
+Install from the github repository.
 
-    wget https://github.com/popgenmethods/smcpp/archive/refs/tags/v1.15.4.tar.gz
-    tar xvfz v1.15.4.tar.gz
+    cd $SRCDIR
+    ml git/2.34.1
+    git clone https://github.com/popgenmethods/smcpp
+    cd smcpp
+    git reset --hard v1.15.4
 
-    cd smcpp-1.15.4
+From Matias' earlier build:
 
-The `SMC++` cannot be installed directly from the tarball since versioning is
+The `SMC++` cannot be installed directly from the clone since versioning is
 inferred from the `.git` directory by `setuptools_scm`. Moreover, Numpy is
 missing from build dependencies. To fix change the `pyproject.toml` to look like
 
-   # pyproject.toml
-   [build-system]
-   requires = ["setuptools>=45", "wheel", "oldest-supported-numpy"]
+    # pyproject.toml
+    [build-system]
+    requires = ["setuptools>=45", "wheel", "oldest-supported-numpy"]
 
-Also set the version in `setup.py` in the `setup` function
-(`version="1.15.4"`). Then install into the environment using pip
+Only these lines: so you are also removing lines that involve setuptools_scm.
+We set the version in `setup.py` below.
 
-   pip install .
+In `setup.py`, in the `setup` function, add the line
 
-Finally symlink the exectuable to bin
+    version="1.15.4",
 
-   mkdir $PREFIX/bin && cd $PREFIX/bin
-   ln -s $PREFIX/venv/bin/smc++ .
+after the line
 
-and fixup rpath of exectuables by linking to gcc and gsl:
+    name="smcpp",
 
-   cd /sw/bioinfo/SMC++/1.15.4/rackham/venv/lib/python3.10/site-packages/smcpp
+Ensure that the pip is the one from the venv:
 
-   patchelf --set-rpath \
-   '/sw/comp/gcc/12.2.0_rackham/lib64:/sw/comp/gcc/12.2.0_rackham/lib:/sw/libs/gsl/2.7/rackham/lib' \
-   _estimation_tools.cpython-310-x86_64-linux-gnu.so
+    which pip
 
-   patchelf --set-rpath \
-   '/sw/comp/gcc/12.2.0_rackham/lib64:/sw/comp/gcc/12.2.0_rackham/lib:/sw/libs/gsl/2.7/rackham/lib' \
-   _smcpp.cpython-310-x86_64-linux-gnu.so
+Then, install using this pip.
+
+    pip install .
+
+Create symlink into venv.
+
+    mkdir $PREFIX/bin
+    cd $PREFIX/bin
+    ln -s $PREFIX/venv/bin/smc++ .
+ 
