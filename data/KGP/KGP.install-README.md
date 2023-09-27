@@ -10,51 +10,9 @@ Generated MD5 files for the major trees here
 * impute_haplotypes
 
 Wrote a new script (based on an old one-off) to find duplicate files between the trees.
-None of consequence found.  For the two large trees:
+None of consequence found.  For all directories:
 
 
-    processed line 1000: '1000G_2504_high_coverage/additional_698_related/data/ERR3989089/HG02880.final.cram.crai'
-    processed line 2000: '1000G_2504_high_coverage/additional_698_related/data/ERR3989422/NA19677.final.cram.md5'
-    processed line 3000: '1000G_2504_high_coverage/data/ERR3239572/NA18993.final.cram.crai'
-    processed line 4000: '1000G_2504_high_coverage/data/ERR3239905/NA19669.final.cram.md5'
-    processed line 5000: '1000G_2504_high_coverage/data/ERR3240239/HG00321.final.cram'
-    processed line 6000: '1000G_2504_high_coverage/data/ERR3241956/HG01623.final.cram.crai'
-    processed line 7000: '1000G_2504_high_coverage/data/ERR3242289/HG02409.final.cram.md5'
-    processed line 8000: '1000G_2504_high_coverage/data/ERR3242623/HG03343.final.cram'
-    processed line 9000: '1000G_2504_high_coverage/data/ERR3242956/HG03074.final.cram.crai'
-    processed line 10000: '1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_old/ACB/Sample_HG02508/analysis/HG02508.haplotypeCalls.er.raw.vcf.gz.tbi'
-    processed line 11000: '1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_old/CHS/Sample_HG00559/analysis/HG00559.haplotypeCalls.er.raw.vcf.gz.tbi'
-    processed line 12000: '1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_old/GIH/Sample_NA21089/analysis/NA21089.haplotypeCalls.er.raw.vcf.gz.tbi'
-    processed line 13000: '1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_old/KHV/Sample_HG01863/analysis/HG01863.haplotypeCalls.er.raw.vcf.gz.tbi'
-    processed line 14000: '1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_old/PUR/Sample_HG00551/analysis/HG00551.haplotypeCalls.er.raw.vcf.gz'
-    processed line 15000: '1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/HG00237.haplotypeCalls.er.raw.vcf.gz.tbi'
-    processed line 16000: '1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/HG01389.haplotypeCalls.er.raw.vcf.gz.tbi'
-    processed line 17000: '1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/HG02223.haplotypeCalls.er.raw.vcf.gz.tbi'
-    processed line 18000: '1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/HG03131.haplotypeCalls.er.raw.vcf.gz.tbi'
-    processed line 19000: '1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/HG04096.haplotypeCalls.er.raw.vcf.gz.tbi'
-    processed line 20000: '1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/NA19004.haplotypeCalls.er.raw.vcf.gz.tbi'
-    processed line 21000: '1000G_2504_high_coverage/working/20190425_NYGC_GATK/raw_calls_updated/NA20803.haplotypeCalls.er.raw.vcf.gz.tbi'
-    processed line 22000: '1000_genomes_project/data/ACB/HG02314/exome_alignment/HG02314.alt_bwamem_GRCh38DH.20150826.ACB.exome.cram'
-    processed line 23000: '1000_genomes_project/data/BEB/HG03904/exome_alignment/HG03904.alt_bwamem_GRCh38DH.20150826.BEB.exome.cram.crai'
-    processed line 24000: '1000_genomes_project/data/CEU/NA06984/exome_alignment/NA06984.alt_bwamem_GRCh38DH.20150826.CEU.exome.bam.bas'
-    processed line 25000: '1000_genomes_project/data/CHB/NA18615/exome_alignment/NA18615.alt_bwamem_GRCh38DH.20150826.CHB.exome.cram'
-    processed line 26000: '1000_genomes_project/data/CLM/HG01137/alignment/HG01137.alt_bwamem_GRCh38DH.20150718.CLM.low_coverage.cram.crai'
-    processed line 27000: '1000_genomes_project/data/ESN/HG03295/exome_alignment/HG03295.alt_bwamem_GRCh38DH.20150826.ESN.exome.bam.bas'
-    processed line 28000: '1000_genomes_project/data/GBR/HG00120/exome_alignment/HG00120.alt_bwamem_GRCh38DH.20150826.GBR.exome.cram'
-    processed line 29000: '1000_genomes_project/data/GIH/NA21115/alignment/NA21115.alt_bwamem_GRCh38DH.20150718.GIH.low_coverage.cram.crai'
-    processed line 30000: '1000_genomes_project/data/IBS/HG01537/alignment/HG01537.alt_bwamem_GRCh38DH.20150718.IBS.low_coverage.bam.bas'
-    processed line 31000: '1000_genomes_project/data/ITU/HG04056/exome_alignment/HG04056.alt_bwamem_GRCh38DH.20150826.ITU.exome.cram'
-    processed line 32000: '1000_genomes_project/data/KHV/HG01866/alignment/HG01866.alt_bwamem_GRCh38DH.20150718.KHV.low_coverage.cram.crai'
-    processed line 33000: '1000_genomes_project/data/LWK/NA19454/exome_alignment/NA19454.alt_bwamem_GRCh38DH.20150826.LWK.exome.bam.bas'
-    processed line 34000: '1000_genomes_project/data/MXL/NA19771/alignment/NA19771.alt_bwamem_GRCh38DH.20150718.MXL.low_coverage.cram'
-    processed line 35000: '1000_genomes_project/data/PJL/HG02792/alignment/HG02792.alt_bwamem_GRCh38DH.20150718.PJL.low_coverage.cram.crai'
-    processed line 36000: '1000_genomes_project/data/STU/HG03680/alignment/HG03680.alt_bwamem_GRCh38DH.20150718.STU.low_coverage.bam.bas'
-    processed line 37000: '1000_genomes_project/data/TSI/NA20766/exome_alignment/NA20766.alt_bwamem_GRCh38DH.20150826.TSI.exome.cram'
-    processed line 38000: '1000_genomes_project/release/20181203_biallelic_SNV/ALL.wgs.shapeit2_integrated_v1a.GRCh38.20181129.sites.vcf.gz.tbi'
-    processed 38843 lines
-    8 duplicated MD5 hashes
-    18 duplicated files
-    2.2500 files per duplicated MD5 hash
     16ef1c1dbd47d6ce4af728c319a898ce
     2
     '1000G_2504_high_coverage/README_2504_plus_additional_698_related_samples.txt'
@@ -96,4 +54,521 @@ None of consequence found.  For the two large trees:
     2
     '1000G_2504_high_coverage/20130606_g1k_3202_samples_ped_population.txt'
     '1000G_2504_high_coverage/additional_698_related/20130606_g1k_3202_samples_ped_population.txt'
+    ----
+    dcaa30b010db7d338ddd4c78b8345c22
+    2
+    'central/high/z_tools/md7'
+    'central/high/z_tools/mdi'
+    ----
+    d9c4e6adcc0152561fc26327e4ee9673
+    2
+    'central/low/z_tools/changelog_details/changelog_details_201012_replacement_pilot_vcfs'
+    'central/low/z_tools/changelog_details/changelog_details_20100112_replacement_pilot_vcfs'
+    ----
+    3537112aff347571f90a516c35859405
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20090803_new_pilot1_indels'
+    'central/low/z_tools/changelog_details/changelog_details_20090818_replacement_pilot1_indels'
+    ----
+    059aaefd4abf4d760e0e81c888483c5e
+    21
+    'central/low/z_tools/changelog_details/changelog_details_20090813_copied_index_file'
+    'central/low/z_tools/changelog_details/changelog_details_20090813_new_index_file'
+    'central/low/z_tools/changelog_details/changelog_details_20100517_replacement_index'
+    'central/low/z_tools/changelog_details/changelog_details_20100611_replacement_index'
+    'central/low/z_tools/changelog_details/changelog_details_20100712_replacement_index'
+    'central/low/z_tools/changelog_details/changelog_details_20100714_replacement_index'
+    'central/low/z_tools/changelog_details/changelog_details_20100804_replacement_index'
+    'central/low/z_tools/changelog_details/changelog_details_20100817_replacement_index'
+    'central/low/z_tools/changelog_details/changelog_details_20100917_replacement_index'
+    'central/low/z_tools/changelog_details/changelog_details_20101019_replacement_index'
+    'central/low/z_tools/changelog_details/changelog_details_20101025_replacement_index'
+    'central/low/z_tools/changelog_details/changelog_details_20101123_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20110112_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20110411_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20110506_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20110920_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20120131_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20120420_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20120522_withdrawn'
+    'central/low/z_tools/changelog_details/changelog_details_20131122_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20131203_replacement'
+    ----
+    2ded5b699092a48b56518c0c74e32ca2
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20091007_new_CHB_filtered_fastq_files'
+    'central/low/z_tools/changelog_details/changelog_details_20091110_replacement_CHB_filtered_fastq'
+    ----
+    9b5bacb2e3564fee16982942657ea36b
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20091217_new_pilot_snp_calls'
+    'central/low/z_tools/changelog_details/changelog_details_20091217_replacement_illumina_127K_chip'
+    ----
+    5df7cdc0b5d0a789f167ede5b887b68d
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20100205_new_pilot2_snps'
+    'central/low/z_tools/changelog_details/changelog_details_20100316_withdrawn_pilot_internal'
+    ----
+    65f15639ae2d0cf08fddb8cf93bdfe0a
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20100223_new_index'
+    'central/low/z_tools/changelog_details/changelog_details_20100225_replacement_index'
+    ----
+    b0fceb2b28a546fc96590381b4c28150
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20100602_new_misc'
+    'central/low/z_tools/changelog_details/changelog_details_20100603_replacement_misc'
+    ----
+    94aac0eb71fe33267c06e55d2754ba50
+    5
+    'central/low/z_tools/changelog_details/changelog_details_20100602_replacement_misc'
+    'central/low/z_tools/changelog_details/changelog_details_20110126_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20120322_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20130529_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20130531_replacement'
+    ----
+    3a61b84ab12d22c99d29b9fab8097943
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20100617_replacement_bas'
+    'central/low/z_tools/changelog_details/changelog_details_20100618_replacement_bas'
+    ----
+    f750bac80c05d49bb624efcaa208930a
+    4
+    'central/low/z_tools/changelog_details/changelog_details_20100719_replacement_index'
+    'central/low/z_tools/changelog_details/changelog_details_20100929_replacement_index'
+    'central/low/z_tools/changelog_details/changelog_details_20101007_replacement_index'
+    'central/low/z_tools/changelog_details/changelog_details_20101026_replacement_index'
+    ----
+    8a7b68936dc2845766661544e13bf787
+    3
+    'central/low/z_tools/changelog_details/changelog_details_20100803_replacement_misc'
+    'central/low/z_tools/changelog_details/changelog_details_20101124_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20120910_replacement'
+    ----
+    aeb71121cdbaececfa625722a816a4a9
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20100929_replacement_bas'
+    'central/low/z_tools/changelog_details/changelog_details_20100930_replacement_bas'
+    ----
+    1e2f9451586e48aba60c463f73129086
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20110202_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20110213_withdrawn'
+    ----
+    ff25392ba24da14fa0013cd9392007d3
+    3
+    'central/low/z_tools/changelog_details/changelog_details_20110209_moved'
+    'central/low/z_tools/changelog_details/changelog_details_20110217_moved'
+    'central/low/z_tools/changelog_details/changelog_details_20110306_moved'
+    ----
+    d5393e265ffadf33b51f98ed83b8306c
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20110330_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20110404_replacement'
+    ----
+    9579c620856b7587c72f519aa5a065ad
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20110623_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20110630_replacement'
+    ----
+    045e39b9d5ce0c115eae90d51ee5f78b
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20110627_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20110707_replacement'
+    ----
+    083b2e6f09122181df55ce2a5ce3a756
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20110812_new'
+    'central/low/z_tools/changelog_details/changelog_details_20110902_withdrawn'
+    ----
+    fda84e2e3734f10c38d7692976cc3f7c
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20110902_new'
+    'central/low/z_tools/changelog_details/changelog_details_20110903_replacement'
+    ----
+    75ef0eb53cd35dfeff6737438c2a4063
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20110928_new'
+    'central/low/z_tools/changelog_details/changelog_details_20110929_replacement'
+    ----
+    4c80464cc8c4d0a06ba8dded3e9ae0b6
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20111001_new'
+    'central/low/z_tools/changelog_details/changelog_details_20111025_replacement'
+    ----
+    2bb248b58d2522d25e7b1b5b8b7f7f6f
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20111113_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20111206_withdrawn'
+    ----
+    eba394eabd7fd1f3a90624313a8ca9d1
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20111212_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20111216_replacement'
+    ----
+    5618bc6152f315bb907466615d266dad
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20111215_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20111219_replacement'
+    ----
+    7d18382b1e7bd4257887425f2ccdfb37
+    8
+    'central/low/z_tools/changelog_details/changelog_details_20120126_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20120127_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20120213_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20120227_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20120314_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20120412_withdrawn'
+    'central/low/z_tools/changelog_details/changelog_details_20120511_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20121213_withdrawn'
+    ----
+    5de6905813815a4ecedca3c7d1f0157c
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20120401_withdrawn'
+    'central/low/z_tools/changelog_details/changelog_details_20120418_withdrawn'
+    ----
+    461cc45f9117b9a34a6af0b8b07c017e
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20120410_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20120417_withdrawn'
+    ----
+    41e7633c2be84a49cbdc7b94381bbedc
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20121012_withdrawn'
+    'central/low/z_tools/changelog_details/changelog_details_20121015_new'
+    ----
+    b3a7bd212152682c33102dceb3d43a18
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20121109_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20130917_replacement'
+    ----
+    6d849afb67106130fba7b9c6d398533b
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20121203_withdrawn'
+    'central/low/z_tools/changelog_details/changelog_details_20121204_new'
+    ----
+    b2bc5aa702b105153b0234bf2f372193
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20130116_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20130121_withdrawn'
+    ----
+    a725db33396d94200eec19fd926bd342
+    4
+    'central/low/z_tools/changelog_details/changelog_details_20130131_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20130801_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20130812_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20130820_replacement'
+    ----
+    423b4cbe705a6ddc49fc99869fd7e50b
+    4
+    'central/low/z_tools/changelog_details/changelog_details_20130306_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20130325_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20130408_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20130423_replacement'
+    ----
+    6349a38dc7c03e7f9daefea79afbded9
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20130517_withdrawn'
+    'central/low/z_tools/changelog_details/changelog_details_20130518_new'
+    ----
+    bfc1203d4d6fae15a9a9b034d3674533
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20130927_withdrawn'
+    'central/low/z_tools/changelog_details/changelog_details_20130929_new'
+    ----
+    19b12824170f973f39c7c719fff2b205
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20131015_new'
+    'central/low/z_tools/changelog_details/changelog_details_20131018_withdrawn'
+    ----
+    c99d84356f8d9a763f0a80c39eb73a21
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20131017_new'
+    'central/low/z_tools/changelog_details/changelog_details_20131018_replacement'
+    ----
+    4fe68e17a3d5aaee392e53763fff5599
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20140128_withdrawn'
+    'central/low/z_tools/changelog_details/changelog_details_20140203_new'
+    ----
+    38a00d9e6bfb20fdce5ebd4de7c65411
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20140220_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20140501_replacement'
+    ----
+    c8a7e7ff7cb1d19f6707e2a61d687462
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20140424_new'
+    'central/low/z_tools/changelog_details/changelog_details_20140522_replacement'
+    ----
+    da8d767f7c6f961273bdeaa064c41ed4
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20140617_new'
+    'central/low/z_tools/changelog_details/changelog_details_20140619_replacement'
+    ----
+    8cd91937b7253afdaf6645fd82829965
+    3
+    'central/low/z_tools/changelog_details/changelog_details_20140716_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20140728_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20140801_replacement'
+    ----
+    eb3fc941e7576e285b6b24fad346643c
+    3
+    'central/low/z_tools/changelog_details/changelog_details_20140918_new'
+    'central/low/z_tools/changelog_details/changelog_details_20140920_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20140922_withdrawn'
+    ----
+    4b9412fa005dd78850347734bde3108a
+    2
+    'central/low/z_tools/changelog_details/changelog_details_20141017_replacement'
+    'central/low/z_tools/changelog_details/changelog_details_20141020_withdrawn'
+    ----
+    ebaec7285d01b7fa4ff2db9fa7c4b9d5
+    2
+    'central/low/z_tools/old/calc_md5-H1.job'
+    'central/low/z_tools/old/calc_md5-H6.job~'
+    ----
+    975690ac70f5639c960c5b8a7b8b6092
+    2
+    'central/low/z_tools/old/calc_md5-N1.job'
+    'central/low/z_tools/old/calc_md5-N6.job~'
+    ----
+    5c663a6a7f3635edc930e8537a0881b9
+    2
+    'central/low/z_tools/old/calc_md5-R1.pl'
+    'central/low/z_tools/old/calc_md5-R4.pl~'
+    ----
+    81140966f596e6e29caff77a0da02da1
+    3
+    'central/low/z_tools/old/fetch_m.job~'
+    'central/low/z_tools/old/fetch_u.job~'
+    'central/low/z_tools/old/fetch_x.job'
+    ----
+    7af346ac41bf141fbe6f99099ed6de37
+    2
+    'central/low/z_tools/old/fetch_u.job'
+    'central/low/z_tools/old/fetch_u1.job~'
+    ----
+    33e3ba2aa02c75dea7b580c67711b8fd
+    4
+    'central/low/z_tools/old/fetch_u1.job'
+    'central/low/z_tools/old/fetch_u2.job~'
+    'central/low/z_tools/old/fetch_u3.job~'
+    'central/low/z_tools/old/fetch_u4.job~'
+    ----
+    05ed50a824df7c1ad30da21ef75e2553
+    2
+    'central/low/z_tools/old/foo'
+    'central/low/z_tools/old/get_rest4.sh'
+    ----
+    14c88551d11d66ddb011da388b9e97a5
+    2
+    'central/low/z_tools/old/get_rest.pl'
+    'central/low/z_tools/old/get_rest_uk.pl~'
+    ----
+    cebefa73947c5eefc7f9b3d70307b0d8
+    2
+    'central/low/z_tools/old/get_rest.pl~'
+    'central/low/z_tools/old/get_rest-o.pl'
+    ----
+    85871ce9da685ee30637ef8c7d7cc442
+    2
+    'central/low/z_tools/old/get_rest.sh'
+    'central/low/z_tools/old/get_rest2.sh~'
+    ----
+    d37ce549b8749d831cfbc5a5c9539c56
+    2
+    'central/low/z_tools/old/get_rest2.sh'
+    'central/low/z_tools/old/get_rest3.sh~'
+    ----
+    3e679ef1d99b0b4f203255be4063f26c
+    2
+    'central/low/z_tools/old/hack04.pl'
+    'central/low/z_tools/old/hack05.pl~'
+    ----
+    cdca24f3bc59eeca5d65674c4d0eb6fd
+    2
+    'central/low/z_tools/old/hack06.pl~'
+    'central/low/z_tools/old/hack06.pl'
+    ----
+    d41d8cd98f00b204e9800998ecf8427e
+    3
+    'central/low/z_tools/old/hack07.pl~'
+    'central/low/z_tools/old/md5-ok.txt'
+    'central/low/z_tools/old/mv_uk.pl~'
+    ----
+    e9b4262e5f9ae07ae03aea3547871e16
+    2
+    'central/low/z_tools/old/md5-calc-N1'
+    'central/low/z_tools/old/md5-calc-N6'
+    ----
+    63db6adda9781192d02b95db07ecefb0
+    2
+    'central/low/z_tools/old/20130502.low_coverage.alignment.index'
+    'central/low/z_tools/old/alignment.index'
+    ----
+    9a74187431e1938b490efa34c2f2272d
+    2
+    'central/low/z_tools/readme/README.alignment_data'
+    'central/low/z_tools/readme/README.alignment_data.1'
+    ----
+    30133df930a45b2aac29cd229169dab7
+    2
+    'central/low/z_tools/readme/README.analysis_history'
+    'central/low/z_tools/readme/README.analysis_history.1'
+    ----
+    097f06c7e5f6ee192aa38f8a3d54f6ad
+    2
+    'central/low/z_tools/readme/README.complete_genomics_data'
+    'central/low/z_tools/readme/README.complete_genomics_data.1'
+    ----
+    3248ffbddafe601f78d5981285bf30ea
+    2
+    'central/low/z_tools/readme/README.crams'
+    'central/low/z_tools/readme/README.crams.1'
+    ----
+    548f8dd4a270fa9677e640606852788d
+    2
+    'central/low/z_tools/readme/README.ebi_aspera_info'
+    'central/low/z_tools/readme/README.ebi_aspera_info.1'
+    ----
+    2a59a3feb2540c113e10877f3ef1efe5
+    2
+    'central/low/z_tools/readme/README.ftp_structure'
+    'central/low/z_tools/readme/README.ftp_structure.1'
+    ----
+    977fe3983de2131f9e28f6f0036b31d9
+    2
+    'central/low/z_tools/readme/README.pilot_data'
+    'central/low/z_tools/readme/README.pilot_data.1'
+    ----
+    cdc64440213f181a021989774a0af76e
+    2
+    'central/low/z_tools/readme/README.sequence_data'
+    'central/low/z_tools/readme/README.sequence_data.1'
+    ----
+    37d877577187a4ecfef127fa982be853
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chrX_nonPAR_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chrX_nonPAR_combined_b37.txt'
+    ----
+    e683440c5fa05dbba9a5d8e37c99369f
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chrX_PAR1_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chrX_PAR1_combined_b37.txt'
+    ----
+    d989ace8f9428bb97f0c1635b873a2cb
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chrX_PAR2_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chrX_PAR2_combined_b37.txt'
+    ----
+    6d852906e51f52dbc41ff07bb1e642bd
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr1_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr1_combined_b37.txt'
+    ----
+    d02683d06363789151afb97f8967d8b4
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr2_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr2_combined_b37.txt'
+    ----
+    62e351778ce1513a874c52474e82bdd1
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr3_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr3_combined_b37.txt'
+    ----
+    c98e80f53ac268186f0b58d853c17915
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr4_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr4_combined_b37.txt'
+    ----
+    2417f8936e9eb38e328d5159d1bfe76e
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr5_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr5_combined_b37.txt'
+    ----
+    00998a79eaafbe02fcc7937ce1ededd3
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr6_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr6_combined_b37.txt'
+    ----
+    78b5d1dfc723b0b173947700df20a654
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr7_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr7_combined_b37.txt'
+    ----
+    408ae1725d4a9c40fec3b602de7c959f
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr8_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr8_combined_b37.txt'
+    ----
+    3eac1f99943f6038cfbcedb276473f34
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr9_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr9_combined_b37.txt'
+    ----
+    009f2ef720dfacf0c54dc472d4c57cd3
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr10_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr10_combined_b37.txt'
+    ----
+    fb762829115edaee3978916645e78488
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr11_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr11_combined_b37.txt'
+    ----
+    eb2608f2bc78310dd26beff07f2c2bd4
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr12_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr12_combined_b37.txt'
+    ----
+    6a7bbf8e19736dbc0064d711007dd200
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr13_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr13_combined_b37.txt'
+    ----
+    db2329c36e46b46c95ac2bc2f633dde2
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr14_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr14_combined_b37.txt'
+    ----
+    73b216c4e033bfc05814dd427097ed38
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr15_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr15_combined_b37.txt'
+    ----
+    2d6f6f5999c67b1aff2f4bc00caa9954
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr16_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr16_combined_b37.txt'
+    ----
+    7277d1b8510bb7e6641b171eafb174c1
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr17_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr17_combined_b37.txt'
+    ----
+    78c3c8ae99ec0dcc8d3edd56cef78d5f
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr18_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr18_combined_b37.txt'
+    ----
+    cb4f09f2f0a72d49130eb6897a1cad68
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr19_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr19_combined_b37.txt'
+    ----
+    cc13143906aaea0f5aa575ca4fe0f98c
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr20_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr20_combined_b37.txt'
+    ----
+    fab4efe7cd5e05b51bf12452ab2ad6a8
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr21_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr21_combined_b37.txt'
+    ----
+    a94f226a51d6f22803baa19bf08e0453
+    2
+    'impute_haplotypes/1000GP_Phase3/genetic_map_chr22_combined_b37.txt'
+    'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr22_combined_b37.txt'
     ----

@@ -25,7 +25,7 @@ runit() {
 # mv milou to rackham and reset links
 ( cd $VERSION; echo "demilou-ing  $Module  $VERSION/  ..."
   [[ -d milou ]] || { echo "Within $VERSION, 'milou' is not a directory"; exit 1; }
-  rm -f rackham bianca irma snowy
+  rm -rf rackham bianca irma snowy tintin halvan nestor
   mv milou rackham
   for C in bianca miarka snowy ; do
     ln -sf rackham $C

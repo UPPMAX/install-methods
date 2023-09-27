@@ -54,10 +54,10 @@ To configure for MPI build, we follow https://www.boost.org/doc/libs/1_83_0/doc/
 
 around line 26 of the file `project-config.jam` file created by `./bootstrap.sh`,
 at least after the 'using gcc' and 'using python' lines.  Then continue.  We build
-here without multithreading, which might or might not matter.
+here with multithreading.
 
-    ./b2
-    ./b2 headers
+    ./b2 -j 10
+    ./b2 -j 10 headers
     ./b2 install --prefix=$PREFIX
 
     cd ..

@@ -28,3 +28,5 @@ Build with system gcc, mpfr, gsl, gmp, and python/3.8.7.
     cd smcpp
     ml python/3.8.7
     PYTHONUSERBASE=$PREFIX pip install --user .
+
+This installation method created implicit dependencies on python/3.8.7 by adjusting the `#!` lines of the installed scripts.

@@ -98,7 +98,7 @@ Load build systems.
 
     module load autoconf/2.69
     module load automake/1.16.1
-    module load cmake/3.22.2
+    module load cmake/3.26.3
     module load m4/1.4.17
 
 Load other prereqs for building the package tree.
@@ -108,7 +108,7 @@ Load other prereqs for building the package tree.
     module load Eigen/3.3.4
     module load FFmpeg/5.1.2
     module load GDAL/3.6.2
-    module load GEOS/3.11.0-gcc10.3.0
+    module load GEOS/3.12.0-gcc12.3.0
     module load git/2.34.1
     module load glpk/5.0
     module load gsl/2.7
@@ -119,7 +119,7 @@ Load other prereqs for building the package tree.
     module load libwebp/1.3.0
     module load MariaDB/10.1.29
     module load netcdf/4.9.2
-    module load openbabel/3.1.1-gcc10.3.0
+    module load openbabel/3.1.1-gcc12.3.0
     module load Poppler/23.02.0
     module load PostgreSQL/10.3
     module load PROJ/9.1.1
@@ -820,7 +820,7 @@ at least since R_packages/4.0.0. Build with newer toolchain here.  This needs
 
 Outside R, load the boost module compatible with the version of gcc used to build R:
 
-    module load boost/1.81.0-gcc10.3.0
+    module load boost/1.83.0-gcc12.3.0
 
 Then inside R:
 
