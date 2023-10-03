@@ -11,8 +11,6 @@ Structure creating script (makeroom_openbabel_3.1.1-gcc12.3.0.sh) moved to /sw/a
 LOG
 ---
 
-
-
     TOOL=openbabel
     TOOLVERSION=3.1.1
     GCCVERSION=12.3.0
@@ -29,18 +27,44 @@ LOG
     cd ${TOOL}-${TOOLVERSION}/
     mkdir build
     cd build
-    module load cmake/3.22.2
+    module load cmake/3.26.3
     module load gcc/${GCCVERSION}
     module load Eigen/3.3.4
     module load zlib/1.2.12
-    module load python/3.9.5
+    module load python/3.10.8
     module load boost/1.83.0-gcc${GCCVERSION}
     module load cairo/1.17.4
 
-    cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX -DZLIB_INCLUDE_DIR:PATH=$ZLIB_ROOT/include -DZLIB_LIBRARY_RELEASE:FILEPATH=$ZLIB_ROOT/lib/libz.so -DEIGEN3_INCLUDE_DIR:PATH=$EIGEN_ROOT/include/eigen3 ..
+There is a failure building with gcc 12 that is fixed in pull request https://github.com/openbabel/openbabel/pull/2493/files so modify the appropriate file according to those changes.
 
-    make -j10 && make install
+    vi ../src/config.h.cmake
+
+Now configure.
+
+    cmake .. -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX -DZLIB_INCLUDE_DIR:PATH=$ZLIB_ROOT/include -DZLIB_LIBRARY_RELEASE:FILEPATH=$ZLIB_ROOT/lib/libz.so -DEIGEN3_INCLUDE_DIR:PATH=$EIGEN_ROOT/include/eigen3
+
+    make -j10
+    make test
+
+There will be a single test failure.
+
+    The following tests FAILED:
+        218 - pytest_distgeom (Failed)
+
+This is a known issue with the test itself (https://github.com/openbabel/openbabel/pull/2218/files).
+
+    make install
 
     cd ..
     rm -rf ${TOOL}-${TOOLVERSION}
+
+Edit mf. Be careful about the locations given to `BABEL_LIBDIR` and `BABEL_DATADIR`.
+
+    cd $TOOLDIR/mf
+    vi $VERSION
+
+Wrap up.
+
+    cd $TOOLDIR
+    ./openbabel-3.1.1-gcc12.3.0_post-install.sh
 

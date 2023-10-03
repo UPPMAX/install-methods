@@ -22,7 +22,9 @@ LOG
     cd src
     
     module load gcc/12.3.0
-    #modify in Makefile compiler to explicitly gcc
+
+Modify in Makefile compiler to explicitly use gcc. Then:
+
     make -f Makefile
     
     mkdir ../bin

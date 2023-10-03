@@ -41,7 +41,9 @@ Packages not picked up in the automated install
 -----------------------------------------------
 
 A lot of packages are installed by the automated install, following the
-instructions below.  There are still some that do not.
+instructions below.  There are still some that are not.  Some require some
+hand-holding, loading additional/alternate modules, etc. Some simply do
+not install.
 
 
 To install new packages
@@ -53,6 +55,34 @@ First, do
 
 Then do the installation, however it's needed.  See 'Adding a new package' below.
 
+### Interim updates
+
+If updating an R package from CRAN or BioConductor, simply use `BiocManager::install(..., update=FALSE)` within R.
+
+
+### Updating existing packages in this module
+
+Note that after installing packages while installing this module, the existence
+of additional updates might be announced.  It is OK to accept these updates;
+updates to the base R packages has write permissions are locked down on the R
+module itself so those can't be updated.  Accept 'a' to update all packages.
+
+After the module is fully installed, **do not do this** after interim updates.
+Instead say 'n'.
+
+Do not update base R packages.  See the following section if you get the
+message about updating base backages such as Matrix, mgcv, nlme, and survival.
+
+Quit R, save the environment.
+
+
+### Do not update base R packages unless this accompanies a new installation of R/$VERSION
+
+After installations of BioConductor or other packages, R might suggest you
+update some base packages.  Unless this is an installation which is accompanying
+a new installation of R, always choose 'n' to update NONE of the base
+packages.  Unless there is a serious bug, we will only update base packages
+along with updating R.
 
 
 
@@ -107,7 +137,7 @@ Load other prereqs for building the package tree.
     module load cyrus-sasl/2.1.28
     module load Eigen/3.3.4
     module load FFmpeg/5.1.2
-    module load GDAL/3.6.2
+    module load GDAL/3.7.2
     module load GEOS/3.12.0-gcc12.3.0
     module load git/2.34.1
     module load glpk/5.0
@@ -120,10 +150,10 @@ Load other prereqs for building the package tree.
     module load MariaDB/10.1.29
     module load netcdf/4.9.2
     module load openbabel/3.1.1-gcc12.3.0
-    module load Poppler/23.02.0
+    module load Poppler/23.09.0
     module load PostgreSQL/10.3
     module load PROJ/9.1.1
-    module load protobuf/21.12-gcc10.3.0
+    module load protobuf/24.3-gcc12.3.0
     module load rust/1.67.0
     module load SHAPELIB/1.5.0-20220210-8edf888
     module load Tcl-Tk/8.6.11
@@ -131,12 +161,15 @@ Load other prereqs for building the package tree.
     module load giflib/5.1.4
     module load ImageMagick/7.0.11-3
     module load sqlite/3.34.0
-    module load GMP/6.2.1
-    module load MPFR/4.1.0
+    module load GMP/6.3.0
+    module load MPFR/4.2.1
     module load libsodium/1.0.18-stable
+    module load OpenBUGS/3.2.3
     module load lz4/1.9.2
     module load libb2/0.98.1
-    module load OpenBUGS/3.2.3
+    module load libdeflate/1.19
+    module load zstd/1.5.2
+    module load szip/2.1.1
 
 
 Final setup.
@@ -157,7 +190,7 @@ installation.  See below.
 
 Loading R loads a bunch of stuff including gcc that will be used for building
 R packages.  So, like with perl_modules, R_packages is associated with a
-specific R module version.  Make sure you are using R/4.1.1:
+specific R module version.  Make sure you are using R/4.3.1:
 
     which R
 
@@ -199,16 +232,41 @@ Later packages in BioConductor require `rbamtools`, which requires `refGenome`,
 both of which are orphaned and not in CRAN.  Also, my two now-archived
 packages, and build `rgl` without OpenGL support.
 
-    BiocManager::install(c('doBy','RSQLite','DBI'), update=FALSE, Ncpus=20)
-    install.packages('https://cran.r-project.org/src/contrib/Archive/refGenome/refGenome_1.7.7.tar.gz', Ncpus=20)
-    install.packages('https://cran.r-project.org/src/contrib/Archive/rbamtools/rbamtools_2.16.17.tar.gz', Ncpus=20)
-    install.packages('https://cran.r-project.org/src/contrib/Archive/nestedRanksTest/nestedRanksTest_0.2.tar.gz', Ncpus=20)
+    BiocManager::install(c('doBy','RSQLite','DBI'), update=FALSE, Ncpus=10)
+    install.packages('https://cran.r-project.org/src/contrib/Archive/refGenome/refGenome_1.7.7.tar.gz', Ncpus=10)
+    install.packages('https://cran.r-project.org/src/contrib/Archive/rbamtools/rbamtools_2.16.17.tar.gz', Ncpus=10)
+    install.packages('https://cran.r-project.org/src/contrib/Archive/nestedRanksTest/nestedRanksTest_0.2.tar.gz', Ncpus=10)
     install.packages('rgl', configure.args='--disable-opengl')
-    BiocManager::install(c('pegas'), update=FALSE, Ncpus=20)
-    install.packages('https://cran.r-project.org/src/contrib/Archive/readGenalex/readGenalex_1.0.tar.gz', Ncpus=20)
+    BiocManager::install(c('pegas'), update=FALSE, Ncpus=10)
+    install.packages('https://cran.r-project.org/src/contrib/Archive/readGenalex/readGenalex_1.0.tar.gz', Ncpus=10)
 
 
 to get it installed.
+
+Pre-emptive installations of dependencies in the CRAN archive
+-------------------------------------------------------------
+
+Build geo packages that need help finding GEOS, PROJ, GDAL.
+
+      ml libtiff/4.5.0
+      ml libcurl/7.85.0
+
+Then within R:
+
+      install.packages('terra', configure.args="--with-gdal-config=$GDAL_ROOT/bin/gdal-config --with-proj-data=$PROJ_DATA --with-sqlite3-lib=$SQLITE3_ROOT/lib --with-proj-include=$PROJ_ROOT/include --with-proj-lib=$PROJ_ROOT/lib --with-proj-share=$PROJ_DATA --with-geos-config=$GEOS_ROOT/bin/geos-config")
+      install.packages('gdalraster', configure.args="--with-gdal-config=$GDAL_ROOT/bin/gdal-config --with-proj-data=$PROJ_DATA --with-sqlite3-lib=$SQLITE3_ROOT/lib --with-proj-include=$PROJ_ROOT/include --with-proj-lib=$PROJ_ROOT/lib --with-proj-share=$PROJ_DATA --with-geos-config=$GEOS_ROOT/bin/geos-config")
+      install.packages('sf', configure.args="--with-gdal-config=$GDAL_ROOT/bin/gdal-config --with-proj-data=$PROJ_DATA --with-sqlite3-lib=$SQLITE3_ROOT/lib --with-proj-include=$PROJ_ROOT/include --with-proj-lib=$PROJ_ROOT/lib --with-proj-share=$PROJ_DATA --with-geos-config=$GEOS_ROOT/bin/geos-config")
+      install.packages('lwgeom', configure.args="--with-gdal-config=$GDAL_ROOT/bin/gdal-config --with-proj-data=$PROJ_DATA --with-sqlite3-lib=$SQLITE3_ROOT/lib --with-proj-include=$PROJ_ROOT/include --with-proj-lib=$PROJ_ROOT/lib --with-proj-share=$PROJ_DATA --with-geos-config=$GEOS_ROOT/bin/geos-config")
+      install.packages('gdalcubes', configure.args="--with-gdal-config=$GDAL_ROOT/bin/gdal-config --with-proj-data=$PROJ_DATA --with-sqlite3-lib=$SQLITE3_ROOT/lib --with-proj-include=$PROJ_ROOT/include --with-proj-lib=$PROJ_ROOT/lib --with-proj-share=$PROJ_DATA --with-geos-config=$GEOS_ROOT/bin/geos-config")
+
+Then within R:
+
+    BiocManager::install("Rsamtools", Ncpu=4, update=FALSE)
+    BiocManager::install(c('sftime','stars','raster','gstat','exactextractr','rasterVis'), Ncpu=4, update=FALSE)
+
+
+Try to install everything
+-------------------------
 
 Make sure that `/sw/apps/R_packages/$VERSION/inst.R` is available, then to see
 what remains, do:
@@ -270,9 +328,12 @@ We see
 
     Imports: rgl, tkrplot, tcltk, tcltk2, shapes, plotrix, MASS
 
-`rgl` installed above, but I reinstalled that anyway, then installed the other
-nonbase dependencies as well (all but tcltk and MASS) using
-`install.packages()`. Then installed using `devtools::install(".")`, thus
+The `rgl` installation above failed, so try again, then install the nonbase dependencies.
+
+    install.packages('rgl', configure.args='--disable-opengl')
+    install.packages(c('tkrplot','tcltk2','shapes','plotrix'))
+
+Now install cncaGUI using `devtools::install(".")` within the unpacked tarball. This worked!
 within the unpacked tarball, and this worked.
 
 #### multibiplotGUI
@@ -284,104 +345,12 @@ Will multibiplotGUI install now?
 Yes!
 
 
-### Restart 
+#### archive
 
-    cd $VERSIONDIR
-    ./installed.R -c
-
-produces
-
-    A total of 22141 R packages are installed
-    A total of 23459 packages are available in CRAN and BioConductor
-    18626 CRAN packages are installed, out of 19903 available
-    3495 BioConductor-specific packages are installed, out of 3556 available
-    18 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere
+Load libarchive/3.6.2 and build
 
 
-Restart installations within R, but **outside a screen** since we are so far along.
-
-    R --no-init-file
-    options(BiocManager.check_repositories = FALSE)
-    source("inst.R")
-
-Turns out I'd misspelled 'biplotbootGUI' in the set of resintalls above, but it installed without errors.
-
-When this restart ends, we got just a handful of packages not installed.
-
-    No change in number of packages not installed: 1325 so quitting
-    After iteration 3 :
-    18639 CRAN packages installed, out of 19903 available
-    3495 BioConductor-specific packages installed, out of 3556 available
-
-
-Examine installation failures using inst1.R
--------------------------------------------
-
-Now looking at a few of the standard ones that failed, and why, using a single-run script inst1.R.R.
-
-Run this and save the output. Modified from the help for `sink()`.
-
-     zz <- file("inst1.Rout", open = "wt")
-     sink(zz)
-     sink(zz, type = "message")
-
-     source("inst1.R")
-
-     sink(type = "message")
-     sink()
-
-Looks like this is not capturing all of the build output, just the "well behaved" output from R.
-
-Grep for 'not available' shows that some dependencies are not available. Of
-the other packages, these are moved to the archive.
-
-- spp
-- rsnps
-- clusterCrit
-- kmlShape
-
-These, which were reported not available when installing 4.2.1, were apparently
-not dependencies for packages installed with 4.3.1. They are also still in the
-archive, so install anyway.
-
-- ReorderCluster
-- mGSZ
-- propr
-- EntropyExplorer
-- SPARQL
-- mppa
-- sampSurf
-- GenKern
-- vbsr
-
-So, install directly.  Break out of R with Ctrl-z then, since most of these
-were already downloaded for 4.2.1:
-
-    cd $TOOLDIR/external_tarballs/
-
-    wget https://cran.r-project.org/src/contrib/Archive/rsnps/rsnps_0.6.0.tar.gz
-    R CMD INSTALL rsnps_0.6.0.tar.gz
-
-    R CMD INSTALL spp_1.16.0.tar.gz
-    R CMD INSTALL clusterCrit_1.2.8.tar.gz
-    R CMD INSTALL kmlShape_0.9.5.tar.gz
-    R CMD INSTALL ReorderCluster_2.0.tar.gz
-    R CMD INSTALL mGSZ_1.0.tar.gz
-    R CMD INSTALL propr_4.2.6.tar.gz
-    R CMD INSTALL EntropyExplorer_1.1.tar.gz
-    R CMD INSTALL SPARQL_1.16.tar.gz
-    R CMD INSTALL mppa_1.0.tar.gz
-    R CMD INSTALL sampSurf_0.7-6.tar.gz
-    R CMD INSTALL GenKern_1.2-60.tar.gz
-    R CMD INSTALL vbsr_0.0.5.tar.gz
-    R CMD INSTALL spatstat.core_2.4-4.tar.gz
-    R CMD INSTALL baseflow_0.13.2.tar.gz
-
-    cd $VERSIONDIR
-    fg
-
-
-1. MPI packages, such as Rmpi, Rhpc
+#### MPI packages, such as Rmpi, Rhpc
 
 Only openmpi/4.1.5 is available with gcc/12.3.0
 
@@ -406,7 +375,7 @@ Only openmpi/4.1.5 is available with gcc/12.3.0
 
     cd $VERSIONDIR
 
-2. Packages requiring libzmq: clustermq, rzmq
+#### Packages requiring libzmq: clustermq, rzmq
 
 Latest is still libzmq/4.3.4
 
@@ -420,7 +389,7 @@ Latest is still libzmq/4.3.4
 
     ml -libzmq
 
-3. OpenBUGS and MultiBUGS dependent packages: R2OpenBUGS, BRugs, pbugs
+#### OpenBUGS and MultiBUGS dependent packages: R2OpenBUGS, BRugs, pbugs
 
     # fully quit R
     ml OpenBUGS/3.2.3
@@ -430,17 +399,16 @@ Latest is still libzmq/4.3.4
     # fully quit R
 
     cd $VERSIONDIR/external
-    git clone https://github.com/fisabio/pbugs
     cd pbugs
-    git pull
+    git pull  # still to date
+    git status # DESCRIPTION still edited
     cd ..
-    vi pbugs/DESCRIPTION            # remove RoxygenNote line from DESCRIPTION
 
     R --no-init-file
     install.packages('pbugs', repos=NULL)
     ml -OpenBUGS
 
-  - R2MultiBUGS for MultiBUGS/2.0-gcc10.3.0
+#### R2MultiBUGS for MultiBUGS/2.0-gcc12.3.0. This also loads openmpi/4.1.5
 
     # fully quit R
     ml MultiBUGS/2.0-gcc12.3.0
@@ -454,113 +422,190 @@ Latest is still libzmq/4.3.4
 
 
 
-1. `a` packages
+### Restart 
 
-Next round, try installing all packages listed as being installed within inst1.Rout beginning with `a`, identify the issues.
+    cd $VERSIONDIR
+    ./installed.R -c
 
-    r <- getOption("repos"); r["CRAN"] <- "https://ftp.acc.umu.se/mirror/CRAN/"; options(repos = r)
-    BiocManager::install(c('abmR', 'abstr', 'acdcR', 'Achilles', 'adespatial', 'adw', 'affinity', 'AFM', 'ag5Tools', 'AGPRIS', 'agriwater', 'AgroTech', 'AHMbook', 'AHPWR', 'aihuman', 'AirMonitor', 'AlphaHull3D', 'altdoc', 'ambhasGW', 'amplican', 'amt', 'AneuFinder', 'angstroms', 'animalEKF', 'animaltracker', 'anipaths', 'AntAngioCOOL', 'antaresViz', 'aopdata', 'APfun', 'appeears', 'AQEval', 'AquaBEHER', 'ArchaeoChron', 'ArchaeoPhases', 'archeoViz', 'archive', 'arcpullr', 'areal', 'arenar', 'Arothron', 'ARPALData', 'ArrayExpressHTS', 'arulesNBMiner', 'ascotraceR', 'ASIP', 'aslib', 'ASpediaFI', 'assignR', 'atakrig', 'atom4R', 'atpolR', 'automap', 'AWR', 'AWR.Kinesis', 'AWR.KMS'), update=FALSE, Ncpus=4)
+produces
 
+    The R_packages/4.3.1 omnibus module for R version 4.3.1 (2023-06-16) and BioConductor version 3.17
 
-  - I have switched to OpenJDK java with the 4.3.1 version of R
-  - Failure building AlphaHull3D were because GMP and MPFR were not available, loaded GMP/6.2.1 and MPFR/4.1.0
-  - sodium needed libsodium/1.0.18-stable loaded
-  - archive needs libarchive, so creating libarchive/3.6.2 module. Also adding load of lz4/1.9.2
-  - FINALLY BUILT. terra won't build, there may be a misconfiguration between PROJ.4 expectations and PROJ/9.1.1
-    One issue is that we need to specify all options that the terra build requires.
-    This involved unpacking the archive and doing `./configure --help` to identify
-    the options.  The second was recognising, through this process in a separate
-    window, that libtiff and libcurl were not loaded for specific modules. They
-    were loaded here, but needed to be reloaded so that they were in the last
-    position in the module list. This makes no sense, but there it is.
-
-      cd $VERSIONDIR/external/
-      wget https://cran.r-project.org/src/contrib/terra_1.7-29.tar.gz
-      tar xf terra_1.7-29.tar.gz
-      ml libtiff/4.5.0
-      ml libcurl/7.85.0
-      R CMD INSTALL --configure-args="--with-gdal-config=$GDAL_ROOT/bin/gdal-config --with-proj-data=$PROJ_DATA --with-sqlite3-lib=$SQLITE3_ROOT/lib --with-proj-include=$PROJ_ROOT/include --with-proj-lib=$PROJ_ROOT/lib --with-proj-share=$PROJ_DATA --with-geos-config=$GEOS_ROOT/bin/geos-config" terra
+    A total of 23173 R packages are installed
+    A total of 23478 packages are available in CRAN and BioConductor
+    19603 CRAN packages are installed, out of 19919 available
+    3530 BioConductor-specific packages are installed, out of 3559 available
+    38 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere
 
 
-  - gdalraster fails like terra, so we need to build it like terra
+Restart installations within R, but **outside a screen** since we are so far along.
 
-      cd $VERSIONDIR/external/
-      wget https://cran.r-project.org/src/contrib/gdalraster_1.2.0.tar.gz
-      tar xf gdalraster_1.2.0.tar.gz
-      ml libtiff/4.5.0
-      ml libcurl/7.85.0
-      R CMD INSTALL --configure-args="--with-gdal-config=$GDAL_ROOT/bin/gdal-config --with-proj-data=$PROJ_DATA --with-sqlite3-lib=$SQLITE3_ROOT/lib --with-proj-include=$PROJ_ROOT/include --with-proj-lib=$PROJ_ROOT/lib --with-proj-share=$PROJ_DATA --with-geos-config=$GEOS_ROOT/bin/geos-config" gdalraster
+    R --no-init-file
+    options(BiocManager.check_repositories = FALSE)
+    source("inst.R")
 
+When this restart ends, we got just a handful of packages not installed.
 
-Rerun of inst.R
-----------------
-
-
-After several installs including solving terra, reran `inst.R` and it showed
-
+    No change in number of packages not installed: 345 so quitting
     After iteration 2 :
-    19483 CRAN packages installed, out of 19558 available
-    3510 BioConductor-specific packages installed, out of 3526 available
+    19603 CRAN packages installed, out of 19919 available
+    3530 BioConductor-specific packages installed, out of 3559 available
+    Warning message:
+    In install.packages(...) : installation of 345 packages failed:
 
-Some of the problem cases:
+Now try to install other dependencies.
 
-  -  loon.ggplot iplots  -- installed straightaway
-  -  rsbml  -- I'm just going to give up on this one
-  -  dfpk
-  -  GLMMselect
-  -  BiGGR
-  -  beanz
-  -  ssh -- needs libssh, we only have libssh2
-  -  ArrayExpressHTS -- this still doesn't seem to work. I figure it should be
-     getting its htslib from Rhtslib, not from an external module. How to make
-     that happen... I tried various hacks and couldn't get it to work, if I made
-     include/htslib/sam.h available, then this error appeared. I think we skip
-     this one for R_packages/4.3.1 like we did for R_packages/4.2.1
+    cd $TOOLDIR/external_tarballs/
 
-         fltbam.c:223:47: error: request for member 'header' in something not a structure or union
+    R CMD INSTALL rsnps_0.6.0.tar.gz
+    R CMD INSTALL spp_1.16.0.tar.gz
+    R CMD INSTALL clusterCrit_1.2.8.tar.gz
+    R CMD INSTALL kmlShape_0.9.5.tar.gz
+    R CMD INSTALL ReorderCluster_2.0.tar.gz
+    R CMD INSTALL propr_4.2.6.tar.gz
+    R CMD INSTALL EntropyExplorer_1.1.tar.gz
+    R CMD INSTALL SPARQL_1.16.tar.gz
+    R CMD INSTALL mppa_1.0.tar.gz
+    R CMD INSTALL GenKern_1.2-60.tar.gz
+    R CMD INSTALL vbsr_0.0.5.tar.gz
+    R CMD INSTALL baseflow_0.13.2.tar.gz
+    R CMD INSTALL mGSZ_1.0.tar.gz
+    R CMD INSTALL sampSurf_0.7-6.tar.gz
+    R CMD INSTALL spatstat.core_2.4-4.tar.gz
+
+    cd $VERSIONDIR
+
+Try to address some of the ones that couldn't be installed.
+
+  - BGmix
+  - biplotbootGUI
+  - ChemmineOB
+  - cuda.ml
+  - DeepBlueR
+  - deeptrafo
+  - duckdb
+  - FlexReg
+  - gpg
+  - gpuMagic
+  - gWidgets2tcltk
+  - HIBAG
+  - HilbertVisGUI
+  - image.textlinedetector
+  * iplots
+  - JFE
+  * loon
+  - mlpack
+  - networkscaleup
+  - odbc
+  - OmicsLonDA
+  - OpenCL
+  - opencv
+  - openCyto
+  - optbdmaeAT
+  - optrcdmaeAT
+  * proj4      # load PROJ.4 instead of PROJ when building
+  * vol2birdR  # load PROJ.4 instead of PROJ/9.1.1 when building
+  - (rawrr)    # nope
+  - Rcplex
+  - RcppMeCab
+  - RcppSimdJson
+  - (redland)    # nope
+  - (redux)    # nope
+  - RmecabKo
+  * Rmpfr      # unload everything, then load only R/4.3.1 and set R_LIBS_USER. It will only work with the system mpfr and gmp
+  - RODBC
+  - ROracle
+  * Rpoppler   #  load glib as a Poppler prerequisite
+  - RProtoBuf  # turns out, this builds with protobuf/21.12-gcc10.3.0 but not the newer protobuf/24.3-gcc12.3.0 because abseil has a ridiculous number of separately specified libraries and pkg-config gets very confused
+  - RQuantLib
+  - (rsbml)   # nope
+  - rstanarm
+  - rswipl
+  - soptdmaeA
+  * spectralGraphTopology
+  - ssh
+  - switchboard
+  - symengine
+  - tesseract
+  - tkImgR
+  - TTAinterfaceTrendAnalysis
+  - uHMM
+  * vapour
+  * abstr
+  * acumos
+  - angstroms
+  - (truncated)
 
 
-Running `./installed.R -c` produces
+Examine installation failures using inst1.R
+-------------------------------------------
 
-    A total of 23037 R packages are installed
-    A total of 23084 packages are available in CRAN and BioConductor
-    19484 CRAN packages are installed, out of 19558 available
-    3510 BioConductor-specific packages are installed, out of 3526 available
-    43 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere
+Nor looking at a few of the standard ones that failed, and why, using a single-run script inst1.R.R.
+
+Run this and save the output. Modified from the help for `sink()`.
+
+     zz <- file("inst1.Rout", open = "wt")
+     sink(zz)
+     sink(zz, type = "message")
+
+     source("inst1.R")
+
+     sink(type = "message")
+     sink()
+
+Looks like this is not capturing all of the build output, just the "well behaved" output from R.
+
+Many installed from this list. What are the numbers now?
+
+    ./installed.R -c
+
+Produces
+
+    The R_packages/4.3.1 omnibus module for R version 4.3.1 (2023-06-16) and BioConductor version 3.17
+
+    A total of 23377 R packages are installed
+    A total of 23486 packages are available in CRAN and BioConductor
+    19790 CRAN packages are installed, out of 19927 available
+    3544 BioConductor-specific packages are installed, out of 3559 available
+    41 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere
+
+This is enough. Move to the external packages, see below.
 
 
+#### RcppCGAL and AlphaHull3D are moved to the archive.
 
-Interim updates
----------------
+      cd $TOOLDIR/external_tarballs
+      wget https://cran.r-project.org/src/contrib/Archive/RcppCGAL/RcppCGAL_5.5.3.tar.gz
+      wget https://cran.r-project.org/src/contrib/Archive/AlphaHull3D/AlphaHull3D_2.0.0.tar.gz
+      R CMD INSTALL RcppCGAL_5.5.3.tar.gz
+      R CMD INSTALL AlphaHull3D_2.0.0.tar.gz
+      cd $VERSIONDIR
 
-If updating an R package from CRAN or BioConductor, simply use `BiocManager::install(..., update=FALSE)` within R.
+BUT, AlphaHull3D won't build.
+
+    n file included from /sw/apps/R_packages/4.3.1/rackham/RcppCGAL/include/CGAL/Triangulation_3.h:39:
+    /sw/apps/R_packages/4.3.1/rackham/RcppCGAL/include/CGAL/Triangulation_segment_traverser_3.h: At global scope:
+    /sw/apps/R_packages/4.3.1/rackham/RcppCGAL/include/CGAL/Triangulation_segment_traverser_3.h:371:49: error: expected identifier before string constant
+      371 |     std::tuple<Locate_type, int, int>Rcpp::stop("Exit Error") const
+            |                                                 ^~~~~~~~~~~~
+            /sw/apps/R_packages/4.3.1/rackham/RcppCGAL/include/CGAL/Triangulation_segment_traverser_3.h:371:49: error: expected ',' or '...' before string constant
+            /sw/apps/R_packages/4.3.1/rackham/RcppCGAL/include/CGAL/Triangulation_segment_traverser_3.h:371:38: error: invalid use of '::'
+              371 |     std::tuple<Locate_type, int, int>Rcpp::stop("Exit Error") const
+                    |                                      ^~~~
+
+Punt.
 
 
-Updating existing packages in this module
------------------------------------------
+I did a final run of inst1.R outside a screen. Several more packages installed!  `./installed.R -c` results now:
 
-Note that after installing packages while installing this module, the existence
-of additional updates might be announced.  It is OK to accept these updates;
-updates to the base R packages has write permissions are locked down on the R
-module itself so those can't be updated.  Accept 'a' to update all packages.
+    The R_packages/4.3.1 omnibus module for R version 4.3.1 (2023-06-16) and BioConductor version 3.17
 
-After the module is fully installed, **do not do this** after interim updates.
-Instead say 'n'.
+    A total of 23401 R packages are installed
+    A total of 23486 packages are available in CRAN and BioConductor
+    19814 CRAN packages are installed, out of 19927 available
+    3544 BioConductor-specific packages are installed, out of 3559 available
+    41 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere
 
-Do not update base R packages.  See the following section if you get the
-message about updating base backages such as Matrix, mgcv, nlme, and survival.
-
-Quit R, save the environment.
-
-
-Do not update base R packages unless this accompanies a new installation of R/$VERSION
------------------------------
-
-After installations of BioConductor or other packages, R might suggest you
-update some base packages.  Unless this is an installation which is accompanying
-a new installation of R, always choose 'n' to update NONE of the base
-packages.  Unless there is a serious bug, we will only update base packages
-along with updating R.
 
 
 
@@ -569,6 +614,8 @@ External packages
 -----------------
 
 Several R packages found here are not on CRAN or BioConductor, as a result of either user requests or requirements by other modules.
+
+### Basic guidelines
 
 * For a github-hosted package that is not part of CRAN, see ASCAT, rrbgen or STITCH.  If the instructions of the package recommend using something like `devtools::github_install("repository/packagename")`, then the package is one of these.
 * For a gitlab-hosted package that is not part of CRAN, see ASCAT, rrbgen or STITCH.  If the instructions of the package recommend using something like `devtools::gitlab_install("repository/packagename")`, then the package is one of these.
@@ -586,8 +633,8 @@ Two steps.  This requires installing the cmdstanr package from a custom reposito
 
 Then, downloading the latest CmdStan to `$TOOLDIR/external`.  As of this writing, this is
 
-    cd $TOOLDIR/external
-    [[ -f cmdstan-2.32.2.tar.gz ]] || wget https://github.com/stan-dev/cmdstan/releases/download/v2.32.2/cmdstan-2.32.2.tar.gz
+    cd $TOOLDIR/external_tarballs
+    [[ -f cmdstan-2.33.1.tar.gz ]] || wget https://github.com/stan-dev/cmdstan/releases/download/v2.33.1/cmdstan-2.33.1.tar.gz
 
 Add wording to module help to use the following:
 
@@ -599,7 +646,7 @@ can be installed from an UPPMAX-local file using the following commands within
 R:
 
     library(cmdstanr)
-    install_cmdstan(release_url="file:///sw/apps/R_packages/external/cmdstan-2.32.2.tar.gz")
+    install_cmdstan(release_url="file:///sw/apps/R_packages/external_tarballs/cmdstan-2.33.1.tar.gz")
 
 You can then use the `backend='cmdstanr'` option with brms functions.
 
@@ -637,11 +684,7 @@ This build popped up the message
     >
     >  Enter one or more numbers, or an empty line to skip updates: 1
 
-
 Had to choose '1' a couple times to get all packages updated ... wait... is dynverse now part of CRAN ?
-
-    module unload ImageMagick giflib  # or not
-
 
 
 ### xps  needs ROOT/6.22.08
@@ -654,7 +697,7 @@ Pull from Bioconductor git repository and install from their clones.  ROOT/6.26.
 
 
     module load ROOT/6.22.08
-    module load gcc/10.3.0
+    module load gcc/12.3.0
 
 Then within R, in the `$VERSIONDIR/external/` directory,
 
@@ -663,7 +706,7 @@ Then within R, in the `$VERSIONDIR/external/` directory,
 Then
 
     module unload ROOT
-    module load gcc/10.3.0
+    module load gcc/12.3.0
 
 
 
@@ -677,6 +720,8 @@ KEGG.db is superceded by KEGGREST but PGSEA doesn't know that.
     cd $VERSIONDIR/external
     wget --timestamping http://bioconductor.org/packages/3.11/data/annotation/src/contrib/KEGG.db_3.2.4.tar.gz
     R CMD INSTALL KEGG.db_3.2.4.tar.gz
+
+Instead of doing a fresh clone, just did a `git pull` within each:
 
     git clone https://git.bioconductor.org/packages/DESeq
     git clone https://git.bioconductor.org/packages/prada
@@ -693,8 +738,15 @@ Then within R, in the same `$VERSIONDIR/external` directory,
 
     install.packages(c('DESeq','prada','PGSEA','rTANDEM','FunciSNP.data','Roleswitch','facsDorit','FunciSNP','metagenomeFeatures','RDAVIDWebService'), repos=NULL)
 
-Once these are installed, many others can be installed.  A full rerun of the installation script is warranted.
+Once these are installed, many others can be installed.  Another round of `source('inst1.R')` followed by `./installed.R -c` gives us:
 
+    The R_packages/4.3.1 omnibus module for R version 4.3.1 (2023-06-16) and BioConductor version 3.17
+
+    A total of 23426 R packages are installed
+    A total of 23490 packages are available in CRAN and BioConductor
+    19817 CRAN packages are installed, out of 19931 available
+    3544 BioConductor-specific packages are installed, out of 3559 available
+    63 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere
 
 
 ### lme4qtl, harmony, LDna, ampvis2, CaSpER, loomR, SeuratDisk, SeuratWrappers, kBET, presto, ArchR, sgi, ASCAT, ggnet, STAAR, cblindplot
