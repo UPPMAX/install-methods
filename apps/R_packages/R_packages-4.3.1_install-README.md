@@ -472,6 +472,7 @@ Now try to install other dependencies.
     R CMD INSTALL mGSZ_1.0.tar.gz
     R CMD INSTALL sampSurf_0.7-6.tar.gz
     R CMD INSTALL spatstat.core_2.4-4.tar.gz
+    R CMD INSTALL captioner_2.2.3.tar.gz
 
     cd $VERSIONDIR
 
@@ -652,11 +653,6 @@ You can then use the `backend='cmdstanr'` option with brms functions.
 
 
 
-### Other packages
-
-    devtools::install_gitlab('CarlBrunius/MUVR')
-
-
 
 ### dyno
 
@@ -753,42 +749,46 @@ Once these are installed, many others can be installed.  Another round of `sourc
 
 Github-hosted packages.  Make sure hdf5/1.14.0 is loaded, loomR uses it.
 
-    devtools::install_github("stefpeschel/NetCoMi", dependencies=TRUE)
-    devtools::install_github("variani/lme4qtl", ref='master')
-    devtools::install_github("immunogenomics/harmony", ref = 'master')
-    devtools::install_github("petrikemppainen/LDna", ref = 'master')
-    devtools::install_github("madsalbertsen/ampvis2")
-    devtools::install_github("akdess/CaSpER")
-    devtools::install_github("mojaveazure/loomR", ref = "develop")
-    devtools::install_github("mojaveazure/seurat-disk")
-    remotes::install_github("satijalab/seurat-wrappers")
-    devtools::install_github('theislab/kBET')
-    devtools::install_github('immunogenomics/presto')
-    devtools::install_github("GreenleafLab/ArchR", ref="master")
-    devtools::install_github(repo="krumsieklab/sgi", subdir="sgi")
-    devtools::install_github('VanLoo-lab/ascat/ASCAT')
-    devtools::install_github("briatte/ggnet")
-    devtools::install_github("ducciorocchini/cblindplot")
-    devtools::install_github("RoseString/SCOPfunctions")
-    devtools::install_github("McGranahanLab/TcellExTRECT")
-    remotes::install_github('satijalab/azimuth', ref = 'master')
+    devtools::install_github("stefpeschel/NetCoMi", dependencies=TRUE, upgrade='never')
+    devtools::install_github("variani/lme4qtl", ref='master', upgrade='never')
+    devtools::install_github("immunogenomics/harmony", ref = 'master', upgrade='never')
+    devtools::install_github("petrikemppainen/LDna", ref = 'master', upgrade='never')
+    devtools::install_github("madsalbertsen/ampvis2", upgrade='never')
+    devtools::install_github("akdess/CaSpER", upgrade='never')
+    devtools::install_github("mojaveazure/loomR", ref = "develop", upgrade='never')
+    devtools::install_github("mojaveazure/seurat-disk", upgrade='never')
+    remotes::install_github("satijalab/seurat-wrappers", upgrade='never')
+    devtools::install_github('theislab/kBET', upgrade='never')
+    devtools::install_github('immunogenomics/presto', upgrade='never')
+    devtools::install_github("GreenleafLab/ArchR", ref="master", upgrade='never')
+    devtools::install_github(repo="krumsieklab/sgi", subdir="sgi", upgrade='never')
+    devtools::install_github('VanLoo-lab/ascat/ASCAT', upgrade='never')
+    devtools::install_github("briatte/ggnet", upgrade='never')
+    devtools::install_github("ducciorocchini/cblindplot", upgrade='never')
+    devtools::install_github("RoseString/SCOPfunctions", upgrade='never')
+    devtools::install_github("McGranahanLab/TcellExTRECT", upgrade='never')
+    remotes::install_github('satijalab/azimuth', ref = 'master', upgrade='never')
+    devtools::install_github('WSpiller/MVMR', upgrade='never')
+    devtools::install_github("danro9685/CIMLR", ref="R", upgrade='never')
+    devtools::install_gitlab('CarlBrunius/MUVR', upgrade='never')
+
 
 STAAR and its tutorials work with several other packages not provided with CRAN or BioConductor.
 
-    devtools::install_github("xihaoli/STAAR")
-    devtools::install_github("zilinli1988/SCANG")
-    devtools::install_github("xihaoli/STAARpipeline",ref="main")
-    devtools::install_github("xihaoli/STAARpipelineSummary",ref="main")
+    devtools::install_github("xihaoli/STAAR", upgrade='never')
+    devtools::install_github("zilinli1988/SCANG", upgrade='never')
+    devtools::install_github("xihaoli/STAARpipeline",ref="main", upgrade='never')
+    devtools::install_github("xihaoli/STAARpipelineSummary",ref="main", upgrade='never')
 
 HDL installs from a subdirectory of its repository.
 
-    devtools::install_github(repo="zhenin/HDL", subdir="HDL")
+    devtools::install_github(repo="zhenin/HDL", subdir="HDL", upgrade='never')
 
 ### BPCells
 
-This requires an older hdf5, hdf5/1.10.9.
+This appears not to require an older hdf5, so just leave hdf5/1.14.0 loaded.
 
-Download:
+No update since last download, v0.1.0 is still the latest tagged version.
 
     cd $VERSIONDIR/external
     wget https://github.com/bnprks/BPCells/archive/refs/tags/v0.1.0.tar.gz
@@ -811,47 +811,20 @@ A diff of the old and new configure is:
 77                                       echo "ARCH_FLAG='$ARCH_FLAG'"
 
 
-Temporarily load the older hdf5 and install:
-
-    module load hdf5/1.10.9
-
 Now within R:
 
     install.packages('BPCells-0.1.0', repos=NULL)
     q()
 
-Unload the olderl hdf5 module and make sure the BPCells.so library can find it:
+Unload the hdf5 module and make sure the BPCells.so library can find it:
 
-    module unload hdf5
+    module unload hdf5/1.14.0
     ldd /sw/apps/R_packages/4.3.1/rackham/BPCells/libs/BPCells.so
 
 If so it worked correctly, so load the newer one:
 
     module load hdf5/1.14.0
 
-
-### MVMR
-
-This one didn't want to build its vignettes using its command.  So,
-
-    cd $VERSIONDIR/external
-    git clone https://github.com/WSpiller/MVMR
-    cd MVMR
-    R
-
-and within R,
-
-    tools::buildVignettes(dir = '.', tangle = TRUE)
-    devtools::build('.')
-
-This builds the now-vignette-containing `MVMR_0.4.tar.gz` in the parent directory.
-Then, exit R, cd to the parent directory, which is `$VERSIONDIR/external`, and
-install from the tarball.
-
-    cd ..
-    R CMD INSTALL MVMR_0.4.tar.gz
-
-This installation will contain the vignette.
 
 
 ### HDL
@@ -863,6 +836,8 @@ module help, and defined the new mf file variable `reposroot` to point to
 
 
 ### velocyto.R
+
+This has not been updated, so follow the same procedure.
 
 I forked the https://github.com/velocyto-team/velocyto.R repository to
 https://github.com/douglasgscofield/velocyto.R to enable building off
@@ -884,25 +859,21 @@ And verify outside R:
     ldd /sw/apps/R_packages/4.3.1/rackham/velocyto.R/libs/velocyto.R.so
 
 
-### igraph0
+### igraph0, CoxBoost, rrbgen, STITCH, EasyQC, EasyQC2, contamMix, LRAcluster
 
 Also, install an outdated package `igraph0`, which has been superseded by
 `igraph` (installed above) but needed by some older procedures.
 
-    mkdir -p /sw/apps/R_packages/external_tarballs
     cd /sw/apps/R_packages/external_tarballs
-    IGRAPH0_VERSION=0.5.7
-    [[ -f igraph0_${IGRAPH0_VERSION}.tar.gz ]] || wget --timestamping https://cran.r-project.org/src/contrib/Archive/igraph0/igraph0_${IGRAPH0_VERSION}.tar.gz
-    R CMD INSTALL igraph0_${IGRAPH0_VERSION}.tar.gz
 
-### CoxBoost
-
-A deprecated package at CRAN.
-
-    cd /sw/apps/R_packages/external_tarballs
-    COXBOOST_VERSION=1.4
-    [[ -f CoxBoost_${COXBOOST_VERSION}.tar.gz ]] || wget --timestamping https://cran.r-project.org/src/contrib/Archive/CoxBoost/CoxBoost_${COXBOOST_VERSION}.tar.gz
-    R CMD INSTALL CoxBoost_${COXBOOST_VERSION}.tar.gz
+    R CMD INSTALL igraph0_0.5.7.tar.gz
+    R CMD INSTALL CoxBoost_1.4.tar.gz
+    R CMD INSTALL rrbgen_0.0.6.tar.gz
+    R CMD INSTALL STITCH_1.6.8.tar.gz
+    R CMD INSTALL EasyQC_23.8.tar.gz
+    R CMD INSTALL EasyQC2_1.1.1.tar.gz
+    R CMD INSTALL contamMix_1.0-10.tar.gz
+    R CMD INSTALL LRAcluster_1.0.tgz
 
 
 
@@ -915,30 +886,6 @@ Inside R:
 
     install.packages('/sw/bioinfo/calcDFT/1.0.1/src/dnase2tf', repos=NULL, type="source")
 
-
-### rrbgen
-
-Install rrbgen for reading BGEN files, hosted on github. No update since 0.0.6.
-
-    mkdir -p /sw/apps/R_packages/external_tarballs
-    cd /sw/apps/R_packages/external_tarballs
-    RRBGEN_VERSION=0.0.6
-    [[ -f rrbgen_${RRBGEN_VERSION}.tar.gz ]] || wget --timestamping https://github.com/rwdavies/rrbgen/releases/download/${RRBGEN_VERSION}/rrbgen_${RRBGEN_VERSION}.tar.gz
-    R CMD INSTALL rrbgen_${RRBGEN_VERSION}.tar.gz
-
-
-### STITCH
-
-Install STITCH for haplotype imputation, hosted on github.  I was worried about
-its requirement for htslib but it has incorporated that into its own source
-tree.  This module also requires both `bgzip` and `tabix`, which are provided
-by `htslib/1.8`, and says it needs `bcftools/1.8` and `samtools/1.8`.
-
-    mkdir -p /sw/apps/R_packages/external_tarballs
-    cd /sw/apps/R_packages/external_tarballs
-    STITCH_VERSION=1.6.8
-    [[ -f STITCH_${STITCH_VERSION}.tar.gz ]] || wget --timestamping https://github.com/rwdavies/STITCH/releases/download/${STITCH_VERSION}/STITCH_${STITCH_VERSION}.tar.gz
-    R CMD INSTALL STITCH_${STITCH_VERSION}.tar.gz
 
 
 ### SAIGE
@@ -956,26 +903,29 @@ called TwoSampleMR.  So, we do the above to set up our R environment and do all
 this inside R:
   
 
-    devtools::install_github("MRCIEU/TwoSampleMR")
-    devtools::install_github("MRCIEU/MRInstruments")
-    devtools::install_github("WSpiller/MRPracticals",build_opts = c("--no-resave-data", "--no-manual"),build_vignettes = TRUE)
+    devtools::install_github("MRCIEU/TwoSampleMR", upgrade='never')
+    devtools::install_github("MRCIEU/MRInstruments", upgrade='never')
 
-MRPracticals vignettes did not install.
+MRPracticals does not install because if its vignettes. Create a tarball separately and install from that.
 
+    cd $VERSIONDIR/external
+    git clone https://github.com/WSpiller/MRPracticals
+    module load pandoc/3.1.3  # regresses texlive version
+    module load texlive/2023-08-14  # restore it, pandoc won't care
+    cd MRPracticals
+    R
 
-### EasyQC, EasyQC2
+and within R,
 
-    mkdir -p /sw/apps/R_packages/external_tarballs
-    cd /sw/apps/R_packages/external_tarballs
-    EASYQC_VERSION=23.8
-    [[ -f EasyQC_${EASYQC_VERSION}.tar.gz ]] || wget --timestamping https://homepages.uni-regensburg.de/~wit59712/easyqc/EasyQC_${EASYQC_VERSION}.tar.gz
-    R CMD INSTALL EasyQC_${EASYQC_VERSION}.tar.gz
+    tools::buildVignettes(dir = '.', tangle = TRUE)
+    devtools::build('.')
 
-    [[ -f EasyQC_9.0_Commands_140918_2.pdf ]] || wget --timestamping https://homepages.uni-regensburg.de/~wit59712/easyqc/EasyQC_9.0_Commands_140918_2.pdf
+This builds the now-vignette-containing `MRPracticals_0.0.1.tar.gz` in the parent directory.
+Then, exit R, cd to the parent directory, which is `$VERSIONDIR/external`, and
+install from the tarball.
 
-    EASYQC2_VERSION=1.1.1
-    [[ -f EasyQC2_${EASYQC2_VERSION}.tar.gz ]] || wget --timestamping https://homepages.uni-regensburg.de/~wit59712/easyqc2/EasyQC2_${EASYQC2_VERSION}.tar.gz
-    R CMD INSTALL EasyQC2_${EASYQC2_VERSION}.tar.gz
+    cd ..
+    R CMD INSTALL MRPracticals_0.0.1.tar.gz
 
 
 ### arrow
@@ -993,56 +943,43 @@ features.  What is filled in for ARROWVERSION is what is printed by the
 packageVersion() command within R.
 
     cd $VERSIONROOT/external
-    ARROWVERSION=12.0.0
+    ARROWVERSION=13.0.0.1
     wget https://cran.r-project.org/src/contrib/arrow_${ARROWVERSION}.tar.gz
     export LIBARROW_MINIMAL=false
     ARROW_WITH_ZLIB=ON ARROW_WITH_ZSTD=ON ARROW_WITH_LZ4=ON ARROW_WITH_BZ2=ON ARROW_R_DEV=true R CMD INSTALL arrow_${ARROWVERSION}.tar.gz
 
 
 
-contamMix 1.0-10
-----------------
+### CrIMMix
 
-Couldn't find the tarball except as part of a pipeline, so fetched from there.
-
-Installed similarly into 4.1.1, 4.0.4, 4.0.0.
-
-    mkdir -p $TOOLDIR/external_tarballs
-    cd $TOOLDIR/external_tarballs
-
-    if [[ ! -f contamMix_1.0-10.tar.gz ]]  ; then
-        wget https://github.com/alexhbnr/mitoBench-ancientMT/blob/master/resources/contamMix_1.0-10.tar.gz?raw=true
-        mv contamMix_1.0-10.tar.gz\?raw\=true contamMix_1.0-10.tar.gz
-    fi
-
-    R CMD INSTALL contamMix_1.0-10.tar.gz
-
-
-LRAcluster, CIMLR, CrIMMix
------------------
-
-Could not install CrIMMix (see below). Still, we install LRAcluster 1.0, at http://lifeome.net/software/lracluster/
-
-    mkdir -p $TOOLDIR/external_tarballs
-    cd $TOOLDIR/external_tarballs
-
-    [[ -f LRAcluster_1.0.tgz ]] || wget http://lifeome.net/software/lracluster/LRAcluster_1.0.tgz
-    R CMD INSTALL LRAcluster_1.0.tgz
-
-and CIMLR:
-
-    devtools::install_github("danro9685/CIMLR", ref="R")
 
 CrIMMix cannot be installed for 4.3.1 nor 4.2.1.
 
-    devtools::install_github("CNRGH/crimmix")
+    devtools::install_github("CNRGH/crimmix", upgrade='never')
 
     Error: object 'sgcca' is not exported by 'namespace:RGCCA'
     Execution halted
     ERROR: lazy loading failed for package 'CrIMMix'
     * removing '/sw/apps/R_packages/4.3.1/rackham/CrIMMix'
 
-We put a message in the mf to load R_packages/4.1.1 instead.
+Same error with 4.3.1.
+
+
+
+Final run
+---------
+
+    source('inst1.R')
+
+    ./installed.R -c
+
+    The R_packages/4.3.1 omnibus module for R version 4.3.1 (2023-06-16) and BioConductor version 3.17
+
+    A total of 23475 R packages are installed
+    A total of 23492 packages are available in CRAN and BioConductor
+    19820 CRAN packages are installed, out of 19933 available
+    3544 BioConductor-specific packages are installed, out of 3559 available
+    109 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere
 
 
 Adding a new package

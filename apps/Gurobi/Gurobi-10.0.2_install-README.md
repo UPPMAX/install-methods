@@ -75,9 +75,19 @@ Wait for sync
 Start floating token server
     ml Gurobi
     grb_ts
+
+use the mf file from v10 and onwards.
+#start token locally
+    # Spoof the MAC address.
+    set ::env(LD_PRELOAD) /usr/local/flexlm/lib/libmacspoof.so.1.0.1
+    set ::env(MAC_ADDRESS) fa:16:3e:b4:13:4f
+    exec $modroot/linux64/bin/grb_ts
+
+
+
 test from somewhere else (other user, other project, on compute node Bianca)
     ml Gurobi
     gurobi_cl
 
-Cross fingers!
+
 

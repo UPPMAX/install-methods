@@ -853,6 +853,27 @@ this inside R:
 
     devtools::install_github("MRCIEU/TwoSampleMR")
     devtools::install_github("MRCIEU/MRInstruments")
+
+    cd $VERSIONDIR/external
+    git clone https://github.com/WSpiller/MRPracticals
+    module load pandoc/3.1.3  # regresses texlive version
+    module load texlive/2023-08-14  # restore it, pandoc won't care
+    cd MRPracticals
+    R
+
+and within R,
+
+    tools::buildVignettes(dir = '.', tangle = TRUE)
+    devtools::build('.')
+
+This builds the now-vignette-containing `MVMR_0.4.tar.gz` in the parent directory.
+Then, exit R, cd to the parent directory, which is `$VERSIONDIR/external`, and
+install from the tarball.
+
+    cd ..
+    R CMD INSTALL MVMR_0.4.tar.gz
+
+
     devtools::install_github("WSpiller/MRPracticals",build_opts = c("--no-resave-data", "--no-manual"),build_vignettes = TRUE)
 
 MRPracticals vignettes did not install.
