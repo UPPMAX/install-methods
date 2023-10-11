@@ -288,7 +288,7 @@ XML::DOM::XPath has a test error, --force it!
     cpanm Statistics::Descriptive::LogScale Statistics::Descriptive::Discrete Statistics::Distributions::Bartlett 
     cpanm Math::MatrixReal 
     cpanm Config::Simple
-    # cpanm Sort::Fields  # this will not install in perl_modules/5.26.2
+    cpanm Sort::Fields
     cpanm Text::NSP
 
     cpanm File::Util File::Path File::Basename Getopt::Long Text::Levenshtein::XS String::Approx MCE MCE::Loop MCE::Shared
@@ -298,6 +298,10 @@ odd error and these two must be forced.
 
     cpanm --force Statistics::Normality Statistics::FactorAnalysis
 
+Two additional prereqs for CLUMPAK.
+
+    cpanm PDF::Table
+    cpanm List::Permutor
 
 Modules 'by hand'
 -----------------
