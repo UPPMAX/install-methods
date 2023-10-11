@@ -1,13 +1,35 @@
 To download, set up and run CLUMPAK at UPPMAX
 =============================================
 
-Initial setup
--------------
+These notes are for the download and setup of the CLUMPAK tool at UPPMAX.
+CLUMPAK is no longer available at its main website:
 
-Download and unpack the CLUMPAK.zip zip file and the documentation.
+<http://clumpak.tau.ac.il/download.html>
+
+but is available via the Internet Archive:
+
+<https://web.archive.org/web/20221213041750/http://clumpak.tau.ac.il/download.html>
+
+The way CLUMPAK is set up, it is difficult to have it in the module system
+since its manual explicitly directs users to modify its code to change certain
+parameters if they wish. So, I have put together a set of notes to help set
+up CLUMPAK for personal or lab use.
+
+
+Download
+--------
+
+Download the CLUMPAK.zip zip file and the documentation. Keep these for later reuse, or to provide to colleagues.
 
     wget https://web.archive.org/web/20221213041750/http://clumpak.tau.ac.il/download/CLUMPAK.zip
     wget https://web.archive.org/web/20221213041750/http://clumpak.tau.ac.il/download/CLUMPAK_Documentation.pdf
+
+
+Initial setup
+-------------
+
+Unpack the CLUMPAK.zip file and start the initial setup.
+
     unzip CLUMPAK.zip
     cd CLUMPAK/
 
@@ -26,6 +48,7 @@ Unzip the 'main pipeline' example data, then go back to the CLUMPAK tool directo
     cd ../../examples/Main_pipeline
     unzip toy_data.zip
     cd ../../26_03_2015_CLUMPAK/CLUMPAK/
+
 
 Every time you want to run
 --------------------------
