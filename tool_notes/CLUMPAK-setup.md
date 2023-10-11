@@ -12,8 +12,8 @@ but is available via the Internet Archive:
 
 The way CLUMPAK is set up, it is difficult to have it in the module system
 since its manual explicitly directs users to modify its code to change certain
-parameters if they wish. So, I have put together a set of notes to help set
-up CLUMPAK for personal or lab use.
+parameters if they wish. So, I have put together these notes to help set up
+CLUMPAK for personal or lab use at UPPMAX.
 
 
 Download
