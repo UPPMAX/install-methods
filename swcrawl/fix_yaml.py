@@ -56,7 +56,7 @@ def open_yaml_fixed(yaml_file):
         return ''
 
 ################### Main ####################
-for root, dirs, files in walklevel("/sw/", 3):
+for root, dirs, files in walklevel("/sw/", 6):
     if re.search('/sw/.+/src/', root):
         continue
     if re.search('/sw/links/', root):
@@ -73,6 +73,10 @@ for root, dirs, files in walklevel("/sw/", 3):
                     yamlstream = open_yaml_fixed(path)
                     try:
                         parsed_yaml=yaml.safe_load(yamlstream)
+                        try: parsed_yaml['TOOL']
+                        except:
+                            print(path + " is not a sw yaml.")
+                            continue
                         try:
                             key = parsed_yaml['TOOL'] + "_" + str(parsed_yaml['VERSION'])
                             sqlkey_old = -1
@@ -81,19 +85,50 @@ for root, dirs, files in walklevel("/sw/", 3):
                             except:
                                 sqlkey_old = 0
                             if key != sqlkey_old:
-                                print("Changing SQLKEY in" + path)
+                                print("Changing SQLKEY in " + path)
                                 parsed_yaml['SQLKEY'] = key
                             else:
-                                print("All is fine!")
+                                pass
                         except yaml.YAMLError as exc:
                             print(exc)
+                            print("sql key")
+                            continue
                     except yaml.YAMLError as exc:
                         print(exc)
-                    new_yaml = path + "TEST"
-                    print(new_yaml + "\n")
+                        print("yaml open")
+                        continue
+                    new_file = re.search('(^.*)\.DRAFT(.*$)', path)
+                    new_yaml = path
+                    if new_file:
+                        new_yaml = new_file.group(1) + new_file.group(2)
+                        try:
+                            old_file = new_file.group(1) + new_file.group(2)
+                        except Exception as exc:
+                            print(exc)
+                            print("old file name construction")
+                        try:
+                            old_yamlstream = open_yaml_fixed(old_file)
+                        except Exception as exc:
+                            print(exc)
+                            print("opening the old yaml file")
+                        try:
+                            old_parsed_yaml=yaml.safe_load(old_yamlstream)
+                        except Exception as exc:
+                            print(exc)
+                            print("making the yaml object")
+                        if(old_parsed_yaml):
+                            try:
+                                parsed_yaml.update(old_parsed_yaml)
+                            except Exception as exc:
+                                print(exc)
+                                print(old_parsed_yaml)
+                                print("merging the old into the new")
+                            os.rename(old_file, old_file + ".OLDLEGACY")
                     try:
                         with open(new_yaml, 'w') as outfile:
                             yml.dump(parsed_yaml, outfile)
+                            print("New file " + new_yaml + " made.")
                     except Exception as exc:
                         print(exc)
+                        print("dump")
 

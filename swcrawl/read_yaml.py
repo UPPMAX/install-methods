@@ -7,6 +7,11 @@ import yaml
 import pwd
 import hashlib
 import subprocess
+from optparse import OptionParser
+
+parser = OptionParser()
+parser.add_option("-r", action="store_true", dest="reset", default=False)
+(options, args) = parser.parse_args()
 
 def walklevel(path, depth = 1):
     """It works just like os.walk, but you can pass it a level parameter
@@ -118,15 +123,21 @@ db.text_factory = str
 DBcursor = db.cursor()
 
 # Only run once
-maketable_persons(DBcursor)
-maketable_yamlfiles(DBcursor)
+if options.reset == True:
+    print("Remaking the tables")
+    maketable_persons(DBcursor)
+    maketable_yamlfiles(DBcursor)
 
-for root, dirs, files in walklevel("/sw/", 3):
+for root, dirs, files in walklevel("/sw/", 5):
     if re.search('/sw/.+/src/', root):
         continue
     if re.search('/sw/links/', root):
         continue
     if re.search('/sw/\.snapshot', root):
+        continue
+    if re.search('/sw/apps/conda/.+/', root):
+        continue
+    if re.search('/sw/apps/R_packages/.+/', root):
         continue
     # Standard path is /sw/<category>/<sw_name>/<yamlfile> Thus the matching below.
     for file in files:
@@ -134,6 +145,7 @@ for root, dirs, files in walklevel("/sw/", 3):
         if m:
             if (m.group(1)):
                 path = root + '/' + m.group(1)
+                print(path)
                 creator = pwd.getpwuid(os.stat(path).st_uid).pw_name
                 if os.path.isfile(path) and os.access(path, os.R_OK):
                     md5_hash = hashlib.md5()
@@ -141,47 +153,36 @@ for root, dirs, files in walklevel("/sw/", 3):
                         content = a_file.read()
                         md5_hash.update(content)
                         md5 = md5_hash.hexdigest()
-                    yamlstream = open_yaml_fixed(path)
-                    #with open(path, 'r') as yamlstream:
-                    try:
-                        parsed_yaml=yaml.safe_load(yamlstream)
+                    #yamlstream = open_yaml_fixed(path)
+                    with open(path, 'r') as yamlstream:
                         try:
-                            key = parsed_yaml['SQLKEY']
-                        except:
+                            parsed_yaml=yaml.safe_load(yamlstream)
                             try:
-                                key = parsed_yaml['TOOL'] + "_" + str(parsed_yaml['VERSION'])
+                                key = parsed_yaml['SQLKEY']
                             except:
-                                print("This looks like something else: ")
-                                print(parsed_yaml)
-                                print(yamlstream)
-                    except yaml.YAMLError as exc:
-                        print(exc)
+                                try:
+                                    key = parsed_yaml['TOOL'] + "_" + str(parsed_yaml['VERSION'])
+                                except:
+                                    print(path + " looks like it is not a sw yaml.")
+                                    continue
+                        except yaml.YAMLError as exc:
+                            print(exc)
+                            continue
             # Get the md5 from the SQL DB and check if the file is changed
             sql = 'SELECT yamlfiles.md5 FROM yamlfiles WHERE yamlfiles.path IS "' + path + '";'
+            oldmd5 = ''
             try:
-                print(md5, oldmd5)
+                #Get the previous value for this software
                 for i in DBcursor.execute(sql).fetchall():
                     oldmd5 = i[0]
-                print(md5, oldmd5)
             except:
-                oldmd5 = 'NULL'
-                print("ERROR! No old md5\n")
+                #This sw does not exist in the DB.
+                print("No old md5 for " + path)
             # New insert  into chksum table to keep track of yaml files
             if oldmd5 == md5:
                 print("No change to " + path)
-            else:
-                sql = 'SELECT persons.email FROM persons WHERE persons.username IS "' + creator +'";'
-                try:
-                    for i in DBcursor.execute(sql).fetchall():
-                        email = i[0]
-                    mail = "mailx -r \"NOREPLY\" -s " + "\"New YAML-file\" " + email
-                    body = "Hi!\n\nThe YAML file at\n" + path + "\nseems to have changed.\n\nThe System"
-                    cmd = "echo \"" + body + "\" | " +  mail
-                    #result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-                    #output, errors = result.communicate()
-                    print("\nmailing: " + mail + "\n\n")
-                except:
-                    print("No e-mail registered!\n")
+            elif not oldmd5:
+                print("New DB entry for " + path)
                 sql = "INSERT INTO yamlfiles (key, path, creator, md5) VALUES (?, ?, ?, ?)"
                 try:
                     # Execute the SQL command
@@ -194,7 +195,53 @@ for root, dirs, files in walklevel("/sw/", 3):
                     print(exc)
                     print("ERROR SW!\n")
                     db.rollback()
-
+            else:
+                #If old and new md5 exists, but are not equal, mail the creator
+                sql = 'SELECT persons.email FROM persons WHERE persons.username IS "' + creator +'";'
+                try:
+                    for i in DBcursor.execute(sql).fetchall():
+                        email = i[0]
+                    mail = "mailx -r \"NOREPLY\" -s " + "\"New YAML-file\" " + email
+                    body = "Hi!\n\nThe YAML file at\n" + path + "\nseems to have changed.\n\nThe System"
+                    cmd = "echo \"" + body + "\" | " +  mail
+                    #result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+                    #output, errors = result.communicate()
+                    #print("mailing: " + mail + "\n")
+                except:
+                    print("No e-mail registered!\n")
+                try:
+                    DBcursor.execute("UPDATE yamlfiles SET md5 = ? WHERE key = ?", (md5, key))
+                    db.commit()
+                except Exception as exc:
+                    print(exc)
+                    db.rollback()
+            #Now we know if the file is new or not and we want to enter the values from the yaml into the database.
+            if parsed_yaml:
+                for column, value in parsed_yaml.items():
+                    try:
+                        DBcursor.execute("ALTER TABLE yamlfiles ADD COLUMN " + column + " CHAR(320);")
+                        db.commit()
+                    except Exception as exc:
+                        pass
+                    if value:
+                        if type(value) is None:
+                            value = str('')
+                        if type(value) is list:
+                            print("In file %s, column: %s has value: %s" % (path, column, value[:]))
+                            if value[0] is None:
+                                value = str('')
+                            else:
+                                value = ' '.join(value)
+                        if type(value) is not str:
+                            value = str(value)
+                        try:
+                            DBcursor.execute("UPDATE yamlfiles SET " + column + " = '" + value + "' WHERE key = '" + key + "';")
+                            db.commit()
+                        except Exception as exc:
+                            print("Ths error: " , exc)
+                            print(column)
+                            print(value)
+                            db.rollback()
 # disconnect from server
 db.close()
 

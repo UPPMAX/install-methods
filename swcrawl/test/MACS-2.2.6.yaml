@@ -1,0 +1,29 @@
+---
+key: julia_1.9.3
+path: /sw/apps/bioinfo/MACS/MACS-2.2.6.yaml
+creator: bjornc
+md5: 19148d4c36516c8ef7ff7b1406b42aae
+TOOL: julia
+VERSION: 1.9.3
+MODULE: julia
+KEYWORDS: []
+CLUSTER:
+- rackham
+- bianca
+- miarka
+- snowy
+LICENSE: MIT
+LICENSEURL:
+USERGROUP: sw
+USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+WEBSITE: https://julialang.org
+LOCAL: /sw/comp/julia/mf/1.9.3
+SECTION:
+POSTINSTALL: /sw/comp/julia/julia-1.9.3_post-install.sh
+README: /sw/comp/julia/julia-1.9.3_install-README.md
+COMMON: /sw/mf/common/compilers//julia/1.9.3
+DESCRIPTION: Julia is a high-level\, high-performance dynamic language for technical
+  computing.
+SQLKEY: julia_1.9.3
+TAGS:
+MODULEFILE:

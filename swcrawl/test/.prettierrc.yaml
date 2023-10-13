@@ -1,0 +1,25 @@
+---
+key: bismark_0.14.0
+path: /sw/apps/bioinfo/bismark/0.24.1/snowy/.prettierrc.yaml
+creator: douglas
+md5: 033e6a147d087a10e19ea9ce50189085
+TOOL: bismark
+VERSION: 0.14.0
+MODULE:
+KEYWORDS:
+CLUSTER:
+- milou
+LICENSE:
+LICENSEURL:
+USERGROUP: sw
+USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+WEBSITE:
+LOCAL:
+SECTION:
+POSTINSTALL:
+README:
+COMMON: /sw/mf/common/bioinfo-tools/misc/bismark/0.14.0
+DESCRIPTION:
+SQLKEY: bismark_0.14.0
+TAGS:
+MODULEFILE:

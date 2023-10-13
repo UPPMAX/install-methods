@@ -1,0 +1,28 @@
+---
+key: pVACtools_3.1.1
+path: /sw/apps/bioinfo/pVACtools/3.1.1/src/.readthedocs.yaml
+creator: bjornv
+md5: b4ff7cd5a3327dc1ab85a848f87655f1
+TOOL: pVACtools
+VERSION: 3.1.1
+MODULE: pVACtools
+KEYWORDS:
+CLUSTER:
+- rackham
+- bianca
+- miarka
+- snowy
+LICENSE: BSD3
+LICENSEURL:
+USERGROUP: sw
+USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+WEBSITE: https://github.com/griffithlab/pVACtools
+LOCAL: /sw/bioinfo/pVACtools/mf/3.1.1
+SECTION: annotation
+POSTINSTALL: /sw/bioinfo/pVACtools/pVACtools-3.1.1_post-install.sh
+README: /sw/bioinfo/pVACtools/pVACtools-3.1.1_install-README.md
+COMMON: /sw/mf/common/bioinfo-tools/annotation/pVACtools/3.1.1
+DESCRIPTION: pVACtools is a cancer immunotherapy suite
+SQLKEY: pVACtools_3.1.1
+TAGS: ''
+MODULEFILE:

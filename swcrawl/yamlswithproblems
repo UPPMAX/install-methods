@@ -1,0 +1,1565 @@
+ROOT-6.20.04.yaml  !=  /sw/apps/ROOT/ROOT-6.22.08.yaml
+ROOT-6.04.08.yaml  !=  /sw/apps/ROOT/ROOT-6.26.10.yaml
+ROOT-6.20.04.yaml  !=  /sw/apps/ROOT/ROOT-6.22.08.yaml
+RStudio-1.1.463.yaml  !=  /sw/apps/R_packages/R_packages-4.1.1.yaml
+R_packages-4.1.1.yaml  !=  /sw/apps/R_packages/R_packages-4.2.1.yaml
+RStudio-1.1.463.yaml  !=  /sw/apps/R_packages/R_packages-4.1.1.yaml
+ATLAS_aDNA-20170510.yaml  !=  /sw/apps/bioinfo/ATLAS_aDNA/ATLAS_aDNA-0.9.9.yaml
+BUSCO-4.1.4.yaml  !=  /sw/apps/bioinfo/BUSCO/BUSCO-5.0.0.yaml
+BUSCO-4.1.4.yaml  !=  /sw/apps/bioinfo/BUSCO/BUSCO-5.2.2.yaml
+BESST-1.0.4.4.yaml  !=  /sw/apps/bioinfo/Bandage/Bandage-0.8.1.yaml
+BESST-1.0.4.4.yaml  !=  /sw/apps/bioinfo/Bandage/Bandage-0.8.1.yaml
+BclConverter-1.7.1.yaml  !=  /sw/apps/bioinfo/BclConverter/BclConverter-3.9.3.yaml
+CNVnator-0.3.2.yaml  !=  /sw/apps/bioinfo/CNVnator/CNVnator-0.4.1-20200707-c73786d.yaml
+FALCON-integrate-20161113.yaml  !=  /sw/apps/bioinfo/IMPUTE5/IMPUTE5-1.1.5.yaml
+FALCON-integrate-20161113.yaml  !=  /sw/apps/bioinfo/IMPUTE5/IMPUTE5-1.1.5.yaml
+GATK-Queue-3.2.2.yaml  !=  /sw/apps/bioinfo/GATK/GATK-4.2.0.0.yaml
+GATK-Queue-3.2.2.yaml  !=  /sw/apps/bioinfo/GATK/GATK-4.2.0.0.yaml
+/sw/apps/bioinfo/GEMINI/0.16.3/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/apps/bioinfo/GEMINI/0.18.3/share_data/gemini-config.yaml looks like it is not a sw yaml.
+IGV-2.3.17.yaml  !=  /sw/apps/bioinfo/IGV/IGV-2.16.0.yaml
+InterProScan-.z.yaml  !=  /sw/apps/bioinfo/InterProScan/InterProScan-5.62-94.0.yaml
+MEGAN-.MEGAN.yaml  !=  /sw/apps/bioinfo/PhyloPhlAn/PhyloPhlAn-3.0.2.yaml
+phylophlan-0.99.yaml  !=  /sw/apps/bioinfo/PhyloPhlAn/PhyloPhlAn-0.99.yaml
+phylophlan-0.99.yaml  !=  /sw/apps/bioinfo/PhyloPhlAn/PhyloPhlAn-0.99.yaml
+MaSuRCA-3.4.2.yaml  !=  /sw/apps/bioinfo/MaSuRCA/MaSuRCA-4.0.4.yaml
+MaSuRCA-3.4.2.yaml  !=  /sw/apps/bioinfo/MaSuRCA/MaSuRCA-4.0.2.yaml
+MaSuRCA-3.4.2.yaml  !=  /sw/apps/bioinfo/MaSuRCA/MaSuRCA-4.0.2.yaml
+MultiQC-1.1.yaml  !=  /sw/apps/bioinfo/MultiQC/MultiQC-1.10.yaml
+MultiQC-1.1.yaml  !=  /sw/apps/bioinfo/MultiQC/MultiQC-1.10.1.yaml
+MultiQC-1.1.yaml  !=  /sw/apps/bioinfo/MultiQC/MultiQC-1.11.yaml
+MultiQC-0.5.yaml  !=  /sw/apps/bioinfo/MultiQC/MultiQC-1.12.yaml
+MultiQC-1.1.yaml  !=  /sw/apps/bioinfo/MultiQC/MultiQC-1.10.yaml
+MultiQC-1.1.yaml  !=  /sw/apps/bioinfo/MultiQC/MultiQC-1.10.1.yaml
+MultiQC-1.1.yaml  !=  /sw/apps/bioinfo/MultiQC/MultiQC-1.11.yaml
+NextGenMap-0.5.4.yaml  !=  /sw/apps/bioinfo/NextGenMap/NextGenMap-0.5.5.yaml
+Pilon-1.22.yaml  !=  /sw/apps/bioinfo/Pilon/Pilon-1.24.yaml
+Pilon-1.22.yaml  !=  /sw/apps/bioinfo/Pilon/Pilon-1.24.yaml
+RAxML-NG-0.9.0-mpi.yaml  !=  /sw/apps/bioinfo/RAxML-NG/RAxML-NG-1.1.0.yaml
+RAxML-NG-0.9.0-mpi.yaml  !=  /sw/apps/bioinfo/RAxML-NG/RAxML-NG-1.1.0-mpi.yaml
+RAxML-NG-0.9.0-mpi.yaml  !=  /sw/apps/bioinfo/RAxML-NG/RAxML-NG-1.1.0-20220810-816f9d1.yaml
+RepeatMasker-4.1.0.yaml  !=  /sw/apps/bioinfo/RepeatMasker/RepeatMasker-4.1.2-p1.yaml
+RepeatMasker-4.1.0.yaml  !=  /sw/apps/bioinfo/RepeatMasker/RepeatMasker-4.1.2-p1.yaml
+RepeatModeler-2.0.1.yaml  !=  /sw/apps/bioinfo/RepeatModeler/RepeatModeler-2.0.3.yaml
+SHAPEIT-v3.r884.2.yaml  !=  /sw/apps/bioinfo/SHAPEIT/SHAPEIT-v5.1.0.0.yaml
+SMRT-2.2.0.yaml  !=  /sw/apps/bioinfo/SMRT/SMRT-11.1.yaml
+VarDictJava-1.4.5.yaml  !=  /sw/apps/bioinfo/VarDictJava/VarDictJava-1.8.3.yaml
+abyss-2.0.2-k128.yaml  !=  /sw/apps/bioinfo/abyss/abyss-2.3.5.yaml
+abyss-2.0.2-k128.yaml  !=  /sw/apps/bioinfo/abyss/abyss-2.3.5_k128.yaml
+bcftools-1.1.yaml  !=  /sw/apps/bioinfo/bcftools/bcftools-1.10.yaml
+bcftools-1.1.yaml  !=  /sw/apps/bioinfo/bcftools/bcftools-1.10.yaml
+beagle-1.0.0.yaml  !=  /sw/apps/bioinfo/beagle/beagle-4.0.0.yaml
+bgc-1.03.yaml  !=  /sw/apps/bioinfo/bioawk/bioawk-20170911-fd40150.yaml
+bismark-0.14.0.yaml  !=  /sw/apps/bioinfo/bismark/bismark-0.22.3.yaml
+bismark-0.14.0.yaml  !=  /sw/apps/bioinfo/bismark/bismark-0.23.1.yaml
+bismark-0.14.0.yaml  !=  /sw/apps/bioinfo/bismark/bismark-0.24.1.yaml
+/sw/apps/bioinfo/bismark/0.24.1/rackham/.prettierrc.yaml looks like it is not a sw yaml.
+/sw/apps/bioinfo/bismark/0.24.1/bianca/.prettierrc.yaml looks like it is not a sw yaml.
+/sw/apps/bioinfo/bismark/0.24.1/miarka/.prettierrc.yaml looks like it is not a sw yaml.
+/sw/apps/bioinfo/bismark/0.24.1/snowy/.prettierrc.yaml looks like it is not a sw yaml.
+bowtie2-2.0.0-beta5.yaml  !=  /sw/apps/bioinfo/bowtie2/bowtie2-2.5.1.yaml
+cutadapt-3.1.yaml  !=  /sw/apps/bioinfo/cutadapt/cutadapt-4.0.yaml
+delly-0.7.2.yaml  !=  /sw/apps/bioinfo/delly/delly-1.1.6.yaml
+diamond-0.9.31.yaml  !=  /sw/apps/bioinfo/diamond/diamond-2.0.4.yaml
+diamond-0.8.26.yaml  !=  /sw/apps/bioinfo/diamond/diamond-2.0.14.yaml
+diamond-2.0.9.yaml  !=  /sw/apps/bioinfo/diamond/diamond-2.1.0.yaml
+diamond-2.0.9.yaml  !=  /sw/apps/bioinfo/diamond/diamond-2.1.1.yaml
+diamond-2.0.9.yaml  !=  /sw/apps/bioinfo/diamond/diamond-2.1.6.yaml
+diamond-0.9.31.yaml  !=  /sw/apps/bioinfo/diamond/diamond-2.0.4.yaml
+gaemr-1.0.1.yaml  !=  /sw/apps/bioinfo/RevBayes/RevBayes-1.1.1.yaml
+gaemr-1.0.1.yaml  !=  /sw/apps/bioinfo/RevBayes/RevBayes-1.1.1-mpi.yaml
+htslib-1.1.yaml  !=  /sw/apps/bioinfo/htslib/htslib-1.10.yaml
+htslib-1.1.yaml  !=  /sw/apps/bioinfo/htslib/htslib-1.10.yaml
+infernal-1.0.2.yaml  !=  /sw/apps/bioinfo/infernal/infernal-1.1.4.yaml
+kallisto-0.42.4.yaml  !=  /sw/apps/bioinfo/kallisto/kallisto-0.48.0.yaml
+manta-1.0.3.yaml  !=  /sw/apps/bioinfo/manta/manta-1.6.0.yaml
+mrbayes-3.2.6-mpi.yaml  !=  /sw/apps/bioinfo/mrbayes/mrbayes-3.2.7a.yaml
+mrbayes-3.2.6-mpi.yaml  !=  /sw/apps/bioinfo/mrbayes/mrbayes-3.2.7a-mpi.yaml
+mrbayes-3.2.6-gcc7.1.0.yaml  !=  /sw/apps/bioinfo/mrbayes/mrbayes-3.2.7a-gpu.yaml
+mrbayes-3.2.6-mpi.yaml  !=  /sw/apps/bioinfo/mrbayes/mrbayes-3.2.7a.yaml
+mrbayes-3.2.6-mpi.yaml  !=  /sw/apps/bioinfo/mrbayes/mrbayes-3.2.7a-mpi.yaml
+mrbayes-3.2.6-gcc7.1.0.yaml  !=  /sw/apps/bioinfo/mrbayes/mrbayes-3.2.7a-gpu.yaml
+muscle-3.8.31.yaml  !=  /sw/apps/bioinfo/muscle/muscle-5.1.yaml
+ngsF-HMM-20160614.yaml  !=  /sw/apps/bioinfo/ngsF-HMM/ngsF-HMM-20200720-2df9690.yaml
+paml-4.6.yaml  !=  /sw/apps/bioinfo/paml/paml-4.9j.yaml
+phast-1.5.yaml  !=  /sw/apps/bioinfo/phast/phast-1.6.yaml
+prokka-1.11.yaml  !=  /sw/apps/bioinfo/krakenuniq/krakenuniq-0.5.8.yaml
+qctool-2-5559450.yaml  !=  /sw/apps/bioinfo/qctool/mf/2-5559450.yaml
+qctool-2-beta.yaml  !=  /sw/apps/bioinfo/qctool/mf/2-beta.yaml
+/sw/apps/bioinfo/rarecoal/1.2.1/rarecoal-1.2.1/stack.yaml looks like it is not a sw yaml.
+samblaster-0.1.24.yaml  !=  /sw/apps/bioinfo/samblaster/samblaster-0.1.26.yaml
+satsuma2-2016-12-07.yaml  !=  /sw/apps/bioinfo/satsuma2/satsuma2-37c5f38-20200304.yaml
+snakemake-5.30.1.yaml  !=  /sw/apps/bioinfo/snakemake/snakemake-6.9.1.yaml
+snakemake-5.30.1.yaml  !=  /sw/apps/bioinfo/snakemake/snakemake-7.8.5.yaml
+snakemake-5.30.1.yaml  !=  /sw/apps/bioinfo/snakemake/snakemake-7.18.1.yaml
+snakemake-5.30.1.yaml  !=  /sw/apps/bioinfo/snakemake/snakemake-7.18.2.yaml
+snakemake-5.30.1.yaml  !=  /sw/apps/bioinfo/snakemake/snakemake-7.25.0.yaml
+snakemake-5.30.1.yaml  !=  /sw/apps/bioinfo/snakemake/snakemake-6.9.1.yaml
+snakemake-5.30.1.yaml  !=  /sw/apps/bioinfo/snap/snap-2019-06-03-daf76ba.yaml
+snakemake-5.30.1.yaml  !=  /sw/apps/bioinfo/snap/snap-2019-06-03-daf76ba.yaml
+spades-3.15.3.yaml  !=  /sw/apps/bioinfo/spades/spades-3.15.5.yaml
+spaln-2.4.0.yaml  !=  /sw/apps/bioinfo/spaln/spaln-2.4.9.yaml
+spaln-2.4.0.yaml  !=  /sw/apps/bioinfo/spaln/spaln-2.4.13c.yaml
+sratools-2.10.9.yaml  !=  /sw/apps/bioinfo/sratools/sratools-3.0.0.yaml
+trimmomatic-0.36.yaml  !=  /sw/apps/bioinfo/trimmomatic/trimmomatic-0.39.yaml
+trinotate-3.1.1.yaml  !=  /sw/apps/bioinfo/trinotate/trinotate-3.2.2.yaml
+trinotate-3.1.1.yaml  !=  /sw/apps/bioinfo/trinotate/trinotate-3.2.2.yaml
+DeepVariant-0.8.0.yaml  !=  /sw/apps/bioinfo/DeepVariant/DeepVariant-1.3.0.yaml
+/sw/apps/bioinfo/mip/6.0.0/rackham/config.yaml looks like it is not a sw yaml.
+/sw/apps/bioinfo/mip/6.0.0/snowy/config.yaml looks like it is not a sw yaml.
+/sw/apps/bioinfo/mip/6.0.0/irma/config.yaml looks like it is not a sw yaml.
+/sw/apps/bioinfo/mip/6.0.0/bianca/config.yaml looks like it is not a sw yaml.
+SMARTdenovo-20180219-5cc1356.yaml  !=  /sw/apps/bioinfo/SMARTdenovo/SMARTdenovo-20210224-8488de9.yaml
+SMARTdenovo-20180219-5cc1356.yaml  !=  /sw/apps/bioinfo/SMARTdenovo/SMARTdenovo-20210224-8488de9.yaml
+cdbfasta-1.0.yaml  !=  /sw/apps/bioinfo/cdbfasta/cdbfasta-1.00.yaml
+cdbfasta-1.0.yaml  !=  /sw/apps/bioinfo/cdbfasta/cdbfasta-1.00.yaml
+pong-1.4.7.yaml  !=  /sw/apps/bioinfo/pong/pong-1.5.yaml
+braker-2.1.5-20200826-cf958ec.yaml  !=  /sw/apps/bioinfo/braker/braker-2.1.5-20210115-e98b812.yaml
+braker-2.1.5-20200826-cf958ec.yaml  !=  /sw/apps/bioinfo/braker/braker-2.1.6.yaml
+braker-2.1.5-20200826-cf958ec.yaml  !=  /sw/apps/bioinfo/braker/braker-2.1.5-20210115-e98b812.yaml
+braker-2.1.5-20200826-cf958ec.yaml  !=  /sw/apps/bioinfo/braker/braker-2.1.6.yaml
+Kraken2-2.1.1.yaml  !=  /sw/apps/bioinfo/Kraken2/Kraken2-2.1.2-20211210-4f648f5.yaml
+verifyBamID2-1.0.6.yaml  !=  /sw/apps/bioinfo/VerifyBamID2/VerifyBamID2-1.0.6.yaml
+verifyBamID2-1.0.6.yaml  !=  /sw/apps/bioinfo/VerifyBamID2/VerifyBamID2-1.0.6.yaml
+Sniffles-1.0.10.yaml  !=  /sw/apps/bioinfo/Sniffles/Sniffles-1.0.12-201218-4ff6ecb.yaml
+Sniffles-1.0.10.yaml  !=  /sw/apps/bioinfo/Sniffles/Sniffles-1.0.12-201218-4ff6ecb.yaml
+SLiM-3.6.yaml  !=  /sw/apps/bioinfo/SLiM/SLiM-4.0.1.yaml
+fineSTRUCTURE-4.0.1.yaml  !=  /sw/apps/bioinfo/fineSTRUCTURE/fineSTRUCTURE-4.1.1.yaml
+Platanus-allee-2.0.2.yaml  !=  /sw/apps/bioinfo/Platanus-allee/2.0.2.yaml
+Platanus-allee-2.0.2.yaml  !=  /sw/apps/bioinfo/Platanus-allee/Platanus-allee-2.2.2.yaml
+plink2-2.00-alpha-2.3-20200124.yaml  !=  /sw/apps/bioinfo/oncotator/oncotator-1.9.9.0.yaml
+plink2-2.00-alpha-2.3-20200124.yaml  !=  /sw/apps/bioinfo/oncotator/oncotator-1.9.9.0.yaml
+medaka-0.7.1.yaml  !=  /sw/apps/bioinfo/medaka/medaka-1.4.3.yaml
+medaka-0.7.1.yaml  !=  /sw/apps/bioinfo/medaka/medaka-1.4.3.yaml
+Flye-2.8.1.yaml  !=  /sw/apps/bioinfo/Flye/Flye-2.9.yaml
+Flye-2.8.1.yaml  !=  /sw/apps/bioinfo/Flye/Flye-2.9.1.yaml
+Flye-2.8.1.yaml  !=  /sw/apps/bioinfo/Flye/Flye-2.9.yaml
+Filtlong-0.2.0.yaml  !=  /sw/apps/bioinfo/Filtlong/Filtlong-0.2.0-20190515-13504b7.yaml
+Filtlong-0.2.0.yaml  !=  /sw/apps/bioinfo/Filtlong/Filtlong-0.2.0-20190515-13504b7.yaml
+HyPhy-2.5.0-mpi.yaml  !=  /sw/apps/bioinfo/HyPhy/HyPhy-2.5.40.yaml
+HyPhy-2.5.0-mpi.yaml  !=  /sw/apps/bioinfo/HyPhy/HyPhy-2.5.40-mpi.yaml
+HyPhy-2.5.0-mpi.yaml  !=  /sw/apps/bioinfo/HyPhy/HyPhy-2.5.51.yaml
+Bracken-2.5.yaml  !=  /sw/apps/bioinfo/Bracken/Bracken-2.6.2.yaml
+Bracken-2.5.yaml  !=  /sw/apps/bioinfo/Bracken/Bracken-2.6.2.yaml
+Chromium-spaceranger-1.0.0.yaml  !=  /sw/apps/bioinfo/Chromium-spaceranger/Chromium-spaceranger-1.2.0.yaml
+spaceranger-1.2.0.yaml  !=  /sw/apps/bioinfo/Chromium-spaceranger/Chromium-spaceranger-2.0.1.yaml
+vg-1.29.0.yaml  !=  /sw/apps/bioinfo/MetaCRAST/MetaCRAST-20200310-ed82df4.yaml
+PCAngsd-0.982.yaml  !=  /sw/apps/bioinfo/PCAngsd/PCAngsd-1.11.yaml
+vg-1.29.0.yaml  !=  /sw/apps/bioinfo/doug-dumping-ground/Beagle/Beagle-5.1.yaml
+vg-1.29.0.yaml  !=  /sw/apps/bioinfo/doug-dumping-ground/Beagle/Beagle-5.4.yaml
+vg-1.29.0.yaml  !=  /sw/apps/bioinfo/doug-dumping-ground/Beagle/Beagle-5.1.yaml
+nanopolish-0.12.0.yaml  !=  /sw/apps/bioinfo/nanopolish/nanopolish-0.14.0.yaml
+fastp-0.23.1.yaml  !=  /sw/apps/bioinfo/fastp/fastp-0.23.2.yaml
+ProtHint-2.4.0.yaml  !=  /sw/apps/bioinfo/ProtHint/ProtHint-2.5.0.yaml
+ProtHint-2.4.0.yaml  !=  /sw/apps/bioinfo/ProtHint/ProtHint-2.6.0.yaml
+ProtHint-2.4.0.yaml  !=  /sw/apps/bioinfo/ProtHint/ProtHint-2.5.0.yaml
+ProtHint-2.4.0.yaml  !=  /sw/apps/bioinfo/ProtHint/ProtHint-2.6.0.yaml
+cellranger-DNA-1.1.0.yaml  !=  /sw/apps/bioinfo/Beagle/Beagle-5.1.yaml
+cellranger-DNA-1.1.0.yaml  !=  /sw/apps/bioinfo/Beagle/Beagle-5.4.yaml
+cellranger-DNA-1.1.0.yaml  !=  /sw/apps/bioinfo/Beagle/Beagle-5.1.yaml
+cellranger-ARC-1.0.0.yaml  !=  /sw/apps/bioinfo/SNeP/SNeP-1.1.yaml
+cellranger-ARC-1.0.0.yaml  !=  /sw/apps/bioinfo/SNeP/SNeP-1.11.yaml
+cellranger-ARC-1.0.0.yaml  !=  /sw/apps/bioinfo/SNeP/SNeP-1.1.yaml
+Unicycler-0.4.8.yaml  !=  /sw/apps/bioinfo/Unicycler/Unicycler-0.5.0.yaml
+Unicycler-0.4.8.yaml  !=  /sw/apps/bioinfo/TargetP/TargetP-2.0.yaml
+Unicycler-0.4.8.yaml  !=  /sw/apps/bioinfo/TargetP/TargetP-2.0.yaml
+Unicycler-0.4.8.yaml  !=  /sw/apps/bioinfo/RAisD/RAisD-2.9.yaml
+Unicycler-0.4.8.yaml  !=  /sw/apps/bioinfo/RAisD/RAisD-2.9.yaml
+Unicycler-0.4.8.yaml  !=  /sw/apps/bioinfo/IntaRNA/IntaRNA-3.2.1.yaml
+Unicycler-0.4.8.yaml  !=  /sw/apps/bioinfo/IntaRNA/IntaRNA-3.2.1.yaml
+Unicycler-0.4.8.yaml  !=  /sw/apps/bioinfo/NeEstimator/NeEstimator-2.1.yaml
+Unicycler-0.4.8.yaml  !=  /sw/apps/bioinfo/NeEstimator/NeEstimator-2.1.yaml
+Kalign-2.04.yaml  !=  /sw/apps/bioinfo/parliament2/parliament2-v0.1.11.yaml
+Kalign-2.04.yaml  !=  /sw/apps/bioinfo/parliament2/parliament2-v0.1.11.yaml
+Kalign-2.04.yaml  !=  /sw/apps/bioinfo/DelGet/DelGet-5.4.yaml
+Kalign-2.04.yaml  !=  /sw/apps/bioinfo/DelGet/DelGet-5.4.yaml
+nf-core-2.1.yaml  !=  /sw/apps/bioinfo/SACRA/SACRA-1.0.0.yaml
+nf-core-2.1.yaml  !=  /sw/apps/bioinfo/SACRA/SACRA-1.0.0.yaml
+nf-core-2.1.yaml  !=  /sw/apps/bioinfo/GUSHR/GUSHR-1.0.0.yaml
+nf-core-2.1.yaml  !=  /sw/apps/bioinfo/GUSHR/GUSHR-1.0.0.yaml
+nf-core-2.1.yaml  !=  /sw/apps/bioinfo/hapROH/hapROH-9bcbc25.yaml
+nf-core-2.1.yaml  !=  /sw/apps/bioinfo/hapROH/hapROH-9bcbc25.yaml
+nf-core-2.1.yaml  !=  /sw/apps/bioinfo/metaeuk/metaeuk-4-a0f584d.yaml
+nf-core-2.1.yaml  !=  /sw/apps/bioinfo/metaeuk/metaeuk-4-a0f584d.yaml
+nf-core-2.1.yaml  !=  /sw/apps/bioinfo/sepp/sepp-4.3.10.yaml
+nf-core-2.1.yaml  !=  /sw/apps/bioinfo/sepp/sepp-4.3.10.yaml
+NINJA-0.97-cluster_only.yaml  !=  /sw/apps/bioinfo/Shasta/Shasta-0.7.0.yaml
+NINJA-0.97-cluster_only.yaml  !=  /sw/apps/bioinfo/Shasta/Shasta-0.7.0.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/MetaPhlAn3/MetaPhlAn3-3.0.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/MetaPhlAn3/MetaPhlAn3-3.0.8.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/MetaPhlAn3/MetaPhlAn3-3.0.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/MetaPhlAn3/MetaPhlAn3-3.0.8.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/Rcorrector/Rcorrector-1.0.4.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/Rcorrector/Rcorrector-1.0.4.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/CNVkit/CNVkit-0.9.8.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/CNVkit/CNVkit-0.9.8.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/graftM/graftM-0.13.1.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/graftM/graftM-0.13.1.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/msprime/msprime-0.7.4.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/msprime/msprime-0.7.4.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/ricopili/ricopili-2019_Oct_15.001.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/ricopili/ricopili-2019_Oct_15.001.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/DANPOS/DANPOS-3.1.1.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/DANPOS/DANPOS-2.2.2.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/DANPOS/DANPOS-3.1.1.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/DANPOS/DANPOS-2.2.2.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/BOLT-LMM/BOLT-LMM-2.3.5.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/BOLT-LMM/BOLT-LMM-2.3.5.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/HESS/HESS-0.5.4-beta.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/HESS/HESS-0.5.4-beta.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/ArrowGrid/ArrowGrid-20191022-9759eb1.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/ArrowGrid/ArrowGrid-20191022-9759eb1.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/NextPolish/NextPolish-1.3.1.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/NextPolish/NextPolish-1.3.1.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/KneedData/KneedData-0.10.0.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/KneedData/KneedData-0.10.0.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/pbbam/pbbam-1.6.0.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/pbbam/pbbam-1.6.0.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/HUMAnN/HUMAnN-3.0.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/HUMAnN/HUMAnN-3.0.0.a.4.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/HUMAnN/HUMAnN-3.0.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/KneadData/KneadData-0.10.0.yaml
+NPStat-1.yaml  !=  /sw/apps/bioinfo/KneadData/KneadData-0.10.0.yaml
+bonito-0.3.7-cpu.yaml  !=  /sw/apps/bioinfo/gapseq/gapseq-1.1.yaml
+bonito-0.3.7-cpu.yaml  !=  /sw/apps/bioinfo/gapseq/gapseq-1.1.yaml
+/sw/apps/bioinfo/tapestri/2.0.1/rackham/config.yaml looks like it is not a sw yaml.
+/sw/apps/bioinfo/tapestri/2.0.1/irma/config.yaml looks like it is not a sw yaml.
+/sw/apps/bioinfo/tapestri/2.0.1/bianca/config.yaml looks like it is not a sw yaml.
+/sw/apps/bioinfo/tapestri/2.0.1/snowy/config.yaml looks like it is not a sw yaml.
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/UniteM/UniteM-0.0.18.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/UniteM/UniteM-0.0.18.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/GroopM/GroopM-0.3.5.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/GroopM/GroopM-2.0.0.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/GroopM/GroopM-0.3.5.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/GroopM/GroopM-2.0.0.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/BinSanity/BinSanity-0.2.10.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/BinSanity/BinSanity-0.3.9.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/BinSanity/BinSanity-0.5.4.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/BinSanity/BinSanity-0.3.9.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/BinSanity/BinSanity-0.5.4.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/BamM/BamM-1.7.3.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/BamM/BamM-1.7.3.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/EPA-ng/EPA-ng-0.3.8.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/EPA-ng/EPA-ng-0.3.8.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/gappa/gappa-0.7.1.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/gappa/gappa-0.7.1.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/gffread/gffread-0.12.6.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/gffread/gffread-0.12.6.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/EDirect/EDirect-15.1.yaml
+SMC++-1.15.2.yaml  !=  /sw/apps/bioinfo/EDirect/EDirect-15.1.yaml
+pizzly-0.37.3.yaml  !=  /sw/apps/bioinfo/PEPPER-Margin-DeepVariant/PEPPER-Margin-DeepVariant-r0.7.yaml
+pizzly-0.37.3.yaml  !=  /sw/apps/bioinfo/PEPPER-Margin-DeepVariant/PEPPER-Margin-DeepVariant-r0.4.yaml
+pizzly-0.37.3.yaml  !=  /sw/apps/bioinfo/phynder/phynder-2020-08-17-48b184f.yaml
+pizzly-0.37.3.yaml  !=  /sw/apps/bioinfo/phynder/phynder-2020-08-17-48b184f.yaml
+pathPhynder-2020-12-19-b8532c0.yaml  !=  /sw/apps/bioinfo/bustools/bustools-2021-06-30-6fa0731.yaml
+pathPhynder-2020-12-19-b8532c0.yaml  !=  /sw/apps/bioinfo/bustools/bustools-2021-06-30-6fa0731.yaml
+nf-core-pipelines-latest.yaml  !=  /sw/apps/bioinfo/nf-core-pipelines/nf-core-pipelines-latest.PAVLIN.yaml
+nf-core-pipelines-latest.yaml  !=  /sw/apps/bioinfo/TSEBRA/TSEBRA-1.0.2-20210716-1f167ad.yaml
+nf-core-pipelines-latest.yaml  !=  /sw/apps/bioinfo/TSEBRA/TSEBRA-1.0.3-20211126-336c380.yaml
+nf-core-pipelines-latest.yaml  !=  /sw/apps/bioinfo/TSEBRA/TSEBRA-1.0.2-20210716-1f167ad.yaml
+nf-core-pipelines-latest.yaml  !=  /sw/apps/bioinfo/Conterminator/Conterminator-20200601-570993b.yaml
+nf-core-pipelines-latest.yaml  !=  /sw/apps/bioinfo/Conterminator/Conterminator-20200601-570993b.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/NgsRelate/NgsRelate-2.0.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/NgsRelate/NgsRelate-2.0.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/rMATS-turbo/rMATS-turbo-4.1.2.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/somaticseq/somaticseq-3.6.3.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/somaticseq/somaticseq-3.6.3.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/NextDenovo/NextDenovo-2.4.0.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/NextDenovo/NextDenovo-2.5.0.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/NextDenovo/NextDenovo-2.4.0.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/NextDenovo/NextDenovo-2.5.0.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/BlobToolKit/BlobToolKit-2.6.3.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/BlobToolKit/BlobToolKit-2.6.4.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/BlobToolKit/BlobToolKit-3.1.0.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/BlobToolKit/BlobToolKit-2.6.3.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/Racon/Racon-1.4.21.yaml
+IMAP-1.0.yaml  !=  /sw/apps/bioinfo/Racon/Racon-1.4.21.yaml
+phaser-20210423-5d4926d.yaml  !=  /sw/apps/bioinfo/NeuSomatic/NeuSomatic-0.2.1.yaml
+phaser-20210423-5d4926d.yaml  !=  /sw/apps/bioinfo/NeuSomatic/NeuSomatic-0.2.1.yaml
+Bamsurgeon-1.3.yaml  !=  /sw/apps/bioinfo/GLINT/GLINT-20201217.yaml
+Bamsurgeon-1.3.yaml  !=  /sw/apps/bioinfo/GLINT/GLINT-20201217.yaml
+VIBRANT-1.2.1.yaml  !=  /sw/apps/bioinfo/pixy/pixy-1.2.5.beta1.yaml
+VIBRANT-1.2.1.yaml  !=  /sw/apps/bioinfo/pixy/pixy-1.2.5.beta1.yaml
+Guppy-6.0.6-cpu.yaml  !=  /sw/apps/bioinfo/fastqtk/fastqtk-0.27.yaml
+Guppy-6.0.6-cpu.yaml  !=  /sw/apps/bioinfo/StainedGlass/StainedGlass-0.4.yaml
+Guppy-6.0.6-cpu.yaml  !=  /sw/apps/bioinfo/ngsLD/ngsLD-1.1.1.yaml
+SvABA-1.1.3-20201112-0f60e36.yaml  !=  /sw/apps/bioinfo/SNP2HLA/SNP2HLA-1.0.3.yaml
+CUT-RUNTools-2.yaml  !=  /sw/apps/bioinfo/mOTUs/mOTUs-20220222-6d6712e.yaml
+CUT-RUNTools-2.yaml  !=  /sw/apps/bioinfo/fastq_demux/fastq_demux-20200918-1e2c079.yaml
+GAAS-1.2.0.yaml  !=  /sw/apps/bioinfo/atlas/atlas-0.9.9.yaml
+GAAS-1.2.0.yaml  !=  /sw/apps/bioinfo/rRNAFilter/rRNAFilter-1.1.yaml
+CAMMiQ-20211015-6142150.yaml  !=  /sw/apps/bioinfo/CSI-Microbes/CSI-Microbes-20211030-a656444.yaml
+CAMMiQ-20211015-6142150.yaml  !=  /sw/apps/bioinfo/VESPA/VESPA-1.0.1.yaml
+PhylogicNDT-2020.yaml  !=  /sw/apps/bioinfo/BioBloomTools/BioBloomTools-2.3.3-20210218-151b0c0.yaml
+CookHLA-1.0.0.yaml  !=  /sw/apps/bioinfo/octopus/octopus-17a597d-20220708.yaml
+CookHLA-1.0.0.yaml  !=  /sw/apps/bioinfo/msmc2/msmc2-2.1.3.yaml
+CookHLA-1.0.0.yaml  !=  /sw/apps/bioinfo/msmc2/msmc2-2.1.2.yaml
+KrakenUniq-1.0.1.yaml  !=  /sw/apps/bioinfo/bwa-mem2/bwa-mem2-2.2.1-20211213-edc703f.yaml
+slivar-0.2.7.yaml  !=  /sw/apps/bioinfo/fastsimcoal/fastsimcoal-2.7.9.yaml
+slivar-0.2.7.yaml  !=  /sw/apps/bioinfo/fastsimcoal/fastsimcoal-2.7.93.yaml
+slivar-0.2.7.yaml  !=  /sw/apps/bioinfo/ABCtoolbox/ABCtoolbox-20131120.yaml
+removethis-1.yaml  !=  /sw/apps/bioinfo/grenedalf/grenedalf-0.2.0-beta.yaml
+Panaroo-1.3.2.yaml  !=  /sw/apps/bioinfo/Hifiasm/Hifiasm-20210912-ab80851.yaml
+Cellsnp-lite-1.2.2.yaml  !=  /sw/apps/bioinfo/Eagle2/Eagle2-2.4.1.yaml
+MAGeCK2-20211209-435eacd.yaml  !=  /sw/apps/bioinfo/MAPGD/MAPGD-0.4.40.yaml
+vcfstats-0.4.2.yaml  !=  /sw/apps/bioinfo/KING/KING-2.2.9.yaml
+vcfstats-0.4.2.yaml  !=  /sw/apps/bioinfo/DeepRepeat/DeepRepeat-0.1.3.yaml
+kmersGWAS-20221010-a706bb7.yaml  !=  /sw/apps/bioinfo/CLAM/CLAM-1.2.1.yaml
+kmersGWAS-20221010-a706bb7.yaml  !=  /sw/apps/bioinfo/CIRCexplorer2/CIRCexplorer2-2.3.8.yaml
+kmersGWAS-20221010-a706bb7.yaml  !=  /sw/apps/bioinfo/Megalodon/Megalodon-2.5.0-cpu.yaml
+kmersGWAS-20221010-a706bb7.yaml  !=  /sw/apps/bioinfo/Megalodon/Megalodon-2.5.0-gpu.yaml
+kmersGWAS-20221010-a706bb7.yaml  !=  /sw/apps/bioinfo/DifCover/DifCover-20221013-45f29d5.yaml
+any2fasta-0.4.2.yaml  !=  /sw/apps/bioinfo/Multi-CSAR/Multi-CSAR-20180316-8fd582c.yaml
+DeepLoc-2.0.yaml  !=  /sw/apps/bioinfo/DROP/DROP-1.2.2.yaml
+/sw/apps/bioinfo/DROP/doug/TEST/config.yaml looks like it is not a sw yaml.
+MMseqs2-14-7e284.yaml  !=  /sw/apps/bioinfo/maf_stream/maf_stream-20220523-1d2e146.yaml
+ont_h5_validator-2.0.1.yaml  !=  /sw/apps/bioinfo/McClintock/McClintock-2.0.0.yaml
+svtools-0.5.1.yaml  !=  /sw/apps/bioinfo/nextNEOpi/nextNEOpi-1.3.2b.yaml
+/sw/apps/bioinfo/pVACtools/3.1.1/src/.readthedocs.yaml looks like it is not a sw yaml.
+pVACtools-3.1.1.yaml  !=  /sw/apps/bioinfo/HLA-HD-temporary/HLA-HD-1.4.0.yaml
+pVACtools-3.1.1.yaml  !=  /sw/apps/bioinfo/HLA-HD/HLA-HD-1.4.0.yaml
+pVACtools-3.1.1.yaml  !=  /sw/apps/bioinfo/HLA-HD/HLA-HD-1.7.0.yaml
+pVACtools-3.1.1.yaml  !=  /sw/apps/bioinfo/gdc-client/gdc-client-1.6.1.yaml
+AGAT-1.0.0.yaml  !=  /sw/apps/bioinfo/diffReps/diffReps-1.55.6.yaml
+AGAT-1.0.0.yaml  !=  /sw/apps/bioinfo/TRUST4/TRUST4-1.0.8.yaml
+AGAT-1.0.0.yaml  !=  /sw/apps/bioinfo/Magic-BLAST/Magic-BLAST-1.7.0.yaml
+AGAT-1.0.0.yaml  !=  /sw/apps/bioinfo/echtvar/echtvar-0.1.7.yaml
+AGAT-1.0.0.yaml  !=  /sw/apps/bioinfo/hh-suite/hh-suite-3.3.0.yaml
+AGAT-1.0.0.yaml  !=  /sw/apps/bioinfo/Cytoscape/Cytoscape-3.9.1.yaml
+AGAT-1.0.0.yaml  !=  /sw/apps/bioinfo/dentist/dentist-4.0.0.yaml
+XP-CLR-1.1.2.yaml  !=  /sw/apps/bioinfo/Novoalign/Novoalign-3.09.05.yaml
+XP-CLR-1.1.2.yaml  !=  /sw/apps/bioinfo/AnchorWave/AnchorWave-1.1.1.yaml
+scikit-allel-1.3.5.yaml  !=  /sw/apps/bioinfo/MAJIQ/MAJIQ-2.4.dev4+gdd436123.yaml
+scikit-allel-1.3.5.yaml  !=  /sw/apps/bioinfo/btrim/btrim-0.3.0.yaml
+scikit-allel-1.3.5.yaml  !=  /sw/apps/bioinfo/IRMA/IRMA-1.0.3.yaml
+Juicer-2.0.yaml  !=  /sw/apps/bioinfo/SweepFinder2/SweepFinder2-1.0.yaml
+TEspeX-2.0.1.yaml  !=  /sw/apps/bioinfo/pairtools/pairtools-1.0.2.yaml
+polysolver-v4.yaml  !=  /sw/apps/bioinfo/bali-phy/bali-phy-3.6.1.yaml
+polysolver-v4.yaml  !=  /sw/apps/bioinfo/HiCapTools/HiCapTools-1.3.2.yaml
+polysolver-v4.yaml  !=  /sw/apps/bioinfo/fgbio/fgbio-2.1.0.yaml
+DamageProfiler-1.1.yaml  !=  /sw/apps/bioinfo/ERVmap/ERVmap-1.1.yaml
+DamageProfiler-1.1.yaml  !=  /sw/apps/bioinfo/GraphAligner/GraphAligner-1.0.17b.yaml
+MashMap-3.0.4.yaml  !=  /sw/apps/bioinfo/FAVORannotator/FAVORannotator-20230307-ea7c9ae.yaml
+sequenza-utils-3.0.0.yaml  !=  /sw/apps/bioinfo/atria/atria-3.2.2.yaml
+OBITools-1.2.13.yaml  !=  /sw/apps/bioinfo/Multi-CSAR-temporary/Multi-CSAR-20180316-8fd582c.yaml
+mapping values are not allowed here
+  in "/sw/apps/bioinfo/CAT-BAT/CAT-BAT-5.2.3.yaml", line 15, column 23
+mapping values are not allowed here
+  in "/sw/apps/bioinfo/DRAM/DRAM-1.4.6.yaml", line 15, column 62
+boost-1.44.0.yaml  !=  /sw/apps/build/boost/boost-1.81.0-gcc10.3.0-mpi4.1.1.yaml
+cmake-3.17.3.yaml  !=  /sw/apps/build/cmake/cmake-3.22.2.yaml
+cmake-3.17.3.yaml  !=  /sw/apps/build/cmake/cmake-3.26.3.yaml
+cmake-3.13.2.yaml  !=  /sw/apps/build/slurm-drmaa/slurm-drmaa-1.1.2-slurm19.05.8.yaml
+slurm-drmaa-1.1.2-slurm19.05.8.yaml  !=  /sw/apps/build/slurm-drmaa/slurm-drmaa-1.1.3-slurm19.05.8.yaml
+slurm-drmaa-1.1.2-slurm19.05.8.yaml  !=  /sw/apps/build/slurm-drmaa/slurm-drmaa-1.1.3-slurm21.08.2.yaml
+slurm-drmaa-1.1.2-slurm19.05.8.yaml  !=  /sw/apps/build/slurm-drmaa/slurm-drmaa-1.1.3-slurm21.08.8.yaml
+cmake-3.13.2.yaml  !=  /sw/apps/build/slurm-drmaa/slurm-drmaa-1.1.2-slurm19.05.8.yaml
+m4-1.4.17.yaml  !=  /sw/apps/build/spack/spack-0.17.1.yaml
+m4-1.4.17.yaml  !=  /sw/apps/build/spack-user/spack-user-0.17.1.yaml
+coreutils-8.25.yaml  !=  /sw/apps/coreutils/coreutils-9.1.yaml
+cowsay-3.03.yaml  !=  /sw/apps/cp2k/cp2k-8.1.yaml
+cowsay-3.03.yaml  !=  /sw/apps/cp2k/cp2k-8.1-gcc.yaml
+cowsay-3.03.yaml  !=  /sw/apps/cp2k/cp2k-8.1-gcc.yaml
+cowsay-3.03.yaml  !=  /sw/apps/alphafold/alphafold-2.0.0.yaml
+cowsay-3.03.yaml  !=  /sw/apps/alphafold/alphafold-2.1.1.yaml
+cowsay-3.03.yaml  !=  /sw/apps/alphafold/alphafold-2.0.0.yaml
+cowsay-3.03.yaml  !=  /sw/apps/alphafold/alphafold-2.1.1.yaml
+doxygen-1.8.11.yaml  !=  /sw/apps/doxygen/doxygen-1.9.6.yaml
+/sw/apps/gromacs/gromacs-2021.5.th.yaml looks like it is not a sw yaml.
+nonmem-7.3.0.yaml  !=  /sw/apps/nonmem/nonmem-7.5.1.yaml
+octave-5.1.0.yaml  !=  /sw/apps/openbabel/openbabel-3.1.1-gcc9.3.0.yaml
+openbabel-3.1.1-gcc9.3.0.yaml  !=  /sw/apps/openbabel/openbabel-3.1.1-gcc10.3.0.yaml
+octave-5.1.0.yaml  !=  /sw/apps/openbabel/openbabel-3.1.1-gcc9.3.0.yaml
+pandoc-2.10.1.yaml  !=  /sw/apps/pandoc/pandoc-2.17.1.1.yaml
+pandoc-2.10.1.yaml  !=  /sw/apps/pandoc/pandoc-3.1.3.yaml
+/sw/apps/rspt/2019-03-20_rackham_intel_mkl/testsuite/tests.yaml looks like it is not a sw yaml.
+/sw/apps/rspt/2019-03-20_rackham_intel_mkl/testsuite/tests_extended.yaml looks like it is not a sw yaml.
+/sw/apps/rspt/2019-03-20_rackham_intel_mkl/testsuite/tests_old.yaml looks like it is not a sw yaml.
+/sw/apps/rspt/2019-05-23_rackham_intel_mkl/testsuite/tests.yaml looks like it is not a sw yaml.
+/sw/apps/rspt/2019-05-23_rackham_intel_mkl/testsuite/tests_extended.yaml looks like it is not a sw yaml.
+/sw/apps/rspt/2019-05-23_rackham_intel_mkl/testsuite/tests_old.yaml looks like it is not a sw yaml.
+texlive-2021.yaml  !=  /sw/apps/texlive/texlive-2022-09-18.yaml
+/sw/apps/UppASD/clean/uppasd-develop-2019-05-15/codeTester/regulartests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-05-15/codeTester/regression667.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-05-15/codeTester/regression755.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-05-15/codeTester/regressionIcelandGNEB.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-05-15/codeTester/regression576.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-05-15/codeTester/regression799.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-05-15/codeTester/regressionIceland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-09-27/codeTester/regulartests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-09-27/codeTester/regression667.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-09-27/codeTester/regression755.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-09-27/codeTester/regressionIcelandGNEB.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-09-27/codeTester/regression576.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-09-27/codeTester/regressionGotland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-09-27/codeTester/regression799.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-09-27/codeTester/sldtests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-09-27/codeTester/regressionIceland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-10-15/codeTester/regulartests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-10-15/codeTester/regression667.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-10-15/codeTester/regression755.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-10-15/codeTester/regressionIcelandGNEB.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-10-15/codeTester/regression576.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-10-15/codeTester/regressionGotland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-10-15/codeTester/regression799.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-10-15/codeTester/sldtests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/clean/uppasd-develop-2019-10-15/codeTester/regressionIceland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-04-26/codeTester/regulartests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-04-26/codeTester/regression667.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-04-26/codeTester/regression755.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-04-26/codeTester/regressionIcelandGNEB.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-04-26/codeTester/regression576.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-04-26/codeTester/regression799.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-04-26/codeTester/regressionIceland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10/codeTester/regulartests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10/codeTester/regression667.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10/codeTester/regression755.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10/codeTester/regressionIcelandGNEB.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10/codeTester/regression576.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10/codeTester/regression799.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10/codeTester/regressionIceland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10-new/codeTester/regulartests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10-new/codeTester/regression667.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10-new/codeTester/regression755.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10-new/codeTester/regressionIcelandGNEB.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10-new/codeTester/regression576.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10-new/codeTester/regression799.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-10-new/codeTester/regressionIceland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-gcc/codeTester/regulartests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-gcc/codeTester/regression667.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-gcc/codeTester/regression755.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-gcc/codeTester/regressionIcelandGNEB.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-gcc/codeTester/regression576.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-gcc/codeTester/regression799.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-gcc/codeTester/regressionIceland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-icc/codeTester/regulartests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-icc/codeTester/regression667.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-icc/codeTester/regression755.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-icc/codeTester/regressionIcelandGNEB.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-icc/codeTester/regression576.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-icc/codeTester/regression799.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-05-15-ifort-icc/codeTester/regressionIceland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-icc/codeTester/regulartests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-icc/codeTester/regression667.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-icc/codeTester/regression755.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-icc/codeTester/regressionIcelandGNEB.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-icc/codeTester/regression576.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-icc/codeTester/regressionGotland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-icc/codeTester/regression799.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-icc/codeTester/sldtests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-icc/codeTester/regressionIceland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-gcc/codeTester/regulartests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-gcc/codeTester/regression667.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-gcc/codeTester/regression755.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-gcc/codeTester/regressionIcelandGNEB.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-gcc/codeTester/regression576.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-gcc/codeTester/regressionGotland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-gcc/codeTester/regression799.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-gcc/codeTester/sldtests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-09-27-ifort-gcc/codeTester/regressionIceland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-icc/codeTester/regulartests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-icc/codeTester/regression667.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-icc/codeTester/regression755.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-icc/codeTester/regressionIcelandGNEB.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-icc/codeTester/regression576.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-icc/codeTester/regressionGotland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-icc/codeTester/regression799.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-icc/codeTester/sldtests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-icc/codeTester/regressionIceland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-gcc/codeTester/regulartests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-gcc/codeTester/regression667.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-gcc/codeTester/regression755.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-gcc/codeTester/regressionIcelandGNEB.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-gcc/codeTester/regression576.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-gcc/codeTester/regressionGotland.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-gcc/codeTester/regression799.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-gcc/codeTester/sldtests.yaml looks like it is not a sw yaml.
+/sw/apps/UppASD/rackham/uppasd-develop-2019-10-15-ifort-gcc/codeTester/regressionIceland.yaml looks like it is not a sw yaml.
+DOCK-3.7.yaml  !=  /sw/apps/DOCK/DOCK-3-7.yaml
+Rosetta-2019.4.yaml  !=  /sw/apps/Rosetta/Rosetta-2019.40.yaml
+RSPt-2020-06-10.yaml  !=  /sw/apps/RSPt/RSPt-2021-10-04.yaml
+/sw/apps/RSPt/2019-08-30/rackham/testsuite/tests.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2019-08-30/rackham/testsuite/tests_extended.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2019-08-30/rackham/testsuite/tests_old.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2019-08-30/snowy/testsuite/tests.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2019-08-30/snowy/testsuite/tests_extended.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2019-08-30/snowy/testsuite/tests_old.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2020-06-10/rackham/testsuite/tests.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2020-06-10/rackham/testsuite/tests_extended.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2020-06-10/rackham/testsuite/tests_old.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2020-06-10/snowy/testsuite/tests.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2020-06-10/snowy/testsuite/tests_extended.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2020-06-10/snowy/testsuite/tests_old.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2021-10-04/rackham/testsuite/tests.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2021-10-04/rackham/testsuite/tests_extended.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2021-10-04/rackham/testsuite/tests_old.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2021-10-04/snowy/testsuite/tests.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2021-10-04/snowy/testsuite/tests_extended.yaml looks like it is not a sw yaml.
+/sw/apps/RSPt/2021-10-04/snowy/testsuite/tests_old.yaml looks like it is not a sw yaml.
+Amber-18-GPU.yaml  !=  /sw/apps/Amber/Amber-20-GPU.yaml
+Amber-16-GPU.yaml  !=  /sw/apps/Amber/Amber-20.yaml
+Armadillo-9.700.2.yaml  !=  /sw/apps/Armadillo/Armadillo-12.0.1.yaml
+gromacs-plumed-2019.4.th.yaml  !=  /sw/apps/rclone/rclone-1.56.2.yaml
+gromacs-plumed-2019.4.th.yaml  !=  /sw/apps/rclone/rclone-1.56.2.yaml
+gromacs-plumed-2019.4.th.yaml  !=  /sw/apps/NCL-graphics/NCL-graphics-6.6.2.yaml
+gromacs-plumed-2019.4.th.yaml  !=  /sw/apps/NCL-graphics/NCL-graphics-6.6.2.yaml
+PsN-5.0.0.yaml  !=  /sw/apps/PsN/PsN-5.2.6.yaml
+PsN-5.0.0.yaml  !=  /sw/apps/PsN/PsN-5.3.0.yaml
+PsN-5.0.0.yaml  !=  /sw/apps/PsN/PsN-5.3.1.yaml
+PsN-5.0.0.yaml  !=  /sw/apps/PsN/PsN-5.2.6.yaml
+WRF-4.1.3.yaml  !=  /sw/apps/WRF/WRF-4.1.3-dm+sm.yaml
+WRF-4.1.3-dmpar.yaml  !=  /sw/apps/WRF/WRF-4.3.0-dm-gcc.yaml
+WRF-4.1.3.yaml  !=  /sw/apps/WRF/WRF-4.1.3-dm+sm.yaml
+WPS-4.1.yaml  !=  /sw/apps/WPS/WPS-4.3.1.yaml
+WPS-4.1.yaml  !=  /sw/apps/PRISMS-PF/PRISMS-PF-2.1.1.yaml
+WPS-4.1.yaml  !=  /sw/apps/PRISMS-PF/PRISMS-PF-2.1.1.yaml
+WPS-4.1.yaml  !=  /sw/apps/Vapor/Vapor-3.2.0.yaml
+WPS-4.1.yaml  !=  /sw/apps/Vapor/Vapor-3.3.0.yaml
+WPS-4.1.yaml  !=  /sw/apps/Vapor/Vapor-3.2.0.yaml
+WPS-4.1.yaml  !=  /sw/apps/Vapor/Vapor-3.3.0.yaml
+SAIGE-0.42.1.yaml  !=  /sw/apps/SAIGE/SAIGE-0.44.6.5.yaml
+SAIGE-0.42.1.yaml  !=  /sw/apps/SAIGE/SAIGE-0.44.6.5.yaml
+ORCA-.4.0.1.2.yaml  !=  /sw/apps/ORCA/ORCA-5.0.2.yaml
+ORCA-.4.0.1.2.yaml  !=  /sw/apps/wrf-python/wrf-python-1.3.1.yaml
+ORCA-.4.0.1.2.yaml  !=  /sw/apps/wrf-python/wrf-python-1.3.1.yaml
+ORCA-.4.0.1.2.yaml  !=  /sw/apps/vmtouch/vmtouch-1.3.1-20200309-4b70a9f.yaml
+ORCA-.4.0.1.2.yaml  !=  /sw/apps/vmtouch/vmtouch-1.3.1-20200309-4b70a9f.yaml
+ORCA-.4.0.1.2.yaml  !=  /sw/apps/COIN-OR-OptimizationSuite/COIN-OR-OptimizationSuite-1.8.0.yaml
+ORCA-.4.0.1.2.yaml  !=  /sw/apps/COIN-OR-OptimizationSuite/COIN-OR-OptimizationSuite-1.8.0.yaml
+GhostPDL-9.53.3.yaml  !=  /sw/apps/FFmpeg/FFmpeg-4.4.yaml
+GhostPDL-9.53.3.yaml  !=  /sw/apps/FFmpeg/FFmpeg-5.1.2.yaml
+GhostPDL-9.53.3.yaml  !=  /sw/apps/FFmpeg/FFmpeg-4.4.yaml
+jq-1.6.yaml  !=  /sw/apps/synapseclient/synapseclient-2.3.1.yaml
+jq-1.6.yaml  !=  /sw/apps/synapseclient/synapseclient-2.3.1.yaml
+QuantumESPRESSO-6.7MaX-Release.yaml  !=  /sw/apps/QuantumESPRESSO/QuantumESPRESSO-6.8.yaml
+jq-1.6.yaml  !=  /sw/apps/Tcl-Tk/Tcl-Tk-8.6.11.yaml
+jq-1.6.yaml  !=  /sw/apps/Tcl-Tk/Tcl-Tk-8.6.11.yaml
+VMD-1.9.4-alpha-57.yaml  !=  /sw/apps/VMD/VMD-1.9.3.yaml
+ESPResSo-4.1.4.yaml  !=  /sw/apps/ESPResSo/ESPResSo-3.3.1.yaml
+CPLEXOptimizationStudio-20.1.yaml  !=  /sw/apps/CPLEXOptimizationStudio/CPLEXOptimizationStudio-20.10.yaml
+Armadillo-7.900.0.yaml  !=  /sw/libs/Armadillo/Armadillo-9.700.2.yaml
+GEOS-3.9.1-gcc9.3.0.yaml  !=  /sw/libs/GEOS/GEOS-3.11.0-gcc10.3.0.yaml
+GEOS-3.9.1-gcc9.3.0.yaml  !=  /sw/libs/GEOS/GEOS-3.11.2-gcc12.2.0.yaml
+cyrus-sasl-2.1.27.yaml  !=  /sw/libs/cyrus-sasl/cyrus-sasl-2.1.28.yaml
+boost-1.44.0.yaml  !=  /sw/libs/boost/boost-1.81.0-gcc10.3.0-mpi4.1.1.yaml
+glpk-4.65.yaml  !=  /sw/libs/glpk/glpk-5.0.yaml
+libcurl-7.45.0.yaml  !=  /sw/libs/libcurl/libcurl-7.85.0.yaml
+protobuf-3.11.4.yaml  !=  /sw/libs/protobuf/protobuf-3.15.5.yaml
+protobuf-3.11.4.yaml  !=  /sw/libs/protobuf/protobuf-3.15.5-gcc9.3.0.yaml
+protobuf-3.11.4.yaml  !=  /sw/libs/protobuf/protobuf-21.12-gcc10.3.0.yaml
+protobuf-3.11.4.yaml  !=  /sw/libs/protobuf/protobuf-3.15.5.yaml
+protobuf-3.11.4.yaml  !=  /sw/libs/protobuf/protobuf-3.15.5-gcc9.3.0.yaml
+plumed-2.7.1-gcc.yaml  !=  /sw/libs/libsodium/libsodium-1.0.18-stable.yaml
+plumed-2.7.1-gcc.yaml  !=  /sw/libs/libsodium/libsodium-1.0.18-stable.yaml
+netcdf-4.7.1-intel18.3.yaml  !=  /sw/libs/netcdf/netcdf-4.9.2.yaml
+lzo-2.1.yaml  !=  /sw/libs/lzo/lzo-2.10.yaml
+lzo-2.1.yaml  !=  /sw/libs/lzo/lzo-2.10.yaml
+openblas-0.2.20-openmp.yaml  !=  /sw/libs/openblas/openblas-0.3.15-openmp.yaml
+openblas-0.2.20-openmp.yaml  !=  /sw/libs/openblas/openblas-0.3.15-singlethread.yaml
+openblas-0.2.20-openmp.yaml  !=  /sw/libs/openblas/openblas-0.3.15.yaml
+openblas-0.2.20-openmp.yaml  !=  /sw/libs/openblas/openblas-0.3.15.yaml
+openblas-0.2.20-openmp.yaml  !=  /sw/libs/openblas/openblas-0.3.15-openmp.yaml
+openblas-0.2.20-openmp.yaml  !=  /sw/libs/openblas/openblas-0.3.15-singlethread.yaml
+SuiteSparse-5.8.1.yaml  !=  /sw/libs/GMP/GMP-6.2.1.yaml
+SuiteSparse-5.8.1.yaml  !=  /sw/libs/GMP/GMP-6.2.1.yaml
+SuiteSparse-5.8.1.yaml  !=  /sw/libs/MPFR/MPFR-4.1.0.yaml
+SuiteSparse-5.8.1.yaml  !=  /sw/libs/MPFR/MPFR-4.1.0.yaml
+SuiteSparse-5.8.1.yaml  !=  /sw/libs/libzmq/libzmq-4.3.4.yaml
+SuiteSparse-5.8.1.yaml  !=  /sw/libs/libzmq/libzmq-4.3.4.yaml
+cmake-3.13.2.yaml  !=  /sw/libs/slurm-drmaa/slurm-drmaa-1.1.2-slurm19.05.8.yaml
+slurm-drmaa-1.1.2-slurm19.05.8.yaml  !=  /sw/libs/slurm-drmaa/slurm-drmaa-1.1.3-slurm19.05.8.yaml
+slurm-drmaa-1.1.2-slurm19.05.8.yaml  !=  /sw/libs/slurm-drmaa/slurm-drmaa-1.1.3-slurm21.08.2.yaml
+slurm-drmaa-1.1.2-slurm19.05.8.yaml  !=  /sw/libs/slurm-drmaa/slurm-drmaa-1.1.3-slurm21.08.8.yaml
+cmake-3.13.2.yaml  !=  /sw/libs/slurm-drmaa/slurm-drmaa-1.1.2-slurm19.05.8.yaml
+cmake-3.13.2.yaml  !=  /sw/libs/libSBML/libSBML-5.19.0.yaml
+slurm-drmaa-1.1.2-slurm19.05.8.yaml  !=  /sw/libs/libSBML/libSBML-5.20.0.yaml
+cmake-3.13.2.yaml  !=  /sw/libs/libSBML/libSBML-5.19.0.yaml
+zlib-1.2.8.yaml  !=  /sw/libs/zlib/zlib-1.2.12.yaml
+JasPer-2.0.14.yaml  !=  /sw/libs/JasPer/JasPer-4.0.0.yaml
+dlib-19.15.yaml  !=  /sw/libs/dlib/dlib-19.23.yaml
+SHAPELIB-1.5.0.yaml  !=  /sw/libs/SHAPELIB/SHAPELIB-1.5.0-20220210-8edf888.yaml
+PLplot-5.15.0-old_wxWidgets.yaml  !=  /sw/libs/Qhull/Qhull-2019.1.yaml
+PLplot-5.15.0-old_wxWidgets.yaml  !=  /sw/libs/Qhull/Qhull-2020.2.yaml
+PLplot-5.15.0-old_wxWidgets.yaml  !=  /sw/libs/Qhull/Qhull-2019.1.yaml
+apr-1.7.0.yaml  !=  /sw/libs/MPC/MPC-1.2.1.yaml
+apr-1.7.0.yaml  !=  /sw/libs/MPC/MPC-1.2.1.yaml
+apr-1.7.0.yaml  !=  /sw/libs/SuperLU/SuperLU-5.2.1.yaml
+apr-1.7.0.yaml  !=  /sw/libs/SuperLU/SuperLU-5.2.1.yaml
+apr-1.7.0.yaml  !=  /sw/libs/ARPACK-NG/ARPACK-NG-3.8.0.yaml
+apr-1.7.0.yaml  !=  /sw/libs/ARPACK-NG/ARPACK-NG-3.8.0.yaml
+julia-1.6.1.yaml  !=  /sw/comp/julia/julia-1.6.3.yaml
+julia-1.6.1.yaml  !=  /sw/comp/julia/julia-1.0.5_LTS.yaml
+julia-0.4.6.yaml  !=  /sw/comp/julia/julia-1.7.2.yaml
+julia-0.4.6.yaml  !=  /sw/comp/julia/julia-1.8.5.yaml
+julia-0.4.6.yaml  !=  /sw/comp/julia/julia-1.6.7_LTS.yaml
+julia-0.4.6.yaml  !=  /sw/comp/julia/julia-1.9.1.yaml
+julia-1.6.1.yaml  !=  /sw/comp/julia/julia-1.0.5_LTS.yaml
+julia-1.6.1.yaml  !=  /sw/comp/julia/julia-1.6.3.yaml
+patchelf-0.1.yaml  !=  /sw/comp/patchelf/patchelf-0.10.yaml
+patchelf-0.1.yaml  !=  /sw/comp/patchelf/patchelf-0.10.yaml
+ruby-2.6.2.yaml  !=  /sw/comp/ruby/ruby-3.2.2.yaml
+ruby-2.6.2.yaml  !=  /sw/comp/ruby/x86_64/ruby-3.2.2.yaml
+ruby-2.6.2.yaml  !=  /sw/comp/ruby/x86_64/x86_64/ruby-3.2.2.yaml
+ruby-2.6.2.yaml  !=  /sw/comp/ruby/x86_64/x86_64/x86_64/ruby-3.2.2.yaml
+python3-3.9.5.yaml  !=  /sw/comp/python3/python3-3.10.8.yaml
+go-1.11.5.yaml  !=  /sw/comp/yasm/yasm-1.3.0.yaml
+go-1.11.5.yaml  !=  /sw/comp/yasm/yasm-1.3.0.yaml
+go-1.11.5.yaml  !=  /sw/comp/k8/k8-0.2.5.yaml
+go-1.11.5.yaml  !=  /sw/comp/k8/k8-0.2.5.yaml
+flex-2.6.4.yaml  !=  /sw/comp/bison/bison-3.7.6.yaml
+flex-2.6.4.yaml  !=  /sw/comp/bison/bison-3.7.6.yaml
+flex-2.6.4.yaml  !=  /sw/comp/nasm/nasm-2.15.05.yaml
+flex-2.6.4.yaml  !=  /sw/comp/nasm/nasm-2.15.05.yaml
+/sw/share/compstore/production/projman/queue/ddmq.yaml looks like it is not a sw yaml.
+/sw/share/compstore/production/projman/queue/ddmq.yaml looks like it is not a sw yaml.
+/sw/share/compstore/development/projman/queue/ddmq.yaml looks like it is not a sw yaml.
+/sw/share/compstore/development/projman/queue/ddmq.yaml looks like it is not a sw yaml.
+/sw/share/compstore/development/projman/queue2/ddmq.yaml looks like it is not a sw yaml.
+/sw/share/compstore/development/projman/queue2/ddmq.yaml looks like it is not a sw yaml.
+cellranger-data-3.0.0.yaml  !=  /sw/data/Chromium/cellranger/cellranger-data-5.0.0.yaml
+cellranger-data-3.0.0.yaml  !=  /sw/data/Chromium/cellranger-data/cellranger-data-5.0.0.yaml
+/sw/data/iGenomes/iGenomes-latest.yaml looks like it is not a sw yaml.
+silva-138.1.yaml  !=  /sw/data/Pfam/Pfam-35.0.yaml
+panther-17.0.yaml  !=  /sw/data/DRAM_data/DRAM_data-20230530.yaml
+silva-138.1.yaml  !=  /sw/data/gnomad_data/gnomad_data-2.1.1.yaml
+silva-138.1.yaml  !=  /sw/data/gnomad_data/gnomad_data-3.0.yaml
+silva-138.1.yaml  !=  /sw/data/gnomad_data/gnomad_data-2.1.1.yaml
+silva-138.1.yaml  !=  /sw/data/gnomad_data/gnomad_data-3.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/eggNOG/eggNOG_data-5.0.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/eggNOG/eggNOG_data-5.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/PhyloPhlAn_data/PhyloPhlAn_data-20201126.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/zinc22/zinc22-22.yaml
+/sw/data/reference/.fabtest/config/packages.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/config/perl-libs.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/config/custom.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/config/ruby-libs.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/config/haskell-libs.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/config/python-libs.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/config/packages-yum.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/config/main.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/config/packages-debian.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/config/r-libs.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/config/packages-nix.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/config/biodata.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/bkup/biodata.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/contrib/minimal/main.yaml looks like it is not a sw yaml.
+/sw/data/reference/.fabtest/contrib/bionode/main.yaml looks like it is not a sw yaml.
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/eggNOG_data/eggNOG_data-5.0.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/eggNOG_data/eggNOG_data-5.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/CSIMicrobes_data/CSIMicrobes_data-20211030-a656444.yaml
+BioBakery_data-3.0-20210423.yaml  !=  /sw/data/HaplotypeReferenceConsortium/HaplotypeReferenceConsortium-r1.1.yaml
+BioBakery_data-3.0-20210423.yaml  !=  /sw/data/HaplotypeReferenceConsortium/HaplotypeReferenceConsortium-r1.1.yaml
+/sw/data/igenomes/iGenomes-latest.yaml looks like it is not a sw yaml.
+iGenomes-latest.yaml  !=  /sw/data/FAVOR_data/FAVOR_data-1.0.yaml
+mapping values are not allowed here
+  in "/sw/data/cdd/cdd-3.20.yaml", line 15, column 294
+fastq_screen_data-20220330.yaml  !=  /sw/data/fastq_screen_data/fastq_screen_data-latest.yaml
+cellranger-data-3.0.0.yaml  !=  /sw/data/uppnex/Chromium/cellranger/cellranger-data-5.0.0.yaml
+cellranger-data-3.0.0.yaml  !=  /sw/data/uppnex/Chromium/cellranger-data/cellranger-data-5.0.0.yaml
+/sw/data/uppnex/iGenomes/iGenomes-latest.yaml looks like it is not a sw yaml.
+silva-138.1.yaml  !=  /sw/data/uppnex/Pfam/Pfam-35.0.yaml
+panther-17.0.yaml  !=  /sw/data/uppnex/DRAM_data/DRAM_data-20230530.yaml
+silva-138.1.yaml  !=  /sw/data/uppnex/gnomad_data/gnomad_data-2.1.1.yaml
+silva-138.1.yaml  !=  /sw/data/uppnex/gnomad_data/gnomad_data-3.0.yaml
+silva-138.1.yaml  !=  /sw/data/uppnex/gnomad_data/gnomad_data-2.1.1.yaml
+silva-138.1.yaml  !=  /sw/data/uppnex/gnomad_data/gnomad_data-3.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/eggNOG/eggNOG_data-5.0.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/eggNOG/eggNOG_data-5.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/PhyloPhlAn_data/PhyloPhlAn_data-20201126.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/zinc22/zinc22-22.yaml
+/sw/data/uppnex/reference/.fabtest/config/packages.yaml looks like it is not a sw yaml.
+/sw/data/uppnex/reference/.fabtest/config/perl-libs.yaml looks like it is not a sw yaml.
+/sw/data/uppnex/reference/.fabtest/config/custom.yaml looks like it is not a sw yaml.
+/sw/data/uppnex/reference/.fabtest/config/ruby-libs.yaml looks like it is not a sw yaml.
+/sw/data/uppnex/reference/.fabtest/config/haskell-libs.yaml looks like it is not a sw yaml.
+/sw/data/uppnex/reference/.fabtest/config/python-libs.yaml looks like it is not a sw yaml.
+/sw/data/uppnex/reference/.fabtest/config/packages-yum.yaml looks like it is not a sw yaml.
+/sw/data/uppnex/reference/.fabtest/config/main.yaml looks like it is not a sw yaml.
+/sw/data/uppnex/reference/.fabtest/config/packages-debian.yaml looks like it is not a sw yaml.
+/sw/data/uppnex/reference/.fabtest/config/r-libs.yaml looks like it is not a sw yaml.
+/sw/data/uppnex/reference/.fabtest/config/packages-nix.yaml looks like it is not a sw yaml.
+/sw/data/uppnex/reference/.fabtest/config/biodata.yaml looks like it is not a sw yaml.
+/sw/data/uppnex/reference/.fabtest/bkup/biodata.yaml looks like it is not a sw yaml.
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/eggNOG_data/eggNOG_data-5.0.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/eggNOG_data/eggNOG_data-5.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/CSIMicrobes_data/CSIMicrobes_data-20211030-a656444.yaml
+BioBakery_data-3.0-20210423.yaml  !=  /sw/data/uppnex/HaplotypeReferenceConsortium/HaplotypeReferenceConsortium-r1.1.yaml
+BioBakery_data-3.0-20210423.yaml  !=  /sw/data/uppnex/HaplotypeReferenceConsortium/HaplotypeReferenceConsortium-r1.1.yaml
+/sw/data/uppnex/igenomes/iGenomes-latest.yaml looks like it is not a sw yaml.
+iGenomes-latest.yaml  !=  /sw/data/uppnex/FAVOR_data/FAVOR_data-1.0.yaml
+mapping values are not allowed here
+  in "/sw/data/uppnex/cdd/cdd-3.20.yaml", line 15, column 294
+fastq_screen_data-20220330.yaml  !=  /sw/data/uppnex/fastq_screen_data/fastq_screen_data-latest.yaml
+cellranger-data-3.0.0.yaml  !=  /sw/data/uppnex/uppnex/Chromium/cellranger/cellranger-data-5.0.0.yaml
+cellranger-data-3.0.0.yaml  !=  /sw/data/uppnex/uppnex/Chromium/cellranger-data/cellranger-data-5.0.0.yaml
+/sw/data/uppnex/uppnex/iGenomes/iGenomes-latest.yaml looks like it is not a sw yaml.
+silva-138.1.yaml  !=  /sw/data/uppnex/uppnex/Pfam/Pfam-35.0.yaml
+panther-17.0.yaml  !=  /sw/data/uppnex/uppnex/DRAM_data/DRAM_data-20230530.yaml
+silva-138.1.yaml  !=  /sw/data/uppnex/uppnex/gnomad_data/gnomad_data-2.1.1.yaml
+silva-138.1.yaml  !=  /sw/data/uppnex/uppnex/gnomad_data/gnomad_data-3.0.yaml
+silva-138.1.yaml  !=  /sw/data/uppnex/uppnex/gnomad_data/gnomad_data-2.1.1.yaml
+silva-138.1.yaml  !=  /sw/data/uppnex/uppnex/gnomad_data/gnomad_data-3.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/eggNOG/eggNOG_data-5.0.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/eggNOG/eggNOG_data-5.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/PhyloPhlAn_data/PhyloPhlAn_data-20201126.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/zinc22/zinc22-22.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/eggNOG_data/eggNOG_data-5.0.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/eggNOG_data/eggNOG_data-5.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/CSIMicrobes_data/CSIMicrobes_data-20211030-a656444.yaml
+BioBakery_data-3.0-20210423.yaml  !=  /sw/data/uppnex/uppnex/HaplotypeReferenceConsortium/HaplotypeReferenceConsortium-r1.1.yaml
+BioBakery_data-3.0-20210423.yaml  !=  /sw/data/uppnex/uppnex/HaplotypeReferenceConsortium/HaplotypeReferenceConsortium-r1.1.yaml
+/sw/data/uppnex/uppnex/igenomes/iGenomes-latest.yaml looks like it is not a sw yaml.
+iGenomes-latest.yaml  !=  /sw/data/uppnex/uppnex/FAVOR_data/FAVOR_data-1.0.yaml
+mapping values are not allowed here
+  in "/sw/data/uppnex/uppnex/cdd/cdd-3.20.yaml", line 15, column 294
+fastq_screen_data-20220330.yaml  !=  /sw/data/uppnex/uppnex/fastq_screen_data/fastq_screen_data-latest.yaml
+/sw/data/uppnex/uppnex/uppnex/iGenomes/iGenomes-latest.yaml looks like it is not a sw yaml.
+silva-138.1.yaml  !=  /sw/data/uppnex/uppnex/uppnex/Pfam/Pfam-35.0.yaml
+panther-17.0.yaml  !=  /sw/data/uppnex/uppnex/uppnex/DRAM_data/DRAM_data-20230530.yaml
+silva-138.1.yaml  !=  /sw/data/uppnex/uppnex/uppnex/gnomad_data/gnomad_data-2.1.1.yaml
+silva-138.1.yaml  !=  /sw/data/uppnex/uppnex/uppnex/gnomad_data/gnomad_data-3.0.yaml
+silva-138.1.yaml  !=  /sw/data/uppnex/uppnex/uppnex/gnomad_data/gnomad_data-2.1.1.yaml
+silva-138.1.yaml  !=  /sw/data/uppnex/uppnex/uppnex/gnomad_data/gnomad_data-3.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/uppnex/eggNOG/eggNOG_data-5.0.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/uppnex/eggNOG/eggNOG_data-5.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/uppnex/PhyloPhlAn_data/PhyloPhlAn_data-20201126.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/uppnex/zinc22/zinc22-22.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/uppnex/eggNOG_data/eggNOG_data-5.0.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/uppnex/eggNOG_data/eggNOG_data-5.0.yaml
+alphafold_dataset-2.1.1.yaml  !=  /sw/data/uppnex/uppnex/uppnex/CSIMicrobes_data/CSIMicrobes_data-20211030-a656444.yaml
+BioBakery_data-3.0-20210423.yaml  !=  /sw/data/uppnex/uppnex/uppnex/HaplotypeReferenceConsortium/HaplotypeReferenceConsortium-r1.1.yaml
+BioBakery_data-3.0-20210423.yaml  !=  /sw/data/uppnex/uppnex/uppnex/HaplotypeReferenceConsortium/HaplotypeReferenceConsortium-r1.1.yaml
+/sw/data/uppnex/uppnex/uppnex/igenomes/iGenomes-latest.yaml looks like it is not a sw yaml.
+iGenomes-latest.yaml  !=  /sw/data/uppnex/uppnex/uppnex/FAVOR_data/FAVOR_data-1.0.yaml
+mapping values are not allowed here
+  in "/sw/data/uppnex/uppnex/uppnex/cdd/cdd-3.20.yaml", line 15, column 294
+fastq_screen_data-20220330.yaml  !=  /sw/data/uppnex/uppnex/uppnex/fastq_screen_data/fastq_screen_data-latest.yaml
+/sw/courses/epigenomics/2022/minute_chip/primary/minute.yaml looks like it is not a sw yaml.
+ATLAS_aDNA-20170510.yaml  !=  /sw/bioinfo/ATLAS_aDNA/ATLAS_aDNA-0.9.9.yaml
+BUSCO-4.1.4.yaml  !=  /sw/bioinfo/BUSCO/BUSCO-5.0.0.yaml
+BUSCO-4.1.4.yaml  !=  /sw/bioinfo/BUSCO/BUSCO-5.2.2.yaml
+BESST-1.0.4.4.yaml  !=  /sw/bioinfo/Bandage/Bandage-0.8.1.yaml
+BESST-1.0.4.4.yaml  !=  /sw/bioinfo/Bandage/Bandage-0.8.1.yaml
+BclConverter-1.7.1.yaml  !=  /sw/bioinfo/BclConverter/BclConverter-3.9.3.yaml
+CNVnator-0.3.2.yaml  !=  /sw/bioinfo/CNVnator/CNVnator-0.4.1-20200707-c73786d.yaml
+FALCON-integrate-20161113.yaml  !=  /sw/bioinfo/IMPUTE5/IMPUTE5-1.1.5.yaml
+FALCON-integrate-20161113.yaml  !=  /sw/bioinfo/IMPUTE5/IMPUTE5-1.1.5.yaml
+GATK-Queue-3.2.2.yaml  !=  /sw/bioinfo/GATK/GATK-4.2.0.0.yaml
+GATK-Queue-3.2.2.yaml  !=  /sw/bioinfo/GATK/GATK-4.2.0.0.yaml
+/sw/bioinfo/GEMINI/0.16.3/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.18.3/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.19.0/rackham/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.19.0/milou/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.19.0/irma/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.19.0/bianca/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.19.0/snowy/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.20.0/rackham/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.20.0/milou/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.20.0/irma/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.20.0/bianca/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.20.0/snowy/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.20.1/rackham/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.20.1/bianca/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.20.1/irma/share_data/gemini-config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GEMINI/0.20.1/snowy/share_data/gemini-config.yaml looks like it is not a sw yaml.
+IGV-2.3.17.yaml  !=  /sw/bioinfo/IGV/IGV-2.16.0.yaml
+InterProScan-.z.yaml  !=  /sw/bioinfo/InterProScan/InterProScan-5.62-94.0.yaml
+MEGAN-.MEGAN.yaml  !=  /sw/bioinfo/PhyloPhlAn/PhyloPhlAn-3.0.2.yaml
+phylophlan-0.99.yaml  !=  /sw/bioinfo/PhyloPhlAn/PhyloPhlAn-0.99.yaml
+phylophlan-0.99.yaml  !=  /sw/bioinfo/PhyloPhlAn/PhyloPhlAn-0.99.yaml
+MaSuRCA-3.4.2.yaml  !=  /sw/bioinfo/MaSuRCA/MaSuRCA-4.0.4.yaml
+MaSuRCA-3.4.2.yaml  !=  /sw/bioinfo/MaSuRCA/MaSuRCA-4.0.2.yaml
+MaSuRCA-3.4.2.yaml  !=  /sw/bioinfo/MaSuRCA/MaSuRCA-4.0.2.yaml
+MultiQC-1.1.yaml  !=  /sw/bioinfo/MultiQC/MultiQC-1.10.yaml
+MultiQC-1.1.yaml  !=  /sw/bioinfo/MultiQC/MultiQC-1.10.1.yaml
+MultiQC-1.1.yaml  !=  /sw/bioinfo/MultiQC/MultiQC-1.11.yaml
+MultiQC-0.5.yaml  !=  /sw/bioinfo/MultiQC/MultiQC-1.12.yaml
+MultiQC-1.1.yaml  !=  /sw/bioinfo/MultiQC/MultiQC-1.10.yaml
+MultiQC-1.1.yaml  !=  /sw/bioinfo/MultiQC/MultiQC-1.10.1.yaml
+MultiQC-1.1.yaml  !=  /sw/bioinfo/MultiQC/MultiQC-1.11.yaml
+NextGenMap-0.5.4.yaml  !=  /sw/bioinfo/NextGenMap/NextGenMap-0.5.5.yaml
+Pilon-1.22.yaml  !=  /sw/bioinfo/Pilon/Pilon-1.24.yaml
+Pilon-1.22.yaml  !=  /sw/bioinfo/Pilon/Pilon-1.24.yaml
+RAxML-NG-0.9.0-mpi.yaml  !=  /sw/bioinfo/RAxML-NG/RAxML-NG-1.1.0.yaml
+RAxML-NG-0.9.0-mpi.yaml  !=  /sw/bioinfo/RAxML-NG/RAxML-NG-1.1.0-mpi.yaml
+RAxML-NG-0.9.0-mpi.yaml  !=  /sw/bioinfo/RAxML-NG/RAxML-NG-1.1.0-20220810-816f9d1.yaml
+RepeatMasker-4.1.0.yaml  !=  /sw/bioinfo/RepeatMasker/RepeatMasker-4.1.2-p1.yaml
+RepeatMasker-4.1.0.yaml  !=  /sw/bioinfo/RepeatMasker/RepeatMasker-4.1.2-p1.yaml
+RepeatModeler-2.0.1.yaml  !=  /sw/bioinfo/RepeatModeler/RepeatModeler-2.0.3.yaml
+SHAPEIT-v3.r884.2.yaml  !=  /sw/bioinfo/SHAPEIT/SHAPEIT-v5.1.0.0.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/SMRT-11.1.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp3ixza5sc.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp_l9kkgvr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmprjns6zf9.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpv5jp7svk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp0u9m4cec.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpus_7c9ji.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpz3r7i64_.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp7n6n21b5.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpd5tbrq3c.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp27e00clh.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpaunh1efo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpzdylcfx8.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpfzz3p3n1.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpsxw6_1nk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpgeyb2p4h.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpeh8se6yt.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp452ogspa.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpfqrzrho2.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpey1bngdh.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp6x3v35uo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpm0chu491.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpmbwby02h.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpw4qhyybv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpa8g_lqe1.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpvwja6dcl.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmphbl9rc_0.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpetskursz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmplohwglhk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp8q5an3dk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpakbu1td7.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpntl426hv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpflanbpua.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpw3tadqzr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp923sdlvz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpmsjtcaxb.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpx61cez8i.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpktufwyyz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpmavgdf6k.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpjaasnbnx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpkbau35lq.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp2wsfbpp0.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpftd8pua_.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp0zelz76x.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp8w9t71om.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmprj1q4q8b.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpco886slf.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpty4a0awr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpsd5x83a9.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp4rz1uize.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp_qpfj3jy.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp3i0y_6nv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpvgf3iymo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpglteh8m8.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp3d5mmlf4.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp1k34zgkw.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpy6uhe1x6.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp62im_yzs.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpgtqfizts.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp92ejmgew.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpx8mk8p56.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpno8xjzep.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpiqzvsr5o.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpjm3zpmbx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpa_ezua57.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpph63r8r7.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpn37km36x.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpqbhg8qcs.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpmcwanbqx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpplece1bv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpy4gpm0di.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpv1kbxnpo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmp_srr1i4p.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpsur77yyw.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpl8v26egl.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/snowy/tmpdir/tmpd806j01r.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp3ixza5sc.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp_l9kkgvr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmprjns6zf9.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpv5jp7svk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp0u9m4cec.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpus_7c9ji.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpz3r7i64_.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp7n6n21b5.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpd5tbrq3c.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp27e00clh.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpaunh1efo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpzdylcfx8.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpfzz3p3n1.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpsxw6_1nk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpgeyb2p4h.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpeh8se6yt.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp452ogspa.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpfqrzrho2.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpey1bngdh.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp6x3v35uo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpm0chu491.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpmbwby02h.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpw4qhyybv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpa8g_lqe1.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpvwja6dcl.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmphbl9rc_0.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpetskursz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmplohwglhk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp8q5an3dk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpakbu1td7.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpntl426hv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpflanbpua.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpw3tadqzr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp923sdlvz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpmsjtcaxb.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpx61cez8i.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpktufwyyz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpmavgdf6k.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpjaasnbnx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpkbau35lq.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp2wsfbpp0.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpftd8pua_.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp0zelz76x.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp8w9t71om.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmprj1q4q8b.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpco886slf.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpty4a0awr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpsd5x83a9.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp4rz1uize.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp_qpfj3jy.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp3i0y_6nv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpvgf3iymo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpglteh8m8.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp3d5mmlf4.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp1k34zgkw.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpy6uhe1x6.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp62im_yzs.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpgtqfizts.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp92ejmgew.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpx8mk8p56.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpno8xjzep.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpiqzvsr5o.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpjm3zpmbx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpa_ezua57.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpph63r8r7.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpn37km36x.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpqbhg8qcs.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpmcwanbqx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpplece1bv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpy4gpm0di.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpv1kbxnpo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmp_srr1i4p.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpsur77yyw.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpl8v26egl.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/milou/tmpdir/tmpd806j01r.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp3ixza5sc.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp_l9kkgvr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmprjns6zf9.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpv5jp7svk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp0u9m4cec.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpus_7c9ji.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpz3r7i64_.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp7n6n21b5.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpd5tbrq3c.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp27e00clh.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpaunh1efo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpzdylcfx8.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpfzz3p3n1.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpsxw6_1nk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpgeyb2p4h.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpeh8se6yt.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp452ogspa.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpfqrzrho2.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpey1bngdh.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp6x3v35uo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpm0chu491.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpmbwby02h.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpw4qhyybv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpa8g_lqe1.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpvwja6dcl.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmphbl9rc_0.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpetskursz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmplohwglhk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp8q5an3dk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpakbu1td7.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpntl426hv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpflanbpua.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpw3tadqzr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp923sdlvz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpmsjtcaxb.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpx61cez8i.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpktufwyyz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpmavgdf6k.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpjaasnbnx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpkbau35lq.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp2wsfbpp0.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpftd8pua_.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp0zelz76x.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp8w9t71om.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmprj1q4q8b.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpco886slf.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpty4a0awr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpsd5x83a9.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp4rz1uize.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp_qpfj3jy.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp3i0y_6nv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpvgf3iymo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpglteh8m8.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp3d5mmlf4.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp1k34zgkw.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpy6uhe1x6.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp62im_yzs.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpgtqfizts.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp92ejmgew.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpx8mk8p56.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpno8xjzep.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpiqzvsr5o.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpjm3zpmbx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpa_ezua57.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpph63r8r7.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpn37km36x.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpqbhg8qcs.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpmcwanbqx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpplece1bv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpy4gpm0di.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpv1kbxnpo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmp_srr1i4p.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpsur77yyw.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpl8v26egl.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/bianca/tmpdir/tmpd806j01r.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp3ixza5sc.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp_l9kkgvr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmprjns6zf9.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpv5jp7svk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp0u9m4cec.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpus_7c9ji.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpz3r7i64_.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp7n6n21b5.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpd5tbrq3c.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp27e00clh.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpaunh1efo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpzdylcfx8.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpfzz3p3n1.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpsxw6_1nk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpgeyb2p4h.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpeh8se6yt.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp452ogspa.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpfqrzrho2.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpey1bngdh.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp6x3v35uo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpm0chu491.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpmbwby02h.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpw4qhyybv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpa8g_lqe1.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpvwja6dcl.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmphbl9rc_0.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpetskursz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmplohwglhk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp8q5an3dk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpakbu1td7.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpntl426hv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpflanbpua.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpw3tadqzr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp923sdlvz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpmsjtcaxb.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpx61cez8i.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpktufwyyz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpmavgdf6k.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpjaasnbnx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpkbau35lq.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp2wsfbpp0.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpftd8pua_.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp0zelz76x.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp8w9t71om.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmprj1q4q8b.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpco886slf.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpty4a0awr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpsd5x83a9.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp4rz1uize.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp_qpfj3jy.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp3i0y_6nv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpvgf3iymo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpglteh8m8.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp3d5mmlf4.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp1k34zgkw.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpy6uhe1x6.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp62im_yzs.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpgtqfizts.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp92ejmgew.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpx8mk8p56.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpno8xjzep.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpiqzvsr5o.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpjm3zpmbx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpa_ezua57.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpph63r8r7.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpn37km36x.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpqbhg8qcs.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpmcwanbqx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpplece1bv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpy4gpm0di.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpv1kbxnpo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmp_srr1i4p.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpsur77yyw.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpl8v26egl.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/irma/tmpdir/tmpd806j01r.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp3ixza5sc.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp_l9kkgvr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmprjns6zf9.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpv5jp7svk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp0u9m4cec.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpus_7c9ji.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpz3r7i64_.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp7n6n21b5.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpd5tbrq3c.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp27e00clh.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpaunh1efo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpzdylcfx8.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpfzz3p3n1.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpsxw6_1nk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpgeyb2p4h.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpeh8se6yt.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp452ogspa.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpfqrzrho2.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpey1bngdh.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp6x3v35uo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpm0chu491.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpmbwby02h.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpw4qhyybv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpa8g_lqe1.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpvwja6dcl.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmphbl9rc_0.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpetskursz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmplohwglhk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp8q5an3dk.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpakbu1td7.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpntl426hv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpflanbpua.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpw3tadqzr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp923sdlvz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpmsjtcaxb.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpx61cez8i.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpktufwyyz.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpmavgdf6k.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpjaasnbnx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpkbau35lq.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp2wsfbpp0.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpftd8pua_.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp0zelz76x.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp8w9t71om.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmprj1q4q8b.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpco886slf.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpty4a0awr.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpsd5x83a9.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp4rz1uize.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp_qpfj3jy.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp3i0y_6nv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpvgf3iymo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpglteh8m8.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp3d5mmlf4.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp1k34zgkw.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpy6uhe1x6.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp62im_yzs.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpgtqfizts.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp92ejmgew.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpx8mk8p56.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpno8xjzep.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpiqzvsr5o.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpjm3zpmbx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpa_ezua57.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpph63r8r7.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpn37km36x.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpqbhg8qcs.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpmcwanbqx.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpplece1bv.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpy4gpm0di.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpv1kbxnpo.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmp_srr1i4p.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpsur77yyw.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpl8v26egl.yaml
+SMRT-2.2.0.yaml  !=  /sw/bioinfo/SMRT/2.3.0/rackham/tmpdir/tmpd806j01r.yaml
+VarDictJava-1.4.5.yaml  !=  /sw/bioinfo/VarDictJava/VarDictJava-1.8.3.yaml
+abyss-2.0.2-k128.yaml  !=  /sw/bioinfo/abyss/abyss-2.3.5.yaml
+abyss-2.0.2-k128.yaml  !=  /sw/bioinfo/abyss/abyss-2.3.5_k128.yaml
+/sw/bioinfo/bcbio/20150205/halvan/config/install-params.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/halvan/galaxy/bcbio_system.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/halvan/galaxy/bcbio_system.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/halvan/galaxy/bcbio_system.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/halvan/galaxy/bcbio_system.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/halvan/manifest/brew-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/halvan/manifest/custom-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/halvan/manifest/python-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/halvan/manifest/r-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/halvan/manifest/toolplus-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/nestor/config/install-params.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/nestor/galaxy/bcbio_system.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/nestor/galaxy/bcbio_system.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/nestor/galaxy/bcbio_system.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/nestor/galaxy/bcbio_system.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/nestor/manifest/brew-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/nestor/manifest/custom-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/nestor/manifest/python-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/nestor/manifest/r-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/nestor/manifest/toolplus-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/milou/config/install-params.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/milou/galaxy/bcbio_system.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/milou/galaxy/bcbio_system.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/milou/galaxy/bcbio_system.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/milou/galaxy/bcbio_system.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/milou/manifest/brew-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/milou/manifest/custom-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/milou/manifest/python-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/milou/manifest/r-packages.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bcbio/20150205/milou/manifest/toolplus-packages.yaml looks like it is not a sw yaml.
+bcftools-1.1.yaml  !=  /sw/bioinfo/bcftools/bcftools-1.10.yaml
+bcftools-1.1.yaml  !=  /sw/bioinfo/bcftools/bcftools-1.10.yaml
+beagle-1.0.0.yaml  !=  /sw/bioinfo/beagle/beagle-4.0.0.yaml
+bgc-1.03.yaml  !=  /sw/bioinfo/bioawk/bioawk-20170911-fd40150.yaml
+bismark-0.14.0.yaml  !=  /sw/bioinfo/bismark/bismark-0.22.3.yaml
+bismark-0.14.0.yaml  !=  /sw/bioinfo/bismark/bismark-0.23.1.yaml
+bismark-0.14.0.yaml  !=  /sw/bioinfo/bismark/bismark-0.24.1.yaml
+/sw/bioinfo/bismark/0.24.1/rackham/.prettierrc.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bismark/0.24.1/bianca/.prettierrc.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bismark/0.24.1/miarka/.prettierrc.yaml looks like it is not a sw yaml.
+/sw/bioinfo/bismark/0.24.1/snowy/.prettierrc.yaml looks like it is not a sw yaml.
+bowtie2-2.0.0-beta5.yaml  !=  /sw/bioinfo/bowtie2/bowtie2-2.5.1.yaml
+cutadapt-3.1.yaml  !=  /sw/bioinfo/cutadapt/cutadapt-4.0.yaml
+delly-0.7.2.yaml  !=  /sw/bioinfo/delly/delly-1.1.6.yaml
+diamond-0.9.31.yaml  !=  /sw/bioinfo/diamond/diamond-2.0.4.yaml
+diamond-0.8.26.yaml  !=  /sw/bioinfo/diamond/diamond-2.0.14.yaml
+diamond-2.0.9.yaml  !=  /sw/bioinfo/diamond/diamond-2.1.0.yaml
+diamond-2.0.9.yaml  !=  /sw/bioinfo/diamond/diamond-2.1.1.yaml
+diamond-2.0.9.yaml  !=  /sw/bioinfo/diamond/diamond-2.1.6.yaml
+diamond-0.9.31.yaml  !=  /sw/bioinfo/diamond/diamond-2.0.4.yaml
+gaemr-1.0.1.yaml  !=  /sw/bioinfo/RevBayes/RevBayes-1.1.1.yaml
+gaemr-1.0.1.yaml  !=  /sw/bioinfo/RevBayes/RevBayes-1.1.1-mpi.yaml
+htslib-1.1.yaml  !=  /sw/bioinfo/htslib/htslib-1.10.yaml
+htslib-1.1.yaml  !=  /sw/bioinfo/htslib/htslib-1.10.yaml
+infernal-1.0.2.yaml  !=  /sw/bioinfo/infernal/infernal-1.1.4.yaml
+kallisto-0.42.4.yaml  !=  /sw/bioinfo/kallisto/kallisto-0.48.0.yaml
+manta-1.0.3.yaml  !=  /sw/bioinfo/manta/manta-1.6.0.yaml
+mrbayes-3.2.6-mpi.yaml  !=  /sw/bioinfo/mrbayes/mrbayes-3.2.7a.yaml
+mrbayes-3.2.6-mpi.yaml  !=  /sw/bioinfo/mrbayes/mrbayes-3.2.7a-mpi.yaml
+mrbayes-3.2.6-gcc7.1.0.yaml  !=  /sw/bioinfo/mrbayes/mrbayes-3.2.7a-gpu.yaml
+mrbayes-3.2.6-mpi.yaml  !=  /sw/bioinfo/mrbayes/mrbayes-3.2.7a.yaml
+mrbayes-3.2.6-mpi.yaml  !=  /sw/bioinfo/mrbayes/mrbayes-3.2.7a-mpi.yaml
+mrbayes-3.2.6-gcc7.1.0.yaml  !=  /sw/bioinfo/mrbayes/mrbayes-3.2.7a-gpu.yaml
+muscle-3.8.31.yaml  !=  /sw/bioinfo/muscle/muscle-5.1.yaml
+ngsF-HMM-20160614.yaml  !=  /sw/bioinfo/ngsF-HMM/ngsF-HMM-20200720-2df9690.yaml
+paml-4.6.yaml  !=  /sw/bioinfo/paml/paml-4.9j.yaml
+phast-1.5.yaml  !=  /sw/bioinfo/phast/phast-1.6.yaml
+prokka-1.11.yaml  !=  /sw/bioinfo/krakenuniq/krakenuniq-0.5.8.yaml
+qctool-2-5559450.yaml  !=  /sw/bioinfo/qctool/mf/2-5559450.yaml
+qctool-2-beta.yaml  !=  /sw/bioinfo/qctool/mf/2-beta.yaml
+/sw/bioinfo/rarecoal/1.2.1/rarecoal-1.2.1/stack.yaml looks like it is not a sw yaml.
+samblaster-0.1.24.yaml  !=  /sw/bioinfo/samblaster/samblaster-0.1.26.yaml
+satsuma2-2016-12-07.yaml  !=  /sw/bioinfo/satsuma2/satsuma2-37c5f38-20200304.yaml
+snakemake-5.30.1.yaml  !=  /sw/bioinfo/snakemake/snakemake-6.9.1.yaml
+snakemake-5.30.1.yaml  !=  /sw/bioinfo/snakemake/snakemake-7.8.5.yaml
+snakemake-5.30.1.yaml  !=  /sw/bioinfo/snakemake/snakemake-7.18.1.yaml
+snakemake-5.30.1.yaml  !=  /sw/bioinfo/snakemake/snakemake-7.18.2.yaml
+snakemake-5.30.1.yaml  !=  /sw/bioinfo/snakemake/snakemake-7.25.0.yaml
+snakemake-5.30.1.yaml  !=  /sw/bioinfo/snakemake/snakemake-6.9.1.yaml
+snakemake-5.30.1.yaml  !=  /sw/bioinfo/snap/snap-2019-06-03-daf76ba.yaml
+snakemake-5.30.1.yaml  !=  /sw/bioinfo/snap/snap-2019-06-03-daf76ba.yaml
+spades-3.15.3.yaml  !=  /sw/bioinfo/spades/spades-3.15.5.yaml
+spaln-2.4.0.yaml  !=  /sw/bioinfo/spaln/spaln-2.4.9.yaml
+spaln-2.4.0.yaml  !=  /sw/bioinfo/spaln/spaln-2.4.13c.yaml
+sratools-2.10.9.yaml  !=  /sw/bioinfo/sratools/sratools-3.0.0.yaml
+trimmomatic-0.36.yaml  !=  /sw/bioinfo/trimmomatic/trimmomatic-0.39.yaml
+trinotate-3.1.1.yaml  !=  /sw/bioinfo/trinotate/trinotate-3.2.2.yaml
+trinotate-3.1.1.yaml  !=  /sw/bioinfo/trinotate/trinotate-3.2.2.yaml
+DeepVariant-0.8.0.yaml  !=  /sw/bioinfo/DeepVariant/DeepVariant-1.3.0.yaml
+/sw/bioinfo/mip/6.0.0/rackham/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/mip/6.0.0/snowy/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/mip/6.0.0/irma/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/mip/6.0.0/bianca/config.yaml looks like it is not a sw yaml.
+SMARTdenovo-20180219-5cc1356.yaml  !=  /sw/bioinfo/SMARTdenovo/SMARTdenovo-20210224-8488de9.yaml
+SMARTdenovo-20180219-5cc1356.yaml  !=  /sw/bioinfo/SMARTdenovo/SMARTdenovo-20210224-8488de9.yaml
+cdbfasta-1.0.yaml  !=  /sw/bioinfo/cdbfasta/cdbfasta-1.00.yaml
+cdbfasta-1.0.yaml  !=  /sw/bioinfo/cdbfasta/cdbfasta-1.00.yaml
+pong-1.4.7.yaml  !=  /sw/bioinfo/pong/pong-1.5.yaml
+braker-2.1.5-20200826-cf958ec.yaml  !=  /sw/bioinfo/braker/braker-2.1.5-20210115-e98b812.yaml
+braker-2.1.5-20200826-cf958ec.yaml  !=  /sw/bioinfo/braker/braker-2.1.6.yaml
+braker-2.1.5-20200826-cf958ec.yaml  !=  /sw/bioinfo/braker/braker-2.1.5-20210115-e98b812.yaml
+braker-2.1.5-20200826-cf958ec.yaml  !=  /sw/bioinfo/braker/braker-2.1.6.yaml
+Kraken2-2.1.1.yaml  !=  /sw/bioinfo/Kraken2/Kraken2-2.1.2-20211210-4f648f5.yaml
+verifyBamID2-1.0.6.yaml  !=  /sw/bioinfo/VerifyBamID2/VerifyBamID2-1.0.6.yaml
+verifyBamID2-1.0.6.yaml  !=  /sw/bioinfo/VerifyBamID2/VerifyBamID2-1.0.6.yaml
+Sniffles-1.0.10.yaml  !=  /sw/bioinfo/Sniffles/Sniffles-1.0.12-201218-4ff6ecb.yaml
+Sniffles-1.0.10.yaml  !=  /sw/bioinfo/Sniffles/Sniffles-1.0.12-201218-4ff6ecb.yaml
+/sw/bioinfo/REPET/3.0/rackham/PASTEC/Decision_rules.yaml looks like it is not a sw yaml.
+/sw/bioinfo/REPET/3.0/irma/PASTEC/Decision_rules.yaml looks like it is not a sw yaml.
+/sw/bioinfo/REPET/3.0/bianca/PASTEC/Decision_rules.yaml looks like it is not a sw yaml.
+/sw/bioinfo/REPET/3.0/snowy/PASTEC/Decision_rules.yaml looks like it is not a sw yaml.
+SLiM-3.6.yaml  !=  /sw/bioinfo/SLiM/SLiM-4.0.1.yaml
+fineSTRUCTURE-4.0.1.yaml  !=  /sw/bioinfo/fineSTRUCTURE/fineSTRUCTURE-4.1.1.yaml
+Platanus-allee-2.0.2.yaml  !=  /sw/bioinfo/Platanus-allee/2.0.2.yaml
+Platanus-allee-2.0.2.yaml  !=  /sw/bioinfo/Platanus-allee/Platanus-allee-2.2.2.yaml
+plink2-2.00-alpha-2.3-20200124.yaml  !=  /sw/bioinfo/oncotator/oncotator-1.9.9.0.yaml
+plink2-2.00-alpha-2.3-20200124.yaml  !=  /sw/bioinfo/oncotator/oncotator-1.9.9.0.yaml
+medaka-0.7.1.yaml  !=  /sw/bioinfo/medaka/medaka-1.4.3.yaml
+medaka-0.7.1.yaml  !=  /sw/bioinfo/medaka/medaka-1.4.3.yaml
+Flye-2.8.1.yaml  !=  /sw/bioinfo/Flye/Flye-2.9.yaml
+Flye-2.8.1.yaml  !=  /sw/bioinfo/Flye/Flye-2.9.1.yaml
+Flye-2.8.1.yaml  !=  /sw/bioinfo/Flye/Flye-2.9.yaml
+Filtlong-0.2.0.yaml  !=  /sw/bioinfo/Filtlong/Filtlong-0.2.0-20190515-13504b7.yaml
+Filtlong-0.2.0.yaml  !=  /sw/bioinfo/Filtlong/Filtlong-0.2.0-20190515-13504b7.yaml
+HyPhy-2.5.0-mpi.yaml  !=  /sw/bioinfo/HyPhy/HyPhy-2.5.40.yaml
+HyPhy-2.5.0-mpi.yaml  !=  /sw/bioinfo/HyPhy/HyPhy-2.5.40-mpi.yaml
+HyPhy-2.5.0-mpi.yaml  !=  /sw/bioinfo/HyPhy/HyPhy-2.5.51.yaml
+Bracken-2.5.yaml  !=  /sw/bioinfo/Bracken/Bracken-2.6.2.yaml
+Bracken-2.5.yaml  !=  /sw/bioinfo/Bracken/Bracken-2.6.2.yaml
+Chromium-spaceranger-1.0.0.yaml  !=  /sw/bioinfo/Chromium-spaceranger/Chromium-spaceranger-1.2.0.yaml
+spaceranger-1.2.0.yaml  !=  /sw/bioinfo/Chromium-spaceranger/Chromium-spaceranger-2.0.1.yaml
+vg-1.29.0.yaml  !=  /sw/bioinfo/MetaCRAST/MetaCRAST-20200310-ed82df4.yaml
+PCAngsd-0.982.yaml  !=  /sw/bioinfo/PCAngsd/PCAngsd-1.11.yaml
+vg-1.29.0.yaml  !=  /sw/bioinfo/doug-dumping-ground/Beagle/Beagle-5.1.yaml
+vg-1.29.0.yaml  !=  /sw/bioinfo/doug-dumping-ground/Beagle/Beagle-5.4.yaml
+vg-1.29.0.yaml  !=  /sw/bioinfo/doug-dumping-ground/Beagle/Beagle-5.1.yaml
+nanopolish-0.12.0.yaml  !=  /sw/bioinfo/nanopolish/nanopolish-0.14.0.yaml
+fastp-0.23.1.yaml  !=  /sw/bioinfo/fastp/fastp-0.23.2.yaml
+ProtHint-2.4.0.yaml  !=  /sw/bioinfo/ProtHint/ProtHint-2.5.0.yaml
+ProtHint-2.4.0.yaml  !=  /sw/bioinfo/ProtHint/ProtHint-2.6.0.yaml
+ProtHint-2.4.0.yaml  !=  /sw/bioinfo/ProtHint/ProtHint-2.5.0.yaml
+ProtHint-2.4.0.yaml  !=  /sw/bioinfo/ProtHint/ProtHint-2.6.0.yaml
+cellranger-DNA-1.1.0.yaml  !=  /sw/bioinfo/Beagle/Beagle-5.1.yaml
+cellranger-DNA-1.1.0.yaml  !=  /sw/bioinfo/Beagle/Beagle-5.4.yaml
+cellranger-DNA-1.1.0.yaml  !=  /sw/bioinfo/Beagle/Beagle-5.1.yaml
+cellranger-ARC-1.0.0.yaml  !=  /sw/bioinfo/SNeP/SNeP-1.1.yaml
+cellranger-ARC-1.0.0.yaml  !=  /sw/bioinfo/SNeP/SNeP-1.11.yaml
+cellranger-ARC-1.0.0.yaml  !=  /sw/bioinfo/SNeP/SNeP-1.1.yaml
+Unicycler-0.4.8.yaml  !=  /sw/bioinfo/Unicycler/Unicycler-0.5.0.yaml
+Unicycler-0.4.8.yaml  !=  /sw/bioinfo/TargetP/TargetP-2.0.yaml
+Unicycler-0.4.8.yaml  !=  /sw/bioinfo/TargetP/TargetP-2.0.yaml
+Unicycler-0.4.8.yaml  !=  /sw/bioinfo/RAisD/RAisD-2.9.yaml
+Unicycler-0.4.8.yaml  !=  /sw/bioinfo/RAisD/RAisD-2.9.yaml
+Unicycler-0.4.8.yaml  !=  /sw/bioinfo/IntaRNA/IntaRNA-3.2.1.yaml
+Unicycler-0.4.8.yaml  !=  /sw/bioinfo/IntaRNA/IntaRNA-3.2.1.yaml
+Unicycler-0.4.8.yaml  !=  /sw/bioinfo/NeEstimator/NeEstimator-2.1.yaml
+Unicycler-0.4.8.yaml  !=  /sw/bioinfo/NeEstimator/NeEstimator-2.1.yaml
+Kalign-2.04.yaml  !=  /sw/bioinfo/parliament2/parliament2-v0.1.11.yaml
+Kalign-2.04.yaml  !=  /sw/bioinfo/parliament2/parliament2-v0.1.11.yaml
+Kalign-2.04.yaml  !=  /sw/bioinfo/DelGet/DelGet-5.4.yaml
+Kalign-2.04.yaml  !=  /sw/bioinfo/DelGet/DelGet-5.4.yaml
+/sw/bioinfo/nf-core/pipelines_old/clipseq/workflow/.nf-core-lint.yaml looks like it is not a sw yaml.
+/sw/bioinfo/nf-core/pipelines_old/methylseq/workflow/.nf-core-lint.yaml looks like it is not a sw yaml.
+/sw/bioinfo/nf-core/pipelines_old/vipr/workflow/example_params.yaml looks like it is not a sw yaml.
+nf-core-2.1.yaml  !=  /sw/bioinfo/SACRA/SACRA-1.0.0.yaml
+nf-core-2.1.yaml  !=  /sw/bioinfo/SACRA/SACRA-1.0.0.yaml
+nf-core-2.1.yaml  !=  /sw/bioinfo/GUSHR/GUSHR-1.0.0.yaml
+nf-core-2.1.yaml  !=  /sw/bioinfo/GUSHR/GUSHR-1.0.0.yaml
+nf-core-2.1.yaml  !=  /sw/bioinfo/hapROH/hapROH-9bcbc25.yaml
+nf-core-2.1.yaml  !=  /sw/bioinfo/hapROH/hapROH-9bcbc25.yaml
+nf-core-2.1.yaml  !=  /sw/bioinfo/metaeuk/metaeuk-4-a0f584d.yaml
+nf-core-2.1.yaml  !=  /sw/bioinfo/metaeuk/metaeuk-4-a0f584d.yaml
+nf-core-2.1.yaml  !=  /sw/bioinfo/sepp/sepp-4.3.10.yaml
+nf-core-2.1.yaml  !=  /sw/bioinfo/sepp/sepp-4.3.10.yaml
+NINJA-0.97-cluster_only.yaml  !=  /sw/bioinfo/Shasta/Shasta-0.7.0.yaml
+NINJA-0.97-cluster_only.yaml  !=  /sw/bioinfo/Shasta/Shasta-0.7.0.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/MetaPhlAn3/MetaPhlAn3-3.0.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/MetaPhlAn3/MetaPhlAn3-3.0.8.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/MetaPhlAn3/MetaPhlAn3-3.0.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/MetaPhlAn3/MetaPhlAn3-3.0.8.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/Rcorrector/Rcorrector-1.0.4.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/Rcorrector/Rcorrector-1.0.4.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/CNVkit/CNVkit-0.9.8.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/CNVkit/CNVkit-0.9.8.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/graftM/graftM-0.13.1.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/graftM/graftM-0.13.1.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/msprime/msprime-0.7.4.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/msprime/msprime-0.7.4.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/ricopili/ricopili-2019_Oct_15.001.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/ricopili/ricopili-2019_Oct_15.001.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/DANPOS/DANPOS-3.1.1.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/DANPOS/DANPOS-2.2.2.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/DANPOS/DANPOS-3.1.1.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/DANPOS/DANPOS-2.2.2.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/BOLT-LMM/BOLT-LMM-2.3.5.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/BOLT-LMM/BOLT-LMM-2.3.5.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/HESS/HESS-0.5.4-beta.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/HESS/HESS-0.5.4-beta.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/ArrowGrid/ArrowGrid-20191022-9759eb1.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/ArrowGrid/ArrowGrid-20191022-9759eb1.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/NextPolish/NextPolish-1.3.1.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/NextPolish/NextPolish-1.3.1.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/KneedData/KneedData-0.10.0.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/KneedData/KneedData-0.10.0.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/pbbam/pbbam-1.6.0.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/pbbam/pbbam-1.6.0.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/HUMAnN/HUMAnN-3.0.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/HUMAnN/HUMAnN-3.0.0.a.4.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/HUMAnN/HUMAnN-3.0.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/KneadData/KneadData-0.10.0.yaml
+NPStat-1.yaml  !=  /sw/bioinfo/KneadData/KneadData-0.10.0.yaml
+/sw/bioinfo/BioBakery/3.0/rackham/bio_env/meta.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BioBakery/3.0/irma/bio_env/meta.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BioBakery/3.0/bianca/bio_env/meta.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BioBakery/3.0/snowy/bio_env/meta.yaml looks like it is not a sw yaml.
+bonito-0.3.7-cpu.yaml  !=  /sw/bioinfo/gapseq/gapseq-1.1.yaml
+bonito-0.3.7-cpu.yaml  !=  /sw/bioinfo/gapseq/gapseq-1.1.yaml
+/sw/bioinfo/tapestri/2.0.1/rackham/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/tapestri/2.0.1/irma/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/tapestri/2.0.1/bianca/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/tapestri/2.0.1/snowy/config.yaml looks like it is not a sw yaml.
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/UniteM/UniteM-0.0.18.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/UniteM/UniteM-0.0.18.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/GroopM/GroopM-0.3.5.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/GroopM/GroopM-2.0.0.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/GroopM/GroopM-0.3.5.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/GroopM/GroopM-2.0.0.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/BinSanity/BinSanity-0.2.10.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/BinSanity/BinSanity-0.3.9.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/BinSanity/BinSanity-0.5.4.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/BinSanity/BinSanity-0.3.9.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/BinSanity/BinSanity-0.5.4.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/BamM/BamM-1.7.3.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/BamM/BamM-1.7.3.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/EPA-ng/EPA-ng-0.3.8.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/EPA-ng/EPA-ng-0.3.8.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/gappa/gappa-0.7.1.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/gappa/gappa-0.7.1.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/gffread/gffread-0.12.6.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/gffread/gffread-0.12.6.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/EDirect/EDirect-15.1.yaml
+SMC++-1.15.2.yaml  !=  /sw/bioinfo/EDirect/EDirect-15.1.yaml
+pizzly-0.37.3.yaml  !=  /sw/bioinfo/PEPPER-Margin-DeepVariant/PEPPER-Margin-DeepVariant-r0.7.yaml
+pizzly-0.37.3.yaml  !=  /sw/bioinfo/PEPPER-Margin-DeepVariant/PEPPER-Margin-DeepVariant-r0.4.yaml
+pizzly-0.37.3.yaml  !=  /sw/bioinfo/phynder/phynder-2020-08-17-48b184f.yaml
+pizzly-0.37.3.yaml  !=  /sw/bioinfo/phynder/phynder-2020-08-17-48b184f.yaml
+pathPhynder-2020-12-19-b8532c0.yaml  !=  /sw/bioinfo/bustools/bustools-2021-06-30-6fa0731.yaml
+pathPhynder-2020-12-19-b8532c0.yaml  !=  /sw/bioinfo/bustools/bustools-2021-06-30-6fa0731.yaml
+nf-core-pipelines-latest.yaml  !=  /sw/bioinfo/nf-core-pipelines/nf-core-pipelines-latest.PAVLIN.yaml
+nf-core-pipelines-latest.yaml  !=  /sw/bioinfo/TSEBRA/TSEBRA-1.0.2-20210716-1f167ad.yaml
+nf-core-pipelines-latest.yaml  !=  /sw/bioinfo/TSEBRA/TSEBRA-1.0.3-20211126-336c380.yaml
+nf-core-pipelines-latest.yaml  !=  /sw/bioinfo/TSEBRA/TSEBRA-1.0.2-20210716-1f167ad.yaml
+nf-core-pipelines-latest.yaml  !=  /sw/bioinfo/Conterminator/Conterminator-20200601-570993b.yaml
+nf-core-pipelines-latest.yaml  !=  /sw/bioinfo/Conterminator/Conterminator-20200601-570993b.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/NgsRelate/NgsRelate-2.0.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/NgsRelate/NgsRelate-2.0.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/rMATS-turbo/rMATS-turbo-4.1.2.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/somaticseq/somaticseq-3.6.3.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/somaticseq/somaticseq-3.6.3.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/NextDenovo/NextDenovo-2.4.0.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/NextDenovo/NextDenovo-2.5.0.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/NextDenovo/NextDenovo-2.4.0.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/NextDenovo/NextDenovo-2.5.0.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/BlobToolKit/BlobToolKit-2.6.3.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/BlobToolKit/BlobToolKit-2.6.4.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/BlobToolKit/BlobToolKit-3.1.0.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/BlobToolKit/BlobToolKit-2.6.3.yaml
+/sw/bioinfo/BlobToolKit/2.6.3/rackham/insdc-pipeline/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.3/rackham/insdc-pipeline/env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.3/irma/insdc-pipeline/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.3/irma/insdc-pipeline/env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.3/bianca/insdc-pipeline/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.3/bianca/insdc-pipeline/env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.3/snowy/insdc-pipeline/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.3/snowy/insdc-pipeline/env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.4/rackham/pipeline/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.4/rackham/pipeline/env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.4/irma/pipeline/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.4/irma/pipeline/env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.4/bianca/pipeline/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.4/bianca/pipeline/env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.4/miarka/pipeline/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.4/miarka/pipeline/env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.4/snowy/pipeline/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/BlobToolKit/2.6.4/snowy/pipeline/env.yaml looks like it is not a sw yaml.
+IMAP-1.0.yaml  !=  /sw/bioinfo/Racon/Racon-1.4.21.yaml
+IMAP-1.0.yaml  !=  /sw/bioinfo/Racon/Racon-1.4.21.yaml
+phaser-20210423-5d4926d.yaml  !=  /sw/bioinfo/NeuSomatic/NeuSomatic-0.2.1.yaml
+phaser-20210423-5d4926d.yaml  !=  /sw/bioinfo/NeuSomatic/NeuSomatic-0.2.1.yaml
+Bamsurgeon-1.3.yaml  !=  /sw/bioinfo/GLINT/GLINT-20201217.yaml
+Bamsurgeon-1.3.yaml  !=  /sw/bioinfo/GLINT/GLINT-20201217.yaml
+VIBRANT-1.2.1.yaml  !=  /sw/bioinfo/pixy/pixy-1.2.5.beta1.yaml
+VIBRANT-1.2.1.yaml  !=  /sw/bioinfo/pixy/pixy-1.2.5.beta1.yaml
+/sw/bioinfo/GenoPredPipe/20221121-e3caf6b/rackham/pkgs/GenoPredPipe.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GenoPredPipe/20221121-e3caf6b/bianca/pkgs/GenoPredPipe.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GenoPredPipe/20221121-e3caf6b/miarka/pkgs/GenoPredPipe.yaml looks like it is not a sw yaml.
+/sw/bioinfo/GenoPredPipe/20221121-e3caf6b/snowy/pkgs/GenoPredPipe.yaml looks like it is not a sw yaml.
+Guppy-6.0.6-cpu.yaml  !=  /sw/bioinfo/fastqtk/fastqtk-0.27.yaml
+Guppy-6.0.6-cpu.yaml  !=  /sw/bioinfo/StainedGlass/StainedGlass-0.4.yaml
+Guppy-6.0.6-cpu.yaml  !=  /sw/bioinfo/ngsLD/ngsLD-1.1.1.yaml
+SvABA-1.1.3-20201112-0f60e36.yaml  !=  /sw/bioinfo/SNP2HLA/SNP2HLA-1.0.3.yaml
+CUT-RUNTools-2.yaml  !=  /sw/bioinfo/mOTUs/mOTUs-20220222-6d6712e.yaml
+CUT-RUNTools-2.yaml  !=  /sw/bioinfo/fastq_demux/fastq_demux-20200918-1e2c079.yaml
+GAAS-1.2.0.yaml  !=  /sw/bioinfo/atlas/atlas-0.9.9.yaml
+GAAS-1.2.0.yaml  !=  /sw/bioinfo/rRNAFilter/rRNAFilter-1.1.yaml
+CAMMiQ-20211015-6142150.yaml  !=  /sw/bioinfo/CSI-Microbes/CSI-Microbes-20211030-a656444.yaml
+/sw/bioinfo/CSI-Microbes/20211030-a656444/rackham/envs/biopython.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/rackham/envs/pathoscope.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/rackham/envs/pysam-env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/rackham/envs/rsubread-env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/irma/envs/biopython.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/irma/envs/pathoscope.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/irma/envs/pysam-env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/irma/envs/rsubread-env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/bianca/envs/biopython.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/bianca/envs/pathoscope.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/bianca/envs/pysam-env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/bianca/envs/rsubread-env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/miarka/envs/biopython.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/miarka/envs/pathoscope.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/miarka/envs/pysam-env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/miarka/envs/rsubread-env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/snowy/envs/biopython.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/snowy/envs/pathoscope.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/snowy/envs/pysam-env.yaml looks like it is not a sw yaml.
+/sw/bioinfo/CSI-Microbes/20211030-a656444/snowy/envs/rsubread-env.yaml looks like it is not a sw yaml.
+CAMMiQ-20211015-6142150.yaml  !=  /sw/bioinfo/VESPA/VESPA-1.0.1.yaml
+PhylogicNDT-2020.yaml  !=  /sw/bioinfo/BioBloomTools/BioBloomTools-2.3.3-20210218-151b0c0.yaml
+CookHLA-1.0.0.yaml  !=  /sw/bioinfo/octopus/octopus-17a597d-20220708.yaml
+CookHLA-1.0.0.yaml  !=  /sw/bioinfo/msmc2/msmc2-2.1.3.yaml
+CookHLA-1.0.0.yaml  !=  /sw/bioinfo/msmc2/msmc2-2.1.2.yaml
+KrakenUniq-1.0.1.yaml  !=  /sw/bioinfo/bwa-mem2/bwa-mem2-2.2.1-20211213-edc703f.yaml
+slivar-0.2.7.yaml  !=  /sw/bioinfo/fastsimcoal/fastsimcoal-2.7.9.yaml
+slivar-0.2.7.yaml  !=  /sw/bioinfo/fastsimcoal/fastsimcoal-2.7.93.yaml
+slivar-0.2.7.yaml  !=  /sw/bioinfo/ABCtoolbox/ABCtoolbox-20131120.yaml
+removethis-1.yaml  !=  /sw/bioinfo/grenedalf/grenedalf-0.2.0-beta.yaml
+Panaroo-1.3.2.yaml  !=  /sw/bioinfo/Hifiasm/Hifiasm-20210912-ab80851.yaml
+Cellsnp-lite-1.2.2.yaml  !=  /sw/bioinfo/Eagle2/Eagle2-2.4.1.yaml
+MAGeCK2-20211209-435eacd.yaml  !=  /sw/bioinfo/MAPGD/MAPGD-0.4.40.yaml
+vcfstats-0.4.2.yaml  !=  /sw/bioinfo/KING/KING-2.2.9.yaml
+vcfstats-0.4.2.yaml  !=  /sw/bioinfo/DeepRepeat/DeepRepeat-0.1.3.yaml
+kmersGWAS-20221010-a706bb7.yaml  !=  /sw/bioinfo/CLAM/CLAM-1.2.1.yaml
+kmersGWAS-20221010-a706bb7.yaml  !=  /sw/bioinfo/CIRCexplorer2/CIRCexplorer2-2.3.8.yaml
+kmersGWAS-20221010-a706bb7.yaml  !=  /sw/bioinfo/Megalodon/Megalodon-2.5.0-cpu.yaml
+kmersGWAS-20221010-a706bb7.yaml  !=  /sw/bioinfo/Megalodon/Megalodon-2.5.0-gpu.yaml
+kmersGWAS-20221010-a706bb7.yaml  !=  /sw/bioinfo/DifCover/DifCover-20221013-45f29d5.yaml
+any2fasta-0.4.2.yaml  !=  /sw/bioinfo/Multi-CSAR/Multi-CSAR-20180316-8fd582c.yaml
+DeepLoc-2.0.yaml  !=  /sw/bioinfo/DROP/DROP-1.2.2.yaml
+/sw/bioinfo/DROP/doug/TEST/config.yaml looks like it is not a sw yaml.
+MMseqs2-14-7e284.yaml  !=  /sw/bioinfo/maf_stream/maf_stream-20220523-1d2e146.yaml
+/sw/bioinfo/G-Nomix/2022-09-18-de952a2/rackham/gnomix-main/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/G-Nomix/2022-09-18-de952a2/bianca/gnomix-main/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/G-Nomix/2022-09-18-de952a2/miarka/gnomix-main/config.yaml looks like it is not a sw yaml.
+/sw/bioinfo/G-Nomix/2022-09-18-de952a2/snowy/gnomix-main/config.yaml looks like it is not a sw yaml.
+ont_h5_validator-2.0.1.yaml  !=  /sw/bioinfo/McClintock/McClintock-2.0.0.yaml
+svtools-0.5.1.yaml  !=  /sw/bioinfo/nextNEOpi/nextNEOpi-1.3.2b.yaml
+/sw/bioinfo/pVACtools/3.1.1/src/.readthedocs.yaml looks like it is not a sw yaml.
+pVACtools-3.1.1.yaml  !=  /sw/bioinfo/HLA-HD-temporary/HLA-HD-1.4.0.yaml
+pVACtools-3.1.1.yaml  !=  /sw/bioinfo/HLA-HD/HLA-HD-1.4.0.yaml
+pVACtools-3.1.1.yaml  !=  /sw/bioinfo/HLA-HD/HLA-HD-1.7.0.yaml
+pVACtools-3.1.1.yaml  !=  /sw/bioinfo/gdc-client/gdc-client-1.6.1.yaml
+AGAT-1.0.0.yaml  !=  /sw/bioinfo/diffReps/diffReps-1.55.6.yaml
+AGAT-1.0.0.yaml  !=  /sw/bioinfo/TRUST4/TRUST4-1.0.8.yaml
+AGAT-1.0.0.yaml  !=  /sw/bioinfo/Magic-BLAST/Magic-BLAST-1.7.0.yaml
+AGAT-1.0.0.yaml  !=  /sw/bioinfo/echtvar/echtvar-0.1.7.yaml
+AGAT-1.0.0.yaml  !=  /sw/bioinfo/hh-suite/hh-suite-3.3.0.yaml
+AGAT-1.0.0.yaml  !=  /sw/bioinfo/Cytoscape/Cytoscape-3.9.1.yaml
+AGAT-1.0.0.yaml  !=  /sw/bioinfo/dentist/dentist-4.0.0.yaml
+XP-CLR-1.1.2.yaml  !=  /sw/bioinfo/Novoalign/Novoalign-3.09.05.yaml
+XP-CLR-1.1.2.yaml  !=  /sw/bioinfo/AnchorWave/AnchorWave-1.1.1.yaml
+scikit-allel-1.3.5.yaml  !=  /sw/bioinfo/MAJIQ/MAJIQ-2.4.dev4+gdd436123.yaml
+scikit-allel-1.3.5.yaml  !=  /sw/bioinfo/btrim/btrim-0.3.0.yaml
+scikit-allel-1.3.5.yaml  !=  /sw/bioinfo/IRMA/IRMA-1.0.3.yaml
+Juicer-2.0.yaml  !=  /sw/bioinfo/SweepFinder2/SweepFinder2-1.0.yaml
+TEspeX-2.0.1.yaml  !=  /sw/bioinfo/pairtools/pairtools-1.0.2.yaml
+polysolver-v4.yaml  !=  /sw/bioinfo/bali-phy/bali-phy-3.6.1.yaml
+polysolver-v4.yaml  !=  /sw/bioinfo/HiCapTools/HiCapTools-1.3.2.yaml
+polysolver-v4.yaml  !=  /sw/bioinfo/fgbio/fgbio-2.1.0.yaml
+DamageProfiler-1.1.yaml  !=  /sw/bioinfo/ERVmap/ERVmap-1.1.yaml
+DamageProfiler-1.1.yaml  !=  /sw/bioinfo/GraphAligner/GraphAligner-1.0.17b.yaml
+MashMap-3.0.4.yaml  !=  /sw/bioinfo/FAVORannotator/FAVORannotator-20230307-ea7c9ae.yaml
+sequenza-utils-3.0.0.yaml  !=  /sw/bioinfo/atria/atria-3.2.2.yaml
+OBITools-1.2.13.yaml  !=  /sw/bioinfo/Multi-CSAR-temporary/Multi-CSAR-20180316-8fd582c.yaml
+mapping values are not allowed here
+  in "/sw/bioinfo/CAT-BAT/CAT-BAT-5.2.3.yaml", line 15, column 23
+mapping values are not allowed here
+  in "/sw/bioinfo/DRAM/DRAM-1.4.6.yaml", line 15, column 62
+boost-1.44.0.yaml  !=  /sw/build/boost/boost-1.81.0-gcc10.3.0-mpi4.1.1.yaml
+cmake-3.17.3.yaml  !=  /sw/build/cmake/cmake-3.22.2.yaml
+cmake-3.17.3.yaml  !=  /sw/build/cmake/cmake-3.26.3.yaml
+cmake-3.13.2.yaml  !=  /sw/build/slurm-drmaa/slurm-drmaa-1.1.2-slurm19.05.8.yaml
+slurm-drmaa-1.1.2-slurm19.05.8.yaml  !=  /sw/build/slurm-drmaa/slurm-drmaa-1.1.3-slurm19.05.8.yaml
+slurm-drmaa-1.1.2-slurm19.05.8.yaml  !=  /sw/build/slurm-drmaa/slurm-drmaa-1.1.3-slurm21.08.2.yaml
+slurm-drmaa-1.1.2-slurm19.05.8.yaml  !=  /sw/build/slurm-drmaa/slurm-drmaa-1.1.3-slurm21.08.8.yaml
+cmake-3.13.2.yaml  !=  /sw/build/slurm-drmaa/slurm-drmaa-1.1.2-slurm19.05.8.yaml
+m4-1.4.17.yaml  !=  /sw/build/spack/spack-0.17.1.yaml
+m4-1.4.17.yaml  !=  /sw/build/spack-user/spack-user-0.17.1.yaml
