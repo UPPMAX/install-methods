@@ -438,6 +438,10 @@ if [ $MODE == "REMOVE" ] ; then
         fi
     fi
     if [ -d "$COMMONDIR" ]; then
+        rm -f $COMMONDIR/$VERSION
+        for C in ${CLUSTERS[@]}; do
+            rm -f ${COMMONDIR/common/"\$C"}/$VERSION
+        done
         if [ -z "\$(ls -A $COMMONDIR)" ]; then
             rm -rf ${COMMONDIR}
         fi
@@ -483,6 +487,12 @@ RMVTMP
             printf "%s\n" "      ${COMMONDIR}" 1>&2
         fi
     fi
+    if [ -f $COMMONDIR/$VERSION ]; then
+        printf "%s\n" "      $COMMONDIR/$VERSION" 1>&2
+    fi
+    for C in ${CLUSTERS[@]}; do
+        printf "%s\n" "      ${COMMONDIR/common/$C}/$VERSION" 1>&2
+    done
 ##### DRYRUN END ######
     printf "export TOOL='' VERSION='' TOOLDIR='' VERSIONDIR='' PREFIX='' COMMONDIR='' SRCDIR='' NEWS=''" > $TMPFILE
     chmod +x $TMPFILE
