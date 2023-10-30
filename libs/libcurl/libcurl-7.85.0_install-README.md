@@ -19,3 +19,4 @@ LOG
     tar xvf 
     make
 
+    ./configure --prefix=/sw/libs/libcurl/7.85.0/rackham --with-openssl --with-zstd

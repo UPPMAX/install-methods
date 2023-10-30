@@ -771,6 +771,7 @@ Github-hosted packages.  Make sure hdf5/1.14.0 is loaded, loomR uses it.
     devtools::install_github('WSpiller/MVMR', upgrade='never')
     devtools::install_github("danro9685/CIMLR", ref="R", upgrade='never')
     devtools::install_gitlab('CarlBrunius/MUVR', upgrade='never')
+    devtools::install_github('xuranw/MuSiC', upgrade='never')
 
 
 STAAR and its tutorials work with several other packages not provided with CRAN or BioConductor.
@@ -971,23 +972,31 @@ Final run
 
     source('inst1.R')
 
+The outside R, in $VERSIONDIR (as of 2023-10-11):
+
     ./installed.R -c
 
     The R_packages/4.3.1 omnibus module for R version 4.3.1 (2023-06-16) and BioConductor version 3.17
 
-    A total of 23475 R packages are installed
-    A total of 23492 packages are available in CRAN and BioConductor
-    19820 CRAN packages are installed, out of 19933 available
+    A total of 23476 R packages are installed
+    A total of 23535 packages are available in CRAN and BioConductor
+    19809 CRAN packages are installed, out of 19976 available
     3544 BioConductor-specific packages are installed, out of 3559 available
-    109 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere
+    121 other R packages are installed. These are not in CRAN/BioConductor, are only available in the CRAN/BioConductor archives, or are hosted on github, gitlab or elsewhere
 
 
 Adding a new package
 --------------------
 
-Srouce `$VERSIONDIR/source-for-setup`.  Load R, then for both CRAN and
-BioConductor packages, we use `BiocManager::install(update=FALSE)` which ultimately uses
-R's own `install.packages()`.
+Setup.
+
+    cd /sw/apps/R_packages/4.3.1
+    source source-for-setup
+    chmod u+w rackham
+
+Within R, for both CRAN and BioConductor packages, we use
+`BiocManager::install(update=FALSE)` which ultimately uses R's own
+`install.packages()`.
 
 
     new.packages = c('package_a')
@@ -996,13 +1005,20 @@ R's own `install.packages()`.
     BiocManager::install(new.packages, update=FALSE, Ncpus=10)
     BiocManager::install(new.packages, update=FALSE, Ncpus=10)
 
+This will fail if it wants to update packages, as they will still be
+write-protected. Ideally, this would not update packages, we want to
+fix on the installed versions here.
+
+Quit R, and relock the entire tree to cover any new installations
+as a result of the above.
+
+    chmod -R -w rackham
 
 
 After adding new packages
 -------------------------
 
-Within R, get a list of installed packages and their versions.  This
-modification produces a case-insensitive sorted list.
+Get a count of installed packages, and a list of installed packages.
 
     cd $VERSIONDIR
     ./installed.R -c | tee counts.txt
@@ -1011,9 +1027,8 @@ modification produces a case-insensitive sorted list.
 
 Add this to the appropriate section of <http://www.uppmax.uu.se/support/user-guides/r_packages-module-guide/>
 
-We do not need to write-protect this module any longer, as its contents are
-provided through `R_LIBS_SITE`, which is not used as a possible location for
-user installations.
+We always need to write-protect this module, as well as the corresponding R module.
+
 
 
 Note about the mf file
