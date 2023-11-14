@@ -15,7 +15,7 @@ LOG
     VERSION=4.09.1
     cd /sw/bioinfo/$TOOL
 
-    makeroom.sh -f -t $TOOL -v $VERSION -s misc -w https://github.com/Benson-Genomics-Lab/TRF -l "Gnu Afferoo GPL v3" -d "program to locate and display tandem repeats in DNA sequences" 
+    makeroom.sh -f -t $TOOL -v $VERSION -s alignment -w https://github.com/Benson-Genomics-Lab/TRF -l "Gnu Afferoo GPL v3" -d "program to locate and display tandem repeats in DNA sequences" 
     ./makeroom_${TOOL}_${VERSION}.sh 
     source SOURCEME_${TOOL}_${VERSION} 
     cd ${VERSION}

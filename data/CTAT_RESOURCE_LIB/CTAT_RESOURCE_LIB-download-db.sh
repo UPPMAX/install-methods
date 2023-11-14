@@ -38,17 +38,22 @@ function fetch_data() {
     [[ -f ${M} || -f ${MS} ]] && echo -n "Already fetched. " || { wget $WGET_OPTIONS $SITE/${M} || wget $WGET_OPTIONS $SITE/${MS}; echo -n "Fetched. "; }
     [[ -f ${MS} ]] && M=$MS
     echo -n "Checking MD5 ... "
-    if md5sum -c ${M} ; then
-        if [[ "$EXPAND" ]] ; then
-            echo -n "Expanding ... "
-            tar xzf ${D}
-        else
-            echo -n "Touching ${D}_checked ... "
-            touch ${D}_checked
+    if [[ -f $MS ]] ; then  # md5 to check
+        if md5sum -c ${M} ; then
+            if [[ "$EXPAND" ]] ; then
+                echo -n "Expanding ... "
+                tar xzf ${D}
+            else
+                echo -n "Touching ${D}_checked ... "
+                touch ${D}_checked
+            fi
+        else 
+            echo -n "*** FAILED MD5 check *** "
+            touch ${D}_FAILED_MD5
         fi
     else 
-        echo -n "*** FAILED MD5 check *** "
-        touch ${D}_FAILED_MD5
+        echo -n "*** no .md5sum file to check ***"
+        touch ${D}_MISSING_MD5
     fi
     echo "Done."
 }
@@ -105,33 +110,43 @@ function fetch_data() {
 #fetch_version
 
 
-#  For STAR-fusion 1.9
+#  For STAR-fusion 1.9.1
 
-VERSION=2020-04
-SITE=https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/__genome_libs_StarFv1.9/
-Files=(
-GRCh37_gencode_v19_CTAT_lib_Apr032020.plug-n-play.tar.gz
-GRCh38_gencode_v22_CTAT_lib_Apr032020.plug-n-play.tar.gz
-GRCh38_gencode_v33_CTAT_lib_Apr062020.plug-n-play.tar.gz
-Mouse_gencode_M24_CTAT_lib_Apr062020.plug-n-play.tar.gz
-)
-
-fetch_version
+#VERSION=2020-04
+#SITE=https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/__genome_libs_StarFv1.9/
+#Files=(
+#GRCh37_gencode_v19_CTAT_lib_Apr032020.plug-n-play.tar.gz
+#GRCh38_gencode_v22_CTAT_lib_Apr032020.plug-n-play.tar.gz
+#GRCh38_gencode_v33_CTAT_lib_Apr062020.plug-n-play.tar.gz
+#Mouse_gencode_M24_CTAT_lib_Apr062020.plug-n-play.tar.gz
+#)
+#
+#fetch_version
 
 
 
 #  For STAR-fusion 1.10
 
-VERSION=2021-03
-SITE=https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/__genome_libs_StarFv1.10/
+#VERSION=2021-03
+#SITE=https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/__genome_libs_StarFv1.10/
+#Files=(
+#GRCh37_gencode_v19_CTAT_lib_Mar012021.plug-n-play.tar.gz
+#GRCh38_gencode_v22_CTAT_lib_Mar012021.plug-n-play.tar.gz
+#GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play.tar.gz
+#)
+#
+#fetch_version
+
+
+#  plug-n-play: no .md5sum file
+
+VERSION=2022-11
+SITE=https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/
 Files=(
-GRCh37_gencode_v19_CTAT_lib_Mar012021.plug-n-play.tar.gz
-GRCh38_gencode_v22_CTAT_lib_Mar012021.plug-n-play.tar.gz
-GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play.tar.gz
+Mouse_GRCm39_M31_CTAT_lib_Nov092022.plug-n-play.tar.gz
 )
 
 fetch_version
-
 
 
 

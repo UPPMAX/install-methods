@@ -772,6 +772,7 @@ Github-hosted packages.  Make sure hdf5/1.14.0 is loaded, loomR uses it.
     devtools::install_github("danro9685/CIMLR", ref="R", upgrade='never')
     devtools::install_gitlab('CarlBrunius/MUVR', upgrade='never')
     devtools::install_github('xuranw/MuSiC', upgrade='never')
+    devtools::install_github('cole-trapnell-lab/monocle3', dependencies=TRUE, upgrade='never')
 
 
 STAAR and its tutorials work with several other packages not provided with CRAN or BioConductor.
