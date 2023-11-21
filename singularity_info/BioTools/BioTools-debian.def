@@ -1,0 +1,117 @@
+Bootstrap: docker
+From: debian:latest
+
+%environment
+  export LC_ALL=C
+  export PYTHONNOUSERSITE=True
+  export PATH=$PATH:/opt/STAR-2.7.11a/bin/Linux_x86_64_static
+
+%files
+  make_links.sh /opt/
+  package-versions.sh /opt/
+
+%post
+  export LC_ALL=C
+  export PYTHONNOUSERSITE=True
+  export DEBIAN_FRONTEND=noninteractive
+
+  export aptPACKAGES="python3-deeptools \
+    abyss \
+    augustus \
+    bbmap \
+    bcftools \
+    beast2-mcmc \
+    bedtools \
+    bioperl \
+    bowtie2 \
+    busco \
+    bwa \
+    canu \
+    cd-hit \
+    cutadapt \
+    delly \
+    exonerate \
+    fasta3 \
+    fastp \
+    fastqc \
+    gffread \
+    hmmer \
+    igv \
+    infernal \
+    jellyfish \
+    kallisto \
+    kraken \
+    kraken2 \
+    macs \
+    mafft \
+    minimap2 \
+    mrbayes \
+    multiqc \
+    ncbi-blast+ \
+    paml \
+    pbbamtools \
+    phast \
+    picard \
+    pilon \
+    qcumber \
+    qiime \
+    quicktree \
+    ray \
+    salmon \
+    samblaster \
+    samclip \
+    samtools \
+    snap-aligner \
+    snpeff \
+    spades \
+    spaln \
+    stacks \
+    stringtie \
+    tophat-recondition \
+    trf \
+    trim-galore \
+    velvet \
+    vmatch \
+    vsearch \
+    wham-align \
+    "
+
+  echo 'export aptPACKAGES="'$aptPACKAGES'"' >> $SINGULARITY_ENVIRONMENT
+
+  # Package cache in /tmp
+  mkdir -p /tmp/aptdeb &&  echo "Dir::Cache "/tmp/aptdeb";" > /etc/apt/apt.conf.d/singularity-cache.conf
+
+  apt-get update && apt-get -y dist-upgrade && \
+  apt-get install -y git wget build-essential cmake gfortran vim gawk\
+    python3-venv python3-pip zlib1g-dev xxd \
+    $aptPACKAGES
+
+
+  # Download
+  export TMPD=/tmp/downloads
+  mkdir -p $TMPD
+
+
+  # STAR https://github.com/alexdobin/STAR
+  cd /opt
+  wget -P $TMPD -c https://github.com/alexdobin/STAR/archive/2.7.11a.tar.gz 
+  tar -xzf $TMPD/2.7.11a.tar.gz
+  cd STAR-2.7.11a/source
+  make -j 4 STAR
+
+  #python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel
+  python3 -m pip install --no-cache-dir --upgrade --break-system-packages macs3
+
+  # Patch for old kernels
+  #strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 
+
+  chmod +x /opt/make_links.sh /opt/package-versions.sh
+  apt list $aptPACKAGES | awk '{gsub("/jammy|,now|jammy-updates|/stable|amd64|\\[installed\\]|all","",$0); print}'| column -t
+
+%runscript
+#!/bin/sh
+  if command -v $SINGULARITY_NAME > /dev/null 2> /dev/null; then
+    exec $SINGULARITY_NAME "$@"
+  else
+    echo "# ERROR !!! Command $SINGULARITY_NAME not found in the container"
+  fi

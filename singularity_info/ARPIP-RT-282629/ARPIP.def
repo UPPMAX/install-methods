@@ -1,0 +1,90 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%environment
+  export LC_ALL=C
+  export PYTHONNOUSERSITE=True
+
+%post
+  export LC_ALL=C
+  export PYTHONNOUSERSITE=True
+  export DEBIAN_FRONTEND=noninteractive
+
+  # Package cache in /tmp
+  mkdir -p /tmp/apt20 &&  echo "Dir::Cache "/tmp/apt20";" > /etc/apt/apt.conf.d/singularity-cache.conf
+
+  apt-get update && apt-get -y dist-upgrade && \
+  apt-get install -y wget git cmake build-essential zlib1g-dev
+
+  # Download
+  export TMPD=/tmp/downloads &&   mkdir -p $TMPD
+  mkdir -p /installs 
+
+  # bpp-core http://biopp.univ-montp2.fr/
+  cd /installs
+  git clone https://github.com/BioPP/bpp-core
+  cd bpp-core
+  git checkout tags/v2.4.1 -b v241
+  mkdir build 
+  cd build
+  cmake ..
+  make -j 16 install
+
+  # bpp-seq http://biopp.univ-montp2.fr/
+  cd /installs
+  git clone https://github.com/BioPP/bpp-seq
+  cd bpp-seq
+  git checkout tags/v2.4.1 -b v241
+  mkdir build
+  cd build
+  cmake ..
+  make -j 16 install
+
+  # bpp-phyl http://biopp.univ-montp2.fr/
+  cd /installs
+  git clone https://github.com/BioPP/bpp-phyl
+  cd bpp-phyl
+  git checkout tags/v2.4.1 -b v241
+  mkdir build
+  cd build
+  cmake  ..
+  make -j 16 install
+
+  # boost - C++ Libraries http://www.boost.org/
+  cd /installs
+  wget -P $TMPD -c https://boostorg.jfrog.io/artifactory/main/release/1.79.0/source/boost_1_79_0.tar.gz 
+  tar xvf $TMPD/boost_1_79_0.tar.gz
+  cd boost_1_79_0
+  ./bootstrap.sh --prefix=/usr/
+  ./b2 
+  ./b2 install 
+
+  # glog - Google Logging Library https://github.com/google/glog/
+  cd /installs
+  git clone -b v0.5.0 https://github.com/google/glog
+  cd glog
+  cmake -H. -Bbuild -G "Unix Makefiles"
+  cmake --build build --target install
+
+  # gtest - Google Test Library https://github.com/google/googletest/
+  cd /installs
+  git clone https://github.com/google/googletest.git -b release-1.11.0
+  cd googletest
+  mkdir build
+  cd build
+  cmake ..
+  make -j 4 install
+
+
+  # ARPIP
+  cd /opt
+  git clone https://github.com/acg-team/bpp-arpip/
+  cd bpp-arpip
+  cmake --target ARPIP -- -DCMAKE_BUILD_TYPE=Release-static CMakeLists.txt
+  make -j 8 
+ 
+  # clean 
+  cd / && rm -rf /installs
+  
+%runscript
+  /opt/bpp-arpip/ARPIP "$@"

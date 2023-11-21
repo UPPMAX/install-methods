@@ -1,0 +1,39 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%environment
+  export LC_ALL=C
+  export PYTHONNOUSERSITE=True
+
+%post
+  export LC_ALL=C
+  export PYTHONNOUSERSITE=True
+  export DEBIAN_FRONTEND=noninteractive
+
+  mkdir -p /tmp/apt22 &&  echo "Dir::Cache "/tmp/apt22";" > /etc/apt/apt.conf.d/singularity-cache.conf
+
+  apt-get update && apt-get -y dist-upgrade && \
+  apt-get install -y gnupg software-properties-common wget git 
+  mkdir -m755 -p /etc/apt/keyrings  # not needed since apt version 2.4.0
+  wget -O /etc/apt/keyrings/qgis-archive-keyring.gpg https://download.qgis.org/downloads/qgis-archive-keyring.gpg
+  
+cat << EOF > /etc/apt/sources.list.d/qgis.sources
+Types: deb deb-src
+URIs: https://qgis.org/debian
+Suites: jammy
+Architectures: amd64
+Components: main
+Signed-By: /etc/apt/keyrings/qgis-archive-keyring.gpg
+EOF
+
+  apt-get update && apt-get install -y qgis qgis-plugin-grass
+
+  strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 
+
+%runscript
+#!/bin/sh
+  if command -v $SINGULARITY_NAME > /dev/null 2> /dev/null; then
+    exec $SINGULARITY_NAME "$@"
+  else
+    echo "# ERROR !!! Command $SINGULARITY_NAME not found in the container"
+  fi
