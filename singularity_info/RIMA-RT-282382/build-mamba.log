@@ -1,0 +1,1666 @@
+Build target 'RIMA-mamba.sif' already exists and will be deleted during the build process. Do you want to continue? [y/N] INFO:    Starting build...
+2023/10/24 10:06:34  info unpack layer: sha256:96d54c3075c9eeaed5561fd620828fd6bb5d80ecae7cb25f9ba5f7d88ea6e15c
+2023/10/24 10:06:35  info unpack layer: sha256:5f1c8a17ad9ee2015fbec1b8b65495c0bfda1dddb3ae6bc8cf8cac88734f8f3e
+INFO:    Running post scriptlet
++ export LC_ALL=C
++ export PYTHONNOUSERSITE=True
++ export CONDA_PKGS_DIRS=/tmp/mamba_pkgs_dir
++ mkdir -p /tmp/mamba_pkgs_dir
++ apt-get update
+Get:1 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal InRelease [265 kB]
+Get:3 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [3150 kB]
+Get:4 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [29.3 kB]
+Get:5 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [2953 kB]
+Get:6 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [1121 kB]
+Get:7 http://archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:8 http://archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:9 http://archive.ubuntu.com/ubuntu focal/main amd64 Packages [1275 kB]
+Get:10 http://archive.ubuntu.com/ubuntu focal/multiverse amd64 Packages [177 kB]
+Get:11 http://archive.ubuntu.com/ubuntu focal/restricted amd64 Packages [33.4 kB]
+Get:12 http://archive.ubuntu.com/ubuntu focal/universe amd64 Packages [11.3 MB]
+Get:13 http://archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [32.0 kB]
+Get:14 http://archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [3102 kB]
+Get:15 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [3638 kB]
+Get:16 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1425 kB]
+Get:17 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [28.6 kB]
+Get:18 http://archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [55.2 kB]
+Fetched 29.0 MB in 3s (10.2 MB/s)
+Reading package lists...
++ apt-get install -y git libfontconfig1 libxrender1 libffi7
+Reading package lists...
+Building dependency tree...
+Reading state information...
+libffi7 is already the newest version (3.3-4).
+git is already the newest version (1:2.25.1-1ubuntu3.11).
+The following additional packages will be installed:
+  fontconfig-config fonts-dejavu-core libbsd0 libfreetype6 libpng16-16
+  libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 ucf
+The following NEW packages will be installed:
+  fontconfig-config fonts-dejavu-core libbsd0 libfontconfig1 libfreetype6
+  libpng16-16 libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 libxrender1 ucf
+0 upgraded, 13 newly installed, 0 to remove and 0 not upgraded.
+Need to get 2572 kB of archives.
+After this operation, 8431 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu focal/main amd64 libbsd0 amd64 0.10.0-1 [45.4 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal/main amd64 ucf all 3.0038+nmu1 [51.6 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal/main amd64 libpng16-16 amd64 1.6.37-2 [179 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal/main amd64 libxau6 amd64 1:1.0.9-0ubuntu1 [7488 B]
+Get:5 http://archive.ubuntu.com/ubuntu focal/main amd64 libxdmcp6 amd64 1:1.1.3-0ubuntu1 [10.6 kB]
+Get:6 http://archive.ubuntu.com/ubuntu focal/main amd64 libxcb1 amd64 1.14-2 [44.7 kB]
+Get:7 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libx11-data all 2:1.6.9-2ubuntu1.6 [114 kB]
+Get:8 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libx11-6 amd64 2:1.6.9-2ubuntu1.6 [577 kB]
+Get:9 http://archive.ubuntu.com/ubuntu focal/main amd64 fonts-dejavu-core all 2.37-1 [1041 kB]
+Get:10 http://archive.ubuntu.com/ubuntu focal/main amd64 fontconfig-config all 2.13.1-2ubuntu3 [28.8 kB]
+Get:11 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libfreetype6 amd64 2.10.1-2ubuntu0.3 [341 kB]
+Get:12 http://archive.ubuntu.com/ubuntu focal/main amd64 libfontconfig1 amd64 2.13.1-2ubuntu3 [114 kB]
+Get:13 http://archive.ubuntu.com/ubuntu focal/main amd64 libxrender1 amd64 1:0.9.10-1 [18.7 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 2572 kB in 2s (1231 kB/s)
+Selecting previously unselected package libbsd0:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 7529 files and directories currently installed.)
+Preparing to unpack .../00-libbsd0_0.10.0-1_amd64.deb ...
+Unpacking libbsd0:amd64 (0.10.0-1) ...
+Selecting previously unselected package ucf.
+Preparing to unpack .../01-ucf_3.0038+nmu1_all.deb ...
+Moving old data out of the way
+Unpacking ucf (3.0038+nmu1) ...
+Selecting previously unselected package libpng16-16:amd64.
+Preparing to unpack .../02-libpng16-16_1.6.37-2_amd64.deb ...
+Unpacking libpng16-16:amd64 (1.6.37-2) ...
+Selecting previously unselected package libxau6:amd64.
+Preparing to unpack .../03-libxau6_1%3a1.0.9-0ubuntu1_amd64.deb ...
+Unpacking libxau6:amd64 (1:1.0.9-0ubuntu1) ...
+Selecting previously unselected package libxdmcp6:amd64.
+Preparing to unpack .../04-libxdmcp6_1%3a1.1.3-0ubuntu1_amd64.deb ...
+Unpacking libxdmcp6:amd64 (1:1.1.3-0ubuntu1) ...
+Selecting previously unselected package libxcb1:amd64.
+Preparing to unpack .../05-libxcb1_1.14-2_amd64.deb ...
+Unpacking libxcb1:amd64 (1.14-2) ...
+Selecting previously unselected package libx11-data.
+Preparing to unpack .../06-libx11-data_2%3a1.6.9-2ubuntu1.6_all.deb ...
+Unpacking libx11-data (2:1.6.9-2ubuntu1.6) ...
+Selecting previously unselected package libx11-6:amd64.
+Preparing to unpack .../07-libx11-6_2%3a1.6.9-2ubuntu1.6_amd64.deb ...
+Unpacking libx11-6:amd64 (2:1.6.9-2ubuntu1.6) ...
+Selecting previously unselected package fonts-dejavu-core.
+Preparing to unpack .../08-fonts-dejavu-core_2.37-1_all.deb ...
+Unpacking fonts-dejavu-core (2.37-1) ...
+Selecting previously unselected package fontconfig-config.
+Preparing to unpack .../09-fontconfig-config_2.13.1-2ubuntu3_all.deb ...
+Unpacking fontconfig-config (2.13.1-2ubuntu3) ...
+Selecting previously unselected package libfreetype6:amd64.
+Preparing to unpack .../10-libfreetype6_2.10.1-2ubuntu0.3_amd64.deb ...
+Unpacking libfreetype6:amd64 (2.10.1-2ubuntu0.3) ...
+Selecting previously unselected package libfontconfig1:amd64.
+Preparing to unpack .../11-libfontconfig1_2.13.1-2ubuntu3_amd64.deb ...
+Unpacking libfontconfig1:amd64 (2.13.1-2ubuntu3) ...
+Selecting previously unselected package libxrender1:amd64.
+Preparing to unpack .../12-libxrender1_1%3a0.9.10-1_amd64.deb ...
+Unpacking libxrender1:amd64 (1:0.9.10-1) ...
+Setting up libxau6:amd64 (1:1.0.9-0ubuntu1) ...
+Setting up libx11-data (2:1.6.9-2ubuntu1.6) ...
+Setting up libpng16-16:amd64 (1.6.37-2) ...
+Setting up fonts-dejavu-core (2.37-1) ...
+Setting up ucf (3.0038+nmu1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
+debconf: falling back to frontend: Readline
+Setting up libbsd0:amd64 (0.10.0-1) ...
+Setting up libxdmcp6:amd64 (1:1.1.3-0ubuntu1) ...
+Setting up libxcb1:amd64 (1.14-2) ...
+Setting up fontconfig-config (2.13.1-2ubuntu3) ...
+Setting up libfreetype6:amd64 (2.10.1-2ubuntu0.3) ...
+Setting up libx11-6:amd64 (2:1.6.9-2ubuntu1.6) ...
+Setting up libfontconfig1:amd64 (2.13.1-2ubuntu3) ...
+Setting up libxrender1:amd64 (1:0.9.10-1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.12) ...
++ ln -s /usr/lib/x86_64-linux-gnu/libffi.so.7 /usr/lib/x86_64-linux-gnu/libffi.so.6
++ mkdir -p /installs
++ cd /installs
++ git clone https://github.com/liulab-dfci/RIMA_pipeline.git
+Cloning into 'RIMA_pipeline'...
++ cd RIMA_pipeline
++ echo     - markdown==3.3.7
++ echo     - requests==2.27.1
++ echo     - Cython
++ bash ./RIMA_environment.sh -p GCP
+Installing the RIMA environment on: GCP
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 23.3.1
+  latest version: 23.9.0
+
+Please update conda by running
+
+    $ conda update -n base -c conda-forge conda
+
+Or to minimize the number of packages updated during conda update use
+
+     conda install conda=23.9.0
+
+
+
+## Package Plan ##
+
+  environment location: /opt/conda
+
+  added / updated specs:
+    - mamba
+
+
+The following packages will be UPDATED:
+
+  openssl                                  3.1.2-hd590300_0 --> 3.1.3-hd590300_0 
+
+
+Proceed ([y]/n)? 
+
+Downloading and Extracting Packages
+
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+Creating all environments for the pipeline
+
+
+Looking for: ['centrifuge', 'ete3']
+
+
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/setuptools-44.0.0-py27_0' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/setuptools-44.0.0-py27_0' has invalid SHA-256 checksum
+Transaction
+
+  Prefix: /opt/conda/envs/centrifuge_env
+
+  Updating specs:
+
+   - centrifuge
+   - ete3
+
+
+  Package                Version  Build           Channel                    Size
+───────────────────────────────────────────────────────────────────────────────────
+  Install:
+───────────────────────────────────────────────────────────────────────────────────
+
+  + _libgcc_mutex            0.1  conda_forge     conda-forge/linux-64     Cached
+  + _openmp_mutex            4.5  2_gnu           conda-forge/linux-64     Cached
+  + blas                     1.0  openblas        pkgs/main/linux-64       Cached
+  + ca-certificates   2023.08.22  h06a4308_0      pkgs/main/linux-64       Cached
+  + cairo                 1.14.6  4               conda-forge/linux-64     Cached
+  + centrifuge             1.0.4  hd03093a_0      bioconda/linux-64        Cached
+  + certifi            2020.6.20  pyhd3eb1b0_3    pkgs/main/noarch         Cached
+  + ete3                   3.1.1  pyh24bf2e0_1    bioconda/noarch          Cached
+  + expat                  2.5.0  h6a678d5_0      pkgs/main/linux-64       Cached
+  + fontconfig            2.12.1  4               conda-forge/linux-64     Cached
+  + freetype                 2.7  1               conda-forge/linux-64     Cached
+  + gdbm                    1.18  hd4cb3f1_4      pkgs/main/linux-64       Cached
+  + gettext               0.21.0  hf68c758_0      pkgs/main/linux-64       Cached
+  + glib                  2.51.4  0               conda-forge/linux-64     Cached
+  + graphite2             1.3.14  h295c915_1      pkgs/main/linux-64       Cached
+  + harfbuzz               1.4.3  0               conda-forge/linux-64     Cached
+  + icu                     58.2  he6710b0_3      pkgs/main/linux-64       Cached
+  + jpeg                      9e  h5eee18b_1      pkgs/main/linux-64       Cached
+  + libffi                 3.4.4  h6a678d5_0      pkgs/main/linux-64       Cached
+  + libgcc-ng             13.2.0  h807b86a_2      conda-forge/linux-64     Cached
+  + libgfortran-ng         7.5.0  ha8ba4b0_17     pkgs/main/linux-64       Cached
+  + libgfortran4           7.5.0  ha8ba4b0_17     pkgs/main/linux-64       Cached
+  + libgomp               13.2.0  h807b86a_2      conda-forge/linux-64     Cached
+  + libiconv                1.17  h166bdaf_0      conda-forge/linux-64     Cached
+  + libopenblas           0.3.18  hf726d26_0      pkgs/main/linux-64       Cached
+  + libpng                1.6.39  h5eee18b_0      pkgs/main/linux-64       Cached
+  + libstdcxx-ng          13.2.0  h7e041cc_2      conda-forge/linux-64     Cached
+  + libtiff               4.0.10  h2733197_2      pkgs/main/linux-64       Cached
+  + libuuid               2.38.1  h0b41bf4_0      conda-forge/linux-64     Cached
+  + libxcb                  1.15  h7f8727e_0      pkgs/main/linux-64       Cached
+  + libxml2               2.9.14  h74e7548_0      pkgs/main/linux-64       Cached
+  + libxslt               1.1.35  h4e12654_0      pkgs/main/linux-64       Cached
+  + libzlib               1.2.13  hd590300_5      conda-forge/linux-64     Cached
+  + lxml                   4.4.2  py27hefd8a0e_0  pkgs/main/linux-64       Cached
+  + ncurses                  6.4  h6a678d5_0      pkgs/main/linux-64       Cached
+  + numpy                 1.16.6  py27h30dfecb_0  pkgs/main/linux-64       Cached
+  + numpy-base            1.16.6  py27h2f8d375_0  pkgs/main/linux-64       Cached
+  + openssl               1.0.2u  h7b6447c_0      pkgs/main/linux-64       Cached
+  + pango                 1.40.4  0               conda-forge/linux-64     Cached
+  + pcre                    8.45  h295c915_0      pkgs/main/linux-64       Cached
+  + perl                  5.34.0  h5eee18b_2      pkgs/main/linux-64       Cached
+  + pip                   19.3.1  py27_0          pkgs/main/linux-64       Cached
+  + pixman                0.34.0  hceecf20_3      pkgs/main/linux-64       Cached
+  + pyqt                  4.11.4  py27_3          conda-forge/linux-64     Cached
+  + python                2.7.18  h42bf7aa_3      pkgs/main/linux-64       Cached
+  + qt                     4.8.7  ha8c56c7_9      conda-forge/linux-64     Cached
+  + readline                 8.2  h5eee18b_0      pkgs/main/linux-64       Cached
+  + scipy                  1.2.1  py27he2b7bc3_0  pkgs/main/linux-64       Cached
+  + setuptools            44.0.0  py27_0          pkgs/main/linux-64       Cached
+  + sip                     4.18  py27_1          conda-forge/linux-64     Cached
+  + six                   1.16.0  pyhd3eb1b0_1    pkgs/main/noarch         Cached
+  + sqlite                3.41.2  h5eee18b_0      pkgs/main/linux-64       Cached
+  + tar                     1.34  hb2e2bae_1      conda-forge/linux-64     Cached
+  + tk                    8.6.12  h1ccaba5_0      pkgs/main/linux-64       Cached
+  + wget                  1.19.5  h1ad7b7a_0      pkgs/main/linux-64       Cached
+  + wheel                 0.37.1  pyhd3eb1b0_0    pkgs/main/noarch         Cached
+  + xorg-kbproto           1.0.7  h7f98852_1002   conda-forge/linux-64     Cached
+  + xorg-libice            1.1.1  hd590300_0      conda-forge/linux-64     Cached
+  + xorg-libsm             1.2.4  h7391055_0      conda-forge/linux-64     Cached
+  + xorg-libx11            1.8.7  h8ee46fc_0      conda-forge/linux-64     Cached
+  + xorg-libxau           1.0.11  hd590300_0      conda-forge/linux-64     Cached
+  + xorg-libxdmcp          1.1.3  h7f98852_0      conda-forge/linux-64     Cached
+  + xorg-libxext           1.3.4  h0b41bf4_2      conda-forge/linux-64     Cached
+  + xorg-libxrender       0.9.11  hd590300_0      conda-forge/linux-64     Cached
+  + xorg-libxt             1.3.0  hd590300_1      conda-forge/linux-64     Cached
+  + xorg-renderproto      0.11.1  h7f98852_1002   conda-forge/linux-64     Cached
+  + xorg-xextproto         7.3.0  h0b41bf4_1003   conda-forge/linux-64     Cached
+  + xorg-xproto           7.0.31  h27cfd23_1007   pkgs/main/linux-64       Cached
+  + xz                     5.4.2  h5eee18b_0      pkgs/main/linux-64       Cached
+  + zlib                  1.2.13  hd590300_5      conda-forge/linux-64     Cached
+  + zstd                   1.3.7  h0b5b093_0      pkgs/main/linux-64       Cached
+
+  Summary:
+
+  Install: 71 packages
+
+  Total download: 0 B
+
+───────────────────────────────────────────────────────────────────────────────────
+
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment, use
+#
+#     $ conda activate centrifuge_env
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Creating all environments for the pipeline
+bioconda/linux-64                                           Using cache
+bioconda/noarch                                             Using cache
+conda-forge/linux-64                                        Using cache
+conda-forge/noarch                                          Using cache
+pkgs/main/linux-64                                          Using cache
+pkgs/main/noarch                                            Using cache
+pkgs/r/linux-64                                             Using cache
+pkgs/r/noarch                                               Using cache
+
+
+Looking for: ['python==2.7.13=1', 'biopython']
+
+
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/setuptools-44.0.0-py27_0' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/setuptools-44.0.0-py27_0' has invalid SHA-256 checksum
+Transaction
+
+  Prefix: /opt/conda/envs/prada_env
+
+  Updating specs:
+
+   - python==2.7.13=1
+   - biopython
+
+
+  Package               Version  Build                            Channel                    Size
+───────────────────────────────────────────────────────────────────────────────────────────────────
+  Install:
+───────────────────────────────────────────────────────────────────────────────────────────────────
+
+  + _libgcc_mutex           0.1  conda_forge                      conda-forge/linux-64     Cached
+  + _openmp_mutex           4.5  2_gnu                            conda-forge/linux-64     Cached
+  + biopython              1.70  np112py27_1                      bioconda/linux-64        Cached
+  + blas                    1.1  openblas                         conda-forge/linux-64     Cached
+  + ca-certificates   2023.7.22  hbcca054_0                       conda-forge/linux-64     Cached
+  + certifi          2019.11.28  py27h8c360ce_1                   conda-forge/linux-64     Cached
+  + freetype              2.8.1  hfa320df_1                       conda-forge/linux-64     Cached
+  + jpeg                     9e  h0b41bf4_3                       conda-forge/linux-64     Cached
+  + lerc                  4.0.0  h27087fc_0                       conda-forge/linux-64     Cached
+  + libdeflate             1.17  h0b41bf4_0                       conda-forge/linux-64     Cached
+  + libgcc-ng            13.2.0  h807b86a_2                       conda-forge/linux-64     Cached
+  + libgfortran-ng        7.5.0  h14aa051_20                      conda-forge/linux-64     Cached
+  + libgfortran4          7.5.0  h14aa051_20                      conda-forge/linux-64     Cached
+  + libgomp              13.2.0  h807b86a_2                       conda-forge/linux-64     Cached
+  + libpng               1.6.39  h753d276_0                       conda-forge/linux-64     Cached
+  + libstdcxx-ng         13.2.0  h7e041cc_2                       conda-forge/linux-64     Cached
+  + libtiff               4.5.0  h6adf6a1_2                       conda-forge/linux-64     Cached
+  + libwebp-base          1.3.2  hd590300_0                       conda-forge/linux-64     Cached
+  + libzlib              1.2.13  hd590300_5                       conda-forge/linux-64     Cached
+  + mmtf-python           1.0.2  py27_0                           bioconda/linux-64        Cached
+  + msgpack-python        1.0.0  py27h9e3301b_1                   conda-forge/linux-64     Cached
+  + ncurses                 5.9  10                               conda-forge/linux-64     Cached
+  + numpy                1.12.1  py27_blas_openblash1522bff_1001  conda-forge/linux-64     Cached
+  + olefile                0.46  pyh9f0ad1d_1                     conda-forge/noarch       Cached
+  + openblas              0.3.3  h9ac9557_1001                    conda-forge/linux-64     Cached
+  + openssl              1.0.2u  h516909a_0                       conda-forge/linux-64     Cached
+  + pillow                4.2.1  py27h7cd2321_0                   pkgs/main/linux-64       Cached
+  + pip                  20.1.1  pyh9f0ad1d_0                     conda-forge/noarch       Cached
+  + python               2.7.13  1                                conda-forge/linux-64     Cached
+  + python_abi              2.7  1_cp27mu                         conda-forge/linux-64     Cached
+  + readline                6.2  0                                conda-forge/linux-64     Cached
+  + reportlab             3.4.0  py27hdd9f355_1                   conda-forge/linux-64     Cached
+  + setuptools           44.0.0  py27_0                           conda-forge/linux-64     Cached
+  + sqlite               3.13.0  1                                conda-forge/linux-64     Cached
+  + tk                   8.5.19  2                                conda-forge/linux-64     Cached
+  + wheel                0.37.1  pyhd8ed1ab_0                     conda-forge/noarch       Cached
+  + xz                    5.2.6  h166bdaf_0                       conda-forge/linux-64     Cached
+  + zlib                 1.2.13  hd590300_5                       conda-forge/linux-64     Cached
+  + zstd                  1.5.5  hfc55251_0                       conda-forge/linux-64     Cached
+
+  Summary:
+
+  Install: 39 packages
+
+  Total download: 0 B
+
+───────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment, use
+#
+#     $ conda activate prada_env
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Creating all environments for the pipeline
+bioconda/linux-64                                           Using cache
+bioconda/noarch                                             Using cache
+conda-forge/linux-64                                        Using cache
+conda-forge/noarch                                          Using cache
+pkgs/main/linux-64                                          Using cache
+pkgs/main/noarch                                            Using cache
+pkgs/r/linux-64                                             Using cache
+pkgs/r/noarch                                               Using cache
+
+
+Looking for: ['bedtools==2.29.1=hc088bd4_1', 'gatk4==4.1.4.1=0', 'htslib==1.9=h244ad75_9', 'kallisto==0.46.0=hb6a4e58_0', 'ld_impl_linux-64==2.33.1=h53a641e_7', 'matplotlib-base==3.1.3=py36hef1b27d_0', 'msisensor==0.5=hd0b41b6_0', 'multiqc==1.9=py_1', 'numpy==1.19.1=py36hbc911f0_0', 'numpy-base==1.19.1=py36hfa32c7d_0', 'pandas==1.1.1=py36he6710b0_0', 'trust4==1.0.5.1=h2e03b76_0', 'picard==2.21.4=0', 'pigz==2.4=h84994c4_0', 'pip==20.2.2=py36_0', 'pybigwig==0.3.17=py36hc013797_0', 'pysam==0.8.3=py36h84994c4_6', 'python==3.6.10=h0371630_0', 'salmon==0.13.1=h86b0361_0', 'sambamba==0.6.6=2', 'samtools==1.9=h10a08f8_12', 'scipy==1.5.0=py36h0b6359f_0', 'snakemake==5.5.4=2', 'star==2.6.1d=0', 'star-fusion==1.5.0=0']
+
+
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/ld_impl_linux-64-2.33.1-h53a641e_7' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/ld_impl_linux-64-2.33.1-h53a641e_7' has invalid SHA-256 checksum
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/graphite2-1.3.14-h295c915_1' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/graphite2-1.3.14-h295c915_1' has invalid SHA-256 checksum
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/libxml2-2.9.14-h74e7548_0' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/libxml2-2.9.14-h74e7548_0' has invalid SHA-256 checksum
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/gfortran_impl_linux-64-7.3.0-hdf63c60_1' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/gfortran_impl_linux-64-7.3.0-hdf63c60_1' has invalid SHA-256 checksum
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/gxx_impl_linux-64-7.3.0-hdf63c60_1' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/gxx_impl_linux-64-7.3.0-hdf63c60_1' has invalid SHA-256 checksum
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/harfbuzz-4.3.0-hf52aaf7_1' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/harfbuzz-4.3.0-hf52aaf7_1' has invalid SHA-256 checksum
+Transaction
+
+  Prefix: /opt/conda/envs/RIMA
+
+  Updating specs:
+
+   - bedtools==2.29.1=hc088bd4_1
+   - gatk4==4.1.4.1=0
+   - htslib==1.9=h244ad75_9
+   - kallisto==0.46.0=hb6a4e58_0
+   - ld_impl_linux-64==2.33.1=h53a641e_7
+   - matplotlib-base==3.1.3=py36hef1b27d_0
+   - msisensor==0.5=hd0b41b6_0
+   - multiqc==1.9=py_1
+   - numpy==1.19.1=py36hbc911f0_0
+   - numpy-base==1.19.1=py36hfa32c7d_0
+   - pandas==1.1.1=py36he6710b0_0
+   - trust4==1.0.5.1=h2e03b76_0
+   - picard==2.21.4=0
+   - pigz==2.4=h84994c4_0
+   - pip==20.2.2=py36_0
+   - pybigwig==0.3.17=py36hc013797_0
+   - pysam==0.8.3=py36h84994c4_6
+   - python==3.6.10=h0371630_0
+   - salmon==0.13.1=h86b0361_0
+   - sambamba==0.6.6=2
+   - samtools==1.9=h10a08f8_12
+   - scipy==1.5.0=py36h0b6359f_0
+   - snakemake==5.5.4=2
+   - star==2.6.1d=0
+   - star-fusion==1.5.0=0
+
+
+  Package                               Version  Build                Channel                    Size
+───────────────────────────────────────────────────────────────────────────────────────────────────────
+  Install:
+───────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  + _libgcc_mutex                           0.1  conda_forge          conda-forge/linux-64     Cached
+  + _openmp_mutex                           4.5  2_gnu                conda-forge/linux-64     Cached
+  + _r-mutex                              1.0.1  anacondar_1          conda-forge/noarch       Cached
+  + aioeasywebdav                         2.4.0  py36h5fab9bb_1001    conda-forge/linux-64     Cached
+  + aiohttp                         3.7.4.post0  py36h8f6f2f9_0       conda-forge/linux-64     Cached
+  + appdirs                               1.4.4  pyh9f0ad1d_0         conda-forge/noarch       Cached
+  + async-timeout                         3.0.1  py_1000              conda-forge/noarch       Cached
+  + atk-1.0                              2.38.0  hd4edc92_1           conda-forge/linux-64     Cached
+  + attrs                                22.2.0  pyh71513ae_0         conda-forge/noarch       Cached
+  + backports                               1.0  pyhd8ed1ab_3         conda-forge/noarch       Cached
+  + backports.functools_lru_cache         1.6.5  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + bbmap                                 39.01  h92535d8_1           bioconda/linux-64        Cached
+  + bcrypt                                3.2.0  py36h8f6f2f9_1       conda-forge/linux-64     Cached
+  + bedtools                             2.29.1  hc088bd4_1           bioconda/linux-64        Cached
+  + binutils_impl_linux-64               2.33.1  he1b5a44_7           conda-forge/linux-64     Cached
+  + binutils_linux-64                    2.33.1  h9595d00_17          conda-forge/linux-64     Cached
+  + blas                                    1.0  mkl                  conda-forge/linux-64     Cached
+  + blast                                2.14.1  pl5321h6f7f691_0     bioconda/linux-64        Cached
+  + boto3                               1.21.32  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + botocore                            1.24.32  pyhd3eb1b0_0         anaconda/noarch          Cached
+  + bowtie                                1.3.1  py36h769816f_3       bioconda/linux-64        Cached
+  + brotlipy                              0.7.0  py36h8f6f2f9_1001    conda-forge/linux-64     Cached
+  + bwidget                              1.9.14  ha770c72_1           conda-forge/linux-64     Cached
+  + bzip2                                 1.0.8  h7f98852_4           conda-forge/linux-64     Cached
+  + c-ares                               1.20.1  hd590300_1           conda-forge/linux-64     Cached
+  + ca-certificates                   2023.7.22  hbcca054_0           conda-forge/linux-64     Cached
+  + cachetools                            5.0.0  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + cairo                                1.16.0  h18b612c_1001        conda-forge/linux-64     Cached
+  + certifi                           2021.5.30  py36h5fab9bb_0       conda-forge/linux-64     Cached
+  + cffi                                 1.14.6  py36hd8eec40_1       conda-forge/linux-64     Cached
+  + chardet                               4.0.0  py36h5fab9bb_1       conda-forge/linux-64     Cached
+  + charset-normalizer                    2.1.1  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + click                                 8.0.1  py36h5fab9bb_0       conda-forge/linux-64     Cached
+  + coloredlogs                          15.0.1  py36h5fab9bb_1       conda-forge/linux-64     Cached
+  + colormath                             3.0.0  py_2                 conda-forge/noarch       Cached
+  + configargparse                          1.7  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + cryptography                         35.0.0  py36hb60f036_0       conda-forge/linux-64     Cached
+  + curl                                 7.87.0  h6312ad2_0           conda-forge/linux-64     Cached
+  + cycler                               0.11.0  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + datrie                                0.8.2  py36h8f6f2f9_2       conda-forge/linux-64     Cached
+  + decorator                             4.4.2  py_0                 conda-forge/noarch       Cached
+  + defusedxml                            0.7.1  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + docutils                             0.17.1  py36h5fab9bb_0       conda-forge/linux-64     Cached
+  + dropbox                             11.36.2  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + entrez-direct                          16.2  he881be0_1           bioconda/linux-64        Cached
+  + expat                                 2.5.0  hcb278e6_1           conda-forge/linux-64     Cached
+  + fftw                                  3.3.9  h27cfd23_1           anaconda/linux-64        Cached
+  + filechunkio                             1.6  py36_0               bioconda/linux-64        Cached
+  + font-ttf-dejavu-sans-mono              2.37  hab24e00_0           conda-forge/noarch       Cached
+  + font-ttf-inconsolata                  3.000  h77eed37_0           conda-forge/noarch       Cached
+  + font-ttf-source-code-pro              2.038  h77eed37_0           conda-forge/noarch       Cached
+  + font-ttf-ubuntu                        0.83  hab24e00_0           conda-forge/noarch       Cached
+  + fontconfig                           2.14.2  h14ed4e7_0           conda-forge/linux-64     Cached
+  + fonts-conda-ecosystem                     1  0                    conda-forge/noarch       Cached
+  + fonts-conda-forge                         1  0                    conda-forge/noarch       Cached
+  + freetype                             2.12.1  h267a509_2           conda-forge/linux-64     Cached
+  + fribidi                              1.0.10  h36c2ea0_0           conda-forge/linux-64     Cached
+  + ftputil                                 3.2  py36_0               bioconda/linux-64        Cached
+  + future                               0.18.2  py36h5fab9bb_3       conda-forge/linux-64     Cached
+  + gatk4                               4.1.4.1  0                    bioconda/noarch          Cached
+  + gcc_impl_linux-64                     7.3.0  habb00fd_1           pkgs/main/linux-64       Cached
+  + gcc_linux-64                          7.3.0  h553295d_17          conda-forge/linux-64     Cached
+  + gdk-pixbuf                           2.42.8  hff1cb4f_1           conda-forge/linux-64     Cached
+  + gettext                              0.21.1  h27087fc_0           conda-forge/linux-64     Cached
+  + gfortran_impl_linux-64                7.3.0  hdf63c60_1           anaconda/linux-64        Cached
+  + gfortran_linux-64                     7.3.0  h553295d_17          conda-forge/linux-64     Cached
+  + ghostscript                            9.18  1                    bioconda/linux-64        Cached
+  + giflib                                5.2.1  h0b41bf4_3           conda-forge/linux-64     Cached
+  + gitdb                                4.0.10  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + gitpython                            3.1.18  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + glib                                 2.78.0  hfc55251_0           conda-forge/linux-64     Cached
+  + glib-tools                           2.78.0  hfc55251_0           conda-forge/linux-64     Cached
+  + gmap                             2023.10.10  h9d449c0_0           bioconda/linux-64        Cached
+  + google-api-core                       2.8.0  pyhd8ed1ab_1         conda-forge/noarch       Cached
+  + google-auth                          2.23.0  pyh1a96a4e_0         conda-forge/noarch       Cached
+  + google-cloud-core                     2.3.1  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + google-cloud-storage                 2.10.0  pyh1a96a4e_0         conda-forge/noarch       Cached
+  + google-crc32c                         1.1.2  py36h0208b43_0       conda-forge/linux-64     Cached
+  + google-resumable-media                2.3.3  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + googleapis-common-protos             1.53.0  py36h5fab9bb_0       conda-forge/linux-64     Cached
+  + graphite2                            1.3.14  h295c915_1           anaconda/linux-64        Cached
+  + graphviz                             2.50.0  h8e749b2_2           conda-forge/linux-64     Cached
+  + grpcio                               1.38.1  py36h8e87921_0       conda-forge/linux-64     Cached
+  + gtk2                                2.24.33  h90689f9_2           conda-forge/linux-64     Cached
+  + gts                                   0.7.6  h977cf35_4           conda-forge/linux-64     Cached
+  + gxx_impl_linux-64                     7.3.0  hdf63c60_1           anaconda/linux-64        Cached
+  + gxx_linux-64                          7.3.0  h553295d_17          conda-forge/linux-64     Cached
+  + harfbuzz                              4.3.0  hf52aaf7_1           anaconda/linux-64        Cached
+  + hdf5                                 1.10.4  nompi_h3c11f04_1106  conda-forge/linux-64     Cached
+  + htslib                                  1.9  h244ad75_9           bioconda/linux-64        Cached
+  + humanfriendly                          10.0  py36h5fab9bb_0       conda-forge/linux-64     Cached
+  + icu                                    58.2  hf484d3e_1000        conda-forge/linux-64     Cached
+  + idna                                    3.4  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + idna_ssl                              1.1.0  pyhd8ed1ab_1002      conda-forge/noarch       Cached
+  + imagemagick                         7.1.0_7  pl5321hb118871_0     conda-forge/linux-64     Cached
+  + importlib-metadata                    4.8.1  py36h5fab9bb_0       conda-forge/linux-64     Cached
+  + intel-openmp                       2023.1.0  hdb19cb5_46305       anaconda/linux-64        Cached
+  + jbig                                    2.1  h7f98852_2003        conda-forge/linux-64     Cached
+  + jemalloc                              5.3.0  hcb278e6_0           conda-forge/linux-64     Cached
+  + jinja2                                3.0.3  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + jmespath                             0.10.0  pyh9f0ad1d_0         conda-forge/noarch       Cached
+  + jpeg                                     9e  h0b41bf4_3           conda-forge/linux-64     Cached
+  + jsonschema                            4.1.2  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + kallisto                             0.46.0  hb6a4e58_0           bioconda/linux-64        Cached
+  + keyutils                              1.6.1  h166bdaf_0           conda-forge/linux-64     Cached
+  + kiwisolver                            1.3.1  py36h605e78d_1       conda-forge/linux-64     Cached
+  + krb5                                 1.20.1  hf9c8cef_0           conda-forge/linux-64     Cached
+  + ld_impl_linux-64                     2.33.1  h53a641e_7           conda-forge/linux-64     Cached
+  + lerc                                  4.0.0  h27087fc_0           conda-forge/linux-64     Cached
+  + libboost                             1.73.0  h28710b8_12          anaconda/linux-64        Cached
+  + libcrc32c                             1.1.2  h9c3ff4c_0           conda-forge/linux-64     Cached
+  + libcurl                              7.87.0  h6312ad2_0           conda-forge/linux-64     Cached
+  + libdb                                6.2.32  h9c3ff4c_0           conda-forge/linux-64     Cached
+  + libdeflate                             1.14  h166bdaf_0           conda-forge/linux-64     Cached
+  + libedit                        3.1.20191231  h46ee950_2           conda-forge/linux-64     Cached
+  + libev                                  4.33  h516909a_1           conda-forge/linux-64     Cached
+  + libexpat                              2.5.0  hcb278e6_1           conda-forge/linux-64     Cached
+  + libffi                                3.4.2  h7f98852_5           conda-forge/linux-64     Cached
+  + libgcc                                7.2.0  h69d50b8_2           conda-forge/linux-64     Cached
+  + libgcc-ng                            13.2.0  h807b86a_2           conda-forge/linux-64     Cached
+  + libgd                                 2.3.3  h6a678d5_3           anaconda/linux-64        Cached
+  + libgfortran-ng                        7.5.0  h14aa051_20          conda-forge/linux-64     Cached
+  + libgfortran4                          7.5.0  h14aa051_20          conda-forge/linux-64     Cached
+  + libglib                              2.78.0  hebfc3b9_0           conda-forge/linux-64     Cached
+  + libgomp                              13.2.0  h807b86a_2           conda-forge/linux-64     Cached
+  + libiconv                               1.17  h166bdaf_0           conda-forge/linux-64     Cached
+  + libidn2                               2.3.4  h166bdaf_0           conda-forge/linux-64     Cached
+  + libjemalloc                           5.3.0  hcb278e6_0           conda-forge/linux-64     Cached
+  + libnghttp2                           1.51.0  hdcd2b5c_0           conda-forge/linux-64     Cached
+  + libnsl                                2.0.1  hd590300_0           conda-forge/linux-64     Cached
+  + libpng                               1.6.39  h753d276_0           conda-forge/linux-64     Cached
+  + libprotobuf                          3.18.0  h780b84a_1           conda-forge/linux-64     Cached
+  + librsvg                              2.54.4  h7abd40a_0           conda-forge/linux-64     Cached
+  + libsodium                            1.0.18  h36c2ea0_1           conda-forge/linux-64     Cached
+  + libssh2                              1.10.0  haa6b8db_3           conda-forge/linux-64     Cached
+  + libstdcxx-ng                         13.2.0  h7e041cc_2           conda-forge/linux-64     Cached
+  + libtiff                               4.4.0  h82bc61c_5           conda-forge/linux-64     Cached
+  + libtool                               2.4.7  h27087fc_0           conda-forge/linux-64     Cached
+  + libunistring                         0.9.10  h7f98852_0           conda-forge/linux-64     Cached
+  + libuuid                              2.38.1  h0b41bf4_0           conda-forge/linux-64     Cached
+  + libwebp                               1.2.4  h522a892_0           conda-forge/linux-64     Cached
+  + libwebp-base                          1.2.4  h166bdaf_0           conda-forge/linux-64     Cached
+  + libxcb                                 1.15  h0b41bf4_0           conda-forge/linux-64     Cached
+  + libxml2                              2.9.14  h74e7548_0           anaconda/linux-64        Cached
+  + libzlib                              1.2.13  hd590300_5           conda-forge/linux-64     Cached
+  + llvm-openmp                           8.0.1  hc9558a2_0           conda-forge/linux-64     Cached
+  + lzstring                              1.0.4  py_1001              conda-forge/noarch       Cached
+  + markdown                                3.5  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + markupsafe                            2.0.1  py36h8f6f2f9_0       conda-forge/linux-64     Cached
+  + matplotlib-base                       3.1.3  py36hef1b27d_0       anaconda/linux-64        Cached
+  + mkl                                  2019.4  243                  anaconda/linux-64        Cached
+  + mkl-service                           2.3.0  py36h516909a_0       conda-forge/linux-64     Cached
+  + mkl_fft                               1.1.0  py36hc1659b7_1       conda-forge/linux-64     Cached
+  + mkl_random                            1.1.0  py36hb3f55d8_0       conda-forge/linux-64     Cached
+  + msisensor                               0.5  hd0b41b6_0           bioconda/linux-64        Cached
+  + multidict                             5.2.0  py36h8f6f2f9_0       conda-forge/linux-64     Cached
+  + multiqc                                 1.9  py_1                 bioconda/noarch          Cached
+  + ncbi-vdb                              3.0.8  hdbdd923_0           bioconda/linux-64        Cached
+  + ncurses                                 6.1  hf484d3e_1002        conda-forge/linux-64     Cached
+  + networkx                              2.5.1  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + numpy                                1.19.1  py36hbc911f0_0       anaconda/linux-64        Cached
+  + numpy-base                           1.19.1  py36hfa32c7d_0       anaconda/linux-64        Cached
+  + openjdk                             8.0.382  hd590300_0           conda-forge/linux-64     Cached
+  + openjpeg                              2.5.0  h7d73246_1           conda-forge/linux-64     Cached
+  + openmp                                8.0.1  0                    conda-forge/linux-64     Cached
+  + openssl                              1.1.1w  hd590300_0           conda-forge/linux-64     Cached
+  + ossuuid                               1.6.2  hf484d3e_1000        conda-forge/linux-64     Cached
+  + pandas                                1.1.1  py36he6710b0_0       anaconda/linux-64        Cached
+  + pango                                1.50.7  hbd2fdc8_0           conda-forge/linux-64     Cached
+  + paramiko                             2.12.0  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + pbzip2                               1.1.13  h1fcc475_2           conda-forge/linux-64     Cached
+  + pcre                                   8.45  h9c3ff4c_0           conda-forge/linux-64     Cached
+  + pcre2                                 10.40  hc3806b6_0           conda-forge/linux-64     Cached
+  + perl                                 5.32.1  4_hd590300_perl5     conda-forge/linux-64     Cached
+  + perl-alien-build                       2.48  pl5321hec16e2b_0     bioconda/linux-64        Cached
+  + perl-alien-libxml2                     0.17  pl5321hec16e2b_0     bioconda/linux-64        Cached
+  + perl-archive-tar                       2.40  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-business-isbn                    3.007  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-business-isbn-data        20210112.006  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-capture-tiny                      0.48  pl5321hdfd78af_2     bioconda/noarch          Cached
+  + perl-carp                              1.38  pl5321hdfd78af_4     bioconda/noarch          Cached
+  + perl-common-sense                      3.75  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-compress-raw-bzip2               2.201  pl5321h87f3376_1     bioconda/linux-64        Cached
+  + perl-compress-raw-zlib                2.105  pl5321h87f3376_0     bioconda/linux-64        Cached
+  + perl-constant                          1.33  pl5321hdfd78af_2     bioconda/noarch          Cached
+  + perl-data-dumper                      2.183  pl5321hec16e2b_1     bioconda/linux-64        Cached
+  + perl-db-file                          1.855  pl5321h779adbc_1     bioconda/linux-64        Cached
+  + perl-encode                            3.19  pl5321hec16e2b_1     bioconda/linux-64        Cached
+  + perl-exporter                          5.72  pl5321hdfd78af_2     bioconda/noarch          Cached
+  + perl-exporter-tiny                 1.002002  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-extutils-makemaker                7.70  pl5321hd8ed1ab_0     conda-forge/noarch       Cached
+  + perl-ffi-checklib                      0.28  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-file-chdir                      0.1010  pl5321hdfd78af_3     bioconda/noarch          Cached
+  + perl-file-path                         2.18  pl5321hd8ed1ab_0     conda-forge/noarch       Cached
+  + perl-file-temp                       0.2304  pl5321hd8ed1ab_0     conda-forge/noarch       Cached
+  + perl-file-util                     4.201720  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-file-which                        1.24  pl5321hd8ed1ab_0     conda-forge/noarch       Cached
+  + perl-importer                         0.026  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-io-compress                      2.201  pl5321hdbdd923_2     bioconda/linux-64        Cached
+  + perl-io-gzip                           0.20  pl5321h7132678_4     bioconda/linux-64        Cached
+  + perl-io-zlib                           1.14  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-json                              4.10  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-json-xs                           2.34  pl5321h4ac6f70_6     bioconda/linux-64        Cached
+  + perl-lib                               0.63  pl5321hdfd78af_2     bioconda/noarch          Cached
+  + perl-list-moreutils                   0.430  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-list-moreutils-xs                0.430  pl5321h031d066_2     bioconda/linux-64        Cached
+  + perl-mime-base64                       3.16  pl5321hec16e2b_2     bioconda/linux-64        Cached
+  + perl-parent                           0.236  pl5321hdfd78af_2     bioconda/noarch          Cached
+  + perl-path-tiny                        0.122  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-pathtools                         3.75  pl5321hec16e2b_3     bioconda/linux-64        Cached
+  + perl-scalar-list-utils                 1.62  pl5321hec16e2b_1     bioconda/linux-64        Cached
+  + perl-scope-guard                       0.21  pl5321hdfd78af_3     bioconda/noarch          Cached
+  + perl-set-intervaltree                  0.12  pl5321hdbdd923_3     bioconda/linux-64        Cached
+  + perl-sub-info                         0.002  pl5321hdfd78af_1     bioconda/noarch          Cached
+  + perl-term-table                       0.016  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-test2-suite                   0.000145  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-types-serialiser                  1.01  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-uri                               5.12  pl5321hdfd78af_0     bioconda/noarch          Cached
+  + perl-xml-libxml                      2.0207  pl5321h661654b_0     bioconda/linux-64        Cached
+  + perl-xml-namespacesupport              1.12  pl5321hdfd78af_1     bioconda/noarch          Cached
+  + perl-xml-sax                           1.02  pl5321hdfd78af_1     bioconda/noarch          Cached
+  + perl-xml-sax-base                      1.09  pl5321hdfd78af_1     bioconda/noarch          Cached
+  + picard                               2.21.4  0                    bioconda/noarch          Cached
+  + pigz                                    2.4  h84994c4_0           anaconda/linux-64        Cached
+  + pip                                  20.2.2  py36_0               anaconda/linux-64        Cached
+  + pixman                               0.38.0  h516909a_1003        conda-forge/linux-64     Cached
+  + pkg-config                           0.29.2  h36c2ea0_1008        conda-forge/linux-64     Cached
+  + ply                                    3.11  py_1                 conda-forge/noarch       Cached
+  + prettytable                           2.5.0  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + protobuf                             3.18.0  py36hc4f0c31_0       conda-forge/linux-64     Cached
+  + psutil                                5.8.0  py36h8f6f2f9_1       conda-forge/linux-64     Cached
+  + pthread-stubs                           0.4  h36c2ea0_1001        conda-forge/linux-64     Cached
+  + pyasn1                                0.5.0  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + pyasn1-modules                        0.3.0  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + pybigwig                             0.3.17  py36hc013797_0       bioconda/linux-64        Cached
+  + pycparser                              2.21  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + pygments                             2.14.0  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + pygraphviz                            1.3.1  py36_0               bioconda/linux-64        Cached
+  + pynacl                                1.4.0  py36h8f6f2f9_2       conda-forge/linux-64     Cached
+  + pyopenssl                            22.0.0  pyhd8ed1ab_1         conda-forge/noarch       Cached
+  + pyparsing                             3.1.1  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + pyrsistent                           0.17.3  py36h8f6f2f9_2       conda-forge/linux-64     Cached
+  + pysam                                 0.8.3  py36h84994c4_6       bioconda/linux-64        Cached
+  + pysftp                                0.2.9  py36_0               bioconda/linux-64        Cached
+  + pysocks                               1.7.1  py36h5fab9bb_3       conda-forge/linux-64     Cached
+  + python                               3.6.10  h0371630_0           anaconda/linux-64        Cached
+  + python-dateutil                       2.8.2  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + python-irodsclient                    1.1.9  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + python_abi                              3.6  2_cp36m              conda-forge/linux-64     Cached
+  + pytz                           2023.3.post1  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + pyu2f                                 0.1.5  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + pyyaml                                5.4.1  py36h8f6f2f9_1       conda-forge/linux-64     Cached
+  + r-base                                3.4.3  h9bb98a2_5           pkgs/r/linux-64          Cached
+  + ratelimiter                           1.2.0  pyhd8ed1ab_1003      conda-forge/noarch       Cached
+  + readline                                7.0  hf8c457e_1001        conda-forge/linux-64     Cached
+  + requests                             2.28.1  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + rsa                                   3.1.4  py36_0               bioconda/linux-64        Cached
+  + s3transfer                            0.5.2  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + salmon                               0.13.1  h86b0361_0           bioconda/linux-64        Cached
+  + sambamba                              0.6.6  2                    bioconda/linux-64        Cached
+  + samtools                                1.9  h10a08f8_12          bioconda/linux-64        Cached
+  + scipy                                 1.5.0  py36h0b6359f_0       anaconda/linux-64        Cached
+  + setuptools                           58.0.4  py36h5fab9bb_2       conda-forge/linux-64     Cached
+  + simplejson                            3.8.1  py36_0               bioconda/linux-64        Cached
+  + six                                  1.16.0  pyh6c4a22f_0         conda-forge/noarch       Cached
+  + smmap                                 3.0.5  pyh44b312d_0         conda-forge/noarch       Cached
+  + snakemake                             5.5.4  2                    bioconda/noarch          Cached
+  + snakemake-minimal                     5.5.4  py_2                 bioconda/noarch          Cached
+  + spectra                              0.0.11  py_1                 conda-forge/noarch       Cached
+  + sqlite                               3.31.1  h7b6447c_0           anaconda/linux-64        Cached
+  + star                                 2.6.1d  0                    bioconda/linux-64        Cached
+  + star-fusion                           1.5.0  0                    bioconda/linux-64        Cached
+  + stone                                 3.3.1  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + tbb                                  2020.2  h4bd325d_4           conda-forge/linux-64     Cached
+  + tk                                   8.6.13  h2797004_0           conda-forge/linux-64     Cached
+  + tktable                                2.10  h0c5db8f_5           conda-forge/linux-64     Cached
+  + tornado                                 6.1  py36h8f6f2f9_1       conda-forge/linux-64     Cached
+  + trust4                              1.0.5.1  h2e03b76_0           bioconda/linux-64        Cached
+  + typing-extensions                     4.1.1  hd8ed1ab_0           conda-forge/noarch       Cached
+  + typing_extensions                     4.1.1  pyha770c72_0         conda-forge/noarch       Cached
+  + urllib3                             1.26.15  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + wcwidth                               0.2.8  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + wget                                 1.20.3  ha56f1ee_1           conda-forge/linux-64     Cached
+  + wheel                                0.37.1  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + wrapt                                1.13.1  py36h8f6f2f9_0       conda-forge/linux-64     Cached
+  + xorg-kbproto                          1.0.7  h7f98852_1002        conda-forge/linux-64     Cached
+  + xorg-libice                           1.1.1  hd590300_0           conda-forge/linux-64     Cached
+  + xorg-libsm                            1.2.4  h7391055_0           conda-forge/linux-64     Cached
+  + xorg-libx11                           1.8.7  h8ee46fc_0           conda-forge/linux-64     Cached
+  + xorg-libxau                          1.0.11  hd590300_0           conda-forge/linux-64     Cached
+  + xorg-libxdmcp                         1.1.3  h7f98852_0           conda-forge/linux-64     Cached
+  + xorg-libxext                          1.3.4  h0b41bf4_2           conda-forge/linux-64     Cached
+  + xorg-libxrender                      0.9.11  hd590300_0           conda-forge/linux-64     Cached
+  + xorg-libxt                            1.3.0  hd590300_1           conda-forge/linux-64     Cached
+  + xorg-renderproto                     0.11.1  h7f98852_1002        conda-forge/linux-64     Cached
+  + xorg-xextproto                        7.3.0  h0b41bf4_1003        conda-forge/linux-64     Cached
+  + xorg-xproto                          7.0.31  h7f98852_1007        conda-forge/linux-64     Cached
+  + xz                                    5.2.6  h166bdaf_0           conda-forge/linux-64     Cached
+  + yaml                                  0.2.5  h7f98852_2           conda-forge/linux-64     Cached
+  + yarl                                  1.6.3  py36h8f6f2f9_2       conda-forge/linux-64     Cached
+  + zipp                                  3.6.0  pyhd8ed1ab_0         conda-forge/noarch       Cached
+  + zlib                                 1.2.13  hd590300_5           conda-forge/linux-64     Cached
+  + zstd                                  1.5.5  hfc55251_0           conda-forge/linux-64     Cached
+
+  Summary:
+
+  Install: 303 packages
+
+  Total download: 0 B
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... 
+
+done
+Installing pip dependencies: ...working... Ran pip subprocess with arguments:
+['/opt/conda/envs/RIMA/bin/python', '-m', 'pip', 'install', '-U', '-r', '/installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt', '--exists-action=b']
+Pip subprocess output:
+Collecting biopython==1.76
+  Downloading biopython-1.76-cp36-cp36m-manylinux1_x86_64.whl (2.3 MB)
+Collecting mhcflurry==2.0.1
+  Downloading mhcflurry-2.0.1-py3-none-any.whl (138 kB)
+Collecting mhcnames==0.4.8
+  Downloading mhcnames-0.4.8.tar.gz (13 kB)
+Collecting mhcnuggets==2.3.3
+  Downloading mhcnuggets-2.3.3.tar.gz (33.1 MB)
+Collecting mhctools==1.8.1
+  Downloading mhctools-1.8.1.tar.gz (43 kB)
+Collecting progressbar33==2.4
+  Downloading progressbar33-2.4.tar.gz (10 kB)
+Collecting scikit-learn==0.24.0
+  Downloading scikit_learn-0.24.0-cp36-cp36m-manylinux2010_x86_64.whl (22.2 MB)
+Collecting tidepy==1.3.6
+  Downloading tidepy-1.3.6-py3-none-any.whl (1.9 MB)
+Collecting markdown==3.3.7
+  Downloading Markdown-3.3.7-py3-none-any.whl (97 kB)
+Collecting requests==2.27.1
+  Downloading requests-2.27.1-py2.py3-none-any.whl (63 kB)
+Collecting Cython
+  Downloading Cython-3.0.4-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.4 MB)
+Requirement already satisfied, skipping upgrade: numpy in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from biopython==1.76->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 1)) (1.19.1)
+Requirement already satisfied, skipping upgrade: six in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (1.16.0)
+Collecting tqdm
+  Downloading tqdm-4.64.1-py2.py3-none-any.whl (78 kB)
+Requirement already satisfied, skipping upgrade: pyyaml in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (5.4.1)
+Requirement already satisfied, skipping upgrade: pandas>=0.20.3 in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (1.1.1)
+Collecting tensorflow<2.3.0,>=2.2.0
+  Downloading tensorflow-2.2.3-cp36-cp36m-manylinux2010_x86_64.whl (516.4 MB)
+Requirement already satisfied, skipping upgrade: appdirs in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (1.4.4)
+Collecting np-utils
+  Downloading np_utils-0.6.0.tar.gz (61 kB)
+Requirement already satisfied, skipping upgrade: scipy in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from mhcnuggets==2.3.3->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 4)) (1.5.0)
+Collecting keras
+  Downloading keras-2.10.0-py2.py3-none-any.whl (1.7 MB)
+Collecting varcode>=0.5.9
+  Downloading varcode-1.1.0.tar.gz (84 kB)
+Collecting pyensembl>=1.0.3
+  Downloading pyensembl-2.2.9.tar.gz (58 kB)
+Collecting sercol>=0.0.2
+  Downloading sercol-0.1.4.tar.gz (4.8 kB)
+Collecting threadpoolctl>=2.0.0
+  Downloading threadpoolctl-3.1.0-py3-none-any.whl (14 kB)
+Collecting joblib>=0.11
+  Downloading joblib-1.1.1-py2.py3-none-any.whl (309 kB)
+Requirement already satisfied, skipping upgrade: importlib-metadata>=4.4; python_version < "3.10" in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from markdown==3.3.7->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 9)) (4.8.1)
+Requirement already satisfied, skipping upgrade: urllib3<1.27,>=1.21.1 in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from requests==2.27.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 10)) (1.26.15)
+Requirement already satisfied, skipping upgrade: certifi>=2017.4.17 in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from requests==2.27.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 10)) (2021.5.30)
+Requirement already satisfied, skipping upgrade: idna<4,>=2.5; python_version >= "3" in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from requests==2.27.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 10)) (3.4)
+Collecting charset-normalizer~=2.0.0; python_version >= "3"
+  Downloading charset_normalizer-2.0.12-py3-none-any.whl (39 kB)
+Collecting importlib-resources; python_version < "3.7"
+  Downloading importlib_resources-5.4.0-py3-none-any.whl (28 kB)
+Requirement already satisfied, skipping upgrade: python-dateutil>=2.7.3 in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from pandas>=0.20.3->mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (2.8.2)
+Requirement already satisfied, skipping upgrade: pytz>=2017.2 in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from pandas>=0.20.3->mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (2023.3.post1)
+Collecting opt-einsum>=2.3.2
+  Downloading opt_einsum-3.3.0-py3-none-any.whl (65 kB)
+Collecting absl-py>=0.7.0
+  Downloading absl_py-1.4.0-py3-none-any.whl (126 kB)
+Collecting tensorboard<2.3.0,>=2.2.0
+  Downloading tensorboard-2.2.2-py3-none-any.whl (3.0 MB)
+Requirement already satisfied, skipping upgrade: grpcio>=1.8.6 in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from tensorflow<2.3.0,>=2.2.0->mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (1.38.1)
+Collecting gast==0.3.3
+  Downloading gast-0.3.3-py2.py3-none-any.whl (9.7 kB)
+Collecting h5py<2.11.0,>=2.10.0
+  Downloading h5py-2.10.0-cp36-cp36m-manylinux1_x86_64.whl (2.9 MB)
+Collecting keras-preprocessing>=1.1.0
+  Downloading Keras_Preprocessing-1.1.2-py2.py3-none-any.whl (42 kB)
+Requirement already satisfied, skipping upgrade: wheel>=0.26; python_version >= "3" in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from tensorflow<2.3.0,>=2.2.0->mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (0.37.1)
+Collecting termcolor>=1.1.0
+  Downloading termcolor-1.1.0.tar.gz (3.9 kB)
+Collecting astunparse==1.6.3
+  Downloading astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+Collecting tensorflow-estimator<2.3.0,>=2.2.0
+  Downloading tensorflow_estimator-2.2.0-py2.py3-none-any.whl (454 kB)
+Requirement already satisfied, skipping upgrade: wrapt>=1.11.1 in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from tensorflow<2.3.0,>=2.2.0->mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (1.13.1)
+Collecting google-pasta>=0.1.8
+  Downloading google_pasta-0.2.0-py3-none-any.whl (57 kB)
+Requirement already satisfied, skipping upgrade: protobuf>=3.8.0 in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from tensorflow<2.3.0,>=2.2.0->mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (3.18.0)
+Collecting pyvcf3>=1.0.0
+  Downloading PyVCF3-1.0.3.tar.gz (977 kB)
+Collecting memoized_property>=1.0.2
+  Downloading memoized-property-1.0.3.tar.gz (5.0 kB)
+Collecting serializable>=0.2.1
+  Downloading serializable-0.2.1.tar.gz (8.4 kB)
+Collecting typechecks>=0.0.2
+  Downloading typechecks-0.1.0.tar.gz (3.4 kB)
+Collecting datacache>=1.1.4
+  Downloading datacache-1.2.1.tar.gz (18 kB)
+Collecting tinytimer
+  Downloading tinytimer-0.0.0.tar.gz (2.1 kB)
+Collecting gtfparse<2.0.0,>=1.3.0
+  Downloading gtfparse-1.3.0.tar.gz (16 kB)
+Collecting nose>=1.3.3
+  Downloading nose-1.3.7-py3-none-any.whl (154 kB)
+Collecting pylint>=1.4.4
+  Downloading pylint-2.13.9-py3-none-any.whl (438 kB)
+Requirement already satisfied, skipping upgrade: simplejson in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from sercol>=0.0.2->mhctools==1.8.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 5)) (3.8.1)
+Requirement already satisfied, skipping upgrade: typing-extensions>=3.6.4; python_version < "3.8" in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from importlib-metadata>=4.4; python_version < "3.10"->markdown==3.3.7->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 9)) (4.1.1)
+Requirement already satisfied, skipping upgrade: zipp>=0.5 in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from importlib-metadata>=4.4; python_version < "3.10"->markdown==3.3.7->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 9)) (3.6.0)
+Collecting google-auth-oauthlib<0.5,>=0.4.1
+  Downloading google_auth_oauthlib-0.4.6-py2.py3-none-any.whl (18 kB)
+Collecting werkzeug>=0.11.15
+  Downloading Werkzeug-2.0.3-py3-none-any.whl (289 kB)
+Requirement already satisfied, skipping upgrade: setuptools>=41.0.0 in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from tensorboard<2.3.0,>=2.2.0->tensorflow<2.3.0,>=2.2.0->mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (58.0.4)
+Collecting tensorboard-plugin-wit>=1.6.0
+  Downloading tensorboard_plugin_wit-1.8.1-py3-none-any.whl (781 kB)
+Collecting google-auth<2,>=1.6.3
+  Downloading google_auth-1.35.0-py2.py3-none-any.whl (152 kB)
+Collecting mock
+  Downloading mock-5.1.0-py3-none-any.whl (30 kB)
+Collecting platformdirs>=2.2.0
+  Downloading platformdirs-2.4.0-py3-none-any.whl (14 kB)
+Collecting tomli>=1.1.0; python_version < "3.11"
+  Downloading tomli-1.2.3-py3-none-any.whl (12 kB)
+Collecting astroid<=2.12.0-dev0,>=2.11.5
+  Downloading astroid-2.11.7-py3-none-any.whl (251 kB)
+Collecting isort<6,>=4.2.5
+  Downloading isort-5.10.1-py3-none-any.whl (103 kB)
+Collecting dill>=0.2
+  Downloading dill-0.3.4-py2.py3-none-any.whl (86 kB)
+Collecting mccabe<0.8,>=0.6
+  Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+Collecting requests-oauthlib>=0.7.0
+  Downloading requests_oauthlib-1.3.1-py2.py3-none-any.whl (23 kB)
+Collecting dataclasses; python_version < "3.7"
+  Downloading dataclasses-0.8-py3-none-any.whl (19 kB)
+Requirement already satisfied, skipping upgrade: rsa<5,>=3.1.4; python_version >= "3.6" in /opt/conda/envs/RIMA/lib/python3.6/site-packages/rsa-3.1.4-py3.6.egg (from google-auth<2,>=1.6.3->tensorboard<2.3.0,>=2.2.0->tensorflow<2.3.0,>=2.2.0->mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (3.1.4)
+Requirement already satisfied, skipping upgrade: pyasn1-modules>=0.2.1 in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from google-auth<2,>=1.6.3->tensorboard<2.3.0,>=2.2.0->tensorflow<2.3.0,>=2.2.0->mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (0.3.0)
+Collecting cachetools<5.0,>=2.0.0
+  Downloading cachetools-4.2.4-py3-none-any.whl (10 kB)
+Collecting lazy-object-proxy>=1.4.0
+  Downloading lazy_object_proxy-1.7.1-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (57 kB)
+Collecting typed-ast<2.0,>=1.4.0; implementation_name == "cpython" and python_version < "3.8"
+  Downloading typed_ast-1.5.5-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (777 kB)
+Collecting oauthlib>=3.0.0
+  Downloading oauthlib-3.2.2-py3-none-any.whl (151 kB)
+Requirement already satisfied, skipping upgrade: pyasn1>=0.1.3 in /opt/conda/envs/RIMA/lib/python3.6/site-packages (from rsa<5,>=3.1.4; python_version >= "3.6"->google-auth<2,>=1.6.3->tensorboard<2.3.0,>=2.2.0->tensorflow<2.3.0,>=2.2.0->mhcflurry==2.0.1->-r /installs/RIMA_pipeline/static/environment/GCP/condaenv.y2f_tm6v.requirements.txt (line 2)) (0.5.0)
+Building wheels for collected packages: mhcnames, mhcnuggets, mhctools, progressbar33, np-utils, varcode, pyensembl, sercol, termcolor, pyvcf3, memoized-property, serializable, typechecks, datacache, tinytimer, gtfparse
+  Building wheel for mhcnames (setup.py): started
+  Building wheel for mhcnames (setup.py): finished with status 'done'
+  Created wheel for mhcnames: filename=mhcnames-0.4.8-py3-none-any.whl size=15899 sha256=f2fa794d091670aeb89c9aaf9c406b70bc6ef9d97bb0192d8cc219c1ef8a5ef9
+  Stored in directory: /root/.cache/pip/wheels/13/1b/65/6951895e166d50eceb50f2eb80c0cfbe75f476ef4c316bf208
+  Building wheel for mhcnuggets (setup.py): started
+  Building wheel for mhcnuggets (setup.py): finished with status 'done'
+  Created wheel for mhcnuggets: filename=mhcnuggets-2.3.3-py3-none-any.whl size=33342634 sha256=4e92fecf0035e9caebf75d81793b18c11418fdf5f1b21e899df403780d12605d
+  Stored in directory: /root/.cache/pip/wheels/0d/c4/48/b0c7b9f2484b23dd6d8868eece5ec17f649dda863e4dc303c3
+  Building wheel for mhctools (setup.py): started
+  Building wheel for mhctools (setup.py): finished with status 'done'
+  Created wheel for mhctools: filename=mhctools-1.8.1-py3-none-any.whl size=54086 sha256=8930f30cdf777a575ac502adde689229df6692fecd2b8139cf5b579ce8e1d141
+  Stored in directory: /root/.cache/pip/wheels/59/15/6e/06ada575a251b6cc3b839b0e9b54d5b6b008d41d07b1f7abe9
+  Building wheel for progressbar33 (setup.py): started
+  Building wheel for progressbar33 (setup.py): finished with status 'done'
+  Created wheel for progressbar33: filename=progressbar33-2.4-py3-none-any.whl size=12156 sha256=6542acaece930b37710bc130606c82d736109ae39a33ab430ed115a60a570b27
+  Stored in directory: /root/.cache/pip/wheels/ba/4b/15/d48ba51fa28e91c0cc22ff89d1d7c1d0451bb177fbbe8fd116
+  Building wheel for np-utils (setup.py): started
+  Building wheel for np-utils (setup.py): finished with status 'done'
+  Created wheel for np-utils: filename=np_utils-0.6.0-py3-none-any.whl size=56459 sha256=8c9220341c5bf215be9f4d94818f51ba999b4538de3f5abfdd8e776ad11ef6e4
+  Stored in directory: /root/.cache/pip/wheels/89/0b/81/9125575a2ef1607ffc62087e8acd1cbb26c09e0ddc5ce19cd9
+  Building wheel for varcode (setup.py): started
+  Building wheel for varcode (setup.py): finished with status 'done'
+  Created wheel for varcode: filename=varcode-1.1.0-py3-none-any.whl size=120670 sha256=beda4da6c1dafbc8213f462025f7d6629de4dcceb67f7c2b1a882f5e647c9304
+  Stored in directory: /root/.cache/pip/wheels/84/81/8d/631b0603b2e37012e2f35ca89ea8de3de838c49656cd551acf
+  Building wheel for pyensembl (setup.py): started
+  Building wheel for pyensembl (setup.py): finished with status 'done'
+  Created wheel for pyensembl: filename=pyensembl-2.2.9-py3-none-any.whl size=54794 sha256=dbb04f1a225ada41d63d74fb951a3b551d872e7022b813fd311d86fc597325c1
+  Stored in directory: /root/.cache/pip/wheels/3b/0a/cc/111af39f7a52845853070d4f32712cb810c825ca963f43b0a4
+  Building wheel for sercol (setup.py): started
+  Building wheel for sercol (setup.py): finished with status 'done'
+  Created wheel for sercol: filename=sercol-0.1.4-py3-none-any.whl size=4986 sha256=c2af7338b7d7625470f2d15504a1c49fddf04086059b8ffeb290e8e79cf7f266
+  Stored in directory: /root/.cache/pip/wheels/8f/89/64/e7d57b3ab8c2364ed54221202fbbea343c5dc0c239a093a951
+  Building wheel for termcolor (setup.py): started
+  Building wheel for termcolor (setup.py): finished with status 'done'
+  Created wheel for termcolor: filename=termcolor-1.1.0-py3-none-any.whl size=4848 sha256=933b5a57a79b611a96a0a58b33725f2fe4a685d2298f4a274557b737040779ff
+  Stored in directory: /root/.cache/pip/wheels/93/2a/eb/e58dbcbc963549ee4f065ff80a59f274cc7210b6eab962acdc
+  Building wheel for pyvcf3 (setup.py): started
+  Building wheel for pyvcf3 (setup.py): finished with status 'done'
+  Created wheel for pyvcf3: filename=PyVCF3-1.0.3-py3-none-any.whl size=988557 sha256=57aaefe027c0a6465594f014105974983394fffc66a6dea559449d6bfafd6c56
+  Stored in directory: /root/.cache/pip/wheels/6b/f4/1f/1d40346a034e2603f60a0bd92eabbac8d8c86979137f5cb9ee
+  Building wheel for memoized-property (setup.py): started
+  Building wheel for memoized-property (setup.py): finished with status 'done'
+  Created wheel for memoized-property: filename=memoized_property-1.0.3-py2.py3-none-any.whl size=4198 sha256=c225b69af71ea5e34cf53dd0b0383bf543a66dc71a205cb9468141b50eb11caa
+  Stored in directory: /root/.cache/pip/wheels/1a/3f/09/45df75d6009f79ddddb9f63bf2ac57480fde32e239587facae
+  Building wheel for serializable (setup.py): started
+  Building wheel for serializable (setup.py): finished with status 'done'
+  Created wheel for serializable: filename=serializable-0.2.1-py3-none-any.whl size=8959 sha256=99719f7e468cf898cf515fc95f8f6369b2201d100dee715eee39af00ba9f3768
+  Stored in directory: /root/.cache/pip/wheels/d6/75/11/b7268acc5cc971e18ed8c97ede66fb2eafaf517c765009634f
+  Building wheel for typechecks (setup.py): started
+  Building wheel for typechecks (setup.py): finished with status 'done'
+  Created wheel for typechecks: filename=typechecks-0.1.0-py3-none-any.whl size=2770 sha256=c48d1bd15c881fe8b51cc7fe07b2d8da28f8b078e6d1922b3db6e55a083a43e0
+  Stored in directory: /root/.cache/pip/wheels/4b/4a/11/af061a18fc56aaaed49ba3b1c845cac1d116d2cae3bea535f9
+  Building wheel for datacache (setup.py): started
+  Building wheel for datacache (setup.py): finished with status 'done'
+  Created wheel for datacache: filename=datacache-1.2.1-py3-none-any.whl size=20235 sha256=7dada7315052dff51d3a30bb5acdd8ff2dff413d8ff93956a9263fa0eaf4f600
+  Stored in directory: /root/.cache/pip/wheels/49/50/aa/2f98ba98793eace3e801b4bbc914b0e209a6b57b18b74145f3
+  Building wheel for tinytimer (setup.py): started
+  Building wheel for tinytimer (setup.py): finished with status 'done'
+  Created wheel for tinytimer: filename=tinytimer-0.0.0-py3-none-any.whl size=1891 sha256=86ab4146a42dacbe0e15bdff08d640dea3ce9c0117dc2d973c50ccaf7ed04613
+  Stored in directory: /root/.cache/pip/wheels/65/94/79/092d6cd9968d0e35b57761b2354f778f20fb29dd86c5811de6
+  Building wheel for gtfparse (setup.py): started
+  Building wheel for gtfparse (setup.py): finished with status 'done'
+  Created wheel for gtfparse: filename=gtfparse-1.3.0-py3-none-any.whl size=15752 sha256=5318f5a67c687155988ace9424c32beeeb9200b1de447d07bc461f4a7036b438
+  Stored in directory: /root/.cache/pip/wheels/97/bc/81/7db3de239e54a81e5ebe0a45d68da0b10a02794dffa07d2907
+Successfully built mhcnames mhcnuggets mhctools progressbar33 np-utils varcode pyensembl sercol termcolor pyvcf3 memoized-property serializable typechecks datacache tinytimer gtfparse
+Installing collected packages: biopython, importlib-resources, tqdm, mhcnames, opt-einsum, absl-py, cachetools, google-auth, oauthlib, charset-normalizer, requests, requests-oauthlib, google-auth-oauthlib, dataclasses, werkzeug, tensorboard-plugin-wit, markdown, tensorboard, gast, h5py, keras-preprocessing, termcolor, astunparse, tensorflow-estimator, google-pasta, tensorflow, threadpoolctl, joblib, scikit-learn, np-utils, mhcflurry, keras, mhcnuggets, typechecks, progressbar33, mock, datacache, memoized-property, tinytimer, gtfparse, serializable, nose, platformdirs, tomli, lazy-object-proxy, typed-ast, astroid, isort, dill, mccabe, pylint, pyensembl, pyvcf3, sercol, varcode, mhctools, tidepy, Cython
+  Attempting uninstall: cachetools
+    Found existing installation: cachetools 5.0.0
+    Uninstalling cachetools-5.0.0:
+      Successfully uninstalled cachetools-5.0.0
+  Attempting uninstall: google-auth
+    Found existing installation: google-auth 2.23.0
+    Uninstalling google-auth-2.23.0:
+      Successfully uninstalled google-auth-2.23.0
+  Attempting uninstall: charset-normalizer
+    Found existing installation: charset-normalizer 2.1.1
+    Uninstalling charset-normalizer-2.1.1:
+      Successfully uninstalled charset-normalizer-2.1.1
+  Attempting uninstall: requests
+    Found existing installation: requests 2.28.1
+    Uninstalling requests-2.28.1:
+      Successfully uninstalled requests-2.28.1
+  Attempting uninstall: markdown
+    Found existing installation: Markdown 3.5
+    Uninstalling Markdown-3.5:
+      Successfully uninstalled Markdown-3.5
+Successfully installed Cython-3.0.4 absl-py-1.4.0 astroid-2.11.7 astunparse-1.6.3 biopython-1.76 cachetools-4.2.4 charset-normalizer-2.0.12 datacache-1.2.1 dataclasses-0.8 dill-0.3.4 gast-0.3.3 google-auth-1.35.0 google-auth-oauthlib-0.4.6 google-pasta-0.2.0 gtfparse-1.3.0 h5py-2.10.0 importlib-resources-5.4.0 isort-5.10.1 joblib-1.1.1 keras-2.10.0 keras-preprocessing-1.1.2 lazy-object-proxy-1.7.1 markdown-3.3.7 mccabe-0.7.0 memoized-property-1.0.3 mhcflurry-2.0.1 mhcnames-0.4.8 mhcnuggets-2.3.3 mhctools-1.8.1 mock-5.1.0 nose-1.3.7 np-utils-0.6.0 oauthlib-3.2.2 opt-einsum-3.3.0 platformdirs-2.4.0 progressbar33-2.4 pyensembl-2.2.9 pylint-2.13.9 pyvcf3-1.0.3 requests-2.27.1 requests-oauthlib-1.3.1 scikit-learn-0.24.0 sercol-0.1.4 serializable-0.2.1 tensorboard-2.2.2 tensorboard-plugin-wit-1.8.1 tensorflow-2.2.3 tensorflow-estimator-2.2.0 termcolor-1.1.0 threadpoolctl-3.1.0 tidepy-1.3.6 tinytimer-0.0.0 tomli-1.2.3 tqdm-4.64.1 typechecks-0.1.0 typed-ast-1.5.5 varcode-1.1.0 werkzeug-2.0.3
+
+done
+#
+# To activate this environment, use
+#
+#     $ conda activate RIMA
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Creating all environments for the pipeline
+bioconda/linux-64                                           Using cache
+bioconda/noarch                                             Using cache
+conda-forge/linux-64                                        Using cache
+conda-forge/noarch                                          Using cache
+
+
+Looking for: ['rseqc', 'samtools', 'bedtools', 'picard']
+
+
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/_r-mutex-1.0.0-anacondar_1' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/_r-mutex-1.0.0-anacondar_1' has invalid SHA-256 checksum
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/graphite2-1.3.14-h295c915_1' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/graphite2-1.3.14-h295c915_1' has invalid SHA-256 checksum
+Transaction
+
+  Prefix: /opt/conda/envs/rseqc_env
+
+  Updating specs:
+
+   - rseqc
+   - samtools
+   - bedtools
+   - picard
+
+
+  Package                                      Version  Build                Channel                    Size
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Install:
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  + _libgcc_mutex                                  0.1  conda_forge          conda-forge/linux-64     Cached
+  + _openmp_mutex                                  4.5  2_gnu                conda-forge/linux-64     Cached
+  + _r-mutex                                     1.0.0  anacondar_1          pkgs/main/linux-64       Cached
+  + _sysroot_linux-64_curr_repodata_hack             3  haa98f57_10          pkgs/main/noarch         Cached
+  + alsa-lib                                    1.2.10  hd590300_0           conda-forge/linux-64     Cached
+  + bedtools                                    2.31.0  hf5e1c6e_3           bioconda/linux-64        Cached
+  + binutils_impl_linux-64                        2.38  h2a08ee3_1           pkgs/main/linux-64       Cached
+  + blas                                           1.0  openblas             pkgs/main/linux-64       Cached
+  + bwidget                                     1.9.11  1                    pkgs/main/linux-64       Cached
+  + bx-python                                   0.10.0  py310h551a815_0      bioconda/linux-64        Cached
+  + bzip2                                        1.0.8  h7b6447c_0           pkgs/main/linux-64       Cached
+  + c-ares                                      1.19.1  h5eee18b_0           pkgs/main/linux-64       Cached
+  + ca-certificates                         2023.08.22  h06a4308_0           pkgs/main/linux-64       Cached
+  + cairo                                       1.16.0  hb05425b_5           pkgs/main/linux-64       Cached
+  + curl                                         8.4.0  hdbd6064_0           pkgs/main/linux-64       Cached
+  + expat                                        2.5.0  h6a678d5_0           pkgs/main/linux-64       Cached
+  + font-ttf-dejavu-sans-mono                     2.37  hd3eb1b0_0           pkgs/main/noarch         Cached
+  + font-ttf-inconsolata                         2.001  hcb22688_0           pkgs/main/noarch         Cached
+  + font-ttf-source-code-pro                     2.030  hd3eb1b0_0           pkgs/main/noarch         Cached
+  + font-ttf-ubuntu                               0.83  h8b1ccd4_0           pkgs/main/noarch         Cached
+  + fontconfig                                  2.14.2  h14ed4e7_0           conda-forge/linux-64     Cached
+  + fonts-anaconda                                   1  h8fa9717_0           pkgs/main/noarch         Cached
+  + fonts-conda-ecosystem                            1  hd3eb1b0_0           pkgs/main/noarch         Cached
+  + freetype                                    2.12.1  h4a9f257_0           pkgs/main/linux-64       Cached
+  + fribidi                                     1.0.10  h7b6447c_0           pkgs/main/linux-64       Cached
+  + gcc_impl_linux-64                           11.2.0  h1234567_1           pkgs/main/linux-64       Cached
+  + gettext                                     0.21.1  h27087fc_0           conda-forge/linux-64     Cached
+  + gfortran_impl_linux-64                      11.2.0  h1234567_1           pkgs/main/linux-64       Cached
+  + giflib                                       5.2.1  h5eee18b_3           pkgs/main/linux-64       Cached
+  + glib                                        2.78.0  hfc55251_0           conda-forge/linux-64     Cached
+  + glib-tools                                  2.78.0  hfc55251_0           conda-forge/linux-64     Cached
+  + graphite2                                   1.3.14  h295c915_1           pkgs/main/linux-64       Cached
+  + gxx_impl_linux-64                           11.2.0  h1234567_1           pkgs/main/linux-64       Cached
+  + harfbuzz                                     8.2.1  h3d44ed6_0           conda-forge/linux-64     Cached
+  + htslib                                        1.18  h81da01d_0           bioconda/linux-64        Cached
+  + icu                                           73.2  h59595ed_0           conda-forge/linux-64     Cached
+  + kernel-headers_linux-64                     3.10.0  h57e8cba_10          pkgs/main/noarch         Cached
+  + krb5                                        1.20.1  h143b758_1           pkgs/main/linux-64       Cached
+  + lcms2                                         2.15  h7f713cb_2           conda-forge/linux-64     Cached
+  + ld_impl_linux-64                              2.38  h1181459_1           pkgs/main/linux-64       Cached
+  + lerc                                         4.0.0  h27087fc_0           conda-forge/linux-64     Cached
+  + libblas                                      3.9.0  16_linux64_openblas  conda-forge/linux-64     Cached
+  + libcups                                      2.3.3  h36d4200_3           conda-forge/linux-64     Cached
+  + libcurl                                      8.4.0  h251f7ec_0           pkgs/main/linux-64       Cached
+  + libdeflate                                    1.18  h0b41bf4_0           conda-forge/linux-64     Cached
+  + libedit                               3.1.20221030  h5eee18b_0           pkgs/main/linux-64       Cached
+  + libev                                         4.33  h7f8727e_1           pkgs/main/linux-64       Cached
+  + libffi                                       3.4.4  h6a678d5_0           pkgs/main/linux-64       Cached
+  + libgcc-devel_linux-64                       11.2.0  h1234567_1           pkgs/main/linux-64       Cached
+  + libgcc-ng                                   13.2.0  h807b86a_2           conda-forge/linux-64     Cached
+  + libgfortran-ng                              11.2.0  h00389a5_1           pkgs/main/linux-64       Cached
+  + libgfortran5                                11.2.0  h1234567_1           pkgs/main/linux-64       Cached
+  + libglib                                     2.78.0  hebfc3b9_0           conda-forge/linux-64     Cached
+  + libgomp                                     13.2.0  h807b86a_2           conda-forge/linux-64     Cached
+  + libiconv                                      1.17  h166bdaf_0           conda-forge/linux-64     Cached
+  + libjpeg-turbo                              2.1.5.1  hd590300_1           conda-forge/linux-64     Cached
+  + liblapack                                    3.9.0  16_linux64_openblas  conda-forge/linux-64     Cached
+  + libnghttp2                                  1.57.0  h2d74bed_0           pkgs/main/linux-64       Cached
+  + libnsl                                       2.0.0  h5eee18b_0           pkgs/main/linux-64       Cached
+  + libopenblas                                 0.3.21  h043d6bf_0           pkgs/main/linux-64       Cached
+  + libpng                                      1.6.39  h5eee18b_0           pkgs/main/linux-64       Cached
+  + libsqlite                                   3.43.2  h2797004_0           conda-forge/linux-64     Cached
+  + libssh2                                     1.10.0  hdbd6064_2           pkgs/main/linux-64       Cached
+  + libstdcxx-devel_linux-64                    11.2.0  h1234567_1           pkgs/main/linux-64       Cached
+  + libstdcxx-ng                                13.2.0  h7e041cc_2           conda-forge/linux-64     Cached
+  + libtiff                                      4.6.0  h8b53f26_0           conda-forge/linux-64     Cached
+  + libuuid                                     2.38.1  h0b41bf4_0           conda-forge/linux-64     Cached
+  + libwebp-base                                 1.3.2  h5eee18b_0           pkgs/main/linux-64       Cached
+  + libxcb                                        1.15  h7f8727e_0           pkgs/main/linux-64       Cached
+  + libzlib                                     1.2.13  hd590300_5           conda-forge/linux-64     Cached
+  + lz4-c                                        1.9.4  h6a678d5_0           pkgs/main/linux-64       Cached
+  + make                                         4.2.1  h1bed415_1           pkgs/main/linux-64       Cached
+  + ncurses                                        6.4  h6a678d5_0           pkgs/main/linux-64       Cached
+  + numpy                                       1.26.0  py310heeff2f4_0      pkgs/main/linux-64       Cached
+  + numpy-base                                  1.26.0  py310h8a23956_0      pkgs/main/linux-64       Cached
+  + openjdk                                     20.0.2  hfea2f88_1           conda-forge/linux-64     Cached
+  + openssl                                      3.1.3  hd590300_0           conda-forge/linux-64     Cached
+  + pango                                      1.50.14  ha41ecd1_2           conda-forge/linux-64     Cached
+  + pcre2                                        10.40  hc3806b6_0           conda-forge/linux-64     Cached
+  + picard                                       3.1.0  hdfd78af_0           bioconda/noarch          Cached
+  + pip                                           23.3  py310h06a4308_0      pkgs/main/linux-64       Cached
+  + pixman                                      0.40.0  h7f8727e_1           pkgs/main/linux-64       Cached
+  + pybigwig                                    0.3.22  py310h79000e5_1      bioconda/linux-64        Cached
+  + pysam                                       0.22.0  py310h41dec4a_0      bioconda/linux-64        Cached
+  + python                                     3.10.12  hd12c33a_0_cpython   conda-forge/linux-64     Cached
+  + python_abi                                    3.10  4_cp310              conda-forge/linux-64     Cached
+  + r-base                                       4.3.1  h639d9d3_5           conda-forge/linux-64     Cached
+  + readline                                       8.2  h5eee18b_0           pkgs/main/linux-64       Cached
+  + rseqc                                        5.0.3  py310h4b81fae_0      bioconda/linux-64        Cached
+  + samtools                                      1.18  h50ea8bc_1           bioconda/linux-64        Cached
+  + sed                                            4.8  h7b6447c_0           pkgs/main/linux-64       Cached
+  + setuptools                                  68.0.0  py310h06a4308_0      pkgs/main/linux-64       Cached
+  + sysroot_linux-64                              2.17  h57e8cba_10          pkgs/main/noarch         Cached
+  + tk                                          8.6.12  h1ccaba5_0           pkgs/main/linux-64       Cached
+  + tktable                                       2.10  h14c3975_0           pkgs/main/linux-64       Cached
+  + tzdata                                       2023c  h04d1e81_0           pkgs/main/noarch         Cached
+  + wheel                                       0.41.2  py310h06a4308_0      pkgs/main/linux-64       Cached
+  + xorg-fixesproto                                5.0  h7f98852_1002        conda-forge/linux-64     Cached
+  + xorg-inputproto                              2.3.2  h7f98852_1002        conda-forge/linux-64     Cached
+  + xorg-kbproto                                 1.0.7  h7f98852_1002        conda-forge/linux-64     Cached
+  + xorg-libice                                  1.1.1  hd590300_0           conda-forge/linux-64     Cached
+  + xorg-libsm                                   1.2.4  h7391055_0           conda-forge/linux-64     Cached
+  + xorg-libx11                                  1.8.7  h8ee46fc_0           conda-forge/linux-64     Cached
+  + xorg-libxext                                 1.3.4  h0b41bf4_2           conda-forge/linux-64     Cached
+  + xorg-libxfixes                               5.0.3  h7f98852_1004        conda-forge/linux-64     Cached
+  + xorg-libxi                                  1.7.10  h7f98852_0           conda-forge/linux-64     Cached
+  + xorg-libxrender                             0.9.11  hd590300_0           conda-forge/linux-64     Cached
+  + xorg-libxt                                   1.3.0  hd590300_1           conda-forge/linux-64     Cached
+  + xorg-libxtst                                 1.2.3  h7f98852_1002        conda-forge/linux-64     Cached
+  + xorg-recordproto                            1.14.2  h7f98852_1002        conda-forge/linux-64     Cached
+  + xorg-renderproto                            0.11.1  h7f98852_1002        conda-forge/linux-64     Cached
+  + xorg-xextproto                               7.3.0  h0b41bf4_1003        conda-forge/linux-64     Cached
+  + xorg-xproto                                 7.0.31  h27cfd23_1007        pkgs/main/linux-64       Cached
+  + xz                                           5.4.2  h5eee18b_0           pkgs/main/linux-64       Cached
+  + zlib                                        1.2.13  hd590300_5           conda-forge/linux-64     Cached
+  + zstd                                         1.5.5  hc292b87_0           pkgs/main/linux-64       Cached
+
+  Summary:
+
+  Install: 116 packages
+
+  Total download: 0 B
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment, use
+#
+#     $ conda activate rseqc_env
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Creating all environments for the pipeline
+bioconda/linux-64                                           Using cache
+bioconda/noarch                                             Using cache
+pkgs/main/linux-64                                          Using cache
+pkgs/main/noarch                                            Using cache
+pkgs/r/linux-64                                             Using cache
+pkgs/r/noarch                                               Using cache
+anaconda/linux-64                                           Using cache
+anaconda/noarch                                             Using cache
+conda-forge/linux-64                                        Using cache
+conda-forge/noarch                                          Using cache
+
+
+Looking for: ['r==3.6.0=r36_0', 'gfortran_impl_linux-64==7.3.0=hdf63c60_1', 'gfortran_linux-64==7.3.0=h553295d_15', 'perl', 'r-ggplot2', 'r-pheatmap', 'r-reshape2', 'bioconductor-sva', 'r-optparse', 'r-ggfortify', 'r-ggnewscale', 'r-e1071', 'r-vegan', 'bioconductor-preprocesscore', 'bioconductor-deseq2', 'bioconductor-tximport', 'bioconductor-gsva', 'bioconductor-gseabase', 'r-ggrepel', 'r-wgcna', 'bioconductor-maftools', 'bioconductor-clusterprofiler=3.14.0', 'r-ggpubr=0.2.5', 'bioconductor-org.hs.eg.db', 'bioconductor-complexheatmap', 'r-data.table', 'r-beeswarm', 'bioconductor-chimeraviz', 'bioconductor-limma', 'r-r.utils', 'r-dplyr', 'r-immunedeconv', 'r-tidyverse', 'bioconductor-ggtree', 'r-seqinr', 'r-ape', 'bioconductor-msa', 'r-network', 'r-ggcorrplot', 'r-ggally', 'r-sna', 'r-corrplot', 'r-dendextend', 'libopenblas']
+
+
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/ld_impl_linux-64-2.33.1-h53a641e_7' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/ld_impl_linux-64-2.33.1-h53a641e_7' has invalid SHA-256 checksum
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/libxml2-2.9.14-h74e7548_0' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/libxml2-2.9.14-h74e7548_0' has invalid SHA-256 checksum
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/gxx_impl_linux-64-7.3.0-hdf63c60_1' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/gxx_impl_linux-64-7.3.0-hdf63c60_1' has invalid SHA-256 checksum
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/gfortran_impl_linux-64-7.3.0-hdf63c60_1' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/gfortran_impl_linux-64-7.3.0-hdf63c60_1' has invalid SHA-256 checksum
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/harfbuzz-4.3.0-hf52aaf7_1' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/harfbuzz-4.3.0-hf52aaf7_1' has invalid SHA-256 checksum
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/_r-mutex-1.0.0-anacondar_1' has invalid size
+warning  libmamba Extracted package cache '/tmp/mamba_pkgs_dir/_r-mutex-1.0.0-anacondar_1' has invalid SHA-256 checksum
+Transaction
+
+  Prefix: /opt/conda/envs/stat_perl_r
+
+  Updating specs:
+
+   - r==3.6.0=r36_0
+   - gfortran_impl_linux-64==7.3.0=hdf63c60_1
+   - gfortran_linux-64==7.3.0=h553295d_15
+   - perl
+   - r-ggplot2
+   - r-pheatmap
+   - r-reshape2
+   - bioconductor-sva
+   - r-optparse
+   - r-ggfortify
+   - r-ggnewscale
+   - r-e1071
+   - r-vegan
+   - bioconductor-preprocesscore
+   - bioconductor-deseq2
+   - bioconductor-tximport
+   - bioconductor-gsva
+   - bioconductor-gseabase
+   - r-ggrepel
+   - r-wgcna
+   - bioconductor-maftools
+   - bioconductor-clusterprofiler=3.14.0
+   - r-ggpubr=0.2.5
+   - bioconductor-org.hs.eg.db
+   - bioconductor-complexheatmap
+   - r-data.table
+   - r-beeswarm
+   - bioconductor-chimeraviz
+   - bioconductor-limma
+   - r-r.utils
+   - r-dplyr
+   - r-immunedeconv
+   - r-tidyverse
+   - bioconductor-ggtree
+   - r-seqinr
+   - r-ape
+   - bioconductor-msa
+   - r-network
+   - r-ggcorrplot
+   - r-ggally
+   - r-sna
+   - r-corrplot
+   - r-dendextend
+   - libopenblas
+
+
+  Package                                   Version  Build                Channel                    Size
+───────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Install:
+───────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  + _libgcc_mutex                               0.1  main                 pkgs/main/linux-64       Cached
+  + _openmp_mutex                               5.1  1_gnu                pkgs/main/linux-64       Cached
+  + _r-mutex                                  1.0.0  anacondar_1          r/linux-64               Cached
+  + binutils_impl_linux-64                   2.33.1  he6710b0_7           pkgs/main/linux-64       Cached
+  + binutils_linux-64                        2.33.1  h9595d00_15          pkgs/main/linux-64       Cached
+  + bioconductor-annotate                    1.64.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-annotationdbi               1.48.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-annotationfilter            1.10.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-biobase                     2.46.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-biocfilecache               1.10.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-biocgenerics                0.32.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-biocparallel                1.20.0  r36he1b5a44_0        bioconda/linux-64        Cached
+  + bioconductor-biocstyle                   2.14.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-biomart                     2.42.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-biostrings                  2.54.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-biovizbase                  1.34.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-bsgenome                    1.54.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-chimeraviz                  1.12.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-clusterprofiler             3.14.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-complexheatmap               2.2.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-delayedarray                0.12.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-deseq2                      1.26.0  r36he1b5a44_0        bioconda/linux-64        Cached
+  + bioconductor-do.db                          2.9  r36_7                bioconda/noarch          Cached
+  + bioconductor-dose                        3.12.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-enrichplot                   1.6.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-ensembldb                   2.10.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-fgsea                       1.12.0  r36he1b5a44_0        bioconda/linux-64        Cached
+  + bioconductor-genefilter                  1.68.0  r36hc99cbb1_0        bioconda/linux-64        Cached
+  + bioconductor-geneplotter                 1.64.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-genomeinfodb                1.22.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-genomeinfodbdata             1.2.2  r36_0                bioconda/noarch          Cached
+  + bioconductor-genomicalignments           1.22.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-genomicfeatures             1.38.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-genomicranges               1.38.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-ggtree                       2.0.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-go.db                       3.10.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-gosemsim                    2.12.0  r36he1b5a44_0        bioconda/linux-64        Cached
+  + bioconductor-graph                       1.64.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-gseabase                    1.48.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-gsva                        1.34.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-gviz                        1.30.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-impute                      1.60.0  r36h6e990d7_0        bioconda/linux-64        Cached
+  + bioconductor-iranges                     2.20.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-limma                       3.42.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-maftools                     2.2.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-msa                         1.18.0  r36he1b5a44_0        bioconda/linux-64        Cached
+  + bioconductor-org.hs.eg.db                3.10.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-org.mm.eg.db                3.10.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-preprocesscore              1.48.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-protgenerics                1.18.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-qvalue                      2.18.0  r36_1                bioconda/noarch          Cached
+  + bioconductor-rgraphviz                   2.30.0  r36he1b5a44_0        bioconda/linux-64        Cached
+  + bioconductor-rhtslib                     1.18.0  r36hdb70ac9_1        bioconda/linux-64        Cached
+  + bioconductor-rsamtools                    2.2.0  r36he1b5a44_0        bioconda/linux-64        Cached
+  + bioconductor-rtracklayer                 1.46.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-s4vectors                   0.24.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-summarizedexperiment        1.16.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-sva                         3.34.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-treeio                      1.10.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-tximport                    1.14.0  r36_0                bioconda/noarch          Cached
+  + bioconductor-variantannotation           1.32.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-xvector                     0.26.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bioconductor-zlibbioc                    1.32.0  r36h516909a_0        bioconda/linux-64        Cached
+  + bowtie2                                   2.4.2  py39hc9c6fcd_2       bioconda/linux-64        Cached
+  + bwidget                                  1.9.11  1                    pkgs/main/linux-64       Cached
+  + bzip2                                     1.0.8  h7b6447c_0           pkgs/main/linux-64       Cached
+  + ca-certificates                      2023.08.22  h06a4308_0           pkgs/main/linux-64       Cached
+  + cairo                                    1.16.0  hb05425b_5           pkgs/main/linux-64       Cached
+  + curl                                     7.69.1  hbc83047_0           pkgs/main/linux-64       Cached
+  + expat                                     2.5.0  h6a678d5_0           pkgs/main/linux-64       Cached
+  + fontconfig                               2.14.1  h52c9d5c_1           pkgs/main/linux-64       Cached
+  + freetype                                 2.12.1  h4a9f257_0           pkgs/main/linux-64       Cached
+  + fribidi                                  1.0.10  h7b6447c_0           pkgs/main/linux-64       Cached
+  + gcc_impl_linux-64                         7.3.0  habb00fd_1           pkgs/main/linux-64       Cached
+  + gcc_linux-64                              7.3.0  h553295d_15          pkgs/main/linux-64       Cached
+  + gdbm                                       1.18  hd4cb3f1_4           pkgs/main/linux-64       Cached
+  + gfortran_impl_linux-64                    7.3.0  hdf63c60_1           pkgs/main/linux-64       Cached
+  + gfortran_linux-64                         7.3.0  h553295d_15          pkgs/main/linux-64       Cached
+  + glib                                     2.69.1  he621ea3_2           pkgs/main/linux-64       Cached
+  + graphite2                                1.3.14  h295c915_1           pkgs/main/linux-64       Cached
+  + gsl                                         2.4  h14c3975_4           pkgs/main/linux-64       Cached
+  + gxx_impl_linux-64                         7.3.0  hdf63c60_1           pkgs/main/linux-64       Cached
+  + gxx_linux-64                              7.3.0  h553295d_15          pkgs/main/linux-64       Cached
+  + harfbuzz                                  4.3.0  hf52aaf7_1           pkgs/main/linux-64       Cached
+  + icu                                        58.2  he6710b0_3           pkgs/main/linux-64       Cached
+  + jpeg                                         9e  h5eee18b_1           pkgs/main/linux-64       Cached
+  + krb5                                     1.17.1  h173b8e3_0           pkgs/main/linux-64       Cached
+  + ld_impl_linux-64                         2.33.1  h53a641e_7           pkgs/main/linux-64       Cached
+  + lerc                                        3.0  h295c915_0           pkgs/main/linux-64       Cached
+  + libblas                                   3.9.0  13_linux64_openblas  conda-forge/linux-64     Cached
+  + libcurl                                  7.69.1  h20c2e04_0           pkgs/main/linux-64       Cached
+  + libdeflate                                 1.17  h5eee18b_1           pkgs/main/linux-64       Cached
+  + libedit                            3.1.20221030  h5eee18b_0           pkgs/main/linux-64       Cached
+  + libffi                                    3.4.4  h6a678d5_0           pkgs/main/linux-64       Cached
+  + libgcc-ng                                11.2.0  h1234567_1           pkgs/main/linux-64       Cached
+  + libgfortran-ng                            7.5.0  ha8ba4b0_17          pkgs/main/linux-64       Cached
+  + libgfortran4                              7.5.0  ha8ba4b0_17          pkgs/main/linux-64       Cached
+  + libgomp                                  11.2.0  h1234567_1           pkgs/main/linux-64       Cached
+  + liblapack                                 3.9.0  13_linux64_openblas  conda-forge/linux-64     Cached
+  + libopenblas                              0.3.18  hf726d26_0           pkgs/main/linux-64       Cached
+  + libpng                                   1.6.39  h5eee18b_0           pkgs/main/linux-64       Cached
+  + libssh2                                  1.10.0  h37d81fd_2           pkgs/main/linux-64       Cached
+  + libstdcxx-ng                             11.2.0  h1234567_1           pkgs/main/linux-64       Cached
+  + libtiff                                   4.5.1  h6a678d5_0           pkgs/main/linux-64       Cached
+  + libuuid                                  1.41.5  h5eee18b_0           pkgs/main/linux-64       Cached
+  + libwebp-base                              1.3.2  h5eee18b_0           pkgs/main/linux-64       Cached
+  + libxcb                                     1.15  h7f8727e_0           pkgs/main/linux-64       Cached
+  + libxml2                                  2.9.14  h74e7548_0           pkgs/main/linux-64       Cached
+  + lz4-c                                     1.9.4  h6a678d5_0           pkgs/main/linux-64       Cached
+  + make                                      4.2.1  h1bed415_1           pkgs/main/linux-64       Cached
+  + ncurses                                     6.4  h6a678d5_0           pkgs/main/linux-64       Cached
+  + openssl                                  1.1.1w  h7f8727e_0           pkgs/main/linux-64       Cached
+  + pango                                    1.50.7  h05da053_0           pkgs/main/linux-64       Cached
+  + pcre                                       8.45  h295c915_0           pkgs/main/linux-64       Cached
+  + perl                                     5.34.0  h5eee18b_2           pkgs/main/linux-64       Cached
+  + pip                                        23.3  py39h06a4308_0       pkgs/main/linux-64       Cached
+  + pixman                                   0.40.0  h7f8727e_1           pkgs/main/linux-64       Cached
+  + python                                   3.9.16  h7a1cb2a_2           pkgs/main/linux-64       Cached
+  + python_abi                                  3.9  2_cp39               conda-forge/linux-64     Cached
+  + r                                         3.6.0  r36_0                r/linux-64               Cached
+  + r-acepack                                 1.4.1  r36ha65eedd_0        r/linux-64               Cached
+  + r-ade4                                   1.7_13  r36h96ca727_0        r/linux-64               Cached
+  + r-ape                                       5.3  r36h29659fb_0        r/linux-64               Cached
+  + r-argumentcheck                          0.10.2  r36h6115d3f_0        r/noarch                 Cached
+  + r-askpass                                   1.0  r36h14c3975_0        r/linux-64               Cached
+  + r-assertthat                              0.2.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-backports                               1.1.4  r36h96ca727_0        r/linux-64               Cached
+  + r-base                                    3.6.1  haffb61f_2           r/linux-64               Cached
+  + r-base64enc                               0.1_3  r36h96ca727_4        r/linux-64               Cached
+  + r-beeswarm                                0.2.3  r36h6115d3f_0        r/noarch                 Cached
+  + r-bh                                   1.69.0_1  r36h6115d3f_0        r/noarch                 Cached
+  + r-biocmanager                            1.30.4  r36h6115d3f_0        r/noarch                 Cached
+  + r-bit                                    1.1_14  r36h96ca727_0        r/linux-64               Cached
+  + r-bit64                                   0.9_7  r36h96ca727_0        r/linux-64               Cached
+  + r-bitops                                  1.0_6  r36h96ca727_4        r/linux-64               Cached
+  + r-blob                                    1.1.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-bookdown                                 0.13  r36h6115d3f_0        r/noarch                 Cached
+  + r-boot                                   1.3_20  r36h6115d3f_0        r/noarch                 Cached
+  + r-brew                                    1.0_6  r36h6115d3f_4        r/noarch                 Cached
+  + r-broom                                   0.5.2  r36h6115d3f_0        r/noarch                 Cached
+  + r-callr                                   3.2.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-cellranger                              1.1.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-checkmate                               1.9.1  r36h96ca727_0        r/linux-64               Cached
+  + r-circlize                               0.4.12  r36hc72bb7e_0        conda-forge/noarch       Cached
+  + r-class                                  7.3_15  r36h96ca727_0        r/linux-64               Cached
+  + r-cli                                     1.1.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-clipr                                   0.6.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-clue                                   0.3_57  r36h96ca727_0        r/linux-64               Cached
+  + r-cluster                                 2.0.8  r36ha65eedd_0        r/linux-64               Cached
+  + r-coda                                   0.19_2  r36h6115d3f_0        r/noarch                 Cached
+  + r-codetools                              0.2_16  r36h6115d3f_0        r/noarch                 Cached
+  + r-colorspace                              1.4_1  r36h96ca727_0        r/linux-64               Cached
+  + r-commonmark                                1.7  r36h96ca727_0        r/linux-64               Cached
+  + r-corrplot                                 0.84  r36h6115d3f_0        r/noarch                 Cached
+  + r-cowplot                                 1.1.1  r36hc72bb7e_0        conda-forge/noarch       Cached
+  + r-crayon                                  1.3.4  r36h6115d3f_0        r/noarch                 Cached
+  + r-crosstalk                               1.0.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-curl                                      3.3  r36h96ca727_0        r/linux-64               Cached
+  + r-data.table                             1.12.2  r36h96ca727_0        r/linux-64               Cached
+  + r-data.tree                               1.0.0  r36_0                conda-forge/noarch       Cached
+  + r-dbi                                     1.0.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-dbplyr                                  1.4.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-dendextend                             1.15.1  r36hc72bb7e_0        conda-forge/noarch       Cached
+  + r-deoptimr                                1.0_8  r36h6115d3f_0        r/noarch                 Cached
+  + r-desc                                    1.2.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-diagrammer                              1.0.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-dichromat                               2.0_0  r36h6115d3f_4        r/noarch                 Cached
+  + r-digest                                 0.6.18  r36h96ca727_0        r/linux-64               Cached
+  + r-doparallel                             1.0.14  r36h6115d3f_0        r/noarch                 Cached
+  + r-downloader                                0.4  r36h6115d3f_0        r/noarch                 Cached
+  + r-dplyr                                 0.8.0.1  r36h29659fb_0        r/linux-64               Cached
+  + r-dt                                        0.5  r36h6115d3f_0        r/noarch                 Cached
+  + r-dynamictreecut                         1.63_1  r36h6115d3f_0        r/noarch                 Cached
+  + r-e1071                                   1.7_1  r36h29659fb_0        r/linux-64               Cached
+  + r-ellipsis                                0.1.0  r36h96ca727_0        r/linux-64               Cached
+  + r-epic                                      1.1  r36_1                bioconda/noarch          Cached
+  + r-europepmc                                 0.4  r36h6115d3f_0        conda-forge/noarch       Cached
+  + r-evaluate                                 0.13  r36h6115d3f_0        r/noarch                 Cached
+  + r-fansi                                   0.4.0  r36h96ca727_0        r/linux-64               Cached
+  + r-farver                                  1.1.0  r36h29659fb_0        r/linux-64               Cached
+  + r-fastcluster                            1.1.25  r36h29659fb_0        r/linux-64               Cached
+  + r-fastmatch                               1.1_0  r36h96ca727_0        r/linux-64               Cached
+  + r-fit.models                             0.5_14  r36h6115d3f_0        r/noarch                 Cached
+  + r-forcats                                 0.4.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-foreach                                 1.4.4  r36h6115d3f_0        r/noarch                 Cached
+  + r-foreign                                0.8_71  r36h96ca727_0        r/linux-64               Cached
+  + r-formatr                                   1.6  r36h6115d3f_0        r/noarch                 Cached
+  + r-formula                                 1.2_3  r36h6115d3f_0        r/noarch                 Cached
+  + r-fs                                      1.2.7  r36h29659fb_0        r/linux-64               Cached
+  + r-futile.logger                           1.4.3  r36h6115d3f_1003     conda-forge/noarch       Cached
+  + r-futile.options                          1.0.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-generics                                0.0.2  r36h6115d3f_0        r/noarch                 Cached
+  + r-getopt                                 1.20.3  r36h6115d3f_0        r/noarch                 Cached
+  + r-getoptlong                              1.0.5  r36hc72bb7e_0        conda-forge/noarch       Cached
+  + r-ggally                                  2.0.0  r36h6115d3f_0        conda-forge/noarch       Cached
+  + r-ggcorrplot                              0.1.3  r36h6115d3f_2        conda-forge/noarch       Cached
+  + r-ggforce                                 0.3.3  r36h03ef668_0        conda-forge/linux-64     Cached
+  + r-ggfortify                              0.4.11  r36h142f84f_0        conda-forge/noarch       Cached
+  + r-ggnewscale                              0.4.5  r36hc72bb7e_0        conda-forge/noarch       Cached
+  + r-ggplot2                                 3.1.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-ggplotify                               0.0.7  r36hc72bb7e_0        conda-forge/noarch       Cached
+  + r-ggpubr                                  0.2.5  r36h6115d3f_1        conda-forge/noarch       Cached
+  + r-ggraph                                  2.0.5  r36h03ef668_0        conda-forge/linux-64     Cached
+  + r-ggrepel                                 0.9.1  r36h03ef668_0        conda-forge/linux-64     Cached
+  + r-ggridges                                0.5.3  r36hc72bb7e_0        conda-forge/noarch       Cached
+  + r-ggsci                                     2.9  r36h6115d3f_1003     conda-forge/noarch       Cached
+  + r-ggsignif                                0.6.1  r36hc72bb7e_0        conda-forge/noarch       Cached
+  + r-globaloptions                           0.1.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-glue                                    1.3.1  r36h96ca727_0        r/linux-64               Cached
+  + r-graphlayouts                            0.7.1  r36h1b71b39_0        conda-forge/linux-64     Cached
+  + r-gridextra                                 2.3  r36h6115d3f_0        r/noarch                 Cached
+  + r-gridgraphics                            0.4_1  r36h6115d3f_0        r/noarch                 Cached
+  + r-gtable                                  0.3.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-gtools                                  3.8.1  r36h96ca727_0        r/linux-64               Cached
+  + r-haven                                   2.1.0  r36h29659fb_0        r/linux-64               Cached
+  + r-highr                                     0.8  r36h6115d3f_0        r/noarch                 Cached
+  + r-hmisc                                   4.2_0  r36ha65eedd_0        r/linux-64               Cached
+  + r-hms                                     0.4.2  r36h6115d3f_0        r/noarch                 Cached
+  + r-htmltable                              1.13.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-htmltools                               0.3.6  r36h29659fb_0        r/linux-64               Cached
+  + r-htmlwidgets                               1.3  r36h6115d3f_0        r/noarch                 Cached
+  + r-httpuv                                  1.5.1  r36h29659fb_0        r/linux-64               Cached
+  + r-httr                                    1.4.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-igraph                                1.2.4.1  r36h80f5a37_0        r/linux-64               Cached
+  + r-immunedeconv                            2.0.2  r36_0                bioconda/noarch          Cached
+  + r-influencer                              0.1.0  r36h96ca727_0        r/linux-64               Cached
+  + r-iterators                              1.0.10  r36h6115d3f_0        r/noarch                 Cached
+  + r-jsonlite                                  1.6  r36h96ca727_0        r/linux-64               Cached
+  + r-kernsmooth                            2.23_15  r36ha65eedd_4        r/linux-64               Cached
+  + r-knitr                                    1.22  r36h6115d3f_0        r/noarch                 Cached
+  + r-labeling                                  0.3  r36h6115d3f_4        r/noarch                 Cached
+  + r-lambda.r                                1.2.3  r36h6115d3f_0        r/noarch                 Cached
+  + r-later                                   0.8.0  r36h29659fb_0        r/linux-64               Cached
+  + r-lattice                               0.20_38  r36h96ca727_0        r/linux-64               Cached
+  + r-latticeextra                           0.6_28  r36h6115d3f_0        r/noarch                 Cached
+  + r-lazyeval                                0.2.2  r36h96ca727_0        r/linux-64               Cached
+  + r-limsolve                                1.5.6  r36h31ca83e_2        conda-forge/linux-64     Cached
+  + r-locfit                                1.5_9.4  r36hcdcec82_1        conda-forge/linux-64     Cached
+  + r-lpsolve                                5.6.13  r36h96ca727_0        r/linux-64               Cached
+  + r-lubridate                               1.7.4  r36h29659fb_0        r/linux-64               Cached
+  + r-magrittr                                  1.5  r36h6115d3f_4        r/noarch                 Cached
+  + r-markdown                                  0.9  r36h96ca727_0        r/linux-64               Cached
+  + r-mass                                 7.3_51.3  r36h96ca727_0        r/linux-64               Cached
+  + r-matrix                                 1.2_17  r36h96ca727_0        r/linux-64               Cached
+  + r-matrixstats                            0.54.0  r36h96ca727_0        r/linux-64               Cached
+  + r-mcpcounter                              1.1.0  r36_0                bioconda/noarch          Cached
+  + r-memoise                                 1.1.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-mgcv                                   1.8_28  r36h96ca727_0        r/linux-64               Cached
+  + r-mime                                      0.6  r36h96ca727_0        r/linux-64               Cached
+  + r-modelr                                  0.1.4  r36h6115d3f_0        r/noarch                 Cached
+  + r-munsell                                 0.5.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-mvtnorm                                1.0_10  r36ha65eedd_0        r/linux-64               Cached
+  + r-network                                1.16.0  r36hcdcec82_1        conda-forge/linux-64     Cached
+  + r-nlme                                  3.1_139  r36ha65eedd_0        r/linux-64               Cached
+  + r-nnet                                   7.3_12  r36h96ca727_0        r/linux-64               Cached
+  + r-openssl                                   1.3  r36h96ca727_0        r/linux-64               Cached
+  + r-optparse                                1.6.2  r36h6115d3f_0        r/noarch                 Cached
+  + r-pcapp                                  1.9_73  r36h29659fb_0        r/linux-64               Cached
+  + r-permute                                 0.9_5  r36h6115d3f_0        r/noarch                 Cached
+  + r-pheatmap                               1.0.12  r36h6115d3f_0        r/noarch                 Cached
+  + r-pillar                                  1.3.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-pkgbuild                                1.0.3  r36h6115d3f_0        r/noarch                 Cached
+  + r-pkgconfig                               2.0.2  r36h6115d3f_0        r/noarch                 Cached
+  + r-pkgload                                 1.0.2  r36h29659fb_0        r/linux-64               Cached
+  + r-plogr                                   0.2.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-plyr                                    1.8.4  r36h29659fb_0        r/linux-64               Cached
+  + r-png                                     0.1_7  r36h96ca727_0        r/linux-64               Cached
+  + r-polyclip                               1.10_0  r36h29659fb_0        r/linux-64               Cached
+  + r-polynom                                 1.4_0  r36h6115d3f_0        r/noarch                 Cached
+  + r-pracma                                  2.2.5  r36h6115d3f_0        r/noarch                 Cached
+  + r-prettyunits                             1.0.2  r36h6115d3f_0        r/noarch                 Cached
+  + r-processx                                3.3.0  r36h96ca727_0        r/linux-64               Cached
+  + r-progress                                1.2.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-promises                                1.0.1  r36h29659fb_0        r/linux-64               Cached
+  + r-ps                                      1.3.0  r36h96ca727_0        r/linux-64               Cached
+  + r-purrr                                   0.3.2  r36h96ca727_0        r/linux-64               Cached
+  + r-quadprog                                1.5_5  r36ha65eedd_4        r/linux-64               Cached
+  + r-r.methodss3                             1.7.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-r.oo                                   1.22.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-r.utils                                 2.8.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-r6                                      2.4.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-rappdirs                                0.3.1  r36h96ca727_0        r/linux-64               Cached
+  + r-rcircos                                 1.2.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-rcolorbrewer                            1.1_2  r36h6115d3f_0        r/noarch                 Cached
+  + r-rcpp                                    1.0.1  r36h29659fb_0        r/linux-64               Cached
+  + r-rcpparmadillo                     0.9.300.2.0  r36h29659fb_0        r/linux-64               Cached
+  + r-rcppeigen                           0.3.3.5.0  r36h29659fb_0        r/linux-64               Cached
+  + r-rcurl                               1.95_4.12  r36h96ca727_0        r/linux-64               Cached
+  + r-readr                                   1.3.1  r36h29659fb_0        r/linux-64               Cached
+  + r-readxl                                  1.3.1  r36h29659fb_0        r/linux-64               Cached
+  + r-recommended                             3.6.0  r36_0                r/linux-64               Cached
+  + r-rematch                                 1.0.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-reprex                                  0.2.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-reshape                                 0.8.8  r36h6115d3f_0        r/linux-64               Cached
+  + r-reshape2                                1.4.3  r36h29659fb_0        r/linux-64               Cached
+  + r-rgexf                                  0.15.3  r36h96ca727_0        r/linux-64               Cached
+  + r-rjson                                  0.2.20  r36h29659fb_0        r/linux-64               Cached
+  + r-rlang                                   0.3.4  r36h96ca727_0        r/linux-64               Cached
+  + r-rle                                     0.9.2  r36h0eb13af_0        conda-forge/linux-64     Cached
+  + r-rmarkdown                                1.12  r36h6115d3f_0        r/noarch                 Cached
+  + r-robust                                0.5_0.0  r36hc3f0d1c_2        conda-forge/linux-64     Cached
+  + r-robustbase                             0.93_4  r36ha65eedd_0        r/linux-64               Cached
+  + r-rook                                    1.1_1  r36h96ca727_0        r/linux-64               Cached
+  + r-roxygen2                                6.1.1  r36h29659fb_0        r/linux-64               Cached
+  + r-rpart                                  4.1_15  r36h96ca727_0        r/linux-64               Cached
+  + r-rprojroot                               1.3_2  r36h6115d3f_0        r/noarch                 Cached
+  + r-rrcov                                   1.5_5  r36hed91ed1_1        conda-forge/linux-64     Cached
+  + r-rsqlite                                 2.1.1  r36h29659fb_0        r/linux-64               Cached
+  + r-rstudioapi                               0.10  r36h6115d3f_0        r/noarch                 Cached
+  + r-rvcheck                                 0.1.3  r36h6115d3f_0        r/noarch                 Cached
+  + r-rvest                                   0.3.3  r36h6115d3f_0        r/noarch                 Cached
+  + r-scales                                  1.0.0  r36h29659fb_0        r/linux-64               Cached
+  + r-segmented                               1.0_0  r36h6115d3f_0        r/noarch                 Cached
+  + r-selectr                                 0.4_1  r36h6115d3f_0        r/noarch                 Cached
+  + r-seqinr                                  4.2_5  r36hcfec24a_0        conda-forge/linux-64     Cached
+  + r-shape                                   1.4.4  r36h6115d3f_0        r/noarch                 Cached
+  + r-shiny                                   1.3.2  r36h6115d3f_0        r/noarch                 Cached
+  + r-shinythemes                             1.1.2  r36h6115d3f_0        r/noarch                 Cached
+  + r-sna                                       2.5  r36hcdcec82_1        conda-forge/linux-64     Cached
+  + r-snow                                    0.4_3  r36h6115d3f_0        r/noarch                 Cached
+  + r-sourcetools                             0.1.7  r36h29659fb_0        r/linux-64               Cached
+  + r-spatial                                7.3_11  r36h96ca727_4        r/linux-64               Cached
+  + r-statnet.common                          4.4.1  r36h0eb13af_0        conda-forge/linux-64     Cached
+  + r-stringi                                 1.4.3  r36h29659fb_0        r/linux-64               Cached
+  + r-stringr                                 1.4.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-survival                             2.44_1.1  r36h96ca727_0        r/linux-64               Cached
+  + r-sys                                       3.2  r36h96ca727_0        r/linux-64               Cached
+  + r-testit                                    0.9  r36h6115d3f_0        r/noarch                 Cached
+  + r-tibble                                  2.1.1  r36h96ca727_0        r/linux-64               Cached
+  + r-tidygraph                               1.2.0  r36h0357c0b_0        conda-forge/linux-64     Cached
+  + r-tidyr                                   0.8.3  r36h29659fb_0        r/linux-64               Cached
+  + r-tidyselect                              0.2.5  r36h29659fb_0        r/linux-64               Cached
+  + r-tidytree                                0.3.4  r36hc72bb7e_0        conda-forge/noarch       Cached
+  + r-tidyverse                               1.2.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-tinytex                                  0.12  r36h6115d3f_0        r/noarch                 Cached
+  + r-triebeard                               0.3.0  r36h29659fb_0        r/linux-64               Cached
+  + r-tweenr                                  1.0.2  r36h03ef668_0        conda-forge/linux-64     Cached
+  + r-urltools                                1.7.3  r36h0357c0b_2        conda-forge/linux-64     Cached
+  + r-utf8                                    1.1.4  r36h96ca727_0        r/linux-64               Cached
+  + r-vegan                                   2.5_6  r36hc3f0d1c_3        conda-forge/linux-64     Cached
+  + r-viridis                                 0.5.1  r36h6115d3f_0        r/noarch                 Cached
+  + r-viridislite                             0.3.0  r36h6115d3f_0        r/noarch                 Cached
+  + r-visnetwork                              2.0.6  r36h6115d3f_0        r/noarch                 Cached
+  + r-wgcna                                    1.69  r36h0357c0b_0        bioconda/linux-64        Cached
+  + r-whisker                                 0.3_2  r36h6115d3f_4        r/noarch                 Cached
+  + r-withr                                   2.1.2  r36h6115d3f_0        r/noarch                 Cached
+  + r-wordcloud                                 2.6  r36h29659fb_0        r/linux-64               Cached
+  + r-xcell                                     1.2  r36hc9558a2_2        bioconda/linux-64        Cached
+  + r-xfun                                      0.6  r36h6115d3f_0        r/noarch                 Cached
+  + r-xml                                 3.98_1.19  r36h96ca727_0        r/linux-64               Cached
+  + r-xml2                                    1.2.0  r36h29659fb_0        r/linux-64               Cached
+  + r-xtable                                  1.8_4  r36h6115d3f_0        r/noarch                 Cached
+  + r-yaml                                    2.2.0  r36h96ca727_0        r/linux-64               Cached
+  + readline                                    8.2  h5eee18b_0           pkgs/main/linux-64       Cached
+  + setuptools                               68.0.0  py39h06a4308_0       pkgs/main/linux-64       Cached
+  + sqlite                                   3.41.2  h5eee18b_0           pkgs/main/linux-64       Cached
+  + tbb                                      2020.3  hfd86e86_0           pkgs/main/linux-64       Cached
+  + tk                                       8.6.12  h1ccaba5_0           pkgs/main/linux-64       Cached
+  + tktable                                    2.10  h14c3975_0           pkgs/main/linux-64       Cached
+  + tzdata                                    2023c  h04d1e81_0           pkgs/main/noarch         Cached
+  + wheel                                    0.41.2  py39h06a4308_0       pkgs/main/linux-64       Cached
+  + xz                                       5.2.10  h5eee18b_1           pkgs/main/linux-64       Cached
+  + zlib                                     1.2.13  h5eee18b_0           pkgs/main/linux-64       Cached
+  + zstd                                      1.5.5  hc292b87_0           pkgs/main/linux-64       Cached
+
+  Summary:
+
+  Install: 364 packages
+
+  Total download: 0 B
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment, use
+#
+#     $ conda activate stat_perl_r
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
++ conda env list
+# conda environments:
+#
+base                     /opt/conda
+RIMA                     /opt/conda/envs/RIMA
+centrifuge_env           /opt/conda/envs/centrifuge_env
+prada_env                /opt/conda/envs/prada_env
+rseqc_env                /opt/conda/envs/rseqc_env
+stat_perl_r              /opt/conda/envs/stat_perl_r
+
+INFO:    Adding environment to container
+INFO:    Adding runscript
+INFO:    Creating SIF file...
+INFO:    Build complete: RIMA-mamba.sif

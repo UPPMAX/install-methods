@@ -1,0 +1,35 @@
+Bootstrap: docker
+From: condaforge/mambaforge
+
+%environment
+  export LC_ALL=C
+  export PYTHONNOUSERSITE=True
+
+%files
+
+%post
+  export LC_ALL=C
+  export PYTHONNOUSERSITE=True
+  export CONDA_PKGS_DIRS=/tmp/mamba_pkgs_dir
+  mkdir -p ${CONDA_PKGS_DIRS}
+
+  apt-get update &&  apt-get install -y git libfontconfig1 libxrender1 libffi7
+  ln -s /usr/lib/x86_64-linux-gnu/libffi.so.7 /usr/lib/x86_64-linux-gnu/libffi.so.6
+
+  mkdir -p /installs 
+
+  cd /installs
+  git clone https://github.com/liulab-dfci/RIMA_pipeline.git
+  cd RIMA_pipeline
+  echo "    - markdown==3.3.7"  >> static/environment/GCP/rna.yml
+  echo "    - requests==2.27.1" >> static/environment/GCP/rna.yml
+  echo "    - Cython"           >> static/environment/GCP/rna.yml
+  bash ./RIMA_environment.sh -p GCP
+
+  conda env list
+  
+  # No need to clean = packages are kept otside in $CONDA_PKGS_DIRS
+  #conda clean --all --yes
+
+%runscript
+  /bin/bash "$@"
