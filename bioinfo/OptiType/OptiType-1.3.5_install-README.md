@@ -26,31 +26,26 @@ LOG
 
     cd $PREFIX
 
+The glpk and COIN-OR-OptimizationSuite modules must be laoded when the pyomo
+package is installed below, so it can see them and configure itself
+accordingly.
+
     ml python/2.7.15
-    ml hdf5/1.8.18
     ml glpk/5.0
+    ml COIN-OR-OptimizationSuite/1.8.0
     ml bioinfo-tools
     ml samtools/1.4
     virtualenv venv
+    ml -python
 
 Installing the python packages requires some additional work. The numexpr
 version needs to be foollowed, otherwise tables can't install.
 
-    $PREFIX/venv/bin/pip install numpy==1.9.3
-    $PREFIX/venv/bin/pip install pyutilib==5.4
-    $PREFIX/venv/bin/pip install pyomo==4.3.11388
-    $PREFIX/venv/bin/pip install numexpr==2.5.2
-    $PREFIX/venv/bin/pip install tables==3.2.3.1
-    $PREFIX/venv/bin/pip install pandas==0.18.1
-    $PREFIX/venv/bin/pip install pysam
-    $PREFIX/venv/bin/pip install matplotlib
-    $PREFIX/venv/bin/pip install future
-
-The pyutilib that was installed is missing enum, which is needed. The quickest way to deal is simply to replace the tree with that from 1.3.1.
-
-    cd $PREFIX/venv/lib/python2.7/site-packages
-    rm -rf pyutilib
-    cp -av $TOOLDIR/1.3.1/rackham/python_libs/lib/python2.7/site-packages/pyutilib .
+    source venv/bin/activate
+    pip install -I pyomo
+    ###  pip install PyUtilib==5.3.5  # this should be installed by pyomo
+    pip install numpy==1.14.5 numexpr==2.5.2 table==0.0.4 tables==3.4.3 pandas==0.18.1 pysam==0.14.1 matplotlib==2.2.5
+    pip install future
 
 Now replace the #! line in OptiTypePipeline.py with the python2 from the venv.
 
@@ -60,9 +55,8 @@ Now replace the #! line in OptiTypePipeline.py with the python2 from the venv.
 
 In the mf file, load
 
-    ml python/2.7.15
-    ml hdf5/1.8.18
     ml glpk/5.0
+    ml COIN-OR-OptimizationSuite/1.8.0
     ml samtools/1.4
 
 and add to PATH:

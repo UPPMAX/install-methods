@@ -1,14 +1,21 @@
 Installing a custon snpEff database
 ===================================
 
-To install a custom database, for example c_elegans.PRJNA13758.WS283 or canFam4.0, to (for example) snpEff/4.3t
+To install a custom database, for example c_elegans.PRJNA13758.WS283 or canFam4.0, to (for example) snpEff/5.2
 
 Guide at <http://pcingola.github.io/SnpEff/se_buildingdb/#option-1-building-a-database-from-gtf-files>
+
+First install a single database.
+
+    module load bioinfo-tools snpEff/5.2
+
+    snpEff download -v Sscrofa11.1.105
+
 
 canFam4.0
 ---------
 
-    cd /sw/bioinfo/snpEff/4.3t/rackham/data
+    cd /sw/bioinfo/snpEff/5.2/rackham/data
     mkdir canFam4.0
     cd  canFam4.0
 
@@ -28,17 +35,17 @@ Rename files:
 
 Now add an entry to snpeff.config for this:
 
-    cd /sw/bioinfo/snpEff/4.3t/rackham/
-    
+    cd /sw/bioinfo/snpEff/5.2/rackham/
+
 Add this line in the list of genomes in the main snpEff.config:
 
     canFam4.0.genome : Canis_familiaris
 
 And, build the database:
 
-    module load bioinfo-tools snpEff/4.3t
+    module load bioinfo-tools snpEff/5.2
 
-    java -jar $SNPEFF_ROOT/snpEff.jar build -gtf22 -v canFam4.0 2>&1 | tee /sw/bioinfo/snpEff/4.3t/rackham/data/canFam4.0/database.build.out
+    java -jar $SNPEFF_ROOT/snpEff.jar build -gtf22 -v canFam4.0 2>&1 | tee /sw/bioinfo/snpEff/5.2/rackham/data/canFam4.0/database.build.out
 
 
 
@@ -47,7 +54,7 @@ c_elegans.PRJNA13758.WS283
 
 This one requires specifying the codon table for the mitochondrion.
 
-    cd /sw/bioinfo/snpEff/4.3t/rackham/data/
+    cd /sw/bioinfo/snpEff/5.2/rackham/data/
     mkdir c_elegans.PRJNA13758.WS283
     cd c_elegans.PRJNA13758.WS283
 
@@ -70,9 +77,9 @@ Note that advice from Katju lab is that we do *not* use Alternative_Flatworm_Mit
 
 And, build the database:
 
-    module load bioinfo-tools snpEff/4.3t
+    module load bioinfo-tools snpEff/5.2
 
-    java -jar $SNPEFF_ROOT/snpEff.jar build -gff3 -v c_elegans.PRJNA13758.WS283 2>&1 | tee /sw/bioinfo/snpEff/4.3t/rackham/data/c_elegans.PRJNA13758.WS283/database.build.out
+    snpEff build -gff3 -v c_elegans.PRJNA13758.WS283 2>&1 | tee /sw/bioinfo/snpEff/5.2/rackham/data/c_elegans.PRJNA13758.WS283/database.build.out
 
 This results in the database, and the output log:
 

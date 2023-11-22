@@ -1,4 +1,5 @@
-# miniasm-20160128-install-README.md
+miniasm-0.2-r137-install-README.md
+==================================
 
 Miniasm long noisy-read assembler
 
@@ -17,8 +18,8 @@ LOG
     cd /sw/apps/bioinfo
     mkdir miniasm
     cd miniasm/
-    mkdir 20160128 mf
-    cd 20160128
+    mkdir 0.2-r137 mf
+    cd 0.2-r137
     mkdir src milou
     cd src/
     git clone https://github.com/voutcn/miniasm
@@ -39,8 +40,5 @@ LOG
     ln -s ./milou irma
 
 
-Use mf from fermi.
+Standard mf.
 
-    cd ../mf
-    cp /sw/apps/bioinfo/fermi/mf/fermi-1.1-r751-beta miniasm-20160128
-    vi miniasm-20160128 

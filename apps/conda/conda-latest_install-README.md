@@ -47,17 +47,17 @@ At the following rows I inserted:
 
 To reinstall:
     cd /sw/apps/conda/latest/src
-    mv ../rackham/local_repo .
-    rm -rf ../rackham
+    rm -rf ../rackham_stage
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     chmod +x Miniconda3-latest-Linux-x86_64.sh
-    ./Miniconda3-latest-Linux-x86_64.sh -fbp /sw/apps/conda/latest/rackham/
+    ./Miniconda3-latest-Linux-x86_64.sh -fbp /sw/apps/conda/latest/rackham_stage/
     ml conda
-    conda install conda-build conda-mirror mamba conda-pack libarchive -yc conda-forge
-    cp conda_init.sh ../rackham/bin/
-    cp .condarc ../rackham/.condarc
-    cp .condarcOffline ../bianca/.condarc
-    cp .condarcOffline ../miarka/.condarc
-    mv local_repo/ ../rackham/
-    cd /sw/apps/conda/latest/rackham/local_repo
-    conda index --channel-name CONDA_UPPMAX --verbose */
+    #conda install conda-build conda-mirror mamba conda-pack libarchive -yc conda-forge
+    cp conda_init.sh ../rackham_stage/bin/
+    cp .condarc ../rackham_stage/.condarc
+    #cp .condarcOffline ../bianca/.condarc
+    #cp .condarcOffline ../miarka/.condarc
+    ln -s /sw/apps/conda/local_repo/ /sw/apps/conda/latest/rackham_stage/local_repo
+    conda install conda-build conda-mirror mamba conda-pack libarchive -y
+    #cd /sw/apps/conda/latest/rackham_stage/local_repo
+    #conda index --channel-name CONDA_UPPMAX --verbose */

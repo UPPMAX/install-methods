@@ -1,11 +1,11 @@
-perl_modules/5.26.2
+perl_modules/5.32.1
 ===================
 
 A catch-all for Perl modules.  Any time an install wants a Perl module, I put it here.
 
 We should probably do the same for Python.
 
-The version (5.26.2) reflects the version of Perl these accompany.  This is its
+The version (5.32.1) reflects the version of Perl these accompany.  This is its
 current limitation.  The 5.18.4 version was restricted to milou, but no longer.
 
 IMPORTANT
@@ -18,13 +18,8 @@ with users and other modules.
 For this reason, members of group `sw` can step on the contents of this module
 when installing perl modules either for themselves or for other modules.
 
-The cluster trees beneath the version directories are write-protected by default:
+The cluster trees beneath the version directories are write-protected by default.
 
-    rackham5: /sw/comp/perl_modules/5.26.2 $ ll
-    total 8
-    lrwxrwxrwx 1 douglas sw    7 Aug  9  2017 bianca -> rackham
-    lrwxrwxrwx 1 douglas sw    7 Aug  9  2017 irma -> rackham
-    dr-xr-sr-x 5 douglas sw 4096 May  3 16:26 milou
     dr-xr-sr-x 5 douglas sw 4096 Sep 28  2017 rackham
 
 These need to be de-write-protected prior to installing additional modules, for
@@ -56,13 +51,16 @@ Get environment set up, and once cpanm is downloaded, get it out of the bin
 directory and use it above.  Create setup script to unset variables and use
 minimal path.
 
-    VERSION=5.26.2
-    CLUSTER=${CLUSTER:?CLUSTER must be set}
-    unset PERL5LIB
-    module load perl/${VERSION}
     TOOL=perl_modules
-    LOCALVERSION=${VERSION}
-    export MODULE_DEPS=/sw/comp/${TOOL}/${LOCALVERSION}/${CLUSTER}
+    VERSION=5.32.1
+
+    makeroom.sh -f -c comp -t $TOOL -v $VERSION -l "GPL v1+ or Artistic License" -d "Omnibus module providing many Perl modules for perl/$VERSION"
+    ./makeroom_perl_modules_5.32.1.sh
+
+    source /sw/comp/perl_modules/SOURCEME_perl_modules_5.32.1
+    cd $SRCDIR
+
+    export MODULE_DEPS=$PREFIX
     unset PERL5LIB
     module load perl/${VERSION}
 
@@ -76,7 +74,7 @@ minimal path.
     rm -f $setup_script && touch $setup_script
 
     echo 'unset MODULE_DEPS PERL5LIB LD_LIBRARY_PATH' >> $setup_script
-    echo 'VERSION=5.26.2' >> $setup_script
+    echo 'VERSION=5.32.1' >> $setup_script
     echo 'CLUSTER=${CLUSTER:?CLUSTER must be set}' >> $setup_script
     echo 'module purge' >> $setup_script
     echo 'module load uppmax' >> $setup_script
@@ -107,17 +105,8 @@ Adding new modules
 If you are adding new modules, rather than setting up a new version, follow
 these steps.  Then use `cpanm` as below.
 
-    VERSION=5.26.2
-    CLUSTER=${CLUSTER:?CLUSTER must be set}
-    unset PERL5LIB
-    module load perl/${VERSION}
-    TOOL=perl_modules
-    LOCALVERSION=${VERSION}
-    export MODULE_DEPS=/sw/comp/${TOOL}/${LOCALVERSION}/${CLUSTER}
-    cd $MODULE_DEPS
-    setup_script=source-${CLUSTER}-perl_module-deps-setup
-
-    source $setup_script
+    cd /sw/comp/perl_modules/5.32.1/rackham
+    source source-rackham-perl_module-deps-setup
 
 
 First modules
@@ -126,46 +115,35 @@ First modules
 Install BioPerl dependencies and a bunch of others.
 
     cpanm GD Net::HTTP LWP::UserAgent XML::Parser XML::XPath IPC::Run XML::Twig LWP::Simple File::Type File::Which Test::Pod Parse::RecDescent Parallel::ForkManager
+    cpanm --force GD
 
     cpanm Test::Expect DBI Error Graph GraphViz HTML::Entities HTML::HeadParser XML::Parser::PerlSAX XML::SAX XML::Simple Data::Stag IO::String Test::Most
-
     cpanm Math::CDF Math::BigInt Math::Counting Algorithm::Combinatorics
-
     cpanm Algorithm::Munkres Array::Compare Clone Convert::Binary::C HTML::TableExtract List::MoreUtils PostScript::TextBlock SOAP::Lite SVG SVG::Graph
+    cpanm Set::Scalar Sort::Naturally Sort::Rank Sort::Fields Excel::Writer::XLSX Spreadsheet::ParseExcel XML::SAX::Writer XML::Writer YAML XML::LibXML XML::DOM::XPath XML::DOM DBD::SQLite Math::Random
+    cpanm VCF Pod::Select
 
-    cpanm Set::Scalar Sort::Naturally Sort::Rank Excel::Writer::XLSX Spreadsheet::ParseExcel XML::SAX::Writer XML::Writer YAML XML::LibXML XML::DOM::XPath XML::DOM DBD::SQLite Math::Random
+Tests used to fail for these, no longer.
 
-    cpanm VCF
+    cpanm App::Ack
+    cpanm re::engine::RE2
 
-    cpanm PEDERST/rename-1.9.tar.gz
+A super-convenient file renamer using a perl regexp: `rename 's///' ...files...`
 
-This last one is a super-convenient file renamer using a perl regexp: `rename 's///' ...files...`
+    cpanm PEDERST/rename-1.14.tar.gz
 
 
 Some intermediate special cases
 -------------------------------
 
-
-### App::Ack
-
-Tests don't pass, on Windows this is expected (<http://stackoverflow.com/questions/1023710/how-can-i-install-and-use-ack-library-on-windows>) but here the failures have
-
-    #   Failed test 'Should have no output to stderr: ack t/text/boy-named-sue.txt --lines=3 -C'
-    #   at t/ack-line.t line 82.
-    # [
-    #   'Insecure $ENV{BASH_ENV} while running with -T switch at t/Util.pm line 325.'
-    # ]
-
-so perhaps a taint problem in the test suite.  Force-install it and skip the tests.
-
-    cpanm --force --notest App::Ack
-
-
-### Acme::Tools
-
-Force-install to get around a test failure.
-
+    cpanm --force MooseX::Getopt::Usage::Role::Man
     cpanm --force Acme::Tools
+
+### Use a newer compiler
+
+    ml gcc/12.3.0
+    cpanm Devel::MAT::Dumper
+    cpanm Syntax::Keyword::Match
 
 ### Tk and Devel::ptkdb
 
@@ -188,40 +166,6 @@ so I installed `Tk` with force.
     cpanm Devel::ptkdb
 
 To debug perl with the graphical debugger, do `perl -d:ptkdb ...args...`.
-
-
-### re::engine::RE2
-
-    cpanm re::engine::RE2
-
-Here, if `re::engine::RE2` installs from the downloaded source it will fail a
-test.  Simply to force installation (try not to do this for this module):
-
-    cpanm --force re::engine::RE2
-
-To be more thorough, the error will list a log file to see for the error; that is the clue to the
-local build directory.  Correcting the source for this test is simple.  If the
-log lists something like:
-
-    ! Installing re::engine::RE2 failed. See /home/douglas/.cpanm/work/1494600192.27963/build.log for details. Retry with --force to force install it.
-
-then do this:
-
-    pushd .                                        # remember where we were
-    cd /home/douglas/.cpanm/work/1494600192.27963  # from the message above
-    cd re-engine-RE2-0.13                          # the build directory for this module version
-    vi t/ree-pcre/s.t                              # the test that fails
-
-On line 5, change `my $_;` to `local $_;`.  Then
-
-    make && make test && make install  # make (nothing to do), test and install
-    popd  # go back to where we were
-
-Make sure it is actually installed with
-
-    cpanm re::engine::RE2
-
-Which will show it up to date.
 
 
 Continuing ...
@@ -292,17 +236,29 @@ XML::DOM::XPath has a test error, --force it!
     cpanm Text::NSP
 
     cpanm File::Util File::Path File::Basename Getopt::Long Text::Levenshtein::XS String::Approx MCE MCE::Loop MCE::Shared
+    cpanm PDF::Table PDF::API2 List::Permutor List::Compare VCF::Reader Text::Password File::Type File::Tail File::Find File::Copy File::Util
 
-Additional statistics-oriented modules.  Two have pod errors and another has an
-odd error and these two must be forced.
+Additional modules with failing tests.
 
     cpanm --force Statistics::Normality Statistics::FactorAnalysis
+    cpanm --force Code::TidyAll
 
-Two additional prereqs for CLUMPAK.
+    cpanm --force XMLRPC::Lite
+    cpanm XML::Atom XML::Compile XML::RSS XML::Tags XML::LibXSLT XString XS::Parse::Infix XS::Parse::Keyword YAML
+    cpanm Tree::Simple
+    cpanm Types::Common Type::Tie UUID::Tiny
+    cpanm Unicode::Collate Unicode::EastAsianWidth Unicode::GCString Unicode::LineBreak Unicode::Map Unicode::Map8 Unicode::Normalize Unicode::String
+    cpanm Text::NSP
+    cpanm Text::Levenshtein::XS
+    cpanm Software::License Software::LicenseUtils Sort::Fields  Sort::Rank
+    cpanm SQL::Abstract SQL::Translator
+    cpanm DBI
+    cpanm --force GD
+    cpanm Tie::IxHash forks List::MoreUtils DBD::SQLite Config::General  Inline::C  IO::Prompt GD Parallel::ForkManager Perl::Unsafe::Signals Spreadsheet::WriteExcel Test::Most Test::Most Algorithm::Munkres Array::Compare Clone Convert::Binary::C HTML::TableExtract List::MoreUtils PostScript::TextBlock SOAP::Lite SVG SVG::Graph Set::Scalar Sort::Naturally Spreadsheet::ParseExcel XML::SAX::Writer XML::Writer YAML XML::LibXML XML::DOM::XPath XML::DOM DBD::SQLite Math::Random Text::Levenshtein::XS String::Approx Getopt::Std  MCE MCE::Loop MCE::Shared
 
-    cpanm PDF::Table
-    cpanm PDF::API2
-    cpanm List::Permutor
+    cpanm Lingua::BioYaTeA Tree::Cladogram GD::SVG TMDB CGI::WebToolkit Perl6::Form Tesla::Vehicle MCE::Shared Sah::Schema::language::code Audio::DB E2::User Devel::Monitor EEDB::Chrom SQL::Statement::Functions MOBY::CommonSubs CPAN::Reporter::Smoker Net::SSLeay MOSES::MOBY::Base Net::GitHub::V3 Net::GitHub Number::RangeTracker Data::Type::RFC Data::Type XML::EasySQL Data::Printer::Filter::DB IMDB::Persons Role::Tiny Role::Basic
+
+    cpanm Const::Fast File::Sort MIME::Lite Shell::Guess Shell::Config::Generate  
 
 Modules 'by hand'
 -----------------
@@ -328,6 +284,7 @@ defaults, unless it asked to install additional optional modules to which I
 answered `y`.  The `--interactive` is required.
 
     cpanm --interactive Task::Kensho
+    cpanm --interactive Task::Kensho::All
 
 
 Checking #! lines
@@ -338,11 +295,11 @@ After installing everything you want to install, definitely do
     cd $MODULE_DEPS/bin
     head -n 1 *
 
-and check that everything is capable of finding the 5.26.2 perl.  Some will
+and check that everything is capable of finding the 5.32.1 perl.  Some will
 have the path hardcoded, some will use `#!/usr/bin/env perl`.  Make sure none use
 `#!/usr/bin/perl` or something like that.
 
-This also means `perl/5.26.2` must be loaded when using this module, but of
+This also means `perl/5.32.1` must be loaded when using this module, but of
 course that will be true.
 
 
@@ -359,10 +316,9 @@ Generate list of installed modules
 ----------------------------------
 
 When in `/sw/comp/perl_modules/${VERSION}/${CLUSTER}`:
-    cp -av ../../5.26.2/rackham/create_module_table .
-    cp -av ../../5.26.2/rackham/README.md .
+    cp -av ../../5.32.1/rackham/create_module_table .
+    cp -av ../../5.32.1/rackham/README.md .
     ./create_module_table > module_table.html
-    tail -2 README.md | head -1 > module_table_again.html; ./create_module_table >> module_table_180720.html
 
 There will be a few messages to stderr about the search directories, which should be underneath.
 
