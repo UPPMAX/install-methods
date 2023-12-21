@@ -1,5 +1,27 @@
+KGP general notes
+=================
+
+
+## UPPMAX installation notes
+
+These data are located under `/sw/data/KGP/`.  To gain access, email support@uppmax.uu.se and request membership in the `kgp` group.
+
+For UPPMAX staff, `kgp`-group access is controlled by adjusting the top level directory:
+
+    chgrp kgp /sw/data/KGP
+    chmod u+rwx,g+rx-w,o-rwx /sw/data/KGP
+
+and the data underneath has standard `fixup`-based attributes that are *not* applied to the top-level directory:
+
+    cd /sw/data/KGP
+    fixup *
+
+This way the only restriction on managing files and adjusting attributes applies on the top-level directory. AEs can adjust contents beneath.
+
+
+
 Checking for duplicated files in the KGP downloads
-==================================================
+--------------------------------------------------
 
 Generated MD5 files for the major trees here
 
@@ -572,3 +594,4 @@ None of consequence found.  For all directories:
     'impute_haplotypes/1000GP_Phase3/genetic_map_chr22_combined_b37.txt'
     'impute_haplotypes/ALL_1000G_phase1integrated_v3_impute_macGT1/genetic_map_chr22_combined_b37.txt'
     ----
+

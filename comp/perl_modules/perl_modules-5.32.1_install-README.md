@@ -260,6 +260,24 @@ Additional modules with failing tests.
 
     cpanm Const::Fast File::Sort MIME::Lite Shell::Guess Shell::Config::Generate  
 
+    cpanm Sys::Mmap
+    cpanm PerlIO::mmap  ## this will not work, needs perl 5.38
+    cpanm PDL
+
+    cpanm MIDI::Util
+    cpanm Music::MelodicDevice::Ornamentation
+    cpanm Music::MelodicDevice::Inversion
+    cpanm Music::MelodicDevice::Transposition
+    cpanm --force Music::Tag
+
+    cpanm HTML::HTML5::ToText
+    cpanm HTML::HTML5::Table
+    cpanm HTML::HTML5::ToText::Trait::RenderTables
+    cpanm HTML::FormatText
+    cpanm HTML::FormatText::WithLinks HTML::FormatText::WithLinks::AndTables
+    cpanm LEOCHARRE::HTML::Text
+
+
 Modules 'by hand'
 -----------------
 
@@ -316,11 +334,18 @@ Generate list of installed modules
 ----------------------------------
 
 When in `/sw/comp/perl_modules/${VERSION}/${CLUSTER}`:
+
     cp -av ../../5.32.1/rackham/create_module_table .
     cp -av ../../5.32.1/rackham/README.md .
-    ./create_module_table > module_table.html
+    ./create_module_table > module_table_20231201.html
 
 There will be a few messages to stderr about the search directories, which should be underneath.
+Create cleartext version that is referenced in the module help.
+
+    html2text --pad-tables module_table_20231201.html > module_table_20231201.txt
+
+    ln -s module_table_20231201.txt module_table.txt
+
 
 See `/sw/comp/perl_modules/${VERSION}/${CLUSTER}/README.md` for more on updating the module table on the website.
 

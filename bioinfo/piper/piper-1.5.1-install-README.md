@@ -1,7 +1,5 @@
-# piper-1.5.1-install-README.md
-
-piper
-=====
+piper/1.5.1
+===========
 
 SciLifeLab's own genomics pipeline built on the GATK Queue framework
 

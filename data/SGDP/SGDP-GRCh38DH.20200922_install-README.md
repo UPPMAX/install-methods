@@ -11,6 +11,8 @@ Fetch the indices and READMEs.
     wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/simons_diversity_data/simons_diversity_data.GRCh38DH.alignment.index
     wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/simons_diversity_data/simons_diversity_wgs.sequence.index
 
+At UPPMAX, these files are all immediately available under the top-level directory `/sw/data/SGDP/`.
+
 Mirror the data directory here. Do this within a screen.
 
     echo "mirror data" | lftp ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/simons_diversity_data
@@ -40,3 +42,19 @@ This produces a file like
 
 Custom script `check_md5s.pl` to check MD5s using the `simons_diversity_data.GRCh38DH.alignment.index` file, which has MD5s for all three filetypes.
 
+
+## UPPMAX installation notes
+
+These data are located under `/sw/data/SGDP/`.  To gain access, email support@uppmax.uu.se and request membership in the `kgp` group.
+
+For UPPMAX staff, `kgp`-group access is controlled by adjusting the top level directory:
+
+    chgrp kgp /sw/data/SGDP
+    chmod u+rwx,g+rx-w,o-rwx /sw/data/SGDP
+
+and the data underneath has standard `fixup`-based attributes that are *not* applied to the top-level directory:
+
+    cd /sw/data/SGDP
+    fixup *
+
+This way the only restriction on managing files and adjusting attributes applies on the top-level directory. AEs can adjust contents beneath.

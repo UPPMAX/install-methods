@@ -9,6 +9,17 @@ Apache 2.0
 
 Structure creating script (makeroom_vcf2maf_1.6.21.sh) moved to /sw/bioinfo/vcf2maf/makeroom_1.6.21.sh
 
+
+To do for flexible local installation
+-------------------------------------
+
+* Generalise options
+    - local config or something else that scripts load
+    - use `VEP_CACHE`, `VEP_ROOT`, `VEP_VERSION`
+
+
+
+
 LOG
 ---
 

@@ -51,13 +51,11 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
 
     cd /sw/data
 
-    ###  Commented-out databases should be brought in as well
     find BioBakery_data     ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find Chromium           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find Centrifuge-indices ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find ExAC                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find Pfam                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find SGDP                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find WPS-geog            -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find annovar_data        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find cdd                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
@@ -68,16 +66,25 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
     find krakenuniqDB        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find panther             -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find silva               -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find KGP                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find MMseqs2_data        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find alphafold_dataset   -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find FAVOR_data          -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find vep                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find piper_references    -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find pph2-db             -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find reference           -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find chain_files         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find chembl              -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+
+    # group 'kgp' directories
+    #
+    find HGDP                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find SGDP                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find KGP                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+
+    ###  These commented-out databases should be brought in as well
+    #
     # find dbSNP ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find chembl ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find piper_references ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find pph2-db ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find reference ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    # find vep ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
 
 fi
 

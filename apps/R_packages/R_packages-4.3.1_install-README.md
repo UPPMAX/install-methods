@@ -1,7 +1,10 @@
 R_packages/4.3.1
 ================
 
-* GenomicsDB
+For the next version:
+
+* GenomicsDB ??
+* remotes::install_github('chris-mcginnis-ucsf/DoubletFinder', upgrade='never')
 
 
 Double-check that there are no non-base packages installed within R/4.3.1. That
@@ -774,6 +777,7 @@ Github-hosted packages.  Make sure hdf5/1.14.0 is loaded, loomR uses it.
     devtools::install_github('xuranw/MuSiC', upgrade='never')
     devtools::install_github('cole-trapnell-lab/monocle3', dependencies=TRUE, upgrade='never')
     devtools::install_github('SGDDNB/ShinyCell', upgrade="never", force=TRUE, build_vignettes=TRUE)
+    devtools::install_github("chris-mcginnis-ucsf/DoubletFinder", upgrade='never', build_vignettes=TRUE)
 
 
 STAAR and its tutorials work with several other packages not provided with CRAN or BioConductor.
@@ -862,7 +866,7 @@ And verify outside R:
     ldd /sw/apps/R_packages/4.3.1/rackham/velocyto.R/libs/velocyto.R.so
 
 
-### igraph0, CoxBoost, rrbgen, STITCH, EasyQC, EasyQC2, contamMix, LRAcluster
+### igraph0, CoxBoost, rrbgen, STITCH, EasyQC, EasyQC2, contamMix, LRAcluster, compoisson, phylosim
 
 Also, install an outdated package `igraph0`, which has been superseded by
 `igraph` (installed above) but needed by some older procedures.
@@ -878,6 +882,10 @@ Also, install an outdated package `igraph0`, which has been superseded by
     R CMD INSTALL contamMix_1.0-10.tar.gz
     R CMD INSTALL LRAcluster_1.0.tgz
 
+    wget https://cran.r-project.org/src/contrib/Archive/compoisson/compoisson_0.3.tar.gz
+    R CMD INSTALL compoisson_0.3.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/phylosim/phylosim_3.0.5.tar.gz
+    R CMD INSTALL phylosim_3.0.5.tar.gz
 
 
 ### dnase2tf

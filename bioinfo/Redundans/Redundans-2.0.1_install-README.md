@@ -14,6 +14,30 @@ LOG
 
     /home/douglas/bin/makeroom.sh "-f" "-t" "Redundans" "-v" "2.0.1" "-w" "https://github.com/Gabaldonlab/redundans" "-l" "GPL v3" "-d" "Redundans is a pipeline that assists an assembly of heterozygous/polymorphic genomes" "-k" "python,bioinformatics,pipeline,genomics,assembly,docker-image,polymorphic,gap-closing,fasta,scaffolding,assembled-contigs,genome-assembly,paired-end,contigs,heterozygous,mate-pairs"
     ./makeroom_Redundans_2.0.1.sh
+
+    source /sw/bioinfo/Redundans/SOURCEME_Redundans_2.0.1
+    cd $SRCDIR
+
+    ml git/2.34.1
+    git clone --recursive https://github.com/Gabaldonlab/redundans.git
+
+    cd redundans
+    ml python/3.11.4
+    ml gcc/12.3.0
+    ml R_packages/4.3.1
+    ml zlib/1.3
+    ml bzip2/1.0.8
+
+    ml bioinfo-tools
+    ml miniasm/0.3-r179-20191007-ce615d1
+    ml minimap2/2.26-r1175
+    ml last/1505
+    ml SNAP-aligner/2.0.3
+    ml k8/0.2.5
+    ml meryl/1.4.1
+
+
+
 Redundans/0.14a-de_novo-42e8edf-20190314
 =======================
 

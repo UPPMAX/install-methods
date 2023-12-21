@@ -80,8 +80,24 @@ For `Bio::DB::HTS`:
 
 ### Others
 
+    ml R_packages/4.3.1
     cpanm Bio::Phylo
+    ml -R_packages
     cpanm Bio::Graphics
     cpanm Bio::ASN1::EntrezGene
     cpanm Bio::DB::EUtilities
     cpanm Bio::FeatureIO
+    cpanm XML::XML2JSON
+    cpanm RDF::Query
+    cpanm SWF::Builder
+    cpanm Bio::NEXUS
+    cpanm BioX::Map BioX::Seq BioX::Workflow Bio::DB::GFF
+    ml bioinfo-tools htslib/1.17
+    cpanm Bio::DB::HTS
+    ml -htslib
+    cpanm Bio::Tools::Run::RemoteBlast
+    cpanm Bio::Homology::InterologWalk
+    cpanm Bio::Phylo::Forest::DBTree
+    cpanm Bio::Taxonomy::GlobalNames
+    cpanm Bio::Tree::Draw::Cladogram
+    cpanm Bio::LITE::Taxonomy::NCBI::Gi2taxid

@@ -55,6 +55,16 @@ Build both static and shared libraries.
     cd ..
 
 
+Adjust RPATH for libproj shared library.
+
+    cd $PREFIX/lib
+    module load patchelf/0.10
+    module load gcc/10.3.0
+    module load libtiff/4.5.0
+    module load sqlite/3.34.0
+    module load libcurl/7.85.0
+    patchelf --set-rpath "$LD_RUN_PATH" libproj.so.25.9.1.1
+
 
 Add `$modroot/lib64/cmake/proj` to CMAKE_MODULE_PATH
 

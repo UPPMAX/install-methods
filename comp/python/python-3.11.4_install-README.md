@@ -137,6 +137,7 @@ which seems to build with python2.
     pip3 install pillow
     pip3 install pygments
     pip3 install nltk
+    pip3 install "pybind11[global]"
 
 
 Add a complete list of installed packages to the module help in the file for
