@@ -65,6 +65,18 @@ DATABASES=( k2_viral_20220908.tar.gz
             k2_pluspfp_20230605.tar.gz
             k2_pluspfp_08gb_20230605.tar.gz
             k2_pluspfp_16gb_20230605.tar.gz
+            k2_viral_20231009.tar.gz
+            k2_minusb_20231009.tar.gz
+            k2_standard_20231009.tar.gz
+            k2_standard_08gb_20231009.tar.gz
+            k2_standard_16gb_20231009.tar.gz
+            k2_pluspf_20231009.tar.gz
+            k2_pluspf_08gb_20231009.tar.gz
+            k2_pluspf_16gb_20231009.tar.gz
+            k2_pluspfp_20231009.tar.gz
+            k2_pluspfp_08gb_20231009.tar.gz
+            k2_pluspfp_16gb_20231009.tar.gz
+            k2_nt_20231129.tar.gz
             16S_Greengenes13.5_20200326.tgz
             16S_RDP11.5_20200326.tgz
             16S_Silva132_20200326.tgz

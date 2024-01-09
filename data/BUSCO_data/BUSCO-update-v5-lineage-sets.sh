@@ -1,7 +1,8 @@
 #!/bin/bash
 
-BLS_BASE=/sw/bioinfo/BUSCO/v4_lineage_sets
-SITE=https://busco-data.ezlab.org/v4/data/
+BLS_BASE=/sw/data/BUSCO_data/latest/rackham/v5_lineage_sets
+
+SITE=https://busco-data.ezlab.org/v5/data/
 WGET_OPTIONS="--quiet --timestamping"
 echo "Updating lineage sets in $BLS_BASE"
 
@@ -11,18 +12,20 @@ set -e
 
 module load gnuparallel/20180822
 
-#DRY_RUN="--dry-run"  # set to this to dry-run the parallel processes
-DRY_RUN=
-
 
 # Download the lineages_list to specify which files to download
-LINELISTFILE=$(curl -s ${SITE}/information/  | grep lineages_list | cut -d'"' -f2)
-wget ${WGET_OPTIONS} ${SITE}/information/${LINELISTFILE}
-tar xf ${LINELISTFILE}
+LINELISTFILES=$(curl -s ${SITE}/information/  | grep tar.gz | cut -d'"' -f2)
+for file in $LINELISTFILES; do
+    wget ${WGET_OPTIONS} ${SITE}/information/${file}
+    tar xfv ${file}
+    rm ${file}
+done
 
-
-# Define arrays containing lineage sets
-LINELIST=$(cat ${LINELISTFILE%.tar.*}  | sed '/^\S/d' | sed 's/ //g' | sed 's/^-//' | sed '/^$/d')
+# Define arrays containing lineage sets. New for v5 is the virus datasets. It isn't indented as the lineages file...
+LINELIST=$(cat lineages_list* | grep -v -F '(no root dataset)' | sed '/^\S/d' | sed 's/ //g' | sed 's/^-//' | sed '/^$/d')
+LINELIST="${LINELIST} $(cat virus_datasets*)"
+LINELIST=$(echo $LINELIST | tr ' ' '\n' | sort -uV)  # sort the lineage list now before fetching them
+echo $LINELIST
 
 function fetch_lineage_set() {
     LINEAGE=$1
@@ -41,7 +44,7 @@ function fetch_lineage_set() {
             echo -n "found update!"
             mv -f $NEW ${LS}
         fi
-    else 
+    else
         echo -n "this is a new lineage set."
         wget $WGET_OPTIONS $SITE/lineages/${LS}
     fi
@@ -68,6 +71,7 @@ done
 
 
 echo "Updating groups and permissions ..."
+cd $BLS_BASE/lineages/
 #chgrp -hR sw *
 #chmod -R u+rwX,g+rwX,o+rX-w *
 #find . -type d -exec chmod g+s {} \;
@@ -75,8 +79,9 @@ echo "Updating groups and permissions ..."
 # lineages/ and everything in it, which takes a long time
 chmod u+rwX,g+rwX,o+rX-w .
 chmod g+s .
-parallel --verbose $DRY_RUN -j 4 /sw/data/blast_scripts/fixup ::: *
+parallel --verbose -j 4 /sw/data/blast_scripts/fixup {}'*' ::: $LINELIST
+
 # everything else
 cd $BLS_BASE
-parallel --verbose $DRY_RUN -j 4 /sw/data/blast_scripts/fixup ::: *.sh *.tsv information lineages_list* placement_files
+parallel --verbose -j 4 /sw/data/blast_scripts/fixup ::: *.sh *.tsv information lineages_list.* placement_files virus_datasets.*
 echo "Done."

@@ -6,6 +6,15 @@ RepeatMasker/4.1.5
 Used under license:
 
 
+**NOTE** Using the complete Dfam.h5 is good, but don't keep a copy here. We've
+got a copy at /sw/data/Dfam/3.7/rackham/Dfam.h5 so I've replaced the version
+under Libraries/ with it.
+
+**NOTE** After the complete RepeatMaskerLib.h5 is built, move it to 
+/sw/data/RepeatMasker_data/4.1.5/rackham/Libraries/RepeatMaskerLib.h5.
+See the READMEs in /sw/data/RepeatMasker_data.
+
+
 
 Structure creating script (makeroom_RepeatMasker_4.1.5.sh) moved to /sw/bioinfo/RepeatMasker/makeroom_4.1.5.sh
 

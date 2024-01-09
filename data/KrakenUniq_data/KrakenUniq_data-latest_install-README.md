@@ -6,6 +6,15 @@ KrakenUniq_data/latest
 Used under license:
 GPLv3, MIT
 
+Pre-built databases
+-------------------
+
+**No updates as of 2024-01-03 14:29.**
+
+Pre-built databases are installed from from
+<https://benlangmead.github.io/aws-indexes/k2>.  The dates/names are as of
+2022-10-04.
+
 
 Structure creating script (makeroom_KrakenUniq_data_latest.sh) moved to /sw/data/KrakenUniq_data/makeroom_latest.sh
 

@@ -34,6 +34,8 @@ Download database and place it within PREFIX. Very large, 180GB. The download, M
 
     mv CAT_prepare_20210107 $PREFIX
 
+Remove the downloaded tarball.
+
 Now to run the tests. Prepare the test database, then annotate with it.
 
     export PATH=$PREFIX:$PATH

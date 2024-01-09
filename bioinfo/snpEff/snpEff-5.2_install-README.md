@@ -71,7 +71,7 @@ Get database download names, removing the local names.
         snpEff download -v "$G" 
     done 2>&1 | tee downloads_list.log
 
-This required many redownloads, creating a smaller downloads_list.continue each time.
+For 5.2, this required no additional redownloads. If required, do this with:
 
     snpEff databases > databases_list
     tail -n +3 databases_list | grep -P -v '\tOK ' | cut -f1 | sed 's/\s\+$//' > downloads_list.continue

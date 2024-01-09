@@ -74,7 +74,11 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
     find pph2-db             -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find reference           -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
     find chain_files         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find chembl              -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find ChEMBL              -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find BUSCO_data          -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find RepeatMasker_data   -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find snpEff_data         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find DeepVariant_data    -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
 
     # group 'kgp' directories
     #
@@ -118,6 +122,8 @@ data_update  /sw/data/RTG                RTG-db-README.md       RTG-update-dbs.s
 data_update  /sw/data/diamond_databases  diamond-db-README.md   diamond-update-dbs.sh   diamond-check-dbs.sh
 data_update  /sw/data/FAVOR_data         FAVOR_fetch.py         FAVOR_api_token.py
 
+data_update  /sw/data/BUSCO_data         BUSCO-update-v1-lineage-sets.sh BUSCO-update-v2-lineage-sets.sh BUSCO-update-v4-lineage-sets.sh BUSCO-update-v5-lineage-sets.sh 
+
 data_update  /sw/data/blast_scripts      README.md README-uniprot.md update_blastdb.sh update_blastdb-uniprot.sh uniprot.mk install_check_prepdb_blastdb.sh remove_old_blastdb.sh cron-wrapper.sh crontab.txt test/test_blastdb.sh test/prots.fa test/nucls.fa test/*.out webpage.mk webpage.md webpage.html fixup
 
 data_update  /sw/data/ncbi_taxonomy      ncbi_taxonomy-db-README.md ncbi_taxonomy-update-dbs.sh crontab.txt webpage.html webpage.md webpage.mk
@@ -151,7 +157,5 @@ DATA_OTHER_REPOSITORY="$REPOSITORY/data_other"
 # with an update script.  Fetch a copy of their READMEs and the scripts.
 
 cd $DATA_OTHER_REPOSITORY
-
-data_update  /sw/bioinfo/BUSCO  BUSCO-db-README.md v1_lineage_sets/BUSCO-update-v1-lineage-sets.sh v2_lineage_sets/BUSCO-update-v2-lineage-sets.sh v4_lineage_sets/BUSCO-update-v4-lineage-sets.sh v5_lineage_sets/BUSCO-update-v5-lineage-sets.sh 
 
 data_update  /sw/bioinfo/snpEff snpEff_custom_database_install-README.md

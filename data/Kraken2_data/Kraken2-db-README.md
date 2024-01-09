@@ -25,6 +25,21 @@ Text for mf file help
 
     Local name                                         Collection    Contains                                                          Date        Archive size (GB)  Index sixe (GB) 
 
+
+    \$KRAKEN2_DB_PREBUILT/k2_viral_20231009             Viral         Refeq viral                                                       2023-10-09          0.5               0.6
+    \$KRAKEN2_DB_PREBUILT/k2_minusb_20231009            MinusB        Refeq archaea, viral, plasmid, human1, UniVec_Core                2023-10-09          6.6               9.5
+    \$KRAKEN2_DB_PREBUILT/k2_standard_20231009          Standard      Refeq archaea, bacteria, viral, plasmid, human1, UniVec_Core      2023-10-09         53                70
+    \$KRAKEN2_DB_PREBUILT/k2_standard_08gb_20231009     Standard-8    Standard with DB capped at 8 GB                                   2023-10-09          5.5               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_standard_16gb_20231009     Standard-16   Standard with DB capped at 16 GB                                  2023-10-09         11                15
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_20231009            PlusPF        Standard plus Refeq protozoa & fungi                              2023-10-09         57                74
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_08gb_20231009       PlusPF-8      PlusPF with DB capped at 8 GB                                     2023-10-09          5.5               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_pluspf_16gb_20231009       PlusPF-16     PlusPF with DB capped at 16 GB                                    2023-10-09         11                15
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_20231009           PlusPFP       Standard plus Refeq protozoa, fungi & plant                       2023-10-09        124               148
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_08gb_20231009      PlusPFP-8     PlusPFP with DB capped at 8 GB                                    2023-10-09          5.1               7.5
+    \$KRAKEN2_DB_PREBUILT/k2_pluspfp_16gb_20231009      PlusPFP-16    PlusPFP with DB capped at 16 GB                                   2023-10-09         11                15
+
+    \$KRAKEN2_DB_PREBUILT/k2_nt_20231129                nt Database   Very large collection, inclusive of GenBank, RefSeq, TPA and PDB  2023-11-29        550               710
+
     \$KRAKEN2_DB_PREBUILT/k2_viral_20230605             Viral         Refeq viral                                                       2023-06-05          0.5               0.6
     \$KRAKEN2_DB_PREBUILT/k2_minusb_20230605            MinusB        Refeq archaea, viral, plasmid, human1, UniVec_Core                2023-06-05          6.5               9.4
     \$KRAKEN2_DB_PREBUILT/k2_standard_20230605          Standard      Refeq archaea, bacteria, viral, plasmid, human1, UniVec_Core      2023-06-05         51                67 
@@ -36,6 +51,10 @@ Text for mf file help
     \$KRAKEN2_DB_PREBUILT/k2_pluspfp_20230605           PlusPFP       Standard plus       Refeq protozoa, fungi & plant                 2023-06-05        108               148
     \$KRAKEN2_DB_PREBUILT/k2_pluspfp_08gb_20230605      PlusPFP-8     PlusPFP with DB capped at 8 GB                                    2023-06-05          5.1               7.5
     \$KRAKEN2_DB_PREBUILT/k2_pluspfp_16gb_20230605      PlusPFP-16    PlusPFP with DB capped at 16 GB                                   2023-06-05         10                15
+
+    \$KRAKEN2_DB_PREBUILT/k2_nt_20230502                nt Database   Very large collection, inclusive of GenBank, RefSeq, TPA and PDB  2023-05-02        360               480
+
+    \$KRAKEN2_DB_PREBUILT/k2_eupathdb48_20230407        EuPathDB462   Eukaryotic pathogen genomes with contaminants removed             2023-04-18          8.4              11
 
     \$KRAKEN2_DB_PREBUILT/k2_viral_20230314             Viral         Refeq viral                                                       2023-03-14          0.4               0.5
     \$KRAKEN2_DB_PREBUILT/k2_minusb_20230314            MinusB        Refeq archaea, viral, plasmid, human1, UniVec_Core                2023-03-14          6.4               9.0*
@@ -49,10 +68,6 @@ Text for mf file help
     \$KRAKEN2_DB_PREBUILT/k2_pluspfp_08gb_20230314      PlusPFP-8     PlusPFP with DB capped at 8 GB                                    2023-03-14          5.1               7.5
     \$KRAKEN2_DB_PREBUILT/k2_pluspfp_16gb_20230314      PlusPFP-16    PlusPFP with DB capped at 16 GB                                   2023-03-14         11                15
 
-    \$KRAKEN2_DB_PREBUILT/k2_nt_20230502                nt Database   Very large collection, inclusive of GenBank, RefSeq, TPA and PDB  2023-05-02        360               480
-
-    \$KRAKEN2_DB_PREBUILT/k2_eupathdb48_20230407        EuPathDB462   Eukaryotic pathogen genomes with contaminants removed             2023-04-18          8.4              11
-
     \$KRAKEN2_DB_PREBUILT/k2_viral_20221209             Viral         viral                                                             2022-12-09          0.4               0.5
     \$KRAKEN2_DB_PREBUILT/k2_minusb_20221209            MinusB        archaea, viral, plasmid, human1, UniVec_Core                      2022-12-09          6.1               8.7
     \$KRAKEN2_DB_PREBUILT/k2_standard_20221209          Standard      archaea, bacteria, viral, plasmid, human1, UniVec_Core            2022-12-09         48                62
@@ -65,8 +80,6 @@ Text for mf file help
     \$KRAKEN2_DB_PREBUILT/k2_pluspfp_08gb_20221209      PlusPFP-8     PlusPFP with DB capped at 8 GB                                    2022-12-09          5.1               7.5
     \$KRAKEN2_DB_PREBUILT/k2_pluspfp_16gb_20221209      PlusPFP-16    PlusPFP with DB capped at 16 GB                                   2022-12-09         11                15
 
-    \$KRAKEN2_DB_PREBUILT/k2_eupathdb48_20201113        EuPathDB462   Eukaryotic pathogen genomes with contaminants removed             2020-11-13         26.4              34.1
-
     \$KRAKEN2_DB_PREBUILT/k2_viral_20220908             Viral         viral                                                             2022-09-08          0.4               0.5
     \$KRAKEN2_DB_PREBUILT/k2_minusb_20220926            MinusB3       archaea, viral, plasmid, human1, UniVec_Core                      2022-09-26          5.9               8.5
     \$KRAKEN2_DB_PREBUILT/k2_standard_20220926          Standard3     archaea, bacteria, viral, plasmid, human1, UniVec_Core            2022-09-26         46                60
@@ -78,6 +91,8 @@ Text for mf file help
     \$KRAKEN2_DB_PREBUILT/k2_pluspfp_20220908           PlusPFP       Standard plus protozoa, fungi & plant                             2022-09-08         99               129
     \$KRAKEN2_DB_PREBUILT/k2_pluspfp_08gb_20220908      PlusPFP-8     PlusPFP with DB capped at 8 GB                                    2022-09-08          5.1               7.5
     \$KRAKEN2_DB_PREBUILT/k2_pluspfp_16gb_20220908      PlusPFP-16    PlusPFP with DB capped at 16 GB                                   2022-09-08         11                15
+
+    \$KRAKEN2_DB_PREBUILT/k2_eupathdb48_20201113        EuPathDB462   Eukaryotic pathogen genomes with contaminants removed             2020-11-13         26.4              34.1
 
 
     Prebuilt Kraken 2 / Bracken 16S RNA indexes

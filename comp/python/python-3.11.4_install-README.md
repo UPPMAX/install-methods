@@ -132,6 +132,7 @@ which seems to build with python2.
     pip3 install singledispatch
     pip3 install six
     pip3 install sympy
+    pip3 install spython
     pip3 install twisted
     pip3 install requests
     pip3 install pillow

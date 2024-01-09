@@ -40,7 +40,7 @@ function fixup()
         return;
     }
 
-    [[ $SETX]] && set -x
+    [[ ! -z "$SETX" ]] && set -x
 
     args=("$@")
     for arg in ${args[@]} ; do
@@ -49,7 +49,7 @@ function fixup()
         [[ $SETGID_DIRS ]] && find "$arg" -type d -print0 | xargs -0 --no-run-if-empty chmod g+s
     done
 
-    [[ $SETX]] && set +x
+    [[ ! -z "$SETX" ]] && set +x
 }
 
 fixup "$@"
