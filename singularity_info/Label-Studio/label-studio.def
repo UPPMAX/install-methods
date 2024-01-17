@@ -1,0 +1,22 @@
+Bootstrap: docker
+From: python:3.10-bookworm
+
+%environment
+  export LC_ALL=C
+  export PYTHONNOUSERSITE=True
+
+%post
+  export LC_ALL=C
+  export PYTHONNOUSERSITE=True
+  export DEBIAN_FRONTEND=noninteractive
+
+  python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel
+  python3 -m pip install --no-cache-dir --upgrade label-studio
+
+%runscript
+#!/bin/sh
+  if command -v $SINGULARITY_NAME > /dev/null 2> /dev/null; then
+    exec $SINGULARITY_NAME "$@"
+  else
+    echo "# ERROR !!! Command $SINGULARITY_NAME not found in the container"
+  fi
