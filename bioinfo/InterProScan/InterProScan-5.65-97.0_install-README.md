@@ -1,3 +1,19 @@
+InterProScan/5.65-97.0
+========================
+
+<https://www.ebi.ac.uk/interpro/download/InterProScan/>
+
+Used under license:
+Apache 2.0
+<https://github.com/ebi-pf-team/interproscan?tab=Apache-2.0-1-ov-file#readme>
+
+Structure creating script (makeroom_InterProScan_5.65-97.0.sh) moved to /sw/bioinfo/InterProScan/makeroom_5.65-97.0.sh
+
+LOG
+---
+
+    /home/douglas/bin/makeroom.sh "-t" "InterProScan" "-v" "5.65-97.0" "-s" "annotation" "-d" "InterPro provides functional analysis of proteins by classifying them into families and predicting domains and important sites." "-w" "https://www.ebi.ac.uk/interpro/download/InterProScan/" "-f" "-l" "Apache 2.0" "-L" "https://github.com/ebi-pf-team/interproscan?tab=Apache-2.0-1-ov-file#readme"
+    ./makeroom_InterProScan_5.65-97.0.sh
 InterProScan/5.62-94.0
 ========================
 

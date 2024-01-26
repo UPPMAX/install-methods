@@ -1,7 +1,8 @@
 BUSCO_data/latest
 =================
 
-License: <https://busco-data.ezlab.org/v5/data/LICENSE>
+Datasets licence: Creative Commons Attribution-NoDerivatives 4.0 International License
+Datasets licence URL: <http://creativecommons.org/licenses/by-nd/4.0/>
 
 Data module for BUSCO lineage sets.
 

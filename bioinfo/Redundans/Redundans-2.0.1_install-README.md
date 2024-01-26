@@ -1,5 +1,5 @@
 Redundans/2.0.1
-========================
+===============
 
 <https://github.com/Gabaldonlab/redundans>
 
@@ -12,66 +12,89 @@ Structure creating script (makeroom_Redundans_2.0.1.sh) moved to /sw/bioinfo/Red
 LOG
 ---
 
-    /home/douglas/bin/makeroom.sh "-f" "-t" "Redundans" "-v" "2.0.1" "-w" "https://github.com/Gabaldonlab/redundans" "-l" "GPL v3" "-d" "Redundans is a pipeline that assists an assembly of heterozygous/polymorphic genomes" "-k" "python,bioinformatics,pipeline,genomics,assembly,docker-image,polymorphic,gap-closing,fasta,scaffolding,assembled-contigs,genome-assembly,paired-end,contigs,heterozygous,mate-pairs"
+We're going to let it provide its own executables.
+
+We're also going to install R packages for it separately from R_packages, and install a python for it in a venv.
+
+
+    makeroom.sh "-f" "-t" "Redundans" "-v" "2.0.1" "-w" "https://github.com/Gabaldonlab/redundans" "-l" "GPL v3" "-d" "Redundans is a pipeline that assists an assembly of heterozygous/polymorphic genomes" "-k" "python,bioinformatics,pipeline,genomics,assembly,docker-image,polymorphic,gap-closing,fasta,scaffolding,assembled-contigs,genome-assembly,paired-end,contigs,heterozygous,mate-pairs"
     ./makeroom_Redundans_2.0.1.sh
 
     source /sw/bioinfo/Redundans/SOURCEME_Redundans_2.0.1
     cd $SRCDIR
 
+Loading R/4.3.1 will load zlib, bzip2, and gcc.
+
+    ml python/3.10.8
+    ml R/4.3.1
     ml git/2.34.1
+
     git clone --recursive https://github.com/Gabaldonlab/redundans.git
 
-    cd redundans
-    ml python/3.11.4
-    ml gcc/12.3.0
-    ml R_packages/4.3.1
-    ml zlib/1.3
-    ml bzip2/1.0.8
+Install R packages.
 
-    ml bioinfo-tools
-    ml miniasm/0.3-r179-20191007-ce615d1
-    ml minimap2/2.26-r1175
-    ml last/1505
-    ml SNAP-aligner/2.0.3
-    ml k8/0.2.5
-    ml meryl/1.4.1
+    echo $PREFIX
+    export R_LIBS_USER=$PREFIX/R-4.3.1
+    mkdir $R_LIBS_USER
+    which R
+    R --no-init-file
 
+Then within R:
 
+    r <- getOption("repos")
+    r["CRAN"] <- "https://ftp.acc.umu.se/mirror/CRAN/"
+    options(repos = r, timeout = 300)
+    install.packages(c('ggplot2','scales','argparser'), update=FALSE)
+    q()
 
-Redundans/0.14a-de_novo-42e8edf-20190314
-=======================
+Create python venv. Make sure python comes from venv.
 
-Pipeline assisting assembly of highly heterozygous/polymorphic genomes.
+    cd $PREFIX
+    virtualenv venv
+    source venv/bin/activate
+    module unload python
+    which python
 
-** this is a development branch **
+Place redundans repository within PREFIX, compile everything.
 
-<https://github.com/lpryszcz/redundans>
+    cd $SRCDIR
+    mv redundans $PREFIX/
 
-LOG
----
+    cd $PREFIX/redundans
 
-It provides all its own prerequisites.
-
-    cd /sw/bioinfo
-    mkdir Redundans
-    cd Redundans
-    VERSION=0.14a-20190509-ffae69e
-    mkdir $VERSION
-    cd $VERSION
-    mkdir $CLUSTER
-    cd $CLUSTER
-    module load git/2.21.0
-    module load python/2.7.15
-    module load gcc/5.4.0  # must use this version, or at least not 6, as snap compilation fails otherwise)
-    git clone --recursive https://github.com/lpryszcz/redundans.git
-    cd redundans/
-    git reset --hard ffae69ec64065b128cf513f6b0603a6d285489b2
     bin/.compile.sh
+
+Check python scripts. Though top-level script redundans.py is
+under redundans/, a symlink is found under bin/ so we work on
+that script from within bin/.
+
+    cd bin
+    grep import *.py | cut -f2- -d: | sed -e 's/^\s\+//' | sort -u
+
+There don't seem to be any odd packages required. So just change #! lines.
+
+    sed -i '1i#!'"$(which python3)" *.py 
+
+Any other scripts we should change?
+
+    find . -name '*.py'
+
+Everything below . all seem to be utility scripts that probably are not used by this pipeline.
 
 Run a couple of tests.
 
-    ./redundans.py -v -i test/*.fq.gz -f test/contigs.fa -o test/run1
-    ./redundans.py -v -i test/*.fq.gz -l test/pacbio.fq.gz test/nanopore.fa.gz -f test/contigs.fa -o test/run_short_long
+    deactivate
+    module purge
+    module load R/4.3.1
+    cd $PREFIX/redundans
+    export PATH=$PWD:$PATH
 
-Add `$version/$Cluster/redundans` to `PATH` in the mf, and we need to load `python/2.7.15`. 
+    redundans.py -v -i test/*.fq.gz -f test/contigs.fa -o test/run1
+
+    redundans.py -v -i test/*_?.fq.gz -f test/contigs.fa --minimap2reduce -o test/run2
+
+    redundans.py -v -i test/*_?.fq.gz -o test/run.denovo
+
+
+Add `$version/$Cluster/redundans` to `PATH` in the mf. We need to load R/4.3.1 and that's it.
 

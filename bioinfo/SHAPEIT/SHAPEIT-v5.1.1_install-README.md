@@ -20,23 +20,24 @@ LOG
 These are all directly downloaded, statically compiled binaries.
 The tarballs under the release tag are all images, it appears.
 
-    wget https://github.com/odelaneau/shapeit5/releases/download/v1.0.0/SHAPEIT5_ligate_static_v1.0.0
-    wget https://github.com/odelaneau/shapeit5/releases/download/v1.0.0/SHAPEIT5_phase_common_static_v1.0.0
-    wget https://github.com/odelaneau/shapeit5/releases/download/v1.0.0/SHAPEIT5_phase_rare_static_v1.0.0
-    wget https://github.com/odelaneau/shapeit5/releases/download/v1.0.0/SHAPEIT5_switch_static_v1.0.0
+    wget https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/ligate_static
+    wget https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/phase_common_static
+    wget https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/phase_rare_static
+    wget https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/switch_static
 
 Check each, then copy to the PREFIX and create unversioned symlinks.
 
-    file SHAPEIT5_*
-    chmod +x SHAPEIT5_*
-    ./SHAPEIT5_phase_common_static_v1.0.0 
-    ./SHAPEIT5_phase_rare_static_v1.0.0 
-    ./SHAPEIT5_ligate_static_v1.0.0 
-    ./SHAPEIT5_switch_static_v1.0.0 
+    file *
+    chmod +x *
+
+    ./ligate_static
+    ./phase_common_static
+    ./phase_rare_static
+    ./switch_static
 
     cp -av * $PREFIX
     cd $PREFIX
-    for F in *_static_v1.0.0 ; do ln -s $F ${F%_static_v1.0.0}; done
+
 
 
 

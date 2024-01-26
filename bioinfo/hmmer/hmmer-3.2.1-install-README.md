@@ -23,7 +23,7 @@
     cd easel
     make install
 
-   cd /sw/apps/bioinfo/hmmer/$VERSION
-   for c in $OTHERCLUSTERS; do
-     ln -fs $CLUSTER $c
-   done
+    cd /sw/apps/bioinfo/hmmer/$VERSION
+    for c in $OTHERCLUSTERS; do
+      ln -fs $CLUSTER $c
+    done
