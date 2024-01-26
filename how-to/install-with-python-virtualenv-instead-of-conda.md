@@ -20,10 +20,14 @@ There are various updates in the main github branch that look important, but
 are not yet bundled into a version.  So I base our module off the main branch
 and give it a useful version that reflects this.  The most recent version was
 0.1.5, while the most recent commit was on 20240117 with commit hash beginning
-with ff2d167. So, I give this module the version 0.1.5-20240117-ff2d167.  **It
-is very important to use the order version-date-hash**, so that this version
-sorts *after* the 0.1.5 version, and if there are further interim versions
-after this, they will sort after this one because date comes after version.
+with ff2d167. So, I give this module the version 0.1.5-20240117-ff2d167.
+
+**It is very important to use the order version-date-hash** when versioning
+this way, so the module version sort order is sensible. Date is formatted
+YYYYMMDD. With this composite name, this version sorts *after* the base 0.1.5
+version. If there are further interim versions after this but before the next
+base version, using the date right after the base version will ensure a newer
+interim version with a later date will sort after this one.
 
 
 #### Python dependency
