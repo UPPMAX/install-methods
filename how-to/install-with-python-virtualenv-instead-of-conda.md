@@ -14,14 +14,17 @@ the one we didn't was a long-read aligner that looks really good, so I
 installed that as a separate module.
 
 
-#### Versioninng the installation
+#### Versioning the installation
 
-There are various updates in the main github
-branch that look important, but are not yet bundled into a version.  So I base
-our module off the main branch and give it a useful version that reflects this.
-The most recent version was 0.1.5, while the most recent commit was on 20240117
-with commit hash beginning with ff2d167. So, I give this module the version
-0.1.5-20240117-ff2d167.
+There are various updates in the main github branch that look important, but
+are not yet bundled into a version.  So I base our module off the main branch
+and give it a useful version that reflects this.  The most recent version was
+0.1.5, while the most recent commit was on 20240117 with commit hash beginning
+with ff2d167. So, I give this module the version 0.1.5-20240117-ff2d167.  **It
+is very important to use the order version-date-hash**, so that this version
+sorts *after* the 0.1.5 version, and if there are further interim versions
+after this, they will sort after this one because date comes after version.
+
 
 #### Python dependency
 
