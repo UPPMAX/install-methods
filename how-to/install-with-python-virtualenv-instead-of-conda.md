@@ -13,16 +13,56 @@ packages separate from executable tools. Most of the tools we have as modules.
 the one we didn't was a long-read aligner that looks really good, so I
 installed that as a separate module.
 
-I'm assuming you've `makeroom.sh`-d an environment and have source'd the
-SOURCEME file.
 
+#### Versioninng the installation
 
-*Versioninng the installation*: There are various updates in the main github
+There are various updates in the main github
 branch that look important, but are not yet bundled into a version.  So I base
 our module off the main branch and give it a useful version that reflects this.
 The most recent version was 0.1.5, while the most recent commit was on 20240117
 with commit hash beginning with ff2d167. So, I give this module the version
 0.1.5-20240117-ff2d167.
+
+#### Python dependency
+
+Issues in the issue tracker at the github repository suggest that installing
+with other than a python 3.10.z might not work, so we'll start with our module
+python/3.10.8.
+
+
+#### Explicit python package dependencies
+
+It lists python package dependencies numpy, scipy, cython, lxml, tqdm, pysam,
+pyparsing, requests, filelock, natsort, pyyaml, biopython, ete3, dendropy.
+
+
+#### Implicit python package dependencies
+
+In its own `environment.yaml` and `setup.py` it also includes pyham.
+
+
+#### Explicit module dependencies
+
+It lists MAFFT, samtools, NextGenMap, ngmlr, iqtree as dependencies. We have
+all of these but ngmlr, which looks like a great long-read mapper, so I
+installed that as a new module.
+
+
+#### Implicit module dependencies
+
+It also uses, later in the instructions, the executable name `iqtree`, which
+means that its version of `iqtree` must be one of the 1.y.z versions rather
+than one of the 2.y.z versions, which have executable names that begin within
+`iqtree2`. So, we'll make sure to use an iqtree 1 module.
+
+
+### The installation
+
+I'm assuming you've `makeroom.sh`-d an environment and have source'd the
+SOURCEME file.
+
+
+#### Fixing on the right version
 
 We clone the github repository and reset the head to the commit we're
 versioning on. This way, if we reinstall, this will still be fixed at this
@@ -36,18 +76,7 @@ commit even if there are later ones.
     ml -git
 
 
-*Python dependency*: Issues in the issue tracker at the github repository
-suggest that installing with other than a python 3.10.z might not work, so
-we'll start with our module python/3.10.8.
-
-
-*Explicit python package dependencies*: It lists python package dependencies
-numpy, scipy, cython, lxml, tqdm, pysam, pyparsing, requests, filelock,
-natsort, pyyaml, biopython, ete3, dendropy.
-
-
-*Implicit python package dependencies*: In its own `environment.yaml` and
-`setup.py` it also includes pyham.
+#### Creating the virtualenv
 
 After observing the above, we set up a virtualenv under `PREFIX`. Make sure the
 python3 and pip3 comes from the virtualenv, and then install the python package
@@ -67,19 +96,7 @@ dependencies.
 We wait to set up the tool itself till a bit later.
 
 
-*Explicit module dependencies*: It lists MAFFT, samtools, NextGenMap, ngmlr,
-iqtree as dependencies. We have all of these but ngmlr, which looks like a
-great long-read mapper, so I installed that as a new module.
-
-
-*Implicit module dependencies*: It also uses, later in the instructions, the
-executable name `iqtree`, which means that its version of `iqtree` must be one
-of the 1.y.z versions rather than one of the 2.y.z versions, which have
-executable names that begin within `iqtree2`. So, we'll make sure to use an
-iqtree 1 module.
-
-
-*Loading dependent modules*:
+#### Loading dependent modules
 
 Prior to installing the tool, we load the dependent modules in case it
 checks for their executables during its installation.
@@ -96,8 +113,7 @@ checks for their executables during its installation.
 Make sure to include these in `depends-on` lines within the mf file.
 
 
-*Installing the tool itself*:
-
+#### Installing the tool itself
 
 The tool includes a `setup.py` so it should be directly installable using pip3.
 Head back over to the cloned repository and install from there. We use `pip3`
@@ -117,16 +133,15 @@ dependencies.
 That went well.
 
 
-*Populating the bin/ directory for the module*:
-
+#### Populating the bin/ directory for the module
 
 We do not activate the virtualenv to use the module. Instead, we 'lift out'
 symlinks to the executables needed for running the tool. These will run within
 the virtualenv and get their python dependencies from there. They will get
 their tool dependencies from `PATH` after loading module dependencies.
 
-*Do not* add the virtualenv's own `bin/` to `PATH`.  That directory will be
-littered with executables that should not be explosed: pip3, python3, f2c, etc.
+**Do not add the virtualenv's own `bin/` to `PATH`**.  That directory will be
+littered with executables that should not be exposed: pip3, python3, f2c, etc.
 We only want to expose the executables that are required for running the tool.
 
 Instead, create a `$PREFIX/bin/` directory and within that, symlinks to
@@ -142,6 +157,8 @@ to include them. The tool might expect these to be available in `PATH`.
     ln -s $PREFIX/venv/bin/{dendropy-format,ete3,natsort,read2tree,sumlabels.py,sumtrees.py} .
 
 
+#### Verify that the python in the virtualenv is being used
+
 Verify that the #! lines refer to the python3 within the virtualenv.
 
 
@@ -155,7 +172,12 @@ Deactivate the environment and test the help for `read2tree`.
     ./read2tree
 
 
-This tool also includes a test data suite, so run on this as well. That should be done by loading the newly installed module. Run the module's `post-install.sh` script, load the module, and run the test suite.
+#### Testing
+
+This tool also includes a test data suite, so run on this as well. That should
+be done by loading the newly installed module. Be sure the mf file is ready.
+Run the module's `post-install.sh` script, load the module, and run the test
+suite.
 
 
     ml bioinfo-tools
