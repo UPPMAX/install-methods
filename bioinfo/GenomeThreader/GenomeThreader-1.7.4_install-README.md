@@ -126,21 +126,23 @@ Here GenomeTools' `gt` is used to generate prototype wrappers. An older scheme
 is used, or perhaps a custom scheme is used. This was noted in the Debian patch
 https://sources.debian.org/src/vmatch/2.3.1+dfsg-8/debian/patches/skproto.patch/
 
-double-check that files not already changes
+Double-check that files do not already contain skproto changes.
 
-    FILES=$(O
-    sed -i 's/skproto /gt dev skproto /' Mkvtree/Filegoals.mf Vmatch/Filegoals.mf Vmengine/Filegoals.mf Vmengine/Makefile bin/mkfilegoals.pl kurtz/Filegoals.mf kurtz/Mkprotodef.sh kurtz/libtest/Filegoals.mf
+    FILES="Mkvtree/Filegoals.mf Vmatch/Filegoals.mf Vmengine/Filegoals.mf Vmengine/Makefile bin/mkfilegoals.pl kurtz/Filegoals.mf kurtz/Mkprotodef.sh kurtz/libtest/Filegoals.mf"
+    CHANGEFILES=$(grep -L 'gt dev skproto' $FILES)
+    [[ $CHANGEFILES ]] && sed -i 's/skproto /gt dev skproto /' $CHANGEFILES
 
-#### Make utility scripts available
+#### Make utility scripts available in PATH
 
 We need to add the `bin/` utility scripts directory and `doc/` to PATH, that's
 the PATH adjustment.  The `mklink.sh` usage is a script from the bin directory,
 and `findemptyoutfiles.sh` is a script from doc.
 
+    OPATH="$PATH"
     export PATH="$PWD/bin:$PWD/doc:$PATH"
     mklink.sh linux-gcc-64
 
-#### Now build
+#### Now build vstree and create dist tarball
 
 For the dist step, we must touch a few PDFs in `doc/` to get it to complete.
 
@@ -155,18 +157,19 @@ For the dist step, we must touch a few PDFs in `doc/` to get it to complete.
     cd $SRCDIR
 
 
-### Finally build genomethreader
 
-For the dist step, we need to copy over the `bin/bssm/` directory from the 1.7.1 version of the module.
+## Finally build genomethreader
 
+    cd $SRCDIR
     cd genomethreader/
     make clean
     make 64bit=yes      wrapmemcpy=yes      licensemanager=no      amalgamation=yes $*
 
 Prior to wrapping up the dist package, we need to copy over the `bin/bssm/`
-directory from the released 1.7.3 dist package with the executables we can't
-run. These are identical to those in the 1.7.1 module, but as it's newer, it's
-more safe for future steps.
+directory from the released 1.7.3 dist package, the one that contains the
+executables we can't run because they expect a newer GLIBC. The contents of
+this directory are identical to those in the 1.7.1 module, but as it's newer,
+it's safer for future steps to use this approach.
 
     pushd .
     cd $SRCDIR

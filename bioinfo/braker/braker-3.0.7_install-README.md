@@ -36,17 +36,15 @@ LOG
     module load diamond/2.1.9
     module load blast/2.14.1+
     module load exonerate/2.4.0
+    module load GenomeThreader/1.7.4
 
     module load GeneMark-ETP/1.02-20231213-dd8b37b
     module load augustus/3.5.0-20231223-33fc04d
 
 
-    module load GenomeThreader/1.7.1
     module load spaln/2.4.0
     module load ProtHint/2.6.0
-    module load diamond/0.9.31
     module load cdbfasta/1.00
-    module load ucsc-utilities/v398
     module load MakeHub/1.0.5-1ecd6bb
     module load GUSHR/1.0.0
 
