@@ -11,7 +11,7 @@
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL
-#SBATCH -o /sw/data/Kraken2_data/slurm-update-db-rackham-thin-%j.out
+#SBATCH -o /sw/data/Kraken2_data/slurm-update-db-rackham-mem256GB-%j.out
 
 set -x
 

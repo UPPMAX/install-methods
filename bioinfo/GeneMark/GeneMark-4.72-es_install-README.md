@@ -16,7 +16,7 @@ LOG
     ./makeroom_GeneMark_4.72-es.sh
     source /sw/bioinfo/GeneMark/SOURCEME_GeneMark_4.72-es
 
-    PERLVERSION=5.26.2
+    PERLVERSION=5.32.1
 
     cd $SRCDIR
 
@@ -28,7 +28,7 @@ Actual addresses obtained after agreeing to licence.
 Place the key file in a common location.
 
     mkdir -p /sw/bioinfo/GeneMark/keyfile
-    cp -av gm_key_64.gz gm_key_64.gz.20231108
+    cp -av gm_key_64.gz gm_key_64.gz.20240213
     gunzip gm_key_64.gz 
     mv gm_key_64 /sw/bioinfo/GeneMark/keyfile/gm_key
 
@@ -72,4 +72,9 @@ followed by what it says in the `README.md` there.  The CDSs all match:
 
 
 Use the existing latest mf.
+
+2023-02-13
+----------
+
+Updated to perl/5.32.1 and updated the gm_key
 

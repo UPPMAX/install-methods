@@ -1,5 +1,5 @@
 gffread/0.12.6
-========================
+==============
 
 <https://github.com/gpertea/gffread>
 

@@ -24,5 +24,5 @@ LOG
     cd $SRCDIR
     cd rackham 
     wget wget https://faculty.washington.edu/browning/beagle/beagle.18May20.d20.jar
-    lns -s beagle.18May20.d20.jar beagle.jar
+    ln -s beagle.18May20.d20.jar beagle.jar
 
