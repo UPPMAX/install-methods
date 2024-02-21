@@ -26,4 +26,4 @@ Do two builds, one parallel and one not.  Also, compile native code for snowy, r
     CFLAGS=-march=native ./configure --prefix=$PREFIX --enable-pthreads --enable-utilities
     make && make check && make install
 
-Do for all of snowy, rackham, miarka
+Do for all of snowy, rackham, miarka. Make bianca a symlink to rackham.

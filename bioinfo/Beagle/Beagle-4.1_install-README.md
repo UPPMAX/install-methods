@@ -1,4 +1,4 @@
-Beagle/5.4
+Beagle/4.1
 ==========
 
 <https://faculty.washington.edu/browning/beagle/beagle.html>
@@ -7,39 +7,48 @@ Used under license:
 GPL v3
 
 
-Structure creating script (makeroom_Beagle_5.4.sh) moved to /sw/bioinfo/Beagle/makeroom_5.4.sh
+Structure creating script (makeroom_Beagle_4.1.sh) moved to /sw/bioinfo/Beagle/makeroom_4.1.sh
 
 LOG
 ---
 
-    makeroom.sh "-f" "-t" "Beagle" "-v" "5.4" "-s" "misc" "-w" "https://faculty.washington.edu/browning/beagle/beagle.html" "-l" "GPL v3" "-d" "Beagle is a software package for phasing genotypes and for imputing ungenotyped markers"
-    ./makeroom_Beagle_5.4.sh
+    makeroom.sh "-f" "-t" "Beagle" "-v" "4.1" "-s" "misc" "-w" "https://faculty.washington.edu/browning/beagle/beagle.html" "-l" "GPL v3" "-d" "Beagle is a software package for phasing genotypes and for imputing ungenotyped markers"
+    ./makeroom_Beagle_4.1.sh
 
-    source /sw/bioinfo/Beagle/SOURCEME_Beagle_5.4
+    source /sw/bioinfo/Beagle/SOURCEME_Beagle_4.1
+
+    # source code
     cd $SRCDIR
+    wget https://faculty.washington.edu/browning/beagle/beagle.180127.zip
 
-    wget http://faculty.washington.edu/browning/beagle/beagle.22Jul22.46e.jar
-    ln -s beagle.22Jul22.46e.jar beagle.jar
-    wget http://faculty.washington.edu/browning/beagle/beagle_5.4_18Mar22.pdf
-    wget http://faculty.washington.edu/browning/beagle/run.beagle.22Jul22.46e.example
-    wget http://faculty.washington.edu/browning/beagle/beagle5_release_notes
-    wget http://faculty.washington.edu/browning/beagle/gpl_license
+    # everything else
+    cd $PREFIX
+    wget https://faculty.washington.edu/browning/beagle/beagle.27Jan18.7e1.jar
+    ln -s beagle.27Jan18.7e1.jar beagle.jar
+    wget https://faculty.washington.edu/browning/beagle/beagle_4.1_21Jan17.pdf
+    wget https://faculty.washington.edu/browning/beagle/run.beagle.27Jan18.7e1.example
+    wget https://faculty.washington.edu/browning/beagle/beagle4_release_notes
+    wget https://faculty.washington.edu/browning/beagle/gpl_license
 
 ### Additional resources
 
-    echo "mirror genetic_maps"            | lftp https://bochet.gcc.biostat.washington.edu/beagle
-    echo "mirror 1000_Genomes_phase3_v5a" | lftp https://bochet.gcc.biostat.washington.edu/beagle
-    echo "mirror beagle3_examples"        | lftp https://bochet.gcc.biostat.washington.edu/beagle
+    # symlinks to 5.4 copies of resource directories
 
-    wget http://faculty.washington.edu/browning/beagle/bref3.24May18.pdf
-    wget http://faculty.washington.edu/browning/beagle/bref3.22Jul22.46e.jar
-    ln -s bref3.22Jul22.46e.jar bref3.jar
-    wget http://faculty.washington.edu/browning/beagle/unbref3.22Jul22.46e.jar
-    ln -s unbref3.22Jul22.46e.jar unbref.jar
-    wget http://faculty.washington.edu/browning/conform-gt/conform-gt.24May16.cee.jar
+    ln -s "${PREFIX/4.1/5.4}/genetic_maps" .
+    ln -s "${PREFIX/4.1/5.4}/1000_Genomes_phase3_v5a" .
+
+    # our own copies of bref and conform-gt
+
+    wget https://faculty.washington.edu/browning/beagle/bref.27Jan18.7e1.jar
+    ln -s bref.27Jan18.7e1.jar bref3.jar
+    wget https://faculty.washington.edu/browning/beagle/bref.16Dec15.pdf
+
+    wget https://faculty.washington.edu/browning/conform-gt/conform-gt.24May16.cee.jar
     ln -s conform-gt.24May16.cee.jar conform-gt.jar
 
 ### Beagle utilities <https://faculty.washington.edu/browning/beagle_utilities/utilities.html>
+
+    # our own copies of beagle utilities, make them executable to find them
 
     wget https://faculty.washington.edu/browning/beagle_utilities/gtstats.jar
     wget https://faculty.washington.edu/browning/beagle_utilities/splitvcf.jar
@@ -67,8 +76,6 @@ LOG
     wget https://faculty.washington.edu/browning/beagle_utilities/updategprobs.jar
     wget https://faculty.washington.edu/browning/beagle_utilities/ibdmerge.jar
 
-Make these jars executable so they may be found by some tools.
-
     chmod +x gtstats.jar splitvcf.jar mergevcf.jar consensusvcf.jar base2genetic.jar beagle2gprobs.jar beagle2linkage.jar beagle2vcf.jar
     chmod +x gprobs2beagle.jar linkage2beagle.jar vcf2beagle.jar vcf2gprobs.jar gprobshwe.jar gprobsmetrics.jar gprobsmissing.jar gprobssamplemissing.jar
     chmod +x changecolumn.jar changeline.jar cut.jar filtercolumns.jar filterlines.jar paste.jar transpose.jar updategprobs.jar ibdmerge.jar
@@ -78,17 +85,4 @@ Make these jars executable so they may be found by some tools.
     mkdir doc
     mv *.pdf doc/
 
-### Move all to PREFIX
 
-    mv -v * $PREFIX/
-
-### Grab the source code, we don't use it but we'll keep it for reference
-
-    wget http://faculty.washington.edu/browning/beagle/beagle.220722.zip
-
-## beagle executable
-
-Note that I've added a `beagle` executable from the beagle conda package, which
-is an edited version of the `gatk` wrapper script. The same script is used for
-Beagle/4.1, Beagle/5.1 and Beagle/5.4, so just copy it from `$PREFIX/beagle`
-for whatever other versions you wish to install.

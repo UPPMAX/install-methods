@@ -5,7 +5,31 @@ For the next version:
 
 * GenomicsDB ??
 * remotes::install_github('chris-mcginnis-ucsf/DoubletFinder', upgrade='never')
+  Be sure that DoubletFinder includes changes to accomodate Seurat:
 
+    cd /sw/apps/R_packages
+    source SOURCEME_R_packages_4.3.1
+    source $VERSIONDIR/source-for-setup
+    cd $VERSIONDIR/external
+    ml git/2.34.1
+    git clone --recursive https://github.com/chris-mcginnis-ucsf/DoubletFinder
+    cd DoubletFinder/
+    cd R/
+    wget -O paramSweep.R.new https://raw.githubusercontent.com/chris-mcginnis-ucsf/DoubletFinder/57e1a43820ecbf8b371b104879e64976a83f9e8b/R/paramSweep.R
+    wget -O doubletFinder.R.new https://raw.githubusercontent.com/chris-mcginnis-ucsf/DoubletFinder/642322aab3a50b2ad1892e2bbd8ac98a5191a18f/R/doubletFinder.R
+    diff doubletFinder.R*
+    diff paramSweep.R*
+    mv doubletFinder.R.new doubletFinder.R
+    mv paramSweep.R.new paramSweep.R
+    cd ../..
+
+  Then within R:
+
+    install.packages('DoubletFinder', repos=NULL)
+
+
+Intro
+-----
 
 Double-check that there are no non-base packages installed within R/4.3.1. That
 must be chmod -R -w, but I'd forgotten and other AEs had installed packages
