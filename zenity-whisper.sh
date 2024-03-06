@@ -1,6 +1,4 @@
 #!/usr/bin/bash
-set -a
-set -x
 cancelled(){
     zenity --error \
           --title="Process cancelled" \
