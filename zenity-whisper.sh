@@ -1,4 +1,6 @@
 #!/usr/bin/bash
+set -a
+set -x
 cancelled(){
     zenity --error \
           --title="Process cancelled" \
@@ -94,7 +96,7 @@ else
         c_type="#SBATCH -C gpu"
     else
         node_type="core"
-        n_node= "16"
+        n_node="16"
         c_type=""
     fi
     echo "more than $login_node_limit_time"
@@ -105,7 +107,7 @@ else
 #!/bin/bash -l
 #SBATCH -A $proj_name
 #SBATCH -p $node_type
-#SBATCH -n $n_nodes
+#SBATCH -n $n_node
 #SBATCH -t $job_time
 #SBATCH -J $job_name
 $c_type
