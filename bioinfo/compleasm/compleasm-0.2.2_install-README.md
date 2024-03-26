@@ -1,10 +1,10 @@
 compleasm/0.2.2
 ========================
 
-<http://>
+<https://github.com/huangnengCSU/compleasm>
 
 Used under license:
-Apache 2.0
+Apache 2.0 and other licenses
 
 
 Structure creating script (makeroom_compleasm_0.2.2.sh) moved to /sw/bioinfo/compleasm/makeroom_0.2.2.sh

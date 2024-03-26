@@ -45,10 +45,11 @@ At the following rows I inserted:
 67         ## if not cache_key[0].startswith('file://') and cache_key in SubdirData._cache_:
 68         if cache_key in SubdirData._cache_:
 
-To reinstall:
+Previously to reinstall:
     cd /sw/apps/conda/latest/src
-    rm -rf ../rackham_stage
+    mv ../rackham_stage ../rackham_stage_`date +"%Y-%m-%d"`
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    mv Miniconda3-latest-Linux-x86_64.sh Miniconda3-latest-Linux-x86_64.sh_`date +"%Y-%m-%d"`
     chmod +x Miniconda3-latest-Linux-x86_64.sh
     ./Miniconda3-latest-Linux-x86_64.sh -fbp /sw/apps/conda/latest/rackham_stage/
     ml conda
@@ -61,3 +62,19 @@ To reinstall:
     conda install conda-build conda-mirror mamba conda-pack libarchive -y
     #cd /sw/apps/conda/latest/rackham_stage/local_repo
     #conda index --channel-name CONDA_UPPMAX --verbose */
+
+To reinstall:
+    cd /sw/apps/conda/latest/src
+    mv ../rackham_stage ../rackham_stage_`date +"%Y-%m-%d"`
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    mv Miniconda3-latest-Linux-x86_64.sh Miniconda3-latest-Linux-x86_64.sh_`date +"%Y-%m-%d"`
+    chmod +x Miniconda3-latest-Linux-x86_64.sh
+    ./Miniconda3-latest-Linux-x86_64.sh -fbp /sw/apps/conda/latest/rackham_stage/
+    ml conda
+    conda install conda-build -yc conda-forge
+    conda install conda-mirror -yc conda-forge
+    conda install mamba -yc conda-forge
+    conda install conda-pack -yc conda-forge
+    cp conda_init.sh ../rackham_stage/bin/
+    cp .condarc ../rackham_stage/.condarc
+    ln -s /sw/apps/conda/local_repo/ /sw/apps/conda/latest/rackham_stage/local_repo

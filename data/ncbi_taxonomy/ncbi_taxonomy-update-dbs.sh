@@ -185,6 +185,11 @@ get_db_SIMPLE  biocollections   ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocolle
 get_db_SIMPLE  biocollections   ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections   Institution_codes.txt
 get_db_SIMPLE  biocollections   ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/biocollections   Unique_institution_codes.txt
 
+# blast database taxonomy info, primarily useful in the separate copy downloaded alongside the blast databases
+
+get_db_SIMPLE  .                https://ftp.ncbi.nlm.nih.gov/blast/db                    taxdb-metadata.json
+get_db_single  .                https://ftp.ncbi.nlm.nih.gov/blast/db                    taxdb.tar.gz                     taxdb.tar.gz.md5       tar
+
 # remove previous version, place update, and update latest symlink
 [[ $MOVE_TO_FINAL ]] && { echo "Final move to $ROOT/$NEWVERSION ..."; } || { echo "No final move, downloaded versions left in $ROOT/$TMPDIR"; exit 0; }
 

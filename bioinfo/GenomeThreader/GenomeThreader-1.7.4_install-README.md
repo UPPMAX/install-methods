@@ -134,9 +134,9 @@ Double-check that files do not already contain skproto changes.
 
 #### Make utility scripts available in PATH
 
-We need to add the `bin/` utility scripts directory and `doc/` to PATH, that's
-the PATH adjustment.  The `mklink.sh` usage is a script from the bin directory,
-and `findemptyoutfiles.sh` is a script from doc.
+We need to add the `bin/` utility scripts directory and `doc/` to PATH.  The
+`mklink.sh` usage is a script from the bin directory, and
+`findemptyoutfiles.sh` is a script from doc.
 
     OPATH="$PATH"
     export PATH="$PWD/bin:$PWD/doc:$PATH"
@@ -211,7 +211,7 @@ makeroom-created symlink.
     cd $TOOLDIR
     ./GenomeThreader-1.7.4_post-install.sh
 
-Write up this compilicated README.
+Write up this complicated README.
 
     history >> GenomeThreader-1.7.4_install-README.md
     vi GenomeThreader-1.7.4_install-README.md

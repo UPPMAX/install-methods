@@ -2,7 +2,7 @@
 
 # Check https://benlangmead.github.io/aws-indexes/k2 to see if there are database updates here
 
-K2_VERSION=2.1.2-20211210-4f648f5
+K2_VERSION=2.1.3-20231102-acc2248
 
 # We load Kraken2 to create an inspect.txt for the 16S_\* databases.
 
@@ -18,6 +18,7 @@ DEST=$PWD
 mkdir -p src
 cd src
 BASEURL=https://genome-idx.s3.amazonaws.com/kraken
+
 DATABASES=( k2_viral_20220908.tar.gz
             k2_minusb_20220926.tar.gz
             k2_standard_20220926.tar.gz
@@ -77,6 +78,17 @@ DATABASES=( k2_viral_20220908.tar.gz
             k2_pluspfp_08gb_20231009.tar.gz
             k2_pluspfp_16gb_20231009.tar.gz
             k2_nt_20231129.tar.gz
+            k2_viral_20240112.tar.gz
+            k2_minusb_20240112.tar.gz
+            k2_standard_20240112.tar.gz
+            k2_standard_08gb_20240112.tar.gz
+            k2_standard_16gb_20240112.tar.gz
+            k2_pluspf_20240112.tar.gz
+            k2_pluspf_08gb_20240112.tar.gz
+            k2_pluspf_16gb_20240112.tar.gz
+            k2_pluspfp_20240112.tar.gz
+            k2_pluspfp_08gb_20240112.tar.gz
+            k2_pluspfp_16gb_20240112.tar.gz
             16S_Greengenes13.5_20200326.tgz
             16S_RDP11.5_20200326.tgz
             16S_Silva132_20200326.tgz

@@ -42,7 +42,7 @@ and so on.
 LOG
 ---
 
-    /home/douglas/bin/makeroom.sh "-f" "-t" "spaln" "-v" "2.4.13c" "-w" "https://github.com/ogotoh/spaln" "-l" "GPL v2" "-d" "stand-alone program that maps and aligns a set of cDNA or protein sequences onto a whole genomic sequence in a single job"
+    makeroom.sh "-f" "-t" "spaln" "-v" "2.4.13c" "-w" "https://github.com/ogotoh/spaln" "-l" "GPL v2" "-d" "stand-alone program that maps and aligns a set of cDNA or protein sequences onto a whole genomic sequence in a single job"
     ./makeroom_spaln_2.4.13c.sh
 
     source /sw/bioinfo/spaln/SOURCEME_spaln_2.4.13c && cd $SRCDIR

@@ -44,8 +44,8 @@ prepdbs=yes
 
 module load gnuparallel/20230422
 module load bioinfo-tools
-module load blast/2.13.0+
-module load diamond/2.1.6
+module load blast/2.15.0+
+module load diamond/2.1.9
 
 # the databases fetched from NCBI's mirror, must match that in update_blastdb.sh
 # these are individually checked by blastdbcheck after installation
@@ -105,6 +105,7 @@ ln $INSTALL/* .
 
 for S in ${STAGED_DBS_TIMESTAMPS[@]} ; do
     SS=${S%.timestamp}
+    SS_DIR=${S%/*}
     DB=${SS##*/}
     echo -e "\n$S found staged"
     ALL_SS=(${SS}.*)
@@ -118,9 +119,11 @@ for S in ${STAGED_DBS_TIMESTAMPS[@]} ; do
     echo -ne "    $DB:$NEW: removing hardlinks to existing ... "
     rm -f ${DB}.*
     [[ $DB == UniVec || $DB == UniVec_Core ]] && rm -f ${DB}
+    [[ $DB == taxdb ]] && rm -f taxonomy4blast.sqlite3
     echo -e "creating hardlinks to staged... "
     ln ${SS}.* . || { echo -e "$0: Failed to hardlink '${SS}.*'\n" | mailx -s "blast database installation error" "$EMAIL"; exit 1; }
     [[ $DB == UniVec || $DB == UniVec_Core ]] && ln ${SS} .
+    [[ $DB == taxdb ]] && ln ${SS_DIR}/taxonomy4blast.sqlite3 .
 done
 
 for J in ${STAGED_DBS_JSONS[@]} ; do

@@ -1,6 +1,10 @@
 ascp/4.2.0.183804
 =================
 
+
+**NOTE** the license ran out 2024/03/13 @ 13:30 so installing newer version with up to date licence, and depracating this.
+
+
 <https://www.ibm.com/docs/en/ahts/4.4?topic=linux-ascp-transferring-from-command-line>
 
 Used under license:

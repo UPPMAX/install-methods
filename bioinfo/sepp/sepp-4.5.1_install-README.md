@@ -12,75 +12,58 @@ Structure creating script (makeroom_sepp_4.5.1.sh) moved to /sw/bioinfo/sepp/mak
 LOG
 ---
 
-    /home/douglas/bin/makeroom.sh "-f" "-t" "sepp" "-v" "4.5.1" "-w" "https://github.com/smirarab/sepp" "-l" "GPL v3" "-d" "SEPP stands for SATe-enabled Phylogenetic Placement\, and addresses the problem of phylogenetic placement of short reads into reference alignments and trees."
+    makeroom.sh "-f" "-t" "sepp" "-v" "4.5.1" "-w" "https://github.com/smirarab/sepp" "-l" "GPL v3" "-d" "SEPP stands for SATe-enabled Phylogenetic Placement\, and addresses the problem of phylogenetic placement of short reads into reference alignments and trees."
     ./makeroom_sepp_4.5.1.sh
-sepp/4.3.10_python_3.7.2
-========================
+    source /sw/bioinfo/sepp/SOURCEME_sepp_4.5.1
+    cd $SRCDIR
+    ml git/2.34.1
+    ml python/3.11.4
+    ml gcc/12.3.0
+    ml bioinfo-tools
+    ml pplacer/1.1.alpha19
+    ml hmmer/3.3.2
 
-<http://>
-
-Used under license:
-
-
-
-Structure creating script (makeroom_sepp_4.3.10_python_3.7.2.sh) moved to /sw/bioinfo/sepp/makeroom_4.3.10_python_3.7.2.sh
-
-LOG
----
-
-    /home/bjornv/git/install-methods/makeroom.sh "-t" "sepp" "-v" "4.3.10_python_3.7.2" "-f"
-    ./makeroom_sepp_4.3.10_python_3.7.2.sh
-
+    cd $PREFIX
+    virtualenv venv
+    source venv/bin/activate
+    ml -python
+    which python
 
     cd $SRCDIR
-    wget https://github.com/smirarab/sepp/archive/4.3.10.tar.gz
-    tar xfvz 4.3.10.tar.gz --strip 1
-    rm 4.3.10.tar.gz
 
-    module load python/3.7.2
-    mkdir -p ${PREFIX}/lib/python3.7/site-packages/
-    export PYTHONPATH=${PREFIX}/lib/python3.7/site-packages/:${PYTHONPATH}
-    python setup.py config -c
-    python setup.py install --prefix $PREFIX
+    wget https://github.com/smirarab/sepp/archive/refs/tags/4.5.1.tar.gz
+    tar xf 4.5.1.tar.gz
+    cd sepp-4.5.1
+    pip3 install .
 
+Now create symlinks in $PREFIX/bin for venv scripts.
 
+    cd $PREFIX
+    mkdir bin
+    cd bin
+    for EXEC in run_sepp.py run_upp.py split_sequences.py sumlabels.py sumtrees.py ; do
+        ln -sf $(which $EXEC) .
+    done
 
+Copy the jar here.
 
+    cp -av $SRCDIR/sepp-4.5.1/tools/merge/seppJsonMerger.jar .
 
+Copy the config here and reset the paths.
 
-sepp/4.3.10
-========================
+./src/sepp-4.5.1/tools/merge/seppJsonMerger.jar
 
-<https://github.com/smirarab/sepp/>
+    cp -av $SRCDIR/sepp-4.5.1/.sepp/main.config .
 
-Used under license:
-GNU3
-<>
+Within `main.config` set the pplacer hmmalign hmmsearch hmmbuild paths to
 
-Structure creating script (makeroom_sepp_4.3.10.sh) moved to /sw/bioinfo/sepp/makeroom_4.3.10.sh
+    which pplacer
+    which hmmalign
+    which hmmsearch
+    which hmmbuild
 
-LOG
----
+and set the jsonmerger path to its location within bin:
 
-    TOOL=sepp
-    VERSION=4.3.10
-    CLUSTER=rackham
-    TOOLDIR=/sw/bioinfo/$TOOL
-    VERSIONDIR=/sw/bioinfo/$TOOL/$VERSION
-    PREFIX=/sw/bioinfo/$TOOL/$VERSION/$CLUSTER
-    SRCDIR=/sw/bioinfo/sepp/4.3.10/src
-    /home/bjornv/git/install-methods/makeroom.sh -t "sepp" -v "4.3.10" -w "https://github.com/smirarab/sepp/" -l "GNU3" -d "SEPP stands for SATe-enabled Phylogenetic Placement\, and addresses the problem of phylogenetic placement of short reads into reference alignments and trees." -s "annotation"
-    ./makeroom_sepp_4.3.10.sh
+    ls -1 $PREFIX/bin/seppJsonMerger.jar
 
-    cd $SRCDIR
-    wget https://github.com/smirarab/sepp/archive/4.3.10.tar.gz
-    tar xfvz 4.3.10.tar.gz --strip 1
-    rm 4.3.10.tar.gz
-
-    module load python3/3.7.2
-    export PYTHONPATH=${PREFIX}/lib/python3.7/site-packages/:${PYTHONPATH}
-    python3 setup.py config -c
-    python3 setup.py install --prefix $PREFIX
-
-    
-
+Then we need to tell it where to find main.config.

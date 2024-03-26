@@ -24,33 +24,82 @@ LOG
     rmdir $PREFIX && mv BRAKER-3.0.7 $PREFIX
     cd $PREFIX
     cd scripts/
-    sed -i 's,^#!/usr/bin/perl.*$,#!/usr/bin/env perl,' *.pl
+
+We no longer need to modify the first line to use env perl since these scripts
+now include that, but double-check anyway.
+
+    head -n 1 *.pl
+
+Set up a virtualenv for biopython. Make sure python3 comes from the virtualenv.
+Make the python scripts point to this python3.
+
+    cd $PREFIX
+    ml python/3.11.8
+    virtualenv venv
+    source venv/bin/activate
+    ml -python
+    which python3
+    pip3 install biopython
+    cd $PREFIX/scripts
+    sed -i -e '1i#!'"$(which python3)" *.py
+    deactivate
+
+Fetch example data.
+
+    cd $PREFIX/example
+    wget http://bioinf.uni-greifswald.de/augustus/datasets/RNAseq.bam
 
     module load perl/5.32.1
     module load perl_modules/5.32.1
 
-    module load seqstats/20170404-e6f482f
-    module load ucsc-utilities/v421
-    module load samtools/1.19
-    module load bamtools/2.5.2
-    module load diamond/2.1.9
-    module load blast/2.14.1+
-    module load exonerate/2.4.0
-    module load GenomeThreader/1.7.4
+Prerequisites. Loading GeneMark-ETP/1.02-20231213-dd8b37b loads several of
+these. We also load them here. Lines for the mf file:
 
-    module load GeneMark-ETP/1.02-20231213-dd8b37b
-    module load augustus/3.5.0-20231223-33fc04d
+    depends-on GeneMark-ETP/1.02-20231213-dd8b37b
+    depends-on augustus/3.5.0-20231223-33fc04d
+    depends-on bamtools/2.5.2
+    depends-on samtools/1.19
+    depends-on spaln/3.0.3
+    depends-on blast/2.14.1+
+    depends-on cdbfasta/1.00
+    depends-on GUSHR/1.0.0
+    depends-on MakeHub/1.0.8-20240217-31cc299
+    depends-on compleasm/0.2.5
+    depends-on ucsc-utilities/v421
+    depends-on seqstats/20170404-e6f482f
+
+These are loaded by GeneMark-ETP. I will not load them separately for braker 3.
+
+    ### depends-on diamond/2.1.9
+    ### depends-on sratools/3.0.7
+    ### depends-on HISAT2/2.2.1
+    ### depends-on BEDTools/2.31.1
+    ### depends-on StringTie/2.2.1
+    ### depends-on gffread/0.12.7
+
+Additional dependencies from the Docker file include ucsc-utilities adn seqstats.
+
+A FFmpeg module is required "for matplotlib anim"
+
+    FFmpeg/5.1.2
 
 
-    module load spaln/2.4.0
-    module load ProtHint/2.6.0
-    module load cdbfasta/1.00
-    module load MakeHub/1.0.5-1ecd6bb
-    module load GUSHR/1.0.0
+These seem to no longer be needed.
+
+    exonerate/2.4.0
+    GenomeThreader/1.7.4
+    ProtHint/2.6.0
 
 
 Add `$modroot/scripts` to `PATH`.
 
+We also need to define `PYTHON3_PATH` and set that to point to the venv bin
+directory, since at line 2278 in the braker.pl script, it checks for biopython
+by calling python3 directly. $!@#$(*@$%(&@#(*^Q)$%&*!(@$&%@($%^*)@#$%(
+
+    set  venv_bin  $modroot/venv/bin
+
+    setenv PYTHON3_PATH $venv_bin
 
 No testing for this version yet.
 
@@ -58,7 +107,20 @@ No testing for this version yet.
 Testing
 -------
 
-Running `source $AUGUSTUS_CONFIG_COPY` is always required to set up an annotation environment, and that script was modified to print its export line for `AUGUSTUS_CONFIG_PATH` since that always need to be set after the config directory is created.
+    ml bioinfo-tools braker/3.0.7
+    cd $BRAKER_ROOT/example
+    cd tests
+
+Running `source $AUGUSTUS_CONFIG_COPY` is always required to set up an
+annotation environment, and that script was modified to print its export line
+for `AUGUSTUS_CONFIG_PATH` since that always need to be set after the config
+directory is created.
+
+    source $AUGUSTUS_CONFIG_COPY
+
+After doing this, the setup line is
+
+    export AUGUSTUS_CONFIG_PATH=/sw/bioinfo/braker/3.0.7/rackham/example/tests/augustus_config
 
 Running tests:
 

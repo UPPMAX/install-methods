@@ -24,7 +24,7 @@ function error_send_email()
 
 K2_DB_BASE=/sw/data/Kraken2_data
 
-K2_VERSION=2.1.2-20211210-4f648f5
+K2_VERSION=2.1.3-20231102-acc2248
 
 THREADS=${SLURM_JOB_CPUS_PER_NODE:-20}
 [[ -z "$THREADS" ]] && error_send_email "Threads count misconfigured: THREADS=$THREADS"

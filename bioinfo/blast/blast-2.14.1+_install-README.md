@@ -1,20 +1,4 @@
 blast/2.14.1+
-========================
-
-<http://>
-
-Used under license:
-
-
-
-Structure creating script (makeroom_blast_2.14.1+.sh) moved to /sw/bioinfo/blast/makeroom_2.14.1+.sh
-
-LOG
----
-
-    /home/bjornv/git/install-methods/makeroom.sh "-t" "blast" "-v" "2.14.1+" "-f"
-    ./makeroom_blast_2.14.1+.sh
-blast/2.13.0+
 =============
 
 <https://blast.ncbi.nlm.nih.gov/Blast.cgi>
@@ -23,7 +7,7 @@ Used under license:
 Public Domain
 <https://www.ncbi.nlm.nih.gov/IEB/ToolBox/CPP_DOC/lxr/source/scripts/projects/blast/LICENSE>
 
-Structure creating script (makeroom_blast_2.13.0+.sh) moved to /sw/bioinfo/blast/makeroom_2.13.0+.sh
+Structure creating script (makeroom_blast_2.14.1+.sh) moved to /sw/bioinfo/blast/makeroom_2.14.1+.sh
 
 LOG
 ---
@@ -31,7 +15,7 @@ LOG
 We move the unpacked directory to be `$PREFIX`.
 
     TOOL=blast
-    VERSION=2.13.0+
+    VERSION=2.14.1+
     makeroom.sh -f -t "$TOOL" -v "$VERSION" -w "https://blast.ncbi.nlm.nih.gov/Blast.cgi" -l "Public Domain" -L "https://www.ncbi.nlm.nih.gov/IEB/ToolBox/CPP_DOC/lxr/source/scripts/projects/blast/LICENSE"
     makeroom_${TOOL}_${VERSION}.sh
     cd /sw/bioinfo/${TOOL}
