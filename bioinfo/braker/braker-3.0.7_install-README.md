@@ -64,9 +64,13 @@ these. We also load them here. Lines for the mf file:
     depends-on cdbfasta/1.00
     depends-on GUSHR/1.0.0
     depends-on MakeHub/1.0.8-20240217-31cc299
-    depends-on compleasm/0.2.5
+    depends-on compleasm/0.2.6
     depends-on ucsc-utilities/v421
     depends-on seqstats/20170404-e6f482f
+
+We need compleasm/0.2.6, built from my fork from the original, since it
+implements the COMPLEASM_LIBRARY_PATH variable, which we use to point to our
+downloaded lineage sets.
 
 These are loaded by GeneMark-ETP. I will not load them separately for braker 3.
 
