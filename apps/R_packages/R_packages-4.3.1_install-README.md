@@ -3,6 +3,7 @@ R_packages/4.3.1
 
 For the next version:
 
+* https://github.com/CSOgroup/CALDER2
 * GenomicsDB ??
 * https://github.com/mojaveazure/seurat-disk
 * and double-check Seurat's own website for its recommended additions for externals

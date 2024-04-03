@@ -1,6 +1,8 @@
 eggNOG databases 4.5.1
 ======================
 
+**DEPRECATED AND DELETED**
+
 Following the info at
 
 <https://github.com/jhcepas/eggnog-mapper/wiki/Installation#eggnog-database-retrieval>

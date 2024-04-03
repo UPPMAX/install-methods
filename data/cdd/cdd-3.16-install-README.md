@@ -1,6 +1,9 @@
 cdd 3.16
 ========
 
+
+**NOW DEPRECATED AND REMOVED**
+
 <ftp://ftp.ncbi.nih.gov/pub/mmdb/cdd/>
 
 LOG

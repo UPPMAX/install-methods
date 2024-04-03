@@ -16,17 +16,17 @@ LOG
     ./makeroom_mgatk_0.7.0.sh
     source /sw/bioinfo/mgatk/SOURCEME_mgatk_0.7.0 && cd $TOOLDIR
     cd $PREFIX
-    ml python/3.11.8
-    python3 -m venv venv3
+    ml bioinfo-tools biopython/1.76-py3 #gives 3.7.2
+    python3 -m venv --system-site-packages venv3
     . venv3/bin/activate
     which pip
     pip install mgatk
-    pip install matplotlib	#apparently this was also needed
+    pip install pulp==2.7.0
     deactivate
 
 There are some R scripts and the needed R libraries are checked in a script. However, since the loaded R_packages have more than 1000 libraries the output is truncated and the needed libraries are not listed.
 Therefore, comment these lines in the file:
-    $PREFIX/venv3/lib/python3.11/site-packages/mgatk/mgatkHelp.py
+    $PREFIX/venv3/lib/python3.7/site-packages/mgatk/mgatkHelp.py
 
         #if(not set(required_packages) < set(installed_packages)):
         #       sys.exit("ERROR: cannot find the following R package: " + str(set(required_packages) - set(installed_packages)) + "\n" +

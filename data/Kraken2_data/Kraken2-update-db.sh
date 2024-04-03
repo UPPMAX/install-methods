@@ -2,16 +2,17 @@
 
 #SBATCH -A staff
 #SBATCH -J Kraken2-update-db.sh
-#SBATCH -M rackham
+#SBATCH -M snowy
 #SBATCH -p node
-#SBATCH -n 20
-#SBATCH -C mem256GB
+#SBATCH -n 16
+#SBATCH -C mem512GB
 #  Not necessary to use fat node for Kraken2.  Max on build of standard library was ~40GB
-#SBATCH -t 4-00:00:00
+#SBATCH -t 10-00:00:00
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL
-#SBATCH -o /sw/data/Kraken2_data/slurm-update-db-rackham-mem256GB-%j.out
+##SBATCH -o /sw/data/Kraken2_data/slurm-update-db-rackham-mem256GB-%j.out
+#SBATCH -o /sw/data/Kraken2_data/slurm-update-db-snowy-mem512GB-%j.out
 
 set -x
 
