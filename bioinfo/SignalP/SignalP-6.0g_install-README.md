@@ -1,7 +1,7 @@
 SignalP/6.0g
-========================
+============
 
-<http://>
+<http://www.cbs.dtu.dk/services/SignalP/>
 
 Used under license:
 

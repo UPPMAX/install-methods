@@ -9,7 +9,9 @@ GPLv3, MIT
 Pre-built databases
 -------------------
 
-**No updates as of 2024-01-03 14:29.**
+**Maybe an update, 2024-04-08 ??**
+
+A microbial database is available.
 
 Pre-built databases are installed from from
 <https://benlangmead.github.io/aws-indexes/k2>.  The dates/names are as of
@@ -30,26 +32,56 @@ Submit a job to build the latest `--standard` database for ourselves.
     cd $TOOLDIR
     sbatch KrakenUniq_data-update-db.sh
 
-Install pre-built databases from <https://benlangmead.github.io/aws-indexes/k2>.  The dates/names are as of 2022-10-04.
+Install pre-built databases from <https://benlangmead.github.io/aws-indexes/k2>.  The dates/names are as of 2024-04-08.
 
     cd $TOOLDIR
     mkdir -p prebuilt
     cd prebuilt
 
-    mkdir krakendb-2022-06-16-STANDARD
-    cd krakendb-2022-06-16-STANDARD
-    for F in https://genome-idx.s3.amazonaws.com/kraken/uniq/krakendb-2022-06-16-STANDARD/database.kdb https://genome-idx.s3.amazonaws.com/kraken/uniq/krakendb-2022-06-16-STANDARD/kuniq_standard_minus_kdb.20220616.tgz ; do wget "$F"; done
-    tar xf kuniq_standard_minus_kdb.20220616.tgz 
-    cd ..
+    BASEURL="https://genome-idx.s3.amazonaws.com/kraken/uniq"
 
-    mkdir krakendb-2020-08-16-all_pluseupath
-    cd krakendb-2020-08-16-all_pluseupath/
-    for F in https://genome-idx.s3.amazonaws.com/kraken/uniq/krakendb-2020-08-16-all_pluseupath/database.kdb https://genome-idx.s3.amazonaws.com/kraken/uniq/krakendb-2020-08-16-all_pluseupath/kuniq_standard_plus_eupath_minus.kdb.20200816.tgz   ; do wget "$F"; done
-    tar tf kuniq_standard_plus_eupath_minus.kdb.20200816.tgz 
-    cd ..
+    DBNAME=krakendb-2022-06-16-STANDARD
+    cd $TOOLDIR
+    mkdir -p prebuilt
+    cd prebuilt
+    mkdir $DBNAME
+    cd $DBNAME/
+    for F in database.kdb kuniq_standard_minus_kdb.20220616.tgz ; do
+        url="$BASEURL/$DBNAME/$F"
+        wget "$url"
+    done
+    tar xf kuniq_standard_minus_kdb.20220616.tgz 
+
+    DBNAME=krakendb-2023-08-08-MICROBIAL
+    cd $TOOLDIR
+    mkdir -p prebuilt
+    cd prebuilt
+    mkdir $DBNAME
+    cd $DBNAME/
+    for F in database.kdb kuniq_microbialdb_minus_kdb.20230808.tgz ; do
+        url="$BASEURL/$DBNAME/$F"
+        wget "$url"
+    done
+    tar xf kuniq_microbialdb_minus_kdb.20230808.tgz
+
+    ###
+    ### no longer available
+    ###
+    ### DBNAME=krakendb-2020-08-16-all_pluseupath
+    ### cd $TOOLDIR
+    ### mkdir -p prebuilt
+    ### cd prebuilt
+    ### mkdir $DBNAME
+    ### cd $DBNAME/
+    ### for F in database.kdb kuniq_standard_plus_eupath_minus.kdb.20200816.tgz ; do
+    ###     url="$BASEURL/$DBNAME/$F"
+    ###     wget "$url"
+    ### done
+    ### tar xf kuniq_standard_plus_eupath_minus.kdb.20200816.tgz 
+
 
 Also update mf file to reflect the presence of the prebuilt databases.
 
 
-**2023-01-23:** No updates to pre-built databases
+**2024-04-08:** Update added microbial database and removed 2020-08-16 all_pluseupath
 

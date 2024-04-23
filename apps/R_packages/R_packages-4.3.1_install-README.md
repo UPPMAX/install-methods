@@ -1076,3 +1076,35 @@ the mf file for the module sets `R_LIBS_SITE`, not `R_LIBS_USER`.  This is so
 users can freely use `R_LIBS_USER` to refer to their own or project-specific R
 package trees without fearing conflicting with this module.
 
+
+Note about sqlite when running under RStudio
+--------------------------------------------
+
+RStudio has its own means of handling shared libraries needed by R packages.
+This means that sometimes loading of shared libraries within packages does not
+behave as it does when running R from the command line.
+
+One example is monocle3, which uses spatial libraries including that from
+GDAL/3.7.2, which requires sqlite/3.34.0 the location of which is properly
+hinted in its RPATH. With nothing loaded:
+
+    rackham5: /sw/apps/R_packages $ ldd /sw/apps/GDAL/3.7.2/rackham/lib64/libgdal.so.33
+        ...
+        libsqlite3.so.0 => /sw/apps/sqlite/3.34.0/rackham/lib/libsqlite3.so.0 (0x00002af6ce485000)
+        ...
+    rackham5: /sw/apps/R_packages $ patchelf --print-rpath /sw/apps/GDAL/3.7.2/rackham/lib64/libgdal.so.33
+    /sw/apps/GDAL/3.7.2/rackham/lib64:/sw/libs/libdeflate/1.19/rackham/lib64:/sw/libs/freetype/2.12.1/rackham/lib:/sw/libs/giflib/5.1.4/rackham/lib:/sw/libs/cairo/1.17.4/rackham/lib:/sw/libs/Qhull/2020.2/rackham/lib:/sw/libs/GEOS/3.12.0-gcc12.3.0/rackham/lib64:/sw/libs/libwebp/1.3.0/rackham/lib:/sw/libs/libgeotiff/1.7.1/rackham/lib:/sw/libs/libtiff/4.5.0/rackham/lib:/sw/libs/OpenJPEG/2.5.0/rackham/lib:/sw/libs/FYBA/4.1.1/rackham/lib:/sw/libs/Poppler/23.09.0/rackham/lib64:/sw/libs/glib/2.72.1/rackham/lib64:/sw/libs/PROJ/9.1.1/rackham/lib64:/sw/libs/Armadillo/9.700.2/rackham/lib64:/sw/libs/libcurl/7.85.0/rackham/lib:/sw/libs/lz4/1.9.2/rackham/lib:/sw/libs/zstd/1.5.2/rackham/lib:/sw/libs/zlib/1.2.12/rackham/lib:/sw/apps/xz/5.2.6/rackham/lib:/sw/libs/netcdf/4.9.2/rackham/lib64:/sw/libs/hdf5/1.14.0/rackham/lib:/sw/libs/szip/2.1.1/rackham/lib:/sw/apps/sqlite/3.34.0/rackham/lib:/sw/comp/gcc/12.3.0_rackham/lib:/sw/comp/gcc/12.3.0_rackham/lib64:/sw/libs/bzip2/1.0.8/rackham/lib:/sw/libs/libicu/5.2-4/rackham/usr/lib64:/sw/libs/readline/6.2-11/rackham/lib64:/sw/libs/readline/6.2-11/rackham/usr/lib64
+
+Running `library(monocle3)` within R after loading R_packages/4.3.1 works just fine.
+
+But doing the same within RStudio fails.
+
+    $ module load RStudio/2023.06.2-561
+    library(monocle3)
+    ...
+    Error: package or namespace load failed for 'monocle3' in dyn.load(file, DLLpath = DLLpath, ...):
+    unable to load shared object '/sw/apps/R_packages/4.3.1/rackham/terra/libs/terra.so':
+    /sw/apps/GDAL/3.7.2/rackham/lib64/libgdal.so.33: undefined symbol: sqlite3_trace_v2
+
+There needs to be a load of `sqlite/3.34.0` prior to running `rstudio` so that
+the proper sqlite library is "pre-loaded."

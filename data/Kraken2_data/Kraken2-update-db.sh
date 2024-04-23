@@ -14,6 +14,8 @@
 ##SBATCH -o /sw/data/Kraken2_data/slurm-update-db-rackham-mem256GB-%j.out
 #SBATCH -o /sw/data/Kraken2_data/slurm-update-db-snowy-mem512GB-%j.out
 
+# 2024-04-08 remove --use-ftp from build commands
+
 set -x
 
 function error_send_email()
@@ -51,7 +53,8 @@ cd $K2_DB_BASE
 # comment kraken-build and uncomment cd;touch to test the script
 # ( cd $VERSION ; touch a1 a2 a3 )
 K2_DB=$K2_DB_BASE/$VERSION
-kraken2-build --use-ftp --standard --threads $THREADS --db $K2_DB
+# if the first attempt fails, sleep 5 minutes and try again; if that fails, sleep 10 minutes and try one last time
+kraken2-build --standard --threads $THREADS --db $K2_DB || ( sleep 300; kraken2-build --standard --threads $THREADS --db $K2_DB || ( sleep 600; kraken2-build --standard --threads $THREADS --db $K2_DB ) )
 rm -f latest
 ln -sf ./$VERSION latest
 chgrp -hR sw ./$VERSION latest
@@ -61,7 +64,7 @@ for DB_TYPE in greengenes silva
 do
     DB=${VERSION}_${DB_TYPE}
     # if the first attempt fails, sleep 5 minutes and try again; if that fails, sleep 10 minutes and try one last time
-    kraken2-build --use-ftp --special $DB_TYPE --threads $THREADS --db $K2_DB_BASE/$DB || ( sleep 300; kraken2-build --use-ftp --special $DB_TYPE --threads $THREADS --db $K2_DB_BASE/$DB || ( sleep 600; kraken2-build --use-ftp --special $DB_TYPE --threads $THREADS --db $K2_DB_BASE/$DB ) )
+    kraken2-build  --special $DB_TYPE --threads $THREADS --db $K2_DB_BASE/$DB || ( sleep 300; kraken2-build --special $DB_TYPE --threads $THREADS --db $K2_DB_BASE/$DB || ( sleep 600; kraken2-build --special $DB_TYPE --threads $THREADS --db $K2_DB_BASE/$DB ) )
     LN=latest_${DB_TYPE}
     rm -f $LN
     ln -sf ./$DB $LN

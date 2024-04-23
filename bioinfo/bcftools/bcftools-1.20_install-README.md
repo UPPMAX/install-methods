@@ -1,34 +1,51 @@
-bcftools/1.19
-========================
+bcftools/1.20
+=============
 
-<http://>
+<http://www.htslib.org/doc/bcftools.html>
 
 Used under license:
+MIT/Expat or GPL v3
 
 
-
-Structure creating script (makeroom_bcftools_1.19.sh) moved to /sw/bioinfo/bcftools/makeroom_1.19.sh
+Structure creating script (makeroom_bcftools_1.20.sh) moved to /sw/bioinfo/bcftools/makeroom_1.20.sh
 
 LOG
 ---
 
-    /home/bjornv/git/install-methods/makeroom.sh "-t" "bcftools" "-v" "1.19" "-f"
-    ./makeroom_bcftools_1.19.sh
+Holds the bcf/vcf commands which were in the old htslib. Associated with samtools and htslib.
+<http://www.htslib.org/download/>
 
+Like for samtools, build the new local htslib. Then build bcftools, referring
+to this new htslib.  Configure the bcftools special to have it use the new
+htslib, build it so it can find the right GSL libraries, and test it so it can
+find the new htslib.
+
+
+
+    TOOL=bcftools
+    VERSION=1.20
+    cd /sw/bioinfo/$TOOL
+    makeroom.sh -f -t $TOOL -v $VERSION -s misc -w http://www.htslib.org/doc/bcftools.html -l "MIT/Expat or GPL v3" -d "Tools for working with variant files"
+    ./makeroom_${TOOL}_${VERSION}.sh 
+
+    source SOURCEME_${TOOL}_${VERSION} 
     cd $SRCDIR
     [[ -f ${TOOL}-${VERSION}.tar.bz2 ]] || wget https://github.com/samtools/${TOOL}/releases/download/${VERSION}/${TOOL}-${VERSION}.tar.bz2
+    [[ -d ${TOOL}-${VERSION} ]] && rm -rf ${TOOL}-${VERSION}
     tar xf ${TOOL}-${VERSION}.tar.bz2
     cd ${TOOL}-${VERSION}
 
+    module load gcc/12.3.0
     module load libcurl/8.4.0
     module load zlib/1.3
     module load bzip2/1.0.8
     module load xz/5.4.5
     module load zstd/1.5.2  # mentioned in NEWS but apparently not used yet
     module load gsl/2.7
+    module load libdeflate/1.19
 
     cd htslib-${VERSION}
-    ./configure --enable-libcurl --enable-plugins --enable-s3 --enable-gcs --prefix=$PREFIX
+    ./configure --with-libdeflate --enable-libcurl --enable-plugins --enable-s3 --enable-gcs --prefix=$PREFIX
     make -j 10 && make install
     cd ..
 
@@ -84,6 +101,19 @@ Final step.
 
     cd $TOOLDIR
     ./bcftools-${VERSION}_post-install.sh
+bcftools/1.20
+========================
+
+<http://www.htslib.org/doc/bcftools.html>
+
+Used under license:
+MIT/Expat or GPL v3
 
 
+Structure creating script (makeroom_bcftools_1.20.sh) moved to /sw/bioinfo/bcftools/makeroom_1.20.sh
 
+LOG
+---
+
+    /home/douglas/bin/makeroom.sh "-f" "-t" "bcftools" "-v" "1.20" "-s" "misc" "-w" "http://www.htslib.org/doc/bcftools.html" "-l" "MIT/Expat or GPL v3" "-d" "Tools for working with variant files"
+    ./makeroom_bcftools_1.20.sh

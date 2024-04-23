@@ -96,6 +96,15 @@ Once these are in place, compleasm can use the v5 lineages in BUSCO_data/latest
 no problem.
 
 
+Note for use with braker/3.y.z
+------------------------------
+
+Braker currently expects compleasm to download to a local directory, which
+precludes the use of COMPLEASM_LIBRARY_PATH as specified by my pull request for
+compleasm. Add instructions to unset this variable if running braker with this
+feature to the help for this module.
+
+
 Wrapping up
 -----------
 

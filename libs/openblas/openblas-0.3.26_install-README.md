@@ -34,8 +34,7 @@ LOG
         rackham) NUM_CORES=20 ;;
         snowy)   NUM_CORES=16 ;;
         bianca)  NUM_CORES=16 ;;
-        miarka)  NUM_CORES=48 ;;
-        ### miarka)  NUM_CORES=24 ;;  # compute nodes seem to have hyperthreading enabled
+        miarka)  NUM_CORES=24 ;;
         *)       echo "$CLUSTER is unknown cluster"; exit 1 ;;
     esac
     make NUM_CORES=$NUM_CORES

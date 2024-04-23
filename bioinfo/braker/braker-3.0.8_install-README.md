@@ -1,4 +1,4 @@
-braker/3.0.7
+braker/3.0.8
 ============
 
 <https://github.com/Gaius-Augustus/BRAKER>
@@ -7,21 +7,21 @@ Used under license:
 Artistic 1.0
 <https://raw.githubusercontent.com/Gaius-Augustus/BRAKER/master/LICENSE.TXT>
 
-Structure creating script (makeroom_braker_3.0.7.sh) moved to /sw/bioinfo/braker/makeroom_3.0.7.sh
+Structure creating script (makeroom_braker_3.0.8.sh) moved to /sw/bioinfo/braker/makeroom_3.0.8.sh
 
 LOG
 ---
 
-    makeroom.sh "-f" "-s" "annotation" "-t" "braker" "-v" "3.0.7" "-w" "https://github.com/Gaius-Augustus/BRAKER" "-l" "Artistic 1.0" "-L" "https://raw.githubusercontent.com/Gaius-Augustus/BRAKER/master/LICENSE.TXT" "-d" "pipeline for fully automated prediction of protein coding gene structures with GeneMark-ES/ET and AUGUSTUS in novel eukaryotic genomes"
-    ./makeroom_braker_3.0.7.sh
+    makeroom.sh "-f" "-s" "annotation" "-t" "braker" "-v" "3.0.8" "-w" "https://github.com/Gaius-Augustus/BRAKER" "-l" "Artistic 1.0" "-L" "https://raw.githubusercontent.com/Gaius-Augustus/BRAKER/master/LICENSE.TXT" "-d" "pipeline for fully automated prediction of protein coding gene structures with GeneMark-ETP and AUGUSTUS in novel eukaryotic genomes"
+    ./makeroom_braker_3.0.8.sh
 
-    source /sw/bioinfo/braker/SOURCEME_braker_3.0.7 && cd $TOOLDIR
+    source /sw/bioinfo/braker/SOURCEME_braker_3.0.8
 
     cd $SRCDIR
 
-    wget https://github.com/Gaius-Augustus/BRAKER/archive/refs/tags/v3.0.7.tar.gz
-    tar xf v3.0.7.tar.gz 
-    rmdir $PREFIX && mv BRAKER-3.0.7 $PREFIX
+    wget https://github.com/Gaius-Augustus/BRAKER/archive/refs/tags/v3.0.8.tar.gz
+    tar xf v3.0.8.tar.gz 
+    rmdir $PREFIX && mv BRAKER-3.0.8 $PREFIX
     cd $PREFIX
     cd scripts/
 
@@ -29,6 +29,19 @@ We no longer need to modify the first line to use env perl since these scripts
 now include that, but double-check anyway.
 
     head -n 1 *.pl
+
+Execute permissions on `compare_intervals_exact.pl`.
+
+    chmod +x compare_intervals_exact.pl
+
+Modify line 2342 of `braker.pl` to more generally check for java. I've
+submitted a pull request for this.
+
+    vi +2342 braker.pl
+
+Change this line to:
+
+    $cmdString = "java -version 2>&1 | grep 'version' | awk -F['\"''.'] -v OFS=. ".'\'{print $2,$3}\'';
 
 Set up a virtualenv for biopython. Make sure python3 comes from the virtualenv.
 Make the python scripts point to this python3.
@@ -108,11 +121,16 @@ by calling python3 directly. $!@#$(*@$%(&@#(*^Q)$%&*!(@$&%@($%^*)@#$%(
 
 No testing for this version yet.
 
+Wrap up.
+
+    cd $TOOLDIR
+    ./braker-3.0.8_post-install.sh
+
 
 Testing
 -------
 
-    ml bioinfo-tools braker/3.0.7
+    ml bioinfo-tools braker/3.0.8
     cd $BRAKER_ROOT/example
     cd tests
 
@@ -125,7 +143,7 @@ directory is created.
 
 After doing this, the setup line is
 
-    export AUGUSTUS_CONFIG_PATH=/sw/bioinfo/braker/3.0.7/rackham/example/tests/augustus_config
+    export AUGUSTUS_CONFIG_PATH=/sw/bioinfo/braker/3.0.8/rackham/example/tests/augustus_config
 
 Running tests:
 

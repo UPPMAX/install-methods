@@ -2,24 +2,35 @@
 
 #SBATCH -A staff
 #SBATCH -J Kraken2-update-nt.sh
-#SBATCH -p node
-#SBATCH -n 20
-#  Now necessary to use mem512GB node for Kraken2 nt
-#SBATCH -M rackham
-#SBATCH -C mem1TB
+#  Now must use mem2TB node on snowy
+#
+#SBATCH -M snowy
+#SBATCH -p veryfat
+#SBATCH -C mem2TB
+#SBATCH -n 64
+
+## no longer possible to use mem1TB node 
+##SBATCH -p node
+##SBATCH -n 20
+##SBATCH -M rackham
+##SBATCH -C mem1TB
+#
 #SBATCH -t 10-00:00:00
+#
 ##SBATCH --qos=uppmax_staff_4nodes
 #SBATCH --mail-user douglas.scofield@uppmax.uu.se
 #SBATCH --mail-type=ALL
 #SBATCH -o /sw/data/Kraken2_data/slurm-update-nt-rackham-mem1TB-%j.out
 
+# 2024-04-08 remove --use-ftp from build commands
 
 K2_DB_BASE=/sw/data/Kraken2_data
 K2_DB_TMP=$K2_DB_BASE/_tmp_Kraken2-build.$$
 
 K2_VERSION=2.1.3-20231102-acc2248
 
-THREADS=${SLURM_JOB_CPUS_PER_NODE:-20}
+#THREADS=${SLURM_JOB_CPUS_PER_NODE:-20}
+THREADS=${SLURM_JOB_CPUS_PER_NODE:-64}
 export KRAKEN2_THREAD_COUNT=$THREADS
 #MEMGB=${SLURM_MEM_PER_NODE%???}  # truncated value, remove last 3 chars (128GB node reports 128000)
 #MINGB=200 # This now must run on a 256GB node, it needs just under 200GB to build the standard database
@@ -55,8 +66,8 @@ for DB_TYPE in nt ; do
     DBNAME=${VERSION}_${DB_TYPE}
     DB=$PWD/$DBNAME
     echo "$0 : within $KR_DB_TMP, building $DBNAME into $DB ..."
-    /usr/bin/time -v kraken2-build --use-ftp --download-taxonomy --db $DB
-    /usr/bin/time -v kraken2-build --use-ftp --download-library $DB_TYPE --db $DB
+    /usr/bin/time -v kraken2-build --download-taxonomy --db $DB
+    /usr/bin/time -v kraken2-build --download-library $DB_TYPE --db $DB
     # /usr/bin/time -v kraken2-build --build --threads $THREADS --db $DB  # known issue gets trapped https://github.com/DerrickWood/kraken2/issues/428  temporary workaround --fast-build
     /usr/bin/time -v kraken2-build --build --fast-build --threads $THREADS --db $DB
     mv -v ./$DBNAME $K2_DB_BASE/
