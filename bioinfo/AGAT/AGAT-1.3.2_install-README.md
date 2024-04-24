@@ -34,19 +34,3 @@ Load BioPerl from the mf file, it loads perl etc on its own.
 
 Don't know how many directories i need to set, anything for PERL5LIB? LD_LIBRARY_PATH?
 
-AGAT/1.3.2
-========================
-
-<https://github.com/NBISweden/AGAT>
-
-Used under license:
-GPL v3
-
-
-Structure creating script (makeroom_AGAT_1.3.2.sh) moved to /sw/bioinfo/AGAT/makeroom_1.3.2.sh
-
-LOG
----
-
-    /home/douglas/bin/makeroom.sh "-f" "-t" "AGAT" "-v" "1.3.2" "-w" "https://github.com/NBISweden/AGAT" "-s" "misc" "-l" "GPL v3" "-d" "Another Gtf/Gff Analysis Toolkit"
-    ./makeroom_AGAT_1.3.2.sh

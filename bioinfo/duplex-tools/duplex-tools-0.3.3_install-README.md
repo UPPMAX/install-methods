@@ -14,13 +14,17 @@ LOG
 
     /home/bjornv/git/install-methods/makeroom.sh "-t" "duplex-tools" "-v" "0.3.3" "-w" "https://github.com/nanoporetech/duplex-tools" "-d" "Splitting of sequence reads by internal adapter sequence search" "-l" "MPL 2.0" "-s" "annotation"
     ./makeroom_duplex-tools_0.3.3.sh
-    
-    # Load modules
-    module load python/3.12.1 
+
+   # Load modules
+    module load python/3.10.8
     module load gcc/9.3.0
 
     # Install
     cd $PREFIX
     python -m venv venv --prompt duplex
     . venv/bin/activate
-    pip install duplex_tools
+    pip install duplex_tools==0.3.3
+
+    # Lift out duplex_tools
+    mkdir $PREFIX/bin
+    cp $PREFIX/venv/bin/{duplex_tools,dorado_stereo.sh} $PREFIX/bin

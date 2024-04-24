@@ -3,6 +3,8 @@ InterProScan/5.67-99.0
 
 <https://www.ebi.ac.uk/interpro/download/InterProScan/>
 
+<https://github.com/ebi-pf-team/interproscan>
+
 Used under license:
 Apache 2.0
 <https://github.com/ebi-pf-team/interproscan?tab=Apache-2.0-1-ov-file#readme>
@@ -23,7 +25,7 @@ LOG
     wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/${VERSION}/interproscan-${VERSION}-64-bit.tar.gz
     wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/${VERSION}/interproscan-${VERSION}-64-bit.tar.gz.md5
     md5sum -c interproscan-${VERSION}-64-bit.tar.gz.md5
-    tar xzf interproscan-${VERSION}-64-bit.tar.gz
+    tar xf interproscan-${VERSION}-64-bit.tar.gz
     mv interproscan-5.67-99-0 $PREFIX
 
 
@@ -77,7 +79,7 @@ TMHMM 2.0c:
     cd $PREFIX/data/tmhmm/2.0c
     ln -s /sw/apps/bioinfo/tmhmm/2.0c/$CLUSTER/lib/TMHMM2.0.model TMHMM2.0c.model
 
-The Prosite executables where linked to Ubuntu builds. Linking to the Centos7.9 builds made the trick!
+The Prosite executables were linked to Ubuntu builds. Linking to the Centos7.9 builds made the trick!
 
     cd $PREFIX/bin/prosite
     ln -sf centos7.9/pfsearchV3 .
@@ -92,7 +94,7 @@ changing #! lines of perl scripts
 Afterwards, make sure it works.  It takes several seconds to get going.
 
     module load bioinfo-tools
-    module load InterProScan/5.62-94.0
+    module load InterProScan/5.67-99.0
     interproscan.sh
 
 And then, run the tests.  Because the module is loaded, it is important *not*
@@ -117,3 +119,19 @@ The two versions are not identical in length, but the files are reproducible. Pr
 
 
 
+InterProScan/5.67-99.0
+========================
+
+<https://www.ebi.ac.uk/interpro/download/InterProScan/>
+
+Used under license:
+Apache 2.0
+<https://github.com/ebi-pf-team/interproscan?tab=Apache-2.0-1-ov-file#readme>
+
+Structure creating script (makeroom_InterProScan_5.67-99.0.sh) moved to /sw/bioinfo/InterProScan/makeroom_5.67-99.0.sh
+
+LOG
+---
+
+    /home/douglas/bin/makeroom.sh "-t" "InterProScan" "-v" "5.67-99.0" "-s" "annotation" "-d" "InterPro provides functional analysis of proteins by classifying them into families and predicting domains and important sites." "-w" "https://www.ebi.ac.uk/interpro/download/InterProScan/" "-f" "-l" "Apache 2.0" "-L" "https://github.com/ebi-pf-team/interproscan?tab=Apache-2.0-1-ov-file#readme"
+    ./makeroom_InterProScan_5.67-99.0.sh
