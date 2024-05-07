@@ -19,7 +19,7 @@ LOG
     cd $SRCDIR
 
     wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.7/sratoolkit.3.0.7-centos_linux64.tar.gz
-    tar xvf sratoolkit.3.0.7-centos_linux64.tar.gz -C $PREFIX --strip-components 1
+    tar xf sratoolkit.3.0.7-centos_linux64.tar.gz -C $PREFIX --strip-components 1
 
     cd $TOOLDIR
     ./sratools-3.0.7_post-install.sh

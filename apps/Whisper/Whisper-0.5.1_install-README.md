@@ -19,3 +19,7 @@ LOG
     tar xvf 
     make
 
+Addendum:
+
+Add a symlink to /sw/apps/Whisper/zenity-whisper.sh in the bin dir, call it whisper-gui.sh
+    ln -s /sw/apps/Whisper/zenity-whisper.sh /sw/apps/Whisper/0.5.1/bianca/bin/whisper-gui.sh

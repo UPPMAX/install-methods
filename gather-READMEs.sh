@@ -51,40 +51,58 @@ if [[ ! $SKIP_FIND_DATABASES ]] ; then
 
     cd /sw/data
 
-    find BioBakery_data     ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find Chromium           ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find Centrifuge-indices ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find ExAC                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find Pfam                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find WPS-geog            -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find annovar_data        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find cdd                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find dbCAN               -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find eggNOG_data         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find gnomad_data         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find iGenomes            -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find krakenuniqDB        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find panther             -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find silva               -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find MMseqs2_data        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find alphafold_dataset   -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find FAVOR_data          -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find vep                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find piper_references    -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find pph2-db             -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find reference           -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find chain_files         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find ChEMBL              -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find BUSCO_data          -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find RepeatMasker_data   -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find snpEff_data         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find DeepVariant_data    -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find BUSCO_data                      -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find BioBakery_data                 ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find CSIMicrobes_data               ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find Centrifuge-indices             ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find Chromium                       ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find ChEMBL                          -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find DRAM_data                       -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find DeepVariant_data                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find Dfam                            -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find ExAC                            -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find FAVOR_data                      -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find GTDB                            -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find GetOrganelleDB                  -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find HG002_Q100_T2T_assembly         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find HOMER                           -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find HaplotypeReferenceConsortium    -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find Kraken2_data                    -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find KrakenUniq_data                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find Kraken_data                     -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find MMseqs2_data                    -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find Pfam                            -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find PhyloPhlAn_data                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find RTG                             -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find RepeatMasker_data               -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find ViWrap                          -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find WPS-geog                        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find alphafold_dataset               -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find annovar_data                    -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find cdd                             -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find chain_files                     -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find dbCAN                           -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find eggNOG_data                     -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find fastq_screen_data               -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find gnomad_data                     -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find iGenomes                        -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find ncbi_taxonomy                   -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find panther                         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find piper_references                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find pph2-db                         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find reference                       -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find silva                           -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find snpEff_data                     -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find soprano                         -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find vep                             -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find zinc15                          -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find zinc22                          -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
 
     # group 'kgp' directories
     #
-    find HGDP                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find SGDP                -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
-    find KGP                 -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find HGDP                            -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find SGDP                            -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
+    find KGP                             -maxdepth 2 -name '*install-README.md' | cpio -pdm $DATA_REPOSITORY
 
     ###  These commented-out databases should be brought in as well
     #
@@ -116,17 +134,19 @@ cd $DATA_REPOSITORY
 data_update  /sw/data/iGenomes           tools/aws-iGenomes-download-all.sh  tools/build-iGenomes-additions.sh  tools/iGenomes-STAR-2.7.x-index.sh  tools/iGenomes-genes.bed.sh  tools/gtf2bed.pl  # additional files, README harvested above
 
 data_update  /sw/data/SGDP               check_md5s.pl   # additional script, README harvested above
-data_update  /sw/data/Kraken_data        Kraken-db-README.md    Kraken-update-db.sh    
-data_update  /sw/data/Kraken2_data       Kraken2-db-README.md   Kraken2-update-db.sh    Kraken2-update-nt.sh    Kraken2-update-prebuilt.sh
-data_update  /sw/data/RTG                RTG-db-README.md       RTG-update-dbs.sh      
-data_update  /sw/data/diamond_databases  diamond-db-README.md   diamond-update-dbs.sh   diamond-check-dbs.sh
+data_update  /sw/data/Kraken2_data       Kraken2-update-db.sh    Kraken2-update-nt.sh    Kraken2-update-prebuilt.sh
+data_update  /sw/data/KrakenUniq_data    KrakenUniq_data-update-custom-db.sh KrakenUniq_data-update-custom-db_veryfat.sh KrakenUniq_data-update-standard-db.sh KrakenUniq_data-update-standard-db_veryfat.sh
+data_update  /sw/data/Kraken_data        Kraken-update-db.sh    
+data_update  /sw/data/RTG                RTG-update-dbs.sh      
+data_update  /sw/data/diamond_databases  diamond-update-dbs.sh   diamond-check-dbs.sh diamond-update-reference_proteomes.sh diamond-update-dbs.sh.0.9.29 Makefile DIAMOND-DBs.md DIAMOND-DBs.html
 data_update  /sw/data/FAVOR_data         FAVOR_fetch.py         FAVOR_api_token.py
+data_update  /sw/data/MEMEsuite          MEMEsuite-update-db.sh
 
 data_update  /sw/data/BUSCO_data         BUSCO-update-v1-lineage-sets.sh BUSCO-update-v2-lineage-sets.sh BUSCO-update-v4-lineage-sets.sh BUSCO-update-v5-lineage-sets.sh 
 
 data_update  /sw/data/blast_scripts      README.md README-uniprot.md update_blastdb.sh update_blastdb-uniprot.sh uniprot.mk install_check_prepdb_blastdb.sh remove_old_blastdb.sh cron-wrapper.sh crontab.txt test/test_blastdb.sh test/prots.fa test/nucls.fa test/*.out webpage.mk webpage.md webpage.html fixup
 
-data_update  /sw/data/ncbi_taxonomy      ncbi_taxonomy-db-README.md ncbi_taxonomy-update-dbs.sh crontab.txt webpage.html webpage.md webpage.mk
+data_update  /sw/data/ncbi_taxonomy      ncbi_taxonomy-update-dbs.sh crontab.txt webpage.html webpage.md webpage.mk
 
 # These databases are in /sw/data and DO NOT update via crontab.
 # Update the repository copy of their READMEs, scripts and other files.
@@ -159,3 +179,4 @@ DATA_OTHER_REPOSITORY="$REPOSITORY/data_other"
 cd $DATA_OTHER_REPOSITORY
 
 data_update  /sw/bioinfo/snpEff snpEff_custom_database_install-README.md
+

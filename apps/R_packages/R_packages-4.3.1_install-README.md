@@ -1,4 +1,4 @@
-R_packages/4.3.1
+R_packages/4.3.1;
 ================
 
 For the next version:
@@ -893,7 +893,7 @@ And verify outside R:
     ldd /sw/apps/R_packages/4.3.1/rackham/velocyto.R/libs/velocyto.R.so
 
 
-### igraph0, CoxBoost, rrbgen, STITCH, EasyQC, EasyQC2, contamMix, LRAcluster, compoisson, phylosim
+### igraph0, CoxBoost, rrbgen, STITCH, EasyQC, EasyQC2, contamMix, LRAcluster, compoisson, phylosim, FField
 
 Also, install an outdated package `igraph0`, which has been superseded by
 `igraph` (installed above) but needed by some older procedures.
@@ -913,6 +913,8 @@ Also, install an outdated package `igraph0`, which has been superseded by
     R CMD INSTALL compoisson_0.3.tar.gz
     wget https://cran.r-project.org/src/contrib/Archive/phylosim/phylosim_3.0.5.tar.gz
     R CMD INSTALL phylosim_3.0.5.tar.gz
+    wget https://cran.r-project.org/src/contrib/Archive/FField/FField_0.1.0.tar.gz
+    R CMD INSTALL FField_0.1.0.tar.gz
 
 
 ### dnase2tf
