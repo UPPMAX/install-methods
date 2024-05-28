@@ -10,7 +10,7 @@ base_dir	version_subdir	module	version	mod_time	mod_days	mod_3y	mod_5y	mod_10y
 /sw/apps	Amber/18-GPU	Amber	18-GPU	2020-04-21_09:54:18	1498	0	1	1
 /sw/apps	Amber/20	Amber	20	2022-02-10_14:59:43	838	1	1	1
 /sw/apps	Amber/20-GPU	Amber	20-GPU	2024-02-21_14:24:38	97	1	1	1
-/sw/apps	Amber_previous/amber-previously	Amber_previous	amber-previously	2019-05-30_14:57:13	1825	0	1	1
+/sw/apps	Amber_previous/amber-previously	Amber_previous	amber-previously	2019-05-30_14:57:13	1825	0	0	1
 /sw/apps	Amber_previous/amber18	Amber_previous	amber18	2019-04-05_14:47:34	1880	0	0	1
 /sw/apps	Amber_previous/ambertools18_rackham_intel_python2	Amber_previous	ambertools18_rackham_intel_python2	2021-12-15_11:51:13	895	1	1	1
 /sw/apps	Ansys/19.1	Ansys	19.1	2019-04-16_09:23:05	1869	0	0	1

@@ -1,10 +1,6 @@
-apr/bin appears to be a prefix component
-apr/include appears to be a prefix component
-apr/lib appears to be a prefix component
-dlib/src appears to be a source directory
-mkl/bin appears to be a prefix component
-mkl/lib appears to be a prefix component
-wxWidgets/bin appears to be a prefix component
-wxWidgets/include appears to be a prefix component
-wxWidgets/lib appears to be a prefix component
-wxWidgets/share appears to be a prefix component
+/sw/libs  mkl/bin appears to be a prefix component skipped
+/sw/libs  mkl/lib appears to be a prefix component skipped
+/sw/libs  wxWidgets/bin appears to be a prefix component skipped
+/sw/libs  wxWidgets/include appears to be a prefix component skipped
+/sw/libs  wxWidgets/lib appears to be a prefix component skipped
+/sw/libs  wxWidgets/share appears to be a prefix component skipped

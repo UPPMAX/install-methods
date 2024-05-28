@@ -1,7 +1,6 @@
 base_dir	version_subdir	module	version	mod_time	mod_days	mod_3y	mod_5y	mod_10y
 /sw/libs	apr-util/1.6.1	apr-util	1.6.1	2020-04-27_11:33:13	1492	0	1	1
 /sw/libs	apr/1.7.0	apr	1.7.0	2020-04-27_11:10:41	1492	0	1	1
-/sw/libs	apr/build-1	apr	build-1	2020-03-03_16:21:39	1547	0	1	1
 /sw/libs	Armadillo/7.900.0	Armadillo	7.900.0	2023-04-18_16:44:59	406	1	1	1
 /sw/libs	Armadillo/9.700.2	Armadillo	9.700.2	2022-03-08_11:26:07	812	1	1	1
 /sw/libs	ARPACK-NG/3.8.0	ARPACK-NG	3.8.0	2021-08-18_15:07:06	1014	1	1	1
@@ -60,7 +59,7 @@ base_dir	version_subdir	module	version	mod_time	mod_days	mod_3y	mod_5y	mod_10y
 /sw/libs	cyrus-sasl/2.1.27	cyrus-sasl	2.1.27	2020-04-27_13:29:13	1492	0	1	1
 /sw/libs	cyrus-sasl/2.1.28	cyrus-sasl	2.1.28	2023-02-09_13:28:04	474	1	1	1
 /sw/libs	deal.II/8.4.2	deal.II	8.4.2	2019-11-29_15:25:45	1642	0	1	1
-/sw/libs	dlib/19.15	dlib	19.15	2018-08-30_10:21:15	2098	0	0	1
+/sw/libs	dlib/19.15	dlib	19.15	2024-05-28_16:19:50	0	1	1	1
 /sw/libs	dlib/19.23	dlib	19.23	2022-09-29_14:21:18	607	1	1	1
 /sw/libs	ecCodes/2.13.1	ecCodes	2.13.1	2019-09-13_15:46:21	1719	0	1	1
 /sw/libs	edlib/1.2.7	edlib	1.2.7	2024-04-23_16:23:06	35	1	1	1

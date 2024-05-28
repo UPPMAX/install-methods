@@ -1,3 +1,8 @@
+/sw/apps  bioinfo module name is a symlink so probably an alias skipped
+/sw/apps  build module name is a symlink so probably an alias skipped
+/sw/build  boost module name is a symlink so probably an alias skipped
+/sw/build  slurm-drmaa module name is a symlink so probably an alias skipped
+/sw/build  sparsehash module name is a symlink so probably an alias skipped
 /sw/comp  amd/bin appears to be a prefix component skipped
 /sw/comp  amd/include appears to be a prefix component skipped
 /sw/comp  amd/lib appears to be a prefix component skipped
@@ -12,3 +17,9 @@
 /sw/comp  pgi module name is a symlink so probably an alias skipped
 /sw/comp  pgi_nestor module name is a symlink so probably an alias skipped
 /sw/comp  python2.5 module name is a symlink so probably an alias skipped
+/sw/libs  mkl/bin appears to be a prefix component skipped
+/sw/libs  mkl/lib appears to be a prefix component skipped
+/sw/libs  wxWidgets/bin appears to be a prefix component skipped
+/sw/libs  wxWidgets/include appears to be a prefix component skipped
+/sw/libs  wxWidgets/lib appears to be a prefix component skipped
+/sw/libs  wxWidgets/share appears to be a prefix component skipped

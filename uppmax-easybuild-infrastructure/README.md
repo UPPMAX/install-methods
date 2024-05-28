@@ -14,19 +14,20 @@ This is accomplished with the `sw-version-table.pl` perl script.
 
 Using this we create tables under `tables/` that begin with `sw.` for each of the `/sw/` subdirectories.
 
-- `apps`
+- `apps`  : `sw.apps.tsv` for the table and `sw.apps.errors` for errors and warnings, and so on
 - `bioinfo`
 - `build`
 - `comp`
 - `libs`
 - `parallel`
+- all together : `sw.tsv` for the full table and `sw.errors` for the full set of errors and warnings
 
 Produce these tables with:
-
 
     module load perl_modules/5.32.1
 
     for D in apps bioinfo build comp libs parallel ; do ./sw-version-table.pl /sw/$D > tables/sw.$D.tsv 2>tables/sw.$D.errors; done
+    ( cd tables && cat sw.*.tsv > sw.tsv && cat sw.*.errors > sw.errors )
 
 
 
@@ -36,6 +37,8 @@ Associate our module names and versions with EasyBuild easyconfigs
 Build a translation table between our module names and EasyBuild module names.
 
 And our module versions and EasyBuild module versions.
+
+This is accomplished with the `uppmax-easybuild-map.pl` script.
 
 
 
