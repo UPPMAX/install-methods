@@ -1,0 +1,14 @@
+amd/bin appears to be a prefix component
+amd/include appears to be a prefix component
+amd/lib appears to be a prefix component
+amd/share appears to be a prefix component
+autoconf module name is a symlink so probably an alias skipped
+automake module name is a symlink so probably an alias skipped
+intel/bin appears to be a prefix component
+intel/include appears to be a prefix component
+intel/lib appears to be a prefix component
+intel/man appears to be a prefix component
+m4 module name is a symlink so probably an alias skipped
+pgi module name is a symlink so probably an alias skipped
+pgi_nestor module name is a symlink so probably an alias skipped
+python2.5 module name is a symlink so probably an alias skipped

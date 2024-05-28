@@ -1,3 +1,9 @@
+phantompeakqualtools/1.1
+========================
+
+LOG
+---
+
     mkdir -p /sw/apps/bioinfo/phantompeakqualtools
     cd /sw/apps/bioinfo/phantompeakqualtools
     VERSION=1.1

@@ -236,7 +236,7 @@ XML::DOM::XPath has a test error, --force it!
     cpanm Text::NSP
 
     cpanm File::Util File::Path File::Basename Getopt::Long Text::Levenshtein::XS String::Approx MCE MCE::Loop MCE::Shared
-    cpanm PDF::Table PDF::API2 List::Permutor List::Compare VCF::Reader Text::Password File::Type File::Tail File::Find File::Copy File::Util
+    cpanm PDF::Table PDF::API2 List::Permutor List::Compare VCF::Reader Text::Password File::Type File::Tail File::Find App::find2perl File::Copy File::Util
 
 Additional modules with failing tests.
 
