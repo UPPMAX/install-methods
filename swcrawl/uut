@@ -1,0 +1,1845 @@
+{'key': 'ROOT_6.20.04', 'path': '/sw/apps/ROOT/ROOT-6.22.08.yaml', 'creator': 'jonass', 'md5': '419765ff2dcc1fe4634b36331279a202', 'TOOL': 'ROOT', 'VERSION': '6.20.04', 'MODULE': 'ROOT', 'KEYWORDS': ['storage', 'visualisation', 'functional', 'statistical'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'LGPL 2.1', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://root.cern.ch/', 'LOCAL': '/sw/apps/ROOT/mf/6.20.04', 'SECTION': 'Misc Applications', 'POSTINSTALL': '/sw/apps/ROOT/ROOT-6.22.08_post-install.sh', 'README': '/sw/apps/ROOT/ROOT-6.22.08_install-README.md', 'COMMON': '/sw/mf/common/applications//ROOT/6.20.04', 'DESCRIPTION': 'ROOT', 'SQLKEY': 'ROOT_6.20.04', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:ROOT
+- VERSION:6.22.08
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:LGPL 2.1
+- LICENSEURL:
+- WEBSITE:https://root.cern.ch/
+- LOCAL:/sw/apps/ROOT/mf/6.22.08
+- COMMON:/sw/mf/common/applications///6.22.08
+- DESCRIPTION:modular scientific software toolkit. It provides all the functionalities needed to deal with big data processing, statistical analysis, visualisation and storage
+
+{'key': 'ROOT_6.04.08', 'path': '/sw/apps/ROOT/ROOT-6.26.10.yaml', 'creator': 'douglas', 'md5': '9d1e419a43eee4f370a31d95792af9bf', 'TOOL': 'ROOT', 'VERSION': '6.04.08', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['milou', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/applications/ROOT/6.04.08', 'DESCRIPTION': None, 'SQLKEY': 'ROOT_6.04.08', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: ROOT
+  VERSION: 6.26.10
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: LGPL v2.1
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: http://
+  LOCAL: /sw/apps/ROOT/mf/6.26.10
+  COMMON: /sw/mf/common/applications//ROOT/6.26.10
+  DESCRIPTION: modular scientific software toolkit. It provides all the functionalities needed to deal with big data processing, statistical analysis, visualisation and storage
+  KEYWORDS: 
+    - object-oriented
+    - toolkit
+  MODULE: ROOT
+  SECTION: 
+  POSTINSTALL: /sw/apps/ROOT/ROOT-6.26.10_post-install.sh
+  README: /sw/apps/ROOT/ROOT-6.26.10_install-README.md
+  SQLKEY: 6.26.10
+
+{'key': 'RStudio_1.1.463', 'path': '/sw/apps/R_packages/R_packages-4.1.1.yaml', 'creator': 'jonass', 'md5': '8f4cf95f00aff1a554887dd28ba7ef04', 'TOOL': 'RStudio', 'VERSION': '1.1.463', 'MODULE': 'RStudio', 'KEYWORDS': ['statistics'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': 'AGPL', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://www.rstudio.com/', 'LOCAL': None, 'SECTION': 'Statistics', 'POSTINSTALL': None, 'README': '/sw/apps/RStudio/RStudio-1.1.463-install-README.md', 'COMMON': '/sw/mf/common/applications/RStudio/1.1.463', 'DESCRIPTION': 'RStudio', 'SQLKEY': 'RStudio_1.1.463', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:R_packages
+- VERSION:4.1.1
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:Various
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:http://
+- LOCAL:/sw/apps/R_packages/mf/4.1.1
+- COMMON:/sw/mf/common/applications//R_packages/4.1.1
+- DESCRIPTION:Omnibus package containing installations of as many R packages from CRAN, BioConductor and other user-requested sources as can be reasonably installed
+
+{'key': 'R_packages_4.1.1', 'path': '/sw/apps/R_packages/R_packages-4.2.1.yaml', 'creator': 'douglas', 'md5': '29459b07ee839b10ea828654a3c6fdd5', 'TOOL': 'R_packages', 'VERSION': '4.1.1', 'MODULE': 'R_packages', 'KEYWORDS': ['bioconductor', 'statistics'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': 'GPL, LGPL. and others', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '"""""""""""-R u+rwX,g+rwX,o+rX-w"""""""""""', 'WEBSITE': '$templateLogic.getPageUrl(149648, $templateLogic.languageId,-1)', 'LOCAL': None, 'SECTION': 'Statistics', 'POSTINSTALL': '/sw/apps/R_packages/R_packages-4.1.1_post-install.sh', 'README': '/sw/apps/R_packages/R_packages-4.1.1_install-README.md', 'COMMON': '/sw/mf/common/applications/R_packages/4.1.1', 'DESCRIPTION': '"""""""""""R packages, includes nearly all packages in CRAN and BioConductor"""""""""""', 'SQLKEY': 'R_packages_4.1.1', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: R_packages
+  VERSION: 4.2.1
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: Various
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: http://
+  LOCAL: /sw/apps/R_packages/mf/4.2.1
+  COMMON: /sw/mf/common/applications//R_packages/4.2.1
+  DESCRIPTION: Omnibus package containing installations of as many R packages from CRAN, BioConductor and other user-requested sources as can be reasonably installed
+  TAGS: 
+    - 
+  MODULE: R_packages
+  SECTION: 
+  POSTINSTALL: /sw/apps/R_packages/R_packages-4.2.1_post-install.sh
+  README: /sw/apps/R_packages/R_packages-4.2.1_install-README.md
+  SQLKEY: 4.2.1
+
+{'key': 'ATLAS_aDNA_20170510', 'path': '/sw/apps/bioinfo/ATLAS_aDNA/ATLAS_aDNA-0.9.9.yaml', 'creator': 'niharika', 'md5': 'ab4fd4580947c1ef7d85d9f695e7c605', 'TOOL': 'ATLAS_aDNA', 'VERSION': '20170510', 'MODULE': 'ATLAS_aDNA', 'KEYWORDS': ['bioinformatics', 'dna'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://bitbucket.org/phaentu/atlas/wiki/Home', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/ATLAS_aDNA/ATLAS_aDNA-20170510-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/ATLAS_aDNA/20170510', 'DESCRIPTION': 'ATLAS', 'SQLKEY': 'ATLAS_aDNA_20170510', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:ATLAS_aDNA
+- VERSION:0.9.9
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+- LICENSE:Other
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://bitbucket.org/wegmannlab/atlas/wiki/Home
+- LOCAL:/sw/bioinfo/ATLAS_aDNA/mf/0.9.9
+- COMMON:/sw/mf/common/bioinfo-tools/misc/ATLAS_aDNA/0.9.9
+- DESCRIPTION:ATLAS stands for Analysis Tools for Low-coverage and Ancient Samples. These tools cover all programs necessary to obtain variant calls, estimates of heterozygosity and more from a BAM file.
+
+{'key': 'BUSCO_4.1.4', 'path': '/sw/apps/bioinfo/BUSCO/BUSCO-5.0.0.yaml', 'creator': 'bjornv', 'md5': '5c301cb57d43735c778c249f1d485cd0', 'TOOL': 'BUSCO', 'VERSION': '4.1.4', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': None, 'USERPERMISSIONS': None, 'WEBSITE': 'https://busco.ezlab.org/', 'LOCAL': '/sw/bioinfo/BUSCO/mf/4.1.4', 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc//4.1.4', 'DESCRIPTION': 'assessing genome assembly and annotation completeness', 'SQLKEY': 'BUSCO_4.1.4', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:BUSCO
+- VERSION:5.0.0
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT
+- LICENSEURL:
+- WEBSITE:https://busco.ezlab.org/
+- LOCAL:/sw/bioinfo/BUSCO/mf/5.0.0
+- COMMON:/sw/mf/common/bioinfo-tools/misc//5.0.0
+- DESCRIPTION:Based on evolutionarily-informed expectations of gene content of near-universal single-copy orthologs, BUSCO metric is complementary to technical metrics like N50.
+
+{'key': 'BUSCO_4.1.4', 'path': '/sw/apps/bioinfo/BUSCO/BUSCO-5.2.2.yaml', 'creator': 'bjornv', 'md5': '5c301cb57d43735c778c249f1d485cd0', 'TOOL': 'BUSCO', 'VERSION': '4.1.4', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': None, 'USERPERMISSIONS': None, 'WEBSITE': 'https://busco.ezlab.org/', 'LOCAL': '/sw/bioinfo/BUSCO/mf/4.1.4', 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc//4.1.4', 'DESCRIPTION': 'assessing genome assembly and annotation completeness', 'SQLKEY': 'BUSCO_4.1.4', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:BUSCO
+- VERSION:5.2.2
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://busco.ezlab.org/
+- LOCAL:/sw/bioinfo/BUSCO/mf/5.2.2
+- COMMON:/sw/mf/common/bioinfo-tools/misc/BUSCO/5.2.2
+- DESCRIPTION:Based on evolutionarily-informed expectations of gene content of near-universal single-copy orthologs\, BUSCO metric is complementary to technical metrics like N50.
+
+{'key': 'BESST_1.0.4.4', 'path': '/sw/apps/bioinfo/Bandage/Bandage-0.8.1.yaml', 'creator': 'jonass', 'md5': 'c2adde932c7c75d337598d0c01a519cf', 'TOOL': 'BESST', 'VERSION': '1.0.4.4', 'MODULE': 'BESST', 'KEYWORDS': ['assembly', 'bioinformatics'], 'CLUSTER': ['milou'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': 'Bioinformatics Assembly', 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/BESST/BESST-1.0.4.4-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/assembly/BESST/1.0.4.4', 'DESCRIPTION': 'BESST', 'SQLKEY': 'BESST_1.0.4.4', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:Bandage
+- VERSION:0.8.1
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:GPLv3
+- LICENSEURL:https://github.com/rrwick/Bandage#license
+- WEBSITE:https://github.com/rrwick/Bandage
+- LOCAL:/sw/bioinfo/Bandage/mf/0.8.1
+- COMMON:/sw/mf/common/bioinfo-tools/misc//0.8.1
+- DESCRIPTION:Bandage is a GUI program that allows users to interact with the assembly graphs made by de novo assemblers such as Velvet, SPAdes, MEGAHIT and others.
+
+{'key': 'BclConverter_1.7.1', 'path': '/sw/apps/bioinfo/BclConverter/BclConverter-3.9.3.yaml', 'creator': 'douglas', 'md5': '17fe595ffccc98abe6c30d8d23aca3fb', 'TOOL': 'BclConverter', 'VERSION': '1.7.1', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/BclConverter/1.7.1', 'DESCRIPTION': None, 'SQLKEY': 'BclConverter_1.7.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:BclConverter
+- VERSION:3.9.3
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+- LICENSE:Illumina (c)
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://support-docs.illumina.com/SW/BCL_Convert/Content/SW/FrontPages/BCL_Convert.htm
+- LOCAL:/sw/bioinfo/BclConverter/mf/3.9.3
+- COMMON:/sw/mf/common/bioinfo-tools/misc/BclConverter/3.9.3
+- DESCRIPTION:converts per cycle binary data output by Illumina sequencers containing basecall files and quality scores to per read FASTQ files
+
+{'key': 'CNVnator_0.3.2', 'path': '/sw/apps/bioinfo/CNVnator/CNVnator-0.4.1-20200707-c73786d.yaml', 'creator': 'douglas', 'md5': '7d91bcdd47b5a99f5199e6a5ed1ab0fe', 'TOOL': 'CNVnator', 'VERSION': '0.3.2', 'MODULE': 'CNVnator', 'KEYWORDS': ['bioinformatics'], 'CLUSTER': ['milou'], 'LICENSE': 'Creative Commons Public License', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/abyzovlab/CNVnator', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/CNVnator/0.3.2', 'DESCRIPTION': 'CNVnator', 'SQLKEY': 'CNVnator_0.3.2', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:CNVnator
+- VERSION:0.4.1-20200707-c73786d
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:Custom AS IS
+- LICENSEURL:https://github.com/abyzovlab/CNVnator/blob/master/license.rtf
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/abyzovlab/CNVnator
+- LOCAL:/sw/bioinfo/CNVnator/mf/0.4.1-20200707-c73786d
+- COMMON:/sw/mf/common/bioinfo-tools/misc/CNVnator/0.4.1-20200707-c73786d
+- DESCRIPTION:a tool for CNV discovery and genotyping from depth-of-coverage by mapped reads
+
+{'key': 'FALCON-integrate_20161113', 'path': '/sw/apps/bioinfo/IMPUTE5/IMPUTE5-1.1.5.yaml', 'creator': 'jonass', 'md5': 'd02c586c9d54b30400338b7212526d36', 'TOOL': 'FALCON-integrate', 'VERSION': '20161113', 'MODULE': 'FALCON-integrate', 'KEYWORDS': ['assembly', 'bioinformatics'], 'CLUSTER': ['bianca', 'miarka', 'milou', 'rackham', 'snowy'], 'LICENSE': 'Custom "as is"', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/PacificBiosciences/FALCON-integrate', 'LOCAL': None, 'SECTION': 'Bioinformatics Assembly', 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/FALCON-integrate/FALCON-integrate-20161113-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/assembly/FALCON-integrate/20161113', 'DESCRIPTION': 'FALCON-integrate', 'SQLKEY': 'FALCON-integrate_20161113', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:IMPUTE5
+- VERSION:1.1.5
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://jmarchini.org/software/#impute-5
+- LOCAL:/sw/bioinfo/IMPUTE5/mf/1.1.5
+- COMMON:/sw/mf/common/bioinfo-tools/misc/IMPUTE5/1.1.5
+- DESCRIPTION:IMPUTE 5 is a genotype imputation method that can scale to reference panels with millions of samples.
+
+{'key': 'GATK-Queue_3.2.2', 'path': '/sw/apps/bioinfo/GATK/GATK-4.2.0.0.yaml', 'creator': 'jonass', 'md5': '70c37eb39f33f37ac1c1adc76c164ff1', 'TOOL': 'GATK-Queue', 'VERSION': '3.2.2', 'MODULE': None, 'KEYWORDS': ['queue'], 'CLUSTER': ['milou'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/sw_collections/GATK-Queue/3.2.2', 'DESCRIPTION': None, 'SQLKEY': 'GATK-Queue_3.2.2', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:GATK
+- VERSION:4.2.0.0
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/broadinstitute/gatk
+- LOCAL:/sw/bioinfo/GATK/mf/4.2.0.0
+- COMMON:/sw/mf/common/bioinfo-tools/sw_collections/GATK/4.2.0.0
+- DESCRIPTION:GATK4 aims to bring together well-established tools from the GATK and Picard codebases under a streamlined framework, and to enable selected tools to be run in a massively parallel way on local clusters
+
+{'key': 'IGV_2.3.17', 'path': '/sw/apps/bioinfo/IGV/IGV-2.16.0.yaml', 'creator': 'douglas', 'md5': '0ea8c57c52abf930dfc657d998d9919b', 'TOOL': 'IGV', 'VERSION': '2.3.17', 'MODULE': 'IGV', 'KEYWORDS': ['genomic', 'bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'LGPL', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://www.broadinstitute.org/igv/', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/IGV/2.3.17', 'DESCRIPTION': 'Integrative Genomics Viewer', 'SQLKEY': 'IGV_2.3.17', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: IGV
+  VERSION: 2.16.0
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: MIT
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: http://software.broadinstitute.org/software/igv/home
+  LOCAL: /sw/bioinfo/IGV/mf/2.16.0
+  COMMON: /sw/mf/common/bioinfo-tools/misc/IGV/2.16.0
+  DESCRIPTION: high-performance, easy-to-use, interactive tool for the visual exploration of genomic data
+  KEYWORDS: 
+    - 
+  MODULE: IGV
+  SECTION: misc
+  POSTINSTALL: /sw/bioinfo/IGV/IGV-2.16.0_post-install.sh
+  README: /sw/bioinfo/IGV/IGV-2.16.0_install-README.md
+  SQLKEY: 2.16.0
+
+{'key': 'InterProScan_.z', 'path': '/sw/apps/bioinfo/InterProScan/InterProScan-5.62-94.0.yaml', 'creator': 'bjornc', 'md5': '0f588fa54e1edfa3dd007e5f1e43f423', 'TOOL': 'InterProScan', 'VERSION': '.z', 'MODULE': None, 'KEYWORDS': ['annotation'], 'CLUSTER': None, 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/annotation/InterProScan/.z', 'DESCRIPTION': None, 'SQLKEY': 'InterProScan_.z', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: InterProScan
+  VERSION: 5.62-94.0
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: 
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: http://www.ebi.ac.uk/interpro
+  LOCAL: /sw/bioinfo/InterProScan/mf/5.62-94.0
+  COMMON: /sw/mf/common/bioinfo-tools/annotation/InterProScan/5.62-94.0
+  DESCRIPTION: InterPro provides functional analysis of proteins by classifying them into families and predicting domains and important sites.
+  KEYWORDS: 
+    - 
+  MODULE: InterProScan
+  SECTION: annotation
+  POSTINSTALL: /sw/bioinfo/InterProScan/InterProScan-5.62-94.0_post-install.sh
+  README: /sw/bioinfo/InterProScan/InterProScan-5.62-94.0_install-README.md
+  SQLKEY: InterProScan_5.62-94.0
+
+{'key': 'MEGAN_.MEGAN', 'path': '/sw/apps/bioinfo/PhyloPhlAn/PhyloPhlAn-3.0.2.yaml', 'creator': 'jonass', 'md5': 'cbb34f985c9d4be92900f6c67a2f8c5f', 'TOOL': 'MEGAN', 'VERSION': '.MEGAN', 'MODULE': None, 'KEYWORDS': ['phylogeny'], 'CLUSTER': None, 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/phylogeny/MEGAN/.MEGAN', 'DESCRIPTION': None, 'SQLKEY': 'MEGAN_.MEGAN', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:PhyloPhlAn
+- VERSION:3.0.2
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT license
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/biobakery/phylophlan/wiki
+- LOCAL:/sw/bioinfo/PhyloPhlAn/mf/3.0.2
+- COMMON:/sw/mf/common/bioinfo-tools/phylogeny/PhyloPhlAn/3.0.2
+- DESCRIPTION:is an integrated pipeline for large-scale phylogenetic profiling of genomes and metagenomes.
+
+{'key': 'phylophlan_0.99', 'path': '/sw/apps/bioinfo/PhyloPhlAn/PhyloPhlAn-0.99.yaml', 'creator': 'jonass', 'md5': '65377c659999a98a1dadd22b59bf1a46', 'TOOL': 'phylophlan', 'VERSION': '0.99', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/phylophlan/phylophlan-0.99-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/phylophlan/0.99', 'DESCRIPTION': None, 'SQLKEY': 'phylophlan_0.99', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:PhyloPhlAn
+- VERSION:3.0.2
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT license
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/biobakery/phylophlan/wiki
+- LOCAL:/sw/bioinfo/PhyloPhlAn/mf/3.0.2
+- COMMON:/sw/mf/common/bioinfo-tools/phylogeny/PhyloPhlAn/3.0.2
+- DESCRIPTION:is an integrated pipeline for large-scale phylogenetic profiling of genomes and metagenomes.
+
+{'key': 'phylophlan_0.99', 'path': '/sw/apps/bioinfo/PhyloPhlAn/PhyloPhlAn-0.99.DRAFT.yaml', 'creator': 'douglas', 'md5': '65377c659999a98a1dadd22b59bf1a46', 'TOOL': 'phylophlan', 'VERSION': '0.99', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/phylophlan/phylophlan-0.99-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/phylophlan/0.99', 'DESCRIPTION': None, 'SQLKEY': 'phylophlan_0.99', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:PhyloPhlAn
+- VERSION:3.0.2
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT license
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/biobakery/phylophlan/wiki
+- LOCAL:/sw/bioinfo/PhyloPhlAn/mf/3.0.2
+- COMMON:/sw/mf/common/bioinfo-tools/phylogeny/PhyloPhlAn/3.0.2
+- DESCRIPTION:is an integrated pipeline for large-scale phylogenetic profiling of genomes and metagenomes.
+
+{'key': 'MaSuRCA_3.4.2', 'path': '/sw/apps/bioinfo/MaSuRCA/MaSuRCA-4.0.4.yaml', 'creator': 'douglas', 'md5': '1c2c5d35bf19c8b33c7a3b57dcebd906', 'TOOL': 'MaSuRCA', 'VERSION': '3.4.2', 'MODULE': 'MaSuRCA', 'KEYWORDS': ['bioinformatics', 'chromosome', 'genome', 'illumina', 'assembly', 'scaffolder', 'polishing', 'scaffold', 'aligner', 'assembler'], 'CLUSTER': ['rackham', 'miarka', 'bianca', 'snowy'], 'LICENSE': 'GPL v3', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/alekseyzimin/masurca', 'LOCAL': '/sw/bioinfo/MaSuRCA/mf/3.4.2', 'SECTION': 'Bioinformatics Assembly', 'POSTINSTALL': '/sw/bioinfo/MaSuRCA/MaSuRCA-4.0.2_post-install.sh', 'README': '/sw/bioinfo/MaSuRCA/MaSuRCA-4.0.2_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/assembly//3.4.2', 'DESCRIPTION': 'genome assembly and analysis toolkit', 'SQLKEY': 'MaSuRCA_3.4.2', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:MaSuRCA
+- VERSION:4.0.4
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:GPL v3 license
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/alekseyzimin/masurca
+- LOCAL:/sw/bioinfo/MaSuRCA/mf/4.0.4
+- COMMON:/sw/mf/common/bioinfo-tools/assembly/MaSuRCA/4.0.4
+- DESCRIPTION:The MaSuRCA \(Maryland Super Read Cabog Assembler\) genome assembly and analysis toolkit contains of MaSuRCA genome assembler\, QuORUM error corrector for Illumina data\, POLCA genome polishing software\, Chromosome scaffolder\, jellyfish mer counter\, and MUMmer aligner.
+
+{'key': 'MaSuRCA_3.4.2', 'path': '/sw/apps/bioinfo/MaSuRCA/MaSuRCA-4.0.2.yaml', 'creator': 'jonass', 'md5': '4fa1f1cc6c29c569fb124300d019bae5', 'TOOL': 'MaSuRCA', 'VERSION': '3.4.2', 'MODULE': 'MaSuRCA', 'KEYWORDS': ['bioinformatics', 'chromosome', 'genome', 'illumina', 'assembly', 'scaffolder', 'polishing', 'scaffold', 'aligner', 'assembler'], 'CLUSTER': ['rackham', 'miarka', 'bianca', 'snowy'], 'LICENSE': 'GPL v3', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/alekseyzimin/masurca', 'LOCAL': '/sw/bioinfo/MaSuRCA/mf/3.4.2', 'SECTION': 'Bioinformatics Assembly', 'POSTINSTALL': '/sw/bioinfo/MaSuRCA/MaSuRCA-4.0.2_post-install.sh', 'README': '/sw/bioinfo/MaSuRCA/MaSuRCA-4.0.2_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/assembly//3.4.2', 'DESCRIPTION': 'genome assembly and analysis toolkit', 'SQLKEY': 'MaSuRCA_3.4.2', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:MaSuRCA
+- VERSION:4.0.2
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:GPL v3 license
+- LICENSEURL:
+- WEBSITE:https://github.com/alekseyzimin/masurca
+- LOCAL:/sw/bioinfo/MaSuRCA/mf/4.0.2
+- COMMON:/sw/mf/common/bioinfo-tools/assembly//4.0.2
+- DESCRIPTION:The MaSuRCA (Maryland Super Read Cabog Assembler) genome assembly and analysis toolkit contains of MaSuRCA genome assembler, QuORUM error corrector for Illumina data, POLCA genome polishing software, Chromosome scaffolder, jellyfish mer counter, and MUMmer aligner.
+
+{'key': 'MultiQC_1.1', 'path': '/sw/apps/bioinfo/MultiQC/MultiQC-1.10.yaml', 'creator': 'jonass', 'md5': '073bd9d101f7732c94e8712b79454099', 'TOOL': 'MultiQC', 'VERSION': '1.1', 'MODULE': 'MultiQC', 'KEYWORDS': ['multi', 'bioinformatics'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""', 'WEBSITE': 'https://multiqc.info', 'LOCAL': '/sw/bioinfo/MultiQC/mf/1.10', 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': '/sw/bioinfo/MultiQC/MultiQC-1.11_post-install.sh', 'README': '/sw/bioinfo/MultiQC/MultiQC-1.11_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/MultiQC/1.10', 'DESCRIPTION': 'MultiQC', 'SQLKEY': 'MultiQC_1.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:MultiQC
+- VERSION:1.10
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT
+- WEBSITE:https://multiqc.info
+- LOCAL:/sw/bioinfo/MultiQC/mf/1.10
+- COMMON:/sw/mf/common/bioinfo-tools/misc/MultiQC/1.10
+
+{'key': 'MultiQC_1.1', 'path': '/sw/apps/bioinfo/MultiQC/MultiQC-1.10.1.yaml', 'creator': 'jonass', 'md5': '91658a187cd92ea4cb876ec545beef1c', 'TOOL': 'MultiQC', 'VERSION': '1.1', 'MODULE': 'MultiQC', 'KEYWORDS': ['multi', 'bioinformatics'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""', 'WEBSITE': 'https://multiqc.info', 'LOCAL': '/sw/bioinfo/MultiQC/mf/1.10', 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': '/sw/bioinfo/MultiQC/MultiQC-1.11_post-install.sh', 'README': '/sw/bioinfo/MultiQC/MultiQC-1.11_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/MultiQC/1.10', 'DESCRIPTION': 'MultiQC', 'SQLKEY': 'MultiQC_1.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:MultiQC
+- VERSION:1.10.1
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT
+- LICENSEURL:
+- WEBSITE:https://multiqc.info
+- LOCAL:/sw/bioinfo/MultiQC/mf/1.10.1
+- COMMON:/sw/mf/common/bioinfo-tools/misc//1.10.1
+- DESCRIPTION:Aggregate results from bioinformatics analyses across many samples into a single report
+
+{'key': 'MultiQC_1.1', 'path': '/sw/apps/bioinfo/MultiQC/MultiQC-1.11.yaml', 'creator': 'jonass', 'md5': 'd519feb2ab7ecfae9d27576e2f4c1eff', 'TOOL': 'MultiQC', 'VERSION': '1.1', 'MODULE': 'MultiQC', 'KEYWORDS': ['multi', 'bioinformatics'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""', 'WEBSITE': 'https://multiqc.info', 'LOCAL': '/sw/bioinfo/MultiQC/mf/1.10', 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': '/sw/bioinfo/MultiQC/MultiQC-1.11_post-install.sh', 'README': '/sw/bioinfo/MultiQC/MultiQC-1.11_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/MultiQC/1.10', 'DESCRIPTION': 'MultiQC', 'SQLKEY': 'MultiQC_1.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:MultiQC
+- VERSION:1.11
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://multiqc.info
+- LOCAL:/sw/bioinfo/MultiQC/mf/1.11
+- COMMON:/sw/mf/common/bioinfo-tools/misc/MultiQC/1.11
+- DESCRIPTION:Aggregate results from bioinformatics analyses across many samples into a single report
+
+{'key': 'MultiQC_0.5', 'path': '/sw/apps/bioinfo/MultiQC/MultiQC-1.12.yaml', 'creator': 'douglas', 'md5': '25cd6c2c07bb7464ee2d76f0713e4be1', 'TOOL': 'MultiQC', 'VERSION': '0.5', 'MODULE': None, 'KEYWORDS': ['multi'], 'CLUSTER': ['milou'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/MultiQC/0.5', 'DESCRIPTION': None, 'SQLKEY': 'MultiQC_0.5', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:MultiQC
+- VERSION:1.12
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+- LICENSE:MIT
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://multiqc.info
+- LOCAL:/sw/bioinfo/MultiQC/mf/1.12
+- COMMON:/sw/mf/common/bioinfo-tools/misc/MultiQC/1.12
+- DESCRIPTION:Aggregate results from bioinformatics analyses across many samples into a single report
+
+{'key': 'NextGenMap_0.5.4', 'path': '/sw/apps/bioinfo/NextGenMap/NextGenMap-0.5.5.yaml', 'creator': 'douglas', 'md5': '777274764e2bf16021b9d40e8a5f19f4', 'TOOL': 'NextGenMap', 'VERSION': '0.5.4', 'MODULE': 'NextGenMap', 'KEYWORDS': ['bioinformatics', 'alignment'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'Artistic License 1.0', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://cibiv.github.io/NextGenMap/', 'LOCAL': None, 'SECTION': 'Bioinformatics Alignment', 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/NextGenMap/NextGenMap-0.5.4-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/alignment/NextGenMap/0.5.4', 'DESCRIPTION': 'NextGenMap', 'SQLKEY': 'NextGenMap_0.5.4', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:NextGenMap
+- VERSION:0.5.5
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT
+- LICENSEURL:https://github.com/Cibiv/NextGenMap/blob/master/LICENSE
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:http://cibiv.github.io/NextGenMap/
+- LOCAL:/sw/bioinfo/NextGenMap/mf/0.5.5
+- COMMON:/sw/mf/common/bioinfo-tools/alignment/NextGenMap/0.5.5
+- DESCRIPTION:flexible highly sensitive short read mapping tool that handles much higher mismatch rates than comparable algorithms while still outperforming them in terms of runtime
+
+{'key': 'Pilon_1.22', 'path': '/sw/apps/bioinfo/Pilon/Pilon-1.24.yaml', 'creator': 'jonass', 'md5': '806c1233612c1edfdf62eb0b8992a57f', 'TOOL': 'Pilon', 'VERSION': '1.22', 'MODULE': 'Pilon', 'KEYWORDS': ['assembly', 'bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'GPL v2', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/broadinstitute/pilon/wiki', 'LOCAL': None, 'SECTION': 'Bioinformatics Assembly', 'POSTINSTALL': None, 'README': '/sw/bioinfo/Pilon/Pilon-1.22-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/assembly/Pilon/1.22', 'DESCRIPTION': 'Pilon', 'SQLKEY': 'Pilon_1.22', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:Pilon
+- VERSION:1.24
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:GPL v2 license
+- LICENSEURL:
+- WEBSITE:https://github.com/broadinstitute/pilon/wiki
+- LOCAL:/sw/bioinfo/Pilon/mf/1.24
+- COMMON:/sw/mf/common/bioinfo-tools/assembly//1.24
+- DESCRIPTION:Pilon is a software tool which can be used to: Automatically improve draft assemblies & Find variation among strains, including large event detection
+
+{'key': 'RAxML-NG_0.9.0-mpi', 'path': '/sw/apps/bioinfo/RAxML-NG/RAxML-NG-1.1.0.yaml', 'creator': 'douglas', 'md5': '037045bdd46bf8bffb6a35619c450c1c', 'TOOL': 'RAxML-NG', 'VERSION': '0.9.0-mpi', 'MODULE': 'RAxML-NG', 'KEYWORDS': ['bioinformatics', 'phylogeny'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': 'GNU Affero GPL v3.0', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/amkozlov/raxml-ng/wiki', 'LOCAL': None, 'SECTION': 'Bioinformatics Phylogeny', 'POSTINSTALL': None, 'README': '/sw/bioinfo/RAxML-NG/RAxML-NG-0.9.0-mpi-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/phylogeny/RAxML-NG/0.9.0-mpi', 'DESCRIPTION': 'RAxML-NG', 'SQLKEY': 'RAxML-NG_0.9.0-mpi', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: Platypus
+  VERSION: 20180620-3e72641
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v3
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/andyrimmer/Platypus
+  LOCAL: /sw/bioinfo/Platypus/mf/20180620-3e72641
+  COMMON: /sw/mf/common/bioinfo-tools/annotation/Platypus/20180620-3e72641
+  DESCRIPTION: Platypus Variant Caller
+  TAGS: 
+    - 
+  MODULE: Platypus
+  SECTION: annotation
+  POSTINSTALL: /sw/bioinfo/Platypus/Platypus-20180620-3e72641_post-install.sh
+  README: /sw/bioinfo/Platypus/Platypus-20180620-3e72641_install-README.md
+  SQLKEY: 20180620-3e72641
+
+{'key': 'RAxML-NG_0.9.0-mpi', 'path': '/sw/apps/bioinfo/RAxML-NG/RAxML-NG-1.1.0-mpi.yaml', 'creator': 'douglas', 'md5': '037045bdd46bf8bffb6a35619c450c1c', 'TOOL': 'RAxML-NG', 'VERSION': '0.9.0-mpi', 'MODULE': 'RAxML-NG', 'KEYWORDS': ['bioinformatics', 'phylogeny'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': 'GNU Affero GPL v3.0', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/amkozlov/raxml-ng/wiki', 'LOCAL': None, 'SECTION': 'Bioinformatics Phylogeny', 'POSTINSTALL': None, 'README': '/sw/bioinfo/RAxML-NG/RAxML-NG-0.9.0-mpi-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/phylogeny/RAxML-NG/0.9.0-mpi', 'DESCRIPTION': 'RAxML-NG', 'SQLKEY': 'RAxML-NG_0.9.0-mpi', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: Platypus
+  VERSION: 20180620-3e72641
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v3
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/andyrimmer/Platypus
+  LOCAL: /sw/bioinfo/Platypus/mf/20180620-3e72641
+  COMMON: /sw/mf/common/bioinfo-tools/annotation/Platypus/20180620-3e72641
+  DESCRIPTION: Platypus Variant Caller
+  TAGS: 
+    - 
+  MODULE: Platypus
+  SECTION: annotation
+  POSTINSTALL: /sw/bioinfo/Platypus/Platypus-20180620-3e72641_post-install.sh
+  README: /sw/bioinfo/Platypus/Platypus-20180620-3e72641_install-README.md
+  SQLKEY: 20180620-3e72641
+
+{'key': 'RAxML-NG_0.9.0-mpi', 'path': '/sw/apps/bioinfo/RAxML-NG/RAxML-NG-1.1.0-20220810-816f9d1.yaml', 'creator': 'douglas', 'md5': '037045bdd46bf8bffb6a35619c450c1c', 'TOOL': 'RAxML-NG', 'VERSION': '0.9.0-mpi', 'MODULE': 'RAxML-NG', 'KEYWORDS': ['bioinformatics', 'phylogeny'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': 'GNU Affero GPL v3.0', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/amkozlov/raxml-ng/wiki', 'LOCAL': None, 'SECTION': 'Bioinformatics Phylogeny', 'POSTINSTALL': None, 'README': '/sw/bioinfo/RAxML-NG/RAxML-NG-0.9.0-mpi-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/phylogeny/RAxML-NG/0.9.0-mpi', 'DESCRIPTION': 'RAxML-NG', 'SQLKEY': 'RAxML-NG_0.9.0-mpi', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: Platypus
+  VERSION: 20180620-3e72641
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v3
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/andyrimmer/Platypus
+  LOCAL: /sw/bioinfo/Platypus/mf/20180620-3e72641
+  COMMON: /sw/mf/common/bioinfo-tools/annotation/Platypus/20180620-3e72641
+  DESCRIPTION: Platypus Variant Caller
+  TAGS: 
+    - 
+  MODULE: Platypus
+  SECTION: annotation
+  POSTINSTALL: /sw/bioinfo/Platypus/Platypus-20180620-3e72641_post-install.sh
+  README: /sw/bioinfo/Platypus/Platypus-20180620-3e72641_install-README.md
+  SQLKEY: 20180620-3e72641
+
+{'key': 'RepeatMasker_4.1.0', 'path': '/sw/apps/bioinfo/RepeatMasker/RepeatMasker-4.1.2-p1.yaml', 'creator': 'jonass', 'md5': '55dcbd725dc4e6675f39eeb8c5942bb8', 'TOOL': 'RepeatMasker', 'VERSION': '4.1.0', 'MODULE': 'RepeatMasker', 'KEYWORDS': ['repeat', 'annotation', 'bioinformatics'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'open source', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://www.repeatmasker.org/', 'LOCAL': '/sw/bioinfo/RepeatMasker/mf/4.1.0', 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': '/sw/bioinfo/RepeatMasker/RepeatMasker-4.1.0_post-install.sh', 'README': '/sw/bioinfo/RepeatMasker/RepeatMasker-4.1.0_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/annotation//4.1.0', 'DESCRIPTION': 'RepeatMasker', 'SQLKEY': 'RepeatMasker_4.1.0', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:RepeatMasker
+- VERSION:4.1.2-p1
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:http://
+- LOCAL:/sw/bioinfo/RepeatMasker/mf/4.1.2-p1
+- COMMON:/sw/mf/common/bioinfo-tools/annotation/RepeatMasker/4.1.2-p1
+- DESCRIPTION:screens DNA sequences for interspersed repeats and low complexity DNA sequences
+
+{'key': 'RepeatModeler_2.0.1', 'path': '/sw/apps/bioinfo/RepeatModeler/RepeatModeler-2.0.3.yaml', 'creator': 'bjornv', 'md5': '0d056ab9438455b99b559e2e7642a4b4', 'TOOL': 'RepeatModeler', 'VERSION': '2.0.1', 'MODULE': None, 'KEYWORDS': ['model', 'repeat'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'open source', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://www.repeatmasker.org/RepeatModeler/', 'LOCAL': '/sw/bioinfo/RepeatModeler/mf/2.0.1', 'SECTION': None, 'POSTINSTALL': '/sw/apps/bioinfo/RepeatModeler/RepeatModeler-2.0.1_post-install.sh', 'README': '/sw/apps/bioinfo/RepeatModeler/RepeatModeler-2.0.1_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc//2.0.1', 'DESCRIPTION': None, 'SQLKEY': 'RepeatModeler_2.0.1', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: RepeatModeler
+  VERSION: 2.0.3
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: open source
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: http://www.repeatmasker.org/RepeatModeler/
+  LOCAL: /sw/bioinfo/RepeatModeler/mf/2.0.3
+  COMMON: /sw/mf/common/bioinfo-tools/misc/RepeatModeler/2.0.3
+  DESCRIPTION: de novo transposable element \(TE\) family identification and modeling package
+  TAGS: 
+    - 
+  MODULE: RepeatModeler
+  SECTION: misc
+  POSTINSTALL: /sw/bioinfo/RepeatModeler/RepeatModeler-2.0.3_post-install.sh
+  README: /sw/bioinfo/RepeatModeler/RepeatModeler-2.0.3_install-README.md
+  SQLKEY: 2.0.3
+
+{'key': 'SHAPEIT_v3.r884.2', 'path': '/sw/apps/bioinfo/SHAPEIT/SHAPEIT-v5.1.0.0.yaml', 'creator': 'douglas', 'md5': 'ebffb9a66717f2128fe39d9af0e7e3fa', 'TOOL': 'SHAPEIT', 'VERSION': 'v3.r884.2', 'MODULE': 'SHAPEIT', 'KEYWORDS': ['bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': 'Custom non-commercial', 'LICENSEURL': 'https://mathgen.stats.ox.ac.uk/genetics_software/shapeit/shapeit.html#download', 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://mathgen.stats.ox.ac.uk/genetics_software/shapeit/shapeit.html', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': '/sw/bioinfo/SHAPEIT/SHAPEIT-v3.r884.2_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/SHAPEIT/v3.r884.2', 'DESCRIPTION': 'SHAPEIT', 'SQLKEY': 'SHAPEIT_v3.r884.2', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: SHAPEIT
+  VERSION: v5.1.0.0
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+  LICENSE: MIT
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/odelaneau/shapeit5
+  LOCAL: /sw/bioinfo/SHAPEIT/mf/v5.1.0.0
+  COMMON: /sw/mf/common/bioinfo-tools/misc/SHAPEIT/v5.1.0.0
+  DESCRIPTION: estimates haplotypes in large datasets, with a special focus on rare variants
+  KEYWORDS: 
+    - 
+  MODULE: SHAPEIT
+  SECTION: misc
+  POSTINSTALL: /sw/bioinfo/SHAPEIT/SHAPEIT-v5.1.0.0_post-install.sh
+  README: /sw/bioinfo/SHAPEIT/SHAPEIT-v5.1.0.0_install-README.md
+  SQLKEY: v5.1.0.0
+
+{'key': 'SMRT_2.2.0', 'path': '/sw/apps/bioinfo/SMRT/SMRT-11.1.yaml', 'creator': 'bjornv', 'md5': 'f6edc2c70c56cf6a1cfe41b3aa8d1253', 'TOOL': 'SMRT', 'VERSION': '2.2.0', 'MODULE': 'SMRT', 'KEYWORDS': ['bioinformatics', 'smrt', 'link', 'pipeline'], 'CLUSTER': ['milou'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://www.pacb.com/products-and-services/analytical-software/smrt-analysis/', 'LOCAL': None, 'SECTION': 'Bioinformatics Pipelines', 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/pipelines/SMRT/2.2.0', 'DESCRIPTION': 'SMRT Link, SMRT Analysis', 'SQLKEY': 'SMRT_2.2.0', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: SMRT
+  VERSION: 11.1
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: 
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://www.pacb.com/support/software-downloads
+  LOCAL: /sw/bioinfo/SMRT/mf/11.1
+  COMMON: /sw/mf/common/bioinfo-tools/pipelines/SMRT/11.1
+  DESCRIPTION: PacBios open-source SMRT Analysis software suite is designed for use with Single Molecule\, Real-Time SMRT Sequencing data.
+  TAGS: 
+    - 
+  MODULE: SMRT
+  SECTION: pipelines
+  POSTINSTALL: /sw/bioinfo/SMRT/SMRT-11.1_post-install.sh
+  README: /sw/bioinfo/SMRT/SMRT-11.1_install-README.md
+  SQLKEY: 11.1
+
+{'key': 'VarDictJava_1.4.5', 'path': '/sw/apps/bioinfo/VarDictJava/VarDictJava-1.8.3.yaml', 'creator': 'douglas', 'md5': '25fc1675df50d89efa0959d49d71eee0', 'TOOL': 'VarDictJava', 'VERSION': '1.4.5', 'MODULE': 'VarDictJava', 'KEYWORDS': ['bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/AstraZeneca-NGS/VarDictJava', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/VarDictJava/VarDictJava-1.4.5-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/VarDictJava/1.4.5', 'DESCRIPTION': 'VarDictJava', 'SQLKEY': 'VarDictJava_1.4.5', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: VarDictJava
+  VERSION: 1.8.3
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: MIT
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/AstraZeneca-NGS/VarDictJava
+  LOCAL: /sw/bioinfo/VarDictJava/mf/1.8.3
+  COMMON: /sw/mf/common/bioinfo-tools/misc/VarDictJava/1.8.3
+  DESCRIPTION: a variant discovery program written in Java and Perl, a Java port of VarDict variant caller
+  KEYWORDS: 
+    - 
+  MODULE: VarDictJava
+  SECTION: misc
+  POSTINSTALL: /sw/bioinfo/VarDictJava/VarDictJava-1.8.3_post-install.sh
+  README: /sw/bioinfo/VarDictJava/VarDictJava-1.8.3_install-README.md
+  SQLKEY: 1.8.3
+
+{'key': 'abyss_2.0.2-k128', 'path': '/sw/apps/bioinfo/abyss/abyss-2.3.5.yaml', 'creator': 'bjornv', 'md5': 'b894cd4ec02007fc9bc8d5c395d62a87', 'TOOL': 'abyss', 'VERSION': '2.0.2-k128', 'MODULE': 'abyss', 'KEYWORDS': ['assembly', 'bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'GPL v3', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://www.bcgsc.ca/platform/bioinfo/software/abyss', 'LOCAL': None, 'SECTION': 'Bioinformatics Assembly', 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/assembly/abyss/2.0.2-k128', 'DESCRIPTION': 'ABySS', 'SQLKEY': 'abyss_2.0.2-k128', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: abyss
+  VERSION: 2.3.5
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: 
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/bcgsc/abyss
+  LOCAL: /sw/bioinfo/abyss/mf/2.3.5
+  COMMON: /sw/mf/common/bioinfo-tools/assembly/abyss/2.3.5
+  DESCRIPTION: ABySS is a de novo sequence assembler intended for short paired-end reads and genomes of all sizes.
+  TAGS: 
+    - 
+  MODULE: abyss
+  SECTION: assembly
+  POSTINSTALL: /sw/bioinfo/abyss/abyss-2.3.5_post-install.sh
+  README: /sw/bioinfo/abyss/abyss-2.3.5_install-README.md
+  SQLKEY: 2.3.5
+
+{'key': 'abyss_2.0.2-k128', 'path': '/sw/apps/bioinfo/abyss/abyss-2.3.5_k128.yaml', 'creator': 'bjornv', 'md5': 'b894cd4ec02007fc9bc8d5c395d62a87', 'TOOL': 'abyss', 'VERSION': '2.0.2-k128', 'MODULE': 'abyss', 'KEYWORDS': ['assembly', 'bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'GPL v3', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://www.bcgsc.ca/platform/bioinfo/software/abyss', 'LOCAL': None, 'SECTION': 'Bioinformatics Assembly', 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/assembly/abyss/2.0.2-k128', 'DESCRIPTION': 'ABySS', 'SQLKEY': 'abyss_2.0.2-k128', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: abyss
+  VERSION: 2.3.5_k128
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: 
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/bcgsc/abyss
+  LOCAL: /sw/bioinfo/abyss/mf/2.3.5_k128
+  COMMON: /sw/mf/common/bioinfo-tools/assembly/abyss/2.3.5_k128
+  DESCRIPTION: ABySS is a de novo sequence assembler intended for short paired-end reads and genomes of all sizes.
+  TAGS: 
+    - 
+  MODULE: abyss
+  SECTION: assembly
+  POSTINSTALL: /sw/bioinfo/abyss/abyss-2.3.5_k128_post-install.sh
+  README: /sw/bioinfo/abyss/abyss-2.3.5_k128_install-README.md
+  SQLKEY: 2.3.5_k128
+
+{'key': 'bcftools_1.1', 'path': '/sw/apps/bioinfo/bcftools/bcftools-1.10.yaml', 'creator': 'jonass', 'md5': '370c68fef77da0f5d4e449ac4e96f9ee', 'TOOL': 'bcftools', 'VERSION': '1.1', 'MODULE': 'bcftools', 'KEYWORDS': ['bioinformatics'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'MIT/Expat or GPL v3', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://www.htslib.org/doc/bcftools.html', 'LOCAL': '/sw/bioinfo/bcftools/mf/1.10', 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': '/sw/bioinfo/bcftools/bcftools-1.10_post-install.sh', 'README': '/sw/bioinfo/bcftools/bcftools-1.10_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/bcftools/1.10', 'DESCRIPTION': 'BCFtools', 'SQLKEY': 'bcftools_1.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:bcftools
+- VERSION:1.10
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT/Expat or GPL v3
+- WEBSITE:http://www.htslib.org/doc/bcftools.html
+    - LOCAL:/sw/bioinfo/bcftools/mf/1.10
+    - COMMON:/sw/mf/common/bioinfo-tools/misc/bcftools/1.10
+
+{'key': 'beagle_1.0.0', 'path': '/sw/apps/bioinfo/beagle/beagle-4.0.0.yaml', 'creator': 'douglas', 'md5': '44b87adfd369a9184db71aa287427489', 'TOOL': 'beagle', 'VERSION': '1.0.0', 'MODULE': None, 'KEYWORDS': ['phylogeny'], 'CLUSTER': ['milou'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': '/sw/bioinfo/beagle/beagle-1.0.0-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/phylogeny/beagle/1.0.0', 'DESCRIPTION': None, 'SQLKEY': 'beagle_1.0.0', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: beagle
+  VERSION: 4.0.0
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v3, LGPL v2.1
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/beagle-dev/beagle-lib
+  LOCAL: /sw/bioinfo/beagle/mf/4.0.0
+  COMMON: /sw/mf/common/bioinfo-tools/phylogeny/beagle/4.0.0
+  DESCRIPTION: general purpose library for evaluating the likelihood of sequence evolution on trees
+  KEYWORDS: 
+    - 
+  MODULE: beagle
+  SECTION: phylogeny
+  POSTINSTALL: /sw/bioinfo/beagle/beagle-4.0.0_post-install.sh
+  README: /sw/bioinfo/beagle/beagle-4.0.0_install-README.md
+  SQLKEY: beagle_4.0.0
+
+{'key': 'bgc_1.03', 'path': '/sw/apps/bioinfo/bioawk/bioawk-20170911-fd40150.yaml', 'creator': 'niharika', 'md5': 'b1f1a21323fee724a46373b97457876a', 'TOOL': 'bgc', 'VERSION': '1.03', 'MODULE': 'bgc', 'KEYWORDS': ['bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'GPL 3', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://sites.google.com/site/bgcsoftware/', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/bgc/1.03', 'DESCRIPTION': 'bgc', 'SQLKEY': 'bgc_1.03', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: bioawk
+  VERSION: 20170911-fd40150
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: Others
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/lh3/bioawk
+  LOCAL: /sw/bioinfo/bioawk/mf/20170911-fd40150
+  COMMON: /sw/mf/common/bioinfo-tools/misc/bioawk/20170911-fd40150
+  DESCRIPTION: Bioawk is an extension to Brian Kernighan's awk, adding the support of several common biological data formats, including optionally gzip'ed BED, GFF, SAM, VCF, FASTA/Q and TAB-delimited formats with column names.
+  TAGS: 
+    - 
+  MODULE: bioawk
+  SECTION: misc
+  POSTINSTALL: /sw/bioinfo/bioawk/bioawk-20170911-fd40150_post-install.sh
+  README: /sw/bioinfo/bioawk/bioawk-20170911-fd40150_install-README.md
+  SQLKEY: 20170911-fd40150
+
+{'key': 'bismark_0.14.0', 'path': '/sw/apps/bioinfo/bismark/bismark-0.22.3.yaml', 'creator': 'niharika', 'md5': '01bd9a0919f956009a4fbb4c9697ce95', 'TOOL': 'bismark', 'VERSION': '0.14.0', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['milou'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/bismark/0.14.0', 'DESCRIPTION': None, 'SQLKEY': 'bismark_0.14.0', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:bismark
+- VERSION:0.22.3
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:GPL v3
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/FelixKrueger/Bismark
+- LOCAL:/sw/bioinfo/bismark/mf/0.22.3
+- COMMON:/sw/mf/common/bioinfo-tools/assembly/bismark/0.22.3
+- DESCRIPTION:Bismark is a program to map bisulfite treated sequencing reads to a genome of interest and perform methylation calls in a single step.
+
+{'key': 'bismark_0.14.0', 'path': '/sw/apps/bioinfo/bismark/bismark-0.23.1.yaml', 'creator': 'niharika', 'md5': '01bd9a0919f956009a4fbb4c9697ce95', 'TOOL': 'bismark', 'VERSION': '0.14.0', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['milou'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/bismark/0.14.0', 'DESCRIPTION': None, 'SQLKEY': 'bismark_0.14.0', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:bismark
+- VERSION:0.23.1
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:GPL v3
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/FelixKrueger/Bismark
+- LOCAL:/sw/bioinfo/bismark/mf/0.23.1
+- COMMON:/sw/mf/common/bioinfo-tools/assembly/bismark/0.23.1
+- DESCRIPTION:Bismark is a program to map bisulfite treated sequencing reads to a genome of interest and perform methylation calls in a single step.
+
+{'key': 'bismark_0.14.0', 'path': '/sw/apps/bioinfo/bismark/bismark-0.24.1.yaml', 'creator': 'douglas', 'md5': '01bd9a0919f956009a4fbb4c9697ce95', 'TOOL': 'bismark', 'VERSION': '0.14.0', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['milou'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/bismark/0.14.0', 'DESCRIPTION': None, 'SQLKEY': 'bismark_0.14.0', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: bismark
+  VERSION: 0.24.1
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v3
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/FelixKrueger/Bismark
+  LOCAL: /sw/bioinfo/bismark/mf/0.24.1
+  COMMON: /sw/mf/common/bioinfo-tools/misc/bismark/0.24.1
+  DESCRIPTION: Bismark is a program to map bisulfite treated sequencing reads to a genome of interest and perform methylation calls in a single step.
+  KEYWORDS: 
+    - 
+  MODULE: bismark
+  SECTION: misc
+  POSTINSTALL: /sw/bioinfo/bismark/bismark-0.24.1_post-install.sh
+  README: /sw/bioinfo/bismark/bismark-0.24.1_install-README.md
+  SQLKEY: 0.24.1
+
+{'key': 'bowtie2_2.0.0-beta5', 'path': '/sw/apps/bioinfo/bowtie2/bowtie2-2.5.1.yaml', 'creator': 'douglas', 'md5': 'e2f30b43fef6a47ca0fb6f10367411ab', 'TOOL': 'bowtie2', 'VERSION': '2.0.0-beta5', 'MODULE': None, 'KEYWORDS': ['alignment'], 'CLUSTER': ['milou'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/alignment/bowtie2/2.0.0-beta5', 'DESCRIPTION': None, 'SQLKEY': 'bowtie2_2.0.0-beta5', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: bowtie2
+  VERSION: 2.5.1
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v3
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://bowtie-bio.sourceforge.net/bowtie2/index.shtml
+  LOCAL: /sw/bioinfo/bowtie2/mf/2.5.1
+  COMMON: /sw/mf/common/bioinfo-tools/alignment/bowtie2/2.5.1
+  DESCRIPTION: an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequences
+  KEYWORDS: 
+    - 
+  MODULE: bowtie2
+  SECTION: alignment
+  POSTINSTALL: /sw/bioinfo/bowtie2/bowtie2-2.5.1_post-install.sh
+  README: /sw/bioinfo/bowtie2/bowtie2-2.5.1_install-README.md
+  SQLKEY: 2.5.1
+
+{'key': 'cutadapt_3.1', 'path': '/sw/apps/bioinfo/cutadapt/cutadapt-4.0.yaml', 'creator': 'douglas', 'md5': '1ec08fd1d5f7acae43d54a41a6a0c427', 'TOOL': 'cutadapt', 'VERSION': '3.1', 'MODULE': 'cutadapt', 'KEYWORDS': ['pipeline', 'adapter', 'poly-a', 'reads', 'bioinformatics', 'primer', 'sequencing'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://cutadapt.readthedocs.io/en/stable/', 'LOCAL': None, 'SECTION': 'Bioinformatics Pipelines', 'POSTINSTALL': '/sw/bioinfo/cutadapt/cutadapt-3.1_post-install.sh', 'README': '/sw/bioinfo/cutadapt/cutadapt-3.1_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/pipelines/cutadapt/3.1', 'DESCRIPTION': 'cutadapt', 'SQLKEY': 'cutadapt_3.1', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: cutadapt
+  VERSION: 4.0
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: MIT
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://cutadapt.readthedocs.io/en/stable/index.html
+  LOCAL: /sw/bioinfo/cutadapt/mf/4.0
+  COMMON: /sw/mf/common/bioinfo-tools/pipelines/cutadapt/4.0
+  DESCRIPTION: finds and removes adapter sequences, primers, poly-A tails and other types of unwanted sequence from your high-throughput sequencing reads
+  TAGS: 
+    - 
+  MODULE: cutadapt
+  SECTION: pipelines
+  POSTINSTALL: /sw/bioinfo/cutadapt/cutadapt-4.0_post-install.sh
+  README: /sw/bioinfo/cutadapt/cutadapt-4.0_install-README.md
+  SQLKEY: 4.0
+
+{'key': 'delly_0.7.2', 'path': '/sw/apps/bioinfo/delly/delly-1.1.6.yaml', 'creator': 'bjornc', 'md5': '1df15078d4c7f87a01c7c208b907891d', 'TOOL': 'delly', 'VERSION': '0.7.2', 'MODULE': None, 'KEYWORDS': ['annotation'], 'CLUSTER': ['milou'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/annotation/delly/0.7.2', 'DESCRIPTION': None, 'SQLKEY': 'delly_0.7.2', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: delly
+  VERSION: 1.1.6
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: BSD
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/dellytools/delly
+  LOCAL: /sw/bioinfo/delly/mf/1.1.6
+  COMMON: /sw/mf/common/bioinfo-tools/annotation/delly/1.1.6
+  DESCRIPTION: An integrated structural variant (SV) prediction method that can discover, genotype and visualize deletions, tandem duplications, inversions and translocations at single-nucleotide resolution in short-read and long-read massively parallel sequencing data.
+  KEYWORDS: 
+    - 
+  MODULE: delly
+  SECTION: annotation
+  POSTINSTALL: /sw/bioinfo/delly/delly-1.1.6_post-install.sh
+  README: /sw/bioinfo/delly/delly-1.1.6_install-README.md
+  SQLKEY: 1.1.6
+
+{'key': 'diamond_0.9.31', 'path': '/sw/apps/bioinfo/diamond/diamond-2.0.4.yaml', 'creator': 'jonass', 'md5': '8a62dc9de193025e572050a46845638a', 'TOOL': 'diamond', 'VERSION': '0.9.31', 'MODULE': 'diamond', 'KEYWORDS': ['alignment', 'protein', 'bioinformatics', 'aligner', 'dna', 'search', 'translate'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'GPL v3', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/bbuchfink/diamond', 'LOCAL': '/sw/bioinfo/diamond/mf/0.9.31', 'SECTION': 'Bioinformatics Alignment', 'POSTINSTALL': '/sw/bioinfo/diamond/diamond-2.0.4_post-install.sh', 'README': '/sw/bioinfo/diamond/diamond-2.0.4_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/alignment/diamond/0.9.31', 'DESCRIPTION': 'DIAMOND', 'SQLKEY': 'diamond_0.9.31', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:diamond
+- VERSION:2.0.4
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:GPL v3
+- LICENSEURL:
+- WEBSITE:https://github.com/bbuchfink/diamond
+- LOCAL:/sw/bioinfo/diamond/mf/2.0.4
+- COMMON:/sw/mf/common/bioinfo-tools/alignment//2.0.4
+- DESCRIPTION:sequence aligner for protein and translated DNA searches\, designed for high performance analysis of big sequence data
+
+{'key': 'diamond_0.8.26', 'path': '/sw/apps/bioinfo/diamond/diamond-2.0.14.yaml', 'creator': 'douglas', 'md5': 'e61a512a77e9d90f15cbb09bfd93fc69', 'TOOL': 'diamond', 'VERSION': '0.8.26', 'MODULE': 'diamond', 'KEYWORDS': ['alignment', 'bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'GPL v3', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/bbuchfink/diamond', 'LOCAL': None, 'SECTION': 'Bioinformatics Alignment', 'POSTINSTALL': None, 'README': '/sw/bioinfo/diamond/diamond-0.8.26-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/alignment/diamond/0.8.26', 'DESCRIPTION': 'DIAMOND', 'SQLKEY': 'diamond_0.8.26', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:diamond
+- VERSION:2.0.14
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+- LICENSE:GPL v3
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/bbuchfink/diamond
+- LOCAL:/sw/bioinfo/diamond/mf/2.0.14
+- COMMON:/sw/mf/common/bioinfo-tools/alignment/diamond/2.0.14
+- DESCRIPTION:sequence aligner for protein and translated DNA searches\, designed for high performance analysis of big sequence data
+
+{'key': 'diamond_2.0.9', 'path': '/sw/apps/bioinfo/diamond/diamond-2.1.0.yaml', 'creator': 'douglas', 'md5': 'a0f1984f36f899bb90cdaa097915f1b0', 'TOOL': 'diamond', 'VERSION': '2.0.9', 'MODULE': None, 'KEYWORDS': ['search', 'translate', 'alignment', 'protein', 'aligner', 'dna'], 'CLUSTER': ['bianca', 'miarka', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '"""""""""""""-R u+rwX,g+rwX,o+rX-w"""""""""""""', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': '/sw/bioinfo/diamond/diamond-2.0.9_post-install.sh', 'README': '/sw/bioinfo/diamond/diamond-2.0.9_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/alignment/diamond/2.0.9', 'DESCRIPTION': None, 'SQLKEY': 'diamond_2.0.9', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: diamond
+  VERSION: 2.1.0
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v3
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/bbuchfink/diamond
+  LOCAL: /sw/bioinfo/diamond/mf/2.1.0
+  COMMON: /sw/mf/common/bioinfo-tools/alignment/diamond/2.1.0
+  DESCRIPTION: sequence aligner for protein and translated DNA searches\, designed for high performance analysis of big sequence data
+  KEYWORDS: 
+    - 
+  MODULE: diamond
+  SECTION: alignment
+  POSTINSTALL: /sw/bioinfo/diamond/diamond-2.1.0_post-install.sh
+  README: /sw/bioinfo/diamond/diamond-2.1.0_install-README.md
+  SQLKEY: 2.1.0
+
+{'key': 'diamond_2.0.9', 'path': '/sw/apps/bioinfo/diamond/diamond-2.1.1.yaml', 'creator': 'douglas', 'md5': 'a0f1984f36f899bb90cdaa097915f1b0', 'TOOL': 'diamond', 'VERSION': '2.0.9', 'MODULE': None, 'KEYWORDS': ['search', 'translate', 'alignment', 'protein', 'aligner', 'dna'], 'CLUSTER': ['bianca', 'miarka', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '"""""""""""""-R u+rwX,g+rwX,o+rX-w"""""""""""""', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': '/sw/bioinfo/diamond/diamond-2.0.9_post-install.sh', 'README': '/sw/bioinfo/diamond/diamond-2.0.9_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/alignment/diamond/2.0.9', 'DESCRIPTION': None, 'SQLKEY': 'diamond_2.0.9', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: diamond
+  VERSION: 2.1.1
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v3
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/bbuchfink/diamond
+  LOCAL: /sw/bioinfo/diamond/mf/2.1.1
+  COMMON: /sw/mf/common/bioinfo-tools/alignment/diamond/2.1.1
+  DESCRIPTION: sequence aligner for protein and translated DNA searches\, designed for high performance analysis of big sequence data
+  KEYWORDS: 
+    - 
+  MODULE: diamond
+  SECTION: alignment
+  POSTINSTALL: /sw/bioinfo/diamond/diamond-2.1.1_post-install.sh
+  README: /sw/bioinfo/diamond/diamond-2.1.1_install-README.md
+  SQLKEY: 2.1.1
+
+{'key': 'diamond_2.0.9', 'path': '/sw/apps/bioinfo/diamond/diamond-2.1.6.yaml', 'creator': 'douglas', 'md5': 'a0f1984f36f899bb90cdaa097915f1b0', 'TOOL': 'diamond', 'VERSION': '2.0.9', 'MODULE': None, 'KEYWORDS': ['search', 'translate', 'alignment', 'protein', 'aligner', 'dna'], 'CLUSTER': ['bianca', 'miarka', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '"""""""""""""-R u+rwX,g+rwX,o+rX-w"""""""""""""', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': '/sw/bioinfo/diamond/diamond-2.0.9_post-install.sh', 'README': '/sw/bioinfo/diamond/diamond-2.0.9_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/alignment/diamond/2.0.9', 'DESCRIPTION': None, 'SQLKEY': 'diamond_2.0.9', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: diamond
+  VERSION: 2.1.6
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v3
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/bbuchfink/diamond
+  LOCAL: /sw/bioinfo/diamond/mf/2.1.6
+  COMMON: /sw/mf/common/bioinfo-tools/alignment/diamond/2.1.6
+  DESCRIPTION: sequence aligner for protein and translated DNA searches\, designed for high performance analysis of big sequence data
+  KEYWORDS: 
+    - 
+  MODULE: diamond
+  SECTION: alignment
+  POSTINSTALL: /sw/bioinfo/diamond/diamond-2.1.6_post-install.sh
+  README: /sw/bioinfo/diamond/diamond-2.1.6_install-README.md
+  SQLKEY: 2.1.6
+
+{'key': 'gaemr_1.0.1', 'path': '/sw/apps/bioinfo/RevBayes/RevBayes-1.1.1.yaml', 'creator': 'niharika', 'md5': 'def7b0f812bfb10eae8c29b79a9068e4', 'TOOL': 'gaemr', 'VERSION': '1.0.1', 'MODULE': 'gaemr', 'KEYWORDS': ['bioinformatics', 'assembly'], 'CLUSTER': ['bianca', 'miarka', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://software.broadinstitute.org/software/gaemr/', 'LOCAL': None, 'SECTION': 'Bioinformatics Assembly', 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/gaemr/gaemr-1.0.1-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/gaemr/1.0.1', 'DESCRIPTION': 'GAEMR', 'SQLKEY': 'gaemr_1.0.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:RevBayes
+- VERSION:1.1.1
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+- LICENSE:GNU General Public License v3.0
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/revbayes/revbayes
+- LOCAL:/sw/bioinfo/RevBayes/mf/1.1.1
+- COMMON:/sw/mf/common/bioinfo-tools/phylogeny/RevBayes/1.1.1
+- DESCRIPTION:Bayesian phylogenetic inference using probabilistic graphical models and an interactive language.
+
+{'key': 'gaemr_1.0.1', 'path': '/sw/apps/bioinfo/RevBayes/RevBayes-1.1.1-mpi.yaml', 'creator': 'niharika', 'md5': 'def7b0f812bfb10eae8c29b79a9068e4', 'TOOL': 'gaemr', 'VERSION': '1.0.1', 'MODULE': 'gaemr', 'KEYWORDS': ['bioinformatics', 'assembly'], 'CLUSTER': ['bianca', 'miarka', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://software.broadinstitute.org/software/gaemr/', 'LOCAL': None, 'SECTION': 'Bioinformatics Assembly', 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/gaemr/gaemr-1.0.1-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/gaemr/1.0.1', 'DESCRIPTION': 'GAEMR', 'SQLKEY': 'gaemr_1.0.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:RevBayes
+- VERSION:1.1.1-mpi
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+- LICENSE:GNU General Public License v3.0
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/revbayes/revbayes
+- LOCAL:/sw/bioinfo/RevBayes/mf/1.1.1-mpi
+- COMMON:/sw/mf/common/bioinfo-tools/phylogeny/RevBayes/1.1.1-mpi
+- DESCRIPTION:Bayesian phylogenetic inference using probabilistic graphical models and an interactive language.
+
+{'key': 'htslib_1.1', 'path': '/sw/apps/bioinfo/htslib/htslib-1.10.yaml', 'creator': 'jonass', 'md5': '19bfe72a92d2c19c75b7f56656518c00', 'TOOL': 'htslib', 'VERSION': '1.1', 'MODULE': 'htslib', 'KEYWORDS': ['bioinformatics'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'MIT/Expat and modified 3-clause BSD', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/samtools/htslib', 'LOCAL': '/sw/bioinfo/htslib/mf/1.10', 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': '/sw/bioinfo/htslib/htslib-1.10_post-install.sh', 'README': '/sw/bioinfo/htslib/htslib-1.10_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/htslib/1.10', 'DESCRIPTION': 'HTSlib', 'SQLKEY': 'htslib_1.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:htslib
+- VERSION:1.10
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT/Expat and modified 3-clause BSD
+- WEBSITE:https://github.com/samtools/htslib
+    - LOCAL:/sw/bioinfo/htslib/mf/1.10
+    - COMMON:/sw/mf/common/bioinfo-tools/misc/htslib/1.10
+
+{'key': 'infernal_1.0.2', 'path': '/sw/apps/bioinfo/infernal/infernal-1.1.4.yaml', 'creator': 'douglas', 'md5': '613b6b458310312dfd2ba0eabc8020b3', 'TOOL': 'infernal', 'VERSION': '1.0.2', 'MODULE': None, 'KEYWORDS': ['alignment', 'rna'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/infernal/infernal-1.0.2-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/alignment/infernal/1.0.2', 'DESCRIPTION': None, 'SQLKEY': 'infernal_1.0.2', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:infernal
+- VERSION:1.1.4
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+- LICENSE:
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:http://eddylab.org/infernal/
+- LOCAL:/sw/bioinfo/infernal/mf/1.1.4
+- COMMON:/sw/mf/common/bioinfo-tools/alignment/infernal/1.1.4
+- DESCRIPTION:Infernal (INFERence
+
+{'key': 'kallisto_0.42.4', 'path': '/sw/apps/bioinfo/kallisto/kallisto-0.48.0.yaml', 'creator': 'douglas', 'md5': 'e36f8d1fe960cc3d345199fd8870420c', 'TOOL': 'kallisto', 'VERSION': '0.42.4', 'MODULE': 'kallisto', 'KEYWORDS': ['bioinformatics'], 'CLUSTER': ['milou'], 'LICENSE': 'Custom "as is" open source', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://pachterlab.github.io/kallisto/', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': '/sw/bioinfo/kallisto/kallisto-0.42.4-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/kallisto/0.42.4', 'DESCRIPTION': 'kallisto', 'SQLKEY': 'kallisto_0.42.4', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: kallisto
+  VERSION: 0.48.0
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: BSD-2 license
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/pachterlab/kallisto
+  LOCAL: /sw/bioinfo/kallisto/mf/0.48.0
+  COMMON: /sw/mf/common/bioinfo-tools/misc/kallisto/0.48.0
+  DESCRIPTION: Kallisto is a program for quantifying abundances of transcripts from RNA-Seq data, or more generally of target sequences using high-throughput sequencing reads.
+  KEYWORDS: 
+    - 
+  MODULE: kallisto
+  SECTION: misc
+  POSTINSTALL: /sw/bioinfo/kallisto/kallisto-0.48.0_post-install.sh
+  README: /sw/bioinfo/kallisto/kallisto-0.48.0_install-README.md
+  SQLKEY: 0.48.0
+
+{'key': 'manta_1.0.3', 'path': '/sw/apps/bioinfo/manta/manta-1.6.0.yaml', 'creator': 'niharika', 'md5': '25da078d94c40f9c5407715a36f34c40', 'TOOL': 'manta', 'VERSION': '1.0.3', 'MODULE': 'manta', 'KEYWORDS': ['bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'GPL v3', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/Illumina/manta', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/manta/1.0.3', 'DESCRIPTION': 'manta', 'SQLKEY': 'manta_1.0.3', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: manta
+  VERSION: 1.6.0
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v3
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/Illumina/manta/releases/tag/v1.6.0
+  LOCAL: /sw/bioinfo/manta/mf/1.6.0
+  COMMON: /sw/mf/common/bioinfo-tools/misc/manta/1.6.0
+  DESCRIPTION: Manta calls structural variants (SVs) and indels from mapped paired-end sequencing reads.
+  TAGS: 
+    - 
+  MODULE: manta
+  SECTION: misc
+  POSTINSTALL: /sw/bioinfo/manta/manta-1.6.0_post-install.sh
+  README: /sw/bioinfo/manta/manta-1.6.0_install-README.md
+  SQLKEY: 1.6.0
+
+{'key': 'mrbayes_3.2.6-mpi', 'path': '/sw/apps/bioinfo/mrbayes/mrbayes-3.2.7a.yaml', 'creator': 'jonass', 'md5': 'b25d3f855ebc39d329f7e1635dbc67c2', 'TOOL': 'mrbayes', 'VERSION': '3.2.6-mpi', 'MODULE': None, 'KEYWORDS': ['phylogeny'], 'CLUSTER': ['bianca', 'milou', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/phylogeny/mrbayes/3.2.6-mpi', 'DESCRIPTION': None, 'SQLKEY': 'mrbayes_3.2.6-mpi', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:mrbayes
+- VERSION:3.2.7a
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:GPL v3 license
+- LICENSEURL:
+- WEBSITE:https://github.com/NBISweden/MrBayes
+- LOCAL:/sw/bioinfo/mrbayes/mf/3.2.7a
+- COMMON:/sw/mf/common/bioinfo-tools/phylogeny//3.2.7a
+- DESCRIPTION:A program for Bayesian inference and model choice across a wide range of phylogenetic and evolutionary models.
+
+{'key': 'mrbayes_3.2.6-mpi', 'path': '/sw/apps/bioinfo/mrbayes/mrbayes-3.2.7a-mpi.yaml', 'creator': 'jonass', 'md5': 'b25d3f855ebc39d329f7e1635dbc67c2', 'TOOL': 'mrbayes', 'VERSION': '3.2.6-mpi', 'MODULE': None, 'KEYWORDS': ['phylogeny'], 'CLUSTER': ['bianca', 'milou', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/phylogeny/mrbayes/3.2.6-mpi', 'DESCRIPTION': None, 'SQLKEY': 'mrbayes_3.2.6-mpi', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:mrbayes
+- VERSION:3.2.7a-mpi
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:GPL v3 license
+- LICENSEURL:
+- WEBSITE:https://github.com/NBISweden/MrBayes
+- LOCAL:/sw/bioinfo/mrbayes/mf/3.2.7a-mpi
+- COMMON:/sw/mf/common/bioinfo-tools/phylogeny//3.2.7a-mpi
+- DESCRIPTION:A program for Bayesian inference and model choice across a wide range of phylogenetic and evolutionary models.
+
+{'key': 'mrbayes_3.2.6-gcc7.1.0', 'path': '/sw/apps/bioinfo/mrbayes/mrbayes-3.2.7a-gpu.yaml', 'creator': 'jonass', 'md5': '167e98c24a777d21802fdf85986b474a', 'TOOL': 'mrbayes', 'VERSION': '3.2.6-gcc7.1.0', 'MODULE': None, 'KEYWORDS': ['phylogeny'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/phylogeny/mrbayes/3.2.6-gcc7.1.0', 'DESCRIPTION': None, 'SQLKEY': 'mrbayes_3.2.6-gcc7.1.0', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:mrbayes
+- VERSION:3.2.7a-gpu
+- CLUSTER:
+    - snowy
+- LICENSE:GPL v3 license
+- LICENSEURL:
+- WEBSITE:https://github.com/NBISweden/MrBayes
+- LOCAL:/sw/bioinfo/mrbayes/mf/3.2.7a-gpu
+- COMMON:/sw/mf/common/bioinfo-tools/phylogeny//3.2.7a-gpu
+- DESCRIPTION:A program for Bayesian inference and model choice across a wide range of phylogenetic and evolutionary models.
+
+{'key': 'muscle_3.8.31', 'path': '/sw/apps/bioinfo/muscle/muscle-5.1.yaml', 'creator': 'douglas', 'md5': '7c650b167202cd0acc27c3abc557de77', 'TOOL': 'muscle', 'VERSION': '3.8.31', 'MODULE': 'muscle', 'KEYWORDS': ['bioinformatics', 'alignment'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'Public domain', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://www.drive5.com/muscle/', 'LOCAL': None, 'SECTION': 'Bioinformatics Alignment', 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/alignment/muscle/3.8.31', 'DESCRIPTION': 'MUSCLE', 'SQLKEY': 'muscle_3.8.31', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:muscle
+- VERSION:5.1
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+- LICENSE:GPL v3
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/rcedgar/muscle
+- LOCAL:/sw/bioinfo/muscle/mf/5.1
+- COMMON:/sw/mf/common/bioinfo-tools/alignment/muscle/5.1
+- DESCRIPTION:Multiple sequence alignment with top benchmark scores scalable to thousands of sequences. Generates replicate alignments, enabling assessment of downstream analyses such as trees and predicted structures.
+
+{'key': 'ngsF-HMM_20160614', 'path': '/sw/apps/bioinfo/ngsF-HMM/ngsF-HMM-20200720-2df9690.yaml', 'creator': 'douglas', 'md5': '944130c63f9a38375b4cdfe1424c2501', 'TOOL': 'ngsF-HMM', 'VERSION': '20160614', 'MODULE': None, 'KEYWORDS': ['hmm'], 'CLUSTER': ['milou'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/ngsF-HMM/20160614', 'DESCRIPTION': None, 'SQLKEY': 'ngsF-HMM_20160614', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:muscle
+- VERSION:5.1
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+- LICENSE:GPL v3
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/rcedgar/muscle
+- LOCAL:/sw/bioinfo/muscle/mf/5.1
+- COMMON:/sw/mf/common/bioinfo-tools/alignment/muscle/5.1
+- DESCRIPTION:Multiple sequence alignment with top benchmark scores scalable to thousands of sequences. Generates replicate alignments, enabling assessment of downstream analyses such as trees and predicted structures.
+
+{'key': 'paml_4.6', 'path': '/sw/apps/bioinfo/paml/paml-4.9j.yaml', 'creator': 'bjornc', 'md5': '20c6359e7783541e8ae159c9f17da2e4', 'TOOL': 'paml', 'VERSION': '4.6', 'MODULE': 'paml', 'KEYWORDS': ['phylogeny', 'bioinformatics'], 'CLUSTER': ['milou'], 'LICENSE': 'Other', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://abacus.gene.ucl.ac.uk/software/paml.html', 'LOCAL': None, 'SECTION': 'Bioinformatics Phylogeny', 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/paml/paml-4.6-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/phylogeny/paml/4.6', 'DESCRIPTION': 'PAML', 'SQLKEY': 'paml_4.6', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:paml
+- VERSION:4.9j
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:other
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:http://abacus.gene.ucl.ac.uk/software/paml.html
+- LOCAL:/sw/bioinfo/paml/mf/4.9j
+- COMMON:/sw/mf/common/bioinfo-tools/phylogeny/paml/4.9j
+- DESCRIPTION:PAML is a package of programs for phylogenetic analyses of DNA or protein sequences using maximum likelihood.
+
+{'key': 'phast_1.5', 'path': '/sw/apps/bioinfo/phast/phast-1.6.yaml', 'creator': 'bjornc', 'md5': '161928658d660b8ed6c37b03b8059e9e', 'TOOL': 'phast', 'VERSION': '1.5', 'MODULE': 'phast', 'KEYWORDS': ['phylogeny', 'bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': 'BSD', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://compgen.cshl.edu/phast/', 'LOCAL': None, 'SECTION': 'Bioinformatics Phylogeny', 'POSTINSTALL': None, 'README': '/sw/bioinfo/phast/phast-1.5-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/phylogeny/phast/1.5', 'DESCRIPTION': 'Phast', 'SQLKEY': 'phast_1.5', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: phast
+  VERSION: 1.6
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: AS IS
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: http://compgen.cshl.edu/phast/index.php
+  LOCAL: /sw/bioinfo/phast/mf/1.6
+  COMMON: /sw/mf/common/bioinfo-tools/phylogeny/phast/1.6
+  DESCRIPTION: Phylogenetic Analysis with Space/Time models (PHAST) is a freely available software package consisting of a collection of command-line programs and supporting libraries for comparative and evolutionary genomics.
+  TAGS: 
+    - 
+  MODULE: phast
+  SECTION: phylogeny
+  POSTINSTALL: /sw/bioinfo/phast/phast-1.6_post-install.sh
+  README: /sw/bioinfo/phast/phast-1.6_install-README.md
+  SQLKEY: 1.6
+
+{'key': 'prokka_1.11', 'path': '/sw/apps/bioinfo/krakenuniq/krakenuniq-0.5.8.yaml', 'creator': 'laekl991', 'md5': 'ab4a97379abf22553e8c7ba1018ebc4c', 'TOOL': 'prokka', 'VERSION': '1.11', 'MODULE': None, 'KEYWORDS': ['annotation'], 'CLUSTER': ['milou'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/annotation/prokka/1.11', 'DESCRIPTION': None, 'SQLKEY': 'prokka_1.11', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:krakenuniq
+- VERSION:0.5.8
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:GPLv3.0 and MIT 
+- LICENSEURL:https://www.gnu.org/licenses/gpl-3.0.en.html, https://opensource.org/licenses/MIT
+- WEBSITE:https://github.com/fbreitwieser/krakenuniq
+- LOCAL:/sw/bioinfo/krakenuniq/mf/0.5.8
+- COMMON:/sw/mf/common/bioinfo-tools/misc//0.5.8
+- DESCRIPTION:KrakenUniq: confident and fast metagenomics classification using unique k-mer counts
+
+{'key': 'qctool_2-5559450', 'path': '/sw/apps/bioinfo/qctool/mf/2-5559450.yaml', 'creator': 'jonass', 'md5': 'b638f5254e19916f80077df1eff15f9d', 'TOOL': 'qctool', 'VERSION': '2-5559450', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['rackham', 'bianca', 'irma', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': None, 'USERPERMISSIONS': None, 'WEBSITE': 'https://www.well.ox.ac.uk/~gav/qctool_v2/', 'LOCAL': '/sw/bioinfo/qctool/mf/2-5559450', 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/qctool/2-5559450', 'DESCRIPTION': None, 'SQLKEY': 'qctool_2-5559450', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:qctool
+- VERSION:2.0.6
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:'As is' open source
+- WEBSITE:https://mathgen.stats.ox.ac.uk/genetics_software/snptest/snptest.html
+    - LOCAL:/sw/bioinfo/qctool/mf/2.0.6
+    - COMMON:/sw/mf/common/bioinfo-tools/misc/qctool/2.0.6
+
+{'key': 'qctool_2-beta', 'path': '/sw/apps/bioinfo/qctool/mf/2-beta.yaml', 'creator': 'jonass', 'md5': '2ed349aa9956c5d2300de7a35426c0b7', 'TOOL': 'qctool', 'VERSION': '2-beta', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['rackham', 'bianca', 'irma', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': None, 'USERPERMISSIONS': None, 'WEBSITE': 'https://www.well.ox.ac.uk/~gav/qctool_v2/', 'LOCAL': '/sw/bioinfo/qctool/mf/2-beta', 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/qctool/2-beta', 'DESCRIPTION': None, 'SQLKEY': 'qctool_2-beta', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:qctool
+- VERSION:2.0.6
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:'As is' open source
+- WEBSITE:https://mathgen.stats.ox.ac.uk/genetics_software/snptest/snptest.html
+    - LOCAL:/sw/bioinfo/qctool/mf/2.0.6
+    - COMMON:/sw/mf/common/bioinfo-tools/misc/qctool/2.0.6
+
+{'key': 'samblaster_0.1.24', 'path': '/sw/apps/bioinfo/samblaster/samblaster-0.1.26.yaml', 'creator': 'douglas', 'md5': '047cc4885018d7c7c9d09f486b76b2dc', 'TOOL': 'samblaster', 'VERSION': '0.1.24', 'MODULE': 'samblaster', 'KEYWORDS': ['bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/GregoryFaust/samblaster', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/samblaster/samblaster-0.1.24-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/samblaster/0.1.24', 'DESCRIPTION': 'samblaster', 'SQLKEY': 'samblaster_0.1.24', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: samblaster
+  VERSION: 0.1.26
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: MIT
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/GregoryFaust/samblaster
+  LOCAL: /sw/bioinfo/samblaster/mf/0.1.26
+  COMMON: /sw/mf/common/bioinfo-tools/misc/samblaster/0.1.26
+  DESCRIPTION: a tool to mark duplicates and extract discordant and split reads from sam files
+  KEYWORDS: 
+    - 
+  MODULE: samblaster
+  SECTION: misc
+  POSTINSTALL: /sw/bioinfo/samblaster/samblaster-0.1.26_post-install.sh
+  README: /sw/bioinfo/samblaster/samblaster-0.1.26_install-README.md
+  SQLKEY: 0.1.26
+
+{'key': 'satsuma2_2016-12-07', 'path': '/sw/apps/bioinfo/satsuma2/satsuma2-37c5f38-20200304.yaml', 'creator': 'bjornc', 'md5': '103115428592e57c23eef3e79539f45d', 'TOOL': 'satsuma2', 'VERSION': '2016-12-07', 'MODULE': 'satsuma2', 'KEYWORDS': ['alignment', 'assembly', 'bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'LGPL v3+', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/bioinfologics/satsuma2', 'LOCAL': None, 'SECTION': 'Bioinformatics Assembly', 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/satsuma2/satsuma2-2016-12-07-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/alignment/satsuma2/2016-12-07', 'DESCRIPTION': 'satsuma2', 'SQLKEY': 'satsuma2_2016-12-07', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: satsuma2
+  VERSION: 37c5f38-20200304
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v3
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/bioinfologics/satsuma2
+  LOCAL: /sw/bioinfo/satsuma2/mf/37c5f38-20200304
+  COMMON: /sw/mf/common/bioinfo-tools/alignment/satsuma2/37c5f38-20200304
+  DESCRIPTION: optimised version of Satsuma, a tool to reliably align large and complex DNA sequences providing maximum sensitivity (to find all there is to find), specificity (to only find real homology) and speed (to accomodate the billions of base pairs in vertebrate genomes).
+  TAGS: 
+    - 
+  MODULE: satsuma2
+  SECTION: alignment
+  POSTINSTALL: /sw/bioinfo/satsuma2/satsuma2-37c5f38-20200304_post-install.sh
+  README: /sw/bioinfo/satsuma2/satsuma2-37c5f38-20200304_install-README.md
+  SQLKEY: 37c5f38-20200304
+
+{'key': 'snakemake_5.30.1', 'path': '/sw/apps/bioinfo/snakemake/snakemake-6.9.1.yaml', 'creator': 'jonass', 'md5': 'bd1eb252ea38f3530de8524c4de2877b', 'TOOL': 'snakemake', 'VERSION': '5.30.1', 'MODULE': 'snakemake', 'KEYWORDS': ['bioinformatics', 'pipeline', 'snakemake', 'workflow'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': 'https://snakemake.readthedocs.io/en/stable/project_info/license.html', 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""""', 'WEBSITE': 'https://github.com/snakemake/snakemake', 'LOCAL': '/sw/bioinfo/snakemake/mf/5.30.1', 'SECTION': 'Bioinformatics Pipelines', 'POSTINSTALL': '/sw/bioinfo/snakemake/snakemake-6.9.1_post-install.sh', 'README': '/sw/bioinfo/snakemake/snakemake-6.9.1_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/pipelines//5.30.1', 'DESCRIPTION': 'A tool to create reproducible and scalable data analyses', 'SQLKEY': 'snakemake_5.30.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:snakemake
+- VERSION:6.9.1
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT License
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/snakemake/snakemake
+- LOCAL:/sw/bioinfo/snakemake/mf/6.9.1
+- COMMON:/sw/mf/common/bioinfo-tools/pipelines/snakemake/6.9.1
+- DESCRIPTION:The Snakemake workflow management system is a tool to create reproducible and scalable data analyses
+
+{'key': 'snakemake_5.30.1', 'path': '/sw/apps/bioinfo/snakemake/snakemake-7.8.5.yaml', 'creator': 'niharika', 'md5': 'c28d51e27439026cfa102587133d21c5', 'TOOL': 'snakemake', 'VERSION': '5.30.1', 'MODULE': 'snakemake', 'KEYWORDS': ['bioinformatics', 'pipeline', 'snakemake', 'workflow'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': 'https://snakemake.readthedocs.io/en/stable/project_info/license.html', 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""""', 'WEBSITE': 'https://github.com/snakemake/snakemake', 'LOCAL': '/sw/bioinfo/snakemake/mf/5.30.1', 'SECTION': 'Bioinformatics Pipelines', 'POSTINSTALL': '/sw/bioinfo/snakemake/snakemake-6.9.1_post-install.sh', 'README': '/sw/bioinfo/snakemake/snakemake-6.9.1_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/pipelines//5.30.1', 'DESCRIPTION': 'A tool to create reproducible and scalable data analyses', 'SQLKEY': 'snakemake_5.30.1', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: snakemake
+  VERSION: 7.8.5
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: MIT License
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/snakemake/snakemake
+  LOCAL: /sw/bioinfo/snakemake/mf/7.8.5
+  COMMON: /sw/mf/common/bioinfo-tools/pipelines/snakemake/7.8.5
+  DESCRIPTION: The Snakemake workflow management system is a tool to create reproducible and scalable data analyses
+  TAGS: 
+    - 
+  MODULE: snakemake
+  SECTION: pipelines
+  POSTINSTALL: /sw/bioinfo/snakemake/snakemake-7.8.5_post-install.sh
+  README: /sw/bioinfo/snakemake/snakemake-7.8.5_install-README.md
+  SQLKEY: 7.8.5
+
+{'key': 'snakemake_5.30.1', 'path': '/sw/apps/bioinfo/snakemake/snakemake-7.18.1.yaml', 'creator': 'iusan', 'md5': 'c28d51e27439026cfa102587133d21c5', 'TOOL': 'snakemake', 'VERSION': '5.30.1', 'MODULE': 'snakemake', 'KEYWORDS': ['bioinformatics', 'pipeline', 'snakemake', 'workflow'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': 'https://snakemake.readthedocs.io/en/stable/project_info/license.html', 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""""', 'WEBSITE': 'https://github.com/snakemake/snakemake', 'LOCAL': '/sw/bioinfo/snakemake/mf/5.30.1', 'SECTION': 'Bioinformatics Pipelines', 'POSTINSTALL': '/sw/bioinfo/snakemake/snakemake-6.9.1_post-install.sh', 'README': '/sw/bioinfo/snakemake/snakemake-6.9.1_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/pipelines//5.30.1', 'DESCRIPTION': 'A tool to create reproducible and scalable data analyses', 'SQLKEY': 'snakemake_5.30.1', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: snakemake
+  VERSION: 7.18.1
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: MIT License
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/snakemake/snakemake
+  LOCAL: /sw/bioinfo/snakemake/mf/7.18.1
+  COMMON: /sw/mf/common/bioinfo-tools/pipelines/snakemake/7.18.1
+  DESCRIPTION: The Snakemake workflow management system is a tool to create reproducible and scalable data analyses
+  TAGS: 
+    - 
+  MODULE: snakemake
+  SECTION: pipelines
+  POSTINSTALL: /sw/bioinfo/snakemake/snakemake-7.18.1_post-install.sh
+  README: /sw/bioinfo/snakemake/snakemake-7.18.1_install-README.md
+  SQLKEY: 7.18.1
+
+{'key': 'snakemake_5.30.1', 'path': '/sw/apps/bioinfo/snakemake/snakemake-7.18.2.yaml', 'creator': 'iusan', 'md5': 'c28d51e27439026cfa102587133d21c5', 'TOOL': 'snakemake', 'VERSION': '5.30.1', 'MODULE': 'snakemake', 'KEYWORDS': ['bioinformatics', 'pipeline', 'snakemake', 'workflow'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': 'https://snakemake.readthedocs.io/en/stable/project_info/license.html', 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""""', 'WEBSITE': 'https://github.com/snakemake/snakemake', 'LOCAL': '/sw/bioinfo/snakemake/mf/5.30.1', 'SECTION': 'Bioinformatics Pipelines', 'POSTINSTALL': '/sw/bioinfo/snakemake/snakemake-6.9.1_post-install.sh', 'README': '/sw/bioinfo/snakemake/snakemake-6.9.1_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/pipelines//5.30.1', 'DESCRIPTION': 'A tool to create reproducible and scalable data analyses', 'SQLKEY': 'snakemake_5.30.1', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: snakemake
+  VERSION: 7.18.2
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: MIT License
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/snakemake/snakemake
+  LOCAL: /sw/bioinfo/snakemake/mf/7.18.2
+  COMMON: /sw/mf/common/bioinfo-tools/pipelines/snakemake/7.18.2
+  DESCRIPTION: The Snakemake workflow management system is a tool to create reproducible and scalable data analyses
+  TAGS: 
+    - 
+  MODULE: snakemake
+  SECTION: pipelines
+  POSTINSTALL: /sw/bioinfo/snakemake/snakemake-7.18.2_post-install.sh
+  README: /sw/bioinfo/snakemake/snakemake-7.18.2_install-README.md
+  SQLKEY: 7.18.2
+
+{'key': 'snakemake_5.30.1', 'path': '/sw/apps/bioinfo/snakemake/snakemake-7.25.0.yaml', 'creator': 'bjornc', 'md5': 'c28d51e27439026cfa102587133d21c5', 'TOOL': 'snakemake', 'VERSION': '5.30.1', 'MODULE': 'snakemake', 'KEYWORDS': ['bioinformatics', 'pipeline', 'snakemake', 'workflow'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': 'https://snakemake.readthedocs.io/en/stable/project_info/license.html', 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""""', 'WEBSITE': 'https://github.com/snakemake/snakemake', 'LOCAL': '/sw/bioinfo/snakemake/mf/5.30.1', 'SECTION': 'Bioinformatics Pipelines', 'POSTINSTALL': '/sw/bioinfo/snakemake/snakemake-6.9.1_post-install.sh', 'README': '/sw/bioinfo/snakemake/snakemake-6.9.1_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/pipelines//5.30.1', 'DESCRIPTION': 'A tool to create reproducible and scalable data analyses', 'SQLKEY': 'snakemake_5.30.1', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: snakemake
+  VERSION: 7.25.0
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: MIT License
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/snakemake/snakemake
+  LOCAL: /sw/bioinfo/snakemake/mf/7.25.0
+  COMMON: /sw/mf/common/bioinfo-tools/pipelines/snakemake/7.25.0
+  DESCRIPTION: The Snakemake workflow management system is a tool to create reproducible and scalable data analyses
+  KEYWORDS: 
+    - 
+  MODULE: snakemake
+  SECTION: pipelines
+  POSTINSTALL: /sw/bioinfo/snakemake/snakemake-7.25.0_post-install.sh
+  README: /sw/bioinfo/snakemake/snakemake-7.25.0_install-README.md
+  SQLKEY: 7.25.0
+
+{'key': 'snakemake_5.30.1', 'path': '/sw/apps/bioinfo/snap/snap-2019-06-03-daf76ba.yaml', 'creator': 'jonass', 'md5': '314a60f1270a8e7ab22fcaa8926e6e10', 'TOOL': 'snakemake', 'VERSION': '5.30.1', 'MODULE': 'snakemake', 'KEYWORDS': ['bioinformatics', 'pipeline', 'snakemake', 'workflow'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': 'https://snakemake.readthedocs.io/en/stable/project_info/license.html', 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""""', 'WEBSITE': 'https://github.com/snakemake/snakemake', 'LOCAL': '/sw/bioinfo/snakemake/mf/5.30.1', 'SECTION': 'Bioinformatics Pipelines', 'POSTINSTALL': '/sw/bioinfo/snakemake/snakemake-6.9.1_post-install.sh', 'README': '/sw/bioinfo/snakemake/snakemake-6.9.1_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/pipelines//5.30.1', 'DESCRIPTION': 'A tool to create reproducible and scalable data analyses', 'SQLKEY': 'snakemake_5.30.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:snap
+- VERSION:2019-06-03-daf76ba
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:Custom AS-IS
+- LICENSEURL:https://github.com/KorfLab/SNAP/blob/master/LICENSE
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/KorfLab/SNAP
+- LOCAL:/sw/bioinfo/snap/mf/2019-06-03-daf76ba
+- COMMON:/sw/mf/common/bioinfo-tools/annotation/snap/2019-06-03-daf76ba
+- DESCRIPTION:general purpose gene finding program suitable for both eukaryotic and prokaryotic genomes. SNAP is an acroynm for Semi-HMM-based Nucleic Acid Parser
+
+{'key': 'spades_3.15.3', 'path': '/sw/apps/bioinfo/spades/spades-3.15.5.yaml', 'creator': 'iusan', 'md5': 'e36d1716e106446231c75cc2d2445f7e', 'TOOL': 'spades', 'VERSION': '3.15.3', 'MODULE': 'spades', 'KEYWORDS': ['assembly', 'assembler', 'bioinformatics', 'pipeline', 'genome'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': 'GPL v3,GPLv2(3.14.1)', 'LICENSEURL': 'https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.htmlGPLv2', 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""', 'WEBSITE': 'http://bioinf.spbau.ru/spades', 'LOCAL': None, 'SECTION': 'Bioinformatics Assembly', 'POSTINSTALL': '/sw/bioinfo/spades/spades-3.15.3_post-install.sh', 'README': '/sw/bioinfo/spades/spades-3.15.3_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/assembly/spades/3.15.3', 'DESCRIPTION': 'SPAdes', 'SQLKEY': 'spades_3.15.3', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: spades
+  VERSION: 3.15.5
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPLv2
+  LICENSEURL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: http://cab.spbu.ru/software/spades/
+  LOCAL: /sw/bioinfo/spades/mf/3.15.5
+  COMMON: /sw/mf/common/bioinfo-tools/assembly/spades/3.15.5
+  DESCRIPTION: SPAdes --  St. Petersburg genome assembler -- is an assembly toolkit containing various assembly pipelines.
+  TAGS: 
+    - 
+  MODULE: spades
+  SECTION: assembly
+  POSTINSTALL: /sw/bioinfo/spades/spades-3.15.5_post-install.sh
+  README: /sw/bioinfo/spades/spades-3.15.5_install-README.md
+  SQLKEY: 3.15.5
+
+{'key': 'spaln_2.4.0', 'path': '/sw/apps/bioinfo/spaln/spaln-2.4.9.yaml', 'creator': 'douglas', 'md5': '859582f76a53ac7fd50bbeff3b685dc5', 'TOOL': 'spaln', 'VERSION': '2.4.0', 'MODULE': 'spaln', 'KEYWORDS': ['alignment', 'bioinformatics'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'GPL v2', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://www.genome.ist.i.kyoto-u.ac.jp/~aln_user/spaln', 'LOCAL': '/sw/bioinfo/spaln/mf/2.4.0', 'SECTION': 'Bioinformatics Alignment', 'POSTINSTALL': '/sw/bioinfo/spaln/spaln-2.4.0_post-install.sh', 'README': '/sw/bioinfo/spaln/spaln-2.4.0_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/alignment/spaln/2.4.0', 'DESCRIPTION': 'Spaln', 'SQLKEY': 'spaln_2.4.0', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: spaln
+  VERSION: 2.4.9
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v2
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/ogotoh/spaln
+  LOCAL: /sw/bioinfo/spaln/mf/2.4.9
+  COMMON: /sw/mf/common/bioinfo-tools/alignment/spaln/2.4.9
+  DESCRIPTION: stand-alone program that maps and aligns a set of cDNA or protein sequences onto a whole genomic sequence in a single job
+  TAGS: 
+    - 
+  MODULE: spaln
+  SECTION: alignment
+  POSTINSTALL: /sw/bioinfo/spaln/spaln-2.4.9_post-install.sh
+  README: /sw/bioinfo/spaln/spaln-2.4.9_install-README.md
+  SQLKEY: 2.4.9
+
+{'key': 'spaln_2.4.0', 'path': '/sw/apps/bioinfo/spaln/spaln-2.4.13c.yaml', 'creator': 'douglas', 'md5': '859582f76a53ac7fd50bbeff3b685dc5', 'TOOL': 'spaln', 'VERSION': '2.4.0', 'MODULE': 'spaln', 'KEYWORDS': ['alignment', 'bioinformatics'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'GPL v2', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://www.genome.ist.i.kyoto-u.ac.jp/~aln_user/spaln', 'LOCAL': '/sw/bioinfo/spaln/mf/2.4.0', 'SECTION': 'Bioinformatics Alignment', 'POSTINSTALL': '/sw/bioinfo/spaln/spaln-2.4.0_post-install.sh', 'README': '/sw/bioinfo/spaln/spaln-2.4.0_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/alignment/spaln/2.4.0', 'DESCRIPTION': 'Spaln', 'SQLKEY': 'spaln_2.4.0', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: spaln
+  VERSION: 2.4.13c
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v2
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/ogotoh/spaln
+  LOCAL: /sw/bioinfo/spaln/mf/2.4.13c
+  COMMON: /sw/mf/common/bioinfo-tools/alignment/spaln/2.4.13c
+  DESCRIPTION: stand-alone program that maps and aligns a set of cDNA or protein sequences onto a whole genomic sequence in a single job
+  TAGS: 
+    - 
+  MODULE: spaln
+  SECTION: alignment
+  POSTINSTALL: /sw/bioinfo/spaln/spaln-2.4.13c_post-install.sh
+  README: /sw/bioinfo/spaln/spaln-2.4.13c_install-README.md
+  SQLKEY: 2.4.13c
+
+{'key': 'sratools_2.10.9', 'path': '/sw/apps/bioinfo/sratools/sratools-3.0.0.yaml', 'creator': 'pmitev', 'md5': 'dbe7a0a23f56c25ff10b4c9e459dba6c', 'TOOL': 'sratools', 'VERSION': '2.10.9', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': '/sw/bioinfo/sratools/sratools-2.10.9_post-install.sh', 'README': '/sw/bioinfo/sratools/sratools-2.10.9_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/sratools/2.10.9', 'DESCRIPTION': None, 'SQLKEY': 'sratools_2.10.9', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: sratools
+  VERSION: 3.0.0
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: custom
+  LICENSEURL: https://github.com/ncbi/sra-tools/blob/master/LICENSE
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://github.com/ncbi/sra-tools
+  LOCAL: /sw/bioinfo/sratools/mf/3.0.0
+  COMMON: /sw/mf/common/bioinfo-tools/misc/sratools/3.0.0
+  DESCRIPTION: The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives.
+  TAGS: 
+    - 
+  MODULE: sratools
+  SECTION: misc
+  POSTINSTALL: /sw/bioinfo/sratools/sratools-3.0.0_post-install.sh
+  README: /sw/bioinfo/sratools/sratools-3.0.0_install-README.md
+  SQLKEY: 3.0.0
+
+{'key': 'trimmomatic_0.36', 'path': '/sw/apps/bioinfo/trimmomatic/trimmomatic-0.39.yaml', 'creator': 'niharika', 'md5': '49697c6f16f176cad0e48ca2fa7057c8', 'TOOL': 'trimmomatic', 'VERSION': '0.36', 'MODULE': 'trimmomatic', 'KEYWORDS': ['bioinformatics', 'trim'], 'CLUSTER': ['bianca', 'irma', 'milou', 'rackham', 'snowy'], 'LICENSE': 'GPL', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/usadellab/Trimmomatic', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/trimmomatic/0.36', 'DESCRIPTION': 'Trimmomatic', 'SQLKEY': 'trimmomatic_0.36', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:trimmomatic
+- VERSION:0.39
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:GPL
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/usadellab/Trimmomatic
+- LOCAL:/sw/bioinfo/trimmomatic/mf/0.39
+- COMMON:/sw/mf/common/bioinfo-tools/misc/trimmomatic/0.39
+- DESCRIPTION:Trimmomatic performs a variety of useful trimming tasks for illumina paired-end and single ended data.
+
+{'key': 'trinotate_3.1.1', 'path': '/sw/apps/bioinfo/trinotate/trinotate-3.2.2.yaml', 'creator': 'jonass', 'md5': '39acc6dba446c4f3847794978fbe5b3b', 'TOOL': 'trinotate', 'VERSION': '3.1.1', 'MODULE': 'trinotate', 'KEYWORDS': ['bioinformatics', 'annotation'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': 'Custom open-source "AS IS"', 'LICENSEURL': 'https://github.com/Trinotate/Trinotate/blob/master/LICENSE.txt', 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://trinotate.github.io/', 'LOCAL': None, 'SECTION': 'Bioinformatics Annotation', 'POSTINSTALL': None, 'README': '/sw/bioinfo/trinotate/trinotate-3.1.1-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/annotation/trinotate/3.1.1', 'DESCRIPTION': 'Trinotate', 'SQLKEY': 'trinotate_3.1.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:trinotate
+- VERSION:3.2.2
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:Custom open-source \'AS IS\'
+- LICENSEURL:https://github.com/Trinotate/Trinotate/blob/master/LICENSE.txt
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/Trinotate/Trinotate.github.io/wiki
+- LOCAL:/sw/bioinfo/trinotate/mf/3.2.2
+- COMMON:/sw/mf/common/bioinfo-tools/annotation/trinotate/3.2.2
+- DESCRIPTION:comprehensive annotation suite designed for automatic functional annotation of transcriptomes\, particularly de novo assembled transcriptomes\, from model or non-model organisms
+
+{'key': 'DeepVariant_0.8.0', 'path': '/sw/apps/bioinfo/DeepVariant/DeepVariant-1.3.0.yaml', 'creator': 'niharika', 'md5': '1a4aea3a14213e9c55659a25092bfbb5', 'TOOL': 'DeepVariant', 'VERSION': '0.8.0', 'MODULE': 'DeepVariant', 'KEYWORDS': ['bioinformatics', 'variant', 'pipeline'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'BSD-3', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/google/deepvariant', 'LOCAL': '/sw/bioinfo/DeepVariant/mf/0.8.0', 'SECTION': 'Bioinformatics Pipelines', 'POSTINSTALL': None, 'README': '/sw/bioinfo/DeepVariant/DeepVariant-0.8.0_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/pipelines/DeepVariant/0.8.0', 'DESCRIPTION': 'DeepVariant', 'SQLKEY': 'DeepVariant_0.8.0', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:DeepVariant
+- VERSION:1.3.0
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:BSD 3-Clause
+- LICENSEURL:https://github.com/google/deepvariant/blob/r1.3/LICENSE
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/google/deepvariant
+- LOCAL:/sw/bioinfo/DeepVariant/mf/1.3.0
+- COMMON:/sw/mf/common/bioinfo-tools/pipelines/DeepVariant/1.3.0
+- DESCRIPTION:DeepVariant is a deep learning-based variant caller that takes aligned reads (in BAM or CRAM format), produces pileup image tensors from them, classifies each tensor using a convolutional neural network, and finally reports the results in a standard VCF or gVCF file.
+
+{'key': 'SMARTdenovo_20180219-5cc1356', 'path': '/sw/apps/bioinfo/SMARTdenovo/SMARTdenovo-20210224-8488de9.yaml', 'creator': 'jonass', 'md5': '3b191711604fa38914dc5ce8c5f9e4b3', 'TOOL': 'SMARTdenovo', 'VERSION': '20180219-5cc1356', 'MODULE': 'SMARTdenovo', 'KEYWORDS': ['assembler', 'pacbio', 'bioinformatics', 'de-novo', 'nanopore', 'assembly', 'oxford'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'Misc open source', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""', 'WEBSITE': 'https://github.com/ruanjue/smartdenovo', 'LOCAL': '/sw/bioinfo/SMARTdenovo/mf/20180219-5cc1356', 'SECTION': 'Bioinformatics Assembly', 'POSTINSTALL': '/sw/bioinfo/SMARTdenovo/SMARTdenovo-20210224-8488de9_post-install.sh', 'README': '/sw/bioinfo/SMARTdenovo/SMARTdenovo-20210224-8488de9_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/assembly/SMARTdenovo/20180219-5cc1356', 'DESCRIPTION': 'SMARTdenovo', 'SQLKEY': 'SMARTdenovo_20180219-5cc1356', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:SMARTdenovo
+- VERSION:20210224-8488de9
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:GNU
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/ruanjue/smartdenovo
+- LOCAL:/sw/bioinfo/SMARTdenovo/mf/20210224-8488de9
+- COMMON:/sw/mf/common/bioinfo-tools/assembly/SMARTdenovo/20210224-8488de9
+- DESCRIPTION:SMARTdenovo is a de novo assembler for PacBio and Oxford Nanopore (ONT) data.
+
+{'key': 'cdbfasta_1.0', 'path': '/sw/apps/bioinfo/cdbfasta/cdbfasta-1.00.yaml', 'creator': 'jonass', 'md5': '1645c78ba90b978d61f242fa87087584', 'TOOL': 'cdbfasta', 'VERSION': '1.0', 'MODULE': 'cdbfasta', 'KEYWORDS': ['fasta', 'bioinformatics'], 'CLUSTER': ['rackham', 'miarka', 'bianca', 'snowy'], 'LICENSE': 'Artistic 2.0', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/gpertea/cdbfasta', 'LOCAL': '/sw/bioinfo/cdbfasta/mf/1.00', 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': '/sw/bioinfo/cdbfasta/cdbfasta-1.00_post-install.sh', 'README': '/sw/bioinfo/cdbfasta/cdbfasta-1.00_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/cdbfasta/1.00', 'DESCRIPTION': 'cdbfasta', 'SQLKEY': 'cdbfasta_1.0', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:cdbfasta
+- VERSION:1.00
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:Artistic 2.0
+- WEBSITE:https://github.com/gpertea/cdbfasta
+- LOCAL:/sw/bioinfo/cdbfasta/mf/1.00
+- COMMON:/sw/mf/common/bioinfo-tools/misc/cdbfasta/1.00
+
+{'key': 'pong_1.4.7', 'path': '/sw/apps/bioinfo/pong/pong-1.5.yaml', 'creator': 'niharika', 'md5': 'c7b101cb6e09cc9dea4de419fbaca962', 'TOOL': 'pong', 'VERSION': '1.4.7', 'MODULE': None, 'KEYWORDS': None, 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': None, 'README': None, 'COMMON': '/sw/mf/common/bioinfo-tools/misc/pong/1.4.7', 'DESCRIPTION': None, 'SQLKEY': 'pong_1.4.7', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: pong
+  VERSION: 1.5
+  CLUSTER: 
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPLv3
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://pypi.org/project/pong
+  LOCAL: /sw/bioinfo/pong/mf/1.5
+  COMMON: /sw/mf/common/bioinfo-tools/misc/pong/1.5
+  DESCRIPTION: fast analysis and visualization of latent clusters in population genetic data.
+  TAGS: 
+    - 
+  MODULE: pong
+  SECTION: misc
+  POSTINSTALL: /sw/bioinfo/pong/pong-1.5_post-install.sh
+  README: /sw/bioinfo/pong/pong-1.5_install-README.md
+  SQLKEY: 1.5
+
+{'key': 'braker_2.1.5-20200826-cf958ec', 'path': '/sw/apps/bioinfo/braker/braker-2.1.5-20210115-e98b812.yaml', 'creator': 'jonass', 'md5': '44c63323e71e5acfa421954b089a16e1', 'TOOL': 'braker', 'VERSION': '2.1.5-20200826-cf958ec', 'MODULE': 'braker', 'KEYWORDS': ['genome', 'gene', 'annotation', 'eukaryotic', 'prediction', 'protein', 'bioinformatics', 'pipeline', 'structure', 'coding'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'Artistic', 'LICENSEURL': 'http://www.opensource.org/licenses/artistic-license.php', 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""', 'WEBSITE': 'https://github.com/Gaius-Augustus/BRAKER', 'LOCAL': '/sw/bioinfo/braker/mf/2.1.5-20200826-cf958ec', 'SECTION': 'Bioinformatics Annotation', 'POSTINSTALL': '/sw/bioinfo/braker/braker-2.1.6_post-install.sh', 'README': '/sw/bioinfo/braker/braker-2.1.6_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/annotation//2.1.5-20200826-cf958ec', 'DESCRIPTION': 'BRAKER', 'SQLKEY': 'braker_2.1.5-20200826-cf958ec', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:braker
+- VERSION:2.1.5-20210115-e98b812
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:Artistic
+- LICENSEURL:
+- WEBSITE:https://github.com/Gaius-Augustus/BRAKER
+- LOCAL:/sw/bioinfo/braker/mf/2.1.5-20210115-e98b812
+- COMMON:/sw/mf/common/bioinfo-tools/annotation//2.1.5-20210115-e98b812
+- DESCRIPTION:pipeline for fully automated prediction of protein coding gene structures with GeneMark-ES/ET and AUGUSTUS in novel eukaryotic genomes
+
+{'key': 'braker_2.1.5-20200826-cf958ec', 'path': '/sw/apps/bioinfo/braker/braker-2.1.6.yaml', 'creator': 'jonass', 'md5': 'd70d1fc60fa689b05e510422ef23190b', 'TOOL': 'braker', 'VERSION': '2.1.5-20200826-cf958ec', 'MODULE': 'braker', 'KEYWORDS': ['genome', 'gene', 'annotation', 'eukaryotic', 'prediction', 'protein', 'bioinformatics', 'pipeline', 'structure', 'coding'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'Artistic', 'LICENSEURL': 'http://www.opensource.org/licenses/artistic-license.php', 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""', 'WEBSITE': 'https://github.com/Gaius-Augustus/BRAKER', 'LOCAL': '/sw/bioinfo/braker/mf/2.1.5-20200826-cf958ec', 'SECTION': 'Bioinformatics Annotation', 'POSTINSTALL': '/sw/bioinfo/braker/braker-2.1.6_post-install.sh', 'README': '/sw/bioinfo/braker/braker-2.1.6_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/annotation//2.1.5-20200826-cf958ec', 'DESCRIPTION': 'BRAKER', 'SQLKEY': 'braker_2.1.5-20200826-cf958ec', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:braker
+- VERSION:2.1.6
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:Artistic
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/Gaius-Augustus/BRAKER
+- LOCAL:/sw/bioinfo/braker/mf/2.1.6
+- COMMON:/sw/mf/common/bioinfo-tools/annotation/braker/2.1.6
+- DESCRIPTION:pipeline for fully automated prediction of protein coding gene structures with GeneMark-ES/ET and AUGUSTUS in novel eukaryotic genomes
+
+{'key': 'Kraken2_2.1.1', 'path': '/sw/apps/bioinfo/Kraken2/Kraken2-2.1.2-20211210-4f648f5.yaml', 'creator': 'douglas', 'md5': '42f6a7dd65aec5c592db6811258a462f', 'TOOL': 'Kraken2', 'VERSION': '2.1.1', 'MODULE': None, 'KEYWORDS': ['k-mer', 'classification', 'taxonomic'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': None, 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '""""""""""""-R u+rwX,g+rwX,o+rX-w""""""""""""', 'WEBSITE': None, 'LOCAL': None, 'SECTION': None, 'POSTINSTALL': '/sw/bioinfo/Kraken2/Kraken2-2.1.1_post-install.sh', 'README': '/sw/bioinfo/Kraken2/Kraken2-2.1.1_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/Kraken2/2.1.1', 'DESCRIPTION': None, 'SQLKEY': 'Kraken2_2.1.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:Kraken2
+- VERSION:2.1.2-20211210-4f648f5
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - miarka
+    - snowy
+- LICENSE:MIT
+- LICENSEURL:
+- USERGROUP:sw
+- USERPERMISSIONS:-R u+rwX,g+rwX,o+rX-w
+- WEBSITE:https://github.com/DerrickWood/kraken2
+- LOCAL:/sw/bioinfo/Kraken2/mf/2.1.2-20211210-4f648f5
+- COMMON:/sw/mf/common/bioinfo-tools/misc/Kraken2/2.1.2-20211210-4f648f5
+- DESCRIPTION:a taxonomic classification system using exact k-mer matches to achieve high accuracy and fast classification speeds
+
+{'key': 'verifyBamID2_1.0.6', 'path': '/sw/apps/bioinfo/VerifyBamID2/VerifyBamID2-1.0.6.yaml', 'creator': 'jonass', 'md5': '37d1ecc35047cb02cb2c22ad5e4743e2', 'TOOL': 'verifyBamID2', 'VERSION': '1.0.6', 'MODULE': 'VerifyBamID2', 'KEYWORDS': ['bioinformatics'], 'CLUSTER': ['rackham', 'irma', 'bianca', 'snowy'], 'LICENSE': 'MIT', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'http://griffan.github.io/VerifyBamID', 'LOCAL': '/sw/bioinfo/verifyBamID2/mf/1.0.6', 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': '/sw/bioinfo/VerifyBamID2/VerifyBamID2-1.0.6_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/verifyBamID2/1.0.6', 'DESCRIPTION': 'VerifyBamID2', 'SQLKEY': 'verifyBamID2_1.0.6', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:verifyBamID2
+- VERSION:1.0.6
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT
+- WEBSITE:http://griffan.github.io/VerifyBamID
+    - LOCAL:/sw/bioinfo/verifyBamID2/mf/1.0.6
+    - COMMON:/sw/mf/common/bioinfo-tools/misc/verifyBamID2/1.0.6
+
+{'key': 'Sniffles_1.0.10', 'path': '/sw/apps/bioinfo/Sniffles/Sniffles-1.0.12-201218-4ff6ecb.yaml', 'creator': 'jonass', 'md5': 'f786b1508c564d9a16917aba0fb0924b', 'TOOL': 'Sniffles', 'VERSION': '1.0.10', 'MODULE': 'Sniffles', 'KEYWORDS': ['bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': 'MIT license', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://github.com/fritzsedlazeck/Sniffles', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': '/sw/apps/bioinfo/Sniffles/Sniffles-1.0.10_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/Sniffles/1.0.10', 'DESCRIPTION': 'Sniffles', 'SQLKEY': 'Sniffles_1.0.10', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:Sniffles
+- VERSION:1.0.12-201218-4ff6ecb
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:MIT license
+- LICENSEURL:
+- WEBSITE:https://github.com/fritzsedlazeck/Sniffles
+- LOCAL:/sw/bioinfo/Sniffles/mf/1.0.12-201218-4ff6ecb
+- COMMON:/sw/mf/common/bioinfo-tools/misc//1.0.12-201218-4ff6ecb
+- DESCRIPTION:Sniffles is a structural variation caller using third generation sequencing (PacBio or Oxford Nanopore)
+
+{'key': 'SLiM_3.6', 'path': '/sw/apps/bioinfo/SLiM/SLiM-4.0.1.yaml', 'creator': 'bjornc', 'md5': '9da387f60aba6bf0b03c9c008324a129', 'TOOL': 'SLiM', 'VERSION': '3.6', 'MODULE': 'SLiM', 'KEYWORDS': ['gene', 'model', 'bioinformatics', 'complex', 'genetic', 'evolutionary', 'simulation', 'evolution', 'modeling', 'population'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': '""""""""""""GPL v3""""""""""""', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://messerlab.org/slim/', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': '/sw/bioinfo/SLiM/SLiM-3.6_post-install.sh', 'README': '/sw/bioinfo/SLiM/SLiM-3.6_install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/SLiM/3.6', 'DESCRIPTION': 'SLiM', 'SQLKEY': 'SLiM_3.6', 'TAGS': None, 'MODULEFILE': None}
+
+  TOOL: SLiM
+  VERSION: 4.0.1
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v3 license
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: https://messerlab.org/slim/
+  LOCAL: /sw/bioinfo/SLiM/mf/4.0.1
+  COMMON: /sw/mf/common/bioinfo-tools/misc/SLiM/4.0.1
+  DESCRIPTION: An evolutionary simulation framework that combines a powerful engine for population genetic simulations with the capability of modeling arbitrarily complex evolutionary scenarios.
+  KEYWORDS: 
+    - 
+  MODULE: SLiM
+  SECTION: misc
+  POSTINSTALL: /sw/bioinfo/SLiM/SLiM-4.0.1_post-install.sh
+  README: /sw/bioinfo/SLiM/SLiM-4.0.1_install-README.md
+  SQLKEY: 4.0.1
+
+{'key': 'fineSTRUCTURE_4.0.1', 'path': '/sw/apps/bioinfo/fineSTRUCTURE/fineSTRUCTURE-4.1.1.yaml', 'creator': 'douglas', 'md5': '5d1d8d53ea2eaa98d352150a3b5cd5f6', 'TOOL': 'fineSTRUCTURE', 'VERSION': '4.0.1', 'MODULE': 'fineSTRUCTURE', 'KEYWORDS': ['structure', 'bioinformatics'], 'CLUSTER': ['bianca', 'irma', 'rackham', 'snowy'], 'LICENSE': 'Free for noncommercial use only', 'LICENSEURL': None, 'USERGROUP': 'sw', 'USERPERMISSIONS': '-R u+rwX,g+rwX,o+rX-w', 'WEBSITE': 'https://people.maths.bris.ac.uk/~madjl/finestructure/finestructure.html', 'LOCAL': None, 'SECTION': 'Bioinformatics Misc', 'POSTINSTALL': None, 'README': '/sw/bioinfo/fineSTRUCTURE/fineSTRUCTURE-4.0.1-install-README.md', 'COMMON': '/sw/mf/common/bioinfo-tools/misc/fineSTRUCTURE/4.0.1', 'DESCRIPTION': 'fineSTRUCTURE', 'SQLKEY': 'fineSTRUCTURE_4.0.1', 'TAGS': None, 'MODULEFILE': None}
+
+- TOOL:fineSTRUCTURE
+- VERSION:4.1.1
+- CLUSTER:
+    - rackham
+    - irma
+    - bianca
+    - snowy
+- LICENSE:Free for noncommercial use
+- LICENSEURL:
+- WEBSITE:https://people.maths.bris.ac.uk/~madjl/finestructure/finestructure.html
+- LOCAL:/sw/bioinfo/fineSTRUCTURE/mf/4.1.1
+- COMMON:/sw/mf/common/bioinfo-tools/misc//4.1.1
+- DESCRIPTION:perform population assignment using large numbers of densely sampled genomes, including both SNP chips and sequence data
+

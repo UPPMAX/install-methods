@@ -49,7 +49,7 @@ conda-mirror --upstream-channel anaconda --target-directory /sw/apps/conda/lates
 echo "INDEXING CONDA" >> $LOGFILE
 cd /sw/apps/conda/latest/rackham/local_repo
 module load sqlite/3.34.0
-for i in $(find . -type d -maxdepth 1) do; conda index --channel-name CONDA_UPPMAX --verbose $i 2>&1 | tee -a $LOGFILE; done
+for i in $(find . -type d -maxdepth 1); do conda index --channel-name CONDA_UPPMAX --verbose $i 2>&1 | tee -a $LOGFILE; done
 conda clean -a -c -y
 module unload conda
 find /scratch/ -user jonass -exec rm -fr {} \;
