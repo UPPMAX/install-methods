@@ -35,7 +35,8 @@ def walklevel(path, depth = 1):
         yield root, dirs[:], files
         cur_depth = root.count(os.path.sep)
         #So if depth too big it removes dirs and they won't be generated and walking is over
-        if base_depth + depth <= cur_depth:
+        #I think the -1 is needed to make 1 list just the current dir.
+        if base_depth + depth -1 <= cur_depth:
             del dirs[:]
 
 def showmakeroomyaml(makeroomfile): 
@@ -96,10 +97,12 @@ parser = OptionParser()
 parser.add_option("-t", action="store", type="string", dest="TOOL")
 parser.add_option("-v", action="store", type="string", dest="VERSION")
 parser.add_option("-p", action="store", type="string", dest="PATH")
+parser.add_option("-s", action="store", type="string", dest="SQL_FIELD")
 (options, args) = parser.parse_args()
 TOOL = options.TOOL
 VERSION = options.VERSION
 PATH = options.PATH
+SQL_FIELD = options.SQL_FIELD
 if PATH == None and TOOL == None:
     print("Too few parameters!")
     exit(1)
@@ -116,12 +119,12 @@ yml.preserve_quotes = True
 yml.explicit_start = True
 
 if TOOL != None and VERSION != None:
-    sql = "SELECT * FROM yamlfiles WHERE yamlfiles.TOOL=\'" + TOOL + "\' AND yamlfiles.VERSION=\'" + VERSION + "\'"
+    sql = "SELECT " + SQL_FIELD + " FROM yamlfiles WHERE yamlfiles.TOOL=\'" + TOOL + "\' AND yamlfiles.VERSION=\'" + VERSION + "\'"
 elif TOOL != None:
-    sql = "SELECT * FROM yamlfiles WHERE yamlfiles.TOOL=\'" + TOOL + "\'"
+    sql = "SELECT " + SQL_FIELD + " FROM yamlfiles WHERE yamlfiles.TOOL=\'" + TOOL + "\'"
 elif TOOL == None:
     TOOL = os.path.basename(PATH)
-    sql = "SELECT * FROM yamlfiles WHERE yamlfiles.path LIKE \'" + PATH + "%\'"
+    sql = "SELECT " + SQL_FIELD + " FROM yamlfiles WHERE yamlfiles.path LIKE \'" + PATH + "%\'"
 
 #<======================================================
 #Hitta rätt path nedan
@@ -141,14 +144,36 @@ if VERSION != None:
     if os.path.isfile(makeroomfile):
         print(makeroomfile)
         print(showmakeroomyaml(makeroomfile))
+    if TOOL != None:
+        print("TOOL: " + TOOL)
+    if PATH != None:
+        print("PATH: " + PATH)
+    if VERSION != None:
+        print("VERSION: " + VERSION)
 else:
     for root, dirs, files in walklevel(PATH, 1):
         for d in dirs:
+            VERSION = d
             makeroomfile = PATH + "/makeroom_" + TOOL + "_" + d + ".sh"
             if os.path.isfile(makeroomfile):
+                print("")
+                print("---------makeroomfile-----------")
                 print(makeroomfile)
+                print("---------content-----------")
                 print(showmakeroomyaml(makeroomfile))
+            else:
+                print(makeroomfile + " does not exist. Should it?")
+            if TOOL != None:
+                print("TOOL: " + TOOL)
+            if PATH != None:
+                print("PATH: " + PATH)
+            if VERSION != None:
+                print("VERSION: " + VERSION)
 
 db_path = '/sw/infrastructure/swdb.db' 
 yaml_output = fetch_data_to_yaml(db_path, sql)
+print("")
+print("------------------sql-query----------------")
+print(sql)
+print("----------------sql-output----------------")
 print(yaml_output)
