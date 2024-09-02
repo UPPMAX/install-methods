@@ -1,0 +1,79 @@
+recognized toolchains: intel-compilers iccifortcuda CrayIntel gmvapich2 intelcuda fosscuda iccifort CrayCCE CrayGNU Fujitsu GCCcore gcccuda gimpic giolfc gmpich gmpolf gmvolf gompic iimpic nvofbf nvompi SYSTEM DUMMY ffmpi gimkl gimpi giolf gobff goblf gomkl gompi iibff iimkl iimpi intel iomkl iompi NVHPC pomkl pompi foss gfbf golf FCC GCC GNU PGI
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/0
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.bio.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.tools.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.math.tsv will be created
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/a
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.cae.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.chem.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.lib.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.vis.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.phys.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.data.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.system.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.perf.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.geo.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.lang.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.numlib.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.devel.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.compiler.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.astro.tsv will be created
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.ai.tsv will be created
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/b
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/c
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.toolchain.tsv will be created
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/d
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/e
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/f
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/g
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.debugger.tsv will be created
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/h
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.mpi.tsv will be created
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/i
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/j
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/k
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/l
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/m
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/n
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/o
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/p
+/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.quantum.tsv will be created
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/q
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/r
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/s
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/t
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/u
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/v
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/w
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/x
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/y
+./easybuild-table.pl: current directory /domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/z
+Output by module class written to:
+tables/eb.ai	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.ai.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.ai.errors
+tables/eb.astro	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.astro.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.astro.errors
+tables/eb.bio	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.bio.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.bio.errors
+tables/eb.cae	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.cae.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.cae.errors
+tables/eb.chem	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.chem.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.chem.errors
+tables/eb.compiler	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.compiler.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.compiler.errors
+tables/eb.data	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.data.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.data.errors
+tables/eb.debugger	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.debugger.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.debugger.errors
+tables/eb.devel	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.devel.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.devel.errors
+tables/eb.geo	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.geo.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.geo.errors
+tables/eb.lang	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.lang.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.lang.errors
+tables/eb.lib	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.lib.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.lib.errors
+tables/eb.math	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.math.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.math.errors
+tables/eb.mpi	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.mpi.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.mpi.errors
+tables/eb.numlib	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.numlib.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.numlib.errors
+tables/eb.perf	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.perf.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.perf.errors
+tables/eb.phys	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.phys.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.phys.errors
+tables/eb.quantum	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.quantum.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.quantum.errors
+tables/eb.system	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.system.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.system.errors
+tables/eb.toolchain	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.toolchain.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.toolchain.errors
+tables/eb.tools	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.tools.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.tools.errors
+tables/eb.vis	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.vis.tsv	/domus/h1/douglas/github-sync/local/install-methods/uppmax-easybuild-infrastructure/tables/eb.vis.errors
+
+
+
+SYSTEM|system toolchain specified: 2082
+DUMMY|dummy toolchain specified: 0
+missing toolchain specifications 0

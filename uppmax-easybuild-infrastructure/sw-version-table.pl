@@ -25,7 +25,7 @@ my $opt_debug = 1;
 my $opt_header = 1;
 my @years = (3, 5, 10);
 
-my @util_dirs_skipped = qw/ doug-dumping-ground slurm-drmaa.BACKUP /;
+my @util_dirs_skipped = qw/ doug-dumping-ground slurm-drmaa.BACKUP external_tarballs /;
 
 GetOptions(
     "debug=i" => \$opt_debug,

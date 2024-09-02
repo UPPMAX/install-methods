@@ -1,0 +1,2 @@
+base_dir	moduleclass	module	version	toolchain	toolchainversion	versionsuffix	ebfile
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a		ALGLIB	3.17.0	GCCcore	10.2.0		easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/ALGLIB/ALGLIB-3.17.0-GCCcore-10.2.0.eb

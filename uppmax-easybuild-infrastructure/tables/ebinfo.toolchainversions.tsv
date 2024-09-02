@@ -1,0 +1,1632 @@
+toolchain	toolchainversion	moduleversionsuffix	count
+CrayCCE	19.06		2
+CrayGNU	19.06		2
+CrayIntel	19.06		1
+FCC	4.5.0		19
+FCC	4.5.0	-fujitsu	1
+ffmpi	4.5.0		1
+foss	2016a		520
+foss	2016a	-32bitIDX	1
+foss	2016a	-bare	2
+foss	2016a	-CUDA-7.5.18-Python-2.7.11	1
+foss	2016a	-freetype-2.6.3	2
+foss	2016a	-gettext-0.19.7	1
+foss	2016a	-GLib-2.48.0	2
+foss	2016a	-hybrid	1
+foss	2016a	-hybrid-avx2	2
+foss	2016a	-Java-1.7.0_79-Python-2.7.11	1
+foss	2016a	-Java-1.7.0_80-Python-2.7.11	1
+foss	2016a	-Java-1.8.0_92	2
+foss	2016a	-Mesa-11.2.1	4
+foss	2016a	-METIS-5.1.0	3
+foss	2016a	-mpiio	1
+foss	2016a	-mt	1
+foss	2016a	-NASM-2.12.01	1
+foss	2016a	-nodejs-4.4.7	1
+foss	2016a	-no-X11	1
+foss	2016a	-omp-mpi	1
+foss	2016a	-ParMETIS-4.0.3	1
+foss	2016a	-Perl-5.22.1	10
+foss	2016a	-Python-2.7.11	85
+foss	2016a	-Python-2.7.11-freetype-2.6.3	2
+foss	2016a	-Python-2.7.11-HDF5-1.8.16	1
+foss	2016a	-Python-2.7.11-HDF5-1.8.16-serial	1
+foss	2016a	-Python-2.7.11-zmq4	2
+foss	2016a	-Python-3.5.1	30
+foss	2016a	-Python-3.5.1-HDF5-1.8.16	1
+foss	2016a	-Python-3.5.1-zmq4	1
+foss	2016a	-R-3.2.3	1
+foss	2016a	-serial	2
+foss	2016a	-tools	1
+foss	2016b		434
+foss	2016b	-bare	1
+foss	2016b	-BioPerl-1.7.0	1
+foss	2016b	-CUDA-8.0.61	1
+foss	2016b	-develop	1
+foss	2016b	-GPU-enabled	1
+foss	2016b	-GPU-Python-3.5.2	1
+foss	2016b	-hybrid	3
+foss	2016b	-Java-1.8.0_121	1
+foss	2016b	-METIS-5.1.0	1
+foss	2016b	-mpi	3
+foss	2016b	-mt	2
+foss	2016b	-ParMETIS-4.0.3	1
+foss	2016b	-Perl-5.24.0	13
+foss	2016b	-psmp	1
+foss	2016b	-Python-2.7.12	85
+foss	2016b	-Python-2.7.12-HDF5-1.8.17	1
+foss	2016b	-Python-2.7.12-HDF5-1.8.18	1
+foss	2016b	-Python-2.7.12-HDF5-1.10.0-patch1	1
+foss	2016b	-Python-2.7.12-R-3.3.1	1
+foss	2016b	-Python-2.7.12-R-3.3.3	1
+foss	2016b	-Python-2.7.12-zmq4	1
+foss	2016b	-Python-3.5.2	22
+foss	2016b	-Python-3.5.2-HDF5-1.8.18	1
+foss	2016b	-Python-3.5.2-HDF5-1.10.0-patch1	1
+foss	2016b	-Python-3.5.2-zmq4	1
+foss	2016b	-R-3.3.3	1
+foss	2016b	-sockets	1
+foss	2016b	-with-extensions	1
+foss	2016b	-X11-20160819	2
+foss	2017a		111
+foss	2017a	-HDF5-1.8.19	1
+foss	2017a	-HDF5-1.10.1	1
+foss	2017a	-METIS-5.1.0	1
+foss	2017a	-mpi	1
+foss	2017a	-nodejs-8.9.4	1
+foss	2017a	-ParMETIS-4.0.3	1
+foss	2017a	-PLUMED	1
+foss	2017a	-Python-2.7.13	25
+foss	2017a	-Python-2.7.13-HDF5-1.8.19	1
+foss	2017a	-Python-2.7.13-HDF5-1.10.1	1
+foss	2017a	-Python-2.7.13-zmq4	1
+foss	2017a	-Python-3.6.1	3
+foss	2017a	-Python-3.6.1-HDF5-1.8.19	1
+foss	2017a	-Python-3.6.1-HDF5-1.10.1	1
+foss	2017a	-Python-3.6.4	2
+foss	2017a	-tools	1
+foss	2017b		281
+foss	2017b	-5build1	1
+foss	2017b	-64bitint	1
+foss	2017b	-AmberTools-17-patchlevel-10-15-Python-2.7.14	1
+foss	2017b	-CUDA-9.0.176-Python-2.7.14	1
+foss	2017b	-downloaded-deps	2
+foss	2017b	-HDF5-1.8.19	2
+foss	2017b	-hybrid-avx	1
+foss	2017b	-hybrid-avx2	1
+foss	2017b	-hybrid-sse3	1
+foss	2017b	-metis	1
+foss	2017b	-METIS-5.1.0	2
+foss	2017b	-MPFR-3.1.6	1
+foss	2017b	-mpi	2
+foss	2017b	-ParMETIS-4.0.3	2
+foss	2017b	-Perl-5.26.0	9
+foss	2017b	-Perl-5.26.0-Python-2.7.14	1
+foss	2017b	-Perl-5.26.0-Python-3.6.3	1
+foss	2017b	-Python-2.7.14	61
+foss	2017b	-Python-2.7.14-R-3.4.3	1
+foss	2017b	-Python-3.6.2	9
+foss	2017b	-Python-3.6.2-HDF5-1.8.19	1
+foss	2017b	-Python-3.6.3	56
+foss	2017b	-R-3.4.3	3
+foss	2017b	-R-3.4.3-Python-2.7.14	1
+foss	2017b	-X11-20171023	1
+foss	2018a		285
+foss	2018a	-5build1	1
+foss	2018a	-bare	1
+foss	2018a	-CUDA-9.1.85	2
+foss	2018a	-downloaded-deps	1
+foss	2018a	-Java-1.8.0_162	1
+foss	2018a	-METIS-5.1.0	1
+foss	2018a	-mpi	1
+foss	2018a	-mt-kmer_191	1
+foss	2018a	-Perl-5.26.1	2
+foss	2018a	-Python-2.7.14	45
+foss	2018a	-Python-2.7.14-Boost-1.63.0	1
+foss	2018a	-Python-2.7.14-zmq4	1
+foss	2018a	-Python-3.6.4	72
+foss	2018a	-Python-3.6.4-contrib	1
+foss	2018a	-Python-3.6.4-CUDA-9.1.85	4
+foss	2018a	-Python-3.6.4-Perl-5.26.1	1
+foss	2018a	-Python-3.6.4-zmq4	1
+foss	2018a	-R-3.4.4	1
+foss	2018a	-Ruby-2.5.1	3
+foss	2018a	-X11-20180131	1
+foss	2018b		611
+foss	2018b	-AmberTools-17-patchlevel-10-15	1
+foss	2018b	-AmberTools-18-patchlevel-10-8	1
+foss	2018b	-ASE-3.18.0-Python-3.6.6	1
+foss	2018b	-bare	1
+foss	2018b	-CUDA-9.2.88	2
+foss	2018b	-dmpar	2
+foss	2018b	-downloaded-deps	1
+foss	2018b	-Java-1.8	2
+foss	2018b	-Lua-5.2.4	1
+foss	2018b	-metis	1
+foss	2018b	-METIS-5.1.0	1
+foss	2018b	-mpi	2
+foss	2018b	-mt-kmer_191	1
+foss	2018b	-Perl-5.28.0	21
+foss	2018b	-Perl-5.28.0-Python-2.7.15	1
+foss	2018b	-PLUMED	1
+foss	2018b	-PLUMED-2.5.0	1
+foss	2018b	-Python-2.7.15	106
+foss	2018b	-Python-2.7.15-CUDA-9.2.88	1
+foss	2018b	-Python-2.7.15-mpi	1
+foss	2018b	-Python-3.6.6	163
+foss	2018b	-Python-3.6.6-CUDA-9.2.88	1
+foss	2018b	-R-3.5.1	26
+foss	2018b	-R-3.5.1-Python-2.7.15	1
+foss	2018b	-Ruby-2.6.1	1
+foss	2018b	-with-extensions	1
+foss	2019a		202
+foss	2019a	-5build1	1
+foss	2019a	-HCP-Python-2.7.15	2
+foss	2019a	-HCP-Python-3.7.2	1
+foss	2019a	-metis	1
+foss	2019a	-metis-seq	1
+foss	2019a	-METIS-5.1.0	1
+foss	2019a	-Octave-Python-3.7.2	1
+foss	2019a	-Perl-5.28.1	3
+foss	2019a	-Python-2.7.15	32
+foss	2019a	-Python-3.7.2	68
+foss	2019a	-Python-3.7.2-PyTorch-1.2.0	1
+foss	2019a	-Python-3.7.2-R-3.6.0	4
+foss	2019a	-R-3.6.0	16
+foss	2019b		310
+foss	2019b	-5build1	1
+foss	2019b	-20200324	1
+foss	2019b	-20200508	1
+foss	2019b	-AmberTools-19-patchlevel-12-17-Python-2.7.16	1
+foss	2019b	-ASE-3.20.1-Python-3.7.4	1
+foss	2019b	-dmpar	1
+foss	2019b	-Java-11	1
+foss	2019b	-metis	1
+foss	2019b	-METIS-5.1.0	1
+foss	2019b	-mpi	2
+foss	2019b	-Perl-5.30.0	1
+foss	2019b	-PEXSI	1
+foss	2019b	-PLUMED-2.5.4	1
+foss	2019b	-Python-2.7.16	21
+foss	2019b	-Python-2.7.16-mpi	2
+foss	2019b	-Python-3.7.4	176
+foss	2019b	-Python-3.7.4-kokkos	2
+foss	2019b	-Python-3.7.4-mpi	1
+foss	2019b	-Python-3.7.4-PyTorch-1.4.0	2
+foss	2019b	-Python-3.7.4-PyTorch-1.6.0	2
+foss	2019b	-Python-3.7.4-R-3.6.2	1
+foss	2019b	-R-3.6.2	6
+foss	2019b	-R-3.6.2-Python-3.7.4	1
+foss	2019b	-serial-Python-3.7.4	1
+foss	2020a		247
+foss	2020a	-AmberTools-20.15-Python-3.8.2	1
+foss	2020a	-dmpar	2
+foss	2020a	-Java-11-R-4.0.0	2
+foss	2020a	-metis	1
+foss	2020a	-METIS-5.1.0	1
+foss	2020a	-mpi	1
+foss	2020a	-OpenFOAM-8	1
+foss	2020a	-Perl-5.30.2	1
+foss	2020a	-Python-2.7.18	2
+foss	2020a	-Python-3.8.2	147
+foss	2020a	-Python-3.8.2-contrib	1
+foss	2020a	-Python-3.8.2-kokkos	1
+foss	2020a	-Python-3.8.2-mpi	1
+foss	2020a	-R-3.6.3-Python-3.8.2	1
+foss	2020a	-R-4.0.0	23
+foss	2020a	-R-4.0.0-Python-3.8.2	4
+foss	2020a	-TensorFlow-2.3.1-Python-3.8.2	1
+foss	2020b		346
+foss	2020b	-20210316	1
+foss	2020b	-AmberTools-21.3	1
+foss	2020b	-ASE-3.21.1	3
+foss	2020b	-ASE-3.22.0	3
+foss	2020b	-contrib	1
+foss	2020b	-dmpar	4
+foss	2020b	-metis	1
+foss	2020b	-METIS-5.1.0	1
+foss	2020b	-mpi	2
+foss	2020b	-muMerge-1.1.0	1
+foss	2020b	-Perl-5.32.0	1
+foss	2020b	-PEXSI	1
+foss	2020b	-psmp	1
+foss	2020b	-PyMC	1
+foss	2020b	-Python-2.7.18	16
+foss	2020b	-PyTorch-1.7.1	3
+foss	2020b	-R-4.0.3	17
+foss	2020b	-R-4.0.3-Monocle3	1
+foss	2020b	-R-4.0.4	9
+foss	2020b	-R-4.0.5	1
+foss	2020b	-TensorFlow-2.5.0	1
+foss	2021a		397
+foss	2021a	-contrib	1
+foss	2021a	-CUDA-11.3.1	55
+foss	2021a	-CUDA-11.3.1-contrib	1
+foss	2021a	-CUDA-11.3.1-DeepMind-patch	1
+foss	2021a	-CUDA-11.3.1-PLUMED-2.7.2	1
+foss	2021a	-CUDA-11.3.1-PyTorch-1.10.0	2
+foss	2021a	-CUDA-11.3.1-PyTorch-1.11.0	1
+foss	2021a	-CUDA-11.3.1-PyTorch-1.12.1	1
+foss	2021a	-CUDA-11.3.1-TensorFlow-2.5.3	1
+foss	2021a	-CUDA-11.3.1-TensorFlow-2.6.0	1
+foss	2021a	-DeepMind-patch	1
+foss	2021a	-dmpar	2
+foss	2021a	-Java-11-R-4.1.0	1
+foss	2021a	-kokkos	1
+foss	2021a	-kokkos-CUDA-11.3.1	1
+foss	2021a	-metis	2
+foss	2021a	-METIS-5.1.0	1
+foss	2021a	-METIS-5.1.0-CUDA-11.3.1	1
+foss	2021a	-mpi	1
+foss	2021a	-Perl-5.32.1	1
+foss	2021a	-PEXSI	1
+foss	2021a	-PLUMED-2.7.2	1
+foss	2021a	-PyTorch-1.10.0	2
+foss	2021a	-PyTorch-1.10.0-CUDA-11.3.1	2
+foss	2021a	-PyTorch-1.11.0-CUDA-11.3.1	2
+foss	2021a	-PyTorch-1.12.1-CUDA-11.3.1	1
+foss	2021a	-R-4.1.0	20
+foss	2021b		339
+foss	2021b	-2020-12-12	1
+foss	2021b	-AmberTools-22.3	1
+foss	2021b	-AmberTools-22.3-CUDA-11.4.1	1
+foss	2021b	-contrib	1
+foss	2021b	-CUDA-11.4.1	15
+foss	2021b	-CUDA-11.4.1-contrib	1
+foss	2021b	-CUDA-11.4.1-DeepMind-patch	1
+foss	2021b	-CUDA-11.4.1-PLUMED-2.8.0	1
+foss	2021b	-CUDA-11.4.1-TensorFlow-2.7.1	1
+foss	2021b	-CUDA-11.4.1-TensorFlow-2.8.4	1
+foss	2021b	-CUDA-11.5.2	3
+foss	2021b	-CUDA-11.5.2-PyTorch-1.12.1	1
+foss	2021b	-DeepMind-patch	1
+foss	2021b	-fast	1
+foss	2021b	-Java-11	1
+foss	2021b	-kokkos	1
+foss	2021b	-kokkos-CUDA-11.4.1	1
+foss	2021b	-metis	1
+foss	2021b	-METIS-5.1.0	1
+foss	2021b	-mpi	1
+foss	2021b	-pangoLEARN-2021-10-18	1
+foss	2021b	-pangoLEARN-2021-11-25	1
+foss	2021b	-Perl-5.34.0	1
+foss	2021b	-PLUMED-2.8.0	1
+foss	2021b	-PyMC	1
+foss	2021b	-Python-2.7.18	9
+foss	2021b	-R-4.1.2	18
+foss	2021b	-R-4.2.0	4
+foss	2022a		639
+foss	2022a	-20200508	1
+foss	2022a	-20200508-int64	1
+foss	2022a	-20230119	1
+foss	2022a	-AmberTools-22.5-CUDA-11.7.0	1
+foss	2022a	-ColabFold	1
+foss	2022a	-contrib	1
+foss	2022a	-CUDA-11.7.0	82
+foss	2022a	-CUDA-11.7.0-ColabFold	1
+foss	2022a	-CUDA-11.7.0-contrib	1
+foss	2022a	-CUDA-11.7.0-PyTorch-1.12.0	1
+foss	2022a	-CUDA-11.7.0-PyTorch-1.12.1	1
+foss	2022a	-CUDA-11.7.0-PyTorch-1.13.1	1
+foss	2022a	-CUDA-11.7.0-TensorFlow-2.9.1	1
+foss	2022a	-CUDA-11.7.0-TensorFlow-2.11.0	1
+foss	2022a	-CUDA-11.8.0	1
+foss	2022a	-dmpar	2
+foss	2022a	-fast	1
+foss	2022a	-fast-CUDA-11.7.0	1
+foss	2022a	-FLOW	1
+foss	2022a	-int64	1
+foss	2022a	-Java-11-R-4.2.1	1
+foss	2022a	-kokkos	1
+foss	2022a	-metis	1
+foss	2022a	-METIS-5.1.0	1
+foss	2022a	-mpi	3
+foss	2022a	-PyTorch-1.12.0	6
+foss	2022a	-PyTorch-1.12.0-CUDA-11.7.0	4
+foss	2022a	-PyTorch-1.13.1-CUDA-11.7.0	1
+foss	2022a	-R-4.2.1	50
+foss	2022a	-R-4.2.1-Julia-1.9.2	2
+foss	2022a	-R-4.2.1-Monocle3	1
+foss	2022a	-zoltan	1
+foss	2022b		170
+foss	2022b	-contrib	1
+foss	2022b	-CUDA-11.7.0	2
+foss	2022b	-CUDA-12.0.0	4
+foss	2022b	-CUDA-12.2.0	1
+foss	2022b	-dmpar	1
+foss	2022b	-fast	1
+foss	2022b	-metis	1
+foss	2022b	-METIS-5.1.0	1
+foss	2022b	-mpi	1
+foss	2022b	-R-4.2.2	19
+foss	2023a		219
+foss	2023a	-contrib	1
+foss	2023a	-CUDA-12.1.1	18
+foss	2023a	-CUDA-12.1.1-contrib	1
+foss	2023a	-CUDA-12.1.1-PLUMED-2.9.0	1
+foss	2023a	-Java-17	1
+foss	2023a	-kokkos	1
+foss	2023a	-kokkos-CUDA-12.1.1	1
+foss	2023a	-metis	1
+foss	2023a	-mpi	1
+foss	2023a	-mt-kmer_191	1
+foss	2023a	-PyTorch-2.1.2	2
+foss	2023a	-PyTorch-2.1.2-CUDA-12.1.1	1
+foss	2023a	-R-4.3.2	16
+foss	2023b		30
+foss	2023b	-CUDA-12.4.0	1
+foss	2016.04		20
+foss	2016.06		1
+foss	2016.07		1
+foss	2016.09		1
+foss	2018.08		1
+foss	2022.05		3
+foss	2022.10		1
+foss	2023.09		1
+fosscuda	2017b		47
+fosscuda	2017b	-AmberTools-17-patchlevel-10-15-Python-2.7.14	1
+fosscuda	2017b	-Python-2.7.14	15
+fosscuda	2017b	-Python-3.6.3	14
+fosscuda	2018a		13
+fosscuda	2018a	-Python-2.7.14	2
+fosscuda	2018a	-Python-3.6.4	2
+fosscuda	2018b		98
+fosscuda	2018b	-AmberTools-17-patchlevel-10-15	1
+fosscuda	2018b	-AmberTools-18-patchlevel-10-8	1
+fosscuda	2018b	-PLUMED-2.5.0	1
+fosscuda	2018b	-Python-2.7.15	26
+fosscuda	2018b	-Python-3.6.6	28
+fosscuda	2019a		32
+fosscuda	2019a	-Python-2.7.15	5
+fosscuda	2019a	-Python-3.7.2	12
+fosscuda	2019a	-Python-3.7.2-PyTorch-1.2.0	1
+fosscuda	2019a	-Python-3.7.2-R-3.6.0	1
+fosscuda	2019b		115
+fosscuda	2019b	-AmberTools-19-patchlevel-12-17-Python-2.7.16	1
+fosscuda	2019b	-Java-11	1
+fosscuda	2019b	-PLUMED-2.5.4	1
+fosscuda	2019b	-Python-2.7.16	2
+fosscuda	2019b	-Python-3.7.4	71
+fosscuda	2019b	-Python-3.7.4-imkl	1
+fosscuda	2019b	-Python-3.7.4-nompi	1
+fosscuda	2019b	-Python-3.7.4-PyTorch-1.4.0	2
+fosscuda	2019b	-Python-3.7.4-PyTorch-1.6.0	2
+fosscuda	2019b	-Python-3.7.4-PyTorch-1.6.0-imkl	1
+fosscuda	2019b	-Python-3.7.4-PyTorch-1.7.1	1
+fosscuda	2019b	-Python-3.7.4-PyTorch-1.8.1	3
+fosscuda	2019b	-Python-3.7.4-R-3.6.2	1
+fosscuda	2019b	-PyTorch-1.4.0-Python-3.7.4	1
+fosscuda	2019b	-PyTorch-1.7.1-Python-3.7.4	1
+fosscuda	2019b	-R-3.6.2-Python-3.7.4	1
+fosscuda	2019b	-TensorFlow-1.15.0-Python-3.7.4	1
+fosscuda	2019b	-TensorFlow-1.15.2-Python-3.7.4	1
+fosscuda	2019b	-TensorFlow-2.0.0-Python-3.7.4	1
+fosscuda	2019b	-TensorFlow-2.1.0-Python-3.7.4	1
+fosscuda	2019b	-TensorFlow-2.2.0-Python-3.7.4	1
+fosscuda	2019b	-TensorFlow-2.3.1-Python-3.7.4	1
+fosscuda	2019b	-TensorFlow-2.4.1-Python-3.7.4	1
+fosscuda	2019b	-TensorFlow-2.5.0-Python-3.7.4	1
+fosscuda	2020a		24
+fosscuda	2020a	-AmberTools-20.15-Python-3.8.2	1
+fosscuda	2020a	-Python-2.7.18	2
+fosscuda	2020a	-Python-3.8.2	15
+fosscuda	2020a	-TensorFlow-2.3.1-Python-3.8.2	1
+fosscuda	2020b		137
+fosscuda	2020b	-AmberTools-21.3	1
+fosscuda	2020b	-ASE-3.22.0	3
+fosscuda	2020b	-contrib	1
+fosscuda	2020b	-imkl	1
+fosscuda	2020b	-nodejs-12.19.0	1
+fosscuda	2020b	-PyMC	1
+fosscuda	2020b	-PyTorch-1.3.1	1
+fosscuda	2020b	-PyTorch-1.7.1	7
+fosscuda	2020b	-PyTorch-1.8.1	3
+fosscuda	2020b	-PyTorch-1.9.0	5
+fosscuda	2020b	-R-4.0.3	1
+fosscuda	2020b	-R-4.0.4	2
+fosscuda	2020b	-R-4.0.5	1
+fosscuda	2020b	-TensorFlow-2.4.1	1
+fosscuda	2020b	-TensorFlow-2.5.0	4
+Fujitsu	21.05		2
+GCC	4.8.1		15
+GCC	4.8.1	-no-OFED	1
+GCC	4.8.1	-serial	2
+GCC	4.8.2		66
+GCC	4.8.2	-bare	1
+GCC	4.8.2	-client	1
+GCC	4.8.2	-mt	1
+GCC	4.8.2	-no-OFED	1
+GCC	4.8.3		16
+GCC	4.8.3	-bare	1
+GCC	4.8.3	-LAPACK-3.5.0	1
+GCC	4.8.4		27
+GCC	4.8.4	-bare	1
+GCC	4.8.4	-LAPACK-3.5.0	1
+GCC	4.8.4	-no-X11	1
+GCC	4.9.2		82
+GCC	4.9.2	-bare	4
+GCC	4.9.2	-LAPACK-3.5.0	2
+GCC	4.9.2	-no-X11	1
+GCC	4.9.2	-serial	1
+GCC	4.9.2-binutils-2.25		5
+GCC	4.9.3		15
+GCC	4.9.3	-mt	1
+GCC	4.9.3-binutils-2.25		6
+GCC	4.9.3-2.25		42
+GCC	4.9.3-2.25	-bare	2
+GCC	4.9.3-2.25	-LAPACK-3.6.0	1
+GCC	4.9.3-2.25	-no-X11	1
+GCC	4.9.4-2.25		2
+GCC	4.9.4-2.25	-LAPACK-3.6.0	1
+GCC	5.1.0-binutils-2.25		5
+GCC	5.2.0		10
+GCC	5.3.0-2.26		4
+GCC	5.3.0-2.26	-LAPACK-3.6.0	1
+GCC	5.4.0-2.26		42
+GCC	5.4.0-2.26	-bare	2
+GCC	5.4.0-2.26	-LAPACK-3.6.0	1
+GCC	5.4.0-2.26	-LAPACK-3.6.1	2
+GCC	5.4.0-2.26	-LAPACK-3.7.0	1
+GCC	5.4.0-2.26	-serial	1
+GCC	6.1.0-2.27		4
+GCC	6.2.0-2.27		3
+GCC	6.3.0-2.27		5
+GCC	6.3.0-2.27	-LAPACK-3.7.0	1
+GCC	6.3.0-2.27	-opa	1
+GCC	6.3.0-2.28		2
+GCC	6.4.0-2.28		38
+GCC	6.4.0-2.28	-Perl-5.26.0	1
+GCC	6.4.0-2.28	-Perl-5.26.0-HMMER	1
+GCC	6.4.0-2.28	-serial	1
+GCC	7.2.0-2.29		4
+GCC	7.3.0-2.30		33
+GCC	7.3.0-2.30	-amd	2
+GCC	8.2.0-2.31.1		86
+GCC	8.2.0-2.31.1	-CUDA-10.1.105	1
+GCC	8.2.0-2.31.1	-hpcx	1
+GCC	8.2.0-2.31.1	-Perl-5.28.1	2
+GCC	8.2.0-2.31.1	-Perl-5.28.1-Python-3.7.2	1
+GCC	8.2.0-2.31.1	-Python-2.7.15	1
+GCC	8.2.0-2.31.1	-Python-3.7.2	5
+GCC	8.2.0-2.31.1	-with-extensions	1
+GCC	8.3.0		108
+GCC	8.3.0	-CUDA-10.1.243	2
+GCC	8.3.0	-Java-11	2
+GCC	8.3.0	-mt-kmer_191	1
+GCC	8.3.0	-Python-2.7.16	5
+GCC	8.3.0	-Python-3.7.4	11
+GCC	8.3.0	-serial	1
+GCC	8.3.0	-with-extensions	1
+GCC	8.3.0-2.32		4
+GCC	9.2.0		1
+GCC	9.2.0-2.32		1
+GCC	9.3.0		99
+GCC	9.3.0	-Java-13-Python-3.8.2	1
+GCC	9.3.0	-Python-3.8.2	8
+GCC	9.3.0	-serial	1
+GCC	9.3.0	-with-extensions	2
+GCC	10.2.0		156
+GCC	10.2.0	-Java-13	1
+GCC	10.2.0	-lmax-6-cp2k	1
+GCC	10.2.0	-pthreads-avx2	1
+GCC	10.2.0	-Python-2.7.18	8
+GCC	10.2.0	-serial	1
+GCC	10.2.0	-with-extensions	1
+GCC	10.3.0		160
+GCC	10.3.0	-CUDA-11.3.1	2
+GCC	10.3.0	-lmax-6-cp2k	1
+GCC	10.3.0	-serial	1
+GCC	10.3.0	-with-extensions	1
+GCC	11.2.0		199
+GCC	11.2.0	-amd	1
+GCC	11.2.0	-CUDA-11.4.1	1
+GCC	11.2.0	-Java-15	2
+GCC	11.2.0	-Julia-1.7.2	1
+GCC	11.2.0	-lmax-5-vec-avx-psi4	1
+GCC	11.2.0	-mt-kmer_191	1
+GCC	11.2.0	-omp	1
+GCC	11.2.0	-Python-2.7.18	5
+GCC	11.2.0	-serial	1
+GCC	11.2.0	-with-extensions	1
+GCC	11.3.0		189
+GCC	11.3.0	-CUDA-11.7.0	3
+GCC	11.3.0	-int8	1
+GCC	11.3.0	-lmax-6-cp2k	1
+GCC	11.3.0	-param	1
+GCC	11.3.0	-Python-2.7.18	1
+GCC	11.3.0	-serial	2
+GCC	11.3.0	-sim	1
+GCC	11.3.0	-with-extensions	1
+GCC	12.2.0		93
+GCC	12.2.0	-lmax-6-cp2k	1
+GCC	12.2.0	-with-extensions	1
+GCC	12.3.0		92
+GCC	12.3.0	-CUDA-12.1.1	2
+GCC	12.3.0	-lmax-6-cp2k	1
+GCC	12.3.0	-with-extensions	1
+GCC	13.2.0		31
+GCC	13.3.0		4
+GCC	system-2.29		1
+GCCcore	4.9.2		10
+GCCcore	4.9.3		38
+GCCcore	4.9.3	-bare	1
+GCCcore	4.9.3	-Perl-5.24.0	2
+GCCcore	4.9.4		5
+GCCcore	5.3.0		12
+GCCcore	5.4.0		74
+GCCcore	5.4.0	-Perl-5.24.0	2
+GCCcore	5.5.0		7
+GCCcore	6.1.0		9
+GCCcore	6.2.0		11
+GCCcore	6.3.0		93
+GCCcore	6.3.0	-bare	1
+GCCcore	6.3.0	-libpng-1.6.29	2
+GCCcore	6.3.0	-Perl-5.24.1	2
+GCCcore	6.4.0		303
+GCCcore	6.4.0	-bare	1
+GCCcore	6.4.0	-cairo-1.14.12	2
+GCCcore	6.4.0	-clientonly	1
+GCCcore	6.4.0	-Ghostscript-9.22-cairo-1.14.12	1
+GCCcore	6.4.0	-Ghostscript-9.23-cairo-1.14.12	1
+GCCcore	6.4.0	-libxml2-2.9.7	1
+GCCcore	6.4.0	-no_mpi	1
+GCCcore	6.4.0	-Perl-5.26.0	3
+GCCcore	6.4.0	-Perl-5.26.1	6
+GCCcore	6.4.0	-Python-2.7.14-bare	1
+GCCcore	6.4.0	-X11-20180131	1
+GCCcore	7.1.0		6
+GCCcore	7.2.0		39
+GCCcore	7.2.0	-bare	1
+GCCcore	7.3.0		227
+GCCcore	7.3.0	-bare	1
+GCCcore	7.3.0	-native	1
+GCCcore	7.3.0	-Perl-5.28.0	7
+GCCcore	7.3.0	-Python-2.7.15-bare	1
+GCCcore	7.4.0		6
+GCCcore	8.1.0		7
+GCCcore	8.2.0		345
+GCCcore	8.2.0	-bare	1
+GCCcore	8.2.0	-CUDA-10.1.105	1
+GCCcore	8.2.0	-hpcx	1
+GCCcore	8.2.0	-Java-1.8	2
+GCCcore	8.2.0	-Java-11	3
+GCCcore	8.2.0	-largefiles	1
+GCCcore	8.2.0	-nodocs	1
+GCCcore	8.2.0	-Perl-5.28.1	7
+GCCcore	8.2.0	-python	1
+GCCcore	8.2.0	-Python-2.7.15	9
+GCCcore	8.2.0	-Python-3.7.2	23
+GCCcore	8.2.0	-tools	1
+GCCcore	8.3.0		389
+GCCcore	8.3.0	-bare	1
+GCCcore	8.3.0	-Java-1.8	2
+GCCcore	8.3.0	-Java-11	6
+GCCcore	8.3.0	-Java-11-Python-3.7.4	1
+GCCcore	8.3.0	-minimal	2
+GCCcore	8.3.0	-native	1
+GCCcore	8.3.0	-nodocs	1
+GCCcore	8.3.0	-Python-2.7.16	7
+GCCcore	8.3.0	-Python-3.7.4	41
+GCCcore	8.3.0	-tools	1
+GCCcore	8.4.0		6
+GCCcore	9.1.0		6
+GCCcore	9.2.0		16
+GCCcore	9.3.0		384
+GCCcore	9.3.0	-amd	2
+GCCcore	9.3.0	-bare	1
+GCCcore	9.3.0	-CUDA-11.0.2	3
+GCCcore	9.3.0	-Java-1.8	3
+GCCcore	9.3.0	-Java-11	4
+GCCcore	9.3.0	-Java-11-Python-3.8.2	1
+GCCcore	9.3.0	-Java-13	1
+GCCcore	9.3.0	-Java-13-Python-3.8.2	1
+GCCcore	9.3.0	-minimal	2
+GCCcore	9.3.0	-nodocs	1
+GCCcore	9.3.0	-no_mpi	1
+GCCcore	9.3.0	-Python-3.8.2	32
+GCCcore	9.3.0	-tools	1
+GCCcore	9.3.0	-voices-20200330	1
+GCCcore	9.4.0		6
+GCCcore	9.5.0		6
+GCCcore	10.1.0		7
+GCCcore	10.2.0		488
+GCCcore	10.2.0	-amd	1
+GCCcore	10.2.0	-CUDA-11.1.1	3
+GCCcore	10.2.0	-CUDA-11.2.1	2
+GCCcore	10.2.0	-egl	1
+GCCcore	10.2.0	-glx	1
+GCCcore	10.2.0	-Java-1.8	1
+GCCcore	10.2.0	-Java-1.8-Python-2.7.18	1
+GCCcore	10.2.0	-Java-11	3
+GCCcore	10.2.0	-Java-13	1
+GCCcore	10.2.0	-minimal	2
+GCCcore	10.2.0	-native-Java-1.8	1
+GCCcore	10.2.0	-nodocs	1
+GCCcore	10.2.0	-osmesa	1
+GCCcore	10.2.0	-python	1
+GCCcore	10.2.0	-Python-2.7.18	3
+GCCcore	10.2.0	-Python-3.8.6	1
+GCCcore	10.2.0	-tools	1
+GCCcore	10.3.0		478
+GCCcore	10.3.0	-amd	2
+GCCcore	10.3.0	-bare	2
+GCCcore	10.3.0	-CUDA-11.3.1	3
+GCCcore	10.3.0	-Java-11	3
+GCCcore	10.3.0	-largefiles	1
+GCCcore	10.3.0	-minimal	2
+GCCcore	10.3.0	-nodocs	1
+GCCcore	10.3.0	-Perl-5.32.1	1
+GCCcore	10.3.0	-python	1
+GCCcore	10.3.0	-Python-2.7.18	1
+GCCcore	10.3.0	-Python-3.9.5	1
+GCCcore	10.3.0	-tools	1
+GCCcore	11.1.0		6
+GCCcore	11.2.0		495
+GCCcore	11.2.0	-amd	2
+GCCcore	11.2.0	-bare	2
+GCCcore	11.2.0	-CUDA-11.4.1	4
+GCCcore	11.2.0	-CUDA-11.5.2	2
+GCCcore	11.2.0	-egl	1
+GCCcore	11.2.0	-glx	1
+GCCcore	11.2.0	-Java-11	7
+GCCcore	11.2.0	-Java-11-Python-2.7.18	1
+GCCcore	11.2.0	-minimal	1
+GCCcore	11.2.0	-nodocs	1
+GCCcore	11.2.0	-osmesa	1
+GCCcore	11.2.0	-Perl-5.34.0	1
+GCCcore	11.2.0	-python	1
+GCCcore	11.2.0	-Python-2.7.18	4
+GCCcore	11.2.0	-Python-3.9.6	1
+GCCcore	11.2.0	-ROCm-4.5.0	1
+GCCcore	11.2.0	-tools	1
+GCCcore	11.3.0		587
+GCCcore	11.3.0	-bare	2
+GCCcore	11.3.0	-CUDA-11.7.0	5
+GCCcore	11.3.0	-egl	1
+GCCcore	11.3.0	-int64	1
+GCCcore	11.3.0	-Java-11	2
+GCCcore	11.3.0	-largefiles	1
+GCCcore	11.3.0	-minimal	1
+GCCcore	11.3.0	-nodocs	1
+GCCcore	11.3.0	-osmesa	1
+GCCcore	11.3.0	-Perl-5.34.1	1
+GCCcore	11.3.0	-python	1
+GCCcore	11.3.0	-Python-3.10.4	2
+GCCcore	11.3.0	-Rust-1.65.0	1
+GCCcore	11.3.0	-tools	1
+GCCcore	11.4.0		6
+GCCcore	12.1.0		14
+GCCcore	12.2.0		378
+GCCcore	12.2.0	-bare	3
+GCCcore	12.2.0	-CUDA-11.7.0	2
+GCCcore	12.2.0	-CUDA-12.0.0	3
+GCCcore	12.2.0	-Java-17	1
+GCCcore	12.2.0	-llvmlite	1
+GCCcore	12.2.0	-minimal	1
+GCCcore	12.2.0	-nodocs	1
+GCCcore	12.2.0	-python	1
+GCCcore	12.2.0	-Python-3.10.8	1
+GCCcore	12.2.0	-Rust-1.65.0	1
+GCCcore	12.2.0	-Rust-1.75.0	1
+GCCcore	12.2.0	-slurm	1
+GCCcore	12.2.0	-tools	1
+GCCcore	12.3.0		477
+GCCcore	12.3.0	-CUDA-12.1.1	8
+GCCcore	12.3.0	-CUDA-12.3.0	1
+GCCcore	12.3.0	-Java-17	5
+GCCcore	12.3.0	-largefiles	1
+GCCcore	12.3.0	-llvmlite	1
+GCCcore	12.3.0	-nodocs	1
+GCCcore	12.3.0	-osmesa	1
+GCCcore	12.3.0	-Perl-5.36.1	1
+GCCcore	12.3.0	-python	1
+GCCcore	12.3.0	-Rust-1.75.0	1
+GCCcore	12.3.0	-tools	1
+GCCcore	12.3.0	-voices-20200330	1
+GCCcore	13.1.0		23
+GCCcore	13.2.0		297
+GCCcore	13.2.0	-CUDA-12.4.0	2
+GCCcore	13.2.0	-python	1
+GCCcore	13.2.0	-Rust-1.76.0	1
+GCCcore	13.2.0	-tools	1
+GCCcore	13.3.0		76
+GCCcore	14.1.0		6
+GCCcore	system		7
+gcccuda	2017b		2
+gcccuda	2018a		1
+gcccuda	2018b		1
+gcccuda	2019a		5
+gcccuda	2019b		10
+gcccuda	2019b	-Python-3.7.4	1
+gcccuda	2020a		3
+gcccuda	2020b		7
+gfbf	2022a		14
+gfbf	2022b		26
+gfbf	2023a		58
+gfbf	2023a	-R-4.3.2	2
+gfbf	2023b		20
+gfbf	2023b	-Java-11-R-4.3.3	1
+gfbf	2023.09		1
+gimkl	2.11.5		82
+gimkl	2.11.5	-32bitIDX	1
+gimkl	2.11.5	-mpi	1
+gimkl	2.11.5	-no-X11	1
+gimkl	2.11.5	-Python-2.7.10	3
+gimkl	2.11.5	-serial	1
+gimkl	2017a		33
+gimkl	2017a	-Perl-5.24.0	2
+gimkl	2018b		1
+gimpi	2.11.5		1
+gimpi	2017a		1
+gimpi	2017b		2
+gimpi	2017b	-OpenBLAS-0.2.20	1
+gimpi	2018a		2
+gimpi	2018a	-OpenBLAS-0.2.20	1
+gimpi	2018b		1
+gimpic	2017b		2
+gimpic	2017b	-OpenBLAS-0.2.20	1
+giolf	2017b		2
+giolf	2018a		1
+giolfc	2017b		1
+gmpich	2016a		2
+gmpich	2016a	-OpenBLAS-0.2.15-LAPACK-3.6.0	1
+gmpich	2017.08		2
+gmpich	2017.08	-OpenBLAS-0.2.20	1
+gmpolf	2016a		1
+gmpolf	2017.10		3
+gmvapich2	1.7.20		2
+gmvapich2	1.7.20	-OpenBLAS-0.2.13-LAPACK-3.5.0	1
+gmvapich2	2016a		3
+gmvapich2	2016a	-OpenBLAS-0.2.15-LAPACK-3.6.0	1
+gmvolf	1.7.20		1
+gmvolf	2016a		1
+GNU	4.9.2-2.25		9
+GNU	4.9.2-2.25	-LAPACK-3.5.0	1
+GNU	4.9.3-2.25		52
+GNU	4.9.3-2.25	-2015-0603	1
+GNU	4.9.3-2.25	-bare	1
+GNU	4.9.3-2.25	-clientonly	1
+GNU	4.9.3-2.25	-LAPACK-3.5.0	1
+GNU	4.9.3-2.25	-no-X11	1
+GNU	5.1.0-2.25		5
+gobff	2020b		1
+gobff	2021a		1
+gobff	2020.06-amd		1
+gobff	2020.11		1
+goblf	2018b		1
+goblf	2020b		1
+golf	2018a		1
+golf	2020a		1
+gomkl	2018b		1
+gomkl	2019a		2
+gomkl	2019a	-mkl	1
+gomkl	2020b		1
+gomkl	2021a		11
+gomkl	2022a		2
+gomkl	2023a		3
+gomkl	2023a	-metis-seq	1
+gompi	2016a		2
+gompi	2016a	-OpenBLAS-0.2.15-LAPACK-3.6.0	1
+gompi	2016b		3
+gompi	2016b	-OpenBLAS-0.2.18-LAPACK-3.6.1	1
+gompi	2017a		3
+gompi	2017a	-OpenBLAS-0.2.19-LAPACK-3.7.0	1
+gompi	2017b		3
+gompi	2017b	-OpenBLAS-0.2.20	1
+gompi	2018a		2
+gompi	2018a	-OpenBLAS-0.2.20	1
+gompi	2018b		7
+gompi	2018b	-BLIS-0.3.2	1
+gompi	2018b	-OpenBLAS-0.3.1	1
+gompi	2019a		60
+gompi	2019a	-OpenBLAS-0.3.5	1
+gompi	2019a	-Perl-5.28.1	1
+gompi	2019a	-Python-3.7.2	1
+gompi	2019a	-timed-pingpong	1
+gompi	2019b		66
+gompi	2019b	-HMMER	1
+gompi	2019b	-nocpl	1
+gompi	2019b	-Perl-5.30.0	1
+gompi	2019b	-Python-2.7.16	2
+gompi	2019b	-Python-3.7.4	3
+gompi	2020a		54
+gompi	2020a	-amd	2
+gompi	2020a	-bf	1
+gompi	2020a	-hybrid-avx2	1
+gompi	2020a	-lmax-6-cp2k	1
+gompi	2020a	-Perl-5.30.2	1
+gompi	2020a	-Python-2.7.18	2
+gompi	2020a	-Python-3.8.2	3
+gompi	2020a	-with-extensions	2
+gompi	2020b		62
+gompi	2020b	-bf	1
+gompi	2020b	-bl	1
+gompi	2020b	-hybrid-avx2	1
+gompi	2020b	-Java-13-pthreads-avx2	1
+gompi	2020b	-Python-2.7.18	1
+gompi	2020b	-with-extensions	1
+gompi	2021a		69
+gompi	2021a	-bf	1
+gompi	2021a	-CUDA-11.3.1	3
+gompi	2021a	-fb	1
+gompi	2021a	-hybrid-avx	1
+gompi	2021a	-hybrid-avx2	1
+gompi	2021a	-static	3
+gompi	2021a	-with-extensions	1
+gompi	2021b		64
+gompi	2021b	-CUDA-11.4.1	3
+gompi	2021b	-fb	1
+gompi	2021b	-hybrid-avx2	1
+gompi	2021b	-Python-2.7.18	1
+gompi	2021b	-ROCm-4.5.0	1
+gompi	2021b	_saute.1.3.0_1	1
+gompi	2021b	-static	1
+gompi	2021b	-with-extensions	1
+gompi	2022a		89
+gompi	2022a	-basic	1
+gompi	2022a	-CUDA-11.7.0	7
+gompi	2022a	-fb	1
+gompi	2022a	-HepMC3-3.2.5	1
+gompi	2022a	-int64	1
+gompi	2022b		35
+gompi	2022b	-avx2	1
+gompi	2022b	-CUDA-12.0.0	2
+gompi	2022b	-fb	1
+gompi	2023a		45
+gompi	2023a	-CUDA-12.1.1	2
+gompi	2023a	-fb	1
+gompi	2023a	-HepMC3-3.2.6	1
+gompi	2023b		16
+gompi	2023b	-CUDA-12.4.0	1
+gompi	2023b	-fb	1
+gompi	2016.04		2
+gompi	2016.04	-OpenBLAS-0.2.18-LAPACK-3.6.0	1
+gompi	2016.06		2
+gompi	2016.06	-OpenBLAS-0.2.18-LAPACK-3.6.0	1
+gompi	2016.07		4
+gompi	2016.07	-LAPACK-3.6.1	1
+gompi	2016.07	-OpenBLAS-0.2.18-LAPACK-3.6.1	1
+gompi	2016.09		3
+gompi	2016.09	-LAPACK-3.6.1	1
+gompi	2016.09	-OpenBLAS-0.2.19-LAPACK-3.6.1	1
+gompi	2018.08		2
+gompi	2018.08	-OpenBLAS-0.3.3	1
+gompi	2022.05		3
+gompi	2022.05	-fb	1
+gompi	2022.10		3
+gompi	2022.10	-fb	1
+gompi	2023.09		3
+gompi	2023.09	-fb	1
+gompic	2017b		2
+gompic	2017b	-OpenBLAS-0.2.20	1
+gompic	2018a		2
+gompic	2018a	-OpenBLAS-0.2.20	1
+gompic	2018b		2
+gompic	2018b	-OpenBLAS-0.3.1	1
+gompic	2019a		8
+gompic	2019a	-OpenBLAS-0.3.5	1
+gompic	2019b		14
+gompic	2019b	-Python-3.7.4	1
+gompic	2020a		10
+gompic	2020b		12
+iccifort	2016.0.109-GCC-4.9.3-2.25		1
+iccifort	2016.1.150-GCC-4.9.3-2.25		1
+iccifort	2016.2.181-GCC-4.9.3-2.25		1
+iccifort	2016.2.181-GCC-5.3.0-2.26		1
+iccifort	2016.3.210-GCC-4.9.3-2.25		5
+iccifort	2016.3.210-GCC-5.3.0-2.26		1
+iccifort	2016.3.210-GCC-5.4.0-2.26		14
+iccifort	2016.3.210-GCC-5.4.0-2.26	-bare	2
+iccifort	2017.0.098-GCC-5.4.0-2.26		1
+iccifort	2017.1.132-GCC-5.4.0-2.26		3
+iccifort	2017.1.132-GCC-6.3.0-2.27		3
+iccifort	2017.2.174-GCC-6.3.0-2.27		1
+iccifort	2017.4.196-GCC-6.4.0-2.28		21
+iccifort	2017.4.196-GCC-6.4.0-2.28	-Perl-5.26.0	1
+iccifort	2017.4.196-GCC-6.4.0-2.28	-Perl-5.26.0-HMMER	1
+iccifort	2017.5.239-GCC-6.4.0-2.28		1
+iccifort	2018.0.128-GCC-6.4.0-2.28		1
+iccifort	2018.1.163-GCC-6.4.0-2.28		5
+iccifort	2018.1.163-GCC-6.4.0-2.28	-serial	1
+iccifort	2018.2.199-GCC-6.4.0-2.28		2
+iccifort	2018.3.222-GCC-7.3.0-2.30		7
+iccifort	2018.5.274-GCC-7.3.0-2.30		1
+iccifort	2019.0.117-GCC-8.2.0-2.31.1		1
+iccifort	2019.1.144-GCC-8.2.0-2.31.1		40
+iccifort	2019.1.144-GCC-8.2.0-2.31.1	-Python-3.7.2	1
+iccifort	2019.2.187-GCC-8.2.0-2.31.1		1
+iccifort	2019.3.199-GCC-8.3.0-2.32		2
+iccifort	2019.5.281		47
+iccifort	2019.5.281	-Python-2.7.16	1
+iccifort	2019.5.281	-Python-3.7.4	5
+iccifort	2019.5.281	-with-extensions	1
+iccifort	2020.0.166-GCC-9.2.0		1
+iccifort	2020.1.217		18
+iccifort	2020.1.217	-Python-3.8.2	3
+iccifort	2020.4.304		39
+iccifort	2020.4.304	-lmax-6-cp2k	1
+iccifort	2020.4.304	-serial	1
+iccifort	system-GCC-system-2.29		1
+iccifortcuda	2019a		1
+iccifortcuda	2019b		1
+iccifortcuda	2020a		2
+iccifortcuda	2020b		1
+iccifortcuda	2017.4.196-GCC-6.4.0-2.28		1
+iccifortcuda	2016.10		1
+iibff	2020b		1
+iimkl	2018a		1
+iimkl	2022a		1
+iimkl	2022b		2
+iimkl	2023a		5
+iimpi	8.1.5-GCC-4.9.3-2.25		1
+iimpi	2016b		1
+iimpi	2017a		1
+iimpi	2017b		1
+iimpi	2018a		1
+iimpi	2018b		1
+iimpi	2019a		27
+iimpi	2019a	-mpi	1
+iimpi	2019a	-Python-3.7.2	1
+iimpi	2019a	-timed-pingpong	1
+iimpi	2019b		23
+iimpi	2019b	-hybrid-avx2	1
+iimpi	2019b	-Python-3.7.4	1
+iimpi	2020a		31
+iimpi	2020a	-lmax-6-cp2k	1
+iimpi	2020a	-Python-2.7.18	1
+iimpi	2020a	-Python-3.8.2	2
+iimpi	2020a	-with-extensions	2
+iimpi	2020b		18
+iimpi	2020b	-bf	1
+iimpi	2020b	-intelmpi	1
+iimpi	2021a		13
+iimpi	2021a	-lmax-6-cp2k	1
+iimpi	2021b		19
+iimpi	2021b	-intelmpi	1
+iimpi	2022a		16
+iimpi	2022a	-intelmpi	1
+iimpi	2022b		8
+iimpi	2022b	-intelmpi	1
+iimpi	2023a		6
+iimpi	2023b		6
+iimpi	2016.00-GCC-4.9.3-2.25		1
+iimpi	2016.01-GCC-4.9.3-2.25		1
+iimpi	2016.02-GCC-4.9.3-2.25		1
+iimpi	2016.02-GCC-5.3.0-2.26		1
+iimpi	2016.03-GCC-4.9.3-2.25		1
+iimpi	2016.03-GCC-5.3.0-2.26		1
+iimpi	2016.03-GCC-5.4.0-2.26		1
+iimpi	2017.00-GCC-5.4.0-2.26		1
+iimpi	2017.01-GCC-5.4.0-2.26		1
+iimpi	2017.02-GCC-6.3.0-2.27		1
+iimpi	2017.09		1
+iimpi	2018.00		1
+iimpi	2018.01		1
+iimpi	2018.02		1
+iimpi	2018.04		1
+iimpi	2019.00		1
+iimpi	2019.01		1
+iimpi	2019.02		1
+iimpi	2019.03		1
+iimpi	2020.00		1
+iimpi	2020.06-impi-18.5		1
+iimpi	2020.12		1
+iimpi	2022.00		1
+iimpi	2022.05		1
+iimpi	2022.09		1
+iimpi	2022.11		1
+iimpi	2022.12		1
+iimpi	2023.03		1
+iimpi	2023.07		1
+iimpi	2023.11		1
+iimpic	2017b		1
+iimpic	2019a		4
+iimpic	2019b		8
+iimpic	2020a		3
+iimpic	2020b		3
+iimpic	2016.10		1
+intel	2016a		465
+intel	2016a	-32bitIDX	1
+intel	2016a	-AmberTools-15-patchlevel-13-13	1
+intel	2016a	-bare	2
+intel	2016a	-dmpar	2
+intel	2016a	-fontconfig-2.11.95	1
+intel	2016a	-freetype-2.6.3	1
+intel	2016a	-gettext-0.19.7	1
+intel	2016a	-GLib-2.48.0	2
+intel	2016a	-hybrid	1
+intel	2016a	-hybrid-dp	1
+intel	2016a	-libX11-1.6.3	3
+intel	2016a	-Mesa-11.2.1	5
+intel	2016a	-METIS-5.1.0	2
+intel	2016a	-mpi	1
+intel	2016a	-mt-Python-2.7.11	2
+intel	2016a	-NASM-2.12.01	1
+intel	2016a	-no-X11	1
+intel	2016a	-ParMETIS-4.0.3	1
+intel	2016a	-Perl-5.20.3	4
+intel	2016a	-Perl-5.22.1	3
+intel	2016a	-Perl-5.22.2	1
+intel	2016a	-Python-2.7.11	109
+intel	2016a	-Python-2.7.11-freetype-2.6.3	5
+intel	2016a	-Python-2.7.11-HDF5-1.8.16	1
+intel	2016a	-Python-2.7.11-HDF5-1.8.16-serial	1
+intel	2016a	-Python-2.7.11-MariaDB-10.1.14	1
+intel	2016a	-Python-2.7.11-timed-pingpong	1
+intel	2016a	-Python-2.7.11-vsc-base-2.4.17	1
+intel	2016a	-Python-2.7.11-vsc-base-2.5.1	1
+intel	2016a	-Python-2.7.11-zmq4	1
+intel	2016a	-Python-3.5.1	8
+intel	2016a	-Python-3.5.1-zmq4	1
+intel	2016a	-R-3.2.3	4
+intel	2016a	-serial	1
+intel	2016b		499
+intel	2016b	-dmpar	2
+intel	2016b	-downloaded-deps	1
+intel	2016b	-HTSlib-1.3.2	1
+intel	2016b	-Java-1.7.0_80-Python-2.7.12	1
+intel	2016b	-Java-1.8.0_112	2
+intel	2016b	-METIS-5.1.0	1
+intel	2016b	-mpi	2
+intel	2016b	-ParMETIS-4.0.3	1
+intel	2016b	-Perl-5.24.0	8
+intel	2016b	-PLUMED-2.2.3	1
+intel	2016b	-psmp	1
+intel	2016b	-Python-2.7.12	142
+intel	2016b	-Python-2.7.12-Boost-1.63.0	1
+intel	2016b	-Python-2.7.12-HDF5-1.8.17	1
+intel	2016b	-Python-2.7.12-HDF5-1.8.18	2
+intel	2016b	-Python-2.7.12-HDF5-1.10.0-patch1	1
+intel	2016b	-Python-2.7.12-PCRE-8.39	1
+intel	2016b	-Python-2.7.12-timed-pingpong	1
+intel	2016b	-Python-2.7.12-zmq4	2
+intel	2016b	-Python-3.5.2	42
+intel	2016b	-Python-3.5.2-freetype-2.6.5	1
+intel	2016b	-Python-3.5.2-HDF5-1.8.17	1
+intel	2016b	-Python-3.5.2-HDF5-1.8.18	1
+intel	2016b	-Python-3.5.2-HDF5-1.10.0-patch1	1
+intel	2016b	-Python-3.5.2-zmq4	2
+intel	2016b	-R-3.3.1	7
+intel	2016b	-R-3.3.3	1
+intel	2016b	-serial	1
+intel	2016b	-single	1
+intel	2016b	-sockets	1
+intel	2016b	-X11-20160819	1
+intel	2017a		421
+intel	2017a	-2015-10-20-patches-20170814-Python-2.7.13	1
+intel	2017a	-centos7-Python-2.7.13	1
+intel	2017a	-HDF5-1.8.18	4
+intel	2017a	-HDF5-1.10.1	1
+intel	2017a	-hybrid-avx2	1
+intel	2017a	-JasPer-1.900.1	1
+intel	2017a	-METIS-5.1.0	1
+intel	2017a	-mpi	5
+intel	2017a	-mt	1
+intel	2017a	-mt-kmer_37	1
+intel	2017a	-no-netcdf	1
+intel	2017a	-no-storm	1
+intel	2017a	-PacBio	1
+intel	2017a	-ParMETIS-4.0.3	1
+intel	2017a	-Perl-5.24.1	13
+intel	2017a	-Python-2.7.13	93
+intel	2017a	-Python-2.7.13-HDF5-HDF	1
+intel	2017a	-Python-2.7.13-HDF5-1.8.18	1
+intel	2017a	-Python-2.7.13-libpng-1.6.29	1
+intel	2017a	-Python-2.7.13-Qt-4.8.7	1
+intel	2017a	-Python-2.7.13-timed-pingpong	1
+intel	2017a	-Python-2.7.13-zmq4	1
+intel	2017a	-Python-3.6.1	40
+intel	2017a	-Python-3.6.1-HDF5-1.10.0-patch1	1
+intel	2017a	-Python-3.6.1-libpng-1.6.29	1
+intel	2017a	-R-3.4.0	10
+intel	2017a	-serial	2
+intel	2017a	-X11-20170314	3
+intel	2017b		443
+intel	2017b	-5build1	1
+intel	2017b	-2017-12-14-Python-2.7.14	1
+intel	2017b	-AmberTools-17-patchlevel-8-12	1
+intel	2017b	-AmberTools-17-patchlevel-10-15-Python-2.7.14	1
+intel	2017b	-AmberTools-18-patchlevel-10-8	1
+intel	2017b	-CUDA-9.1.85-Python-2.7.14	1
+intel	2017b	-Hadoop-2.6-Java-1.8.0_152-Python-3.6.3	1
+intel	2017b	-HDF5-1.8.19	3
+intel	2017b	-hybrid-avx	1
+intel	2017b	-hybrid-avx2	1
+intel	2017b	-hybrid-sse3	1
+intel	2017b	-i8	1
+intel	2017b	-Java-1.8.0_152	2
+intel	2017b	-kmer_101	1
+intel	2017b	-METIS-5.1.0	1
+intel	2017b	-MPFR-3.1.6	1
+intel	2017b	-mpi	2
+intel	2017b	-ParMETIS-4.0.3	2
+intel	2017b	-Perl-5.26.0	9
+intel	2017b	-Perl-5.26.0-Python-2.7.14	1
+intel	2017b	-Perl-5.26.0-Python-3.6.3	1
+intel	2017b	-Python-2.7.14	122
+intel	2017b	-Python-2.7.14-Geant4-10.04	1
+intel	2017b	-Python-2.7.14-HDF5-1.8.19	1
+intel	2017b	-Python-2.7.14-R-3.4.3	1
+intel	2017b	-Python-2.7.14-zmq4	1
+intel	2017b	-Python-3.6.3	74
+intel	2017b	-Python-3.6.3-HDF5-1.8.19	1
+intel	2017b	-R-3.4.3	9
+intel	2017b	-R-3.4.3-Python-2.7.14	1
+intel	2017b	-X11-20171023	1
+intel	2017b	-X11-20171023-HDF5-1.8.19	1
+intel	2018a		404
+intel	2018a	-2017-12-14-Python-2.7.14	1
+intel	2018a	-20181006	1
+intel	2018a	-BioPerl-1.7.2	1
+intel	2018a	-downloaded-deps	2
+intel	2018a	-hybrid-avx2	1
+intel	2018a	-Java-1.8.0_162	1
+intel	2018a	-METIS-5.1.0	1
+intel	2018a	-mpi	1
+intel	2018a	-PathCV	1
+intel	2018a	-Perl-5.26.1	9
+intel	2018a	-Python-2.7.14	92
+intel	2018a	-Python-2.7.14-serial	1
+intel	2018a	-Python-2.7.14-timed-pingpong	1
+intel	2018a	-Python-3.6.4	96
+intel	2018a	-Python-3.6.4-CUDA-9.1.85	2
+intel	2018a	-R-3.4.4	7
+intel	2018a	-Ruby-2.5.1	3
+intel	2018a	-with-extensions	1
+intel	2018a	-X11-20180131	1
+intel	2018b		286
+intel	2018b	-abinit	1
+intel	2018b	-AmberTools-17-patchlevel-10-15	1
+intel	2018b	-ASE-3.18.0-Python-3.6.6	1
+intel	2018b	-dmpar	2
+intel	2018b	-Hadoop-2.7-Java-1.8-Python-3.6.6	1
+intel	2018b	-hybrid-avx2	1
+intel	2018b	-METIS-5.1.0	2
+intel	2018b	-mpi	1
+intel	2018b	-PathCV	1
+intel	2018b	-Perl-5.28.0	6
+intel	2018b	-Perl-5.28.0-HMMER	1
+intel	2018b	-Python-2.7.15	66
+intel	2018b	-Python-2.7.15-maxam8	1
+intel	2018b	-Python-2.7.15-serial	1
+intel	2018b	-Python-3.6.6	86
+intel	2018b	-R-3.5.1	1
+intel	2018b	-with-extensions	1
+intel	2019a		112
+intel	2019a	-5build1	1
+intel	2019a	-hybrid-avx2	1
+intel	2019a	-kj_mol	1
+intel	2019a	-metis	1
+intel	2019a	-metis-seq	1
+intel	2019a	-METIS-5.1.0	1
+intel	2019a	-peigs	1
+intel	2019a	-Python-2.7.15	9
+intel	2019a	-Python-3.7.2	35
+intel	2019a	-R-3.6.0	4
+intel	2019b		159
+intel	2019b	-5build1	1
+intel	2019b	-ASE-3.20.1-Python-3.7.4	1
+intel	2019b	-dmpar	2
+intel	2019b	-dm+sm	1
+intel	2019b	-metis	1
+intel	2019b	-METIS-5.1.0	1
+intel	2019b	-peigs	1
+intel	2019b	-PEXSI	2
+intel	2019b	-Python-2.7.16	20
+intel	2019b	-Python-3.7.4	81
+intel	2019b	-Python-3.7.4-Java-1.8	2
+intel	2019b	-Python-3.7.4-kokkos	2
+intel	2019b	-Python-3.7.4-kokkos-OCTP	1
+intel	2019b	-Python-3.7.4-mpi	1
+intel	2020a		121
+intel	2020a	-dmpar	1
+intel	2020a	-kj_mol	1
+intel	2020a	-metis	1
+intel	2020a	-METIS-5.1.0	1
+intel	2020a	-mpi	1
+intel	2020a	-Python-2.7.18	4
+intel	2020a	-Python-2.7.18-int64	1
+intel	2020a	-Python-2.7.18-mpi-int64	1
+intel	2020a	-Python-3.8.2	70
+intel	2020a	-Python-3.8.2-kokkos	1
+intel	2020a	-Python-3.8.2-mpi	1
+intel	2020a	-Python-3.8.2-noGA	1
+intel	2020a	-Python-3.8.2-parallel	1
+intel	2020a	-trisolve-merge	1
+intel	2020b		102
+intel	2020b	-ASA	1
+intel	2020b	-ASE-3.21.1	3
+intel	2020b	-ASE-3.22.0	1
+intel	2020b	-dmpar	1
+intel	2020b	-linux_64bit	1
+intel	2020b	-metis	1
+intel	2020b	-METIS-5.1.0	1
+intel	2020b	-PEXSI	1
+intel	2020b	-PyMC	1
+intel	2021a		44
+intel	2021a	-int64	1
+intel	2021a	-metis	1
+intel	2021a	-METIS-5.1.0	1
+intel	2021a	-mpi	1
+intel	2021a	-PEXSI	1
+intel	2021b		54
+intel	2021b	-metis	1
+intel	2021b	-METIS-5.1.0	1
+intel	2021b	-PyMC	1
+intel	2022a		57
+intel	2022a	-ASA	1
+intel	2022a	-CUDA-11.7.0	1
+intel	2022a	-noGA	1
+intel	2022b		11
+intel	2022b	-int64	1
+intel	2023a		16
+intel	2023a	-int64	1
+intel	2023b		3
+intel	2016.00		1
+intel	2016.01		1
+intel	2016.02-GCC-4.9		37
+intel	2016.02-GCC-4.9	-libxc	1
+intel	2016.02-GCC-4.9	-no-X11	1
+intel	2016.02-GCC-4.9	-Python-2.7.11	2
+intel	2016.02-GCC-5.3		1
+intel	2016.03-GCC-4.9		1
+intel	2016.03-GCC-5.3		1
+intel	2016.03-GCC-5.4		1
+intel	2017.00		1
+intel	2017.01		5
+intel	2017.02		2
+intel	2017.09		1
+intel	2018.00		7
+intel	2018.00	-Python-3.6.2	1
+intel	2018.01		13
+intel	2018.01	-Python-2.7.14	1
+intel	2018.01	-Python-3.6.3	3
+intel	2018.02		1
+intel	2018.04		1
+intel	2019.00		1
+intel	2019.01		2
+intel	2019.02		2
+intel	2019.03		1
+intel	2020.00		1
+intel	2020.06-impi-18.5		1
+intel	2020.12		1
+intel	2022.00		1
+intel	2022.05		1
+intel	2022.09		1
+intel	2022.11		1
+intel	2022.12		1
+intel	2023.03		1
+intel	2023.07		1
+intel-compilers	2021.1.2		1
+intel-compilers	2021.2.0		20
+intel-compilers	2021.2.0	-serial	1
+intel-compilers	2021.3.0		1
+intel-compilers	2021.4.0		18
+intel-compilers	2021.4.0	-serial	1
+intel-compilers	2022.0.1		2
+intel-compilers	2022.1.0		9
+intel-compilers	2022.2.0		1
+intel-compilers	2022.2.1		8
+intel-compilers	2023.0.0		1
+intel-compilers	2023.1.0		8
+intel-compilers	2023.2.1		2
+intel-compilers	2024.0.0		1
+intelcuda	2017b		36
+intelcuda	2017b	-AmberTools-17-patchlevel-10-15-Python-2.7.14	1
+intelcuda	2017b	-Python-2.7.14	9
+intelcuda	2017b	-Python-3.6.3	8
+intelcuda	2019a		4
+intelcuda	2019a	-Python-2.7.15	1
+intelcuda	2019a	-Python-3.7.2	1
+intelcuda	2019b		11
+intelcuda	2019b	-Python-3.7.4	7
+intelcuda	2020a		6
+intelcuda	2020a	-Python-3.8.2	4
+intelcuda	2020b		13
+intelcuda	2016.10		1
+iomkl	2017a		3
+iomkl	2017a	-2015-10-20-Python-2.7.12	1
+iomkl	2017b		3
+iomkl	2018a		29
+iomkl	2018a	-Python-2.7.14	2
+iomkl	2018a	-Python-3.6.4	6
+iomkl	2018a	-R-3.5.0	1
+iomkl	2018a	-X11-20180131	2
+iomkl	2018b		23
+iomkl	2018b	-Python-2.7.15	1
+iomkl	2018b	-Python-3.6.6	5
+iomkl	2019b		3
+iomkl	2020b		1
+iomkl	2021a		3
+iomkl	2021b		1
+iomkl	2016.07		27
+iomkl	2016.07	-AmberTools-16-patchlevel-5-14	1
+iomkl	2016.07	-AmberTools-16-patchlevel-5-14-serial	1
+iomkl	2016.09-GCC-4.9.3-2.25		26
+iomkl	2016.09-GCC-4.9.3-2.25	-AmberTools-16-patchlevel-5-14-CUDA	1
+iomkl	2016.09-GCC-5.4.0-2.26		1
+iomkl	2017.01		1
+iomkl	2018.02		5
+iomkl	2018.02	-Python-3.6.4	3
+iomkl	2019.01		1
+iompi	2017a		1
+iompi	2017b		1
+iompi	2018a		1
+iompi	2018b		1
+iompi	2019b		2
+iompi	2020a		4
+iompi	2020b		2
+iompi	2021a		3
+iompi	2021b		1
+iompi	2016.07		1
+iompi	2016.09-GCC-4.9.3-2.25		1
+iompi	2016.09-GCC-5.4.0-2.26		1
+iompi	2017.01		1
+iompi	2018.02		1
+iompi	2019.01		2
+NVHPC	21.2		3
+NVHPC	21.2	-20160110	1
+NVHPC	21.2	-CUDA-11.2.1	1
+NVHPC	22.7-CUDA-11.7.0		5
+NVHPC	22.7-CUDA-11.7.0	-serial	1
+nvofbf	2022.07		1
+nvompi	2022.07		4
+nvompi	2022.07	-fb	1
+PGI	16.3-GCC-4.9.3-2.25		2
+PGI	16.4-GCC-5.3.0-2.26		2
+PGI	16.7-GCC-5.4.0-2.26		2
+PGI	17.4-GCC-6.4.0-2.28		1
+PGI	18.4-GCC-6.4.0-2.28		3
+pomkl	2016.03		1
+pomkl	2016.04		1
+pomkl	2016.09		2
+pompi	2016.03		1
+pompi	2016.04		1
+pompi	2016.09		1
+SYSTEM	SYSTEM		2082
+SYSTEM	SYSTEM	-0-Java-1.7.0_10	1
+SYSTEM	SYSTEM	-0-Java-1.7.0_21	1
+SYSTEM	SYSTEM	-0-Java-1.7.0_80	1
+SYSTEM	SYSTEM	-0-Java-1.8.0_66	1
+SYSTEM	SYSTEM	-0-Java-1.8.0_144	1
+SYSTEM	SYSTEM	-0-linux-x86-64	2
+SYSTEM	SYSTEM	-1	1
+SYSTEM	SYSTEM	-1-centos_linux64	3
+SYSTEM	SYSTEM	-1.el6.x86_64	1
+SYSTEM	SYSTEM	-1.el7.x86_64	1
+SYSTEM	SYSTEM	-1-Java-1.7.0_10	1
+SYSTEM	SYSTEM	-1.sl5.x86_64	1
+SYSTEM	SYSTEM	-2-Java-1.7.0_10	1
+SYSTEM	SYSTEM	-2-linux-x86-64	1
+SYSTEM	SYSTEM	-2.25	2
+SYSTEM	SYSTEM	-2.26	3
+SYSTEM	SYSTEM	-2.27	3
+SYSTEM	SYSTEM	-2.28	3
+SYSTEM	SYSTEM	-2.29	3
+SYSTEM	SYSTEM	-2.30	2
+SYSTEM	SYSTEM	-2.31.1	2
+SYSTEM	SYSTEM	-2.32	3
+SYSTEM	SYSTEM	-2el7.x86_64	1
+SYSTEM	SYSTEM	2.r837.GLIBCv2.12	1
+SYSTEM	SYSTEM	2.r904.glibcv2.17	1
+SYSTEM	SYSTEM	-3.10	1
+SYSTEM	SYSTEM	-4-Java-1.7.0_10	1
+SYSTEM	SYSTEM	-5-Java-1.7.0_10	1
+SYSTEM	SYSTEM	-05-09-Java-17	1
+SYSTEM	SYSTEM	-6.1.544-i86linux32	1
+SYSTEM	SYSTEM	0.8.1_Centos	1
+SYSTEM	SYSTEM	0.8.1_Ubuntu	1
+SYSTEM	SYSTEM	-15.06.18_CentOS_6.6_x86_64	1
+SYSTEM	SYSTEM	-21-py3.8	1
+SYSTEM	SYSTEM	2.3.0_x86_64_dynamic	1
+SYSTEM	SYSTEM	2.3.0_x86_64_static	1
+SYSTEM	SYSTEM	2.3.2_x86_64_dynamic	1
+SYSTEM	SYSTEM	2.3.2_x86_64_static	1
+SYSTEM	SYSTEM	-32bit	1
+SYSTEM	SYSTEM	3.7.2.354.010c3b8	1
+SYSTEM	SYSTEM	3.9.0.1326.6985b21	1
+SYSTEM	SYSTEM	3.9.6.1467.159c5b1	1
+SYSTEM	SYSTEM	4.0.1_linux_64_Ubuntu10.04	1
+SYSTEM	SYSTEM	5.0_linux_64_scientificLinux6	1
+SYSTEM	SYSTEM	-64	5
+SYSTEM	SYSTEM	-64_CUDA6.0	1
+SYSTEM	SYSTEM	-510.85.02	1
+SYSTEM	SYSTEM	-515.65.01	1
+SYSTEM	SYSTEM	-2010.1.23.Linux_x86_64	1
+SYSTEM	SYSTEM	-2015.1.0.linux_x86_64_intel	1
+SYSTEM	SYSTEM	-2015.1.3.linux_x86_64_openmp	1
+SYSTEM	SYSTEM	-2015.1.10.linux_x86_64_openmp	1
+SYSTEM	SYSTEM	-2019.2.066	2
+SYSTEM	SYSTEM	-2024.1.0.linux_x86_64_mpipr	1
+SYSTEM	SYSTEM	-2024.1.0.linux_x86_64_sockets	1
+SYSTEM	SYSTEM	-045632_pre-release-3_Linux-x86_64	1
+SYSTEM	SYSTEM	-aarch64	1
+SYSTEM	SYSTEM	-amd	1
+SYSTEM	SYSTEM	-amd64	4
+SYSTEM	SYSTEM	-amd64_linux26	1
+SYSTEM	SYSTEM	-AVX	1
+SYSTEM	SYSTEM	-AVX2	1
+SYSTEM	SYSTEM	-Beta-Linux64	1
+SYSTEM	SYSTEM	-binary-Linux-x86_64-rhel-6-python-gtk2	1
+SYSTEM	SYSTEM	-binary-Linux-x86_64-scientific-linux-7.6-python-gtk2	1
+SYSTEM	SYSTEM	-bin-scala_2.11	1
+SYSTEM	SYSTEM	-binutils-2.25	3
+SYSTEM	SYSTEM	-b01-OpenJDK-aarch64	1
+SYSTEM	SYSTEM	-b26-OpenJDK	1
+SYSTEM	SYSTEM	-cdh5.3.1-native	1
+SYSTEM	SYSTEM	-cdh5.4.5-native	1
+SYSTEM	SYSTEM	-cdh5.7.0-native	1
+SYSTEM	SYSTEM	-cdh5.8.0-native	1
+SYSTEM	SYSTEM	-cdh5.12.0-native	1
+SYSTEM	SYSTEM	-CDK-GCC-4.9.2-2.25	1
+SYSTEM	SYSTEM	-centos_linux64	6
+SYSTEM	SYSTEM	-centos-mkl-par	1
+SYSTEM	SYSTEM	-centos-par	1
+SYSTEM	SYSTEM	-centos4_x86_64	1
+SYSTEM	SYSTEM	-centos6	1
+SYSTEM	SYSTEM	-centos6_x86_64	4
+SYSTEM	SYSTEM	-centos6_64	1
+SYSTEM	SYSTEM	-centos7	1
+SYSTEM	SYSTEM	-centos7_x86_64	4
+SYSTEM	SYSTEM	-centos8_x86_64	5
+SYSTEM	SYSTEM	-centos64	2
+SYSTEM	SYSTEM	-cli	12
+SYSTEM	SYSTEM	-cli-tools-only	3
+SYSTEM	SYSTEM	-CLooG	6
+SYSTEM	SYSTEM	-CLooG-multilib	6
+SYSTEM	SYSTEM	-CUDA-7.5.18	2
+SYSTEM	SYSTEM	-CUDA-8.0.44	3
+SYSTEM	SYSTEM	-CUDA-8.0.61	1
+SYSTEM	SYSTEM	-CUDA-9.0.176	3
+SYSTEM	SYSTEM	-CUDA-9.1.85	1
+SYSTEM	SYSTEM	-CUDA-9.2.148.1	1
+SYSTEM	SYSTEM	-CUDA-10.0.130	3
+SYSTEM	SYSTEM	-CUDA-10.1.243	1
+SYSTEM	SYSTEM	-CUDA-11.0.2	2
+SYSTEM	SYSTEM	-CUDA-11.1.1	4
+SYSTEM	SYSTEM	-CUDA-11.2.1	2
+SYSTEM	SYSTEM	-CUDA-11.3.1	3
+SYSTEM	SYSTEM	-CUDA-11.4.0	1
+SYSTEM	SYSTEM	-CUDA-11.4.1	3
+SYSTEM	SYSTEM	-CUDA-11.5.2	1
+SYSTEM	SYSTEM	-CUDA-11.6.0	2
+SYSTEM	SYSTEM	-CUDA-11.7.0	8
+SYSTEM	SYSTEM	-CUDA-11.8.0	2
+SYSTEM	SYSTEM	-CUDA-12.0.0	3
+SYSTEM	SYSTEM	-CUDA-12.1.1	4
+SYSTEM	SYSTEM	-CUDA-12.2.0	2
+SYSTEM	SYSTEM	-CUDA-12.2.2	1
+SYSTEM	SYSTEM	-CUDA-12.3.0	2
+SYSTEM	SYSTEM	-demo	1
+SYSTEM	SYSTEM	-f90	1
+SYSTEM	SYSTEM	-GCC-system-2.29	4
+SYSTEM	SYSTEM	-GCC-4.9	2
+SYSTEM	SYSTEM	-GCC-4.9.3-2.25	19
+SYSTEM	SYSTEM	-GCC-5.3	2
+SYSTEM	SYSTEM	-GCC-5.3.0-2.26	9
+SYSTEM	SYSTEM	-GCC-5.4	1
+SYSTEM	SYSTEM	-GCC-5.4.0-2.26	14
+SYSTEM	SYSTEM	-GCC-6.3.0-2.27	8
+SYSTEM	SYSTEM	-GCC-6.3.0-2.28	1
+SYSTEM	SYSTEM	-GCC-6.4.0-2.28	24
+SYSTEM	SYSTEM	-GCC-7.2.0-2.29	1
+SYSTEM	SYSTEM	-GCC-7.3.0-2.30	7
+SYSTEM	SYSTEM	-GCC-8.2.0-2.31.1	11
+SYSTEM	SYSTEM	-GCC-8.3.0-2.32	5
+SYSTEM	SYSTEM	-GCC-9.2.0	1
+SYSTEM	SYSTEM	-GNU-4.9.2-2.25	1
+SYSTEM	SYSTEM	-GNU-4.9.3-2.25	1
+SYSTEM	SYSTEM	-gtk3	1
+SYSTEM	SYSTEM	-Hadoop-2.6-Java-1.8.0_144	1
+SYSTEM	SYSTEM	-Hadoop-2.6-Java-1.8.0_152	1
+SYSTEM	SYSTEM	-Hadoop-2.7-Java-1.8	1
+SYSTEM	SYSTEM	-Hadoop-2.7-Java-1.8.0_162	1
+SYSTEM	SYSTEM	-hotfix-1721	1
+SYSTEM	SYSTEM	-hotfix-1806	1
+SYSTEM	SYSTEM	-hotfix-2132	1
+SYSTEM	SYSTEM	-hotfix-2214	1
+SYSTEM	SYSTEM	-hotfix-2223	1
+SYSTEM	SYSTEM	-intel-2016b	1
+SYSTEM	SYSTEM	-intel-2017a	1
+SYSTEM	SYSTEM	-intel-2017b	1
+SYSTEM	SYSTEM	-intel-2018a	1
+SYSTEM	SYSTEM	-intel-2018b	1
+SYSTEM	SYSTEM	-intelmpi	1
+SYSTEM	SYSTEM	-i86linux32	3
+SYSTEM	SYSTEM	-i86linux64	2
+SYSTEM	SYSTEM	-i686	1
+SYSTEM	SYSTEM	-Java-1.7.0_10	2
+SYSTEM	SYSTEM	-Java-1.7.0_15	2
+SYSTEM	SYSTEM	-Java-1.7.0_21	4
+SYSTEM	SYSTEM	-Java-1.7.0_60	4
+SYSTEM	SYSTEM	-Java-1.7.0_75	2
+SYSTEM	SYSTEM	-Java-1.7.0_76	1
+SYSTEM	SYSTEM	-Java-1.7.0_79	4
+SYSTEM	SYSTEM	-Java-1.7.0_80	25
+SYSTEM	SYSTEM	-Java-1.8	31
+SYSTEM	SYSTEM	-Java-1.8.0_66	7
+SYSTEM	SYSTEM	-Java-1.8.0_72	2
+SYSTEM	SYSTEM	-Java-1.8.0_74	6
+SYSTEM	SYSTEM	-Java-1.8.0_77	2
+SYSTEM	SYSTEM	-Java-1.8.0_92	6
+SYSTEM	SYSTEM	-Java-1.8.0_112	4
+SYSTEM	SYSTEM	-Java-1.8.0_121	2
+SYSTEM	SYSTEM	-Java-1.8.0_131	2
+SYSTEM	SYSTEM	-Java-1.8.0_144	4
+SYSTEM	SYSTEM	-Java-1.8.0_152	4
+SYSTEM	SYSTEM	-Java-1.8.0_152-centos6	1
+SYSTEM	SYSTEM	-Java-1.8.0_152-centos7	1
+SYSTEM	SYSTEM	-Java-1.8.0_162	10
+SYSTEM	SYSTEM	-Java-8	4
+SYSTEM	SYSTEM	-Java-11	45
+SYSTEM	SYSTEM	-Java-13	4
+SYSTEM	SYSTEM	-Java-15	2
+SYSTEM	SYSTEM	-Java-17	10
+SYSTEM	SYSTEM	-Java-21	2
+SYSTEM	SYSTEM	-Julia-1.6.7	1
+SYSTEM	SYSTEM	-Julia-1.7.2	1
+SYSTEM	SYSTEM	-Julia-1.8.5	1
+SYSTEM	SYSTEM	-Julia-1.9.2	1
+SYSTEM	SYSTEM	-legacy	1
+SYSTEM	SYSTEM	-library	1
+SYSTEM	SYSTEM	-linux	1
+SYSTEM	SYSTEM	-Linux	2
+SYSTEM	SYSTEM	-linux-aarch64	1
+SYSTEM	SYSTEM	-linux-amd64	4
+SYSTEM	SYSTEM	-linux-static-x86_64	1
+SYSTEM	SYSTEM	-linux_x86	1
+SYSTEM	SYSTEM	-linux_x86_64	3
+SYSTEM	SYSTEM	-Linux_x86_64	7
+SYSTEM	SYSTEM	-Linux_x86_64-64bit	2
+SYSTEM	SYSTEM	-linux_x86-64-OpenMPI-1.8.1	1
+SYSTEM	SYSTEM	-linux-x64	5
+SYSTEM	SYSTEM	-Linux-x86	1
+SYSTEM	SYSTEM	-linux-x86_64	32
+SYSTEM	SYSTEM	-Linux-x86_64	1
+SYSTEM	SYSTEM	-linux-x86_64-CUDA-11.7.0	3
+SYSTEM	SYSTEM	-linux-x86_64-CUDA-12.1.1	2
+SYSTEM	SYSTEM	-linux-x86_64-static	1
+SYSTEM	SYSTEM	-linux-64-bit	1
+SYSTEM	SYSTEM	-Linux-64bits	1
+SYSTEM	SYSTEM	-linux.x86_64	4
+SYSTEM	SYSTEM	-linux64	7
+SYSTEM	SYSTEM	-linux64-static	1
+SYSTEM	SYSTEM	-MATLAB-2021a	2
+SYSTEM	SYSTEM	-MATLAB-2021b	1
+SYSTEM	SYSTEM	-multilib	1
+SYSTEM	SYSTEM	-no-OFED	1
+SYSTEM	SYSTEM	-OpenJDK	1
+SYSTEM	SYSTEM	-OpenMPI-2.0.2	2
+SYSTEM	SYSTEM	-OpenMPI-3.1.3	1
+SYSTEM	SYSTEM	-ppc64le	1
+SYSTEM	SYSTEM	-py3	1
+SYSTEM	SYSTEM	-rh_linux64	1
+SYSTEM	SYSTEM	-Ruby-2.1.6	1
+SYSTEM	SYSTEM	-Ruby-2.3.1	1
+SYSTEM	SYSTEM	-Ruby-2.3.3	1
+SYSTEM	SYSTEM	-r3	1
+SYSTEM	SYSTEM	-r5	1
+SYSTEM	SYSTEM	-r8	7
+SYSTEM	SYSTEM	R2019b.8	1
+SYSTEM	SYSTEM	R2020a.6	1
+SYSTEM	SYSTEM	R2020b.5	1
+SYSTEM	SYSTEM	R2021a.0	1
+SYSTEM	SYSTEM	R2021a.3	1
+SYSTEM	SYSTEM	R2021b.1	1
+SYSTEM	SYSTEM	R2021b.2	1
+SYSTEM	SYSTEM	R2022a.1	1
+SYSTEM	SYSTEM	R2022a.5	1
+SYSTEM	SYSTEM	-seagate-722af1-native	1
+SYSTEM	SYSTEM	-static-Linux64	1
+SYSTEM	SYSTEM	-ubuntu18_amd64	1
+SYSTEM	SYSTEM	-ubuntu20_amd64	2
+SYSTEM	SYSTEM	-ubuntu22_amd64	2
+SYSTEM	SYSTEM	-ubuntu64	1
+SYSTEM	SYSTEM	-vsc-base-2.1.2	1
+SYSTEM	SYSTEM	-vsc-base-2.4.2	1
+SYSTEM	SYSTEM	-x64	1
+SYSTEM	SYSTEM	-x64_bin-sdk	1
+SYSTEM	SYSTEM	-x64-linux	3
+SYSTEM	SYSTEM	-x86_64	13
+SYSTEM	SYSTEM	-x86_64_linux_gnu4.5	3
+SYSTEM	SYSTEM	-x86-64	1

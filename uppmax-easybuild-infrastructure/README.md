@@ -38,7 +38,17 @@ Build a translation table between our module names and EasyBuild module names.
 
 And our module versions and EasyBuild module versions.
 
-This is accomplished with the `uppmax-easybuild-map.pl` script.
+This is accomplished with the `uppmax-to-easybuild-map.pl` script.
+
+The cloned repositories for us to search are under `easybuild-cloned-repositories/`.  This directory is added to our `.gitignore`.
+
+    ml git/2.44.0
+    git clone https://github.com/easybuilders/easybuild-easyconfigs
+
+Fred Hutch easyconfigs.
+
+    git clone https://github.com/FredHutch/easybuild-life-sciences
+    cd fh_easyconfigs
 
 
 

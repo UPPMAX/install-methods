@@ -1,0 +1,6 @@
+base_dir	moduleclass	module	version	toolchain	toolchainversion	versionsuffix	ebfile
+easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/p	quantum	ProjectQ	0.4.2	intel	2018b	-Python-3.6.6	easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/p/ProjectQ/ProjectQ-0.4.2-intel-2018b-Python-3.6.6.eb
+easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/q	quantum	Qiskit	0.11.1	foss	2019a	-Python-3.7.2	easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/q/Qiskit/Qiskit-0.11.1-foss-2019a-Python-3.7.2.eb
+easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/q	quantum	Qiskit	0.12.0	foss	2019a	-Python-3.7.2	easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/q/Qiskit/Qiskit-0.12.0-foss-2019a-Python-3.7.2.eb
+easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/q	quantum	Qiskit	0.31.0	foss	2021a		easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/q/Qiskit/Qiskit-0.31.0-foss-2021a.eb
+easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/q	quantum	QuTiP	4.3.1	intel	2018b	-Python-3.6.6	easybuild-cloned-repositories/easybuild-easyconfigs/easybuild/easyconfigs/q/QuTiP/QuTiP-4.3.1-intel-2018b-Python-3.6.6.eb

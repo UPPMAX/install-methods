@@ -1,0 +1,2 @@
+base_dir	moduleclass	module	version	toolchain	toolchainversion	versionsuffix	ebfile
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a	tools	ack	2.22	DUMMY	DUMMY		easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/ack/ack-2.22.eb

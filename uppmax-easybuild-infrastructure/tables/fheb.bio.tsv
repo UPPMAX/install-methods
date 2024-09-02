@@ -1,0 +1,11 @@
+base_dir	moduleclass	module	version	toolchain	toolchainversion	versionsuffix	ebfile
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a	bio	AGAT	0.9.2	GCC	11.2.0		easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/AGAT/AGAT-0.9.2-GCC-11.2.0.eb
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a	bio	alleleCount	4.2.1	GCCcore	11.2.0		easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/alleleCount/alleleCount-4.2.1-GCCcore-11.2.0.eb
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a	bio	AlphaFold	2.0.0	foss	2020b		easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/AlphaFold/AlphaFold-2.0.0-foss-2020b.eb
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a	bio	AMOS	3.1.0	foss	2018b		easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/AMOS/AMOS-3.1.0-foss-2018b.eb
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a	bio	ancestry	1.0.0	GCCcore	8.3.0	-Python-2.7.16	easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/ancestry/ancestry-1.0.0-GCCcore-8.3.0-Python-2.7.16.eb
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a	bio	anndata	0.10.7	foss	2023b		easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/anndata/anndata-0.10.7-foss-2023b.eb
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a	bio	annovar	2016Feb01	DUMMY	DUMMY		easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/annovar/annovar-2016Feb01.eb
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a	bio	annovar	2017Oct30	foss	2016b	-Perl-5.24.1	easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/annovar/annovar-2017Oct30-foss-2016b-Perl-5.24.1.eb
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a	bio	annovar	2018Dec04	DUMMY	DUMMY		easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/annovar/annovar-2018Dec04.eb
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a	bio	annovar	2019Oct24	DUMMY	DUMMY		easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/annovar/annovar-2019Oct24.eb

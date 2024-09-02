@@ -1,0 +1,2 @@
+base_dir	moduleclass	module	version	toolchain	toolchainversion	versionsuffix	ebfile
+easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a	data	AlphaPulldown	0.30.4	fosscuda	2022a		easybuild-cloned-repositories/easybuild-life-sciences/fh_easyconfigs/a/AlphaPulldown/AlphaPulldown-0.30.4-fosscuda-2022a.eb
