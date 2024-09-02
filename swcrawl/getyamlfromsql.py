@@ -68,6 +68,8 @@ for yamlfile in result:
         sqlkey = yamlfile["TOOL"] + "_" + yamlfile["VERSION"]
     except:
         print(yamlfile)
+    for i in yamlfile:
+        print(i, yamlfile[i])
     file_name = name.replace("DRAFT.","")
     file_name = file_name.replace(".yaml","")
     content_name = yamlfile["TOOL"] + "-" + yamlfile["VERSION"]
@@ -75,6 +77,7 @@ for yamlfile in result:
     if match is not None:
         for i in match.span():
             makeroomtest = base + "/makeroom_" + file_name[:i] + "_" + file_name[i+1:] + ".sh"
+            print(makeroomtest)
             if os.path.isfile(makeroomtest):
                 makeroomfile = makeroomtest
                 break
@@ -83,23 +86,57 @@ for yamlfile in result:
         if not os.path.exists(makeroomfile):
             break
     if (file_name!=content_name):
-        #print(yamlfile["path"] + " contains info from " + content_name)
-        try:
+        print(yamlfile["path"] + " contains info from " + content_name)
+        print(file_name, "   ", content_name)
+        try: 
             with open(makeroomfile, 'r') as infile:
-                #print("####################################")
-                #e = infile.read()
-                #print(e)
-                e = re.findall("##################### YAML .*cat\ \>\ \"(.*yaml)\"\ \<\<EOF4(.*)?EOF4", infile.read(), re.DOTALL)
-                #formatted_output = OUTPUT.replace('\\n', '\n').replace('\\t', '\t')
-                #e = infile.read.split("EOF4")[1]
-                yamlpartofmakeroom = e[1]
-                yamlpath = e[0]
-                yamlmr = (re.sub("^- ", "  ", yamlpartofmakeroom, flags=re.M))
-                print(yamlmr)
-                yamlfile = yml.load(yamlmr)
-                ################ Här arbetas det
+                e = infile.read()
+                yamlpath = re.findall("(/.*yaml)", e)[0]
+                e1 = re.findall("EOF4(.*)?EOF4", e, re.DOTALL)
+                yamlpartofmakeroom = e1[0]
+                yamlmr0 = (re.sub("^.+LOCAL:", "  LOCAL:", yamlpartofmakeroom, flags=re.M))
+                yamlmr0p5 = (re.sub("^.+COMMON:", "  COMMON:", yamlmr0, flags=re.M))
+                yamlmr1 = (re.sub("^- ", "  ", yamlmr0p5, flags=re.M))
+                yamlmr1p5 = yamlmr1.replace("\\", "")
+                yamlmr2 = (re.sub(r'(^\s+\S+?):(\S+?)', r"\1: \2", yamlmr1p5, flags=re.M))
+                yamlmr3 = (re.sub(r'(^\s+- \S+?):(\S+?)', r"\1: \2", yamlmr2, flags=re.M))
+                yamlmr4 = (re.sub(r'(\S+?: )(.*:.*)', r'\1"\2"', yamlmr3, flags=re.M))
+                yamlmr = (re.sub(r"(\S+?: )(.+'.+)", r'\1"\2"', yamlmr4, flags=re.M))
+                with open("TMPFILE", 'w') as outfile:
+                    print(yamlmr, file=outfile)
+                with open("TMPFILE", 'r') as infile:
+                    print(yamlfile)
+                    print(yamlpartofmakeroom)
+                try:
+                    yamlfile = yml.load(yamlmr)
+                except yaml.YAMLError as exc:
+                    if hasattr(exc, 'problem_mark'):
+                        if exc.context != None:
+                            print ('  parser says\n' + str(exc.problem_mark) + '\n  ' +
+                                str(exc.problem) + ' ' + str(exc.context) +
+                                '\nPlease correct data and retry.')
+                        else:
+                            print ('  parser says\n' + str(exc.problem_mark) + '\n  ' +
+                                str(exc.problem) + '\nPlease correct data and retry.')
+                    else:
+                        print(makeroomfile + " not working")
+                    print("--------------------yamlmr------------------------")
+                    print(yamlmr)
+                    print("--------------------path------------------------")
+                    print(yamlpath)
+                    print("---------------------yamlfile------------------------------")
+                    print(yamlfile)
+                    print("---------------------end------------------------------")
+                yamlfile["path"] = yamlpath
+                try:
+                    sqlkey = yamlfile["TOOL"] + "_" + str(yamlfile["VERSION"])
+                except:
+                    print("################### " + sqlkey + " ##########################")
+                print(yamlfile["TOOL"])
+                database[sqlkey] = yamlfile
         except:
-            print(makeroomfile + " not working")
+            print("################### " + "No makeroomfile" + " ##########################")
+            print(yamlfile["path"])
     else:
         try:
             yamlfile["path"] = yamlfile["path"].replace("DRAFT.","")
@@ -114,8 +151,9 @@ for yamlfile in result:
 for key in database:
     name = os.path.basename(database[key]["path"])
     testfil="/home/jonass/uppmax/install-methods/swcrawl/test/" + name
+    #testfil=database[key]["path"]
     try:
-        content_name = database[key]["TOOL"] + "-" + database[key]["VERSION"]
+        content_name = database[key]["TOOL"] + "-" + str(database[key]["VERSION"])
     except:
         print("ERROR!" + database[key])
         next
@@ -142,6 +180,7 @@ for key in database:
         thefile["path"] = database[key]["path"]
         with open(testfil, 'w') as output:
             yml.dump(thefile, output)
+            print("Printing to " + testfil)
     except:
-        #print("File " + database[key]["path"] + " not in database under key: ." + sqlkey + "!")
+        print("File " + database[key]["path"] + " not in database under key: ." + sqlkey + "!")
         pass

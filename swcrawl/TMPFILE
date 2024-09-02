@@ -1,0 +1,24 @@
+
+  TOOL: iqtree
+  VERSION: 2.2.2.6-omp-mpi
+  CLUSTER: 
+    - rackham
+    - bianca
+    - miarka
+    - snowy
+  LICENSE: GPL v2
+  LICENSEURL: 
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  WEBSITE: "http://www.iqtree.org"
+  LOCAL: /sw/bioinfo/iqtree/mf/2.2.2.6-omp-mpi
+  COMMON: /sw/mf/common/bioinfo-tools/phylogeny/iqtree/2.2.2.6-omp-mpi
+  DESCRIPTION: efficient software for phylogenomic inference
+  KEYWORDS: 
+    - 
+  MODULE: iqtree
+  SECTION: phylogeny
+  POSTINSTALL: /sw/bioinfo/iqtree/iqtree-2.2.2.6-omp-mpi_post-install.sh
+  README: /sw/bioinfo/iqtree/iqtree-2.2.2.6-omp-mpi_install-README.md
+  SQLKEY: iqtree_2.2.2.6-omp-mpi
+
