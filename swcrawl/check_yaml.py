@@ -118,11 +118,11 @@ yml = ruamel.yaml.YAML()
 yml.preserve_quotes = True
 yml.explicit_start = True
 
-if TOOL != None and VERSION != None:
+if TOOL != None and VERSION != None and SQL_FIELD != None:
     sql = "SELECT " + SQL_FIELD + " FROM yamlfiles WHERE yamlfiles.TOOL=\'" + TOOL + "\' AND yamlfiles.VERSION=\'" + VERSION + "\'"
-elif TOOL != None:
+elif TOOL != None and SQL_FIELD != None:
     sql = "SELECT " + SQL_FIELD + " FROM yamlfiles WHERE yamlfiles.TOOL=\'" + TOOL + "\'"
-elif TOOL == None:
+elif TOOL == None and SQL_FIELD != None:
     TOOL = os.path.basename(PATH)
     sql = "SELECT " + SQL_FIELD + " FROM yamlfiles WHERE yamlfiles.path LIKE \'" + PATH + "%\'"
 
@@ -132,7 +132,9 @@ elif TOOL == None:
 if PATH == None:
     for root, dirs, files in walklevel("/sw/", 4):
         for dir in dirs:
-            if fnmatch.fnmatch(dir, TOOL):
+            if re.search(".*sw/apps/bioinfo.*", root):
+                continue
+            elif fnmatch.fnmatch(dir, TOOL):
                 PATH = root + "/" + dir
                 break
         else:
@@ -163,17 +165,23 @@ else:
                 print(showmakeroomyaml(makeroomfile))
             else:
                 print(makeroomfile + " does not exist. Should it?")
-            if TOOL != None:
-                print("TOOL: " + TOOL)
-            if PATH != None:
-                print("PATH: " + PATH)
-            if VERSION != None:
-                print("VERSION: " + VERSION)
-
-db_path = '/sw/infrastructure/swdb.db' 
-yaml_output = fetch_data_to_yaml(db_path, sql)
-print("")
-print("------------------sql-query----------------")
-print(sql)
-print("----------------sql-output----------------")
-print(yaml_output)
+            try: 
+                yamlfrommakeroom = yaml.safe_load(showmakeroomyaml(makeroomfile))
+            except:
+                continue
+            print(yamlfrommakeroom)
+            if yamlfrommakeroom['TOOL'] != TOOL:
+                print("ERROR: makeroom tool: " + yamlfrommakeroom['TOOL'] + " != input TOOL: " + TOOL)
+            deduced_mf_path = PATH + "/mf/" + VERSION
+            if yamlfrommakeroom['LOCAL'] != deduced_mf_path:
+                print("ERROR: makeroom LOCAL mf path" + yamlfrommakeroom['LOCAL'] + " != deduced path: /" + deduced_mf_path)
+            if yamlfrommakeroom['VERSION'] != VERSION:
+                print("ERROR: makeroom version: " + yamlfrommakeroom['VERSION'] + " != input VERSION: " + VERSION)
+if SQL_FIELD != None:
+    db_path = '/sw/infrastructure/swdb.db' 
+    yaml_output = fetch_data_to_yaml(db_path, sql)
+    print("")
+    print("------------------sql-query----------------")
+    print(sql)
+    print("----------------sql-output----------------")
+    print(yaml_output)
