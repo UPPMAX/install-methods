@@ -1,0 +1,37 @@
+- CLUSTER:
+  - rackham
+  - miarka
+  - bianca
+  - snowy
+  COMMON: /sw/mf/common/bioinfo-tools/assembly//3.4.2
+  DESCRIPTION: genome assembly and analysis toolkit
+  KEYWORDS:
+  - bioinformatics
+  - chromosome
+  - genome
+  - illumina
+  - assembly
+  - scaffolder
+  - polishing
+  - scaffold
+  - aligner
+  - assembler
+  LICENSE: GPL v3
+  LICENSEURL: null
+  LOCAL: /sw/bioinfo/MaSuRCA/mf/3.4.2
+  MODULE: MaSuRCA
+  MODULEFILE: null
+  POSTINSTALL: /sw/bioinfo/MaSuRCA/MaSuRCA-4.0.2_post-install.sh
+  README: /sw/bioinfo/MaSuRCA/MaSuRCA-4.0.2_install-README.md
+  SECTION: Bioinformatics Assembly
+  SQLKEY: MaSuRCA_3.4.2
+  TAGS: null
+  TOOL: MaSuRCA
+  USERGROUP: sw
+  USERPERMISSIONS: -R u+rwX,g+rwX,o+rX-w
+  VERSION: 3.4.2
+  WEBSITE: https://github.com/alekseyzimin/masurca
+  creator: douglas
+  key: MaSuRCA_3.4.2
+  md5: 1c2c5d35bf19c8b33c7a3b57dcebd906
+  path: /sw/apps/bioinfo/MaSuRCA/MaSuRCA-4.0.4.yaml

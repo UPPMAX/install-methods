@@ -160,10 +160,65 @@ def check_makeroom(makeroomfile, mf):
     if yamlfrommakeroom['LOCAL'] != mf:
         print("ERROR: makeroom LOCAL mf path" + yamlfrommakeroom['LOCAL'] + " != deduced path: /" + deduced_mf_path)
     if yamlfrommakeroom['VERSION'] != VERSION:
-        print("ERROR: makeroom version: " + yamlfrommakeroom['VERSION'] + " != input VERSION: " + VERSION)
+        print("ERROR: makeroom version: " + yamlfrommakeroom['VERSION'] + " != input VERSION: " + str(VERSION))
     return yamlfrommakeroom
         
+def print_files_that_DB_finds_errors_in(TOOL):
+    #Check SQL database against LMOD versions
+    db_path = '/sw/infrastructure/swdb.db' 
+    versions = find_versions_from_lmod(TOOL)
+    SQL_OUTPUT = {}
+    for ver in versions:
+        sql = "SELECT DISTINCT path FROM yamlfiles WHERE yamlfiles.TOOL=\'" + TOOL + "\' AND yamlfiles.VERSION=\'" + ver + "\' AND yamlfiles.path NOT LIKE \'%" + ver + "%\'"
+        SQL_OUTPUT[ver] = fetch_data_to_dict(db_path, sql)
+    print("Check these files:")
+    for v in SQL_OUTPUT:
+        #print(SQL_OUTPUT[v])
+        print(yaml.dump(SQL_OUTPUT[v]))
+        #print("\n")
 
+def print_SQL_query(TOOL, VERSION, SQL_FIELD):
+    if TOOL != None and VERSION != None and SQL_FIELD != None:
+        sql = "SELECT " + SQL_FIELD + " FROM yamlfiles WHERE yamlfiles.TOOL=\'" + TOOL + "\' AND yamlfiles.VERSION=\'" + VERSION + "\'"
+    elif TOOL != None and SQL_FIELD != None:
+        sql = "SELECT " + SQL_FIELD + " FROM yamlfiles WHERE yamlfiles.TOOL=\'" + TOOL + "\'"
+    elif TOOL == None and SQL_FIELD != None:
+        TOOL = os.path.basename(PATH)
+        sql = "SELECT " + SQL_FIELD + " FROM yamlfiles WHERE yamlfiles.path LIKE \'" + PATH + "%\'"
+
+    if SQL_FIELD != None:
+        db_path = '/sw/infrastructure/swdb.db' 
+        yaml_output = fetch_data_to_yaml(db_path, sql)
+        print("")
+        print("------------------sql-query----------------")
+        print(sql)
+        print("----------------sql-output----------------")
+        print(yaml_output)
+
+def get_dict_from_makeroom_with_yaml_section(TOOL, PATH, VERSION):
+#Check makeroom against input
+    if VERSION != None:
+        makeroomfile = PATH + "/makeroom_" + TOOL + "_" + VERSION + ".sh"
+        deduced_mf_path = PATH + "/mf/" + VERSION
+        dict_from_makeroom_yaml = check_makeroom(makeroomfile, deduced_mf_path)
+        if dict_from_makeroom_yaml is None:
+            OK = 0
+            print_makeroom(makeroomfile)
+        else:
+            OK = 1
+    else:
+        makeroomfiles = find_all_MR_from_path(PATH)
+        dict_from_makeroom_yaml = {}
+        for ver in makeroomfiles:
+            deduced_mf_path = PATH + "/mf/" + ver
+            dict_from_makeroom_yaml[ver] = check_makeroom(makeroomfiles[ver], deduced_mf_path)
+            if dict_from_makeroom_yaml[ver] is None:
+                OK = 0
+                print_makeroom(makeroomfiles[ver])
+            else:
+                OK = 1
+    return dict_from_makeroom_yaml
+            
 ################### Main ####################
 
 # Read options
@@ -180,6 +235,7 @@ PATH = options.PATH
 SQL_FIELD = options.SQL_FIELD
 if PATH == None and TOOL == None:
     print("Too few parameters!")
+    print("Please provide TOOL or PATH!")
     exit(1)
 
 yml = ruamel.yaml.YAML()
@@ -196,55 +252,14 @@ if TOOL == None:
 if PATH == None:
     PATH = find_path_from_tool(TOOL)
 
-#Check makeroom against input
+
+dict_yaml = get_dict_from_makeroom_with_yaml_section(TOOL, PATH, VERSION)
+
 if VERSION != None:
-    makeroomfile = PATH + "/makeroom_" + TOOL + "_" + VERSION + ".sh"
-    deduced_mf_path = PATH + "/mf/" + VERSION
-    dict_from_makeroom_yaml = check_makeroom(makeroomfile, deduced_mf_path)
-    if dict_from_makeroom_yaml is None:
-        OK = 0
-        print_makeroom(makeroomfile)
-    else:
-        OK = 1
+    print(yaml.dump(dict_yaml))
 else:
-    makeroomfiles = find_all_MR_from_path(PATH)
-    for VERSION in makeroomfiles:
-        deduced_mf_path = PATH + "/mf/" + VERSION
-        dict_from_makeroom_yaml = check_makeroom(makeroomfiles[VERSION], deduced_mf_path)
-        if dict_from_makeroom_yaml is None:
-            OK = 0
-            print_makeroom(makeroomfiles[VERSION])
-        else:
-            OK = 1
+    for ver in dict_yaml:
+        print(yaml.dump(dict_yaml[ver]))
 
-#Check SQL database against LMOD versions
-db_path = '/sw/infrastructure/swdb.db' 
-versions = find_versions_from_lmod(TOOL)
-SQL_OUTPUT = {}
-for VER in versions:
-    sql = "SELECT * FROM yamlfiles WHERE yamlfiles.TOOL=\'" + TOOL + "\' AND yamlfiles.VERSION=\'" + VER + "\'"
-    SQL_OUTPUT[VER] = fetch_data_to_dict(db_path, sql)
-
-for v in SQL_OUTPUT:
-    print(SQL_OUTPUT[v])
-
-
-
-
-
-if TOOL != None and VERSION != None and SQL_FIELD != None:
-    sql = "SELECT " + SQL_FIELD + " FROM yamlfiles WHERE yamlfiles.TOOL=\'" + TOOL + "\' AND yamlfiles.VERSION=\'" + VERSION + "\'"
-elif TOOL != None and SQL_FIELD != None:
-    sql = "SELECT " + SQL_FIELD + " FROM yamlfiles WHERE yamlfiles.TOOL=\'" + TOOL + "\'"
-elif TOOL == None and SQL_FIELD != None:
-    TOOL = os.path.basename(PATH)
-    sql = "SELECT " + SQL_FIELD + " FROM yamlfiles WHERE yamlfiles.path LIKE \'" + PATH + "%\'"
-
-if SQL_FIELD != None:
-    db_path = '/sw/infrastructure/swdb.db' 
-    yaml_output = fetch_data_to_yaml(db_path, sql)
-    print("")
-    print("------------------sql-query----------------")
-    print(sql)
-    print("----------------sql-output----------------")
-    print(yaml_output)
+print_files_that_DB_finds_errors_in(TOOL)
+print_SQL_query(TOOL, VERSION, SQL_FIELD)
