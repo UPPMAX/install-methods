@@ -68,9 +68,9 @@ LOG
 # Create virtualenv
     cd $PREFIX
     python3 -m virtualenv -p python3.8 cactus_env
+    source cactus_env/bin/activate
 
 # Update python packages
-    source cactus_env/bin/activate
     cd $PREFIX/cactus
     python3 -m pip install -U setuptools pip
     python3 -m pip install -U .
@@ -80,7 +80,7 @@ LOG
 
 "" 
 # Compile
-    unset PREFIX # downloadPangenomeTools and downloadMafTools do not like the variable $PREFIX
+    unset PREFIX # downloadPangenomeTools and downloadMafTools also do not like the variable $PREFIX
     make -j 15
     make
 
@@ -112,7 +112,7 @@ mesos-master --port=$port --work_dir=$wd_controller/${HOSTNAME}-$port --registry
 VERSION=2.8.2
 module load bioinfo-tools mesos cactus/$VERSION
 wd_agent=/proj/staff/bjornv/mesos-slave/
-controller=r21
+controller=s94
 port=5050
 #export PATH=/sw/bioinfo/cactus/$VERSION/snowy/cactus-bin-v$VERSION/bin/:$PATH
 #export PYTHONPATH=/sw/bioinfo/cactus/$VERSION/snowy/cactus-bin-v$VERSION/lib/:$PYTHONPATH
@@ -120,7 +120,7 @@ mesos-agent --master=$controller:$port --work_dir=$wd_agent/${HOSTNAME}-$port --
 
 
 VERSION=2.8.2
-controller=r21
+controller=s94
 port=5050
 module load bioinfo-tools mesos/1.9.0 cactus/$VERSION
 #export VERSION=$VERSION
@@ -130,7 +130,7 @@ module load bioinfo-tools mesos/1.9.0 cactus/$VERSION
 cactus \
            --batchSystem mesos \
            --mesosEndpoint $controller:$port \
-           --consCores 20 \
+           --consCores 16 \
            /proj/staff/bjornv/cactus_test/jobStore_${RANDOM} \
            /sw/bioinfo/cactus/${VERSION}/rackham/cactus/examples/evolverMammals.txt \
            output_cactus_${RANDOM}.hal

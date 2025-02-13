@@ -12,7 +12,7 @@ Structure creating script (makeroom_modkit_0.2.5-rc2.sh) moved to /sw/bioinfo/mo
 LOG
 ---
 
-    /home/bjornc/UPPMAX-tools/install-methods/makeroom.sh "-t" "modkit" "-v" "0.2.5-rc2" "-w" "https://github.com/nanoporetech/modkit" "-c" "bioinfo" "-l" "GPL v3" "-d" "bioinformatics tool for working with modified bases from Oxford Nanopore" "-s" "misc"
+    makeroom.sh "-t" "modkit" "-v" "0.2.5-rc2" "-w" "https://github.com/nanoporetech/modkit" "-c" "bioinfo" "-l" "GPL v3" "-d" "bioinformatics tool for working with modified bases from Oxford Nanopore" "-s" "misc"
     ./makeroom_modkit_0.2.5-rc2.sh
     source /sw/bioinfo/modkit/SOURCEME_modkit_0.2.5-rc2 && cd $TOOLDIR
     cd $PREFIX

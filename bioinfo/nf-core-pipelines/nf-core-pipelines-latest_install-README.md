@@ -1,6 +1,13 @@
 nf-core-pipelines/latest
 ========================
 
+
+================================================================================
+WARNING !!! UPPMAX does not maintain this mirror any more
+Please, refer to https://hackmd.io/@pmitev/nfcore_pipelines_Bianca documentation
+to read about how to run pipelines on Bianca and Rackham
+================================================================================
+
 <https://nf-co.re/pipelines>
 
 Used under license:

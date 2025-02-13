@@ -12,6 +12,14 @@ First install a single database.
     snpEff download -v Sscrofa11.1.105
 
 
+Betavulgaris_EL10.2_2
+---------------------
+
+Download genome and annotations from Phytozome v13.  The cds.fa and proteins.fa files cause failed checks, so build with -noCheckCds and -noCheckProteins.
+
+    snpEff build -gff3 -noCheckCds -noCheckProtein -v Betavulgaris_EL10.2_2 2>&1 | tee data/Betavulgaris_EL10.2_2/database.build.out
+
+
 canFam4.0
 ---------
 

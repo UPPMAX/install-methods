@@ -24,26 +24,15 @@ LOG
     [[ -d bedtools2 ]] && rm -rf bedtools2
     tar xf bedtools-${VERSION}.tar.gz 
     cd bedtools2/
+
     module load gcc/12.3.0
+    module load zlib/1.2.13
+    module load bzip2/1.0.8
+    module load xz/5.4.5
+
     make clean
     make -j 8
-    cp -av bin $PREFIX
-    cd ..
+    make prefix=$PREFIX install
+
     rm -rf bedtools2 
 
-BEDTools/2.31.1
-========================
-
-<https://bedtools.readthedocs.io>
-
-Used under license:
-MIT
-
-
-Structure creating script (makeroom_BEDTools_2.31.1.sh) moved to /sw/bioinfo/BEDTools/makeroom_2.31.1.sh
-
-LOG
----
-
-    /home/douglas/bin/makeroom.sh "-f" "-t" "BEDTools" "-v" "2.31.1" "-d" "The swiss army knife for genome arithmetic" "-w" "https://bedtools.readthedocs.io" "-l" "MIT"
-    ./makeroom_BEDTools_2.31.1.sh

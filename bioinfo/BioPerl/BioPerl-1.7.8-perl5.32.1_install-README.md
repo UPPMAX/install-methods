@@ -55,31 +55,6 @@ Install by naming it directly.
 Additional modules
 ------------------
 
-### SAM/BAM access
-
-For reference, <https://www.biostars.org/p/213040/>
-
-Install `Bio::DB::Sam` and the much newer `Bio::DB::HTS`.  For `Bio::DB::Sam`,
-use the custom `samtools` trees from 1.6.924 compiled with `-fPIC` to get
-started.  For `Bio::DB::HTS`, simply load the `htslib/1.8` module, which sets
-`PKG_CONFIG_PATH` correctly so that the install procedure can find everything
-it needs.
-
-    cd $BIOPERL_DEPS
-    cp -av ../../1.6.924_Perl5.18.4/src/library-dependencies .
-    cpanm Bio::DB::Sam
-
-and then enter
-`/sw/bioinfo/BioPerl/1.7.2_Perl5.26.2/rackham/library-dependencies/samtools-0.1.19`
-when asked for the location of `bam.h` and `libbam.a`.
-
-For `Bio::DB::HTS`:
-
-    module load bioinfo-tools htslib/1.8
-    cpanm Bio::DB::HTS
-
-### Others
-
     ml R_packages/4.3.1
     cpanm Bio::Phylo
     ml -R_packages

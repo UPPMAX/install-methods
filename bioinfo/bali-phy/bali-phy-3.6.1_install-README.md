@@ -25,7 +25,7 @@ LOG
 
     # git clone
     cd $SRCDIR
-    git clone https://github.com/bredelings/BAli-Phy.git .
+    git clone https://github.com/bredelings/BAli-Phy.git
     git reset --hard 898b7c9 #Checkout 3.6.1.
 
     # Meson build and test.

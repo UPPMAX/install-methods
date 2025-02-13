@@ -27,4 +27,5 @@ LOG
     /sw/bioinfo/metaWRAP/metaWRAP-1.3.2_post-install.sh
     
     
+BC installed the MY_CHECKM_FOLDER data base see https://github.com/bxlab/metaWRAP/blob/master/installation/database_installation.md#downloading-the-checkm-database
 

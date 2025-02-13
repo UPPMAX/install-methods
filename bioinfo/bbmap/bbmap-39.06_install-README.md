@@ -1,7 +1,7 @@
 bbmap/39.06
 ===========
 
-<https://jgi.doe.gov/data-and-tools/software-tools/bbtools/i>
+<https://jgi.doe.gov/data-and-tools/software-tools/bbtools/>
 
 Used under license:
 Public Domain
@@ -14,7 +14,7 @@ Structure creating script (makeroom_bbmap_39.06.sh) moved to /sw/bioinfo/bbmap/m
 LOG
 ---
 
-    makeroom.sh -f -t bbmap -v 39.06 -l "Public Domain" -w https://jgi.doe.gov/data-and-tools/software-tools/bbtools/i -d "a suite of fast, multithreaded bioinformatics tools designed for analysis of DNA and RNA sequence data" # https://downloads.sourceforge.net/project/bbmap/BBMap_39.06.tar.gz
+    makeroom.sh -f -t bbmap -v 39.06 -l "Public Domain" -w https://jgi.doe.gov/data-and-tools/software-tools/bbtools/ -d "a suite of fast, multithreaded bioinformatics tools designed for analysis of DNA and RNA sequence data" # https://downloads.sourceforge.net/project/bbmap/BBMap_39.06.tar.gz
     ./makeroom_bbmap_39.06.sh 
     source /sw/bioinfo/bbmap/SOURCEME_bbmap_39.06
     cd $SRCDIR

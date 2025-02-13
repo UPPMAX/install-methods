@@ -13,9 +13,11 @@ archspec="_"$(cat /sys/devices/cpu/caps/pmu_name)
 
 gpu=
 which nvidia-smi >/dev/null 2>&1 && nvidia-smi >/dev/null 2>&1 && gpu="_"$(nvidia-smi --query-gpu name --format=csv,noheader)
-gpu="${gpu// /_}"
+gpu="${gpu// /}"
 
-fullspec=$os$archspec$gpu
+# fullspec=$os$archspec$gpu
+fullspec=$os$archspec
+
 
 fullspec=$(echo $fullspec | tr '[:upper:]' '[:lower:]')
 

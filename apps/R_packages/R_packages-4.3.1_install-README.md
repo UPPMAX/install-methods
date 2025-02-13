@@ -29,6 +29,7 @@ For the next version:
   Then within R:
 
     install.packages('DoubletFinder', repos=NULL)
+* liana <https://saezlab.github.io/liana/>  See the section toward the end of this file
 
 
 Intro
@@ -1110,3 +1111,57 @@ But doing the same within RStudio fails.
 
 There needs to be a load of `sqlite/3.34.0` prior to running `rstudio` so that
 the proper sqlite library is "pre-loaded."
+
+
+liana
+-----
+
+    cd /sw/apps/R_packages
+    cd 4.3.1
+    source source-for-setup
+    chmod u+w $R_LIBS_USER
+
+This does not install cleanly using remotes::install_github() or
+devtools::install_github(), but will install cleanly cloning the directory and
+installing directly within it.  So do that.
+
+    cd external/
+    ml git/2.44.0
+    git clone --recursive https://github.com/saezlab/liana/
+    cd liana
+
+Within R:
+
+    install.packages('.', repos=NULL)
+
+Within R, I ran the tutorial examples from
+<https://saezlab.github.io/liana/articles/liana_tutorial.html> and they seemed
+to work as expected.
+
+    library(tidyverse)
+    library(magrittr)
+    library(liana)
+
+    show_resources()
+    show_methods()
+
+    liana_path <- system.file(package = "liana")
+    testdata <- readRDS(file.path(liana_path , "testdata", "input", "testdata.rds"))
+    testdata %>% dplyr::glimpse()
+    liana_test <- liana_wrap(testdata)
+    liana_test %>% dplyr::glimpse()
+    liana_test <- liana_test %>% liana_aggregate()
+    dplyr::glimpse(liana_test)
+    liana_test %>% liana_dotplot(source_groups = c("B"), target_groups = c("NK", "CD8 T", "B"), ntop = 20)
+    liana_trunc <- liana_test %>% filter(aggregate_rank <= 0.01)
+    heat_freq(liana_trunc)
+    p <- chord_freq(liana_trunc, source_groups = c("CD8 T", "NK", "B"), target_groups = c("CD8 T", "NK", "B"))
+    sce <- readRDS(file.path(liana_path , "testdata", "input", "testsce.rds"))
+    cpdb_test <- liana_wrap(sce, method = 'cellphonedb', resource = c('CellPhoneDB'), permutation.params = list(nperms=100, parallelize=FALSE, workers=4), expr_prop=0.05)
+    cpdb_int <- cpdb_test %>% filter(pvalue <= 0.05) %>% rank_method(method_name = "cellphonedb", mode = "magnitude") %>% distinct_at(c("ligand.complex", "receptor.complex")) %>% head(20)
+    cpdb_test %>% inner_join(cpdb_int, by = c("ligand.complex", "receptor.complex")) %>% mutate(pvalue = -log10(pvalue + 1e-10)) %>% liana_dotplot(source_groups = c("c"), target_groups = c("c", "a", "b"), specificity = "pvalue", magnitude = "lr.mean", show_complex = TRUE, size.label = "-log10(p-value)")
+    complex_test <- liana_wrap(testdata, method = c('natmi', 'sca', 'logfc'), resource = c('CellPhoneDB'))
+    complex_test %>% liana_aggregate()
+    geometric_mean <- function(vec){exp(mean(log(vec)))}
+    liana_test <- liana_wrap(testdata, method = c('cellphonedb', 'sca'), resource = 'Consensus', permutation.params = list( nperms = 10 # here we run cpdb it only with 10 permutations), complex_policy="geometric_mean")
+    liana_test %>% dplyr::glimpse()

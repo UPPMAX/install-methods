@@ -117,7 +117,7 @@ Install BioPerl dependencies and a bunch of others.
     cpanm GD Net::HTTP LWP::UserAgent XML::Parser XML::XPath IPC::Run XML::Twig LWP::Simple File::Type File::Which Test::Pod Parse::RecDescent Parallel::ForkManager
     cpanm --force GD
 
-    cpanm Test::Expect DBI Error Graph GraphViz HTML::Entities HTML::HeadParser XML::Parser::PerlSAX XML::SAX XML::Simple Data::Stag IO::String Test::Most
+    cpanm Test::Expect DBI Error Graph Graph::Easy GraphViz HTML::Entities HTML::HeadParser XML::Parser::PerlSAX XML::SAX XML::Simple Data::Stag IO::String Test::Most
     cpanm Math::CDF Math::BigInt Math::Counting Algorithm::Combinatorics
     cpanm Algorithm::Munkres Array::Compare Clone Convert::Binary::C HTML::TableExtract List::MoreUtils PostScript::TextBlock SOAP::Lite SVG SVG::Graph
     cpanm Set::Scalar Sort::Naturally Sort::Rank Sort::Fields Excel::Writer::XLSX Spreadsheet::ParseExcel XML::SAX::Writer XML::Writer YAML XML::LibXML XML::DOM::XPath XML::DOM DBD::SQLite Math::Random
@@ -235,7 +235,7 @@ XML::DOM::XPath has a test error, --force it!
     cpanm Sort::Fields
     cpanm Text::NSP
 
-    cpanm File::Util File::Path File::Basename Getopt::Long Text::Levenshtein::XS String::Approx MCE MCE::Loop MCE::Shared
+    cpanm File::Util File::Path File::Basename File::Grep Getopt::Long Text::Levenshtein::XS String::Approx MCE MCE::Loop MCE::Shared
     cpanm PDF::Table PDF::API2 List::Permutor List::Compare VCF::Reader Text::Password File::Type File::Tail File::Find App::find2perl File::Copy File::Util
 
 Additional modules with failing tests.

@@ -50,3 +50,13 @@ These features are added by running
 Lock down everything. Write-protect even against me, since I already overwrote something I symlink'd to.
 
     chmod -R -w .
+
+
+An additional genome added: Equus_caballus/NCBI/EquCab3.0
+---------------------------------------------------------
+
+I didn't provide everything, but several things.  See
+
+    /sw/data/iGenomes/Equus_caballus/NCBI/EquCab3.0/EquCab3.0-notes.md
+
+for more.
