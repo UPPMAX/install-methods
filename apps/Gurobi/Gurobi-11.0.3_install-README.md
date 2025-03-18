@@ -29,24 +29,31 @@ LOG
    mv gurobi1103 $PREFIX
 
 
-##Licenses
+## Licenses
 
-We need two (2!!!) academic floating server licenses, one for Rackham+Snowy and one for Bianca.
-Contact: license@gurobi.zendesk.com
-on local computer
-https://portal.gurobi.com/iam/licenses/list/
-Press INSTALL button and see the license key to be used below
+- We need two (2!!!) academic floating server licenses, one for Rackham+Snowy and one for Bianca.
+- Björn C registered an account at Gurobi: https://portal.gurobi.com/iam/register/
+- Contact: license@gurobi.zendesk.com
+    - You should ask for a Floating-Use academic license
+- Wait until license is set up (they confirm by email)
+  - on local computer: https://portal.gurobi.com/iam/licenses/list/
+  - Press INSTALL button and see the license key to be used below
 
 ### On Rackham
-Running license
+- Running license
+  
     cd $TOOLDIR/licenses
     $PREFIX/linux64/bin/grbgetkey 5946c48d-66c7-41cc-88ec-72560a414cdd   # change accordingly
-    choose present dir (`.`) for license
-Edit mf file: be sure GRB_LICENSE_FILE is correctly set
-Start floating token server
+
+- choose present dir (`.`) for license
+- Edit mf/module file: be sure GRB_LICENSE_FILE is correctly set
+- Start floating token server
+
     ml Gurobi
     grb_ts
-test from somewhere else (other user, on compute node on Rackham/Snowy)
+
+- test from somewhere else (other user, on compute node on Rackham/Snowy)
+
     ml Gurobi
     gurobi_cl    
    

@@ -22,10 +22,11 @@ LOG
 # label-studio.def
 =====
 Bootstrap: docker
-From: python:3.10-bookworm
+From: ubuntu:22.04
 
 %environment
   export LC_ALL=C
+  export LD_LIBRARY_PATH=/opt/calibre/lib:$LD_LIBRARY_PATH
   export PYTHONNOUSERSITE=True
 
 %post
@@ -33,8 +34,25 @@ From: python:3.10-bookworm
   export PYTHONNOUSERSITE=True
   export DEBIAN_FRONTEND=noninteractive
 
-  python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel
-  python3 -m pip install --no-cache-dir --upgrade label-studio
+  dpkg-divert --local --rename --add /sbin/initctl
+  ln -sf /bin/true /sbin/initctl
+
+  # Update package list and install dependencies
+  apt update && apt install -y --no-install-recommends \
+      glibc-source \
+      wget xz-utils\
+      libegl1 libopengl0 libxcb-cursor0 \
+      python3 python3-pip \
+      qt6-base-dev qt6-base-dev-tools libqt6core6 libqt6gui6 libqt6widgets6
+
+  # Restore initctl to avoid issues
+  rm /sbin/initctl
+  dpkg-divert --local --rename --remove /sbin/initctl
+
+  wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin
+
+  python3 -m pip install --no-cache-dir taguette==1.4.1
+
 
 %runscript
 #!/bin/sh
@@ -43,5 +61,6 @@ From: python:3.10-bookworm
   else
     echo "# ERROR !!! Command $SINGULARITY_NAME not found in the container"
   fi
+
 =====
 
