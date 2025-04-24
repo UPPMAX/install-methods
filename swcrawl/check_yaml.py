@@ -91,7 +91,7 @@ def fetch_data_to_yaml(db_path, query):
     return yaml_data
 
 def find_path_from_tool(TOOL):
-    for root, dirs, files in walklevel("/sw/", 4):
+    for root, dirs, files in walklevel("/sw/", 2):
         for dir in dirs:
             if re.search(".*sw/apps/bioinfo.*", root):
                 continue
