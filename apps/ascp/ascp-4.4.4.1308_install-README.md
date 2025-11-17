@@ -1,6 +1,8 @@
 ascp/4.4.4.1308
 ===============
 
+### 2025/05/26 : same version of ASCP is available, same license file
+
 <https://www.ibm.com/docs/en/ahts/4.4?topic=linux-ascp-transferring-from-command-line>
 
 Used under license:

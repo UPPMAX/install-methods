@@ -9,6 +9,9 @@ Custom
 
 Structure creating script (makeroom_GeneMark_4.72-es.sh) moved to /sw/bioinfo/GeneMark/makeroom_4.72-es.sh
 
+2025-04-14: updated the gm_key file
+
+
 LOG
 ---
 
@@ -77,4 +80,5 @@ Use the existing latest mf.
 ----------
 
 Updated to perl/5.32.1 and updated the gm_key
+
 

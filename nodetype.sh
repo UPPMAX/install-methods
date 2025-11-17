@@ -15,8 +15,8 @@ gpu=
 which nvidia-smi >/dev/null 2>&1 && nvidia-smi >/dev/null 2>&1 && gpu="_"$(nvidia-smi --query-gpu name --format=csv,noheader)
 gpu="${gpu// /}"
 
-# fullspec=$os$archspec$gpu
-fullspec=$os$archspec
+# fullspec=$os$archspec
+fullspec=$os$archspec$gpu
 
 
 fullspec=$(echo $fullspec | tr '[:upper:]' '[:lower:]')

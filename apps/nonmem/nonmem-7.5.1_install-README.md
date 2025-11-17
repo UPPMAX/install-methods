@@ -48,8 +48,8 @@ old version 1.4.1.
 *NEXT* build and install NONMEM.
 
     cd $SRCDIR
-    test -f NONMEM${VERSION}.zip || wget https://nonmem.iconplc.com/nonmem750/NONMEM${VERSION}.zip
-    unzip -P zorx7bqRT NONMEM${VERSION}.zip
+    test -f NONMEM${VERSION}.zip || wget https://nonmem.iconplc.com/nonmem751/NONMEM${VERSION}.zip
+    unzip -P yorx8bqRT NONMEM${VERSION}.zip
     cd nm${SQUASHEDVERSION}CD
     module load gcc/8.3.0
     ./SETUP${SQUASHEDMMVERSION} $PWD $PREFIX gfortran y ar same rec i

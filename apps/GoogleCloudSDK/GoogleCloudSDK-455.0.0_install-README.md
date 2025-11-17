@@ -28,19 +28,3 @@ Remove its updates to my .bashrc.
 Wrap up.
 
     ./GoogleCloudSDK-455.0.0_post-install.sh
-GoogleCloudSDK/455.0.0
-========================
-
-<https://cloud.google.com/sdk>
-
-Used under license:
-
-
-
-Structure creating script (makeroom_GoogleCloudSDK_455.0.0.sh) moved to /sw/apps/GoogleCloudSDK/makeroom_455.0.0.sh
-
-LOG
----
-
-    /home/pmitev/GIT/install-methods/makeroom.sh "-f" "-c" "apps" "-t" "GoogleCloudSDK" "-v" "455.0.0" "-w" "https://cloud.google.com/sdk" "-d" "Command line interfaces for Google Cloud"
-    ./makeroom_GoogleCloudSDK_455.0.0.sh
