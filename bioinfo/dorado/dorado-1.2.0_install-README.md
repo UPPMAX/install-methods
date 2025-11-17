@@ -69,8 +69,13 @@ Remove this unpacked directory to save space.
 
 To do the install, use a container.  With Pavlin's help, I began with his
 Ubunto 24.04 template at
-https://uppmax.github.io/Basic_Singularity_Apptainer/ubuntu_template/ and ended
-up with this def file, which is at $SRCDIR/dorado-${VERSION}.def:
+https://uppmax.github.io/Basic_Singularity_Apptainer/ubuntu_template/ 
+
+We needed libz.so.1 to checked https://packages.ubuntu.com to find which package
+provides this.  We don't need devel since we're not building from source.  The
+appropriate package is zlib1g.  We also need to wget, so install that.
+
+Finally we have this def file, which is at $SRCDIR/dorado-${VERSION}.def:
 
 
     Bootstrap: docker
