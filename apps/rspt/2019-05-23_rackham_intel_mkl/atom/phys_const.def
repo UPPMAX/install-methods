@@ -1,0 +1,4 @@
+#define TWOM              1.e0
+#define ESQ               2.e0
+#define C               274.071979122e0
+#define CSQ           ( C * C )

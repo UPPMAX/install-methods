@@ -1,0 +1,28 @@
+Bootstrap: docker
+From: ghcr.io/ggml-org/whisper.cpp:main
+
+# This is secretly v1.7.5 instead of v1.7.3. Keep it this way and make a new mf for the next version
+
+#TODO: switch to main-cuda once the docker cuda image is available again...
+# https://github.com/ggml-org/whisper.cpp/blob/d1f114da61b1ae1e70b03104fad42c9dd666feeb/.github/workflows/docker.yml#L22
+
+%setup
+    #module load FFmpeg/5.1.2
+    # module load cURL/8.0.1-GCCcore-12.3.0
+
+%post
+    apt update
+    apt install -y ffmpeg
+
+
+####converting file to wav##########
+# apptainer run whispercpp.sif "ffmpeg -i /home/jayan/Downloads/Zoom_sample.mp4 -ar 16000 -ac 1 \
+# -c:a pcm_s16le /home/jayan/Downloads/Zoom_sample.wav"
+
+####transcribing the audio file on CPU (20 threads)##########
+# apptainer run -B ./models/:/app/models -B /home/jayan/Downloads/:/app/audios/ whispercpp.sif \
+# "/app/build/bin/whisper-cli -m /app/models/ggml-large-v2.bin -t 20 -ng -f /app/audios/Zoom_sample.wav"
+
+####transcribing the audio file on GPU##########
+# apptainer run --nv -B ./models/:/app/models -B /home/jayan/Downloads/:/app/audios/ whispercpp.sif \
+# "/app/build/bin/whisper-cli -m /app/models/ggml-large-v2.bin -f /app/audios/Zoom_sample.wav"

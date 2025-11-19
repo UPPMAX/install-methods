@@ -1,0 +1,13 @@
+#define ZERO        0.e0
+#define ONE         1.e0
+#define TWO         2.e0
+#define THREE       3.e0
+#define HALF        0.5e0
+#define FOUR        4.e0
+#define PI          3.14159265358979e0
+#define TWOPI       ( 2.e0 * PI )
+#define FOURPI      ( 4.e0 * PI )
+#define FOPITH      ( 4.e0 * PI / 3.e0 )
+#define THIRD       ( 1.e0 / 3.e0 )
+#define TENTH       0.1e0
+#define INFINITY    1.0e+28

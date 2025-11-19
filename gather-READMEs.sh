@@ -29,12 +29,12 @@ if [[ ! $SKIP_FIND_MODULES ]] ; then
 
     cd /sw
 
-    find apps      ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $REPOSITORY &
-    find bioinfo   ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $REPOSITORY &
-    find build     ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $REPOSITORY &
-    find comp      ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $REPOSITORY &
-    find libs      ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $REPOSITORY &
-    find parallel  ${FIND_OPTS} -name '*install-README.md' | cpio -pdm $REPOSITORY &
+    find apps      ${FIND_OPTS} \( -name '*install-README.md' -o -name '*.def' \) | cpio -pdm $REPOSITORY &
+    find bioinfo   ${FIND_OPTS} \( -name '*install-README.md' -o -name '*.def' \) | cpio -pdm $REPOSITORY &
+    find build     ${FIND_OPTS} \( -name '*install-README.md' -o -name '*.def' \) | cpio -pdm $REPOSITORY &
+    find comp      ${FIND_OPTS} \( -name '*install-README.md' -o -name '*.def' \) | cpio -pdm $REPOSITORY &
+    find libs      ${FIND_OPTS} \( -name '*install-README.md' -o -name '*.def' \) | cpio -pdm $REPOSITORY &
+    find parallel  ${FIND_OPTS} \( -name '*install-README.md' -o -name '*.def' \) | cpio -pdm $REPOSITORY &
 
     wait
 
